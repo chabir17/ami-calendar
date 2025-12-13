@@ -1,0 +1,494 @@
+:root {
+  /* --- PALETTE LOGO AMI --- */
+  --col-blue: #002e5d;
+  /* Bleu foncé (Tour Eiffel) */
+  --col-orange: #f57f20;
+  /* Orange (Texte Tamil/Cercle) */
+  --col-green: #2e7d32;
+  /* Vert (Mosquée) */
+  --col-text: #333333;
+  --col-border: #cccccc;
+
+  /* --- FONDS ÉCO-ENCRE (PASTELS TRÈS CLAIRS) --- */
+  --bg-friday: rgba(46, 125, 50, 0.08);
+  /* Vert très pâle */
+  --bg-holiday: rgba(245, 127, 32, 0.12);
+  /* Orange très pâle */
+  --bg-public-holiday: rgba(200, 0, 0, 0.08);
+  /* Rouge très pâle */
+  --bg-table-header: #f8f9fa;
+
+  /* --- POLICES --- */
+  --font-fr: "Noto Sans", sans-serif;
+  --font-ar: "Noto Naskh Arabic", serif;
+  --font-ta: "Noto Sans Tamil", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #eee;
+  font-family: var(--font-fr);
+  color: var(--col-text);
+  padding: 1.25rem;
+  display: flex;
+  justify-content: center;
+}
+
+/* CLASSES UTILITAIRES */
+.arabic {
+  font-family: var(--font-ar);
+}
+
+.tamil {
+  font-family: var(--font-ta);
+}
+
+.dir-rtl {
+  direction: rtl;
+}
+
+/* PAGE A4 PAYSAGE */
+.page {
+  background-color: white;
+  width: 297mm;
+  height: 210mm;
+  padding: 12mm 5mm 5mm 5mm;
+  /* Marge haut réduite car logo intégré */
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  background-image: url("background-pattern.svg");
+}
+
+/* --- SÉPARATEUR MOTIF ISLAMIQUE --- */
+.islamic-separator {
+  width: 100%;
+  background-image: url("islamic-pattern.svg");
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+  padding: 0.125rem 0;
+  margin: 0.5rem 0;
+}
+
+/* --- HEADER --- */
+.header-fixed {
+  position: relative;
+  z-index: 1;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 1.125rem;
+}
+
+/* Logo Image */
+.logo-box {
+  width: 2cm;
+  height: 2cm;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.org-names {
+  display: flex;
+  flex-direction: column;
+}
+
+.org-fr {
+  color: var(--col-blue);
+  line-height: 1.25;
+}
+
+.org-ta {
+  color: var(--col-orange);
+  line-height: 1.25;
+}
+
+.coordinates {
+  text-align: right;
+  font-size: 12px;
+  line-height: 1.4;
+  color: #555;
+  border-left: 3px solid var(--col-green);
+  padding-left: 0.625rem;
+}
+
+.coord-city {
+  font-weight: 800;
+  color: var(--col-blue);
+  font-size: 14px;
+}
+
+/* --- TITRES --- */
+.month-titles-zone {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+#greg-month-fr {
+  font-size: 24px;
+  text-transform: uppercase;
+  line-height: 1.25;
+  color: var(--col-blue);
+  margin-bottom: 0.125rem;
+}
+
+#greg-month-ta {
+  font-size: 20px;
+  line-height: 1.25;
+  color: var(--col-orange);
+  margin: 0;
+}
+
+.titles-hijri {
+  text-align: right;
+}
+
+#hijri-month-fr {
+  font-size: 16px;
+  text-transform: uppercase;
+  color: #555;
+}
+
+#hijri-month-ar {
+  font-size: 24px;
+  color: var(--col-green);
+  margin-top: 0;
+}
+
+/* --- MAIN --- */
+.main-split-container {
+  position: relative;
+  z-index: 1;
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1rem;
+  overflow: hidden;
+}
+
+/* --- CALENDRIER GAUCHE --- */
+.left-visual-calendar {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--col-border);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background-color: white;
+}
+
+.weekdays-header {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  background: rgba(0, 46, 93, 0.1);
+  color: var(--col-blue);
+  text-align: center;
+  padding: 0;
+  font-size: 11px;
+  border-bottom: 2px solid var(--col-blue);
+}
+
+.weekday-cell {
+  border-right: 1px solid #ccc;
+  padding: 0.25rem 0;
+}
+
+.weekday-cell:last-child {
+  border-right: none;
+}
+
+.weekday-fr {
+  font-size: 14px;
+}
+
+.weekday-sub {
+  font-size: 10px;
+}
+
+.days-grid-visual {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  flex-grow: 1;
+}
+
+.day-cell-visual {
+  border-right: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.day-cell-visual:nth-child(7n) {
+  border-right: none;
+}
+
+/* Fonds colorés */
+.day-cell-visual.is-friday {
+  background-color: var(--bg-friday);
+}
+
+.day-cell-visual.is-holiday {
+  background-color: var(--bg-holiday);
+}
+
+.day-cell-visual.is-public-holiday {
+  background-color: var(--bg-public-holiday);
+}
+
+/* Chiffre Grégorien */
+.vis-greg {
+  font-size: 42px;
+  font-weight: 700;
+  color: #444;
+  z-index: 1;
+}
+
+/* Date Hégirienne */
+.vis-hij {
+  font-size: 13px;
+  color: var(--col-green);
+  position: absolute;
+  top: 4px;
+  right: 6px;
+}
+
+/* Icônes et Labels */
+.new-moon-icon {
+  position: absolute;
+  top: 2px;
+  left: 4px;
+  font-size: 13px;
+  z-index: 5;
+}
+
+.dst-icon {
+  position: absolute;
+  top: 2px;
+  left: 4px;
+  font-size: 13px;
+  z-index: 5;
+}
+
+.event-label {
+  display: block;
+  font-size: 8px;
+  line-height: 1;
+  margin-top: 0.125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #c62828;
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  bottom: 2px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.event-label.holiday-label {
+  color: #e65100;
+}
+
+/* Orange foncé pour vacances */
+.event-label.eid-label {
+  color: var(--col-green);
+  padding: 0.0625rem 0.125rem;
+}
+
+/* Bleu pour changement d'heure */
+.event-label.dst-label {
+  color: var(--col-blue);
+}
+
+/* --- TABLEAU DROITE --- */
+.right-prayer-table-container {
+  font-size: 11px;
+  overflow: hidden;
+  border: 1px solid var(--col-border);
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+}
+
+.legend-box {
+  padding: 0.5rem;
+  border-top: 1px solid var(--col-border);
+  margin-top: auto;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 10px;
+  color: #555;
+  font-weight: 600;
+}
+
+.legend-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.box-friday {
+  background-color: var(--bg-friday);
+}
+
+.box-holiday {
+  background-color: var(--bg-holiday);
+}
+
+.box-public {
+  background-color: var(--bg-public-holiday);
+}
+
+.prayer-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.prayer-table thead th {
+  background: rgba(46, 125, 50, 0.1);
+  border: 1px solid var(--col-border);
+  border-bottom: 2px solid var(--col-green);
+  padding: 0.25rem 0.0625rem;
+  font-size: 10px;
+  font-weight: 400;
+  vertical-align: middle;
+  color: var(--col-green);
+}
+
+/* Largeurs de colonnes fixes */
+.prayer-table th:first-child {
+  width: 15%;
+}
+
+.prayer-table th:last-child {
+  width: 10%;
+}
+
+.prayer-table th:nth-child(n+2):nth-child(-n+7),
+.prayer-table td:nth-child(n+2):nth-child(-n+7) {
+  width: 12.5%;
+}
+
+.th-fr {
+  display: block;
+  font-size: 12px;
+}
+.th-ar {
+  display: block;
+  font-size: 10px;
+}
+.th-ta {
+  display: block;
+  font-size: 9px;
+}
+
+.th-icon {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.th-header-symbol {
+  font-size: 32px;
+  line-height: 1;
+  color: var(--col-green);
+}
+
+.prayer-table tbody td {
+  border: 1px solid #eee;
+  text-align: center;
+  font-weight: 600;
+  font-size: 11px;
+  color: #333;
+}
+
+.prayer-table tbody tr:nth-child(even) {
+  background: #fcfcfc;
+}
+
+.prayer-table tbody tr.is-friday {
+  background: var(--bg-friday) !important;
+}
+
+/* Colonnes Spéciales */
+.col-date-greg {
+  width: 15%;
+}
+
+.col-hijri {
+  width: 10%;
+}
+
+/* --- FOOTER --- */
+.footer-minimal {
+  font-size: 10px;
+  text-align: center;
+  margin-top: auto;
+  padding-top: 0.5rem;
+  color: #888;
+}
+
+/* --- IMPRESSION --- */
+@media print {
+  @page {
+    size: landscape;
+    margin: 0;
+  }
+
+  body {
+    padding: 0;
+    background-color: white;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    display: block;
+  }
+
+  .page {
+    box-shadow: none;
+    width: 297mm;
+    height: 210mm;
+    border: none;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .main-split-container {
+    break-before: avoid;
+    page-break-before: avoid;
+  }
+}

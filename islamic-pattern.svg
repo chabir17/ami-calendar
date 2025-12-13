@@ -1,0 +1,4 @@
+<svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+    <!-- Étoile géométrique à 8 branches -->
+    <polygon fill="#ccc" points="20,0 25,11 34,6 29,15 40,20 29,25 34,34 25,29 20,40 15,29 6,34 11,25 0,20 11,15 6,6 15,11"/>
+</svg>
