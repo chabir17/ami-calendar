@@ -262,24 +262,13 @@ class PrayerTable extends HTMLElement {
         const TEXTS = window.TEXTS;
         if (!year || !month || !TEXTS) return;
 
+        const tbody = this.querySelector('tbody');
+        if (!tbody) return;
+
         const jsMonth = month - 1;
         const daysInMonth = new Date(year, month, 0).getDate();
         
-        let html = `
-        <table class="prayer-table" id="prayer-table">
-            <thead>
-                <tr>
-                    <th><div class="th-stack"><p class="th-fr">Date</p><p class="th-ar arabic">التاريخ</p><p class="th-ta tamil">தேதி</p></div></th>
-                    <th><div class="th-stack"><p class="th-fr">Fajr</p><p class="th-ar arabic">الفجر</p><p class="th-ta tamil">பஜ்ர்</p></div></th>
-                    <th><div class="th-stack"><p class="th-fr">Shuruq</p><p class="th-ar arabic">الشروق</p><p class="th-ta tamil">ஷுரூக்</p></div></th>
-                    <th><div class="th-stack"><p class="th-fr">Dhuhr</p><p class="th-ar arabic">الظهر</p><p class="th-ta tamil">லுஹர்</p></div></th>
-                    <th><div class="th-stack"><p class="th-fr">Asr</p><p class="th-ar arabic">العصر</p><p class="th-ta tamil">அஸ்ர்</p></div></th>
-                    <th><div class="th-stack"><p class="th-fr">Maghrib</p><p class="th-ar arabic">المغرب</p><p class="th-ta tamil">மக்ரிப்</p></div></th>
-                    <th><div class="th-stack"><p class="th-fr">Isha</p><p class="th-ar arabic">العشاء</p><p class="th-ta tamil">இஷா</p></div></th>
-                    <th><div class="th-header-symbol">☪︎</div></th>
-                </tr>
-            </thead>
-            <tbody>`;
+        let html = '';
 
         for (let day = 1; day <= daysInMonth; day++) {
             const date = new Date(year, jsMonth, day);
@@ -302,8 +291,7 @@ class PrayerTable extends HTMLElement {
                     <td class="col-hijri">${hijri.day}</td>
                 </tr>`;
         }
-        html += `</tbody></table>`;
-        this.innerHTML = html;
+        tbody.innerHTML = html;
     }
 }
 if (!customElements.get('ami-prayer-table')) {

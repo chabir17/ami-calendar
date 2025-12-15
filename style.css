@@ -10,8 +10,10 @@
   --col-border: #cccccc;
 
   /* --- FONDS ÉCO-ENCRE (PASTELS TRÈS CLAIRS) --- */
-  --bg-friday: rgba(46, 125, 50, 0.08); /* Vert très pâle */
-  --bg-public-holiday: rgba(200, 0, 0, 0.08); /* Rouge très pâle */
+  --bg-friday: rgba(46, 125, 50, 0.08);
+  /* Vert très pâle */
+  --bg-public-holiday: rgba(200, 0, 0, 0.08);
+  /* Rouge très pâle */
   --bg-table-header: #f8f9fa;
 
   /* --- POLICES --- */
@@ -53,7 +55,7 @@ body {
   background-color: white;
   width: 297mm;
   height: 210mm;
-  padding: 10mm 5mm 5mm 5mm;
+  padding: 1rem;
   /* Marge haut réduite car logo intégré */
   display: flex;
   flex-direction: column;
@@ -66,8 +68,11 @@ body {
 /* --- HEADER --- */
 .header-fixed {
   position: relative;
-  border-bottom: 1.5px solid #555;
-  padding: 0.75rem 0;
+  background-color: var(--col-blue);
+  background-image: url("patterns/background-pattern.svg");
+  color: white;
+  margin: -1rem -1rem 0rem -1rem;
+  padding: 2.5rem 1rem 1rem 1rem;
 }
 
 .header-content {
@@ -112,7 +117,7 @@ body {
 }
 
 .org-fr {
-  color: var(--col-blue);
+  color: white;
   line-height: 1.25;
 }
 
@@ -124,7 +129,7 @@ body {
 .header-right {
   font-size: 12px;
   line-height: 2;
-  color: #555;
+  color: white;
   padding-left: 0.625rem;
 }
 
@@ -163,7 +168,7 @@ body {
 }
 
 #hijri-month-fr {
-  font-size: 1rem;
+  font-size: 16px;
   text-transform: uppercase;
   color: #555;
 }
@@ -226,10 +231,11 @@ body {
 
 .weekday-fr {
   font-size: 14px;
+  text-transform: uppercase;
 }
 
 .weekday-sub {
-  font-size: 10px;
+  font-size: 12px;
 }
 
 .days-grid-visual {
@@ -346,6 +352,7 @@ body {
   font-size: 10px;
   color: #555;
   font-weight: 600;
+  text-transform: uppercase;
 }
 
 .legend-color {
@@ -403,12 +410,13 @@ body {
 
 .th-fr {
   display: block;
-  font-size: 12px;
+  font-size: 9px;
+  text-transform: uppercase;
 }
 
 .th-ar {
   display: block;
-  font-size: 10px;
+  font-size: 12px;
 }
 
 .th-ta {
