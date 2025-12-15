@@ -146,8 +146,8 @@ function getDayInfo(date, hijri) {
     const d = date.getDate();
     const dayOfWeek = date.getDay();
     if (dayOfWeek === 0 && d + 7 > 31) {
-        if (m === 2) { info.isDST = true; info.label = "Heure d'été (+1h)"; }
-        else if (m === 9) { info.isDST = true; info.label = "Heure d'hiver (-1h)"; }
+        if (m === 2) { info.isDST = true; info.dstType = 'summer'; info.label = "Heure d'été (+1h)"; }
+        else if (m === 9) { info.isDST = true; info.dstType = 'winter'; info.label = "Heure d'hiver (-1h)"; }
     }
 
     // Lune & Aïd
@@ -207,10 +207,11 @@ class CalendarGrid extends HTMLElement {
             if (dayInfo.isPublicHoliday && !dayInfo.isEid) classes.push("is-public-holiday");
 
             let content = `<span class="vis-greg">${day}</span><span class="vis-hij">${hijri.day || ''}</span>`;
-            if (dayInfo.isNewMoon) content += `<div class="new-moon-icon">🌙</div>`;
+            if (dayInfo.isNewMoon) content += `<img src="icons/icon-moon.svg" class="new-moon-icon" alt="Nouvelle lune">`;
             if (dayInfo.isDST) {
                 const style = dayInfo.isNewMoon ? 'left: 18px;' : '';
-                content += `<div class="dst-icon" style="${style}">🕑</div>`;
+                const iconFile = dayInfo.dstType === 'winter' ? 'icons/icon-clock-minus.svg' : 'icons/icon-clock-plus.svg';
+                content += `<img src="${iconFile}" class="dst-icon" style="${style}" alt="${dayInfo.label}">`;
             }
             if (dayInfo.label) {
                 let labelClass = "event-label";
@@ -305,6 +306,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const legendDst = document.getElementById('legend-dst');
     if (legendDst && (month === 3 || month === 10)) {
         legendDst.style.display = 'flex';
+        const legendImg = legendDst.querySelector('img');
+        const legendText = legendDst.querySelector('span:last-child');
+        if (month === 3) { // Mars : Été
+            if(legendImg) legendImg.src = "icons/icon-clock-plus.svg";
+            if(legendText) legendText.textContent = "Heure d'été (+1h)";
+        } else { // Octobre : Hiver
+            if(legendImg) legendImg.src = "icons/icon-clock-minus.svg";
+            if(legendText) legendText.textContent = "Heure d'hiver (-1h)";
+        }
     }
 
     // Afficher la légende "Aïd" uniquement si un jour de l'Aïd est présent dans le mois
@@ -342,8 +352,9 @@ function updateZoneTitles(year, month) {
     const TEXTS = window.TEXTS; // Accès explicite
     if (!TEXTS) return;
 
-    document.getElementById('greg-month-fr').textContent = `${TEXTS.fr.months[jsMonth]} ${year}`;
-    document.getElementById('greg-month-ta').textContent = `${TEXTS.ta.months[jsMonth]} ${year}`;
+    document.getElementById('greg-month-fr').textContent = TEXTS.fr.months[jsMonth];
+    document.getElementById('greg-month-ta').textContent = TEXTS.ta.months[jsMonth];
+    document.getElementById('year-display').textContent = year;
 
     const hijriStart = getHijriDateSafe(new Date(year, jsMonth, 1));
     const hijriEnd = getHijriDateSafe(new Date(year, jsMonth, daysInMonth));

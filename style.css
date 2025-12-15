@@ -57,30 +57,22 @@ body {
   background-color: white;
   width: 297mm;
   height: 210mm;
-  padding: 12mm 5mm 5mm 5mm;
+  padding: 10mm 5mm 5mm 5mm;
   /* Marge haut réduite car logo intégré */
   display: flex;
   flex-direction: column;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
   position: relative;
   overflow: hidden;
-  background-image: url("background-pattern.svg");
+  background-image: url("patterns/background-pattern.svg");
 }
 
-/* --- SÉPARATEUR MOTIF ISLAMIQUE --- */
-.islamic-separator {
-  width: 100%;
-  background-image: url("islamic-pattern.svg");
-  background-repeat: repeat-x;
-  background-size: auto 100%;
-  padding: 0.125rem 0;
-  margin: 0.5rem 0;
-}
 
 /* --- HEADER --- */
 .header-fixed {
   position: relative;
-  z-index: 1;
+  border-bottom: 1.5px solid #555;
+  padding: 0.75rem 0;
 }
 
 .header-content {
@@ -93,6 +85,15 @@ body {
   display: flex;
   align-items: center;
   gap: 1.125rem;
+}
+
+.icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  fill: var(--col-green);
+  vertical-align: text-bottom;
+  margin: 0 0.125rem;
 }
 
 /* Logo Image */
@@ -125,28 +126,21 @@ body {
   line-height: 1.25;
 }
 
-.coordinates {
-  text-align: right;
+.header-right {
   font-size: 12px;
-  line-height: 1.4;
+  line-height: 2;
   color: #555;
-  border-left: 3px solid var(--col-green);
   padding-left: 0.625rem;
-}
-
-.coord-city {
-  font-weight: 800;
-  color: var(--col-blue);
-  font-size: 14px;
 }
 
 /* --- TITRES --- */
 .month-titles-zone {
   position: relative;
-  z-index: 1;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  padding: 0.25rem;
+  margin: 0.25rem 0;
 }
 
 #greg-month-fr {
@@ -154,14 +148,13 @@ body {
   text-transform: uppercase;
   line-height: 1.25;
   color: var(--col-blue);
-  margin-bottom: 0.125rem;
+  margin: 0.125rem 0;
 }
 
 #greg-month-ta {
   font-size: 20px;
   line-height: 1.25;
   color: var(--col-orange);
-  margin: 0;
 }
 
 .titles-hijri {
@@ -180,10 +173,19 @@ body {
   margin-top: 0;
 }
 
+.year-display {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--col-blue);
+}
+
 /* --- MAIN --- */
 .main-split-container {
   position: relative;
-  z-index: 1;
   flex-grow: 1;
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -267,7 +269,6 @@ body {
   font-size: 42px;
   font-weight: 700;
   color: #444;
-  z-index: 1;
 }
 
 /* Date Hégirienne */
@@ -280,20 +281,13 @@ body {
 }
 
 /* Icônes et Labels */
-.new-moon-icon {
-  position: absolute;
-  top: 2px;
-  left: 4px;
-  font-size: 13px;
-  z-index: 5;
-}
-
+.new-moon-icon,
 .dst-icon {
   position: absolute;
-  top: 2px;
+  top: 4px;
   left: 4px;
-  font-size: 13px;
-  z-index: 5;
+  width: 12px;
+  height: 12px;
 }
 
 .event-label {
@@ -378,6 +372,8 @@ body {
 .prayer-table {
   width: 100%;
   border-collapse: collapse;
+  border: hidden;
+  border-bottom: 1px solid;
 }
 
 .prayer-table thead th {
@@ -400,8 +396,8 @@ body {
   width: 10%;
 }
 
-.prayer-table th:nth-child(n+2):nth-child(-n+7),
-.prayer-table td:nth-child(n+2):nth-child(-n+7) {
+.prayer-table th:nth-child(n + 2):nth-child(-n + 7),
+.prayer-table td:nth-child(n + 2):nth-child(-n + 7) {
   width: 12.5%;
 }
 
@@ -409,10 +405,12 @@ body {
   display: block;
   font-size: 12px;
 }
+
 .th-ar {
   display: block;
   font-size: 10px;
 }
+
 .th-ta {
   display: block;
   font-size: 9px;
@@ -438,7 +436,7 @@ body {
 }
 
 .prayer-table tbody tr:nth-child(even) {
-  background: #fcfcfc;
+  background: #f3f3f3;
 }
 
 .prayer-table tbody tr.is-friday {
