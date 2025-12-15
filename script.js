@@ -35,6 +35,12 @@ let adhanCoords = null;
 let adhanParams = null;
 
 /**
+ * Cache pour les vacances scolaires parsées (timestamp start/end).
+ * @type {Array<{start: number, end: number}>|null}
+ */
+let parsedHolidaysCache = null;
+
+/**
  * Initialise la librairie Adhan avec la configuration globale définie dans config.js.
  * @returns {void}
  */
@@ -124,11 +130,23 @@ function getDayInfo(date, hijri) {
     if (!CONFIG) return info;
 
     // Vacances
+    // Optimisation : On parse les dates une seule fois si le cache est vide
+    if (!parsedHolidaysCache && CONFIG.schoolHolidays) {
+        parsedHolidaysCache = CONFIG.schoolHolidays.map(p => {
+            let start = new Date(p.start); start.setHours(0, 0, 0, 0);
+            let end = new Date(p.end); end.setHours(23, 59, 59, 999);
+            return { start: start.getTime(), end: end.getTime() };
+        });
+    }
+
     const t = date.getTime();
-    for (const p of CONFIG.schoolHolidays) {
-        let start = new Date(p.start); start.setHours(0, 0, 0, 0);
-        let end = new Date(p.end); end.setHours(23, 59, 59, 999);
-        if (t >= start.getTime() && t <= end.getTime()) info.isHoliday = true;
+    if (parsedHolidaysCache) {
+        for (const p of parsedHolidaysCache) {
+            if (t >= p.start && t <= p.end) {
+                info.isHoliday = true;
+                break;
+            }
+        }
     }
 
     // Fériés
@@ -281,7 +299,7 @@ class PrayerTable extends HTMLElement {
                     <td>${times.asr}</td>
                     <td>${times.maghrib}</td>
                     <td>${times.isha}</td>
-                    <td>${hijri.day}</td>
+                    <td class="col-hijri">${hijri.day}</td>
                 </tr>`;
         }
         html += `</tbody></table>`;
@@ -302,33 +320,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let month = parseInt(urlParams.get('month'));
     if (!month || month < 1 || month > 12) month = 1;
 
-    // Afficher la légende "Changement d'heure" uniquement en Mars (3) et Octobre (10)
-    const legendDst = document.getElementById('legend-dst');
-    if (legendDst && (month === 3 || month === 10)) {
-        legendDst.style.display = 'flex';
-        const legendImg = legendDst.querySelector('img');
-        const legendText = legendDst.querySelector('span:last-child');
-        if (month === 3) { // Mars : Été
-            if(legendImg) legendImg.src = "icons/icon-clock-plus.svg";
-            if(legendText) legendText.textContent = "Heure d'été (+1h)";
-        } else { // Octobre : Hiver
-            if(legendImg) legendImg.src = "icons/icon-clock-minus.svg";
-            if(legendText) legendText.textContent = "Heure d'hiver (-1h)";
-        }
-    }
-
-    // Afficher la légende "Aïd" uniquement si un jour de l'Aïd est présent dans le mois
-    let hasEid = false;
-    const jsMonth = month - 1;
-    const daysInMonth = new Date(year, month, 0).getDate();
-    for (let d = 1; d <= daysInMonth; d++) {
-        const date = new Date(year, jsMonth, d);
-        const hijri = getHijriDateSafe(date);
-        const info = getDayInfo(date, hijri);
-        if (info.isEid) { hasEid = true; break; }
-    }
-    const legendEid = document.getElementById('legend-eid');
-    if (legendEid && hasEid) legendEid.style.display = 'flex';
+    updateLegends(year, month);
 
     initAdhan();
     updateZoneTitles(year, month);
@@ -345,6 +337,39 @@ document.addEventListener('DOMContentLoaded', () => {
         prayerTable.setAttribute('month', month);
     }
 });
+
+/**
+ * Met à jour l'affichage des légendes (Changement d'heure, Aïd) selon le mois.
+ * @param {number} year 
+ * @param {number} month 
+ */
+function updateLegends(year, month) {
+    // 1. Légende Changement d'heure (Mars/Octobre)
+    const legendDst = document.getElementById('legend-dst');
+    if (legendDst && (month === 3 || month === 10)) {
+        legendDst.style.display = 'flex';
+        const legendImg = legendDst.querySelector('img');
+        const legendText = legendDst.querySelector('span:last-child');
+        if (month === 3) { // Mars : Été
+            if(legendImg) legendImg.src = "icons/icon-clock-plus.svg";
+            if(legendText) legendText.textContent = "Heure d'été (+1h)";
+        } else { // Octobre : Hiver
+            if(legendImg) legendImg.src = "icons/icon-clock-minus.svg";
+            if(legendText) legendText.textContent = "Heure d'hiver (-1h)";
+        }
+    }
+
+    // 2. Légende Aïd (si présent dans le mois)
+    let hasEid = false;
+    const jsMonth = month - 1;
+    const daysInMonth = new Date(year, month, 0).getDate();
+    for (let d = 1; d <= daysInMonth; d++) {
+        const info = getDayInfo(new Date(year, jsMonth, d), getHijriDateSafe(new Date(year, jsMonth, d)));
+        if (info.isEid) { hasEid = true; break; }
+    }
+    const legendEid = document.getElementById('legend-eid');
+    if (legendEid && hasEid) legendEid.style.display = 'flex';
+}
 
 function updateZoneTitles(year, month) {
     const jsMonth = month - 1;
