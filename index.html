@@ -1,164 +1,200 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Calendrier AMI - La Courneuve</title>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendrier AMI - La Courneuve</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;700&family=Noto+Sans+Tamil:wght@400;700&family=Noto+Sans:wght@400;600;700&display=swap"
+            rel="stylesheet"
+        />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;700&family=Noto+Sans+Tamil:wght@400;700&family=Noto+Sans:wght@400;600;700&display=swap"
-        rel="stylesheet">
+        <link rel="stylesheet" href="style.css" />
 
-    <link rel="stylesheet" href="style.css">
+        <script src="https://cdn.jsdelivr.net/npm/adhan/Adhan.min.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/adhan/Adhan.min.js"></script>
+        <script src="data/config.js"></script>
+        <script src="data/lang.js"></script>
+        <script src="script.js" defer></script>
+    </head>
 
-    <script src="data/config.js"></script>
-    <script src="data/lang.js"></script>
-    <script src="script.js" defer></script>
-</head>
-
-<body>
-
-    <div class="page A4-landscape">
-
-        <header class="header-fixed">
-            <div class="header-content">
-                <div class="header-left">
-                    <div class="logo-box">
-                        <img src="Logo.png" alt="Logo de l'Association Musulmane de l'Inde" class="logo-img">
-                    </div>
-                    <div class="org-names">
-                        <h1 class="org-fr">ASSOCIATION MUSULMANE DE L'INDE</h1>
-                        <h2 class="org-ta tamil">இந்திய முஸ்லிம் சங்கம்</h2>
-                    </div>
-                </div>
-                <div class="header-right">
-                    <div>
-                        <img src="icons/icon-location.svg" class="icon"></img>
-                        91-93 BOULEVARD PASTEUR, 93120 LA COURNEUVE
-                    </div>
-                    <div>
-                        <img src="icons/icon-location.svg" class="icon"></img>
-                        7-8 PLACE AFLRED DE MUSSET, 93120 LA COURNEUVE
-                    </div>
-                    <div class="contact-row">
-                        <div class="contact-col">
-                            <img src="icons/icon-phone.svg" class="icon"></img>
-                            01.48.36.48.66
+    <body>
+        <div class="page A4-landscape">
+            <header class="header-fixed">
+                <div class="header-content">
+                    <div class="header-left">
+                        <div class="logo-box">
+                            <img src="Logo.png" alt="Logo de l'Association Musulmane de l'Inde" class="logo-img" />
                         </div>
-                        <div class="contact-col">
-                            <img src="icons/icon-email.svg" class="icon"></img>
-                            ami93120@gmail.com
+                        <div class="org-names">
+                            <h1 class="org-fr">ASSOCIATION MUSULMANE DE L'INDE</h1>
+                            <h2 class="org-ta tamil">இந்திய முஸ்லிம் சங்கம்</h2>
                         </div>
                     </div>
-                </div>
-            </div>
-        </header>
-
-        <section class="month-titles-zone">
-            <div class="titles-gregorian">
-                <div id="greg-month-fr"></div>
-                <div id="greg-month-ta" class="tamil"></div>
-            </div>
-            <div id="year-display" class="year-display"></div>
-            <div class="titles-hijri">
-                <div id="hijri-month-ar" class="arabic dir-rtl"></div>
-                <div id="hijri-month-fr"></div>
-            </div>
-        </section>
-
-        <main class="main-split-container">
-
-            <section class="left-visual-calendar">
-                <div class="weekdays-header" id="weekdays-header">
-                    <div class="weekday-cell">
-                        <div class="weekday-fr">Lundi</div>
-                        <div class="arabic weekday-sub">الإثنين</div>
-                        <div class="tamil weekday-sub">திங்கள்</div>
-                    </div>
-                    <div class="weekday-cell">
-                        <div class="weekday-fr">Mardi</div>
-                        <div class="arabic weekday-sub">الثلاثاء</div>
-                        <div class="tamil weekday-sub">செவ்வாய்</div>
-                    </div>
-                    <div class="weekday-cell">
-                        <div class="weekday-fr">Mercredi</div>
-                        <div class="arabic weekday-sub">الأربعاء</div>
-                        <div class="tamil weekday-sub">புதன்</div>
-                    </div>
-                    <div class="weekday-cell">
-                        <div class="weekday-fr">Jeudi</div>
-                        <div class="arabic weekday-sub">الخميس</div>
-                        <div class="tamil weekday-sub">வியாழன்</div>
-                    </div>
-                    <div class="weekday-cell">
-                        <div class="weekday-fr">Vendredi</div>
-                        <div class="arabic weekday-sub">الجمعة</div>
-                        <div class="tamil weekday-sub">வெள்ளி</div>
-                    </div>
-                    <div class="weekday-cell">
-                        <div class="weekday-fr">Samedi</div>
-                        <div class="arabic weekday-sub">السبت</div>
-                        <div class="tamil weekday-sub">சனி</div>
-                    </div>
-                    <div class="weekday-cell">
-                        <div class="weekday-fr">Dimanche</div>
-                        <div class="arabic weekday-sub">الأحد</div>
-                        <div class="tamil weekday-sub">ஞாயிறு</div>
+                    <div class="header-right">
+                        <div>
+                            <img src="icons/icon-location.svg" class="icon" />
+                            91-93 BOULEVARD PASTEUR, 93120 LA COURNEUVE
+                        </div>
+                        <div>
+                            <img src="icons/icon-location.svg" class="icon" />
+                            7-8 PLACE AFLRED DE MUSSET, 93120 LA COURNEUVE
+                        </div>
+                        <div class="contact-row">
+                            <div class="contact-col">
+                                <img src="icons/icon-phone.svg" class="icon" />
+                                01.48.36.48.66
+                            </div>
+                            <div class="contact-col">
+                                <img src="icons/icon-email.svg" class="icon" />
+                                ami93120@gmail.com
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <ami-calendar-grid></ami-calendar-grid>
-                <div class="legend-box">
-                    <div class="legend-item">
-                        <span class="legend-color box-public"></span>
-                        <span>Jour férié</span>
-                    </div>
-                    <div class="legend-item" id="legend-eid" style="display: none;">
-                        <span class="legend-color box-friday"></span>
-                        <span>Aïd</span>
-                    </div>
-                    <div class="legend-item">
-                        <span class="box-holiday"></span>
-                        <span>Vacances scolaire - Zone C</span>
-                    </div>
-                    <div class="legend-item">
-                        <img src="icons/icon-moon.svg" width="12" height="12" alt="">
-                        <span>Nouvelle Lune</span>
-                    </div>
-                    <div class="legend-item" id="legend-dst" style="display: none;">
-                        <img src="icons/icon-clock-plus.svg" width="12" height="12" alt="">
-                        <span>Changement d'heure</span>
-                    </div>
+            </header>
+
+            <section class="month-titles-zone">
+                <div class="titles-gregorian">
+                    <div id="greg-month-fr"></div>
+                    <div id="greg-month-ta" class="tamil"></div>
+                </div>
+                <div id="year-display" class="year-display"></div>
+                <div class="titles-hijri">
+                    <div id="hijri-month-ar" class="arabic dir-rtl"></div>
+                    <div id="hijri-month-fr"></div>
                 </div>
             </section>
 
-            <section class="right-prayer-table-container">
-                <ami-prayer-table>
-                    <table class="prayer-table" id="prayer-table">
-                        <thead>
-                            <tr>
-                                <th><div class="th-stack"><p class="th-fr">Date</p><p class="th-ar arabic">التاريخ</p><p class="th-ta tamil">தேதி</p></div></th>
-                                <th><div class="th-stack"><p class="th-fr">Fajr</p><p class="th-ar arabic">الفجر</p><p class="th-ta tamil">பஜ்ர்</p></div></th>
-                                <th><div class="th-stack"><p class="th-fr">Shuruq</p><p class="th-ar arabic">الشروق</p><p class="th-ta tamil">ஷுரூக்</p></div></th>
-                                <th><div class="th-stack"><p class="th-fr">Zohr</p><p class="th-ar arabic">الظهر</p><p class="th-ta tamil">லுஹர்</p></div></th>
-                                <th><div class="th-stack"><p class="th-fr">Asr</p><p class="th-ar arabic">العصر</p><p class="th-ta tamil">அஸ்ர்</p></div></th>
-                                <th><div class="th-stack"><p class="th-fr">Maghrib</p><p class="th-ar arabic">المغرب</p><p class="th-ta tamil">மக்ரிப்</p></div></th>
-                                <th><div class="th-stack"><p class="th-fr">Icha</p><p class="th-ar arabic">العشاء</p><p class="th-ta tamil">இஷா</p></div></th>
-                                <th><div class="th-header-symbol">☪︎</div></th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
-                </ami-prayer-table>
-            </section>
+            <main class="main-split-container">
+                <section class="left-visual-calendar">
+                    <div class="weekdays-header" id="weekdays-header">
+                        <div class="weekday-cell">
+                            <div class="weekday-fr">Lundi</div>
+                            <div class="arabic weekday-sub">الإثنين</div>
+                            <div class="tamil weekday-sub">திங்கள்</div>
+                        </div>
+                        <div class="weekday-cell">
+                            <div class="weekday-fr">Mardi</div>
+                            <div class="arabic weekday-sub">الثلاثاء</div>
+                            <div class="tamil weekday-sub">செவ்வாய்</div>
+                        </div>
+                        <div class="weekday-cell">
+                            <div class="weekday-fr">Mercredi</div>
+                            <div class="arabic weekday-sub">الأربعاء</div>
+                            <div class="tamil weekday-sub">புதன்</div>
+                        </div>
+                        <div class="weekday-cell">
+                            <div class="weekday-fr">Jeudi</div>
+                            <div class="arabic weekday-sub">الخميس</div>
+                            <div class="tamil weekday-sub">வியாழன்</div>
+                        </div>
+                        <div class="weekday-cell">
+                            <div class="weekday-fr">Vendredi</div>
+                            <div class="arabic weekday-sub">الجمعة</div>
+                            <div class="tamil weekday-sub">வெள்ளி</div>
+                        </div>
+                        <div class="weekday-cell">
+                            <div class="weekday-fr">Samedi</div>
+                            <div class="arabic weekday-sub">السبت</div>
+                            <div class="tamil weekday-sub">சனி</div>
+                        </div>
+                        <div class="weekday-cell">
+                            <div class="weekday-fr">Dimanche</div>
+                            <div class="arabic weekday-sub">الأحد</div>
+                            <div class="tamil weekday-sub">ஞாயிறு</div>
+                        </div>
+                    </div>
+                    <ami-calendar-grid></ami-calendar-grid>
+                    <div class="legend-box">
+                        <div class="legend-item">
+                            <span class="legend-color box-public"></span>
+                            <span>Jour férié</span>
+                        </div>
+                        <div class="legend-item" id="legend-eid" style="display: none">
+                            <span class="legend-color box-friday"></span>
+                            <span>Aïd</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="box-holiday"></span>
+                            <span>Vacances scolaire - Zone C</span>
+                        </div>
+                        <div class="legend-item">
+                            <img src="icons/icon-moon.svg" width="12" height="12" alt="" />
+                            <span>Nouvelle Lune</span>
+                        </div>
+                        <div class="legend-item" id="legend-dst" style="display: none">
+                            <img src="icons/icon-clock-plus.svg" width="12" height="12" alt="" />
+                            <span>Changement d'heure</span>
+                        </div>
+                    </div>
+                </section>
 
-        </main>
-
-    </div>
-</body>
-
+                <section class="right-prayer-table-container">
+                    <ami-prayer-table>
+                        <table class="prayer-table" id="prayer-table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <div class="th-stack">
+                                            <p class="th-fr">Date</p>
+                                            <p class="th-ar arabic">التاريخ</p>
+                                            <p class="th-ta tamil">தேதி</p>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div class="th-stack">
+                                            <p class="th-fr">Fajr</p>
+                                            <p class="th-ar arabic">الفجر</p>
+                                            <p class="th-ta tamil">பஜ்ர்</p>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div class="th-stack">
+                                            <p class="th-fr">Shuruq</p>
+                                            <p class="th-ar arabic">الشروق</p>
+                                            <p class="th-ta tamil">ஷுரூக்</p>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div class="th-stack">
+                                            <p class="th-fr">Zohr</p>
+                                            <p class="th-ar arabic">الظهر</p>
+                                            <p class="th-ta tamil">லுஹர்</p>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div class="th-stack">
+                                            <p class="th-fr">Asr</p>
+                                            <p class="th-ar arabic">العصر</p>
+                                            <p class="th-ta tamil">அஸ்ர்</p>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div class="th-stack">
+                                            <p class="th-fr">Maghrib</p>
+                                            <p class="th-ar arabic">المغرب</p>
+                                            <p class="th-ta tamil">மக்ரிப்</p>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div class="th-stack">
+                                            <p class="th-fr">Icha</p>
+                                            <p class="th-ar arabic">العشاء</p>
+                                            <p class="th-ta tamil">இஷா</p>
+                                        </div>
+                                    </th>
+                                    <th><div class="th-header-symbol">☪︎</div></th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </ami-prayer-table>
+                </section>
+            </main>
+        </div>
+    </body>
 </html>
