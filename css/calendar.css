@@ -1,0 +1,216 @@
+/* --- TITRES --- */
+.month-titles-zone {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 0.25rem;
+    margin: 0.25rem 0;
+}
+
+#greg-month-fr {
+    font-size: 24px;
+    text-transform: uppercase;
+    line-height: 1.25;
+    color: var(--col-blue);
+    margin: 0.125rem 0;
+}
+
+#greg-month-ta {
+    font-size: 20px;
+    line-height: 1.25;
+    color: var(--col-orange);
+}
+
+.titles-hijri {
+    text-align: right;
+}
+
+#hijri-month-fr {
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #555;
+}
+
+#hijri-month-ar {
+    font-size: 24px;
+    color: var(--col-green);
+    margin-top: 0;
+}
+
+.year-display {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--col-year-theme);
+}
+
+/* --- CALENDRIER GAUCHE --- */
+.left-visual-calendar {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--col-border);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    background-color: white;
+}
+
+.weekdays-header {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    background: rgba(0, 46, 93, 0.1);
+    color: var(--col-blue);
+    text-align: center;
+    padding: 0;
+    font-size: 11px;
+    border-bottom: 2px solid var(--col-blue);
+}
+
+.weekday-cell {
+    border-right: 1px solid #ccc;
+    padding: 0.25rem 0;
+}
+
+.weekday-cell:last-child {
+    border-right: none;
+}
+
+.weekday-fr {
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.weekday-sub {
+    font-size: 12px;
+}
+
+.days-grid-visual {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    flex-grow: 1;
+}
+
+.day-cell-visual {
+    border-right: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.day-cell-visual:nth-child(7n) {
+    border-right: none;
+}
+
+/* Fonds colorés */
+.day-cell-visual.is-friday {
+    background-color: var(--bg-friday);
+}
+
+.day-cell-visual.is-holiday {
+    background-color: transparent;
+    box-shadow: inset 0 4px 0 0 var(--col-orange);
+}
+
+.day-cell-visual.is-public-holiday {
+    background-color: var(--bg-public-holiday);
+}
+
+/* Chiffre Grégorien */
+.vis-greg {
+    font-size: 42px;
+    font-weight: 700;
+    color: #444;
+}
+
+/* Date Hégirienne */
+.vis-hij {
+    font-size: 13px;
+    color: var(--col-green);
+    position: absolute;
+    top: 0.25rem;
+    right: 0.25rem;
+}
+
+/* Icônes et Labels */
+.new-moon-icon,
+.dst-icon {
+    position: absolute;
+    top: 0.25rem;
+    left: 0.25rem;
+    width: 12px;
+    height: 12px;
+}
+
+.event-label {
+    display: block;
+    font-size: 8px;
+    line-height: 1;
+    margin-top: 0.125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #c62828;
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    bottom: 2px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+/* Orange foncé pour vacances */
+.event-label.eid-label {
+    color: var(--col-green);
+    padding: 0.0625rem 0.125rem;
+}
+
+/* Bleu pour changement d'heure */
+.event-label.dst-label {
+    color: var(--col-blue);
+}
+
+/* --- LÉGENDE --- */
+.legend-box {
+    padding: 0.5rem;
+    border-top: 1px solid var(--col-border);
+    margin-top: auto;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 10px;
+    color: #555;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.legend-color {
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 3px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.box-friday {
+    background-color: var(--bg-friday);
+}
+
+.box-holiday {
+    width: 0.75rem;
+    height: 0.25rem;
+    background-color: var(--col-orange);
+}
+
+.box-public {
+    background-color: var(--bg-public-holiday);
+}

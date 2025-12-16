@@ -1,0 +1,90 @@
+/* --- TABLEAU DROITE --- */
+.right-prayer-table-container {
+    font-size: 11px;
+    overflow: hidden;
+    border: 1px solid var(--col-border);
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+}
+
+.prayer-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: hidden;
+    border-bottom: 1px solid;
+}
+
+.prayer-table thead th {
+    background: rgba(46, 125, 50, 0.1);
+    border: 1px solid var(--col-border);
+    border-bottom: 2px solid var(--col-green);
+    padding: 0.25rem 0.0625rem;
+    font-size: 10px;
+    font-weight: 400;
+    vertical-align: middle;
+    color: var(--col-green);
+}
+
+/* Largeurs de colonnes fixes */
+.prayer-table th:first-child {
+    width: 15%;
+}
+
+.prayer-table th:last-child {
+    width: 10%;
+}
+
+.prayer-table th:nth-child(n + 2):nth-child(-n + 7),
+.prayer-table td:nth-child(n + 2):nth-child(-n + 7) {
+    width: 12.5%;
+}
+
+.th-fr {
+    display: block;
+    font-size: 9px;
+    text-transform: uppercase;
+}
+
+.th-ar {
+    display: block;
+    font-size: 12px;
+}
+
+.th-ta {
+    display: block;
+    font-size: 9px;
+}
+
+.th-header-symbol {
+    font-size: 32px;
+    line-height: 1;
+    color: var(--col-green);
+}
+
+.prayer-table tbody td {
+    border: 1px solid #eee;
+    text-align: center;
+    font-weight: 600;
+    font-size: 11px;
+    color: var(--col-text);
+    height: 16.5px;
+}
+
+.prayer-table tbody tr:nth-child(even) {
+    background: #f3f3f3;
+}
+
+.prayer-table tbody tr.is-friday {
+    background: var(--bg-friday) !important;
+}
+
+/* Colonnes Spéciales */
+.col-date-greg {
+    width: 15%;
+}
+
+.col-hijri {
+    width: 10%;
+}

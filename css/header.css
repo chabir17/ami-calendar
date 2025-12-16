@@ -1,0 +1,72 @@
+/* --- HEADER --- */
+.header-fixed {
+    position: relative;
+    background-color: var(--col-year-theme);
+    background-image: url('../assets/patterns/background-pattern.svg');
+    color: white;
+    margin: -1rem -1rem 0rem -1rem;
+    padding: 2.5rem 1rem 1rem 1rem;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 1.125rem;
+}
+
+.icon {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    vertical-align: text-bottom;
+    margin: 0 0.125rem;
+}
+
+/* Logo Image */
+.logo-box {
+    width: 2cm;
+    height: 2cm;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.org-names {
+    display: flex;
+    flex-direction: column;
+}
+
+.org-fr {
+    color: white;
+    line-height: 1.25;
+}
+
+.org-ta {
+    color: var(--col-orange);
+    line-height: 1.25;
+}
+
+.header-right {
+    font-size: 12px;
+    line-height: 2;
+    color: white;
+    padding-left: 0.625rem;
+}
+
+.contact-row {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}

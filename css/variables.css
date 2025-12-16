@@ -1,0 +1,29 @@
+:root {
+    /* --- PALETTE LOGO AMI --- */
+    /* Couleur variable pour l'année */
+    --col-year-theme: #00204c;
+
+    /* Bleu foncé (Tour Eiffel) */
+    --col-blue: #002e5d;
+
+    /* Orange (Texte Tamil/Cercle) */
+    --col-orange: #f57f20;
+
+    /* Vert (Mosquée) */
+    --col-green: #2e7d32;
+
+    --col-text: #333333;
+    --col-border: #cccccc;
+
+    /* --- FONDS ÉCO-ENCRE (PASTELS TRÈS CLAIRS) --- */
+    /* Vert très pâle */
+    --bg-friday: rgba(46, 125, 50, 0.08);
+    /* Rouge très pâle */
+    --bg-public-holiday: rgba(200, 0, 0, 0.08);
+    --bg-table-header: #f8f9fa;
+
+    /* --- POLICES --- */
+    --font-fr: 'Noto Sans', sans-serif;
+    --font-ar: 'Noto Naskh Arabic', serif;
+    --font-ta: 'Noto Sans Tamil', sans-serif;
+}

@@ -1,0 +1,29 @@
+/* --- IMPRESSION --- */
+@media print {
+    @page {
+        size: landscape;
+        margin: 0;
+    }
+
+    body {
+        padding: 0;
+        background-color: white;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        display: block;
+    }
+
+    .page {
+        box-shadow: none;
+        width: 297mm;
+        height: 210mm;
+        border: none;
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    .main-split-container {
+        break-before: avoid;
+        page-break-before: avoid;
+    }
+}
