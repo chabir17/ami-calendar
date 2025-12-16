@@ -1,0 +1,29 @@
+{
+    "name": "ami-calendar",
+    "version": "1.0.0",
+    "description": "",
+    "main": "script.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "prettier": "prettier --write ."
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/chabir17/ami-calendar.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "type": "commonjs",
+    "bugs": {
+        "url": "https://github.com/chabir17/ami-calendar/issues"
+    },
+    "homepage": "https://github.com/chabir17/ami-calendar#readme",
+    "devDependencies": {
+        "@prettier/plugin-xml": "^3.4.2",
+        "prettier": "^3.7.4"
+    },
+    "dependencies": {
+        "npm": "^11.7.0"
+    }
+}
