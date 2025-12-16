@@ -8,22 +8,32 @@ document.addEventListener('DOMContentLoaded', () => {
     let month = parseInt(urlParams.get('month'));
     if (!month || month < 1 || month > 12) month = 1;
 
-    updateLegends(year, month);
+    // Fonction pour lancer le rendu de l'application
+    const renderApp = () => {
+        updateLegends(year, month);
+        initAdhan();
+        updateZoneTitles(year, month);
 
-    initAdhan();
-    updateZoneTitles(year, month);
+        const calendar = document.querySelector('ami-calendar-grid');
+        const prayerTable = document.querySelector('ami-prayer-table');
 
-    const calendar = document.querySelector('ami-calendar-grid');
-    const prayerTable = document.querySelector('ami-prayer-table');
+        if (calendar) {
+            calendar.setAttribute('year', year);
+            calendar.setAttribute('month', month);
+            // Force le re-rendu manuel si les attributs n'ont pas changé mais que la config a changé
+            if (calendar.render) calendar.render();
+        }
+        if (prayerTable) {
+            prayerTable.setAttribute('year', year);
+            prayerTable.setAttribute('month', month);
+        }
+    };
 
-    if (calendar) {
-        calendar.setAttribute('year', year);
-        calendar.setAttribute('month', month);
-    }
-    if (prayerTable) {
-        prayerTable.setAttribute('year', year);
-        prayerTable.setAttribute('month', month);
-    }
+    // 1. Rendu immédiat (avec config locale config.js)
+    renderApp();
+
+    // 2. Mise à jour asynchrone via API (si connecté)
+    fetchExternalData().then(() => renderApp());
 });
 
 /**
@@ -57,23 +67,34 @@ function updateLegends(year, month) {
 
     // 2. Légende Aïd (si présent dans le mois)
     let hasEid = false;
+    const holidayNames = new Set();
     const jsMonth = month - 1;
     const daysInMonth = new Date(year, month, 0).getDate();
     for (let d = 1; d <= daysInMonth; d++) {
         const info = getDayInfo(new Date(year, jsMonth, d), getHijriDateSafe(new Date(year, jsMonth, d)));
-        if (info.isEid) {
-            hasEid = true;
-            break;
-        }
+        if (info.isEid) hasEid = true;
+        if (info.isHoliday && info.holidayName) holidayNames.add(info.holidayName);
     }
     const legendEid = document.getElementById('legend-eid');
     if (legendEid && hasEid) legendEid.style.display = 'flex';
+
+    const legendHoliday = document.getElementById('legend-holiday');
+    if (legendHoliday) {
+        if (holidayNames.size > 0) {
+            legendHoliday.style.display = 'flex';
+            const textSpan = legendHoliday.querySelector('span:last-child');
+            if (textSpan) {
+                textSpan.textContent = Array.from(holidayNames).join(' / ');
+            }
+        } else {
+            legendHoliday.style.display = 'none';
+        }
+    }
 }
 
 function updateZoneTitles(year, month) {
     const jsMonth = month - 1;
     const daysInMonth = new Date(year, month, 0).getDate();
-    const TEXTS = window.TEXTS; // Accès explicite
     if (!TEXTS) return;
 
     document.getElementById('greg-month-fr').textContent = TEXTS.fr.months[jsMonth];

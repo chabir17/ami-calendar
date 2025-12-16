@@ -94,7 +94,6 @@ class PrayerTable extends HTMLElement {
     render() {
         const year = parseInt(this.getAttribute('year'));
         const month = parseInt(this.getAttribute('month'));
-        const TEXTS = window.TEXTS;
         if (!year || !month || !TEXTS) return;
 
         const tbody = this.querySelector('tbody');

@@ -9,7 +9,7 @@
 const HIJRI_FORMATTER = new Intl.DateTimeFormat('fr-FR-u-ca-islamic-civil', {
     day: 'numeric',
     month: 'long',
-    year: 'numeric',
+    year: 'numeric'
 });
 
 /**
@@ -30,7 +30,7 @@ const MONTH_MAP_FR_AR = {
     ramadan: 'رمضان',
     chawwal: 'شوال',
     'dhou al qi`da': 'ذو القعدة',
-    'dhou al-hijja': 'ذو الحجة',
+    'dhou al-hijja': 'ذو الحجة'
 };
 
 let adhanCoords = null;
@@ -48,7 +48,6 @@ let parsedHolidaysCache = null;
  */
 function initAdhan() {
     if (typeof adhan === 'undefined') return;
-    const CONFIG = window.CONFIG;
     if (!CONFIG) return;
 
     adhanCoords = new adhan.Coordinates(CONFIG.lat, CONFIG.lng);
@@ -65,7 +64,9 @@ function initAdhan() {
  * @returns {{fajr: string, sunrise: string, dhuhr: string, asr: string, maghrib: string, isha: string}|null} Les horaires formatés ou null si non initialisé.
  */
 function getPrayerTimesSafe(date) {
-    if (!adhanCoords || !adhanParams) return null;
+    if (!adhanCoords || !adhanParams) {
+        return { fajr: '--:--', sunrise: '--:--', dhuhr: '--:--', asr: '--:--', maghrib: '--:--', isha: '--:--' };
+    }
 
     const pTimes = new adhan.PrayerTimes(adhanCoords, date, adhanParams);
     const format = (t) => {
@@ -78,7 +79,7 @@ function getPrayerTimesSafe(date) {
         dhuhr: format(pTimes.dhuhr),
         asr: format(pTimes.asr),
         maghrib: format(pTimes.maghrib),
-        isha: format(pTimes.isha),
+        isha: format(pTimes.isha)
     };
 }
 
@@ -117,7 +118,7 @@ function getHijriDateSafe(date) {
             monthNameFR: monthFr,
             monthNameAR: monthAr,
             year: year,
-            yearAr: yearAr,
+            yearAr: yearAr
         };
     } catch (e) {
         return { day: '?', monthNameFR: '', monthNameAR: '', year: '', yearAr: '' };
@@ -137,9 +138,8 @@ function getDayInfo(date, hijri) {
         label: '',
         isNewMoon: false,
         isEid: false,
-        isDST: false,
+        isDST: false
     };
-    const CONFIG = window.CONFIG;
     if (!CONFIG) return info;
 
     // Vacances
@@ -149,7 +149,7 @@ function getDayInfo(date, hijri) {
             start.setHours(0, 0, 0, 0);
             let end = new Date(p.end);
             end.setHours(23, 59, 59, 999);
-            return { start: start.getTime(), end: end.getTime() };
+            return { start: start.getTime(), end: end.getTime(), name: p.name };
         });
     }
 
@@ -158,6 +158,7 @@ function getDayInfo(date, hijri) {
         for (const p of parsedHolidaysCache) {
             if (t >= p.start && t <= p.end) {
                 info.isHoliday = true;
+                info.holidayName = p.name;
                 break;
             }
         }
@@ -168,7 +169,7 @@ function getDayInfo(date, hijri) {
     const mm = String(date.getMonth() + 1).padStart(2, '0');
     const dd = String(date.getDate()).padStart(2, '0');
     const key = `${yyyy}-${mm}-${dd}`;
-    if (CONFIG.publicHolidays[key]) {
+    if (CONFIG.publicHolidays && CONFIG.publicHolidays[key]) {
         info.isPublicHoliday = true;
         info.label = CONFIG.publicHolidays[key];
     }
@@ -200,4 +201,44 @@ function getDayInfo(date, hijri) {
         info.label = 'Eid-ul-Adha';
     }
     return info;
+}
+
+/**
+ * Récupère les données officielles (Jours fériés & Vacances scolaires Zone C).
+ * Met à jour window.CONFIG et invalide le cache local.
+ */
+async function fetchExternalData() {
+    if (typeof window === 'undefined' || !window.CONFIG) return;
+
+    try {
+        // 1. Jours Fériés (Métropole)
+        const resPublic = await fetch('https://calendrier.api.gouv.fr/jours-feries/metropole.json');
+        if (resPublic.ok) {
+            const publicHolidays = await resPublic.json();
+            // Fusion : l'API est prioritaire, mais on garde les anciennes dates locales si l'API ne les a plus
+            console.log('$$$ publicHolidays = ', publicHolidays);
+            window.CONFIG.publicHolidays = { ...(window.CONFIG.publicHolidays || {}), ...publicHolidays };
+            console.log("✅ Jours fériés mis à jour depuis l'API");
+        }
+
+        // 2. Vacances Scolaires (Zone C - Académie de Créteil)
+        const resSchool = await fetch(
+            'https://data.education.gouv.fr/api/explore/v2.0/catalog/datasets/fr-en-calendrier-scolaire/records?select=description,start_date,end_date&where=zones=%22Zone%20C%22%20and%20location=%22Cr%C3%A9teil%22%20and%20end_date%3E=%222025-01-01%22&order_by=start_date&limit=100'
+        );
+        if (resSchool.ok) {
+            const data = await resSchool.json();
+            // Transformation du format API vers notre format config
+            const newHolidays = data.records.map((item) => ({
+                name: item.record.fields.description || 'Vacances',
+                start: item.record.fields.start_date.split('T')[0],
+                end: item.record.fields.end_date.split('T')[0]
+            }));
+            console.log('$$$ newHolidays = ', newHolidays);
+            window.CONFIG.schoolHolidays = newHolidays;
+            parsedHolidaysCache = null; // Force le re-calcul des vacances
+            console.log("✅ Vacances scolaires mises à jour depuis l'API");
+        }
+    } catch (e) {
+        console.warn('⚠️ Mode hors ligne ou erreur API : Utilisation de la configuration locale.', e);
+    }
 }
