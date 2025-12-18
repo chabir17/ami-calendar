@@ -55,6 +55,8 @@ function initAdhan() {
     adhanParams.madhab = CONFIG.asrMethod === 'Hanafi' ? adhan.Madhab.Hanafi : adhan.Madhab.Shafi;
     adhanParams.fajrAngle = 18;
     adhanParams.ishaAngle = 18;
+    // Pour gérer l'été
+    adhanParams.highLatitudeRule = adhan.HighLatitudeRule.SeventhOfTheNight;
     Object.assign(adhanParams.adjustments, CONFIG.adjustments);
 }
 
