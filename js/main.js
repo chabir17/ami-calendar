@@ -67,12 +67,14 @@ function updateLegends(year, month) {
 
     // 2. Légende Aïd (si présent dans le mois)
     let hasEid = false;
+    let hasPublicHoliday = false;
     const holidayNames = new Set();
     const jsMonth = month - 1;
     const daysInMonth = new Date(year, month, 0).getDate();
     for (let d = 1; d <= daysInMonth; d++) {
         const info = getDayInfo(new Date(year, jsMonth, d), getHijriDateSafe(new Date(year, jsMonth, d)));
         if (info.isEid) hasEid = true;
+        if (info.isPublicHoliday) hasPublicHoliday = true;
         if (info.isHoliday && info.holidayName) holidayNames.add(info.holidayName);
     }
     const legendEid = document.getElementById('legend-eid');
@@ -89,6 +91,11 @@ function updateLegends(year, month) {
         } else {
             legendHoliday.style.display = 'none';
         }
+    }
+
+    const legendPublic = document.getElementById('legend-public');
+    if (legendPublic) {
+        legendPublic.style.display = hasPublicHoliday ? 'flex' : 'none';
     }
 }
 
