@@ -67,18 +67,33 @@ function updateLegends(year, month) {
 
     // 2. Légende Aïd (si présent dans le mois)
     let hasEid = false;
+    let eidName = '';
     let hasPublicHoliday = false;
+    let newMoonMonthName = null;
     const holidayNames = new Set();
     const jsMonth = month - 1;
     const daysInMonth = new Date(year, month, 0).getDate();
     for (let d = 1; d <= daysInMonth; d++) {
-        const info = getDayInfo(new Date(year, jsMonth, d), getHijriDateSafe(new Date(year, jsMonth, d)));
-        if (info.isEid) hasEid = true;
+        const hijriDate = getHijriDateSafe(new Date(year, jsMonth, d));
+        const info = getDayInfo(new Date(year, jsMonth, d), hijriDate);
+        if (info.isEid) {
+            hasEid = true;
+            eidName = info.label;
+        }
         if (info.isPublicHoliday) hasPublicHoliday = true;
         if (info.isHoliday && info.holidayName) holidayNames.add(info.holidayName);
+        if (info.isNewMoon) newMoonMonthName = hijriDate.monthNameFR;
     }
     const legendEid = document.getElementById('legend-eid');
-    if (legendEid && hasEid) legendEid.style.display = 'flex';
+    if (legendEid) {
+        if (hasEid) {
+            legendEid.style.display = 'flex';
+            const textSpan = legendEid.querySelector('span:last-child');
+            if (textSpan) textSpan.textContent = eidName || 'Aïd';
+        } else {
+            legendEid.style.display = 'none';
+        }
+    }
 
     const legendHoliday = document.getElementById('legend-holiday');
     if (legendHoliday) {
@@ -96,6 +111,17 @@ function updateLegends(year, month) {
     const legendPublic = document.getElementById('legend-public');
     if (legendPublic) {
         legendPublic.style.display = hasPublicHoliday ? 'flex' : 'none';
+    }
+
+    const legendMoon = document.getElementById('legend-moon');
+    if (legendMoon) {
+        if (newMoonMonthName) {
+            legendMoon.style.display = 'flex';
+            const textSpan = legendMoon.querySelector('span:last-child');
+            if (textSpan) textSpan.textContent = newMoonMonthName;
+        } else {
+            legendMoon.style.display = 'none';
+        }
     }
 }
 
