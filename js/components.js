@@ -52,11 +52,12 @@ class CalendarGrid extends HTMLElement {
             if (dayInfo.isPublicHoliday && !dayInfo.isEid) classes.push('is-public-holiday');
 
             let content = `<span class="vis-greg">${day}</span><span class="vis-hij">${hijri.day || ''}</span>`;
-            if (dayInfo.isNewMoon) content += `<span class="new-moon-icon" title="Nouvelle lune"></span>`;
+            if (dayInfo.isNewMoon) content += `<img src="assets/icons/icon-moon.svg" class="new-moon-icon" alt="Nouvelle lune" title="Nouvelle lune">`;
             if (dayInfo.isDST) {
                 const style = dayInfo.isNewMoon ? 'left: 18px;' : '';
-                const iconClass = dayInfo.dstType === 'winter' ? 'icon-clock-minus' : 'icon-clock-plus';
-                content += `<span class="dst-icon ${iconClass}" style="${style}" title="${dayInfo.label}"></span>`;
+                const iconFile = dayInfo.dstType === 'winter' ? 'clock-minus.svg' : 'clock-plus.svg';
+                const dstLabel = dayInfo.dstType === 'winter' ? "Heure d'hiver (-1h)" : "Heure d'été (+1h)";
+                content += `<img src="assets/icons/icon-${iconFile}" class="dst-icon" style="${style}" alt="${dstLabel}" title="${dstLabel}">`;
             }
             if (dayInfo.label) {
                 let labelClass = 'event-label';
