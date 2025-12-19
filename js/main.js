@@ -5,7 +5,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
     let year = parseInt(urlParams.get('year')) || 2027;
-    
+
     let monthParam = urlParams.get('month');
     const redirectPath = urlParams.get('redirect');
     if (redirectPath) {
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Fonction pour lancer le rendu de l'application
     const renderApp = () => {
         initAdhan();
-        
+
         if (isAllMonths) {
             document.body.innerHTML = '';
             for (let m = 1; m <= 12; m++) {
@@ -56,8 +56,8 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             // Restauration si nécessaire (cas de re-rendu après fetch)
             if (!document.querySelector('.page')) {
-                 document.body.innerHTML = '';
-                 document.body.appendChild(pageTemplate.cloneNode(true));
+                document.body.innerHTML = '';
+                document.body.appendChild(pageTemplate.cloneNode(true));
             }
             renderPage(year, month, document);
         }
