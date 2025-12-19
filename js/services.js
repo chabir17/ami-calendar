@@ -209,17 +209,43 @@ function getDayInfo(date, hijri) {
  * Récupère les données officielles (Jours fériés & Vacances scolaires Zone C).
  * Met à jour window.CONFIG et invalide le cache local.
  */
+const CACHE_KEY = 'ami_calendar_cache';
+const CACHE_DURATION = 30 * 24 * 60 * 60 * 1000; // 30 jours
+
 async function fetchExternalData() {
     if (typeof window === 'undefined' || !window.CONFIG) return;
 
+    const now = Date.now();
+
+    // 1. Tentative de récupération depuis le cache localStorage
     try {
+        const cached = localStorage.getItem(CACHE_KEY);
+        if (cached) {
+            const data = JSON.parse(cached);
+            if (now - data.timestamp < CACHE_DURATION) {
+                console.log('📦 Utilisation des données en cache (localStorage)');
+                if (data.publicHolidays) {
+                    window.CONFIG.publicHolidays = { ...window.CONFIG.publicHolidays, ...data.publicHolidays };
+                }
+                if (data.schoolHolidays) {
+                    window.CONFIG.schoolHolidays = data.schoolHolidays;
+                    parsedHolidaysCache = null;
+                }
+                return; // Pas besoin d'appeler les APIs
+            }
+        }
+    } catch (e) {
+        console.warn('Erreur lecture cache:', e);
+    }
+
+    try {
+        let updated = false;
         // 1. Jours Fériés (Métropole)
         const resPublic = await fetch('https://calendrier.api.gouv.fr/jours-feries/metropole.json');
         if (resPublic.ok) {
             const publicHolidays = await resPublic.json();
-            // Fusion : l'API est prioritaire, mais on garde les anciennes dates locales si l'API ne les a plus
-            console.log('$$$ publicHolidays = ', publicHolidays);
             window.CONFIG.publicHolidays = { ...(window.CONFIG.publicHolidays || {}), ...publicHolidays };
+            updated = true;
             console.log("✅ Jours fériés mis à jour depuis l'API");
         }
 
@@ -229,16 +255,26 @@ async function fetchExternalData() {
         );
         if (resSchool.ok) {
             const data = await resSchool.json();
-            // Transformation du format API vers notre format config
             const newHolidays = data.records.map((item) => ({
                 name: item.record.fields.description || 'Vacances',
                 start: item.record.fields.start_date.split('T')[0],
                 end: item.record.fields.end_date.split('T')[0]
             }));
-            console.log('$$$ newHolidays = ', newHolidays);
             window.CONFIG.schoolHolidays = newHolidays;
             parsedHolidaysCache = null; // Force le re-calcul des vacances
+            updated = true;
             console.log("✅ Vacances scolaires mises à jour depuis l'API");
+        }
+
+        // 3. Sauvegarde en cache si succès
+        if (updated) {
+            const cacheData = {
+                timestamp: now,
+                publicHolidays: window.CONFIG.publicHolidays,
+                schoolHolidays: window.CONFIG.schoolHolidays
+            };
+            localStorage.setItem(CACHE_KEY, JSON.stringify(cacheData));
+            console.log('💾 Données sauvegardées dans le cache pour 30 jours.');
         }
     } catch (e) {
         console.warn('⚠️ Mode hors ligne ou erreur API : Utilisation de la configuration locale.', e);
