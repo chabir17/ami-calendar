@@ -1,11 +1,17 @@
 /* --- HEADER --- */
 .header-fixed {
     position: relative;
-    background-color: var(--col-year-theme);
+    /* background-color: var(--col-year-theme); */
+    /* On passe sur fond blanc pour économiser l'encre */
+    background-color: #fff4d8; 
     background-image: url('../assets/patterns/background-pattern.svg');
-    color: white;
+    /* color: white; */
+    /* Le texte de base passe en bleu foncé pour la lisibilité */
+    color: var(--col-blue); 
     margin: -1rem -1rem 0rem -1rem;
     padding: 2.5rem 1rem 1rem 1rem;
+    /* On ajoute une ligne fine en bas pour structurer (optionnel, vert ou bleu) */
+    border-bottom: 1.5px solid var(--col-year-theme);
 }
 
 .header-content {
@@ -49,19 +55,17 @@
 }
 
 .org-fr {
-    color: white;
     line-height: 1.25;
 }
 
 .org-ta {
-    color: var(--col-orange);
+    color: var(--col-year-theme);
     line-height: 1.25;
 }
 
 .header-right {
     font-size: 12px;
     line-height: 2;
-    color: white;
     padding-left: 0.625rem;
 }
 
