@@ -8,7 +8,7 @@
     margin: 0.25rem 0;
 }
 
-#greg-month-fr {
+.greg-month-fr {
     font-size: 24px;
     text-transform: uppercase;
     line-height: 1.25;
@@ -16,7 +16,7 @@
     margin: 0.125rem 0;
 }
 
-#greg-month-ta {
+.greg-month-ta {
     font-size: 20px;
     line-height: 1.25;
     color: var(--col-orange);
@@ -26,13 +26,13 @@
     text-align: right;
 }
 
-#hijri-month-fr {
+.hijri-month-fr {
     font-size: 16px;
     text-transform: uppercase;
     color: #555;
 }
 
-#hijri-month-ar {
+.hijri-month-ar {
     font-size: 24px;
     color: var(--col-green);
     margin-top: 0;
