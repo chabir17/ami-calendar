@@ -17,7 +17,7 @@ Le design est piloté par des variables CSS (`css/variables.css`) permettant une
 
 ### 🌐 Typographie Multilingue
 
-Le projet intègre des polices Google Fonts adaptées à chaque langue pour une lisibilité optimale :
+Le projet utilise des polices hébergées localement (dans `assets/fonts/`) pour éviter les dépendances externes :
 
 - **Français** : `Noto Sans`
 - **Arabe** : `Noto Naskh Arabic`
@@ -35,9 +35,11 @@ L'en-tête (`css/header.css`) est conçu pour être informatif et esthétique :
 ## Structure du Projet
 
 - **css/**
+    - `fonts.css` : Déclaration des polices locales (`@font-face`).
     - `header.css` : Styles spécifiques pour la barre d'en-tête, le logo et la disposition des textes.
     - `variables.css` : Définition des couleurs racines, des polices et des arrière-plans.
 - **assets/** : Contient les images et motifs (ex: `patterns/background-pattern.svg`).
+    - **fonts/** : Fichiers de police (`.ttf`).
 
 ## Personnalisation
 
