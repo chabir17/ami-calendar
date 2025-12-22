@@ -111,12 +111,16 @@ class PrayerTable extends HTMLElement {
             const isFriday = date.getDay() === 5;
             let hijri = getHijriDateSafe(date);
             let times = getPrayerTimesSafe(date);
-            const dateStr = `${TEXTS.fr.daysShort[dayOfWeekIdx]} ${day.toString().padStart(2, '0')}`;
             const rowClass = isFriday ? 'class="is-friday"' : '';
 
             html += `
                 <tr ${rowClass}>
-                    <td class="col-date-greg">${dateStr}</td>
+                    <td class="col-date-greg">
+                        <div class="date-cell">
+                            <div>${TEXTS.fr.daysShort[dayOfWeekIdx]}</div>
+                            <div>${day.toString().padStart(2, '0')}</div>
+                        </div>
+                    </td>
                     <td>${times.fajr}</td>
                     <td>${times.sunrise}</td>
                     <td>${times.dhuhr}</td>

@@ -28,17 +28,9 @@
 }
 
 /* Largeurs de colonnes fixes */
-.prayer-table th:first-child {
-    width: 15%;
-}
-
-.prayer-table th:last-child {
-    width: 10%;
-}
-
 .prayer-table th:nth-child(n + 2):nth-child(-n + 7),
 .prayer-table td:nth-child(n + 2):nth-child(-n + 7) {
-    width: 12.5%;
+    width: 13%;
 }
 
 .th-fr {
@@ -82,9 +74,16 @@
 
 /* Colonnes Spéciales */
 .col-date-greg {
-    width: 15%;
+    width: 14%;
 }
 
 .col-hijri {
-    width: 10%;
+    width: 8%;
+}
+
+.date-cell {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 0.25rem;
 }
