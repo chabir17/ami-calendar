@@ -34,12 +34,31 @@ L'en-tête (`css/header.css`) est conçu pour être informatif et esthétique :
 
 ## Structure du Projet
 
-- **css/**
-    - `fonts.css` : Déclaration des polices locales (`@font-face`).
-    - `header.css` : Styles spécifiques pour la barre d'en-tête, le logo et la disposition des textes.
-    - `variables.css` : Définition des couleurs racines, des polices et des arrière-plans.
-- **assets/** : Contient les images et motifs (ex: `patterns/background-pattern.svg`).
-    - **fonts/** : Fichiers de police (`.ttf`).
+### 📂 Organisation des Fichiers
+
+- **assets/** : Ressources statiques du projet.
+    - `fonts/` : Fichiers de police (`.ttf`) pour le fonctionnement hors-ligne.
+    - `icons/` : Pictogrammes SVG (localisation, téléphone, lune, horloge...).
+    - `img/` : Images principales (Logo de l'association).
+    - `patterns/` : Motifs d'arrière-plan (SVG).
+- **css/** : Feuilles de style modulaires.
+    - `variables.css` : Configuration globale (Thème couleur, polices).
+    - `fonts.css` : Importation des polices locales via `@font-face`.
+    - `header.css`, `table.css`, `calendar.css` : Styles spécifiques aux composants.
+    - `print.css` : Optimisations pour l'impression A4 Paysage.
+- **js/** : Logique applicative (Vanilla JS).
+    - `components.js` : Définition des Web Components (`<ami-calendar-grid>`, `<ami-prayer-table>`).
+    - `services.js` : Logique métier (Calculs Adhan, Hégire, et appels API).
+    - `main.js` : Point d'entrée, orchestration du rendu et gestion du cache.
+- **data/** : Fichiers de configuration.
+    - `config.js` : Paramètres géographiques (Lat/Lng) et méthodes de calcul.
+    - `lang.js` : Textes et traductions (Français, Arabe, Tamoul).
+
+### ⚙️ Logique et Données
+
+- **Horaires de Prière** : Calculés localement via la librairie `Adhan.js`.
+- **Dates Hégiriennes** : Conversion dynamique via `Intl.DateTimeFormat` (Islamic Civil).
+- **Jours Fériés & Vacances** : Récupérés automatiquement depuis les APIs gouvernementales (api.gouv.fr / education.gouv.fr) avec un système de **cache local** (30 jours) pour limiter les requêtes.
 
 ## Personnalisation
 
