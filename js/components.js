@@ -127,7 +127,7 @@ class PrayerTable extends HTMLElement {
                     <td>${times.asr}</td>
                     <td>${times.maghrib}</td>
                     <td>${times.isha}</td>
-                    <td class="col-hijri">${hijri.day}</td>
+                    <td class="col-hijri">${hijri.day.padStart(2, '0')}</td>
                 </tr>`;
         }
         tbody.innerHTML = html;
