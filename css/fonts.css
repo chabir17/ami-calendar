@@ -1,0 +1,60 @@
+/* --- POLICES LOCALES --- */
+
+/* Noto Sans (Français) */
+@font-face {
+    font-family: 'Noto Sans';
+    src: url('../assets/fonts/NotoSans-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Noto Sans';
+    src: url('../assets/fonts/NotoSans-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Noto Sans';
+    src: url('../assets/fonts/NotoSans-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Noto Naskh Arabic (Arabe) */
+@font-face {
+    font-family: 'Noto Naskh Arabic';
+    src: url('../assets/fonts/NotoNaskhArabic-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Noto Naskh Arabic';
+    src: url('../assets/fonts/NotoNaskhArabic-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Noto Serif Tamil (Tamoul) */
+@font-face {
+    font-family: 'Noto Serif Tamil';
+    src: url('../assets/fonts/NotoSerifTamil-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Noto Serif Tamil';
+    src: url('../assets/fonts/NotoSerifTamil-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
