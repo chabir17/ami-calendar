@@ -74,16 +74,16 @@
 
 /* Colonnes Spéciales */
 .col-date-greg {
-    width: 14%;
+    width: 15%;
 }
 
 .col-hijri {
-    width: 8%;
+    width: 7%;
 }
 
 .date-cell {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 0 0.25rem;
+    padding: 0 0.5rem;
 }
