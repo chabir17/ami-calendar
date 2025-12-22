@@ -30,7 +30,7 @@
 /* Largeurs de colonnes fixes */
 .prayer-table th:nth-child(n + 2):nth-child(-n + 7),
 .prayer-table td:nth-child(n + 2):nth-child(-n + 7) {
-    width: 13%;
+    width: 12.75%;
 }
 
 .th-fr {
@@ -74,11 +74,11 @@
 
 /* Colonnes Spéciales */
 .col-date-greg {
-    width: 15%;
+    width: 16%;
 }
 
 .col-hijri {
-    width: 7%;
+    width: 7,5%;
 }
 
 .date-cell {
