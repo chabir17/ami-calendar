@@ -9,6 +9,10 @@
         <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
         <link rel="manifest" href="site.webmanifest" />
 
+        <!-- Performance : Pré-connexion au CDN et pré-chargement de la police principale -->
+        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+        <link rel="preload" href="assets/fonts/NotoSans-Regular.ttf" as="font" type="font/ttf" crossorigin />
+
         <!-- Feuilles de styles (chargement parallèle) -->
         <link rel="stylesheet" href="css/fonts.css" />
         <link rel="stylesheet" href="css/variables.css" />
@@ -16,14 +20,15 @@
         <link rel="stylesheet" href="css/header.css" />
         <link rel="stylesheet" href="css/calendar.css" />
         <link rel="stylesheet" href="css/table.css" />
-        <link rel="stylesheet" href="css/print.css" />
+        <!-- media="print" permet de ne pas bloquer le rendu écran -->
+        <link rel="stylesheet" href="css/print.css" media="print" />
 
-        <script src="https://cdn.jsdelivr.net/npm/adhan/Adhan.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/adhan/Adhan.min.js" defer></script>
 
-        <script src="data/config.js"></script>
-        <script src="data/lang.js"></script>
-        <script src="js/services.js"></script>
-        <script src="js/components.js"></script>
+        <script src="data/config.js" defer></script>
+        <script src="data/lang.js" defer></script>
+        <script src="js/services.js" defer></script>
+        <script src="js/components.js" defer></script>
         <script src="js/main.js" defer></script>
     </head>
 
