@@ -1,4 +1,4 @@
-/* --- STYLES D'IMPRESSION --- */
+/* --- PRINT OVERRIDES --- */
 @media print {
     @page {
         size: landscape;
@@ -14,7 +14,6 @@
     }
 
     .page {
-        box-shadow: none;
         width: 297mm;
         height: 210mm;
         border: none;

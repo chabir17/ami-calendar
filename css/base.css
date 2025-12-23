@@ -1,4 +1,4 @@
-/* --- RESET & STYLES GLOBAUX --- */
+/* --- 1. RESET & GLOBAL --- */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -16,20 +16,18 @@ body {
     gap: 2.5rem;
 }
 
-/* --- CLASSES UTILITAIRES TYPOGRAPHIQUES --- */
+/* --- 2. TYPOGRAPHIE & UTILITAIRES --- */
 .arabic {
     font-family: var(--font-ar);
 }
-
 .tamil {
     font-family: var(--font-ta);
 }
-
 .dir-rtl {
     direction: rtl;
 }
 
-/* --- MISE EN PAGE A4 PAYSAGE --- */
+/* --- 3. LAYOUT PAGE (A4 Paysage) --- */
 .page {
     background-color: white;
     width: 297mm;
@@ -42,8 +40,7 @@ body {
     overflow: hidden;
 }
 
-/* --- CONTENEUR PRINCIPAL (GRILLE) --- */
-/* Divise la page en deux colonnes : Calendrier (2/3) et Prières (1/3) */
+/* Conteneur principal : Calendrier (2/3) + Prières (1/3) */
 .main-split-container {
     position: relative;
     flex-grow: 1;
@@ -53,14 +50,14 @@ body {
     overflow: hidden;
 }
 
-/* --- ICONES SVG --- */
+/* --- 4. COMPOSANTS UI --- */
 .icon {
     display: inline-block;
     width: 1em;
     height: 1em;
     vertical-align: middle;
-    fill: currentColor; /* L'icône prendra la couleur du texte défini par 'color' */
-    color: var(--col-year-theme); /* On définit la couleur ici */
+    fill: currentColor;
+    color: var(--col-year-theme);
     margin-right: 0.25rem;
     flex-shrink: 0; /* Empêche l'écrasement dans les flexbox */
 }

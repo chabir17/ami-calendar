@@ -1,5 +1,5 @@
 // ==========================================
-// 3. INITIALISATION & UI
+// 3. ORCHESTRATION & UI (Main)
 // ==========================================
 
 /**
@@ -24,27 +24,18 @@ async function loadClientConfig() {
         document.querySelector('.org-ta').textContent = data.identity.name_ta;
         document.querySelector('.logo-img').src = data.identity.logo_url;
 
-        // 3. Mettre à jour les Contacts (avec une astuce pour vider/remplir)
-        // Helper : Génère la balise <use> pour l'icône
-        const loadIcon = (filename) => `<svg class="icon"><use href="${filename}#icon"></use></svg>`;
-
-        const iconLoc = loadIcon('assets/icons/icon-location.svg');
-        const iconPhone = loadIcon('assets/icons/icon-phone.svg');
-        const iconEmail = loadIcon('assets/icons/icon-email.svg');
+        // 3. Mettre à jour les Contacts
+        const iconLoc = `<svg class="icon"><use href="assets/icons/icon-location.svg#icon"></use></svg>`;
+        const iconPhone = `<svg class="icon"><use href="assets/icons/icon-phone.svg#icon"></use></svg>`;
+        const iconEmail = `<svg class="icon"><use href="assets/icons/icon-email.svg#icon"></use></svg>`;
 
         const headerRight = document.querySelector('.header-right');
         headerRight.innerHTML = `
-            <div>
-                ${iconLoc} ${data.contact.addr1}
-            </div>
+            <div>${iconLoc} ${data.contact.addr1}</div>
             ${data.contact.addr2 ? `<div>${iconLoc} ${data.contact.addr2}</div>` : ''}
             <div class="contact-row">
-                <div class="contact-col">
-                    ${iconPhone} ${data.contact.phone}
-                </div>
-                <div class="contact-col">
-                    ${iconEmail} ${data.contact.email}
-                </div>
+                <div class="contact-col">${iconPhone} ${data.contact.phone}</div>
+                <div class="contact-col">${iconEmail} ${data.contact.email}</div>
             </div>
         `;
 
@@ -164,26 +155,21 @@ document.addEventListener('DOMContentLoaded', async () => {
  * @param {HTMLElement|Document} container
  */
 function updateLegends(year, month, container = document) {
-    // 1. Légende Changement d'heure (Mars/Octobre)
+    // 1. Changement d'heure (Mars/Octobre)
     const legendDst = container.querySelector('.legend-dst');
     if (legendDst && (month === 3 || month === 10)) {
         legendDst.style.display = 'flex';
         const legendIcon = legendDst.querySelector('.icon');
         const legendText = legendDst.querySelector('span:last-child');
-        if (month === 3) {
-            // Mars : Été
-            if (legendIcon) {
-                legendIcon.classList.remove('icon-clock-minus');
-                legendIcon.classList.add('icon-clock-plus');
-            }
-            if (legendText) legendText.textContent = "Heure d'été (+1h)";
-        } else {
-            // Octobre : Hiver
-            if (legendIcon) {
-                legendIcon.classList.remove('icon-clock-plus');
-                legendIcon.classList.add('icon-clock-minus');
-            }
-            if (legendText) legendText.textContent = "Heure d'hiver (-1h)";
+
+        const isSummer = month === 3;
+        if (legendText) legendText.textContent = isSummer ? "Heure d'été (+1h)" : "Heure d'hiver (-1h)";
+
+        // Note: Les icônes sont gérées via CSS/SVG, ici on pourrait changer la classe si nécessaire
+        // mais le code actuel semble utiliser des images statiques dans le HTML pour la légende.
+        if (legendIcon) {
+            legendIcon.classList.toggle('icon-clock-plus', isSummer);
+            legendIcon.classList.toggle('icon-clock-minus', !isSummer);
         }
     }
 
@@ -206,44 +192,27 @@ function updateLegends(year, month, container = document) {
         if (info.isHoliday && info.holidayName) holidayNames.add(info.holidayName);
         if (info.isNewMoon) newMoonMonthName = hijriDate.monthNameFR;
     }
+
+    // Mise à jour DOM Légendes
     const legendEid = container.querySelector('.legend-eid');
     if (legendEid) {
-        if (hasEid) {
-            legendEid.style.display = 'flex';
-            const textSpan = legendEid.querySelector('span:last-child');
-            if (textSpan) textSpan.textContent = eidName || 'Aïd';
-        } else {
-            legendEid.style.display = 'none';
-        }
+        legendEid.style.display = hasEid ? 'flex' : 'none';
+        if (hasEid) legendEid.querySelector('span:last-child').textContent = eidName || 'Aïd';
     }
 
     const legendHoliday = container.querySelector('.legend-holiday');
     if (legendHoliday) {
-        if (holidayNames.size > 0) {
-            legendHoliday.style.display = 'flex';
-            const textSpan = legendHoliday.querySelector('span:last-child');
-            if (textSpan) {
-                textSpan.textContent = Array.from(holidayNames).join(' / ');
-            }
-        } else {
-            legendHoliday.style.display = 'none';
-        }
+        legendHoliday.style.display = holidayNames.size > 0 ? 'flex' : 'none';
+        if (holidayNames.size > 0) legendHoliday.querySelector('span:last-child').textContent = Array.from(holidayNames).join(' / ');
     }
 
     const legendPublic = container.querySelector('.legend-public');
-    if (legendPublic) {
-        legendPublic.style.display = hasPublicHoliday ? 'flex' : 'none';
-    }
+    if (legendPublic) legendPublic.style.display = hasPublicHoliday ? 'flex' : 'none';
 
     const legendMoon = container.querySelector('.legend-moon');
     if (legendMoon) {
-        if (newMoonMonthName) {
-            legendMoon.style.display = 'flex';
-            const textSpan = legendMoon.querySelector('span:last-child');
-            if (textSpan) textSpan.textContent = newMoonMonthName;
-        } else {
-            legendMoon.style.display = 'none';
-        }
+        legendMoon.style.display = newMoonMonthName ? 'flex' : 'none';
+        if (newMoonMonthName) legendMoon.querySelector('span:last-child').textContent = newMoonMonthName;
     }
 }
 

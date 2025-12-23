@@ -1,10 +1,9 @@
 // ==========================================
-// 1. SERVICES & LOGIQUE MÉTIER
+// 1. SERVICES & LOGIQUE MÉTIER (Date, Prières, API)
 // ==========================================
 
 /**
  * Formatteur de date pour le calendrier hégirien (Islamique Civil).
- * @type {Intl.DateTimeFormat}
  */
 const HIJRI_FORMATTER = new Intl.DateTimeFormat('fr-FR-u-ca-islamic-civil', {
     day: 'numeric',
@@ -14,7 +13,6 @@ const HIJRI_FORMATTER = new Intl.DateTimeFormat('fr-FR-u-ca-islamic-civil', {
 
 /**
  * Mapping des noms de mois français (retournés par Intl) vers leur équivalent arabe.
- * @type {Object.<string, string>}
  */
 const MONTH_MAP_FR_AR = {
     mouharram: 'محرم',
@@ -34,28 +32,28 @@ const MONTH_MAP_FR_AR = {
 };
 
 /**
- * Constantes pour l'optimisation de la conversion des chiffres
+ * Constantes et Caches
  */
 const ARABIC_DIGITS = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
 const RE_DIGITS = /\d/g;
 const HIJRI_CACHE = new Map();
+const CACHE_KEY = 'ami_calendar_cache';
+const CACHE_DURATION = 30 * 24 * 60 * 60 * 1000; // 30 jours
 
+// Variables globales pour Adhan
 let adhanCoords = null;
 let adhanParams = null;
-
-/**
- * Cache pour les vacances scolaires parsées (timestamp start/end).
- * @type {Array<{start: number, end: number}>|null}
- */
 let parsedHolidaysCache = null;
 
 /**
  * Initialise la librairie Adhan avec la configuration globale définie dans config.js.
- * @returns {void}
  */
 function initAdhan() {
     if (typeof adhan === 'undefined') return;
     if (typeof CONFIG === 'undefined' || !CONFIG) return;
+
+    // Évite de réinitialiser si déjà fait
+    if (adhanCoords && adhanParams) return;
 
     adhanCoords = new adhan.Coordinates(CONFIG.lat, CONFIG.lng);
     adhanParams = adhan.CalculationMethod.MuslimWorldLeague();
@@ -70,7 +68,6 @@ function initAdhan() {
 /**
  * Calcule les horaires de prière pour une date donnée.
  * @param {Date} date - La date pour laquelle calculer les horaires.
- * @returns {{fajr: string, sunrise: string, dhuhr: string, asr: string, maghrib: string, isha: string}|null} Les horaires formatés ou null si non initialisé.
  */
 function getPrayerTimesSafe(date) {
     if (!adhanCoords || !adhanParams) {
@@ -93,18 +90,9 @@ function getPrayerTimesSafe(date) {
 }
 
 /**
- * @typedef {Object} HijriDate
- * @property {string} day - Le jour du mois.
- * @property {string} monthNameFR - Le nom du mois en français.
- * @property {string} monthNameAR - Le nom du mois en arabe.
- * @property {string} year - L'année hégirienne.
- * @property {string} yearAr - L'année hégirienne en chiffres arabes orientaux.
- */
-
-/**
  * Convertit une date grégorienne en date hégirienne avec gestion d'erreurs.
+ * Utilise un cache pour les performances.
  * @param {Date} date
- * @returns {HijriDate}
  */
 function getHijriDateSafe(date) {
     const timeKey = date.getTime();
@@ -143,8 +131,7 @@ function getHijriDateSafe(date) {
 /**
  * Détermine les événements spéciaux pour une journée donnée.
  * @param {Date} date
- * @param {HijriDate} hijri
- * @returns {DayInfo}
+ * @param {Object} hijri
  */
 function getDayInfo(date, hijri) {
     let info = {
@@ -157,7 +144,7 @@ function getDayInfo(date, hijri) {
     };
     if (typeof CONFIG === 'undefined' || !CONFIG) return info;
 
-    // Vacances
+    // 1. Initialisation lazy du cache des vacances scolaires
     if (!parsedHolidaysCache && CONFIG.schoolHolidays) {
         parsedHolidaysCache = CONFIG.schoolHolidays.map((p) => {
             let start = new Date(p.start);
@@ -179,7 +166,7 @@ function getDayInfo(date, hijri) {
         }
     }
 
-    // Fériés
+    // 3. Vérification Jours Fériés
     const yyyy = date.getFullYear();
     const mm = String(date.getMonth() + 1).padStart(2, '0');
     const dd = String(date.getDate()).padStart(2, '0');
@@ -189,7 +176,7 @@ function getDayInfo(date, hijri) {
         info.label = CONFIG.publicHolidays[key];
     }
 
-    // Changement d'heure
+    // 4. Vérification Changement d'heure (Règle simplifiée UE)
     const m = date.getMonth();
     const d = date.getDate();
     const dayOfWeek = date.getDay();
@@ -205,7 +192,7 @@ function getDayInfo(date, hijri) {
         }
     }
 
-    // Lune & Aïd
+    // 5. Vérification Lune & Aïd
     if (hijri.day == '1') info.isNewMoon = true;
     const hMonth = hijri.monthNameFR ? hijri.monthNameFR.toLowerCase() : '';
     if (hijri.day == '1' && (hMonth.includes('chawwal') || hMonth.includes('schawwal'))) {
@@ -222,9 +209,6 @@ function getDayInfo(date, hijri) {
  * Récupère les données officielles (Jours fériés & Vacances scolaires Zone C).
  * Utilise un cache localStorage pour limiter les appels API (durée : 30 jours).
  */
-const CACHE_KEY = 'ami_calendar_cache';
-const CACHE_DURATION = 30 * 24 * 60 * 60 * 1000; // 30 jours
-
 async function fetchExternalData() {
     if (typeof window === 'undefined' || !window.CONFIG) return;
     let hasUpdates = false;

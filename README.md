@@ -39,9 +39,9 @@ Le projet intègre plusieurs stratégies pour assurer un chargement rapide et un
 - **Chargement CSS Parallèle** : Les feuilles de style sont liées directement dans le HTML pour éviter les blocages liés aux `@import`.
 - **Rendu Non-Bloquant** : Les scripts JS (`defer`) et le CSS d'impression (`media="print"`) ne bloquent pas l'affichage initial.
 - **Stratégies de Cache** :
-    - **Données** : Cache `localStorage` (30 jours) pour les jours fériés et vacances scolaires.
+    - **Données API** : Cache `localStorage` (30 jours) pour les jours fériés et vacances scolaires.
     - **Calculs** : Mémoïsation des conversions de dates Hégiriennes pour optimiser le rendu de la grille.
-- **Pré-chargement** : Utilisation de `preload` pour les polices et `preconnect` pour les CDNs externes.
+- **Pré-chargement** : Utilisation de `preload` pour les polices principales.
 
 ## Structure du Projet
 
@@ -58,6 +58,7 @@ Le projet intègre plusieurs stratégies pour assurer un chargement rapide et un
     - `header.css`, `table.css`, `calendar.css` : Styles spécifiques aux composants.
     - `print.css` : Optimisations pour l'impression A4 Paysage.
 - **js/** : Logique applicative (Vanilla JS).
+    - `lib/` : Librairies tierces (Adhan.js minifié) pour fonctionnement hors-ligne.
     - `components.js` : Définition des Web Components (`<ami-calendar-grid>`, `<ami-prayer-table>`).
     - `services.js` : Logique métier (Calculs Adhan, Hégire, et appels API).
     - `main.js` : Point d'entrée, orchestration du rendu et gestion du cache.
@@ -67,7 +68,7 @@ Le projet intègre plusieurs stratégies pour assurer un chargement rapide et un
 
 ### ⚙️ Logique et Données
 
-- **Horaires de Prière** : Calculés localement via la librairie `Adhan.js`.
+- **Horaires de Prière** : Calculés localement via la librairie `Adhan.js` (incluse dans `js/lib/`).
 - **Dates Hégiriennes** : Conversion dynamique via `Intl.DateTimeFormat` (Islamic Civil).
 - **Jours Fériés & Vacances** : Récupérés automatiquement depuis les APIs gouvernementales (api.gouv.fr / education.gouv.fr) avec un système de **cache local** (30 jours) pour limiter les requêtes.
 

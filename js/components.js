@@ -1,5 +1,5 @@
 // ==========================================
-// 2. COMPOSANTS WEB (Custom Elements)
+// 2. COMPOSANTS WEB (Custom Elements : Grille & Tableau)
 // ==========================================
 
 /**
@@ -26,7 +26,7 @@ class CalendarGrid extends HTMLElement {
 
         const jsMonth = month - 1;
         const daysInMonth = new Date(year, month, 0).getDate();
-        // Calcul du décalage pour le premier jour du mois (Lundi = 0, ..., Dimanche = 6)
+        // Décalage pour le 1er jour (Lundi = 0 ... Dimanche = 6)
         let startOffset = (new Date(year, jsMonth, 1).getDay() || 7) - 1;
 
         // Création d'une grille fixe de 35 cellules (5 lignes x 7 jours)
@@ -37,7 +37,7 @@ class CalendarGrid extends HTMLElement {
             const hijri = getHijriDateSafe(date);
             const dayInfo = getDayInfo(date, hijri);
             let pos = startOffset + day - 1;
-            // Gestion du débordement : si le mois dépasse 5 lignes, on revient au début (layout compact)
+            // Layout compact : si > 35 cases, on boucle au début
             if (pos >= 35) pos -= 35;
             gridCells[pos] = { day, hijri, dayInfo };
         }
@@ -46,33 +46,41 @@ class CalendarGrid extends HTMLElement {
         for (let i = 0; i < 35; i++) {
             const cell = gridCells[i];
             if (!cell) {
-                html += `<div class="day-cell-visual empty"></div>`;
-                continue;
+                html += '<div class="day-cell-visual empty"></div>';
+            } else {
+                html += this.buildCellHTML(cell);
             }
-            const { day, hijri, dayInfo } = cell;
-            let classes = ['day-cell-visual'];
-            if (dayInfo.isEid) classes.push('is-friday');
-            if (dayInfo.isHoliday && !dayInfo.isEid) classes.push('is-holiday');
-            if (dayInfo.isPublicHoliday && !dayInfo.isEid) classes.push('is-public-holiday');
-
-            let content = `<span class="vis-greg">${day}</span><span class="vis-hij">${hijri.day || ''}</span>`;
-            if (dayInfo.isNewMoon) content += `<img src="assets/icons/icon-moon.svg" class="new-moon-icon" alt="Nouvelle lune" title="Nouvelle lune">`;
-            if (dayInfo.isDST) {
-                const style = dayInfo.isNewMoon ? 'left: 18px;' : '';
-                const iconFile = dayInfo.dstType === 'winter' ? 'clock-minus.svg' : 'clock-plus.svg';
-                const dstLabel = dayInfo.dstType === 'winter' ? "Heure d'hiver (-1h)" : "Heure d'été (+1h)";
-                content += `<img src="assets/icons/icon-${iconFile}" class="dst-icon" style="${style}" alt="${dstLabel}" title="${dstLabel}">`;
-            }
-            if (dayInfo.label) {
-                let labelClass = 'event-label';
-                if (dayInfo.isEid) labelClass += ' eid-label';
-                if (dayInfo.isDST) labelClass += ' dst-label';
-                content += `<div class="${labelClass}">${dayInfo.label}</div>`;
-            }
-            html += `<div class="${classes.join(' ')}">${content}</div>`;
         }
         this.innerHTML = html;
         this.className = 'days-grid-visual';
+    }
+
+    /**
+     * Génère le HTML d'une cellule de jour.
+     */
+    buildCellHTML({ day, hijri, dayInfo }) {
+        let classes = ['day-cell-visual'];
+        if (dayInfo.isEid) classes.push('is-friday');
+        else if (dayInfo.isHoliday) classes.push('is-holiday');
+        else if (dayInfo.isPublicHoliday) classes.push('is-public-holiday');
+
+        let content = `<span class="vis-greg">${day}</span><span class="vis-hij">${hijri.day || ''}</span>`;
+
+        if (dayInfo.isNewMoon) {
+            content += `<img src="assets/icons/icon-moon.svg" class="new-moon-icon" alt="Nouvelle lune">`;
+        }
+        if (dayInfo.isDST) {
+            const style = dayInfo.isNewMoon ? 'left: 18px;' : '';
+            const iconFile = dayInfo.dstType === 'winter' ? 'clock-minus.svg' : 'clock-plus.svg';
+            content += `<img src="assets/icons/icon-${iconFile}" class="dst-icon" style="${style}" alt="Changement d'heure">`;
+        }
+        if (dayInfo.label) {
+            let labelClass = 'event-label';
+            if (dayInfo.isEid) labelClass += ' eid-label';
+            if (dayInfo.isDST) labelClass += ' dst-label';
+            content += `<div class="${labelClass}">${dayInfo.label}</div>`;
+        }
+        return `<div class="${classes.join(' ')}">${content}</div>`;
     }
 }
 if (!customElements.get('ami-calendar-grid')) {
