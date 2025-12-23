@@ -61,8 +61,8 @@ class CalendarGrid extends HTMLElement {
     buildCellHTML({ day, hijri, dayInfo }) {
         let classes = ['day-cell-visual'];
         if (dayInfo.isEid) classes.push('is-friday');
-        else if (dayInfo.isHoliday) classes.push('is-holiday');
-        else if (dayInfo.isPublicHoliday) classes.push('is-public-holiday');
+        if (dayInfo.isHoliday) classes.push('is-holiday');
+        if (dayInfo.isPublicHoliday) classes.push('is-public-holiday');
 
         let content = `<span class="vis-greg">${day}</span><span class="vis-hij">${hijri.day || ''}</span>`;
 
