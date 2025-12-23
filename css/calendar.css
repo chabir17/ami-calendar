@@ -1,4 +1,4 @@
-/* --- TITRES --- */
+/* --- ZONE DES TITRES (MOIS & ANNÉE) --- */
 .month-titles-zone {
     position: relative;
     display: flex;
@@ -29,7 +29,7 @@
 .hijri-month-fr {
     font-size: 16px;
     text-transform: uppercase;
-    color: #555;
+    color: var(--col-text-light);
 }
 
 .hijri-month-ar {
@@ -48,7 +48,7 @@
     color: var(--col-year-theme);
 }
 
-/* --- CALENDRIER GAUCHE --- */
+/* --- GRILLE CALENDRIER (GAUCHE) --- */
 .left-visual-calendar {
     display: flex;
     flex-direction: column;
@@ -58,10 +58,11 @@
     background-color: white;
 }
 
+/* En-tête des jours de la semaine */
 .weekdays-header {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    background: rgba(0, 46, 93, 0.1);
+    background: var(--bg-blue-faint);
     color: var(--col-blue);
     text-align: center;
     padding: 0;
@@ -70,7 +71,7 @@
 }
 
 .weekday-cell {
-    border-right: 1px solid #ccc;
+    border-right: 1px solid var(--col-border);
     padding: 0.25rem 0;
 }
 
@@ -87,6 +88,7 @@
     font-size: 12px;
 }
 
+/* Grille des jours (5 rangées pour couvrir le mois) */
 .days-grid-visual {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
@@ -95,8 +97,8 @@
 }
 
 .day-cell-visual {
-    border-right: 1px solid #eee;
-    border-bottom: 1px solid #eee;
+    border-right: 1px solid var(--col-border-light);
+    border-bottom: 1px solid var(--col-border-light);
     position: relative;
     display: flex;
     justify-content: center;
@@ -107,7 +109,7 @@
     border-right: none;
 }
 
-/* Fonds colorés */
+/* --- ÉTATS DES CELLULES (FONDS COLORÉS) --- */
 .day-cell-visual.is-friday {
     background-color: var(--bg-friday);
 }
@@ -121,14 +123,14 @@
     background-color: var(--bg-public-holiday);
 }
 
-/* Chiffre Grégorien */
+/* Numéro du jour (Grégorien) */
 .vis-greg {
     font-size: 42px;
     font-weight: 700;
-    color: #444;
+    color: var(--col-text-lighter);
 }
 
-/* Date Hégirienne */
+/* Numéro du jour (Hégirien) */
 .vis-hij {
     font-size: 13px;
     color: var(--col-green);
@@ -137,7 +139,7 @@
     right: 0.25rem;
 }
 
-/* Icônes et Labels */
+/* --- ICÔNES ET LABELS D'ÉVÉNEMENTS --- */
 .new-moon-icon,
 .dst-icon {
     position: absolute;
@@ -154,7 +156,7 @@
     margin-top: 0.125rem;
     font-weight: 700;
     text-transform: uppercase;
-    color: #c62828;
+    color: var(--col-red-event);
     text-align: center;
     width: 100%;
     position: absolute;
@@ -163,18 +165,18 @@
     text-overflow: ellipsis;
 }
 
-/* Orange foncé pour vacances */
+/* Label spécifique pour l'Aïd (Vert) */
 .event-label.eid-label {
     color: var(--col-green);
     padding: 0.0625rem 0.125rem;
 }
 
-/* Bleu pour changement d'heure */
+/* Label pour changement d'heure (Bleu) */
 .event-label.dst-label {
     color: var(--col-blue);
 }
 
-/* --- LÉGENDE --- */
+/* --- BARRE DE LÉGENDE (BAS) --- */
 .legend-box {
     padding: 0.5rem;
     border-top: 1px solid var(--col-border);
@@ -189,7 +191,7 @@
     align-items: center;
     gap: 0.35rem;
     font-size: 10px;
-    color: #555;
+    color: var(--col-text-light);
     font-weight: 600;
     text-transform: uppercase;
 }

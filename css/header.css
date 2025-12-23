@@ -1,12 +1,12 @@
-/* --- HEADER --- */
+/* --- EN-TÊTE DE PAGE --- */
 .header-fixed {
     position: relative;
-    background-color: #fff4d8;
+    background-color: var(--bg-header-cream);
     background-image: url('../assets/patterns/background-pattern.svg');
     color: var(--col-text);
     margin: -1rem -1rem 0rem -1rem;
     padding: 2.5rem 1rem 1rem 1rem;
-    /* On ajoute une ligne fine en bas pour structurer (optionnel, vert ou bleu) */
+    /* Ligne de séparation thématique en bas */
     border-bottom: 1.5px solid var(--col-year-theme);
 }
 
@@ -30,7 +30,7 @@
     margin: 0 0.125rem;
 }
 
-/* Logo Image */
+/* Conteneur du Logo */
 .logo-box {
     width: 2cm;
     height: 2cm;

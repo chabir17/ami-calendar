@@ -1,28 +1,51 @@
 :root {
-    /* --- PALETTE LOGO AMI --- */
-    /* Couleur variable pour l'année */
+    /* --- PALETTE DE COULEURS (BASÉE SUR LE LOGO AMI) --- */
+    
+    /* Couleur thématique de l'année (Doré) */
     --col-year-theme: #c8b070;
 
-    /* Bleu foncé (Tour Eiffel) */
+    /* Bleu foncé (Référence Tour Eiffel) */
     --col-blue: #002e5d;
 
-    /* Orange (Texte Tamil/Cercle) */
+    /* Orange (Référence Texte Tamil/Cercle) */
     --col-orange: #f57f20;
 
-    /* Vert (Mosquée) */
+    /* Vert (Référence Mosquée) */
     --col-green: #2e7d32;
 
-    --col-text: #333333;
-    --col-border: #cccccc;
+    /* Rouge (Événements/Alertes) */
+    --col-red-event: #c62828;
 
-    /* --- FONDS ÉCO-ENCRE (PASTELS TRÈS CLAIRS) --- */
+    /* Couleurs neutres */
+    --col-text: #333333;
+    --col-text-light: #555555;
+    --col-text-lighter: #444444;
+    --col-border: #cccccc;
+    --col-border-light: #eeeeee;
+
+    /* Fonds globaux */
+    --bg-body: #eeeeee;
+    --bg-header-cream: #fff4d8;
+
+    /* --- FONDS "ÉCO-ENCRE" (PASTELS TRÈS CLAIRS POUR L'IMPRESSION) --- */
+    
     /* Vert très pâle */
     --bg-friday: rgba(46, 125, 50, 0.08);
+    
     /* Rouge très pâle */
     --bg-public-holiday: rgba(200, 0, 0, 0.08);
+    
+    /* Gris très pâle pour les en-têtes */
     --bg-table-header: #f8f9fa;
+    --bg-table-stripe: #f3f3f3;
 
-    /* --- POLICES --- */
+    /* Fonds transparents (basés sur les couleurs principales) */
+    /* Bleu à 10% */
+    --bg-blue-faint: rgba(0, 46, 93, 0.1);
+    /* Vert à 10% */
+    --bg-green-faint: rgba(46, 125, 50, 0.1);
+
+    /* --- TYPOGRAPHIE --- */
     --font-fr: 'Noto Sans', sans-serif;
     --font-ar: 'Noto Naskh Arabic', serif;
     --font-ta: 'Noto Serif Tamil', serif;

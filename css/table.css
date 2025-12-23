@@ -1,4 +1,4 @@
-/* --- TABLEAU DROITE --- */
+/* --- TABLEAU DES HORAIRES DE PRIÈRES (DROITE) --- */
 .right-prayer-table-container {
     font-size: 11px;
     overflow: hidden;
@@ -17,7 +17,7 @@
 }
 
 .prayer-table thead th {
-    background: rgba(46, 125, 50, 0.1);
+    background: var(--bg-green-faint);
     border: 1px solid var(--col-border);
     border-bottom: 2px solid var(--col-green);
     padding: 0.25rem 0.0625rem;
@@ -27,7 +27,7 @@
     color: var(--col-green);
 }
 
-/* Largeurs de colonnes fixes */
+/* Largeurs de colonnes fixes pour les prières */
 .prayer-table th:nth-child(n + 2):nth-child(-n + 7),
 .prayer-table td:nth-child(n + 2):nth-child(-n + 7) {
     width: 12.75%;
@@ -56,7 +56,7 @@
 }
 
 .prayer-table tbody td {
-    border: 1px solid #eee;
+    border: 1px solid var(--col-border-light);
     text-align: center;
     font-weight: 600;
     font-size: 11px;
@@ -65,20 +65,20 @@
 }
 
 .prayer-table tbody tr:nth-child(even) {
-    background: #f3f3f3;
+    background: var(--bg-table-stripe);
 }
 
 .prayer-table tbody tr.is-friday {
     background: var(--bg-friday) !important;
 }
 
-/* Colonnes Spéciales */
+/* --- COLONNES SPÉCIALES (DATES) --- */
 .col-date-greg {
     width: 16%;
 }
 
 .col-hijri {
-    width: 7,5%;
+    width: 7.5%;
 }
 
 .date-cell {

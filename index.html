@@ -9,13 +9,13 @@
         <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
         <link rel="manifest" href="site.webmanifest" />
 
+        <!-- Feuilles de styles (chargement parallèle) -->
         <link rel="stylesheet" href="css/fonts.css" />
         <link rel="stylesheet" href="css/variables.css" />
         <link rel="stylesheet" href="css/base.css" />
         <link rel="stylesheet" href="css/header.css" />
         <link rel="stylesheet" href="css/calendar.css" />
         <link rel="stylesheet" href="css/table.css" />
-        <!-- You can add media="print" if this is print-only -->
         <link rel="stylesheet" href="css/print.css" />
 
         <script src="https://cdn.jsdelivr.net/npm/adhan/Adhan.min.js"></script>
@@ -29,6 +29,7 @@
 
     <body>
         <div class="page A4-landscape">
+            <!-- EN-TÊTE : Logos et Coordonnées -->
             <header class="header-fixed">
                 <div class="header-content">
                     <div class="header-left">
@@ -63,6 +64,7 @@
                 </div>
             </header>
 
+            <!-- TITRES : Mois et Année -->
             <section class="month-titles-zone">
                 <div class="titles-gregorian">
                     <div class="greg-month-fr"></div>
@@ -75,7 +77,9 @@
                 </div>
             </section>
 
+            <!-- CONTENU PRINCIPAL : Grille Calendrier + Tableau Prières -->
             <main class="main-split-container">
+                <!-- SECTION GAUCHE : Calendrier Visuel -->
                 <section class="left-visual-calendar">
                     <div class="weekdays-header" id="weekdays-header">
                         <div class="weekday-cell">
@@ -139,6 +143,7 @@
                     </div>
                 </section>
 
+                <!-- SECTION DROITE : Tableau des Horaires -->
                 <section class="right-prayer-table-container">
                     <ami-prayer-table>
                         <table class="prayer-table" id="prayer-table">
