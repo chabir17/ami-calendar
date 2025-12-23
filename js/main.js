@@ -67,7 +67,9 @@ document.addEventListener('DOMContentLoaded', () => {
     renderApp();
 
     // 2. Mise à jour asynchrone via API (si connecté)
-    fetchExternalData().then(() => renderApp());
+    fetchExternalData().then((shouldUpdate) => {
+        if (shouldUpdate) renderApp();
+    });
 });
 
 /**

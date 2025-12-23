@@ -33,6 +33,13 @@ const MONTH_MAP_FR_AR = {
     'dhou al-hijja': 'ذو الحجة'
 };
 
+/**
+ * Constantes pour l'optimisation de la conversion des chiffres
+ */
+const ARABIC_DIGITS = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
+const RE_DIGITS = /\d/g;
+const HIJRI_CACHE = new Map();
+
 let adhanCoords = null;
 let adhanParams = null;
 
@@ -100,6 +107,9 @@ function getPrayerTimesSafe(date) {
  * @returns {HijriDate}
  */
 function getHijriDateSafe(date) {
+    const timeKey = date.getTime();
+    if (HIJRI_CACHE.has(timeKey)) return HIJRI_CACHE.get(timeKey);
+
     try {
         const parts = HIJRI_FORMATTER.formatToParts(date);
         let day = '',
@@ -113,15 +123,17 @@ function getHijriDateSafe(date) {
 
         let cleanMonthFr = monthFr.toLowerCase().trim();
         const monthAr = MONTH_MAP_FR_AR[cleanMonthFr] || cleanMonthFr;
-        const yearAr = year.replace(/\d/g, (d) => '٠١٢٣٤٥٦٧٨٩'[d]);
+        const yearAr = year.replace(RE_DIGITS, (d) => ARABIC_DIGITS[d]);
 
-        return {
+        const result = {
             day: day,
             monthNameFR: monthFr,
             monthNameAR: monthAr,
             year: year,
             yearAr: yearAr
         };
+        HIJRI_CACHE.set(timeKey, result);
+        return result;
     } catch (e) {
         return { day: '?', monthNameFR: '', monthNameAR: '', year: '', yearAr: '' };
     }
@@ -214,7 +226,7 @@ const CACHE_DURATION = 30 * 24 * 60 * 60 * 1000; // 30 jours
 
 async function fetchExternalData() {
     if (typeof window === 'undefined' || !window.CONFIG) return;
-
+    let hasUpdates = false;
     const now = Date.now();
 
     // 1. Tentative de récupération depuis le cache localStorage
@@ -231,7 +243,7 @@ async function fetchExternalData() {
                     window.CONFIG.schoolHolidays = data.schoolHolidays;
                     parsedHolidaysCache = null;
                 }
-                return; // Pas besoin d'appeler les APIs
+                return true; // Données chargées depuis le cache -> Mise à jour nécessaire
             }
         }
     } catch (e) {
@@ -276,6 +288,7 @@ async function fetchExternalData() {
             localStorage.setItem(CACHE_KEY, JSON.stringify(cacheData));
             console.log('💾 Données sauvegardées dans le cache pour 30 jours.');
         }
+        return updated;
     } catch (e) {
         console.warn('⚠️ Mode hors ligne ou erreur API : Utilisation de la configuration locale.', e);
     }
