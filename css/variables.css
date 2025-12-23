@@ -1,6 +1,6 @@
 :root {
     /* --- PALETTE DE COULEURS (BASÉE SUR LE LOGO AMI) --- */
-    
+
     /* Couleur thématique de l'année (Doré) */
     --col-year-theme: #c8b070;
 
@@ -28,13 +28,13 @@
     --bg-header-cream: #fff4d8;
 
     /* --- FONDS "ÉCO-ENCRE" (PASTELS TRÈS CLAIRS POUR L'IMPRESSION) --- */
-    
+
     /* Vert très pâle */
     --bg-friday: rgba(46, 125, 50, 0.08);
-    
+
     /* Rouge très pâle */
     --bg-public-holiday: rgba(200, 0, 0, 0.08);
-    
+
     /* Gris très pâle pour les en-têtes */
     --bg-table-header: #f8f9fa;
     --bg-table-stripe: #f3f3f3;

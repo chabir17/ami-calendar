@@ -220,7 +220,7 @@ function getDayInfo(date, hijri) {
 
 /**
  * Récupère les données officielles (Jours fériés & Vacances scolaires Zone C).
- * Met à jour window.CONFIG et invalide le cache local.
+ * Utilise un cache localStorage pour limiter les appels API (durée : 30 jours).
  */
 const CACHE_KEY = 'ami_calendar_cache';
 const CACHE_DURATION = 30 * 24 * 60 * 60 * 1000; // 30 jours
