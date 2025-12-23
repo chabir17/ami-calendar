@@ -10,7 +10,6 @@
         <link rel="manifest" href="site.webmanifest" />
 
         <!-- Performance : Pré-connexion au CDN et pré-chargement de la police principale -->
-        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
         <link rel="preload" href="assets/fonts/NotoSans-Regular.ttf" as="font" type="font/ttf" crossorigin />
 
         <!-- Feuilles de styles (chargement parallèle) -->
@@ -24,7 +23,7 @@
         <link rel="stylesheet" href="css/print.css" media="print" />
 
         <!-- Scripts JS : Chargés avec 'defer' pour ne pas bloquer l'analyse du HTML -->
-        <script src="https://cdn.jsdelivr.net/npm/adhan/Adhan.min.js" defer></script>
+        <script src="js/lib/adhan.min.js" defer></script>
 
         <script src="data/config.js" defer></script>
         <script src="data/lang.js" defer></script>
