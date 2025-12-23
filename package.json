@@ -2,9 +2,8 @@
     "name": "ami-calendar",
     "version": "1.0.0",
     "description": "Gestionnaire et automatisation pour AMI Calendar",
-    "main": "main.js",
     "scripts": {
-        "start": "node main.js",
+        "start": "serve .",
         "test": "echo \"Error: no test specified\" && exit 1",
         "prettier": "prettier --write .",
         "lint": "eslint .",
@@ -31,7 +30,8 @@
         "eslint": "^9.39.2",
         "eslint-config-prettier": "^10.1.8",
         "globals": "^16.5.0",
-        "prettier": "^3.7.4"
+        "prettier": "^3.7.4",
+        "serve": "^14.2.5"
     },
     "engines": {
         "node": ">=18.0.0"
