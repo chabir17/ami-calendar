@@ -26,7 +26,10 @@ class CalendarGrid extends HTMLElement {
 
         const jsMonth = month - 1;
         const daysInMonth = new Date(year, month, 0).getDate();
+        // Calcul du décalage pour le premier jour du mois (Lundi = 0, ..., Dimanche = 6)
         let startOffset = (new Date(year, jsMonth, 1).getDay() || 7) - 1;
+
+        // Création d'une grille fixe de 35 cellules (5 lignes x 7 jours)
         const gridCells = new Array(35).fill(null);
 
         for (let day = 1; day <= daysInMonth; day++) {
@@ -34,6 +37,7 @@ class CalendarGrid extends HTMLElement {
             const hijri = getHijriDateSafe(date);
             const dayInfo = getDayInfo(date, hijri);
             let pos = startOffset + day - 1;
+            // Gestion du débordement : si le mois dépasse 5 lignes, on revient au début (layout compact)
             if (pos >= 35) pos -= 35;
             gridCells[pos] = { day, hijri, dayInfo };
         }

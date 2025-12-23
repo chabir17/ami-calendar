@@ -108,6 +108,7 @@ function getPrayerTimesSafe(date) {
  */
 function getHijriDateSafe(date) {
     const timeKey = date.getTime();
+    // Optimisation : Utilisation du cache pour éviter de recalculer la date hégirienne (coûteux)
     if (HIJRI_CACHE.has(timeKey)) return HIJRI_CACHE.get(timeKey);
 
     try {
@@ -230,6 +231,7 @@ async function fetchExternalData() {
     const now = Date.now();
 
     // 1. Tentative de récupération depuis le cache localStorage
+    // Permet d'éviter les appels réseaux inutiles si les données sont récentes (< 30 jours)
     try {
         const cached = localStorage.getItem(CACHE_KEY);
         if (cached) {

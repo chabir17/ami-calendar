@@ -3,10 +3,12 @@
 // ==========================================
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Récupération des paramètres d'URL pour déterminer l'année et le mois à afficher
     const urlParams = new URLSearchParams(window.location.search);
     let year = parseInt(urlParams.get('year')) || 2027;
 
     let monthParam = urlParams.get('month');
+    // Gestion de la redirection pour les serveurs statiques (ex: GitHub Pages) via le paramètre 'redirect'
     const redirectPath = urlParams.get('redirect');
     if (redirectPath) {
         const match = redirectPath.match(/\/(\d{4})\/(\d{1,2})\/?$/);
@@ -47,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
         initAdhan();
 
         if (isAllMonths) {
+            // Mode "Année complète" : On génère 12 pages
             document.body.innerHTML = '';
             for (let m = 1; m <= 12; m++) {
                 const pageClone = pageTemplate.cloneNode(true);
