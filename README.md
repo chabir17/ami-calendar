@@ -32,6 +32,17 @@ L'en-tête (`css/header.css`) est conçu pour être informatif et esthétique :
 - Présentation du nom de l'organisation en plusieurs langues.
 - Section de contact alignée.
 
+### 🚀 Performance et Optimisations
+
+Le projet intègre plusieurs stratégies pour assurer un chargement rapide et une interface fluide :
+
+- **Chargement CSS Parallèle** : Les feuilles de style sont liées directement dans le HTML pour éviter les blocages liés aux `@import`.
+- **Rendu Non-Bloquant** : Les scripts JS (`defer`) et le CSS d'impression (`media="print"`) ne bloquent pas l'affichage initial.
+- **Stratégies de Cache** :
+    - **Données** : Cache `localStorage` (30 jours) pour les jours fériés et vacances scolaires.
+    - **Calculs** : Mémoïsation des conversions de dates Hégiriennes pour optimiser le rendu de la grille.
+- **Pré-chargement** : Utilisation de `preload` pour les polices et `preconnect` pour les CDNs externes.
+
 ## Structure du Projet
 
 ### 📂 Organisation des Fichiers
