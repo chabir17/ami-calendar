@@ -25,24 +25,12 @@ async function loadClientConfig() {
         document.querySelector('.logo-img').src = data.identity.logo_url;
 
         // 3. Mettre à jour les Contacts (avec une astuce pour vider/remplir)
-        // Helper : Charge le SVG brut pour l'injecter inline (permet le styling CSS via 'fill')
-        const loadIcon = async (filename) => {
-            try {
-                const res = await fetch(filename);
-                let text = await res.text();
-                // Ajoute la classe .icon et retire l'id "icon" pour éviter les doublons d'ID dans le DOM
-                return text.replace(/<svg([^>]*)>/, '<svg$1 class="icon">').replace(/id="icon"/g, '');
-            } catch (e) {
-                console.warn('Icon load error:', filename);
-                return '';
-            }
-        };
+        // Helper : Génère la balise <use> pour l'icône
+        const loadIcon = (filename) => `<svg class="icon"><use href="${filename}#icon"></use></svg>`;
 
-        const [iconLoc, iconPhone, iconEmail] = await Promise.all([
-            loadIcon('assets/icons/icon-location.svg'),
-            loadIcon('assets/icons/icon-phone.svg'),
-            loadIcon('assets/icons/icon-email.svg')
-        ]);
+        const iconLoc = loadIcon('assets/icons/icon-location.svg');
+        const iconPhone = loadIcon('assets/icons/icon-phone.svg');
+        const iconEmail = loadIcon('assets/icons/icon-email.svg');
 
         const headerRight = document.querySelector('.header-right');
         headerRight.innerHTML = `
@@ -95,6 +83,7 @@ async function loadClientConfig() {
  */
 document.addEventListener('DOMContentLoaded', async () => {
     await loadClientConfig();
+
     // Récupération des paramètres d'URL pour déterminer l'année et le mois à afficher
     const urlParams = new URLSearchParams(window.location.search);
     let year = parseInt(urlParams.get('year')) || 2027;

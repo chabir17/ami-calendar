@@ -55,7 +55,7 @@ let parsedHolidaysCache = null;
  */
 function initAdhan() {
     if (typeof adhan === 'undefined') return;
-    if (!CONFIG) return;
+    if (typeof CONFIG === 'undefined' || !CONFIG) return;
 
     adhanCoords = new adhan.Coordinates(CONFIG.lat, CONFIG.lng);
     adhanParams = adhan.CalculationMethod.MuslimWorldLeague();
@@ -155,7 +155,7 @@ function getDayInfo(date, hijri) {
         isEid: false,
         isDST: false
     };
-    if (!CONFIG) return info;
+    if (typeof CONFIG === 'undefined' || !CONFIG) return info;
 
     // Vacances
     if (!parsedHolidaysCache && CONFIG.schoolHolidays) {

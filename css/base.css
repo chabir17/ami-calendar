@@ -59,7 +59,8 @@ body {
     width: 1em;
     height: 1em;
     vertical-align: middle;
-    fill: var(--col-year-theme);
+    fill: currentColor; /* L'icône prendra la couleur du texte défini par 'color' */
+    color: var(--col-year-theme); /* On définit la couleur ici */
     margin-right: 0.25rem;
     flex-shrink: 0; /* Empêche l'écrasement dans les flexbox */
 }
