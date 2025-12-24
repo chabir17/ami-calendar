@@ -53,8 +53,8 @@ body {
 /* --- 4. COMPOSANTS UI --- */
 .icon {
     display: inline-block;
-    width: 1em;
-    height: 1em;
+    width: 1rem;
+    height: 1rem;
     vertical-align: middle;
     fill: currentColor;
     color: var(--col-year-theme);
