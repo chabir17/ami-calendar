@@ -224,5 +224,35 @@
                 </main>
             </div>
         </template>
+
+        <!-- Template pour une cellule du calendrier (Optimisation JS) -->
+        <template id="calendar-cell-template">
+            <div class="day-cell-visual">
+                <span class="vis-greg"></span>
+                <span class="vis-hij"></span>
+                <img src="assets/icons/icon-moon.svg" class="new-moon-icon" hidden alt="Nouvelle lune" />
+                <img class="dst-icon" hidden alt="Changement d'heure" />
+                <div class="event-label" hidden></div>
+            </div>
+        </template>
+
+        <!-- Template pour une ligne du tableau des prières (Optimisation JS) -->
+        <template id="prayer-row-template">
+            <tr>
+                <td class="col-date-greg">
+                    <div class="date-cell">
+                        <div class="day-name"></div>
+                        <div class="day-num"></div>
+                    </div>
+                </td>
+                <td class="fajr"></td>
+                <td class="sunrise"></td>
+                <td class="dhuhr"></td>
+                <td class="asr"></td>
+                <td class="maghrib"></td>
+                <td class="isha"></td>
+                <td class="col-hijri"></td>
+            </tr>
+        </template>
     </body>
 </html>

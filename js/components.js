@@ -53,45 +53,58 @@ class CalendarGrid extends HTMLElement {
             gridCells[pos] = { day, hijri, dayInfo };
         }
 
-        let html = '';
+        // Nettoyage et préparation
+        this.innerHTML = '';
+        this.className = 'days-grid-visual';
+        const template = document.getElementById('calendar-cell-template');
+
+        // Si le template n'existe pas (ex: erreur chargement), on arrête
+        if (!template) return;
+
         for (let i = 0; i < 35; i++) {
             const cell = gridCells[i];
+
             if (!cell) {
-                html += '<div class="day-cell-visual empty"></div>';
-            } else {
-                html += this.buildCellHTML(cell);
+                const emptyDiv = document.createElement('div');
+                emptyDiv.className = 'day-cell-visual empty';
+                this.appendChild(emptyDiv);
+                continue;
             }
-        }
-        this.innerHTML = html;
-        this.className = 'days-grid-visual';
-    }
 
-    /**
-     * Génère le HTML d'une cellule de jour.
-     */
-    buildCellHTML({ day, hijri, dayInfo }) {
-        let classes = ['day-cell-visual'];
-        if (dayInfo.isEid) classes.push('is-friday');
-        if (dayInfo.isHoliday) classes.push('is-holiday');
-        if (dayInfo.isPublicHoliday) classes.push('is-public-holiday');
+            // Clonage du template
+            const clone = template.content.cloneNode(true);
+            const root = clone.querySelector('.day-cell-visual');
+            const { day, hijri, dayInfo } = cell;
 
-        let content = `<span class="vis-greg">${day}</span><span class="vis-hij">${hijri.day || ''}</span>`;
+            // Classes CSS
+            if (dayInfo.isEid) root.classList.add('is-friday');
+            if (dayInfo.isHoliday) root.classList.add('is-holiday');
+            if (dayInfo.isPublicHoliday) root.classList.add('is-public-holiday');
 
-        if (dayInfo.isNewMoon) {
-            content += `<img src="assets/icons/icon-moon.svg" class="new-moon-icon" alt="Nouvelle lune">`;
+            // Contenu Textuel
+            root.querySelector('.vis-greg').textContent = day;
+            root.querySelector('.vis-hij').textContent = hijri.day || '';
+
+            // Icônes & Labels (gestion via attribut hidden)
+            if (dayInfo.isNewMoon) root.querySelector('.new-moon-icon').hidden = false;
+
+            if (dayInfo.isDST) {
+                const dstIcon = root.querySelector('.dst-icon');
+                dstIcon.hidden = false;
+                dstIcon.src = `assets/icons/icon-${dayInfo.dstType === 'winter' ? 'clock-minus.svg' : 'clock-plus.svg'}`;
+                if (dayInfo.isNewMoon) dstIcon.style.left = '18px';
+            }
+
+            if (dayInfo.label) {
+                const labelDiv = root.querySelector('.event-label');
+                labelDiv.hidden = false;
+                labelDiv.textContent = dayInfo.label;
+                if (dayInfo.isEid) labelDiv.classList.add('eid-label');
+                if (dayInfo.isDST) labelDiv.classList.add('dst-label');
+            }
+
+            this.appendChild(clone);
         }
-        if (dayInfo.isDST) {
-            const style = dayInfo.isNewMoon ? 'left: 18px;' : '';
-            const iconFile = dayInfo.dstType === 'winter' ? 'clock-minus.svg' : 'clock-plus.svg';
-            content += `<img src="assets/icons/icon-${iconFile}" class="dst-icon" style="${style}" alt="Changement d'heure">`;
-        }
-        if (dayInfo.label) {
-            let labelClass = 'event-label';
-            if (dayInfo.isEid) labelClass += ' eid-label';
-            if (dayInfo.isDST) labelClass += ' dst-label';
-            content += `<div class="${labelClass}">${dayInfo.label}</div>`;
-        }
-        return `<div class="${classes.join(' ')}">${content}</div>`;
     }
 }
 if (!customElements.get('ami-calendar-grid')) {
@@ -135,7 +148,9 @@ class PrayerTable extends HTMLElement {
         const jsMonth = month - 1;
         const daysInMonth = new Date(year, month, 0).getDate();
 
-        let html = '';
+        tbody.innerHTML = '';
+        const template = document.getElementById('prayer-row-template');
+        if (!template) return;
 
         for (let day = 1; day <= daysInMonth; day++) {
             const date = new Date(year, jsMonth, day);
@@ -143,26 +158,25 @@ class PrayerTable extends HTMLElement {
             const isFriday = date.getDay() === 5;
             let hijri = getHijriDateSafe(date);
             let times = getPrayerTimesSafe(date);
-            const rowClass = isFriday ? 'class="is-friday"' : '';
 
-            html += `
-                <tr ${rowClass}>
-                    <td class="col-date-greg">
-                        <div class="date-cell">
-                            <div>${window.TEXTS.fr.daysShort[dayOfWeekIdx]}</div>
-                            <div>${day.toString().padStart(2, '0')}</div>
-                        </div>
-                    </td>
-                    <td>${times.fajr}</td>
-                    <td>${times.sunrise}</td>
-                    <td>${times.dhuhr}</td>
-                    <td>${times.asr}</td>
-                    <td>${times.maghrib}</td>
-                    <td>${times.isha}</td>
-                    <td class="col-hijri">${hijri.day.padStart(2, '0')}</td>
-                </tr>`;
+            const clone = template.content.cloneNode(true);
+            const tr = clone.querySelector('tr');
+
+            if (isFriday) tr.classList.add('is-friday');
+
+            // Remplissage des données via sélecteurs
+            tr.querySelector('.day-name').textContent = window.TEXTS.fr.daysShort[dayOfWeekIdx];
+            tr.querySelector('.day-num').textContent = day.toString().padStart(2, '0');
+            tr.querySelector('.fajr').textContent = times.fajr;
+            tr.querySelector('.sunrise').textContent = times.sunrise;
+            tr.querySelector('.dhuhr').textContent = times.dhuhr;
+            tr.querySelector('.asr').textContent = times.asr;
+            tr.querySelector('.maghrib').textContent = times.maghrib;
+            tr.querySelector('.isha').textContent = times.isha;
+            tr.querySelector('.col-hijri').textContent = hijri.day.padStart(2, '0');
+
+            tbody.appendChild(clone);
         }
-        tbody.innerHTML = html;
     }
 }
 if (!customElements.get('ami-prayer-table')) {
