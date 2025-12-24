@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Récupération des paramètres d'URL pour déterminer l'année et le mois à afficher
     const urlParams = new URLSearchParams(window.location.search);
-    let year = parseInt(urlParams.get('year')) || 2027;
+    let year = parseInt(urlParams.get('year')) || new Date().getFullYear();
 
     let monthParam = urlParams.get('month');
     // Gestion de la redirection pour les serveurs statiques (ex: GitHub Pages) via le paramètre 'redirect'
