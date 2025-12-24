@@ -5,85 +5,125 @@ import './components.js';
 // 3. ORCHESTRATION & UI (Main)
 // ==========================================
 
+// État global
+let pageTemplate = null;
+let clientConfig = null;
+
 /**
- * Charge la configuration spécifique d'un client (Mosquée) depuis un fichier JSON.
- * Met à jour le logo, les textes, les contacts et le thème de couleur.
+ * Récupère la configuration client (JSON) sans modifier le DOM.
  */
-async function loadClientConfig() {
+async function fetchClientConfig() {
     const params = new URLSearchParams(window.location.search);
     const mosqueId = params.get('mosque');
-
-    // Si aucun paramètre, on reste sur la config par défaut (La Courneuve)
-    if (!mosqueId) return;
+    if (!mosqueId) return null;
 
     try {
-        // 1. Charger le fichier JSON du client
         const response = await fetch(`clients/${mosqueId}.json`);
         if (!response.ok) throw new Error('Client introuvable');
-        const data = await response.json();
-
-        // 2. Mettre à jour l'Identité (Haut de page)
-        document.querySelector('.org-fr').textContent = data.identity.name_fr;
-        document.querySelector('.org-ta').textContent = data.identity.name_ta;
-        document.querySelector('.logo-img').src = data.identity.logo_url;
-
-        // 3. Mettre à jour les Contacts
-        const iconLoc = `<svg class="icon"><use href="assets/icons/icon-location.svg#icon"></use></svg>`;
-        const iconPhone = `<svg class="icon"><use href="assets/icons/icon-phone.svg#icon"></use></svg>`;
-        const iconEmail = `<svg class="icon"><use href="assets/icons/icon-email.svg#icon"></use></svg>`;
-
-        const headerRight = document.querySelector('.header-right');
-        headerRight.innerHTML = `
-            <div>${iconLoc} ${data.contact.addr1}</div>
-            ${data.contact.addr2 ? `<div>${iconLoc} ${data.contact.addr2}</div>` : ''}
-            <div class="contact-row">
-                <div class="contact-col">${iconPhone} ${data.contact.phone}</div>
-                <div class="contact-col">${iconEmail} ${data.contact.email}</div>
-            </div>
-        `;
-
-        // 4. Mettre à jour les Couleurs (CSS Variables)
-        const root = document.documentElement;
-        if (data.theme.color_brand) {
-            root.style.setProperty('--brand', data.theme.color_brand);
-
-            // Coloration dynamique du motif de fond (remplace la couleur dorée par défaut #d4af37)
-            try {
-                const res = await fetch('assets/patterns/background-pattern.svg');
-                let svgText = await res.text();
-                svgText = svgText.replace(/#d4af37/gi, data.theme.color_brand);
-                const dataUri = 'data:image/svg+xml;base64,' + btoa(svgText);
-                root.style.setProperty('--bg-pattern-custom', `url('${dataUri}')`);
-            } catch (e) {
-                console.warn('Erreur chargement pattern:', e);
-            }
-        }
-        if (data.theme.bg_header) root.style.setProperty('--brand-light', data.theme.bg_header);
-
-        // 5. Mettre à jour la config globale pour Adhan (Prière)
-        if (window.CONFIG) {
-            window.CONFIG.lat = data.location.lat;
-            window.CONFIG.lng = data.location.lng;
-            // + autres paramètres Adhan si nécessaire
-        }
+        return await response.json();
     } catch (e) {
-        console.error('Erreur de chargement client:', e);
-        alert('Impossible de charger la configuration pour : ' + mosqueId);
+        console.error('Erreur chargement config client:', e);
+        return null;
     }
 }
 
 /**
- * Point d'entrée principal au chargement du DOM.
+ * Applique le thème global (Couleurs, Fonts) au document.
+ * Ces changements s'appliquent une seule fois à la racine.
+ */
+async function applyGlobalTheme(config) {
+    if (!config) return;
+    const root = document.documentElement;
+
+    // Thème couleur
+    if (config.theme.color_brand) {
+        root.style.setProperty('--brand', config.theme.color_brand);
+
+        // Pattern SVG dynamique
+        try {
+            const res = await fetch('assets/patterns/background-pattern.svg');
+            let svgText = await res.text();
+            svgText = svgText.replace(/#d4af37/gi, config.theme.color_brand);
+            const dataUri = 'data:image/svg+xml;base64,' + btoa(svgText);
+            root.style.setProperty('--bg-pattern-custom', `url('${dataUri}')`);
+        } catch (e) {
+            console.warn('Erreur chargement pattern:', e);
+        }
+    }
+    if (config.theme.bg_header) {
+        root.style.setProperty('--brand-light', config.theme.bg_header);
+    }
+
+    // Config Adhan globale
+    if (window.CONFIG) {
+        window.CONFIG.lat = config.location.lat;
+        window.CONFIG.lng = config.location.lng;
+    }
+}
+
+/**
+ * Met à jour le contenu DOM d'une page spécifique (Header, Contacts)
+ * à partir de la configuration client.
+ * @param {HTMLElement} container - Le fragment ou l'élément de page cloné
+ * @param {Object} config - Les données du client
+ */
+function updatePageDOM(container, config) {
+    if (!config) return;
+
+    const setText = (sel, txt) => {
+        const el = container.querySelector(sel);
+        if (el) el.textContent = txt;
+    };
+    const setSrc = (sel, src) => {
+        const el = container.querySelector(sel);
+        if (el) el.src = src;
+    };
+
+    setText('.org-fr', config.identity.name_fr);
+    setText('.org-ta', config.identity.name_ta);
+    setSrc('.logo-img', config.identity.logo_url);
+
+    // Mise à jour des contacts (HTML complexe)
+    const headerRight = container.querySelector('.header-right');
+    if (headerRight) {
+        const iconLoc = `<svg class="icon"><use href="assets/icons/icon-location.svg#icon"></use></svg>`;
+        const iconPhone = `<svg class="icon"><use href="assets/icons/icon-phone.svg#icon"></use></svg>`;
+        const iconEmail = `<svg class="icon"><use href="assets/icons/icon-email.svg#icon"></use></svg>`;
+
+        headerRight.innerHTML = `
+            <div>${iconLoc} ${config.contact.addr1}</div>
+            ${config.contact.addr2 ? `<div>${iconLoc} ${config.contact.addr2}</div>` : ''}
+            <div class="contact-row">
+                <div class="contact-col">${iconPhone} ${config.contact.phone}</div>
+                <div class="contact-col">${iconEmail} ${config.contact.email}</div>
+            </div>
+        `;
+    }
+}
+
+/**
+ * Point d'entrée principal
  */
 document.addEventListener('DOMContentLoaded', async () => {
-    await loadClientConfig();
+    // 1. Initialisation du Template
+    const templateEl = document.getElementById('page-template');
+    if (!templateEl) {
+        console.error('Template #page-template introuvable !');
+        return;
+    }
+    pageTemplate = templateEl.content;
+    const appContainer = document.getElementById('app');
 
-    // Récupération des paramètres d'URL pour déterminer l'année et le mois à afficher
+    // 2. Chargement & Application Config Client
+    clientConfig = await fetchClientConfig();
+    await applyGlobalTheme(clientConfig);
+
+    // 3. Gestion des paramètres URL (Année / Mois)
     const urlParams = new URLSearchParams(window.location.search);
     let year = parseInt(urlParams.get('year')) || new Date().getFullYear() + 1;
-
     let monthParam = urlParams.get('month');
-    // Gestion de la redirection pour les serveurs statiques (ex: GitHub Pages) via le paramètre 'redirect'
+
+    // Redirection legacy (GitHub Pages 404 hack)
     const redirectPath = urlParams.get('redirect');
     if (redirectPath) {
         const match = redirectPath.match(/\/(\d{4})\/(\d{1,2})\/?$/);
@@ -98,54 +138,51 @@ document.addEventListener('DOMContentLoaded', async () => {
     let month = parseInt(monthParam);
     if (!isAllMonths && (!month || month < 1 || month > 12)) month = 1;
 
-    // Sauvegarde du template HTML original pour la duplication
-    const pageTemplate = document.querySelector('.page').cloneNode(true);
-
-    // Fonction de rendu d'une page unique (Mois spécifique)
-    const renderPage = (targetYear, targetMonth, container) => {
-        updateLegends(targetYear, targetMonth, container);
-        updateZoneTitles(targetYear, targetMonth, container);
-
-        const calendar = container.querySelector('ami-calendar-grid');
-        const prayerTable = container.querySelector('ami-prayer-table');
-
-        if (calendar) {
-            calendar.setAttribute('year', targetYear);
-            calendar.setAttribute('month', targetMonth);
-            if (calendar.render) calendar.render();
-        }
-        if (prayerTable) {
-            prayerTable.setAttribute('year', targetYear);
-            prayerTable.setAttribute('month', targetMonth);
-        }
-    };
-
-    // Orchestrateur du rendu (Mode Année complète ou Mois unique)
+    // 4. Fonction de rendu optimisée (DocumentFragment)
     const renderApp = () => {
         initAdhan();
+        appContainer.innerHTML = ''; // Reset propre du conteneur
+        const fragment = document.createDocumentFragment();
 
         if (isAllMonths) {
-            // Mode "Année complète" : On génère 12 pages
-            document.body.innerHTML = '';
             for (let m = 1; m <= 12; m++) {
-                const pageClone = pageTemplate.cloneNode(true);
-                document.body.appendChild(pageClone);
-                renderPage(year, m, pageClone);
+                fragment.appendChild(createPageNode(year, m));
             }
         } else {
-            // Restauration si nécessaire (cas de re-rendu après fetch)
-            if (!document.querySelector('.page')) {
-                document.body.innerHTML = '';
-                document.body.appendChild(pageTemplate.cloneNode(true));
-            }
-            renderPage(year, month, document);
+            fragment.appendChild(createPageNode(year, month));
         }
+        appContainer.appendChild(fragment);
     };
 
-    // 1. Rendu immédiat (avec config locale config.js)
+    // Helper : Création d'une page unique
+    const createPageNode = (y, m) => {
+        const clone = pageTemplate.cloneNode(true);
+
+        // Appliquer les textes du client
+        updatePageDOM(clone, clientConfig);
+
+        // Appliquer la logique calendrier
+        updateLegends(y, m, clone);
+        updateZoneTitles(y, m, clone);
+
+        // Configurer les Web Components
+        const calendar = clone.querySelector('ami-calendar-grid');
+        const prayerTable = clone.querySelector('ami-prayer-table');
+        if (calendar) {
+            calendar.setAttribute('year', y);
+            calendar.setAttribute('month', m);
+        }
+        if (prayerTable) {
+            prayerTable.setAttribute('year', y);
+            prayerTable.setAttribute('month', m);
+        }
+        return clone;
+    };
+
+    // 5. Premier rendu
     renderApp();
 
-    // 2. Mise à jour asynchrone via API (si connecté)
+    // 6. Mise à jour asynchrone (API Vacances/Fériés)
     fetchExternalData().then((shouldUpdate) => {
         if (shouldUpdate) renderApp();
     });
@@ -153,30 +190,26 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 /**
  * Met à jour l'affichage des légendes (Changement d'heure, Aïd) selon le mois.
- * @param {number} year
- * @param {number} month
- * @param {HTMLElement|Document} container
  */
-function updateLegends(year, month, container = document) {
+function updateLegends(year, month, container) {
     // 1. Changement d'heure (Mars/Octobre)
     const legendDst = container.querySelector('.legend-dst');
     if (legendDst && (month === 3 || month === 10)) {
         legendDst.style.display = 'flex';
-        const legendIcon = legendDst.querySelector('.icon');
         const legendText = legendDst.querySelector('span:last-child');
+        const legendImg = legendDst.querySelector('img');
 
         const isSummer = month === 3;
         if (legendText) legendText.textContent = isSummer ? "Heure d'été (+1h)" : "Heure d'hiver (-1h)";
 
-        // Note: Les icônes sont gérées via CSS/SVG, ici on pourrait changer la classe si nécessaire
-        // mais le code actuel semble utiliser des images statiques dans le HTML pour la légende.
-        if (legendIcon) {
-            legendIcon.classList.toggle('icon-clock-plus', isSummer);
-            legendIcon.classList.toggle('icon-clock-minus', !isSummer);
+        // Mise à jour de l'icône si c'est une balise img
+        if (legendImg) {
+            const iconFile = isSummer ? 'clock-plus.svg' : 'clock-minus.svg';
+            legendImg.src = `assets/icons/icon-${iconFile}`;
         }
     }
 
-    // 2. Légende Aïd (si présent dans le mois)
+    // 2. Légende Aïd & Vacances
     let hasEid = false;
     let eidName = '';
     let hasPublicHoliday = false;
@@ -184,9 +217,12 @@ function updateLegends(year, month, container = document) {
     const holidayNames = new Set();
     const jsMonth = month - 1;
     const daysInMonth = new Date(year, month, 0).getDate();
+
     for (let d = 1; d <= daysInMonth; d++) {
-        const hijriDate = getHijriDateSafe(new Date(year, jsMonth, d));
-        const info = getDayInfo(new Date(year, jsMonth, d), hijriDate);
+        const date = new Date(year, jsMonth, d);
+        const hijriDate = getHijriDateSafe(date);
+        const info = getDayInfo(date, hijriDate);
+
         if (info.isEid) {
             hasEid = true;
             eidName = info.label;
@@ -196,43 +232,45 @@ function updateLegends(year, month, container = document) {
         if (info.isNewMoon) newMoonMonthName = hijriDate.monthNameFR;
     }
 
-    // Mise à jour DOM Légendes
-    const legendEid = container.querySelector('.legend-eid');
-    if (legendEid) {
-        legendEid.style.display = hasEid ? 'flex' : 'none';
-        if (hasEid) legendEid.querySelector('span:last-child').textContent = eidName || 'Aïd';
+    const setDisplay = (sel, show) => {
+        const el = container.querySelector(sel);
+        if (el) el.style.display = show ? 'flex' : 'none';
+        return el;
+    };
+
+    const elEid = setDisplay('.legend-eid', hasEid);
+    if (elEid && hasEid) elEid.querySelector('span:last-child').textContent = eidName || 'Aïd';
+
+    const elHoliday = setDisplay('.legend-holiday', holidayNames.size > 0);
+    if (elHoliday && holidayNames.size > 0) {
+        elHoliday.querySelector('span:last-child').textContent = Array.from(holidayNames).join(' / ');
     }
 
-    const legendHoliday = container.querySelector('.legend-holiday');
-    if (legendHoliday) {
-        legendHoliday.style.display = holidayNames.size > 0 ? 'flex' : 'none';
-        if (holidayNames.size > 0) legendHoliday.querySelector('span:last-child').textContent = Array.from(holidayNames).join(' / ');
-    }
+    setDisplay('.legend-public', hasPublicHoliday);
 
-    const legendPublic = container.querySelector('.legend-public');
-    if (legendPublic) legendPublic.style.display = hasPublicHoliday ? 'flex' : 'none';
-
-    const legendMoon = container.querySelector('.legend-moon');
-    if (legendMoon) {
-        legendMoon.style.display = newMoonMonthName ? 'flex' : 'none';
-        if (newMoonMonthName) legendMoon.querySelector('span:last-child').textContent = newMoonMonthName;
+    const elMoon = setDisplay('.legend-moon', !!newMoonMonthName);
+    if (elMoon && newMoonMonthName) {
+        elMoon.querySelector('span:last-child').textContent = newMoonMonthName;
     }
 }
 
 /**
  * Met à jour les titres (Mois Grégorien, Mois Hégirien, Année).
- * @param {number} year
- * @param {number} month
- * @param {HTMLElement|Document} container
  */
-function updateZoneTitles(year, month, container = document) {
+function updateZoneTitles(year, month, container) {
+    if (typeof window.TEXTS === 'undefined') return;
+
     const jsMonth = month - 1;
     const daysInMonth = new Date(year, month, 0).getDate();
-    if (!TEXTS) return;
 
-    container.querySelector('.greg-month-fr').textContent = TEXTS.fr.months[jsMonth];
-    container.querySelector('.greg-month-ta').textContent = TEXTS.ta.months[jsMonth];
-    container.querySelector('.year-display').textContent = year;
+    const setTxt = (sel, txt) => {
+        const el = container.querySelector(sel);
+        if (el) el.textContent = txt;
+    };
+
+    setTxt('.greg-month-fr', window.TEXTS.fr.months[jsMonth]);
+    setTxt('.greg-month-ta', window.TEXTS.ta.months[jsMonth]);
+    setTxt('.year-display', year);
 
     const hijriStart = getHijriDateSafe(new Date(year, jsMonth, 1));
     const hijriEnd = getHijriDateSafe(new Date(year, jsMonth, daysInMonth));
@@ -248,6 +286,6 @@ function updateZoneTitles(year, month, container = document) {
             hijriArStr = `${hijriStart.monthNameAR} / ${hijriEnd.monthNameAR} ${hijriEnd.yearAr}`;
         }
     }
-    container.querySelector('.hijri-month-fr').textContent = hijriFrStr;
-    container.querySelector('.hijri-month-ar').textContent = hijriArStr;
+    setTxt('.hijri-month-fr', hijriFrStr);
+    setTxt('.hijri-month-ar', hijriArStr);
 }

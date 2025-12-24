@@ -12,13 +12,22 @@ class CalendarGrid extends HTMLElement {
         super();
     }
     connectedCallback() {
-        this.render();
+        this.queueRender();
     }
     static get observedAttributes() {
         return ['year', 'month'];
     }
     attributeChangedCallback(name, oldValue, newValue) {
-        if (oldValue !== newValue) this.render();
+        if (oldValue !== newValue) this.queueRender();
+    }
+
+    queueRender() {
+        if (this._renderPending) return;
+        this._renderPending = true;
+        requestAnimationFrame(() => {
+            this.render();
+            this._renderPending = false;
+        });
     }
 
     render() {
@@ -97,19 +106,28 @@ class PrayerTable extends HTMLElement {
         super();
     }
     connectedCallback() {
-        this.render();
+        this.queueRender();
     }
     static get observedAttributes() {
         return ['year', 'month'];
     }
     attributeChangedCallback(name, oldValue, newValue) {
-        if (oldValue !== newValue) this.render();
+        if (oldValue !== newValue) this.queueRender();
+    }
+
+    queueRender() {
+        if (this._renderPending) return;
+        this._renderPending = true;
+        requestAnimationFrame(() => {
+            this.render();
+            this._renderPending = false;
+        });
     }
 
     render() {
         const year = parseInt(this.getAttribute('year'));
         const month = parseInt(this.getAttribute('month'));
-        if (!year || !month || !TEXTS) return;
+        if (!year || !month || !window.TEXTS) return;
 
         const tbody = this.querySelector('tbody');
         if (!tbody) return;
@@ -131,7 +149,7 @@ class PrayerTable extends HTMLElement {
                 <tr ${rowClass}>
                     <td class="col-date-greg">
                         <div class="date-cell">
-                            <div>${TEXTS.fr.daysShort[dayOfWeekIdx]}</div>
+                            <div>${window.TEXTS.fr.daysShort[dayOfWeekIdx]}</div>
                             <div>${day.toString().padStart(2, '0')}</div>
                         </div>
                     </td>
