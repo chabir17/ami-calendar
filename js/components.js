@@ -1,3 +1,5 @@
+import { getHijriDateSafe, getDayInfo, getPrayerTimesSafe } from './services.js';
+
 // ==========================================
 // 2. COMPOSANTS WEB (Custom Elements : Grille & Tableau)
 // ==========================================

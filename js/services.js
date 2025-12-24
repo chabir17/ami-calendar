@@ -48,7 +48,7 @@ let parsedHolidaysCache = null;
 /**
  * Initialise la librairie Adhan avec la configuration globale définie dans config.js.
  */
-function initAdhan() {
+export function initAdhan() {
     if (typeof adhan === 'undefined') return;
     if (typeof CONFIG === 'undefined' || !CONFIG) return;
 
@@ -69,7 +69,7 @@ function initAdhan() {
  * Calcule les horaires de prière pour une date donnée.
  * @param {Date} date - La date pour laquelle calculer les horaires.
  */
-function getPrayerTimesSafe(date) {
+export function getPrayerTimesSafe(date) {
     if (!adhanCoords || !adhanParams) {
         return { fajr: '--:--', sunrise: '--:--', dhuhr: '--:--', asr: '--:--', maghrib: '--:--', isha: '--:--' };
     }
@@ -94,7 +94,7 @@ function getPrayerTimesSafe(date) {
  * Utilise un cache pour les performances.
  * @param {Date} date
  */
-function getHijriDateSafe(date) {
+export function getHijriDateSafe(date) {
     const timeKey = date.getTime();
     // Optimisation : Utilisation du cache pour éviter de recalculer la date hégirienne (coûteux)
     if (HIJRI_CACHE.has(timeKey)) return HIJRI_CACHE.get(timeKey);
@@ -133,7 +133,7 @@ function getHijriDateSafe(date) {
  * @param {Date} date
  * @param {Object} hijri
  */
-function getDayInfo(date, hijri) {
+export function getDayInfo(date, hijri) {
     let info = {
         isHoliday: false,
         isPublicHoliday: false,
@@ -209,7 +209,7 @@ function getDayInfo(date, hijri) {
  * Récupère les données officielles (Jours fériés & Vacances scolaires Zone C).
  * Utilise un cache localStorage pour limiter les appels API (durée : 30 jours).
  */
-async function fetchExternalData() {
+export async function fetchExternalData() {
     if (typeof window === 'undefined' || !window.CONFIG) return;
     let hasUpdates = false;
     const now = Date.now();

@@ -1,3 +1,6 @@
+import { initAdhan, fetchExternalData, getHijriDateSafe, getDayInfo } from './services.js';
+import './components.js';
+
 // ==========================================
 // 3. ORCHESTRATION & UI (Main)
 // ==========================================
@@ -77,7 +80,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Récupération des paramètres d'URL pour déterminer l'année et le mois à afficher
     const urlParams = new URLSearchParams(window.location.search);
-    let year = parseInt(urlParams.get('year')) || new Date().getFullYear();
+    let year = parseInt(urlParams.get('year')) || new Date().getFullYear() + 1;
 
     let monthParam = urlParams.get('month');
     // Gestion de la redirection pour les serveurs statiques (ex: GitHub Pages) via le paramètre 'redirect'
