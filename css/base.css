@@ -57,7 +57,7 @@ body {
     height: 1rem;
     vertical-align: middle;
     fill: currentColor;
-    color: var(--col-year-theme);
+    color: var(--brand);
     margin-right: 0.25rem;
     flex-shrink: 0; /* Empêche l'écrasement dans les flexbox */
 }

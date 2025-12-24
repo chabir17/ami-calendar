@@ -41,21 +41,21 @@ async function loadClientConfig() {
 
         // 4. Mettre à jour les Couleurs (CSS Variables)
         const root = document.documentElement;
-        if (data.theme.color_year_theme) {
-            root.style.setProperty('--col-year-theme', data.theme.color_year_theme);
+        if (data.theme.color_brand) {
+            root.style.setProperty('--brand', data.theme.color_brand);
 
             // Coloration dynamique du motif de fond (remplace la couleur dorée par défaut #d4af37)
             try {
                 const res = await fetch('assets/patterns/background-pattern.svg');
                 let svgText = await res.text();
-                svgText = svgText.replace(/#d4af37/gi, data.theme.color_year_theme);
+                svgText = svgText.replace(/#d4af37/gi, data.theme.color_brand);
                 const dataUri = 'data:image/svg+xml;base64,' + btoa(svgText);
                 root.style.setProperty('--bg-pattern-custom', `url('${dataUri}')`);
             } catch (e) {
                 console.warn('Erreur chargement pattern:', e);
             }
         }
-        if (data.theme.bg_header_cream) root.style.setProperty('--bg-header-cream', data.theme.bg_header_cream);
+        if (data.theme.bg_header) root.style.setProperty('--brand-light', data.theme.bg_header);
 
         // 5. Mettre à jour la config globale pour Adhan (Prière)
         if (window.CONFIG) {

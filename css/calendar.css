@@ -45,7 +45,7 @@
     transform: translate(-50%, -50%);
     font-size: 48px;
     font-weight: 700;
-    color: var(--col-year-theme);
+    color: var(--brand);
 }
 
 /* --- GRILLE CALENDRIER (GAUCHE) --- */
@@ -81,6 +81,7 @@
 
 .weekday-fr {
     font-size: 14px;
+    font-weight: 600;
     text-transform: uppercase;
 }
 

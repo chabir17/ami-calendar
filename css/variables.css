@@ -2,7 +2,9 @@
     /* --- PALETTE DE COULEURS (BASÉE SUR LE LOGO AMI) --- */
 
     /* Couleur thématique de l'année (Doré) */
-    --col-year-theme: #c8b070;
+    --brand: #c8b070;
+    --brand-dark: #686040;
+    --brand-light: #fff4d8;
 
     /* Bleu foncé (Référence Tour Eiffel) */
     --col-blue: #002e5d;
@@ -25,7 +27,6 @@
 
     /* Fonds globaux */
     --bg-body: #eeeeee;
-    --bg-header-cream: #fff4d8;
 
     /* --- FONDS "ÉCO-ENCRE" (PASTELS TRÈS CLAIRS POUR L'IMPRESSION) --- */
 
@@ -36,7 +37,6 @@
     --bg-public-holiday: rgba(200, 0, 0, 0.08);
 
     /* Gris très pâle pour les en-têtes */
-    --bg-table-header: #f8f9fa;
     --bg-table-stripe: #f3f3f3;
 
     /* Fonds transparents (basés sur les couleurs principales) */

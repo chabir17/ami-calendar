@@ -20,7 +20,7 @@
         }
     },
     "theme": {
-        "color_year_theme": "#c8b070",
-        "bg_header_cream": "#fff4d8"
+        "color_brand": "#c8b070",
+        "bg_header": "#fff4d8"
     }
 }

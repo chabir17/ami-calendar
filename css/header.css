@@ -1,12 +1,12 @@
 /* --- HEADER & IDENTITÉ --- */
 .header-fixed {
     position: relative;
-    background-color: var(--bg-header-cream);
+    background-color: var(--brand-light);
     background-image: var(--bg-pattern-custom, url('../assets/patterns/background-pattern.svg'));
     color: var(--col-text);
     margin: -1rem -1rem 0rem -1rem;
     padding: 2.5rem 1rem 1rem 1rem;
-    border-bottom: 1.5px solid var(--col-year-theme);
+    border-bottom: 1.5px solid var(--brand);
 }
 
 .header-content {
@@ -35,7 +35,7 @@
     object-fit: contain;
     background-color: white;
     border-radius: 25%;
-    border: 1.5px solid var(--col-year-theme);
+    border: 1.5px solid var(--brand);
 }
 
 .org-names {
@@ -44,11 +44,12 @@
 }
 
 .org-fr {
+    color: var(--brand-dark);
     line-height: 1.25;
 }
 
 .org-ta {
-    color: var(--col-year-theme);
+    color: var(--brand);
     line-height: 1.25;
 }
 
