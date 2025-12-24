@@ -18,7 +18,8 @@
         "hijri"
     ],
     "author": "Chabir",
-    "license": "ISC",
+    "license": "UNLICENSED",
+    "private": true,
     "type": "commonjs",
     "bugs": {
         "url": "https://github.com/chabir17/ami-calendar/issues"
