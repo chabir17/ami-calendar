@@ -1,4 +1,5 @@
 import { initAdhan, fetchExternalData, getHijriDateSafe, getDayInfo } from './services.js';
+import { DOM } from './utils.js';
 import './components.js';
 
 // ==========================================
@@ -70,18 +71,9 @@ async function applyGlobalTheme(config) {
 function updatePageDOM(container, config) {
     if (!config) return;
 
-    const setText = (sel, txt) => {
-        const el = container.querySelector(sel);
-        if (el) el.textContent = txt;
-    };
-    const setSrc = (sel, src) => {
-        const el = container.querySelector(sel);
-        if (el) el.src = src;
-    };
-
-    setText('.org-fr', config.identity.name_fr);
-    setText('.org-ta', config.identity.name_ta);
-    setSrc('.logo-img', config.identity.logo_url);
+    DOM.setText('.org-fr', config.identity.name_fr, container);
+    DOM.setText('.org-ta', config.identity.name_ta, container);
+    DOM.setSrc('.logo-img', config.identity.logo_url, container);
 
     // Mise à jour des contacts (HTML complexe)
     const headerRight = container.querySelector('.header-right');
@@ -193,20 +185,17 @@ document.addEventListener('DOMContentLoaded', async () => {
  */
 function updateLegends(year, month, container) {
     // 1. Changement d'heure (Mars/Octobre)
-    const legendDst = container.querySelector('.legend-dst');
-    if (legendDst && (month === 3 || month === 10)) {
-        legendDst.style.display = 'flex';
-        const legendText = legendDst.querySelector('span:last-child');
-        const legendImg = legendDst.querySelector('img');
+    const isDstMonth = month === 3 || month === 10;
+    const legendDst = DOM.setDisplay('.legend-dst', isDstMonth, container);
 
+    if (legendDst && isDstMonth) {
+        const legendText = legendDst.querySelector('span:last-child');
         const isSummer = month === 3;
         if (legendText) legendText.textContent = isSummer ? "Heure d'été (+1h)" : "Heure d'hiver (-1h)";
 
         // Mise à jour de l'icône si c'est une balise img
-        if (legendImg) {
-            const iconFile = isSummer ? 'clock-plus.svg' : 'clock-minus.svg';
-            legendImg.src = `assets/icons/icon-${iconFile}`;
-        }
+        const iconFile = isSummer ? 'clock-plus.svg' : 'clock-minus.svg';
+        DOM.setSrc('img', `assets/icons/icon-${iconFile}`, legendDst);
     }
 
     // 2. Légende Aïd & Vacances
@@ -232,23 +221,17 @@ function updateLegends(year, month, container) {
         if (info.isNewMoon) newMoonMonthName = hijriDate.monthNameFR;
     }
 
-    const setDisplay = (sel, show) => {
-        const el = container.querySelector(sel);
-        if (el) el.style.display = show ? 'flex' : 'none';
-        return el;
-    };
-
-    const elEid = setDisplay('.legend-eid', hasEid);
+    const elEid = DOM.setDisplay('.legend-eid', hasEid, container);
     if (elEid && hasEid) elEid.querySelector('span:last-child').textContent = eidName || 'Aïd';
 
-    const elHoliday = setDisplay('.legend-holiday', holidayNames.size > 0);
+    const elHoliday = DOM.setDisplay('.legend-holiday', holidayNames.size > 0, container);
     if (elHoliday && holidayNames.size > 0) {
         elHoliday.querySelector('span:last-child').textContent = Array.from(holidayNames).join(' / ');
     }
 
-    setDisplay('.legend-public', hasPublicHoliday);
+    DOM.setDisplay('.legend-public', hasPublicHoliday, container);
 
-    const elMoon = setDisplay('.legend-moon', !!newMoonMonthName);
+    const elMoon = DOM.setDisplay('.legend-moon', !!newMoonMonthName, container);
     if (elMoon && newMoonMonthName) {
         elMoon.querySelector('span:last-child').textContent = newMoonMonthName;
     }
@@ -263,14 +246,9 @@ function updateZoneTitles(year, month, container) {
     const jsMonth = month - 1;
     const daysInMonth = new Date(year, month, 0).getDate();
 
-    const setTxt = (sel, txt) => {
-        const el = container.querySelector(sel);
-        if (el) el.textContent = txt;
-    };
-
-    setTxt('.greg-month-fr', window.TEXTS.fr.months[jsMonth]);
-    setTxt('.greg-month-ta', window.TEXTS.ta.months[jsMonth]);
-    setTxt('.year-display', year);
+    DOM.setText('.greg-month-fr', window.TEXTS.fr.months[jsMonth], container);
+    DOM.setText('.greg-month-ta', window.TEXTS.ta.months[jsMonth], container);
+    DOM.setText('.year-display', year, container);
 
     const hijriStart = getHijriDateSafe(new Date(year, jsMonth, 1));
     const hijriEnd = getHijriDateSafe(new Date(year, jsMonth, daysInMonth));
@@ -286,6 +264,6 @@ function updateZoneTitles(year, month, container) {
             hijriArStr = `${hijriStart.monthNameAR} / ${hijriEnd.monthNameAR} ${hijriEnd.yearAr}`;
         }
     }
-    setTxt('.hijri-month-fr', hijriFrStr);
-    setTxt('.hijri-month-ar', hijriArStr);
+    DOM.setText('.hijri-month-fr', hijriFrStr, container);
+    DOM.setText('.hijri-month-ar', hijriArStr, container);
 }

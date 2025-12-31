@@ -12,7 +12,7 @@ Le design est piloté par des variables CSS (`css/variables.css`) permettant une
     - Bleu "Tour Eiffel" (`--col-blue`)
     - Vert "Mosquée" (`--col-green`)
     - Orange (`--col-orange`) pour les éléments Tamouls.
- **Thème Annuel** : Une couleur variable (`--brand`) permet d'adapter l'ambiance générale chaque année. Les variantes (sombre/claire) sont générées automatiquement.
+      **Thème Annuel** : Une couleur variable (`--brand`) permet d'adapter l'ambiance générale chaque année. Les variantes (sombre/claire) sont générées automatiquement.
 - **Indicateurs de Jours** : Arrière-plans spécifiques pour les vendredis (`--bg-friday`) et les jours fériés (`--bg-public-holiday`).
 
 ### 🌐 Typographie Multilingue
@@ -60,6 +60,7 @@ Le projet intègre plusieurs stratégies pour assurer un chargement rapide et un
 - **js/** : Logique applicative (Vanilla JS).
     - `lib/` : Librairies tierces (Adhan.js minifié) pour fonctionnement hors-ligne.
     - `components.js` : Définition des Web Components (`<ami-calendar-grid>`, `<ami-prayer-table>`).
+    - `utils.js` : Fonctions utilitaires partagées (DOM helpers, formatage de dates).
     - `services.js` : Logique métier (Calculs Adhan, Hégire, et appels API).
     - `main.js` : Point d'entrée, orchestration du rendu et gestion du cache.
 - **data/** : Fichiers de configuration.

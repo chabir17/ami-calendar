@@ -1,41 +1,12 @@
+import { DATE_UTILS } from './utils.js';
+
 // ==========================================
 // 1. SERVICES & LOGIQUE MÉTIER (Date, Prières, API)
 // ==========================================
 
 /**
- * Formatteur de date pour le calendrier hégirien (Islamique Civil).
- */
-const HIJRI_FORMATTER = new Intl.DateTimeFormat('fr-FR-u-ca-islamic-civil', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric'
-});
-
-/**
- * Mapping des noms de mois français (retournés par Intl) vers leur équivalent arabe.
- */
-const MONTH_MAP_FR_AR = {
-    mouharram: 'محرم',
-    safar: 'صفر',
-    'rabia al awal': 'ربيع الأول',
-    'rabia ath-thani': 'ربيع الآخر',
-    'joumada al oula': 'جمادى الأولى',
-    'joumada ath-thania': 'جمادى الآخرة',
-    rajab: 'رجب',
-    chaʻban: 'شعبان',
-    chaabane: 'شعبان',
-    "cha'ban": 'شعبان',
-    ramadan: 'رمضان',
-    chawwal: 'شوال',
-    'dhou al qi`da': 'ذو القعدة',
-    'dhou al-hijja': 'ذو الحجة'
-};
-
-/**
  * Constantes et Caches
  */
-const ARABIC_DIGITS = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
-const RE_DIGITS = /\d/g;
 const HIJRI_CACHE = new Map();
 const CACHE_KEY = 'ami_calendar_cache';
 const CACHE_DURATION = 30 * 24 * 60 * 60 * 1000; // 30 jours
@@ -100,7 +71,7 @@ export function getHijriDateSafe(date) {
     if (HIJRI_CACHE.has(timeKey)) return HIJRI_CACHE.get(timeKey);
 
     try {
-        const parts = HIJRI_FORMATTER.formatToParts(date);
+        const parts = DATE_UTILS.HIJRI_FORMATTER.formatToParts(date);
         let day = '',
             monthFr = '',
             year = '';
@@ -111,8 +82,8 @@ export function getHijriDateSafe(date) {
         });
 
         let cleanMonthFr = monthFr.toLowerCase().trim();
-        const monthAr = MONTH_MAP_FR_AR[cleanMonthFr] || cleanMonthFr;
-        const yearAr = year.replace(RE_DIGITS, (d) => ARABIC_DIGITS[d]);
+        const monthAr = DATE_UTILS.MONTH_MAP_FR_AR[cleanMonthFr] || cleanMonthFr;
+        const yearAr = DATE_UTILS.toArabicDigits(year);
 
         const result = {
             day: day,
@@ -249,14 +220,15 @@ export async function fetchExternalData() {
 
         // 2. Vacances Scolaires (Zone C - Académie de Créteil)
         const resSchool = await fetch(
-            'https://data.education.gouv.fr/api/explore/v2.0/catalog/datasets/fr-en-calendrier-scolaire/records?select=description,start_date,end_date&where=zones=%22Zone%20C%22%20and%20location=%22Cr%C3%A9teil%22%20and%20end_date%3E=%222025-01-01%22&order_by=start_date&limit=100'
+            'https://data.education.gouv.fr/api/explore/v2.0/catalog/datasets/fr-en-calendrier-scolaire/records?select=description,start_date,end_date&where=zones=%22Zone%20C%22%20and%20location=%22Cr%C3%A9teil%22%20and%20end_date%3E=%222025-01-01%22&timezone=Europe/Paris&order_by=start_date&limit=100'
         );
         if (resSchool.ok) {
             const data = await resSchool.json();
+
             const newHolidays = data.records.map((item) => ({
                 name: item.record.fields.description || 'Vacances',
-                start: item.record.fields.start_date.split('T')[0],
-                end: item.record.fields.end_date.split('T')[0]
+                start: DATE_UTILS.toParisISO(item.record.fields.start_date),
+                end: DATE_UTILS.toParisISO(item.record.fields.end_date)
             }));
             window.CONFIG.schoolHolidays = newHolidays;
             parsedHolidaysCache = null; // Force le re-calcul des vacances
