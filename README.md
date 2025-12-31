@@ -12,7 +12,7 @@ Le design est piloté par des variables CSS (`css/variables.css`) permettant une
     - Bleu "Tour Eiffel" (`--col-blue`)
     - Vert "Mosquée" (`--col-green`)
     - Orange (`--col-orange`) pour les éléments Tamouls.
-- **Thème Annuel** : Une couleur variable (`--brand`) permet d'adapter l'ambiance générale chaque année.
+ **Thème Annuel** : Une couleur variable (`--brand`) permet d'adapter l'ambiance générale chaque année. Les variantes (sombre/claire) sont générées automatiquement.
 - **Indicateurs de Jours** : Arrière-plans spécifiques pour les vendredis (`--bg-friday`) et les jours fériés (`--bg-public-holiday`).
 
 ### 🌐 Typographie Multilingue
@@ -77,6 +77,8 @@ Le projet intègre plusieurs stratégies pour assurer un chargement rapide et un
 Pour modifier l'apparence du calendrier, éditez le fichier `css/variables.css`.
 
 **Exemple : Changer la couleur du thème de l'année**
+
+Il suffit de modifier la variable `--brand`. Les variantes `--brand-dark` et `--brand-light` sont calculées automatiquement.
 
 ```css
 :root {

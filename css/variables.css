@@ -3,8 +3,8 @@
 
     /* Couleur thématique de l'année (Doré) */
     --brand: #c8b070;
-    --brand-dark: #686040;
-    --brand-light: #fff4d8;
+    --brand-dark: color-mix(in srgb, var(--brand), black 45%);
+    --brand-light: color-mix(in srgb, var(--brand), white 85%);
 
     /* Bleu foncé (Référence Tour Eiffel) */
     --col-blue: #002e5d;
