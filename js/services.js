@@ -81,13 +81,13 @@ export function getHijriDateSafe(date) {
             if (p.type === 'year') year = p.value;
         });
 
-        let cleanMonthFr = monthFr.toLowerCase().trim();
-        const monthAr = DATE_UTILS.MONTH_MAP_FR_AR[cleanMonthFr] || cleanMonthFr;
+        const { ar: monthAr, std: monthStd } = DATE_UTILS.getHijriNames(monthFr);
         const yearAr = DATE_UTILS.toArabicDigits(year);
 
         const result = {
             day: day,
-            monthNameFR: monthFr,
+            monthNameFR: monthStd,
+            monthNameRaw: monthFr,
             monthNameAR: monthAr,
             year: year,
             yearAr: yearAr
@@ -95,7 +95,7 @@ export function getHijriDateSafe(date) {
         HIJRI_CACHE.set(timeKey, result);
         return result;
     } catch (e) {
-        return { day: '?', monthNameFR: '', monthNameAR: '', year: '', yearAr: '' };
+        return { day: '?', monthNameFR: '', monthNameRaw: '', monthNameAR: '', year: '', yearAr: '' };
     }
 }
 
@@ -165,7 +165,7 @@ export function getDayInfo(date, hijri) {
 
     // 5. Vérification Lune & Aïd
     if (hijri.day == '1') info.isNewMoon = true;
-    const hMonth = hijri.monthNameFR ? hijri.monthNameFR.toLowerCase() : '';
+    const hMonth = hijri.monthNameRaw ? hijri.monthNameRaw.toLowerCase() : '';
     if (hijri.day == '1' && (hMonth.includes('chawwal') || hMonth.includes('schawwal'))) {
         info.isEid = true;
         info.label = 'Eid-ul-Fitr';

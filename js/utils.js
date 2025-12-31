@@ -32,6 +32,29 @@ export const DOM = {
 };
 
 /**
+ * Données unifiées pour les mois hégiriens.
+ * Clé : Nom brut retourné par Intl (minuscule).
+ * Valeur : { ar: Arabe, std: Translittération Standard }
+ */
+const HIJRI_MONTHS_DATA = {
+    mouharram: { ar: 'محرم', std: 'Muḥarram' },
+    safar: { ar: 'صفر', std: 'Ṣafar' },
+    'rabia al awal': { ar: 'ربيع الأول', std: 'Rabīʿ al-awwal' },
+    'rabia ath-thani': { ar: 'ربيع الآخر', std: 'Rabīʿ ath-thānī' },
+    'joumada al oula': { ar: 'جمادى الأولى', std: 'Jumādā al-ūlā' },
+    'joumada ath-thania': { ar: 'جمادى الآخرة', std: 'Jumādā ath-thāniya' },
+    rajab: { ar: 'رجب', std: 'Rajab' },
+    // Variantes pour Cha'ban selon les navigateurs/OS (différentes versions CLDR)
+    chaʻban: { ar: 'شعبان', std: 'Shaʿbān' },
+    chaabane: { ar: 'شعبان', std: 'Shaʿbān' },
+    "cha'ban": { ar: 'شعبان', std: 'Shaʿbān' },
+    ramadan: { ar: 'رمضان', std: 'Ramaḍān' },
+    chawwal: { ar: 'شوال', std: 'Shawwāl' },
+    'dhou al qi`da': { ar: 'ذو القعدة', std: 'Dhū al-Qaʿdah' },
+    'dhou al-hijja': { ar: 'ذو الحجة', std: 'Dhū al-Ḥijjah' }
+};
+
+/**
  * Configuration et formatage pour les dates.
  */
 export const DATE_UTILS = {
@@ -41,24 +64,6 @@ export const DATE_UTILS = {
         month: 'long',
         year: 'numeric'
     }),
-
-    /** Mapping Mois Français -> Arabe */
-    MONTH_MAP_FR_AR: {
-        mouharram: 'محرم',
-        safar: 'صفر',
-        'rabia al awal': 'ربيع الأول',
-        'rabia ath-thani': 'ربيع الآخر',
-        'joumada al oula': 'جمادى الأولى',
-        'joumada ath-thania': 'جمادى الآخرة',
-        rajab: 'رجب',
-        chaʻban: 'شعبان',
-        chaabane: 'شعبان',
-        "cha'ban": 'شعبان',
-        ramadan: 'رمضان',
-        chawwal: 'شوال',
-        'dhou al qi`da': 'ذو القعدة',
-        'dhou al-hijja': 'ذو الحجة'
-    },
 
     ARABIC_DIGITS: ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'],
 
@@ -82,5 +87,17 @@ export const DATE_UTILS = {
     },
 
     /** Convertit les chiffres latins en chiffres arabes */
-    toArabicDigits: (str) => str.replace(/\d/g, (d) => DATE_UTILS.ARABIC_DIGITS[d])
+    toArabicDigits: (str) => str.replace(/\d/g, (d) => DATE_UTILS.ARABIC_DIGITS[d]),
+
+    /**
+     * Récupère les noms localisés (Arabe & Standard) à partir du nom brut Intl.
+     */
+    getHijriNames: (rawName) => {
+        const key = rawName.toLowerCase().trim();
+        const data = HIJRI_MONTHS_DATA[key];
+        return {
+            ar: data ? data.ar : key,
+            std: data ? data.std : rawName
+        };
+    }
 };
