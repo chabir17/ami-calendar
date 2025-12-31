@@ -14,7 +14,6 @@ Le design est piloté par des variables CSS (`css/variables.css`) permettant une
     - Orange (`--col-orange`) pour les éléments Tamouls.
 - **Thème Annuel** : Une couleur variable (`--brand`) permet d'adapter l'ambiance générale chaque année. Les variantes (sombre/claire) sont générées automatiquement.
 - **Indicateurs de Jours** : Arrière-plans spécifiques pour les vendredis (`--bg-friday`) et les jours fériés (`--bg-public-holiday`).
-- **Configuration Dynamique** : Support multi-clients via fichiers JSON (Logo, Contacts, Thème) chargés par paramètre URL (`?mosque=id`).
 
 ### 🌐 Typographie Multilingue
 
@@ -67,7 +66,6 @@ Le projet intègre plusieurs stratégies pour assurer un chargement rapide et un
 - **data/** : Fichiers de configuration.
     - `config.js` : Paramètres géographiques (Lat/Lng) et méthodes de calcul.
     - `lang.js` : Textes et traductions (Français, Arabe, Tamoul).
-- **clients/** : Configurations JSON par mosquée (ex: `ami93120.json`) contenant l'identité et le thème spécifique.
 
 ### ⚙️ Logique et Données
 

@@ -72,7 +72,7 @@ export const DATE_UTILS = {
      * en forçant le fuseau horaire Europe/Paris.
      */
     toParisISO: (dateStr) => {
-        const dtf = new Intl.DateTimeFormat('en-US', {
+        const dtf = new Intl.DateTimeFormat('fr-FR', {
             timeZone: 'Europe/Paris',
             year: 'numeric',
             month: '2-digit',

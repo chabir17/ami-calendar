@@ -225,11 +225,16 @@ export async function fetchExternalData() {
         if (resSchool.ok) {
             const data = await resSchool.json();
 
-            const newHolidays = data.records.map((item) => ({
-                name: item.record.fields.description || 'Vacances',
-                start: DATE_UTILS.toParisISO(item.record.fields.start_date),
-                end: DATE_UTILS.toParisISO(item.record.fields.end_date)
-            }));
+            const newHolidays = data.records.map((item) => {
+                // L'API retourne la date de reprise, on recule d'un jour pour avoir la fin des vacances
+                const endDate = new Date(item.record.fields.end_date);
+                endDate.setDate(endDate.getDate() - 1);
+                return {
+                    name: item.record.fields.description || 'Vacances',
+                    start: DATE_UTILS.toParisISO(item.record.fields.start_date),
+                    end: DATE_UTILS.toParisISO(endDate)
+                };
+            });
             window.CONFIG.schoolHolidays = newHolidays;
             parsedHolidaysCache = null; // Force le re-calcul des vacances
             updated = true;
