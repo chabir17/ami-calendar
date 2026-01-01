@@ -37,6 +37,7 @@ body {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     position: relative;
     overflow: hidden;
+    /* "Safe Center" : Centre l'élément si l'espace le permet, sinon s'aligne à gauche pour permettre le scroll */
     margin: 1rem auto;
 }
 

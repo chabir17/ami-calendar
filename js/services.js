@@ -179,9 +179,11 @@ export function getDayInfo(date, hijri) {
 /**
  * Récupère les données officielles (Jours fériés & Vacances scolaires Zone C).
  * Utilise un cache localStorage pour limiter les appels API (durée : 30 jours).
+ * @returns {Promise<boolean>} true si les données ont été mises à jour (cache ou API), false sinon.
  */
 export async function fetchExternalData() {
-    if (typeof window === 'undefined' || !window.CONFIG) return;
+    // Sécurité : Vérifie que l'environnement global est prêt avant de lancer les requêtes
+    if (typeof window === 'undefined' || !window.CONFIG) return false;
     let hasUpdates = false;
     const now = Date.now();
 
@@ -254,5 +256,6 @@ export async function fetchExternalData() {
         return updated;
     } catch (e) {
         console.warn('⚠️ Mode hors ligne ou erreur API : Utilisation de la configuration locale.', e);
+        return false;
     }
 }

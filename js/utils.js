@@ -33,33 +33,50 @@ export const DOM = {
 
 /**
  * Données unifiées pour les mois hégiriens.
+ * Gère les variations de translittération selon les OS/Navigateurs (CLDR versions).
  * Clé : Nom brut retourné par Intl (minuscule).
  * Valeur : { ar: Arabe, std: Translittération Standard }
  */
 const HIJRI_MONTHS_DATA = {
     mouharram: { ar: 'محرم', std: 'Muḥarram' },
+    muharram: { ar: 'محرم', std: 'Muḥarram' },
     safar: { ar: 'صفر', std: 'Ṣafar' },
     'rabia al awal': { ar: 'ربيع الأول', std: 'Rabīʿ al-awwal' },
+    'rabiʻ al-awwal': { ar: 'ربيع الأول', std: 'Rabīʿ al-awwal' },
+    'rabiʻ i': { ar: 'ربيع الأول', std: 'Rabīʿ al-awwal' },
     'rabia ath-thani': { ar: 'ربيع الآخر', std: 'Rabīʿ ath-thānī' },
+    'rabiʻ ath-thani': { ar: 'ربيع الآخر', std: 'Rabīʿ ath-thānī' },
+    'rabiʻ ii': { ar: 'ربيع الآخر', std: 'Rabīʿ ath-thānī' },
     'joumada al oula': { ar: 'جمادى الأولى', std: 'Jumādā al-ūlā' },
+    'jumada al-ula': { ar: 'جمادى الأولى', std: 'Jumādā al-ūlā' },
+    'jumada i': { ar: 'جمادى الأولى', std: 'Jumādā al-ūlā' },
     'joumada ath-thania': { ar: 'جمادى الآخرة', std: 'Jumādā ath-thāniya' },
+    'jumada al-akhira': { ar: 'جمادى الآخرة', std: 'Jumādā ath-thāniya' },
+    'jumada ii': { ar: 'جمادى الآخرة', std: 'Jumādā ath-thāniya' },
     rajab: { ar: 'رجب', std: 'Rajab' },
-    // Variantes pour Cha'ban selon les navigateurs/OS (différentes versions CLDR)
     chaʻban: { ar: 'شعبان', std: 'Shaʿbān' },
     chaabane: { ar: 'شعبان', std: 'Shaʿbān' },
     "cha'ban": { ar: 'شعبان', std: 'Shaʿbān' },
+    shaʻban: { ar: 'شعبان', std: 'Shaʿbān' },
+    shaban: { ar: 'شعبان', std: 'Shaʿbān' },
     ramadan: { ar: 'رمضان', std: 'Ramaḍān' },
     chawwal: { ar: 'شوال', std: 'Shawwāl' },
+    shawwal: { ar: 'شوال', std: 'Shawwāl' },
     'dhou al qi`da': { ar: 'ذو القعدة', std: 'Dhū al-Qaʿdah' },
-    'dhou al-hijja': { ar: 'ذو الحجة', std: 'Dhū al-Ḥijjah' }
+    'dhou al-qiʻda': { ar: 'ذو القعدة', std: 'Dhū al-Qaʿdah' },
+    'dhu al-qaʻdah': { ar: 'ذو القعدة', std: 'Dhū al-Qaʿdah' },
+    'dhuʻl-qiʻdah': { ar: 'ذو القعدة', std: 'Dhū al-Qaʿdah' },
+    'dhou al-hijja': { ar: 'ذو الحجة', std: 'Dhū al-Ḥijjah' },
+    'dhu al-hijjah': { ar: 'ذو الحجة', std: 'Dhū al-Ḥijjah' },
+    'dhuʻl-hijjah': { ar: 'ذو الحجة', std: 'Dhū al-Ḥijjah' }
 };
 
 /**
  * Configuration et formatage pour les dates.
  */
 export const DATE_UTILS = {
-    /** Formatteur Hégirien (Islamique Civil) */
-    HIJRI_FORMATTER: new Intl.DateTimeFormat('fr-FR-u-ca-islamic-civil', {
+    /** Formatteur Hégirien (Islamique Civil) - Force en-US pour éviter le fallback Grégorien sur Android */
+    HIJRI_FORMATTER: new Intl.DateTimeFormat('en-US-u-ca-islamic-civil', {
         day: 'numeric',
         month: 'long',
         year: 'numeric'
