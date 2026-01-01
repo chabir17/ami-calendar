@@ -71,15 +71,30 @@ export function getHijriDateSafe(date) {
     if (HIJRI_CACHE.has(timeKey)) return HIJRI_CACHE.get(timeKey);
 
     try {
-        const parts = DATE_UTILS.HIJRI_FORMATTER.formatToParts(date);
         let day = '',
             monthFr = '',
             year = '';
-        parts.forEach((p) => {
-            if (p.type === 'day') day = p.value;
-            if (p.type === 'month') monthFr = p.value;
-            if (p.type === 'year') year = p.value;
-        });
+
+        // 1. Essai avec l'API native du navigateur (Intl)
+        const parts = DATE_UTILS.HIJRI_FORMATTER.formatToParts(date);
+        const yearPart = parts.find(p => p.type === 'year');
+        
+        // DÉTECTION DE BUG ANDROID : Si l'année est > 2000, c'est que le navigateur a échoué et renvoie du Grégorien.
+        const isBroken = yearPart && parseInt(yearPart.value) > 2000;
+
+        if (!isBroken) {
+            parts.forEach((p) => {
+                if (p.type === 'day') day = p.value;
+                if (p.type === 'month') monthFr = p.value;
+                if (p.type === 'year') year = p.value;
+            });
+        } else {
+            // 2. Fallback manuel (Algorithme Tabulaire)
+            const fallback = DATE_UTILS.getHijriDateFallback(date);
+            day = fallback.day;
+            monthFr = fallback.monthName;
+            year = fallback.year;
+        }
 
         const { ar: monthAr, std: monthStd } = DATE_UTILS.getHijriNames(monthFr);
         const yearAr = DATE_UTILS.toArabicDigits(year);
