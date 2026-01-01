@@ -12,6 +12,7 @@ body {
     padding: 1.25rem;
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 2.5rem;
 }
 
@@ -37,8 +38,7 @@ body {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     position: relative;
     overflow: hidden;
-    /* "Safe Center" : Centre l'élément si l'espace le permet, sinon s'aligne à gauche pour permettre le scroll */
-    margin: 1rem auto;
+    margin: 1rem 0;
 }
 
 /* Conteneur principal : Calendrier (2/3) + Prières (1/3) */
