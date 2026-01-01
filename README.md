@@ -32,6 +32,13 @@ L'en-tête (`css/header.css`) est conçu pour être informatif et esthétique :
 - Présentation du nom de l'organisation en plusieurs langues.
 - Section de contact alignée.
 
+### 📱 Compatibilité Mobile
+
+L'interface est optimisée pour les smartphones et tablettes :
+
+- **Scroll Horizontal "Safe"** : Utilisation de marges automatiques (`margin: auto`) pour garantir que le calendrier reste accessible sans couper le contenu gauche sur les petits écrans.
+- **Support Cross-Platform** : Gestion des spécificités iOS/Android pour l'affichage des dates et mois hégiriens.
+
 ### 🚀 Performance et Optimisations
 
 Le projet intègre plusieurs stratégies pour assurer un chargement rapide et une interface fluide :
@@ -71,6 +78,7 @@ Le projet intègre plusieurs stratégies pour assurer un chargement rapide et un
 
 - **Horaires de Prière** : Calculés localement via la librairie `Adhan.js` (incluse dans `js/lib/`).
 - **Dates Hégiriennes** : Conversion dynamique via `Intl.DateTimeFormat` (Islamic Civil).
+    - _Stratégie de robustesse_ : Force la locale `en-US` pour éviter les bugs d'affichage sur Android, avec traduction via une table de correspondance unifiée.
 - **Jours Fériés & Vacances** : Récupérés automatiquement depuis les APIs gouvernementales (api.gouv.fr / education.gouv.fr) avec un système de **cache local** (30 jours) pour limiter les requêtes.
 
 ## Personnalisation
