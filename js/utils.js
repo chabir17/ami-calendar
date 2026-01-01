@@ -44,15 +44,19 @@ const HIJRI_MONTHS_DATA = {
     'rabia al awal': { ar: 'ربيع الأول', std: 'Rabīʿ al-awwal' },
     'rabiʻ al-awwal': { ar: 'ربيع الأول', std: 'Rabīʿ al-awwal' },
     'rabiʻ i': { ar: 'ربيع الأول', std: 'Rabīʿ al-awwal' },
+    "rabi' i": { ar: 'ربيع الأول', std: 'Rabīʿ al-awwal' },
     'rabia ath-thani': { ar: 'ربيع الآخر', std: 'Rabīʿ ath-thānī' },
     'rabiʻ ath-thani': { ar: 'ربيع الآخر', std: 'Rabīʿ ath-thānī' },
     'rabiʻ ii': { ar: 'ربيع الآخر', std: 'Rabīʿ ath-thānī' },
+    "rabi' ii": { ar: 'ربيع الآخر', std: 'Rabīʿ ath-thānī' },
     'joumada al oula': { ar: 'جمادى الأولى', std: 'Jumādā al-ūlā' },
     'jumada al-ula': { ar: 'جمادى الأولى', std: 'Jumādā al-ūlā' },
     'jumada i': { ar: 'جمادى الأولى', std: 'Jumādā al-ūlā' },
+    "jumada' i": { ar: 'جمادى الأولى', std: 'Jumādā al-ūlā' },
     'joumada ath-thania': { ar: 'جمادى الآخرة', std: 'Jumādā ath-thāniya' },
     'jumada al-akhira': { ar: 'جمادى الآخرة', std: 'Jumādā ath-thāniya' },
     'jumada ii': { ar: 'جمادى الآخرة', std: 'Jumādā ath-thāniya' },
+    "jumada' ii": { ar: 'جمادى الآخرة', std: 'Jumādā ath-thāniya' },
     rajab: { ar: 'رجب', std: 'Rajab' },
     chaʻban: { ar: 'شعبان', std: 'Shaʿbān' },
     chaabane: { ar: 'شعبان', std: 'Shaʿbān' },
@@ -65,18 +69,23 @@ const HIJRI_MONTHS_DATA = {
     'dhou al qi`da': { ar: 'ذو القعدة', std: 'Dhū al-Qaʿdah' },
     'dhou al-qiʻda': { ar: 'ذو القعدة', std: 'Dhū al-Qaʿdah' },
     'dhu al-qaʻdah': { ar: 'ذو القعدة', std: 'Dhū al-Qaʿdah' },
+    'dhul qadah': { ar: 'ذو القعدة', std: 'Dhū al-Qaʿdah' },
     'dhuʻl-qiʻdah': { ar: 'ذو القعدة', std: 'Dhū al-Qaʿdah' },
+    "dhu'l-qi'dah": { ar: 'ذو القعدة', std: 'Dhū al-Qaʿdah' },
     'dhou al-hijja': { ar: 'ذو الحجة', std: 'Dhū al-Ḥijjah' },
     'dhu al-hijjah': { ar: 'ذو الحجة', std: 'Dhū al-Ḥijjah' },
-    'dhuʻl-hijjah': { ar: 'ذو الحجة', std: 'Dhū al-Ḥijjah' }
+    'dhul hijjah': { ar: 'ذو الحجة', std: 'Dhū al-Ḥijjah' },
+    'dhuʻl-hijjah': { ar: 'ذو الحجة', std: 'Dhū al-Ḥijjah' },
+    "dhu'l-hijjah": { ar: 'ذو الحجة', std: 'Dhū al-Ḥijjah' }
 };
 
 /**
  * Configuration et formatage pour les dates.
  */
 export const DATE_UTILS = {
-    /** Formatteur Hégirien (Islamique Civil) - Force en-US pour éviter le fallback Grégorien sur Android */
-    HIJRI_FORMATTER: new Intl.DateTimeFormat('en-US-u-ca-islamic-civil', {
+    /** Formatteur Hégirien (Islamique) - Fallback sur 'islamic' (Umalqura) car 'islamic-civil' bug sur certains Android */
+    HIJRI_FORMATTER: new Intl.DateTimeFormat('en-US', {
+        calendar: 'islamic',
         day: 'numeric',
         month: 'long',
         year: 'numeric'
