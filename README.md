@@ -13,7 +13,9 @@ Le design est piloté par des variables CSS (`css/variables.css`) permettant une
     - Vert "Mosquée" (`--col-green`)
     - Orange (`--col-orange`) pour les éléments Tamouls.
 - **Thème Annuel** : Une couleur variable (`--brand`) permet d'adapter l'ambiance générale chaque année. Les variantes (sombre/claire) sont générées automatiquement.
-- **Indicateurs de Jours** : Arrière-plans spécifiques pour les vendredis (`--bg-friday`) et les jours fériés (`--bg-public-holiday`).
+- **Indicateurs de Jours** :
+    - Arrière-plans spécifiques pour les vendredis (`--bg-friday`) et les jours fériés (`--bg-public-holiday`).
+    - Indicateurs visuels (Emojis) pour la nouvelle lune (🌙) et le changement d'heure (🕑/🕒).
 
 ### 🌐 Typographie Multilingue
 
@@ -32,7 +34,7 @@ L'en-tête (`css/header.css`) est conçu pour être informatif et esthétique :
 - Présentation du nom de l'organisation en plusieurs langues.
 - Section de contact alignée.
 
-###  Performance et Optimisations
+### Performance et Optimisations
 
 Le projet intègre plusieurs stratégies pour assurer un chargement rapide et une interface fluide :
 
@@ -49,7 +51,7 @@ Le projet intègre plusieurs stratégies pour assurer un chargement rapide et un
 
 - **assets/** : Ressources statiques du projet.
     - `fonts/` : Fichiers de police (`.ttf`) pour le fonctionnement hors-ligne.
-    - `icons/` : Pictogrammes SVG (localisation, téléphone, lune, horloge...).
+    - `icons/` : Pictogrammes SVG (localisation, téléphone, email, site web...).
     - `img/` : Images principales (Logo de l'association).
     - `patterns/` : Motifs d'arrière-plan (SVG).
 - **css/** : Feuilles de style modulaires.

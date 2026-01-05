@@ -81,6 +81,7 @@ function updatePageDOM(container, config) {
         const iconLoc = `<svg class="icon"><use href="assets/icons/icon-location.svg#icon"></use></svg>`;
         const iconPhone = `<svg class="icon"><use href="assets/icons/icon-phone.svg#icon"></use></svg>`;
         const iconEmail = `<svg class="icon"><use href="assets/icons/icon-email.svg#icon"></use></svg>`;
+        const iconWeb = `<svg class="icon"><use href="assets/icons/icon-website.svg#icon"></use></svg>`;
 
         headerRight.innerHTML = `
             <div>${iconLoc} ${config.contact.addr1}</div>
@@ -88,6 +89,7 @@ function updatePageDOM(container, config) {
             <div class="contact-row">
                 <div class="contact-col">${iconPhone} ${config.contact.phone}</div>
                 <div class="contact-col">${iconEmail} ${config.contact.email}</div>
+                ${config.contact.website ? `<div class="contact-col">${iconWeb} ${config.contact.website}</div>` : ''}
             </div>
         `;
     }
