@@ -82,6 +82,7 @@ function updatePageDOM(container, config) {
         const iconPhone = `<svg class="icon"><use href="assets/icons/icon-phone.svg#icon"></use></svg>`;
         const iconEmail = `<svg class="icon"><use href="assets/icons/icon-email.svg#icon"></use></svg>`;
         const iconWeb = `<svg class="icon"><use href="assets/icons/icon-website.svg#icon"></use></svg>`;
+        const iconBank = `<svg class="icon"><use href="assets/icons/icon-bank.svg#icon"></use></svg>`;
 
         headerRight.innerHTML = `
             <div class="info-line">${iconLoc} <span>${config.contact.addr1}</span></div>
@@ -91,6 +92,7 @@ function updatePageDOM(container, config) {
                 <div class="contact-col">${iconEmail} <span>${config.contact.email}</span></div>
                 ${config.contact.website ? `<div class="contact-col">${iconWeb} <span>${config.contact.website}</span></div>` : ''}
             </div>
+            ${config.contact.bank ? `<div class="info-line">${iconBank} <span>IBAN : ${config.contact.bank.iban} | BIC : ${config.contact.bank.bic}</span></div>` : ''}
         `;
     }
 }

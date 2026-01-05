@@ -10,7 +10,11 @@
         "addr2": "7-8 PLACE AFLRED DE MUSSET, 93120 LA COURNEUVE",
         "phone": "01.48.36.48.66",
         "email": "ami93120@gmail.com",
-        "website": "ami93.com"
+        "website": "ami93.com",
+        "bank": {
+            "iban": "FR07 20041 00001 4006101N020 17",
+            "bic": "PSSTFRPPPAR"
+        }
     },
     "location": {
         "lat": 48.9244,
