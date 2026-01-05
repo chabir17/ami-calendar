@@ -91,7 +91,7 @@ class CalendarGrid extends HTMLElement {
             if (dayInfo.isDST) {
                 const dstIcon = root.querySelector('.dst-icon');
                 dstIcon.hidden = false;
-                dstIcon.src = `assets/icons/icon-${dayInfo.dstType === 'winter' ? 'clock-minus.svg' : 'clock-plus.svg'}`;
+                dstIcon.textContent = dayInfo.dstType === 'winter' ? '🕒' : '🕑';
                 if (dayInfo.isNewMoon) dstIcon.style.left = '18px';
             }
 

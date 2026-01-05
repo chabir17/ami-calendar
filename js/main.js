@@ -193,9 +193,9 @@ function updateLegends(year, month, container) {
         const isSummer = month === 3;
         if (legendText) legendText.textContent = isSummer ? "Heure d'été (+1h)" : "Heure d'hiver (-1h)";
 
-        // Mise à jour de l'icône si c'est une balise img
-        const iconFile = isSummer ? 'clock-plus.svg' : 'clock-minus.svg';
-        DOM.setSrc('img', `assets/icons/icon-${iconFile}`, legendDst);
+        // Mise à jour de l'emoji
+        const legendIcon = legendDst.querySelector('span:first-child');
+        if (legendIcon) legendIcon.textContent = isSummer ? '🕑' : '🕒';
     }
 
     // 2. Légende Aïd & Vacances
