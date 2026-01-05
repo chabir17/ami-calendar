@@ -54,13 +54,27 @@
 }
 
 .header-right {
-    font-size: 12px;
-    line-height: 2;
+    font-size: 11px;
     padding-left: 0.625rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.info-line {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
 }
 
 .contact-row {
     display: flex;
     justify-content: space-between;
     gap: 1rem;
+}
+
+.contact-col {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
 }

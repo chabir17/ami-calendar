@@ -84,12 +84,12 @@ function updatePageDOM(container, config) {
         const iconWeb = `<svg class="icon"><use href="assets/icons/icon-website.svg#icon"></use></svg>`;
 
         headerRight.innerHTML = `
-            <div>${iconLoc} ${config.contact.addr1}</div>
-            ${config.contact.addr2 ? `<div>${iconLoc} ${config.contact.addr2}</div>` : ''}
+            <div class="info-line">${iconLoc} <span>${config.contact.addr1}</span></div>
+            ${config.contact.addr2 ? `<div class="info-line">${iconLoc} <span>${config.contact.addr2}</span></div>` : ''}
             <div class="contact-row">
-                <div class="contact-col">${iconPhone} ${config.contact.phone}</div>
-                <div class="contact-col">${iconEmail} ${config.contact.email}</div>
-                ${config.contact.website ? `<div class="contact-col">${iconWeb} ${config.contact.website}</div>` : ''}
+                <div class="contact-col">${iconPhone} <span>${config.contact.phone}</span></div>
+                <div class="contact-col">${iconEmail} <span>${config.contact.email}</span></div>
+                ${config.contact.website ? `<div class="contact-col">${iconWeb} <span>${config.contact.website}</span></div>` : ''}
             </div>
         `;
     }
