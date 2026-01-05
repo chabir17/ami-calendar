@@ -55,7 +55,6 @@
 
 .header-right {
     font-size: 11px;
-    padding-left: 0.625rem;
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
