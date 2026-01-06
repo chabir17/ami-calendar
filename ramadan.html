@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Calendrier du Ramadan avec horaires de prières" />
+        <meta name="theme-color" content="#c8b070" />
+        <title>Calendrier Ramadan - AMI</title>
+
+        <!-- Styles -->
+        <link rel="stylesheet" href="css/fonts.css" />
+        <link rel="stylesheet" href="css/variables.css" />
+        <link rel="stylesheet" href="css/ramadan.css" />
+
+        <!-- Scripts -->
+        <script src="js/lib/adhan.min.js" defer></script>
+        <script src="data/config.js" defer></script>
+        <script src="data/lang.js" defer></script>
+        <script src="js/ramadan.js" type="module" defer></script>
+    </head>
+    <body>
+        <div id="app"></div>
+
+        <template id="ramadan-template">
+            <div class="page A4-portrait">
+                <header class="ramadan-header-simple">
+                    <div class="ramadan-main-title">
+                        <div class="year-corner top-left"></div>
+                        <div>
+                            RAMAḌĀN<br/><span class="tamil">ரமளான்</span><span> • </span><span class="arabic">رمضان</span>
+                        </div>
+                        <div class="year-corner top-right arabic"></div>
+                    </div>
+                </header>
+
+                <section class="ramadan-table-container">
+                    <table class="ramadan-table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <div class="th-stack">
+                                        <p class="th-fr">Date</p>
+                                        <p class="th-ar arabic">التاريخ</p>
+                                        <p class="th-ta tamil">தேதி</p>
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="th-stack">
+                                        <p class="th-fr">Fajr</p>
+                                        <p class="th-ar arabic">الفجر</p>
+                                        <p class="th-ta tamil">பஜ்ர்</p>
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="th-stack">
+                                        <p class="th-fr">Shuruq</p>
+                                        <p class="th-ar arabic">الشروق</p>
+                                        <p class="th-ta tamil">ஷுரூக்</p>
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="th-stack">
+                                        <p class="th-fr">Zhohr</p>
+                                        <p class="th-ar arabic">الظهر</p>
+                                        <p class="th-ta tamil">லுஹர்</p>
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="th-stack">
+                                        <p class="th-fr">Asr</p>
+                                        <p class="th-ar arabic">العصر</p>
+                                        <p class="th-ta tamil">அஸ்ர்</p>
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="th-stack">
+                                        <p class="th-fr">Maghrib</p>
+                                        <p class="th-ar arabic">المغرب</p>
+                                        <p class="th-ta tamil">மக்ரிப்</p>
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="th-stack">
+                                        <p class="th-fr">Icha</p>
+                                        <p class="th-ar arabic">العشاء</p>
+                                        <p class="th-ta tamil">இஷா</p>
+                                    </div>
+                                </th>
+                                <th><div class="th-header-symbol">☪︎</div></th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </section>
+
+                <footer class="ramadan-footer-styled">
+                    <div class="footer-row">
+                        <div class="logo-box">
+                            <img src="" alt="Logo" class="logo-img" />
+                        </div>
+                        <div class="org-names">
+                            <h1 class="org-fr"></h1>
+                            <h2 class="org-ta tamil"></h2>
+                        </div>
+                        <div class="footer-info">
+                            <div class="footer-contacts">
+                                <div class="info-line contact-addr1">
+                                    <svg class="icon"><use href="assets/icons/icon-location.svg#icon"></use></svg>
+                                    <span></span>
+                                </div>
+                                <div class="info-line contact-addr2" style="display: none;">
+                                    <svg class="icon"><use href="assets/icons/icon-location.svg#icon"></use></svg>
+                                    <span></span>
+                                </div>
+                                <div class="contact-row">
+                                    <div class="contact-col contact-phone">
+                                        <svg class="icon"><use href="assets/icons/icon-phone.svg#icon"></use></svg>
+                                        <span></span>
+                                    </div>
+                                    <div class="contact-col contact-email">
+                                        <svg class="icon"><use href="assets/icons/icon-email.svg#icon"></use></svg>
+                                        <span></span>
+                                    </div>
+                                    <div class="contact-col contact-website" style="display: none;">
+                                        <svg class="icon"><use href="assets/icons/icon-website.svg#icon"></use></svg>
+                                        <span></span>
+                                    </div>
+                                </div>
+                                <div class="info-line contact-bank" style="display: none;">
+                                    <svg class="icon"><use href="assets/icons/icon-bank.svg#icon"></use></svg>
+                                    <span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </template>
+    </body>
+</html>

@@ -1,0 +1,323 @@
+/* --- RESET & GLOBAL --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #eeeeee;
+    font-family: var(--font-fr);
+    color: var(--col-text);
+    margin: 0 auto;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* --- TYPOGRAPHIE & UTILITAIRES --- */
+.arabic {
+    font-family: var(--font-ar);
+}
+.tamil {
+    font-family: var(--font-ta);
+}
+.dir-rtl {
+    direction: rtl;
+}
+
+.icon {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    vertical-align: middle;
+    fill: currentColor;
+    color: var(--brand);
+    margin-right: 0.125rem;
+    flex-shrink: 0;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+/* --- PAGE A4 PORTRAIT --- */
+@page {
+    size: A4 portrait;
+    margin: 0;
+}
+
+.page.A4-portrait {
+    width: 210mm;
+    height: 297mm;
+    background-color: white;
+    background-image: var(--bg-pattern-custom, url('../assets/patterns/background-pattern.svg'));
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    position: relative;
+}
+
+@media screen {
+    .page.A4-portrait {
+        margin: 0 auto;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+}
+
+/* --- HEADER RAMADAN (Arche inversée / Bannière) --- */
+.ramadan-header-simple {
+    position: relative;
+}
+
+.ramadan-header-simple::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/img/banner.png');
+    background-size: contain;
+    background-position: top;
+    opacity: 0.5;
+}
+
+.ramadan-main-title {
+    position: relative;
+    color: var(--brand);
+    font-size: 36px;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 5cm;
+}
+
+.year-corner {
+    position: absolute;
+    top: 2rem;
+    font-size: 32px;
+    text-align: center;
+    align-content: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--brand);
+    font-weight: 600;
+    border-radius: 50%;
+    border: 2px solid var(--brand);
+    background-color: white;
+    height: 6rem;
+    width: 6rem;
+}
+.year-corner.top-left {
+    left: 2rem;
+}
+.year-corner.top-right {
+    right: 2rem;
+}
+
+/* --- FOOTER STYLED (LOGO + INFOS) --- */
+.ramadan-footer-styled {
+    margin-top: auto;
+    padding: 1rem;
+    background-color: var(--brand-light);
+    background-image: var(--bg-pattern-custom, url('../assets/patterns/background-pattern.svg'));
+    border-top: 2px solid var(--brand);
+}
+
+.footer-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.footer-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex-grow: 1;
+}
+
+/* --- COMPOSANTS UI (LOGO & CONTACTS) --- */
+.logo-box {
+    width: 5rem;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.logo-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    background-color: white;
+    border-radius: 25%;
+    border: 1.5px solid var(--brand);
+}
+
+.info-line {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.contact-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.contact-col {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.ramadan-table-container {
+    flex-grow: 1;
+    padding: 1rem 2rem;
+}
+.ramadan-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid var(--brand-light);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    background-color: white;
+    font-size: 15px;
+}
+
+/* En-têtes */
+.ramadan-table thead th {
+    background-color: var(--brand-light);
+    border-right: 1px solid var(--brand--brand-light);
+    border-bottom: 2px solid var(--brand);
+    padding: 0.25rem;
+    font-weight: 600;
+    vertical-align: middle;
+    color: var(--brand-dark);
+}
+.ramadan-table thead th:last-child {
+    border-right: none;
+}
+
+.th-stack {
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+.th-fr {
+    display: block;
+    text-transform: uppercase;
+}
+.th-ar {
+    display: block;
+}
+.th-ta {
+    display: block;
+}
+.th-header-symbol {
+    font-size: 24px;
+    line-height: 1;
+}
+
+/* Cellules */
+.ramadan-table td {
+    border-right: 1px solid var(--brand-light);
+    border-bottom: 1px solid var(--brand-light);
+    text-align: center;
+    height: 0.625cm;
+}
+.ramadan-table td:last-child {
+    border-right: none;
+}
+.ramadan-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.ramadan-table tr.is-friday {
+    background-color: var(--brand-light);
+}
+
+/* Colonnes spécifiques */
+.col-day-greg {
+    width: 20%;
+}
+.col-hijri {
+    width: 8%;
+    font-weight: 600;
+    color: var(--brand-dark);
+    font-size: 14px;
+}
+
+/* Largeurs fixes pour les prières (similaire à table.css) */
+.ramadan-table th:nth-child(n + 2):nth-child(-n + 7),
+.ramadan-table td:nth-child(n + 2):nth-child(-n + 7) {
+    width: 12%;
+}
+
+/* Mise en évidence Fajr & Maghrib */
+.ramadan-table td.fajr,
+.ramadan-table td.maghrib {
+    font-weight: 600;
+    color: var(--brand-dark);
+    background-color: var(--brand-light);
+}
+
+/* Cellule Date */
+.date-cell {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 0.5rem;
+}
+.day-name,
+.month-name {
+    text-transform: uppercase;
+}
+
+/* Ajustements Contenu Footer */
+.org-names h1.org-fr {
+    font-size: 20px;
+    margin: 0;
+    color: var(--brand-dark);
+    line-height: 1.2;
+}
+.org-names h2.org-ta {
+    font-size: 18px;
+    margin: 0;
+    color: var(--brand);
+    line-height: 1.2;
+}
+
+.footer-contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+    font-size: 10px;
+}
+
+/* --- PRINT OPTIMIZATIONS --- */
+@media print {
+    body {
+        background: white;
+        padding: 0;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+    .page.A4-portrait {
+        margin: 0;
+        box-shadow: none;
+        break-inside: avoid;
+    }
+}
