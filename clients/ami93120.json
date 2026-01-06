@@ -25,7 +25,6 @@
         }
     },
     "theme": {
-        "color_brand": "#c8b070",
-        "bg_header": "#fff4d8"
+        "color_brand": "#c8b070"
     }
 }

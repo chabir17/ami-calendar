@@ -51,9 +51,6 @@ async function applyGlobalTheme(config) {
             console.warn('Erreur chargement pattern:', e);
         }
     }
-    if (config.theme.bg_header) {
-        root.style.setProperty('--brand-light', config.theme.bg_header);
-    }
 
     // Config Adhan globale
     if (window.CONFIG) {
