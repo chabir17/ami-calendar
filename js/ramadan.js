@@ -158,7 +158,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             <td class="asr">${times.asr}</td>
             <td class="maghrib">${times.maghrib}</td>
             <td class="isha">${times.isha}</td>
-            <td class="col-hijri">${hijri.day}</td>
+            <td class="col-hijri">${hijri.day.toString().padStart(2, '0')}</td>
         `;
         fragment.appendChild(tr);
     });
