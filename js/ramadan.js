@@ -149,13 +149,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         const monthShort = monthFormatter.format(date).replace('.', '');
 
         tr.innerHTML = `
-            <td class="col-day-greg">
-                <div class="date-cell">
-                    <div class="day-name">${dayShort}</div>
-                    <div class="day-num">${dayNum}</div>
-                    <div class="month-name">${monthShort}</div>
-                </div>
-            </td>
+            <td class="col-day-name">${dayShort}</td>
+            <td class="col-day-num">${dayNum}</td>
+            <td class="col-month-name">${monthShort}</td>
             <td class="fajr">${times.fajr}</td>
             <td class="sunrise">${times.sunrise}</td>
             <td class="dhuhr">${times.dhuhr}</td>
