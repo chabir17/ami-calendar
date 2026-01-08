@@ -14,6 +14,7 @@ body {
     display: flex;
     justify-content: center;
     min-height: 100vh;
+    text-rendering: optimizeLegibility;
 }
 
 /* --- TYPOGRAPHIE & UTILITAIRES --- */
@@ -97,6 +98,12 @@ body {
     height: 5cm;
 }
 
+.ramadan-logo {
+    height: 4.5cm;
+    width: 4.5cm;
+    margin: 0 auto -0.75cm auto;
+}
+
 .year-corner {
     position: absolute;
     top: 2rem;
@@ -125,8 +132,7 @@ body {
 .ramadan-footer-styled {
     margin-top: auto;
     padding: 1rem;
-    background-color: var(--brand-light);
-    background-image: var(--bg-pattern-custom, url('../assets/patterns/background-pattern.svg'));
+    background-color: white;
     border-top: 2px solid var(--brand);
 }
 
@@ -142,6 +148,7 @@ body {
     flex-direction: column;
     gap: 0.5rem;
     flex-grow: 1;
+    flex-shrink: 0;
 }
 
 /* --- COMPOSANTS UI (LOGO & CONTACTS) --- */
@@ -296,16 +303,18 @@ body {
 
 /* Ajustements Contenu Footer */
 .org-names h1.org-fr {
-    font-size: 20px;
+    font-size: 18px;
     margin: 0;
     color: var(--brand-dark);
     line-height: 1.2;
+    margin-bottom: 0.25rem;
 }
 .org-names h2.org-ta {
-    font-size: 18px;
+    font-size: 16px;
     margin: 0;
     color: var(--brand);
     line-height: 1.2;
+    margin-top: 0.25rem;
 }
 
 .footer-contacts {

@@ -1,47 +1,7 @@
-import { initAdhan, getHijriDateSafe, getPrayerTimesSafe } from './services.js';
+import { initAdhan, getHijriDateSafe, getPrayerTimesSafe, fetchClientConfig, fetchRamadanOverrides, applyTheme } from './services.js';
 import { DOM } from './utils.js';
 
 // --- Configuration & Helpers ---
-
-async function fetchClientConfig() {
-    const params = new URLSearchParams(window.location.search);
-    const mosqueId = params.get('mosque') || 'ami93120';
-    try {
-        const response = await fetch(`clients/${mosqueId}.json`);
-        if (!response.ok) throw new Error(`Client ${mosqueId} introuvable`);
-        return await response.json();
-    } catch (e) {
-        console.error(e);
-        return null;
-    }
-}
-
-async function fetchOverrides() {
-    try {
-        const response = await fetch('data/ramadan_overrides.json');
-        return response.ok ? await response.json() : {};
-    } catch (e) {
-        return {};
-    }
-}
-
-async function applyTheme(config) {
-    if (!config.theme.color_brand) return;
-
-    document.documentElement.style.setProperty('--brand', config.theme.color_brand);
-
-    try {
-        const res = await fetch('assets/patterns/background-pattern.svg');
-        if (res.ok) {
-            let svgText = await res.text();
-            svgText = svgText.replace(/#d4af37/gi, config.theme.color_brand);
-            const dataUri = `data:image/svg+xml;base64,${btoa(svgText)}`;
-            document.documentElement.style.setProperty('--bg-pattern-custom', `url('${dataUri}')`);
-        }
-    } catch (e) {
-        console.warn('Erreur chargement pattern:', e);
-    }
-}
 
 function renderLayout(container, config, year, hijriYearAr) {
     const { identity, contact } = config;
@@ -80,6 +40,26 @@ function renderLayout(container, config, year, hijriYearAr) {
     }
 }
 
+/**
+ * Génère le QR Code de manière sécurisée
+ */
+function generateQRCode(container, config) {
+    if (typeof QRCode === 'undefined' || !container) return;
+
+    // Priorité : URL de don > Site Web > Fallback
+    const url = config.contact?.donation_url || config.contact?.website || 'https://www.helloasso.com/associations/ami93';
+
+    container.innerHTML = ''; // Nettoyage
+    new QRCode(container, {
+        text: url,
+        width: 80,
+        height: 80,
+        colorDark: config.theme?.color_brand || '#0e1d3e',
+        colorLight: '#ffffff',
+        correctLevel: QRCode.CorrectLevel.H
+    });
+}
+
 // --- Main Logic ---
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -87,7 +67,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const template = document.getElementById('ramadan-template');
 
     // 1. Chargement Config
-    const [config, overrides] = await Promise.all([fetchClientConfig(), fetchOverrides()]);
+    const [config, overrides] = await Promise.all([fetchClientConfig('ami93120'), fetchRamadanOverrides()]);
 
     if (!config) {
         app.innerHTML = '<div style="padding:2rem; text-align:center;">Configuration introuvable.</div>';
@@ -165,4 +145,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     tbody.appendChild(fragment);
     app.appendChild(clone);
+
+    // Génération du QR Code
+    generateQRCode(document.getElementById('qrcode'), config);
 });

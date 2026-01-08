@@ -1,4 +1,4 @@
-import { initAdhan, fetchExternalData, getHijriDateSafe, getDayInfo } from './services.js';
+import { initAdhan, fetchExternalData, getHijriDateSafe, getDayInfo, fetchClientConfig, applyTheme } from './services.js';
 import { DOM } from './utils.js';
 import './components.js';
 
@@ -9,55 +9,6 @@ import './components.js';
 // État global
 let pageTemplate = null;
 let clientConfig = null;
-
-/**
- * Récupère la configuration client (JSON) sans modifier le DOM.
- */
-async function fetchClientConfig() {
-    const params = new URLSearchParams(window.location.search);
-    const mosqueId = params.get('mosque');
-    if (!mosqueId) return null;
-
-    try {
-        const response = await fetch(`clients/${mosqueId}.json`);
-        if (!response.ok) throw new Error('Client introuvable');
-        return await response.json();
-    } catch (e) {
-        console.error('Erreur chargement config client:', e);
-        return null;
-    }
-}
-
-/**
- * Applique le thème global (Couleurs, Fonts) au document.
- * Ces changements s'appliquent une seule fois à la racine.
- */
-async function applyGlobalTheme(config) {
-    if (!config) return;
-    const root = document.documentElement;
-
-    // Thème couleur
-    if (config.theme.color_brand) {
-        root.style.setProperty('--brand', config.theme.color_brand);
-
-        // Pattern SVG dynamique
-        try {
-            const res = await fetch('assets/patterns/background-pattern.svg');
-            let svgText = await res.text();
-            svgText = svgText.replace(/#d4af37/gi, config.theme.color_brand);
-            const dataUri = 'data:image/svg+xml;base64,' + btoa(svgText);
-            root.style.setProperty('--bg-pattern-custom', `url('${dataUri}')`);
-        } catch (e) {
-            console.warn('Erreur chargement pattern:', e);
-        }
-    }
-
-    // Config Adhan globale
-    if (window.CONFIG) {
-        window.CONFIG.lat = config.location.lat;
-        window.CONFIG.lng = config.location.lng;
-    }
-}
 
 /**
  * Met à jour le contenu DOM d'une page spécifique (Header, Contacts)
@@ -109,7 +60,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // 2. Chargement & Application Config Client
     clientConfig = await fetchClientConfig();
-    await applyGlobalTheme(clientConfig);
+
+    if (clientConfig) {
+        await applyTheme(clientConfig);
+        if (window.CONFIG && clientConfig.location) {
+            Object.assign(window.CONFIG, clientConfig.location);
+        }
+    }
 
     // 3. Gestion des paramètres URL (Année / Mois)
     const urlParams = new URLSearchParams(window.location.search);

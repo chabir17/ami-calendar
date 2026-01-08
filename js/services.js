@@ -260,3 +260,56 @@ export async function fetchExternalData() {
         return false;
     }
 }
+
+/**
+ * Récupère la configuration client (JSON).
+ * @param {string} [defaultId] - ID par défaut si non présent dans l'URL.
+ */
+export async function fetchClientConfig(defaultId = null) {
+    const params = new URLSearchParams(window.location.search);
+    const mosqueId = params.get('mosque') || defaultId;
+    if (!mosqueId) return null;
+
+    try {
+        const response = await fetch(`clients/${mosqueId}.json`);
+        if (!response.ok) throw new Error(`Client ${mosqueId} introuvable`);
+        return await response.json();
+    } catch (e) {
+        console.error('Erreur chargement config client:', e);
+        return null;
+    }
+}
+
+/**
+ * Récupère les surcharges spécifiques pour le Ramadan (horaires manuels).
+ */
+export async function fetchRamadanOverrides() {
+    try {
+        const response = await fetch('data/ramadan_overrides.json');
+        return response.ok ? await response.json() : {};
+    } catch (e) {
+        return {};
+    }
+}
+
+/**
+ * Applique le thème global (Couleurs, Pattern) au document.
+ * @param {Object} config - Configuration client
+ */
+export async function applyTheme(config) {
+    if (!config?.theme?.color_brand) return;
+
+    document.documentElement.style.setProperty('--brand', config.theme.color_brand);
+
+    try {
+        const res = await fetch('assets/patterns/background-pattern.svg');
+        if (res.ok) {
+            let svgText = await res.text();
+            svgText = svgText.replace(/#d4af37/gi, config.theme.color_brand);
+            const dataUri = `data:image/svg+xml;base64,${btoa(svgText)}`;
+            document.documentElement.style.setProperty('--bg-pattern-custom', `url('${dataUri}')`);
+        }
+    } catch (e) {
+        console.warn('Erreur chargement pattern:', e);
+    }
+}
