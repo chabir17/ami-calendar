@@ -116,9 +116,18 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     ramadanDays.forEach(({ date, hijri }) => {
         const times = getPrayerTimesSafe(date);
-        const dateKey = date.toISOString().split('T')[0];
+        // Génération de la clé de date locale (YYYY-MM-DD) pour correspondre au JSON
+        const dateKey = [
+            date.getFullYear(),
+            String(date.getMonth() + 1).padStart(2, '0'),
+            String(date.getDate()).padStart(2, '0')
+        ].join('-');
 
-        if (overrides[dateKey]) Object.assign(times, overrides[dateKey]);
+        if (overrides[dateKey]) {
+            Object.entries(overrides[dateKey]).forEach(([key, value]) => {
+                if (value) times[key] = value;
+            });
+        }
 
         const tr = document.createElement('tr');
         if (date.getDay() === 5) tr.classList.add('is-friday');
