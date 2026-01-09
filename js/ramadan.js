@@ -106,13 +106,29 @@ document.addEventListener('DOMContentLoaded', async () => {
     const clone = template.content.cloneNode(true);
     renderLayout(clone, config, year, hijriYearAr);
 
+    // Mise à jour dynamique des mois (ex: Févr. / Mars)
+    const uniqueMonths = [...new Set(ramadanDays.map((d) => d.date.getMonth()))].sort((a, b) => a - b);
+    if (uniqueMonths.length > 0) {
+        const fmtFr = new Intl.DateTimeFormat('fr-FR', { month: 'long' });
+        const fmtTa = new Intl.DateTimeFormat('ta-IN', { month: 'long' });
+        const capitalize = (s) => s.charAt(0).toUpperCase() + s.slice(1);
+
+        const labelFr = uniqueMonths.map((m) => capitalize(fmtFr.format(new Date(year, m, 1)))).join(' / ');
+        const labelTa = uniqueMonths.map((m) => fmtTa.format(new Date(year, m, 1))).join(' / ');
+
+        const thStack = clone.querySelector('.ramadan-table thead th:first-child .th-stack');
+        DOM.setText('.th-fr', labelFr, thStack);
+        DOM.setText('.th-ta', labelTa, thStack);
+    }
+
     const tbody = clone.querySelector('tbody');
     const fragment = document.createDocumentFragment();
 
     // Formatteurs pour éviter la réinstanciation dans la boucle
     const dayFormatter = new Intl.DateTimeFormat('fr-FR', { weekday: 'short' });
-    const monthFormatter = new Intl.DateTimeFormat('fr-FR', { month: 'short' });
     const daysShortList = window.TEXTS?.fr?.daysShort;
+    const daysArabicList = window.TEXTS?.ar?.days;
+    const daysTamilList = window.TEXTS?.ta?.days;
 
     ramadanDays.forEach(({ date, hijri }) => {
         const times = getPrayerTimesSafe(date);
@@ -134,13 +150,14 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         const dayOfWeekIdx = date.getDay() === 0 ? 6 : date.getDay() - 1;
         const dayShort = daysShortList ? daysShortList[dayOfWeekIdx] : dayFormatter.format(date);
+        const dayArabic = daysArabicList ? daysArabicList[dayOfWeekIdx] : '';
+        const dayTamil = daysTamilList ? daysTamilList[dayOfWeekIdx] : '';
         const dayNum = date.getDate().toString().padStart(2, '0');
-        const monthShort = monthFormatter.format(date).replace('.', '');
 
         tr.innerHTML = `
             <td class="col-day-name">${dayShort}</td>
+            <td class="col-day-name tamil">${dayTamil}</td>
             <td class="col-day-num">${dayNum}</td>
-            <td class="col-month-name">${monthShort}</td>
             <td class="fajr">${times.fajr}</td>
             <td class="sunrise">${times.sunrise}</td>
             <td class="dhuhr">${times.dhuhr}</td>
@@ -148,6 +165,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             <td class="maghrib">${times.maghrib}</td>
             <td class="isha">${times.isha}</td>
             <td class="col-hijri">${hijri.day.toString().padStart(2, '0')}</td>
+            <td class="col-day-name arabic">${dayArabic}</td>
         `;
         fragment.appendChild(tr);
     });

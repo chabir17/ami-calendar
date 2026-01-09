@@ -99,9 +99,8 @@ body {
 }
 
 .ramadan-logo {
-    height: 4.5cm;
-    width: 4.5cm;
-    margin: 0 auto -0.75cm auto;
+    height: 8rem;
+    margin: 0 auto -0.5rem auto;
 }
 
 .year-corner {
@@ -199,20 +198,22 @@ body {
     border-radius: 0.5rem;
     overflow: hidden;
     background-color: white;
-    font-size: 15px;
+    font-size: 13px;
+    table-layout: fixed;
 }
 
 /* En-têtes */
 .ramadan-table thead th {
     background-color: var(--brand-light);
-    border-right: 1px solid var(--brand--brand-light);
+    border-right: 1px solid var(--brand-light);
     border-bottom: 2px solid var(--brand);
     padding: 0.25rem;
     font-weight: 600;
     vertical-align: middle;
     color: var(--brand-dark);
 }
-.ramadan-table thead th:last-child {
+.ramadan-table thead th:last-child,
+.ramadan-table thead th:nth-last-child(2) {
     border-right: none;
 }
 
@@ -245,7 +246,8 @@ body {
     text-align: center;
     height: 0.625cm;
 }
-.ramadan-table td:last-child {
+.ramadan-table td:last-child,
+.ramadan-table td:nth-last-child(2) {
     border-right: none;
 }
 .ramadan-table tbody tr:last-child td {
@@ -258,39 +260,48 @@ body {
 
 /* Colonnes spécifiques (Date scindée) */
 .ramadan-table .col-day-name {
-    width: 6%;
+    width: 7%;
     text-align: left;
     padding-left: 0.5rem;
     text-transform: uppercase;
     border-right: none;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.ramadan-table .col-day-name.tamil {
+    width: 11%;
+    padding-left: 0;
 }
 .ramadan-table .col-day-num {
-    width: 6%;
+    width: 5%;
     text-align: center;
     border-right: none;
 }
 .ramadan-table .col-month-name {
-    width: 8%;
     text-align: left;
     text-transform: uppercase;
     padding-right: 0.5rem;
 }
-
-.col-hijri {
-    width: 8%;
+.ramadan-table .col-hijri {
+    width: 5%;
     font-weight: 600;
     color: var(--brand-dark);
-    font-size: 14px;
+    border-right: none;
+}
+.ramadan-table .col-day-name.arabic {
+    width: 7%;
+    text-align: right;
+    color: var(--brand-dark);
+    padding-right: 0.5rem;
+    padding-left: 0;
 }
 
 /* Largeurs fixes pour les prières (similaire à table.css) */
 /* En-tête : les prières sont les enfants 2 à 7 */
-.ramadan-table th:nth-child(n + 2):nth-child(-n + 7) {
-    width: 12%;
-}
+.ramadan-table th:nth-child(n + 2):nth-child(-n + 7),
 /* Corps : les prières sont les enfants 4 à 9 (car Date = 3 colonnes) */
 .ramadan-table td:nth-child(n + 4):nth-child(-n + 9) {
-    width: 12%;
+    width: 11%;
 }
 
 /* Mise en évidence Fajr & Maghrib */

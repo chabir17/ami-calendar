@@ -37,13 +37,28 @@
 
                 <section class="ramadan-table-container">
                     <table class="ramadan-table">
+                        <colgroup>
+                            <!-- Date (FR / Tamil / Num) -->
+                            <col class="col-day-name">
+                            <col class="col-day-name tamil">
+                            <col class="col-day-num">
+                            <!-- Prières (6 colonnes) -->
+                            <col style="width: 11%">
+                            <col style="width: 11%">
+                            <col style="width: 11%">
+                            <col style="width: 11%">
+                            <col style="width: 11%">
+                            <col style="width: 11%">
+                            <!-- Hégire / Arabe -->
+                            <col class="col-hijri">
+                            <col class="col-day-name arabic">
+                        </colgroup>
                         <thead>
                             <tr>
                                 <th colspan="3">
                                     <div class="th-stack">
-                                        <p class="th-fr">Date</p>
-                                        <p class="th-ar arabic">التاريخ</p>
-                                        <p class="th-ta tamil">தேதி</p>
+                                        <p class="th-fr"></p>
+                                        <p class="th-ta tamil"></p>
                                     </div>
                                 </th>
                                 <th>
@@ -88,7 +103,13 @@
                                         <p class="th-ta tamil">இஷா</p>
                                     </div>
                                 </th>
-                                <th><div class="th-header-symbol">☪︎</div></th>
+                                <th colspan="2">
+                                    <div class="th-stack">
+                                        <p class="th-fr">Ramaḍān</p>
+                                        <p class="th-ar arabic">رمضان</p>
+                                        <p class="th-ta tamil">ரமலான்</p>
+                                    </div>
+                                </th>
                             </tr>
                         </thead>
                         <tbody></tbody>
