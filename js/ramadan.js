@@ -110,14 +110,17 @@ document.addEventListener('DOMContentLoaded', async () => {
     const uniqueMonths = [...new Set(ramadanDays.map((d) => d.date.getMonth()))].sort((a, b) => a - b);
     if (uniqueMonths.length > 0) {
         const fmtFr = new Intl.DateTimeFormat('fr-FR', { month: 'long' });
+        const fmtAr = new Intl.DateTimeFormat('ar', { month: 'long' });
         const fmtTa = new Intl.DateTimeFormat('ta-IN', { month: 'long' });
         const capitalize = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 
         const labelFr = uniqueMonths.map((m) => capitalize(fmtFr.format(new Date(year, m, 1)))).join(' / ');
+        const labelAr = uniqueMonths.map((m) => fmtAr.format(new Date(year, m, 1))).join(' / ');
         const labelTa = uniqueMonths.map((m) => fmtTa.format(new Date(year, m, 1))).join(' / ');
 
         const thStack = clone.querySelector('.ramadan-table thead th:first-child .th-stack');
         DOM.setText('.th-fr', labelFr, thStack);
+        DOM.setText('.th-ar', labelAr, thStack);
         DOM.setText('.th-ta', labelTa, thStack);
     }
 
