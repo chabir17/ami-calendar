@@ -3,7 +3,7 @@ const path = require('path');
 
 // --- CONFIGURATION ---
 // Date du premier jour correspondant à la première ligne de données du CSV
-const START_DATE = '2026-02-18'; 
+const START_DATE = '2026-02-18';
 
 // Noms des fichiers (dans le dossier data/)
 const CSV_FILENAME = 'ramadan_raw.csv';
@@ -33,7 +33,7 @@ try {
         if (!cleanLine || cleanLine.toLowerCase().startsWith('fajr') || cleanLine.toLowerCase().startsWith('date')) return;
 
         // Découpage (Tabulation ou Virgule ou Point-virgule)
-        const cols = cleanLine.split(/[\t,;]+/).map(c => c.trim());
+        const cols = cleanLine.split(/[\t,;]+/).map((c) => c.trim());
 
         // On attend au moins 6 colonnes : Fajr, Sunrise, Dhuhr, Asr, Maghrib, Isha
         if (cols.length < 6) {
@@ -62,7 +62,6 @@ try {
     fs.writeFileSync(jsonPath, JSON.stringify(overrides, null, 4));
     console.log(`✅ Succès ! ${count} jours générés.`);
     console.log(`📁 Fichier créé : ${jsonPath}`);
-
 } catch (error) {
-    console.error("❌ Erreur :", error.message);
+    console.error('❌ Erreur :', error.message);
 }
