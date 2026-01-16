@@ -9,7 +9,7 @@
 }
 
 .greg-month-fr {
-    font-size: 24px;
+    font-size: 20px;
     text-transform: uppercase;
     line-height: 1.25;
     color: var(--col-blue);
@@ -17,7 +17,7 @@
 }
 
 .greg-month-ta {
-    font-size: 20px;
+    font-size: 16px;
     line-height: 1.25;
     color: var(--col-orange);
 }
@@ -27,13 +27,13 @@
 }
 
 .hijri-month-fr {
-    font-size: 16px;
+    font-size: 14px;
     text-transform: uppercase;
     color: var(--col-text-light);
 }
 
 .hijri-month-ar {
-    font-size: 24px;
+    font-size: 20px;
     color: var(--col-green);
     margin-top: 0;
 }
