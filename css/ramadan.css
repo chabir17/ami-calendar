@@ -90,17 +90,17 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    height: 4cm;
+    height: 3cm;
 }
 
 .ramadan-logo {
-    height: 8rem;
+    height: 6rem;
     margin: 0 auto 0rem auto;
 }
 
 .year-corner {
     position: absolute;
-    top: 2rem;
+    top: 1rem;
     font-size: 36px;
     text-align: center;
     align-content: center;
@@ -189,7 +189,7 @@ body {
     border-radius: 0.5rem;
     overflow: hidden;
     background-color: white;
-    font-size: 14px;
+    font-size: 13.5px;
     table-layout: fixed;
 }
 
@@ -262,11 +262,11 @@ body {
 .ramadan-table .col-day-name.tamil {
     width: 11%;
     padding-left: 0;
+    font-size: 13px;
 }
 .ramadan-table .col-day-num {
     width: 5%;
     text-align: center;
-    border-right: none;
 }
 .ramadan-table .col-month-name {
     text-align: left;
@@ -301,6 +301,68 @@ body {
     font-weight: 600;
     color: var(--brand-dark);
     background-color: var(--brand-light);
+}
+
+/* --- ÉVÉNEMENTS SPÉCIAUX (TABLEAU) --- */
+.ramadan-table tr.row-event,
+.ramadan-table tr.is-friday {
+    background-color: var(--brand-light);
+}
+
+.ramadan-table tr.is-night-of-doubt td {
+    border-bottom: 1px solid var(--brand) !important;
+}
+
+.ramadan-table tr.is-eid td {
+    border-top: 1px solid var(--brand) !important;
+}
+
+/* Cellule fusionnée (Nuit du Doute / Eid) */
+.special-event-label {
+    vertical-align: middle;
+    padding: 0;
+}
+
+.event-stack {
+    display: flex;
+    flex-direction: row; /* Horizontal */
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem; /* Espacement réduit avec séparateurs */
+}
+
+.event-separator {
+    color: var(--brand);
+}
+
+.event-fr {
+    text-transform: uppercase;
+    color: var(--brand-dark);
+    letter-spacing: 0.5px;
+    font-size: 14px;
+}
+
+.event-ar {
+    font-size: 13px;
+    color: var(--brand-dark);
+}
+
+.event-ta {
+    font-size: 13px;
+    color: var(--brand-dark);
+}
+
+/* Ligne séparatrice (27ème Nuit) */
+.ramadan-table tr.row-separator td {
+    background-color: var(--brand-light);
+    color: var(--brand-dark);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0.25rem;
+}
+
+.ramadan-table tr.row-separator .event-stack {
+    line-height: 1;
 }
 
 /* Ajustements Contenu Footer */
