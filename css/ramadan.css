@@ -1,3 +1,9 @@
+:root {
+    /* --- LAYOUT RAMADAN --- */
+    --year-circle-size: 6rem;
+    --year-circle-spacing: 7rem;
+}
+
 /* --- RESET & GLOBAL --- */
 * {
     box-sizing: border-box;
@@ -72,18 +78,7 @@ body {
     position: relative;
 }
 
-.ramadan-header-simple::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('../assets/img/banner.png');
-    background-size: contain;
-    background-position: top;
-    opacity: 0.5;
-}
+/* .ramadan-header-simple::before removed (banner) */
 
 .ramadan-main-title {
     position: relative;
@@ -95,36 +90,35 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    height: 5cm;
+    height: 4cm;
 }
 
 .ramadan-logo {
     height: 8rem;
-    margin: 0 auto -0.5rem auto;
+    margin: 0 auto 0rem auto;
 }
 
 .year-corner {
     position: absolute;
     top: 2rem;
-    font-size: 32px;
+    font-size: 36px;
     text-align: center;
     align-content: center;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: var(--brand);
+    color: var(--brand-dark);
     font-weight: 600;
     border-radius: 50%;
-    border: 2px solid var(--brand);
-    background-color: white;
-    height: 6rem;
-    width: 6rem;
+    background-color: var(--brand-light);
+    height: var(--year-circle-size);
+    width: var(--year-circle-size);
 }
 .year-corner.top-left {
-    left: 2rem;
+    left: var(--year-circle-spacing);
 }
 .year-corner.top-right {
-    right: 2rem;
+    right: var(--year-circle-spacing);
 }
 
 /* --- FOOTER STYLED (LOGO + INFOS) --- */
@@ -195,7 +189,7 @@ body {
     border-radius: 0.5rem;
     overflow: hidden;
     background-color: white;
-    font-size: 13.5px;
+    font-size: 14px;
     table-layout: fixed;
 }
 
