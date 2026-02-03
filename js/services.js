@@ -10,6 +10,11 @@ import { DATE_UTILS } from './utils.js';
 const HIJRI_CACHE = new Map();
 const CACHE_KEY = 'ami_calendar_cache';
 const CACHE_DURATION = 30 * 24 * 60 * 60 * 1000; // 30 jours
+// Configuration des décalages Hégiriens par période (YYYY-MM-DD)
+const HIJRI_OFFSETS = [
+    { start: '2026-02-01', end: '2026-03-19', offset: -1 }, // Ramadan 2026 (Début 19 Fév)
+    { start: '2026-03-20', end: '2026-12-31', offset: 0 } // Eid 2026 (20 Mars)
+];
 
 // Variables globales pour Adhan
 let adhanCoords = null;
@@ -75,7 +80,17 @@ export function getHijriDateSafe(date) {
             monthFr = '',
             year = '';
 
-        const parts = DATE_UTILS.HIJRI_FORMATTER.formatToParts(date);
+        // Calcul de l'offset dynamique
+        let offset = 0;
+        const dateISO = DATE_UTILS.toParisISO(date);
+        const config = HIJRI_OFFSETS.find((c) => dateISO >= c.start && dateISO <= c.end);
+        if (config) offset = config.offset;
+
+        // Application de l'ajustement
+        const adjustedDate = new Date(date);
+        adjustedDate.setDate(adjustedDate.getDate() + offset);
+
+        const parts = DATE_UTILS.HIJRI_FORMATTER.formatToParts(adjustedDate);
         parts.forEach((p) => {
             if (p.type === 'day') day = p.value;
             if (p.type === 'month') monthFr = p.value;
