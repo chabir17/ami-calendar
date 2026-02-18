@@ -12,7 +12,7 @@ const CACHE_KEY = 'ami_calendar_cache';
 const CACHE_DURATION = 30 * 24 * 60 * 60 * 1000; // 30 jours
 // Configuration des décalages Hégiriens par période (YYYY-MM-DD)
 const HIJRI_OFFSETS = [
-    { start: '2026-02-01', end: '2026-03-19', offset: -1 }, // Ramadan 2026 (Début 19 Fév)
+    { start: '2026-02-01', end: '2026-03-19', offset: 0 }, // Ramadan 2026 (Début 18 Fév)
     { start: '2026-03-20', end: '2026-12-31', offset: 0 } // Eid 2026 (20 Mars)
 ];
 

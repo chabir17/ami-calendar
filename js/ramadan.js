@@ -148,40 +148,41 @@ document.addEventListener('DOMContentLoaded', async () => {
     const daysArabicList = window.TEXTS?.ar?.days;
     const daysTamilList = window.TEXTS?.ta?.days;
 
+    const ramadanDays = calendarEvents.filter((e) => e.hijri.monthNameRaw.toLowerCase().includes('ramadan'));
+    const totalRamadanDays = ramadanDays.length;
+
+    // --- Event Helpers ---
+    const EVENT_LABELS = {
+        'night-of-doubt': { fr: 'NUIT DU DOUTE', ar: 'ليلة الشك', ta: 'சந்தேக இரவு' },
+        eid: { fr: 'EID-UL-FITR', ar: 'عيد الفطر', ta: 'ஈத் அல்-பித்ர்' }
+    };
+
     calendarEvents.forEach(({ date, hijri, eventType }) => {
         const times = getPrayerTimesSafe(date);
-        // Génération de la clé de date locale (YYYY-MM-DD) pour correspondre au JSON
-        const dateKey = [date.getFullYear(), String(date.getMonth() + 1).padStart(2, '0'), String(date.getDate()).padStart(2, '0')].join('-');
+        const dateKey = DATE_UTILS.format(date, 'YYYY-MM-DD');
 
         if (overrides[dateKey]) {
-            Object.entries(overrides[dateKey]).forEach(([key, value]) => {
-                if (value) times[key] = value;
-            });
+            Object.assign(times, overrides[dateKey]);
         }
 
         // 27ème Nuit : Insertion ligne intermédiaire
         if (eventType === 'laylat-al-qadr') {
             const separatorTr = document.createElement('tr');
             separatorTr.className = 'row-separator laylat-al-qadr-sep';
-
-            // 27ème Nuit Multilingue
-            const labelFr = '27<sup>ÈME</sup> NUIT DU RAMAḌĀN';
-            const labelTa = '27-ம் இரவு';
-
             separatorTr.innerHTML = `
-                <td colspan="11">
+                <td colspan="9">
                     <div class="event-stack">
-                        <span class="event-fr">${labelFr}</span>
+                        <span class="event-fr">27<sup>ÈME</sup> NUIT DU RAMAḌĀN</span>
                         <span class="event-separator">•</span>
-                        <span class="event-ta tamil">${labelTa}</span>
+                        <span class="event-ta tamil">27-ம் இரவு</span>
                     </div>
-                </td>`;
+                </td>
+                <td colspan="2"></td>`;
             fragment.appendChild(separatorTr);
         }
 
         const tr = document.createElement('tr');
-
-        if (date.getDay() === 5 || eventType === 'eid') tr.classList.add('is-friday'); // Eid style = Friday style
+        if (date.getDay() === 5 || eventType === 'eid') tr.classList.add('is-friday');
         if (eventType && eventType !== 'laylat-al-qadr') tr.classList.add(`is-${eventType}`);
 
         const dayOfWeekIdx = date.getDay() === 0 ? 6 : date.getDay() - 1;
@@ -189,41 +190,59 @@ document.addEventListener('DOMContentLoaded', async () => {
         const dayArabic = daysArabicList ? daysArabicList[dayOfWeekIdx] : '';
         const dayTamil = daysTamilList ? daysTamilList[dayOfWeekIdx] : '';
         const dayNum = date.getDate().toString().padStart(2, '0');
-
-        let hijriDayDisplay = hijri.day.toString().padStart(2, '0');
+        const hijriDayDisplay = hijri.day.toString().padStart(2, '0');
 
         if (eventType === 'night-of-doubt' || eventType === 'eid') {
-            let labelFr = '',
-                labelAr = '',
-                labelTa = '';
-            if (eventType === 'night-of-doubt') {
-                labelFr = 'NUIT DU DOUTE';
-                labelAr = 'ليلة الشك';
-                labelTa = 'சந்தேக இரவு';
-            } else {
-                labelFr = 'EID-UL-FITR';
-                labelAr = 'عيد الفطر';
-                labelTa = 'ஈத் அல்-பித்ர்';
-            }
-
-            // Fusion des 6 colonnes de prières + Affichage multilingue
+            const labels = EVENT_LABELS[eventType];
             tr.innerHTML = `
                 <td class="col-day-name">${dayShort}</td>
                 <td class="col-day-name tamil">${dayTamil}</td>
                 <td class="col-day-num">${dayNum}</td>
-                <td colspan="6" class="special-event-label">
+                <td colspan="7" class="special-event-label">
                     <div class="event-stack">
-                        <span class="event-fr">${labelFr}</span>
+                        <span class="event-fr">${labels.fr}</span>
                         <span class="event-separator">•</span>
-                        <span class="event-ar arabic">${labelAr}</span>
+                        <span class="event-ar arabic">${labels.ar}</span>
                         <span class="event-separator">•</span>
-                        <span class="event-ta tamil">${labelTa}</span>
+                        <span class="event-ta tamil">${labels.ta}</span>
                     </div>
                 </td>
                 <td class="col-hijri">${hijriDayDisplay}</td>
                 <td class="col-day-name arabic">${dayArabic}</td>
             `;
         } else {
+            const hDay = parseInt(hijri.day);
+            const isRamadan = hijri.monthNameRaw.toLowerCase().includes('ramadan');
+            let amiIshaTd = '';
+
+            if (isRamadan) {
+                const isFirstHalf = hDay <= 15;
+                const adhanTime = isFirstHalf ? '20:10' : '20:30';
+
+                const labelBox = `
+                    <div class="ami-isha-line">
+                        <span>Azhan</span>
+                        <span class="bullet-brand">•</span>
+                        <span class="arabic">أذان</span>
+                        <span class="bullet-brand">•</span>
+                        <span class="tamil">பாங்கு</span>
+                        <span class="time-sep">:</span>
+                        <span class="time-val">${adhanTime}</span>
+                    </div>`;
+
+                if (hDay === 1 || hDay === 16) {
+                    const rowspan = hDay === 1 ? 15 : totalRamadanDays - 15 + 1;
+                    amiIshaTd = `
+                        <td class="ami-isha" rowspan="${rowspan}">
+                            <div class="ami-isha-rotate">${labelBox}</div>
+                        </td>`;
+                } else {
+                    amiIshaTd = null;
+                }
+            } else {
+                amiIshaTd = `<td class="ami-isha">--:--</td>`;
+            }
+
             tr.innerHTML = `
                 <td class="col-day-name">${dayShort}</td>
                 <td class="col-day-name tamil">${dayTamil}</td>
@@ -234,6 +253,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <td class="asr">${times.asr}</td>
                 <td class="maghrib">${times.maghrib}</td>
                 <td class="isha">${times.isha}</td>
+                ${amiIshaTd !== null ? amiIshaTd : ''}
                 <td class="col-hijri">${hijriDayDisplay}</td>
                 <td class="col-day-name arabic">${dayArabic}</td>
             `;

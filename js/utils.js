@@ -93,10 +93,21 @@ export const DATE_UTILS = {
     ARABIC_DIGITS: ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'],
 
     /**
+     * Formate une date en YYYY-MM-DD.
+     */
+    format: (date) => {
+        const y = date.getFullYear();
+        const m = String(date.getMonth() + 1).padStart(2, '0');
+        const d = String(date.getDate()).padStart(2, '0');
+        return `${y}-${m}-${d}`;
+    },
+
+    /**
      * Convertit une chaîne de date en format ISO (YYYY-MM-DD)
      * en forçant le fuseau horaire Europe/Paris.
      */
-    toParisISO: (dateStr) => {
+    toParisISO: (dateInput) => {
+        const date = dateInput instanceof Date ? dateInput : new Date(dateInput);
         const dtf = new Intl.DateTimeFormat('fr-FR', {
             timeZone: 'Europe/Paris',
             year: 'numeric',
@@ -105,7 +116,7 @@ export const DATE_UTILS = {
         });
 
         // Extraction sécurisée des parties
-        const parts = dtf.formatToParts(new Date(dateStr));
+        const parts = dtf.formatToParts(date);
         const getPart = (type) => parts.find((p) => p.type === type).value;
 
         return `${getPart('year')}-${getPart('month')}-${getPart('day')}`;

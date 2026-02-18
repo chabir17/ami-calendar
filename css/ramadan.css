@@ -288,14 +288,18 @@ body {
 }
 
 /* Largeurs fixes pour les prières (similaire à table.css) */
-/* En-tête : les prières sont les enfants 2 à 7 */
-.ramadan-table th:nth-child(n + 2):nth-child(-n + 7),
-/* Corps : les prières sont les enfants 4 à 9 (car Date = 3 colonnes) */
-.ramadan-table td:nth-child(n + 4):nth-child(-n + 9) {
-    width: 11%;
+/* En-tête : les prières sont les enfants 2 à 8 */
+.ramadan-table th:nth-child(n + 2):nth-child(-n + 8),
+/* Corps : les prières sont les enfants 4 à 10 (car Date = 3 colonnes) */
+.ramadan-table td:nth-child(n + 4):nth-child(-n + 10) {
+    width: 10%;
 }
 
-/* Mise en évidence Fajr & Maghrib */
+.ramadan-table .col-ami-isha {
+    width: 5% !important;
+}
+
+/* Cellules spécifiques (Fajr, Maghrib, AMI Isha) */
 .ramadan-table td.fajr,
 .ramadan-table td.maghrib {
     font-weight: 600;
@@ -303,36 +307,88 @@ body {
     background-color: var(--brand-light);
 }
 
+.ramadan-table td.ami-isha {
+    font-size: 14px;
+    color: var(--brand-dark);
+    border-left: 1px solid var(--brand-light);
+    padding: 2px 0;
+    vertical-align: middle;
+}
+
+/* --- AMI ISHA ROTATED CONTENT --- */
+.ami-isha-rotate {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    white-space: nowrap;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ami-isha-line,
+.event-stack {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    line-height: 1.2;
+}
+
+.ami-isha-line {
+    font-size: 14px;
+}
+
+.ami-isha-line .time-sep {
+    color: var(--brand-dark);
+    margin-left: -0.2rem;
+}
+
+.ami-isha-line .time-val {
+    font-weight: 500;
+}
+
+.bullet-brand,
+.event-separator {
+    color: var(--brand);
+    font-weight: 700;
+}
+
+/* Échelles de police pour langues secondaires */
+.arabic,
+.event-ar {
+    font-size: 13px;
+}
+.tamil,
+.event-ta {
+    font-size: 13px;
+}
+
+.ami-isha-line .arabic {
+    font-size: 12px;
+}
+.ami-isha-line .tamil {
+    font-size: 10px;
+}
+
 /* --- ÉVÉNEMENTS SPÉCIAUX (TABLEAU) --- */
 .ramadan-table tr.row-event,
-.ramadan-table tr.is-friday {
+.ramadan-table tr.is-friday,
+.ramadan-table tr.row-separator td {
     background-color: var(--brand-light);
 }
 
 .ramadan-table tr.is-night-of-doubt td {
     border-bottom: 1px solid var(--brand) !important;
 }
-
 .ramadan-table tr.is-eid td {
     border-top: 1px solid var(--brand) !important;
 }
 
-/* Cellule fusionnée (Nuit du Doute / Eid) */
 .special-event-label {
     vertical-align: middle;
     padding: 0;
-}
-
-.event-stack {
-    display: flex;
-    flex-direction: row; /* Horizontal */
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem; /* Espacement réduit avec séparateurs */
-}
-
-.event-separator {
-    color: var(--brand);
 }
 
 .event-fr {
@@ -342,27 +398,12 @@ body {
     font-size: 14px;
 }
 
-.event-ar {
-    font-size: 13px;
-    color: var(--brand-dark);
-}
-
-.event-ta {
-    font-size: 13px;
-    color: var(--brand-dark);
-}
-
 /* Ligne séparatrice (27ème Nuit) */
 .ramadan-table tr.row-separator td {
-    background-color: var(--brand-light);
     color: var(--brand-dark);
     text-transform: uppercase;
     letter-spacing: 1px;
     padding: 0.25rem;
-}
-
-.ramadan-table tr.row-separator .event-stack {
-    line-height: 1;
 }
 
 /* Ajustements Contenu Footer */
@@ -373,6 +414,7 @@ body {
     line-height: 1.2;
     margin-bottom: 0.5rem;
 }
+
 .org-names .org-fr {
     font-size: 16px;
     margin: 0;
