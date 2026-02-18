@@ -101,7 +101,7 @@ body {
 .year-corner {
     position: absolute;
     top: 1rem;
-    font-size: 36px;
+    font-size: 36px !important;
     text-align: center;
     align-content: center;
     display: flex;
