@@ -24,8 +24,9 @@
 }
 
 .logo-box {
-    width: 1.6cm;
-    height: 1.6cm;
+    width: 1.9cm;
+    height: 1.9cm;
+    margin: -0.15cm 0; /* déborde sur les marges intérieures : le bandeau garde sa hauteur */
     display: flex;
     align-items: center;
     justify-content: center;
