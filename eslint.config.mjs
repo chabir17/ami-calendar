@@ -3,6 +3,11 @@ import pluginJs from '@eslint/js';
 import eslintConfigPrettier from 'eslint-config-prettier';
 
 export default [
+    // 0. Fichiers exclus du linting (bloc "ignores" seul = exclusion globale)
+    {
+        ignores: ['assets/', 'css/', 'js/lib/', 'node_modules/', '.vscode/', '.git/']
+    },
+
     // 1. Configuration globale
     {
         languageOptions: {
@@ -11,13 +16,21 @@ export default [
                 ...globals.browser,
                 CONFIG: 'readonly', // Votre variable globale définie dans data/config.js
                 TEXTS: 'readonly', // Votre variable globale définie dans data/lang.js
-                adhan: 'readonly' // La librairie externe Adhan
+                adhan: 'readonly', // La librairie externe Adhan
+                QRCode: 'readonly' // La librairie externe qrcode.js (page Ramadan)
             },
             ecmaVersion: 'latest',
             sourceType: 'module' // Pour supporter les imports/exports modernes si besoin
-        },
-        // Ignorer les dossiers non pertinents pour le linting
-        ignores: ['assets/', 'css/', '.vscode/', '.git/']
+        }
+    },
+
+    // 1 bis. Scripts Node (outillage des données)
+    {
+        files: ['data/csv_to_json.js'],
+        languageOptions: {
+            globals: { ...globals.node },
+            sourceType: 'commonjs'
+        }
     },
 
     // 2. Règles recommandées par défaut (detecte les erreurs courantes)

@@ -148,9 +148,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     const daysArabicList = window.TEXTS?.ar?.days;
     const daysTamilList = window.TEXTS?.ta?.days;
 
-    const ramadanDays = calendarEvents.filter((e) => e.hijri.monthNameRaw.toLowerCase().includes('ramadan'));
-    const totalRamadanDays = ramadanDays.length;
-
     // --- Event Helpers ---
     const EVENT_LABELS = {
         'night-of-doubt': { fr: 'NUIT DU DOUTE', ar: 'ليلة الشك', ta: 'சந்தேக இரவு' },
@@ -232,7 +229,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <td class="asr">${times.asr}</td>
                 <td class="maghrib">${times.maghrib}</td>
                 <td class="isha">${times.isha}</td>
-                ${amiIshaTd !== null ? amiIshaTd : ''}
+                ${amiIshaTd}
                 <td class="col-hijri">${hijriDayDisplay}</td>
                 <td class="col-day-name arabic">${dayArabic}</td>
             `;

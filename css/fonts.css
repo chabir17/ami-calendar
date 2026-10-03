@@ -25,6 +25,25 @@
     font-display: swap;
 }
 
+/* Amiri (Arabe) - naskh classique, licence OFL */
+@font-face {
+    font-family: 'Amiri';
+    src: url('../assets/fonts/Amiri-Regular.ttf') format('truetype');
+    size-adjust: 115%; /* Amiri parait plus petit a taille egale : alignement visuel sur Noto */
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Amiri';
+    src: url('../assets/fonts/Amiri-Bold.ttf') format('truetype');
+    size-adjust: 115%; /* Amiri parait plus petit a taille egale : alignement visuel sur Noto */
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
 /* Noto Naskh Arabic (Arabe) */
 @font-face {
     font-family: 'Noto Naskh Arabic';
@@ -47,6 +66,14 @@
     font-family: 'Noto Serif Tamil';
     src: url('../assets/fonts/NotoSerifTamil-Regular.ttf') format('truetype');
     font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Noto Serif Tamil';
+    src: url('../assets/fonts/NotoSerifTamil-Medium.ttf') format('truetype');
+    font-weight: 500;
     font-style: normal;
     font-display: swap;
 }

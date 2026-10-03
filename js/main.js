@@ -1,5 +1,5 @@
-import { initAdhan, fetchExternalData, getHijriDateSafe, getDayInfo, fetchClientConfig, applyTheme } from './services.js';
-import { DOM } from './utils.js';
+import { initAdhan, fetchExternalData, getHijriDateSafe, getDayInfo, fetchClientConfig, applyTheme, loadPrayerTimes } from './services.js';
+import { DOM, DATE_UTILS } from './utils.js';
 import './components.js';
 
 // ==========================================
@@ -58,8 +58,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     pageTemplate = templateEl.content;
     const appContainer = document.getElementById('app');
 
-    // 2. Chargement & Application Config Client
-    clientConfig = await fetchClientConfig();
+    // 2. Chargement Config Client & Horaires de prière (en parallèle)
+    [clientConfig] = await Promise.all([fetchClientConfig(), loadPrayerTimes()]);
 
     if (clientConfig) {
         await applyTheme(clientConfig);
@@ -133,9 +133,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     renderApp();
 
     // 6. Mise à jour asynchrone (API Vacances/Fériés)
-    fetchExternalData().then((shouldUpdate) => {
-        if (shouldUpdate) renderApp();
-    });
+    fetchExternalData(renderApp);
 });
 
 /**
@@ -149,11 +147,13 @@ function updateLegends(year, month, container) {
     if (legendDst && isDstMonth) {
         const legendText = legendDst.querySelector('span:last-child');
         const isSummer = month === 3;
-        if (legendText) legendText.textContent = isSummer ? "Heure d'été (+1h)" : "Heure d'hiver (-1h)";
+        if (legendText) legendText.textContent = isSummer ? "Heure d'été +1 h" : "Heure d'hiver −1 h";
 
-        // Mise à jour de l'emoji
-        const legendIcon = legendDst.querySelector('span:first-child');
-        if (legendIcon) legendIcon.textContent = isSummer ? '🕑' : '🕒';
+        // Icône : flèche vers l'avant (été) ou vers l'arrière (hiver)
+        const legendIcon = legendDst.querySelector('.legend-icon');
+        if (legendIcon) {
+            legendIcon.innerHTML = `<svg class="icon"><use href="assets/icons/icon-dst-${isSummer ? 'forward' : 'back'}.svg#icon"></use></svg>`;
+        }
     }
 
     // 2. Légende Aïd & Vacances
@@ -172,7 +172,7 @@ function updateLegends(year, month, container) {
 
         if (info.isEid) {
             hasEid = true;
-            eidName = info.label;
+            eidName = info.eidName;
         }
         if (info.isPublicHoliday) hasPublicHoliday = true;
         if (info.isHoliday && info.holidayName) holidayNames.add(info.holidayName);
@@ -206,22 +206,27 @@ function updateZoneTitles(year, month, container) {
 
     DOM.setText('.greg-month-fr', window.TEXTS.fr.months[jsMonth], container);
     DOM.setText('.greg-month-ta', window.TEXTS.ta.months[jsMonth], container);
+    DOM.setText('.greg-month-ar', `${window.TEXTS.ar.months[jsMonth]} ${DATE_UTILS.toArabicDigits(String(year))}`, container);
     DOM.setText('.year-display', year, container);
 
     const hijriStart = getHijriDateSafe(new Date(year, jsMonth, 1));
     const hijriEnd = getHijriDateSafe(new Date(year, jsMonth, daysInMonth));
 
     let hijriFrStr = '',
-        hijriArStr = '';
+        hijriArStr = '',
+        hijriTaStr = '';
     if (hijriStart.monthNameFR && hijriEnd.monthNameFR) {
         if (hijriStart.monthNameFR === hijriEnd.monthNameFR) {
             hijriFrStr = `${hijriStart.monthNameFR} ${hijriStart.year}`;
             hijriArStr = `${hijriStart.monthNameAR} ${hijriStart.yearAr}`;
+            hijriTaStr = hijriStart.monthNameTA;
         } else {
             hijriFrStr = `${hijriStart.monthNameFR} / ${hijriEnd.monthNameFR} ${hijriEnd.year}`;
             hijriArStr = `${hijriStart.monthNameAR} / ${hijriEnd.monthNameAR} ${hijriEnd.yearAr}`;
+            hijriTaStr = `${hijriStart.monthNameTA} / ${hijriEnd.monthNameTA}`;
         }
     }
     DOM.setText('.hijri-month-fr', hijriFrStr, container);
     DOM.setText('.hijri-month-ar', hijriArStr, container);
+    DOM.setText('.hijri-month-ta', hijriTaStr, container);
 }

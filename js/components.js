@@ -78,7 +78,16 @@ class CalendarGrid extends HTMLElement {
 
             // Classes CSS
             if (dayInfo.isEid) root.classList.add('is-friday');
-            if (dayInfo.isHoliday) root.classList.add('is-holiday');
+            if (dayInfo.isHoliday) {
+                root.classList.add('is-holiday');
+                // Extrémités de la période (la veille / le lendemain ne sont pas en vacances) : bande arrondie
+                const isHolidayOn = (offset) => {
+                    const d = new Date(year, jsMonth, day + offset);
+                    return getDayInfo(d, getHijriDateSafe(d)).isHoliday;
+                };
+                if (!isHolidayOn(-1)) root.classList.add('holiday-start');
+                if (!isHolidayOn(1)) root.classList.add('holiday-end');
+            }
             if (dayInfo.isPublicHoliday) root.classList.add('is-public-holiday');
 
             // Contenu Textuel
@@ -91,16 +100,34 @@ class CalendarGrid extends HTMLElement {
             if (dayInfo.isDST) {
                 const dstIcon = root.querySelector('.dst-icon');
                 dstIcon.hidden = false;
-                dstIcon.textContent = dayInfo.dstType === 'winter' ? '🕒' : '🕑';
+                const dir = dayInfo.dstType === 'winter' ? 'back' : 'forward';
+                dstIcon.innerHTML = `<svg class="icon"><use href="assets/icons/icon-dst-${dir}.svg#icon"></use></svg>`;
                 if (dayInfo.isNewMoon) dstIcon.style.left = '18px';
             }
 
-            if (dayInfo.label) {
+            // Aïd + jour férié (case partagée) : l'Aïd en haut dans la moitié verte, le jour férié en bas
+            let labels = dayInfo.labels;
+            if (dayInfo.isEid && dayInfo.isPublicHoliday) {
+                const top = document.createElement('div');
+                top.className = 'event-label-top';
+                top.textContent = dayInfo.eidName;
+                root.appendChild(top);
+                labels = labels.filter((l) => l.type !== 'eid');
+            }
+
+            if (labels.length) {
+                // Plusieurs libellés, ou un libellé long qui passera sur deux lignes : le numéro remonte
+                // (sauf jour férié : le libellé tient en bas, et le haut d'une case partagée porte l'Aïd)
+                const tall = labels.length > 1 || labels.some((l) => l.text.length > 14);
+                if (tall && !dayInfo.isPublicHoliday) root.classList.add('multi-events');
                 const labelDiv = root.querySelector('.event-label');
                 labelDiv.hidden = false;
-                labelDiv.textContent = dayInfo.label;
-                if (dayInfo.isEid) labelDiv.classList.add('eid-label');
-                if (dayInfo.isDST) labelDiv.classList.add('dst-label');
+                for (const { text, type } of labels) {
+                    const line = document.createElement('span');
+                    line.className = `event-line ${type}-label`;
+                    line.textContent = text;
+                    labelDiv.appendChild(line);
+                }
             }
 
             this.appendChild(clone);
