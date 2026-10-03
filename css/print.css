@@ -17,6 +17,7 @@
         width: 297mm;
         height: 210mm;
         border: none;
+        box-shadow: none; /* l'ombre (écran) de la page suivante débordait en bas de chaque page */
         break-inside: avoid;
         page-break-inside: avoid;
         margin: 0;

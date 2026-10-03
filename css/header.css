@@ -8,7 +8,7 @@
        contenu sous la zone de reliure du bord haut */
     padding: calc(var(--binding-zone) - var(--page-pad)) 0.5cm 0.2cm;
     border-radius: 0.5rem;
-    border-bottom: 2px solid var(--brand);
+    border-bottom: 1.5px solid var(--brand);
 }
 
 .header-content {
@@ -24,8 +24,9 @@
 }
 
 .logo-box {
-    width: 1.6cm;
-    height: 1.6cm;
+    width: 1.9cm;
+    height: 1.9cm;
+    margin: -0.15cm 0; /* déborde sur les marges intérieures : le bandeau garde sa hauteur */
     display: flex;
     align-items: center;
     justify-content: center;
