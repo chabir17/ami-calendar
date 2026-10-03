@@ -148,9 +148,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     const daysArabicList = window.TEXTS?.ar?.days;
     const daysTamilList = window.TEXTS?.ta?.days;
 
-    const ramadanDays = calendarEvents.filter((e) => e.hijri.monthNameRaw.toLowerCase().includes('ramadan'));
-    const totalRamadanDays = ramadanDays.length;
-
     // --- Event Helpers ---
     const EVENT_LABELS = {
         'night-of-doubt': { fr: 'NUIT DU DOUTE', ar: 'ليلة الشك', ta: 'சந்தேக இரவு' },
@@ -170,7 +167,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             const separatorTr = document.createElement('tr');
             separatorTr.className = 'row-separator laylat-al-qadr-sep';
             separatorTr.innerHTML = `
-                <td colspan="9">
+                <td colspan="10">
                     <div class="event-stack">
                         <span class="event-fr">27<sup>ÈME</sup> NUIT DU RAMAḌĀN</span>
                         <span class="event-separator">•</span>
@@ -214,33 +211,12 @@ document.addEventListener('DOMContentLoaded', async () => {
             const hDay = parseInt(hijri.day);
             const isRamadan = hijri.monthNameRaw.toLowerCase().includes('ramadan');
             let amiIshaTd = '';
-
             if (isRamadan) {
                 const isFirstHalf = hDay <= 15;
                 const adhanTime = isFirstHalf ? '20:10' : '20:30';
-
-                const labelBox = `
-                    <div class="ami-isha-line">
-                        <span>Azhan</span>
-                        <span class="bullet-brand">•</span>
-                        <span class="arabic">أذان</span>
-                        <span class="bullet-brand">•</span>
-                        <span class="tamil">பாங்கு</span>
-                        <span class="time-sep">:</span>
-                        <span class="time-val">${adhanTime}</span>
-                    </div>`;
-
-                if (hDay === 1 || hDay === 16) {
-                    const rowspan = hDay === 1 ? 15 : totalRamadanDays - 15 + 1;
-                    amiIshaTd = `
-                        <td class="ami-isha" rowspan="${rowspan}">
-                            <div class="ami-isha-rotate">${labelBox}</div>
-                        </td>`;
-                } else {
-                    amiIshaTd = null;
-                }
+                amiIshaTd = `<td class="ami-isha-fix">${adhanTime}</td>`;
             } else {
-                amiIshaTd = `<td class="ami-isha">--:--</td>`;
+                amiIshaTd = `<td class="ami-isha-fix">--:--</td>`;
             }
 
             tr.innerHTML = `
@@ -253,7 +229,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <td class="asr">${times.asr}</td>
                 <td class="maghrib">${times.maghrib}</td>
                 <td class="isha">${times.isha}</td>
-                ${amiIshaTd !== null ? amiIshaTd : ''}
+                ${amiIshaTd}
                 <td class="col-hijri">${hijriDayDisplay}</td>
                 <td class="col-day-name arabic">${dayArabic}</td>
             `;

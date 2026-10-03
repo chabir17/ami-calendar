@@ -287,19 +287,13 @@ body {
     padding-left: 0;
 }
 
-/* Largeurs fixes pour les prières (similaire à table.css) */
-/* En-tête : les prières sont les enfants 2 à 8 */
+/* Largeurs fixes pour les prières */
 .ramadan-table th:nth-child(n + 2):nth-child(-n + 8),
-/* Corps : les prières sont les enfants 4 à 10 (car Date = 3 colonnes) */
 .ramadan-table td:nth-child(n + 4):nth-child(-n + 10) {
     width: 10%;
 }
 
-.ramadan-table .col-ami-isha {
-    width: 5% !important;
-}
-
-/* Cellules spécifiques (Fajr, Maghrib, AMI Isha) */
+/* Cellules spécifiques (Fajr, Maghrib) */
 .ramadan-table td.fajr,
 .ramadan-table td.maghrib {
     font-weight: 600;
@@ -307,46 +301,19 @@ body {
     background-color: var(--brand-light);
 }
 
-.ramadan-table td.ami-isha {
-    font-size: 14px;
-    color: var(--brand-dark);
-    border-left: 1px solid var(--brand-light);
-    padding: 2px 0;
+/* Cellules de prière standards (AMI) */
+table.ramadan-table thead th.col-ami-isha-fix {
+    width: 10% !important;
+    color: var(--brand-dark) !important;
     vertical-align: middle;
 }
 
-/* --- AMI ISHA ROTATED CONTENT --- */
-.ami-isha-rotate {
-    writing-mode: vertical-rl;
-    transform: rotate(180deg);
-    white-space: nowrap;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.ami-isha-line,
-.event-stack {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    line-height: 1.2;
-}
-
-.ami-isha-line {
-    font-size: 14px;
-}
-
-.ami-isha-line .time-sep {
-    color: var(--brand-dark);
-    margin-left: -0.2rem;
-}
-
-.ami-isha-line .time-val {
-    font-weight: 500;
+table.ramadan-table tbody td.ami-isha-fix {
+    width: 10% !important;
+    color: #333333 !important;
+    font-weight: 400 !important;
+    background-color: transparent !important;
+    vertical-align: middle;
 }
 
 .bullet-brand,
@@ -363,13 +330,6 @@ body {
 .tamil,
 .event-ta {
     font-size: 13px;
-}
-
-.ami-isha-line .arabic {
-    font-size: 12px;
-}
-.ami-isha-line .tamil {
-    font-size: 10px;
 }
 
 /* --- ÉVÉNEMENTS SPÉCIAUX (TABLEAU) --- */

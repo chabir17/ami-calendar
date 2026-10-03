@@ -1,58 +1,80 @@
-/* --- ZONE DES TITRES (MOIS & ANNÉE) --- */
+/* --- ZONE DES TITRES : grégorien (gauche) et hégirien (droite), en miroir ---
+   Ligne 1 : mois principal + année. Ligne 2 : traductions, en petit.
+   Même disposition et même hauteur pour les 12 mois. */
 .month-titles-zone {
-    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    padding: 0.25rem;
-    margin: 0.25rem 0;
-}
-
-.greg-month-fr {
-    font-size: 20px;
-    text-transform: uppercase;
-    line-height: 1.25;
-    color: var(--col-blue);
-    margin: 0.125rem 0;
-}
-
-.greg-month-ta {
-    font-size: 16px;
-    line-height: 1.25;
-    color: var(--col-orange);
+    gap: 1rem;
+    padding: 0.1rem 0.25rem;
+    margin: 0.15rem 0 0.25rem;
 }
 
 .titles-hijri {
     text-align: right;
 }
 
-.hijri-month-fr {
-    font-size: 14px;
-    text-transform: uppercase;
-    color: var(--col-text-light);
+.title-main {
+    white-space: nowrap;
 }
 
-.hijri-month-ar {
-    font-size: 20px;
-    color: var(--col-green);
-    margin-top: 0;
-}
-
+/* Grégorien : mois et année, même style */
+.greg-month-fr,
 .year-display {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 48px;
-    font-weight: 700;
-    color: var(--brand);
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    line-height: 1.3;
+    color: var(--col-blue);
+}
+
+/* Hégirien : mois en arabe */
+.hijri-month-ar {
+    font-size: 21px;
+    line-height: 1.55; /* queues des lettres arabes (ع, ي…) : ne touchent pas la ligne 2 */
+    color: var(--col-green);
+}
+
+/* Ligne 2 : traductions séparées par un fin filet vertical */
+.title-sub {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--col-text-light);
+    white-space: nowrap;
+}
+
+.titles-hijri .title-sub {
+    justify-content: flex-end;
+}
+
+.title-sub > * + *::before {
+    content: '';
+    display: inline-block;
+    width: 1px;
+    height: 0.9em;
+    margin-right: 0.5rem;
+    background-color: var(--col-border);
+    vertical-align: -0.1em;
+}
+
+.greg-month-ar {
+    font-size: 14px;
+}
+
+.hijri-month-fr {
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
 }
 
 /* --- GRILLE CALENDRIER (GAUCHE) --- */
 .left-visual-calendar {
     display: flex;
     flex-direction: column;
-    border: 1px solid var(--col-border);
+    border: 1px solid var(--bg-blue-faint);
     border-radius: 0.5rem;
     overflow: hidden;
     background-color: white;
@@ -71,7 +93,7 @@
 }
 
 .weekday-cell {
-    border-right: 1px solid var(--col-border);
+    border-right: 1px solid var(--bg-blue-faint);
     padding: 0.25rem 0;
 }
 
@@ -98,8 +120,8 @@
 }
 
 .day-cell-visual {
-    border-right: 1px solid var(--col-border-light);
-    border-bottom: 1px solid var(--col-border-light);
+    border-right: 1px solid var(--bg-blue-faint);
+    border-bottom: 1px solid var(--bg-blue-faint);
     position: relative;
     display: flex;
     justify-content: center;
@@ -115,18 +137,47 @@
     background-color: var(--bg-friday);
 }
 
-.day-cell-visual.is-holiday {
-    box-shadow: inset 0 4px 0 0 var(--col-orange);
+/* Vacances scolaires : bande fine en bas de case, continue sur la période, arrondie aux extrémités */
+.day-cell-visual.is-holiday::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: -1px; /* recouvre la bordure entre deux cases */
+    bottom: 4px;
+    height: 3px;
+    background-color: var(--col-holiday);
+}
+
+.day-cell-visual.holiday-start::after {
+    left: 6px;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.day-cell-visual.holiday-end::after {
+    right: 6px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.day-cell-visual.is-holiday .event-label {
+    bottom: 10px;
 }
 
 .day-cell-visual.is-public-holiday {
     background-color: var(--bg-public-holiday);
 }
 
+/* Aïd + jour férié le même jour : moitié haute verte (Aïd), moitié basse rouge (jour férié) */
+.day-cell-visual.is-friday.is-public-holiday {
+    background-color: transparent;
+    background-image: linear-gradient(to bottom, var(--bg-friday) 50%, var(--bg-public-holiday) 50%);
+}
+
 /* Numéro du jour (Grégorien) */
 .vis-greg {
     font-size: 42px;
-    font-weight: 700;
+    font-weight: 600;
     color: var(--col-text-lighter);
 }
 
@@ -145,41 +196,90 @@
     position: absolute;
     top: 0.25rem;
     left: 0.25rem;
-    width: 0.75rem;
-    height: 0.75rem;
+    width: 0.8rem;
+    height: 0.8rem;
+    line-height: 0;
+}
+
+.new-moon-icon .icon,
+.dst-icon .icon,
+.legend-icon .icon {
+    width: 0.8rem;
+    height: 0.8rem;
+    margin: 0;
+}
+
+/* Code couleur : croissant = hégirien (vert), horloge = grégorien (bleu) */
+.new-moon-icon .icon,
+.icon-moon .icon {
+    color: var(--col-green);
+}
+
+.dst-icon .icon,
+.icon-dst .icon {
+    color: var(--col-blue);
+}
+
+.legend-icon {
+    display: inline-flex;
+    line-height: 0;
 }
 
 .event-label {
     display: block;
-    font-size: 8px;
-    line-height: 1;
+    font-size: 9.5px;
     margin-top: 0.125rem;
     font-weight: 700;
     text-transform: uppercase;
     color: var(--col-red-event);
     text-align: center;
     width: 100%;
+    padding: 0 3px;
     position: absolute;
     bottom: 2px;
+    /* Libellés longs : passage à la ligne plutôt que troncature (cases étroites) */
+    line-height: 1.15;
+}
+
+/* Plusieurs événements : le numéro remonte pour ne pas toucher les libellés */
+.day-cell-visual.multi-events .vis-greg {
+    transform: translateY(-11px);
+}
+
+/* Case partagée Aïd + jour férié : libellé de l'Aïd en haut, dans la moitié verte */
+.event-label-top {
+    position: absolute;
+    top: 0.3rem;
+    left: 0.3rem;
+    right: 1.5rem; /* laisse la place au jour hégirien (en haut à droite) */
     white-space: nowrap;
-    text-overflow: ellipsis;
-}
-
-/* Label spécifique pour l'Aïd (Vert) */
-.event-label.eid-label {
+    font-size: 9.5px;
+    font-weight: 700;
+    line-height: 1.15;
+    text-align: center;
+    text-transform: uppercase;
     color: var(--col-green);
-    padding: 0.0625rem 0.125rem;
 }
 
-/* Label pour changement d'heure (Bleu) */
-.event-label.dst-label {
+/* Une ligne par événement (ex. Aïd + jour férié le même jour) */
+.event-line {
+    display: block;
+}
+
+/* Aïd (vert) */
+.event-line.eid-label {
+    color: var(--col-green);
+}
+
+/* Changement d'heure (bleu) ; les jours fériés gardent le rouge par défaut */
+.event-line.dst-label {
     color: var(--col-blue);
 }
 
 /* --- BARRE DE LÉGENDE (BAS) --- */
 .legend-box {
     padding: 0.5rem;
-    border-top: 1px solid var(--col-border);
+    border-top: 1px solid var(--bg-blue-faint);
     margin-top: auto;
     display: flex;
     justify-content: space-evenly;
@@ -190,7 +290,7 @@
     display: flex;
     align-items: center;
     gap: 0.35rem;
-    font-size: 10px;
+    font-size: 11px;
     color: var(--col-text-light);
     font-weight: 600;
     text-transform: uppercase;
@@ -208,9 +308,10 @@
 }
 
 .box-holiday {
-    width: 0.75rem;
-    height: 0.25rem;
-    background-color: var(--col-orange);
+    width: 0.9rem;
+    height: 3px;
+    border-radius: 3px;
+    background-color: var(--col-holiday);
 }
 
 .box-public {

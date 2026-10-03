@@ -32,7 +32,7 @@ body {
     background-color: white;
     width: 297mm;
     height: 210mm;
-    padding: 1rem;
+    padding: var(--page-pad);
     display: flex;
     flex-direction: column;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
@@ -41,12 +41,12 @@ body {
     margin: 1rem 0;
 }
 
-/* Conteneur principal : Calendrier (2/3) + Prières (1/3) */
+/* Conteneur principal : Calendrier (~62 %) + Prières (~38 %) */
 .main-split-container {
     position: relative;
     flex-grow: 1;
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1.85fr 1.15fr;
     gap: 1rem;
     overflow: hidden;
 }
@@ -58,7 +58,7 @@ body {
     height: 0.75rem;
     vertical-align: middle;
     fill: currentColor;
-    color: var(--brand);
+    color: var(--brand-text); /* coordonnées du bandeau : visibles à l'impression */
     margin-right: 0.125rem;
     flex-shrink: 0; /* Empêche l'écrasement dans les flexbox */
 }

@@ -80,6 +80,24 @@ const HIJRI_MONTHS_DATA = {
 };
 
 /**
+ * Noms tamouls des mois hégiriens, indexés par la translittération standard.
+ */
+const HIJRI_MONTHS_TA = {
+    Muḥarram: 'முஹர்ரம்',
+    Ṣafar: 'ஸஃபர்',
+    'Rabīʿ al-awwal': 'ரபீஉல் அவ்வல்',
+    'Rabīʿ ath-thānī': 'ரபீஉல் ஆகிர்',
+    'Jumādā al-ūlā': 'ஜுமாதல் ஊலா',
+    'Jumādā ath-thāniya': 'ஜுமாதல் ஆகிரா',
+    Rajab: 'ரஜப்',
+    Shaʿbān: 'ஷஃபான்',
+    Ramaḍān: 'ரமளான்',
+    Shawwāl: 'ஷவ்வால்',
+    'Dhū al-Qaʿdah': 'துல் கஃதா',
+    'Dhū al-Ḥijjah': 'துல் ஹஜ்'
+};
+
+/**
  * Configuration et formatage pour les dates.
  */
 export const DATE_UTILS = {
@@ -122,18 +140,35 @@ export const DATE_UTILS = {
         return `${getPart('year')}-${getPart('month')}-${getPart('day')}`;
     },
 
+    /**
+     * Indique si la date est en heure d'été (règle UE) :
+     * du dernier dimanche de mars (inclus) au dernier dimanche d'octobre (exclu).
+     */
+    isSummerTime: (date) => {
+        const y = date.getFullYear();
+        const lastSunday = (month) => {
+            const d = new Date(y, month + 1, 0);
+            d.setDate(d.getDate() - d.getDay());
+            return d;
+        };
+        const day = new Date(y, date.getMonth(), date.getDate());
+        return day >= lastSunday(2) && day < lastSunday(9);
+    },
+
     /** Convertit les chiffres latins en chiffres arabes */
     toArabicDigits: (str) => str.replace(/\d/g, (d) => DATE_UTILS.ARABIC_DIGITS[d]),
 
     /**
-     * Récupère les noms localisés (Arabe & Standard) à partir du nom brut Intl.
+     * Récupère les noms localisés (Arabe, Standard & Tamoul) à partir du nom brut Intl.
      */
     getHijriNames: (rawName) => {
         const key = rawName.toLowerCase().trim();
         const data = HIJRI_MONTHS_DATA[key];
+        const std = data ? data.std : rawName;
         return {
             ar: data ? data.ar : key,
-            std: data ? data.std : rawName
+            std,
+            ta: HIJRI_MONTHS_TA[std] || ''
         };
     }
 };

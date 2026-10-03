@@ -4,16 +4,18 @@
     /* Couleur thématique de l'année (Doré) */
     --brand: #c8b070;
     --brand-dark: color-mix(in srgb, var(--brand), black 45%);
-    --brand-light: color-mix(in srgb, var(--brand), white 80%);
+    --brand-light: color-mix(in srgb, var(--brand), white 85%);
+    --col-holiday: var(--brand); /* bande des vacances scolaires : doré de l'année */
+    /* Noms de l'association : même famille dorée, deux tons contrastés (WCAG AA sur le bandeau) */
+    --brand-deep: color-mix(in srgb, var(--brand), black 65%); /* nom français : 9.3:1 */
+    --brand-text: color-mix(in srgb, var(--brand), black 40%); /* nom tamoul : 4.7:1 */
 
     /* Bleu foncé (Référence Tour Eiffel) */
     --col-blue: #002e5d;
 
-    /* Orange (Référence Texte Tamil/Cercle) */
-    --col-orange: #f57f20;
-
     /* Vert (Référence Mosquée) */
     --col-green: #2e7d32;
+    --col-green-dark: #1b5e20; /* texte sur fond vert pâle : 6.9:1 */
 
     /* Rouge (Événements/Alertes) */
     --col-red-event: #c62828;
@@ -23,7 +25,6 @@
     --col-text-light: #555555;
     --col-text-lighter: #444444;
     --col-border: #cccccc;
-    --col-border-light: #eeeeee;
 
     /* Fonds globaux */
     --bg-body: #eeeeee;
@@ -31,22 +32,26 @@
     /* --- FONDS "ÉCO-ENCRE" (PASTELS TRÈS CLAIRS POUR L'IMPRESSION) --- */
 
     /* Vert très pâle */
-    --bg-friday: rgba(46, 125, 50, 0.08);
+    --bg-friday: rgba(46, 125, 50, 0.11);
 
     /* Rouge très pâle */
-    --bg-public-holiday: rgba(200, 0, 0, 0.08);
+    --bg-public-holiday: rgba(200, 0, 0, 0.09);
 
-    /* Gris très pâle pour les en-têtes */
-    --bg-table-stripe: #f3f3f3;
+    /* Gris très pâle pour les rayures du tableau */
+    --bg-table-stripe: #f4f4f4;
 
     /* Fonds transparents (basés sur les couleurs principales) */
-    /* Bleu à 10% */
-    --bg-blue-faint: rgba(0, 46, 93, 0.1);
-    /* Vert à 10% */
-    --bg-green-faint: rgba(46, 125, 50, 0.1);
+    /* Bleu à 7% */
+    --bg-blue-faint: rgba(0, 46, 93, 0.07);
+    /* Vert à 7% */
+    --bg-green-faint: rgba(46, 125, 50, 0.07);
+
+    /* --- IMPRESSION (A4 paysage, reliure sur le bord haut) --- */
+    --page-pad: 5mm; /* marge minimale : juste au-dela de la zone non imprimable du copieur (3-5 mm) */
+    --binding-zone: 10mm; /* haut : trous de spirale metallique (<= 6.5 mm) + degagement, dans le bandeau */
 
     /* --- TYPOGRAPHIE --- */
     --font-fr: 'Noto Sans', sans-serif;
-    --font-ar: 'Noto Naskh Arabic', serif;
+    --font-ar: 'Amiri', 'Noto Naskh Arabic', serif;
     --font-ta: 'Noto Serif Tamil', serif;
 }

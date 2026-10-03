@@ -42,7 +42,7 @@
                     <div class="header-content">
                         <div class="header-left">
                             <div class="logo-box">
-                                <img src="assets/img/Logo.png" alt="Logo de l'Association Musulmane de l'Inde" class="logo-img" />
+                                <img src="assets/img/AMI.png" alt="Logo de l'Association Musulmane de l'Inde" class="logo-img" />
                             </div>
                             <div class="org-names">
                                 <h1 class="org-fr">ASSOCIATION MUSULMANE DE L'INDE</h1>
@@ -87,15 +87,21 @@
                 </header>
 
                 <!-- TITRES : Mois et Année -->
+                <!-- Ligne 1 : mois principal + année ; ligne 2 : traductions (même disposition chaque mois) -->
                 <section class="month-titles-zone">
                     <div class="titles-gregorian">
-                        <div class="greg-month-fr"></div>
-                        <div class="greg-month-ta tamil"></div>
+                        <div class="title-main"><span class="greg-month-fr"></span> <span class="year-display"></span></div>
+                        <div class="title-sub">
+                            <span class="greg-month-ta tamil"></span>
+                            <span class="greg-month-ar arabic"></span>
+                        </div>
                     </div>
-                    <div class="year-display"></div>
                     <div class="titles-hijri">
-                        <div class="hijri-month-ar arabic dir-rtl"></div>
-                        <div class="hijri-month-fr"></div>
+                        <div class="title-main hijri-month-ar arabic dir-rtl"></div>
+                        <div class="title-sub">
+                            <span class="hijri-month-ta tamil"></span>
+                            <span class="hijri-month-fr"></span>
+                        </div>
                     </div>
                 </section>
 
@@ -155,11 +161,15 @@
                                 <span>Vacances scolaire - Zone C</span>
                             </div>
                             <div class="legend-item legend-moon" style="display: none">
-                                <span>🌙</span>
+                                <span class="legend-icon icon-moon"
+                                    ><svg class="icon"><use href="assets/icons/icon-moon.svg#icon"></use></svg
+                                ></span>
                                 <span>Nouvelle Lune</span>
                             </div>
                             <div class="legend-item legend-dst" style="display: none">
-                                <span>🕑</span>
+                                <span class="legend-icon icon-dst"
+                                    ><svg class="icon"><use href="assets/icons/icon-dst-forward.svg#icon"></use></svg
+                                ></span>
                                 <span>Changement d'heure</span>
                             </div>
                         </div>
@@ -220,7 +230,11 @@
                                                 <p class="th-ta tamil">இஷா</p>
                                             </div>
                                         </th>
-                                        <th><div class="th-header-symbol">☪︎</div></th>
+                                        <th>
+                                            <div class="th-header-symbol">
+                                                <svg class="icon"><use href="assets/icons/icon-moon.svg#icon"></use></svg>
+                                            </div>
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody></tbody>
@@ -236,7 +250,9 @@
             <div class="day-cell-visual">
                 <span class="vis-greg"></span>
                 <span class="vis-hij"></span>
-                <span class="new-moon-icon" hidden>🌙</span>
+                <span class="new-moon-icon" hidden
+                    ><svg class="icon"><use href="assets/icons/icon-moon.svg#icon"></use></svg
+                ></span>
                 <span class="dst-icon" hidden></span>
                 <div class="event-label" hidden></div>
             </div>
