@@ -8,7 +8,7 @@
        contenu sous la zone de reliure du bord haut */
     padding: calc(var(--binding-zone) - var(--page-pad)) 0.5cm 0.2cm;
     border-radius: 0.5rem;
-    border-bottom: 2px solid var(--brand);
+    border-bottom: 1.5px solid var(--brand);
 }
 
 .header-content {
