@@ -191,7 +191,7 @@ function updateLegends(year, month, container) {
 
     const elMoon = DOM.setDisplay('.legend-moon', !!newMoonMonthName, container);
     if (elMoon && newMoonMonthName) {
-        elMoon.querySelector('span:last-child').textContent = `Nouvelle lune de ${newMoonMonthName}`;
+        elMoon.querySelector('span:last-child').textContent = newMoonMonthName;
     }
 }
 
