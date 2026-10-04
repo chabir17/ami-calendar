@@ -1,7 +1,7 @@
 /* --- HEADER & IDENTITÉ --- */
 .header-fixed {
     position: relative;
-    background-color: var(--brand-light);
+    background-color: var(--bg-header);
     background-image: var(--bg-pattern-custom, url('../assets/patterns/background-pattern.svg'));
     color: var(--col-text);
     /* Bandeau dans les marges (impression bureautique sans fond perdu) ;

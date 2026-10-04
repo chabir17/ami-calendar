@@ -5,6 +5,7 @@
     --brand: #c8b070;
     --brand-dark: color-mix(in srgb, var(--brand), black 45%);
     --brand-light: color-mix(in srgb, var(--brand), white 85%);
+    --bg-header: color-mix(in srgb, var(--brand), white 91%); /* fond du bandeau : léger */
     --bg-holiday: #faf3e0; /* fond des vacances scolaires : doré pastel */
     /* Noms de l'association : même famille dorée, deux tons contrastés (WCAG AA sur le bandeau) */
     --brand-deep: color-mix(in srgb, var(--brand), black 65%); /* nom français : 9.3:1 */

@@ -15,5 +15,5 @@
             <use href="#g" stroke="#000" stroke-width="2" />
         </mask>
     </defs>
-    <rect width="90" height="90" fill="#d4af37" fill-opacity="0.55" mask="url(#m)" />
+    <rect width="90" height="90" fill="#d4af37" fill-opacity="0.3" mask="url(#m)" />
 </svg>
