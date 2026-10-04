@@ -27,14 +27,12 @@ Le projet utilise des polices hébergées localement (dans `assets/fonts/`) pour
 - **Arabe** : `Amiri` (naskh classique, `Noto Naskh Arabic` en secours)
 - **Tamoul** : `Noto Serif Tamil`
 
-### 📐 Mise en Page (Header)
+### 📐 Mise en Page
 
-L'en-tête (`css/header.css`) est conçu pour être informatif et esthétique :
-
-- Bandeau sur motif girih à rosaces à 8 branches (`assets/patterns/background-pattern.svg`), recoloré selon `--brand`.
-- Logo, puis noms de l'association en français et en tamoul (deux tons de la même famille dorée).
-- Coordonnées alignées à droite.
-- Sous le bandeau, une ligne compacte : mois et année grégoriens (FR / tamoul) à gauche, mois hégiriens (translittération / arabe) à droite.
+- **Header** (`css/header.css`) : en-tête de lettre à angles droits, bordures dorées en haut et en bas, motif girih à rosaces à 8 branches sur toute la largeur (`assets/patterns/background-pattern.svg`, recoloré selon `--brand`). Logo de 2 cm, noms français et tamoul côte à côte, coordonnées en 4 colonnes (adresses, téléphones, en ligne, banque). Le header commence sous la zone de reliure (`--binding-zone`).
+- **Calendrier** : carte dont l'en-tête porte le titre du mois (grégorien à gauche, hégirien à droite : mois en gras, année plus légère, traductions tamoule et translittérée dessous), puis la ligne des jours.
+- **Tableau des horaires** : carte pleine hauteur à droite.
+- Espacement unique entre les trois blocs (`--block-gap`).
 
 ### Performance et Optimisations
 
