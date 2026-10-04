@@ -5,9 +5,11 @@
     background-color: white;
     color: var(--col-text);
     /* Le bandeau commence sous la zone de reliure du bord haut (trous de spirale) :
-       le filet du haut n'est pas perforé */
+       la bordure du haut n'est pas perforée */
     margin-top: calc(var(--binding-zone) - var(--page-pad));
     padding: 1mm 0.5cm;
+    border: 1.5px solid var(--brand); /* carte dorée, coins arrondis comme le calendrier et le tableau */
+    border-radius: 0.5rem;
 }
 
 /* Motif girih doré sur toute la largeur (deux couches superposées : visible sur fond blanc) */
@@ -16,18 +18,6 @@
     position: absolute;
     inset: 0;
     background-image: var(--bg-pattern-custom, url('../assets/patterns/background-pattern.svg')), var(--bg-pattern-custom, url('../assets/patterns/background-pattern.svg'));
-    pointer-events: none;
-}
-
-/* Filets dorés en haut et en bas, pleine largeur */
-.header-fixed::after {
-    --rule: linear-gradient(var(--brand), var(--brand));
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-        var(--rule) top / 100% 1.5px no-repeat,
-        var(--rule) bottom / 100% 1.5px no-repeat;
     pointer-events: none;
 }
 
