@@ -210,14 +210,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         } else {
             const hDay = parseInt(hijri.day);
             const isRamadan = hijri.monthNameRaw.toLowerCase().includes('ramadan');
-            let amiIshaTd = '';
-            if (isRamadan) {
-                const isFirstHalf = hDay <= 15;
-                const adhanTime = isFirstHalf ? '20:10' : '20:30';
-                amiIshaTd = `<td class="ami-isha-fix">${adhanTime}</td>`;
-            } else {
-                amiIshaTd = `<td class="ami-isha-fix">--:--</td>`;
-            }
+            // Icha AMI : 20:10 la 1re quinzaine du Ramadan, 20:30 la 2e ; hors Ramadan, pas d'horaire
+            const amiIshaTime = isRamadan ? (hDay <= 15 ? '20:10' : '20:30') : '--:--';
+            const amiIshaTd = `<td class="ami-isha-fix">${amiIshaTime}</td>`;
 
             tr.innerHTML = `
                 <td class="col-day-name">${dayShort}</td>
