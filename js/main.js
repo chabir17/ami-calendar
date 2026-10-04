@@ -23,7 +23,7 @@ function updatePageDOM(container, config) {
     DOM.setText('.org-ta', config.identity.name_ta, container);
     DOM.setSrc('.logo-img', config.identity.logo_url, container);
 
-    // Mise à jour des coordonnées : colonnes (adresses | téléphone, e-mail | site, banque)
+    // Mise à jour des coordonnées : colonnes (adresses | téléphone, WhatsApp | e-mail, site | IBAN, BIC)
     const contacts = container.querySelector('.header-contacts');
     if (contacts) {
         const c = config.contact;
@@ -32,8 +32,9 @@ function updatePageDOM(container, config) {
 
         contacts.innerHTML = [
             group([line(c.addr1_icon || 'location', c.addr1), c.addr2 && line(c.addr2_icon || 'location', c.addr2)]),
-            group([line('phone', c.phone), line('email', c.email)]),
-            group([c.website && line('website', c.website), c.bank && line('bank', `IBAN : ${c.bank.iban} • BIC : ${c.bank.bic}`)])
+            group([line('phone', c.phone), c.whatsapp && line('whatsapp', c.whatsapp)]),
+            group([line('email', c.email), c.website && line('website', c.website)]),
+            c.bank && group([line('bank', `IBAN : ${c.bank.iban}`), `<div class="info-line info-cont"><span>BIC : ${c.bank.bic}</span></div>`])
         ].join('');
     }
 }
@@ -131,7 +132,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 /**
  * Met à jour la bande du bas : vacances scolaires du mois (masquées s'il n'y en a pas)
- * et citation du mois hégirien en cours au 15 du mois (data/citations.js).
+ * et hadith du mois hégirien en cours au 15 du mois (data/citations.js).
  */
 function updateLegends(year, month, container) {
     const holidayNames = new Set();

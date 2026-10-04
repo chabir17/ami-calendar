@@ -20,9 +20,9 @@
 /* Logo agrandi : déborde sur les marges intérieures, le bandeau garde sa hauteur */
 .logo-box {
     flex-shrink: 0;
-    width: 2.2cm;
-    height: 2.2cm;
-    margin: -0.3cm 0;
+    width: 2cm;
+    height: 2cm;
+    margin: -0.2cm 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -87,4 +87,9 @@
     display: flex;
     align-items: center;
     gap: 0.3rem;
+}
+
+/* Ligne sans icône (BIC sous l'IBAN) : alignée sur le texte de la ligne du dessus */
+.info-cont {
+    padding-left: calc(0.75rem + 0.3rem);
 }

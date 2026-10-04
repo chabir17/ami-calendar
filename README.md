@@ -16,7 +16,7 @@ Le design est piloté par des variables CSS (`css/variables.css`) permettant une
 - **Indicateurs de Jours** :
     - Numéro du jour en rouge pour les jours fériés, en vert pour l'Aïd (libellé écrit dans la case).
     - Vacances scolaires (Zone C) : fond doré clair (`--bg-holiday`) ; l'Aïd et les jours fériés restent prioritaires.
-    - Bande du bas : nom des vacances du mois et citation du mois hégirien (Coran, al-Bukhārī, Muslim), modifiable dans `data/citations.js`.
+    - Bande du bas : nom des vacances du mois et hadith du mois hégirien (al-Bukhārī, Muslim), modifiable dans `data/citations.js`.
     - Icônes SVG (`assets/icons/`) : croissant vert pour la nouvelle lune, horloge bleue avec flèche avant/arrière pour le passage à l'heure d'été/hiver.
 
 ### 🌐 Typographie Multilingue
