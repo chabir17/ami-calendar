@@ -15,9 +15,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background-image:
-        var(--bg-pattern-custom, url('../assets/patterns/background-pattern.svg')),
-        var(--bg-pattern-custom, url('../assets/patterns/background-pattern.svg'));
+    background-image: var(--bg-pattern-custom, url('../assets/patterns/background-pattern.svg')), var(--bg-pattern-custom, url('../assets/patterns/background-pattern.svg'));
     background-position: right top;
     -webkit-mask-image: linear-gradient(to left, #000 0%, transparent 55%);
     mask-image: linear-gradient(to left, #000 0%, transparent 55%);
