@@ -7,20 +7,17 @@
     align-items: flex-end;
     gap: 0.75rem;
     padding: 0.4rem 0.6rem 0.3rem;
-    background: var(--bg-blue-title);
+    background: var(--bg-header);
     border-bottom: 1px solid var(--border-blue); /* séparation avec la ligne des jours */
     position: relative;
 }
 
-/* Motif girih bleu, marqué à droite et fondu vers la gauche (comme dans le header) */
+/* Motif girih doré uniforme sur tout le bandeau */
 .month-titles-zone::before {
     content: '';
     position: absolute;
     inset: 0;
-    background-image: url('../assets/patterns/background-pattern-blue.svg');
-    background-position: right top;
-    -webkit-mask-image: linear-gradient(to left, #000 0%, transparent 60%);
-    mask-image: linear-gradient(to left, #000 0%, transparent 60%);
+    background-image: var(--bg-pattern-custom, url('../assets/patterns/background-pattern.svg'));
     pointer-events: none;
 }
 
