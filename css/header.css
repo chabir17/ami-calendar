@@ -8,17 +8,17 @@
        la bordure du haut n'est pas perforée */
     margin-top: calc(var(--binding-zone) - var(--page-pad));
     padding: 1mm 0.5cm;
-    /* En-tête de lettre : bordures dorées en haut et en bas, angles droits */
-    border-top: 1.5px solid var(--brand);
-    border-bottom: 1.5px solid var(--brand);
+    /* Couleurs du logo : filet safran en haut, vert en bas (le blanc entre les deux évoque le drapeau indien) */
+    border-top: 2px solid var(--col-saffron);
+    border-bottom: 2px solid var(--col-green);
 }
 
-/* Motif girih doré sur toute la largeur (deux couches superposées : visible sur fond blanc) */
+/* Motif girih bleu marine très pâle sur toute la largeur */
 .header-fixed::before {
     content: '';
     position: absolute;
     inset: 0;
-    background-image: var(--bg-pattern-custom, url('../assets/patterns/background-pattern.svg')), var(--bg-pattern-custom, url('../assets/patterns/background-pattern.svg'));
+    background-image: url('../assets/patterns/background-pattern-navy.svg');
     pointer-events: none;
 }
 
@@ -63,7 +63,7 @@
 }
 
 .org-fr {
-    color: var(--brand-deep);
+    color: var(--col-green); /* vert du nom français sur le logo */
     font-size: 24px;
     font-weight: 600;
     letter-spacing: 0.045em;
@@ -72,7 +72,7 @@
 
 /* Nom tamoul : même couleur et même taille que le nom français, précédé d'une puce */
 .org-ta {
-    color: var(--brand-deep);
+    color: var(--col-saffron-text); /* safran du nom tamoul sur le logo */
     font-size: 24px;
     font-weight: 500;
     line-height: 1.1;
@@ -82,7 +82,7 @@
     content: '•';
     margin-right: 0.9rem;
     font-family: var(--font-fr);
-    color: var(--brand-text);
+    color: var(--col-blue);
 }
 
 /* Ligne 2 : coordonnées en colonnes, séparées par un simple espace */
@@ -104,4 +104,9 @@
 /* Ligne sans icône (BIC sous l'IBAN) : alignée sur le texte de la ligne du dessus */
 .info-cont {
     padding-left: calc(0.75rem + 0.3rem);
+}
+
+/* Icônes des coordonnées : bleu marine du logo */
+.header-contacts .icon {
+    color: var(--col-blue);
 }
