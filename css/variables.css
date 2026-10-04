@@ -18,7 +18,6 @@
     /* Vert (Référence Mosquée) */
     --col-green: #2e7d32;
     --col-green-dark: #1b5e20; /* texte sur fond vert pâle : 6.9:1 */
-    --col-on-green-soft: #c8e6c9; /* texte secondaire sur fond vert foncé : 5.9:1 */
 
     /* Safran (minaret et nom tamoul du logo) */
     --col-saffron-text: #b8520f; /* texte : 4.9:1 sur blanc */
@@ -50,6 +49,7 @@
     --border-blue: #c5d3e4; /* bordures du calendrier : bleu doux */
     --border-green: #c3dec6; /* bordures du tableau : vert doux */
     --accent-blue: #7f9cc0; /* filet sous l'en-tête des jours */
+    --accent-green: #84b98a; /* filet sous l'en-tête du tableau */
 
     /* --- IMPRESSION (A4 paysage, reliure sur le bord haut) --- */
     --page-pad: 5mm; /* marge minimale : juste au-dela de la zone non imprimable du copieur (3-5 mm) */
