@@ -1,5 +1,5 @@
 import { initAdhan, fetchExternalData, getHijriDateSafe, getDayInfo, fetchClientConfig, applyTheme, loadPrayerTimes } from './services.js';
-import { DOM, DATE_UTILS } from './utils.js';
+import { DOM } from './utils.js';
 import './components.js';
 
 // ==========================================
@@ -206,7 +206,7 @@ function updateZoneTitles(year, month, container) {
 
     DOM.setText('.greg-month-fr', window.TEXTS.fr.months[jsMonth], container);
     DOM.setText('.greg-month-ta', window.TEXTS.ta.months[jsMonth], container);
-    DOM.setText('.greg-month-ar', `${window.TEXTS.ar.months[jsMonth]} ${DATE_UTILS.toArabicDigits(String(year))}`, container);
+    DOM.setText('.greg-month-ar', window.TEXTS.ar.months[jsMonth], container);
     DOM.setText('.year-display', year, container);
 
     const hijriStart = getHijriDateSafe(new Date(year, jsMonth, 1));
