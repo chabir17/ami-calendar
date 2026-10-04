@@ -139,7 +139,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 /**
- * Met à jour la légende : noms des vacances scolaires du mois (masquée s'il n'y en a pas).
+ * Met à jour la bande du bas : vacances scolaires du mois (masquées s'il n'y en a pas)
+ * et citation du mois hégirien en cours au 15 du mois (data/citations.js).
  */
 function updateLegends(year, month, container) {
     const holidayNames = new Set();
@@ -152,8 +153,16 @@ function updateLegends(year, month, container) {
         if (info.isHoliday && info.holidayName) holidayNames.add(info.holidayName);
     }
 
-    DOM.setDisplay('.legend-box', holidayNames.size > 0, container);
+    DOM.setDisplay('.legend-item', holidayNames.size > 0, container);
     DOM.setText('.legend-holiday-name', Array.from(holidayNames).join(' / '), container);
+
+    const quote = window.CITATIONS?.[getHijriDateSafe(new Date(year, jsMonth, 15)).monthNameFR];
+    DOM.setDisplay('.month-quote', !!quote, container, 'block');
+    if (quote) {
+        DOM.setText('.quote-text', `« ${quote.text} »`, container);
+        DOM.setText('.quote-source', `— ${quote.source}`, container);
+    }
+    DOM.setDisplay('.legend-box', holidayNames.size > 0 || !!quote, container);
 }
 
 /**

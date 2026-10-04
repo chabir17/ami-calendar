@@ -243,15 +243,17 @@
 
 /* --- BARRE DE LÉGENDE (BAS) --- */
 .legend-box {
-    padding: 0.5rem;
+    padding: 0.4rem 0.75rem;
     border-top: 1px solid var(--border-blue);
     margin-top: auto;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
+    gap: 0.9rem;
 }
 
 .legend-item {
+    flex-shrink: 0;
     display: flex;
     align-items: center;
     gap: 0.35rem;
@@ -259,6 +261,31 @@
     color: var(--col-text-light);
     font-weight: 600;
     text-transform: uppercase;
+}
+
+/* Citation du mois : italique discret, séparée de la légende par un filet */
+.month-quote {
+    font-size: 11px;
+    font-style: italic;
+    line-height: 1.35;
+    text-align: center;
+    color: var(--col-text-light);
+}
+
+.legend-item + .month-quote {
+    padding-left: 0.9rem;
+    border-left: 1px solid var(--border-blue);
+}
+
+.legend-item[style*='none'] + .month-quote {
+    padding-left: 0;
+    border-left: none;
+}
+
+.quote-source {
+    font-style: normal;
+    font-weight: 600;
+    white-space: nowrap;
 }
 
 .legend-color {

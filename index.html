@@ -27,6 +27,7 @@
 
         <script src="data/config.js" defer></script>
         <script src="data/lang.js" defer></script>
+        <script src="data/citations.js" defer></script>
         <script src="js/main.js" type="module" defer></script>
     </head>
 
@@ -52,13 +53,13 @@
                         <div class="header-right">
                             <div class="info-line">
                                 <svg class="icon">
-                                    <use href="assets/icons/icon-location.svg#icon"></use>
+                                    <use href="assets/icons/icon-mosque.svg#icon"></use>
                                 </svg>
                                 <span><b class="info-label">Mosquée :</b> 91-93 BOULEVARD PASTEUR, 93120 LA COURNEUVE</span>
                             </div>
                             <div class="info-line">
                                 <svg class="icon">
-                                    <use href="assets/icons/icon-location.svg#icon"></use>
+                                    <use href="assets/icons/icon-office.svg#icon"></use>
                                 </svg>
                                 <span><b class="info-label">Siège social :</b> 7-8 PLACE ALFRED DE MUSSET, 93120 LA COURNEUVE</span>
                             </div>
@@ -155,12 +156,13 @@
                                 </div>
                             </div>
                             <ami-calendar-grid></ami-calendar-grid>
-                            <!-- Légende : vacances scolaires uniquement (fériés, Aïd, lune, heure : écrits dans les cases) -->
-                            <div class="legend-box" style="display: none">
-                                <div class="legend-item">
+                            <!-- Bande du bas : vacances scolaires du mois (si besoin) + citation du mois -->
+                            <div class="legend-box">
+                                <div class="legend-item" style="display: none">
                                     <span class="legend-color box-holiday"></span>
                                     <span class="legend-holiday-name"></span>
                                 </div>
+                                <p class="month-quote"><span class="quote-text"></span> <span class="quote-source"></span></p>
                             </div>
                         </section>
                     </div>
