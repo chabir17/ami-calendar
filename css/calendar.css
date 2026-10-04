@@ -8,7 +8,11 @@
     gap: 0.75rem;
     padding: 0.4rem 0.6rem 0.3rem;
     background: var(--bg-header);
-    border-bottom: 1px solid var(--border-blue); /* séparation avec la ligne des jours */
+    /* Contour doré : recouvre la bordure bleue de la carte sur la hauteur du titre */
+    margin: -1px -1px 0;
+    border: 1px solid var(--border-beige);
+    border-radius: 0.5rem 0.5rem 0 0;
+    overflow: hidden;
     position: relative;
 }
 
@@ -41,7 +45,7 @@
     letter-spacing: 0.04em;
     text-transform: uppercase;
     line-height: 1.25;
-    color: var(--col-blue);
+    color: var(--brand-deep); /* nuances dorées de l'année (thème) */
 }
 
 .greg-month-fr {
@@ -50,14 +54,14 @@
 
 .year-display {
     font-weight: 400;
-    color: color-mix(in srgb, var(--col-blue), white 30%);
+    color: var(--brand-text);
 }
 
 /* Hégirien : mois en arabe */
 .hijri-month-ar {
     font-size: 21px;
     line-height: 1.45; /* queues des lettres arabes (ع, ي…) : ne touchent pas la ligne 2 */
-    color: var(--col-green);
+    color: var(--brand-dark);
 }
 
 /* Ligne 2 : traductions séparées par une puce */
@@ -98,7 +102,6 @@
     flex-direction: column;
     border: 1px solid var(--border-blue);
     border-radius: 0.5rem;
-    overflow: hidden;
     background-color: white;
 }
 

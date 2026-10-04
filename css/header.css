@@ -4,21 +4,29 @@
     overflow: hidden;
     background-color: white;
     color: var(--col-text);
-    /* Bandeau dans les marges (impression bureautique sans fond perdu) ;
-       contenu sous la zone de reliure du bord haut */
-    padding: calc(var(--binding-zone) - var(--page-pad)) 0.5cm 0.2cm;
-    border-radius: 0.5rem;
+    /* Le bandeau commence sous la zone de reliure du bord haut (trous de spirale) :
+       le filet du haut n'est pas perforé */
+    margin-top: calc(var(--binding-zone) - var(--page-pad));
+    padding: 1mm 0.5cm;
 }
 
-/* Filet doré du bas, estompé vers la droite */
+/* Filets dorés en haut et en bas, estompés vers la droite */
+.header-fixed::before,
 .header-fixed::after {
     content: '';
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 0;
     height: 1.5px;
     background: linear-gradient(to right, var(--brand) 0%, var(--brand) 50%, transparent 100%);
+}
+
+.header-fixed::before {
+    top: 0;
+}
+
+.header-fixed::after {
+    bottom: 0;
 }
 
 .header-content {
@@ -27,12 +35,11 @@
     gap: 0.9rem;
 }
 
-/* Logo agrandi : déborde sur les marges intérieures, le bandeau garde sa hauteur */
+/* Logo centré verticalement entre les deux filets */
 .logo-box {
     flex-shrink: 0;
     width: 2cm;
     height: 2cm;
-    margin: -0.2cm 0;
     display: flex;
     align-items: center;
     justify-content: center;
