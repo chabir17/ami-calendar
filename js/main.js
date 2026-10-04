@@ -32,11 +32,13 @@ function updatePageDOM(container, config) {
         const iconWeb = `<svg class="icon"><use href="assets/icons/icon-website.svg#icon"></use></svg>`;
         const iconBank = `<svg class="icon"><use href="assets/icons/icon-bank.svg#icon"></use></svg>`;
         // Adresse avec libellé facultatif (ex. "Mosquée", "Siège social")
-        const addrLine = (addr, label) => `<div class="info-line">${iconLoc} <span>${label ? `<b class="info-label">${label} :</b> ` : ''}${addr}</span></div>`;
+        // Adresse avec icône facultative (ex. "mosque", "office" ; épingle par défaut)
+        const addrLine = (addr, icon) =>
+            `<div class="info-line">${icon ? `<svg class="icon"><use href="assets/icons/icon-${icon}.svg#icon"></use></svg>` : iconLoc} <span>${addr}</span></div>`;
 
         headerRight.innerHTML = `
-            ${addrLine(config.contact.addr1, config.contact.addr1_label)}
-            ${config.contact.addr2 ? addrLine(config.contact.addr2, config.contact.addr2_label) : ''}
+            ${addrLine(config.contact.addr1, config.contact.addr1_icon)}
+            ${config.contact.addr2 ? addrLine(config.contact.addr2, config.contact.addr2_icon) : ''}
             <div class="contact-row">
                 <div class="contact-col">${iconPhone} <span>${config.contact.phone}</span></div>
                 <div class="contact-col">${iconEmail} <span>${config.contact.email}</span></div>

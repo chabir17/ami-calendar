@@ -268,6 +268,7 @@
     font-size: 11px;
     font-style: italic;
     line-height: 1.35;
+    white-space: nowrap; /* une ligne chaque mois : textes courts dans data/citations.js */
     text-align: center;
     color: var(--col-text-light);
 }

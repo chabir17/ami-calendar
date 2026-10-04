@@ -46,7 +46,7 @@ body {
     position: relative;
     flex-grow: 1;
     display: grid;
-    grid-template-columns: 1.85fr 1.15fr;
+    grid-template-columns: minmax(0, 1.85fr) minmax(0, 1.15fr); /* largeurs fixes, quel que soit le contenu */
     gap: 1rem;
     margin-top: 0.3rem;
     overflow: hidden;

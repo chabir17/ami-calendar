@@ -1,3 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" id="icon" viewBox="0 0 24 24">
-    <path fill-rule="evenodd" d="M3 21V4.5a1 1 0 0 1 1-1h9a1 1 0 0 1 1 1V8h6a1 1 0 0 1 1 1v12zM5.5 6h2v2h-2zm4 0h2v2h-2zm-4 4h2v2h-2zm4 0h2v2h-2zm-4 4h2v2h-2zm4 0h2v2h-2zm6.5-3.5h2.5v2H16zm0 4h2.5v2H16zM7.5 18h3v3h-3z" />
+    <path
+        fill-rule="evenodd"
+        d="M3 21V4.5a1 1 0 0 1 1-1h9a1 1 0 0 1 1 1V8h6a1 1 0 0 1 1 1v12zM5.5 6h2v2h-2zm4 0h2v2h-2zm-4 4h2v2h-2zm4 0h2v2h-2zm-4 4h2v2h-2zm4 0h2v2h-2zm6.5-3.5h2.5v2H16zm0 4h2.5v2H16zM7.5 18h3v3h-3z"
+    />
 </svg>
