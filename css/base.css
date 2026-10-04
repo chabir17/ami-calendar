@@ -17,6 +17,14 @@ body {
 }
 
 /* --- 2. TYPOGRAPHIE & UTILITAIRES --- */
+/* Graisses maximales : 600 pour le français, 500 pour l'arabe */
+h1,
+h2,
+b,
+strong {
+    font-weight: 600;
+}
+
 .arabic {
     font-family: var(--font-ar);
 }

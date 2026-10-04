@@ -28,7 +28,7 @@
 }
 
 .greg-month-fr {
-    font-weight: 700;
+    font-weight: 600;
 }
 
 .year-display {
@@ -44,7 +44,7 @@
 }
 
 .hijri-months {
-    font-weight: 700;
+    font-weight: 500; /* arabe : 500 maximum */
 }
 
 .hijri-year {
@@ -209,7 +209,7 @@
     display: block;
     font-size: 9.5px;
     margin-top: 0.125rem;
-    font-weight: 700;
+    font-weight: 600;
     text-transform: uppercase;
     color: var(--col-red-event);
     text-align: center;
@@ -234,7 +234,7 @@
     right: 1.5rem; /* laisse la place au jour hégirien (en haut à droite) */
     white-space: nowrap;
     font-size: 9.5px;
-    font-weight: 700;
+    font-weight: 600;
     line-height: 1.15;
     text-align: center;
     text-transform: uppercase;
