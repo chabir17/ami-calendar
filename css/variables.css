@@ -18,7 +18,7 @@
     --col-green-dark: #1b5e20; /* texte sur fond vert pâle : 6.9:1 */
 
     /* Rouge (Événements/Alertes) */
-    --col-red-event: #c62828;
+    --col-red-event: #9b2c2c; /* rouge brique sobre (jours fériés) : 7.5:1 sur blanc */
 
     /* Couleurs neutres */
     --col-text: #333333;
