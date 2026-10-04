@@ -8,7 +8,9 @@
     gap: 0.75rem;
     padding: 0.4rem 0.6rem 0.3rem;
     background-color: var(--col-blue);
-    background-image: url('../assets/patterns/background-pattern-lightblue.svg');
+    /* Motif girih par-dessus un dégradé : bleu marine à gauche, plus clair à droite */
+    background-image:
+        url('../assets/patterns/background-pattern-lightblue.svg'), linear-gradient(to right, var(--col-blue) 0%, color-mix(in srgb, var(--col-blue), white 22%) 100%);
     color: white;
 }
 
