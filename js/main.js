@@ -23,29 +23,18 @@ function updatePageDOM(container, config) {
     DOM.setText('.org-ta', config.identity.name_ta, container);
     DOM.setSrc('.logo-img', config.identity.logo_url, container);
 
-    // Mise à jour des contacts (HTML complexe)
-    const headerRight = container.querySelector('.header-right');
-    if (headerRight) {
-        const iconLoc = `<svg class="icon"><use href="assets/icons/icon-location.svg#icon"></use></svg>`;
-        const iconPhone = `<svg class="icon"><use href="assets/icons/icon-phone.svg#icon"></use></svg>`;
-        const iconEmail = `<svg class="icon"><use href="assets/icons/icon-email.svg#icon"></use></svg>`;
-        const iconWeb = `<svg class="icon"><use href="assets/icons/icon-website.svg#icon"></use></svg>`;
-        const iconBank = `<svg class="icon"><use href="assets/icons/icon-bank.svg#icon"></use></svg>`;
-        // Adresse avec libellé facultatif (ex. "Mosquée", "Siège social")
-        // Adresse avec icône facultative (ex. "mosque", "office" ; épingle par défaut)
-        const addrLine = (addr, icon) =>
-            `<div class="info-line">${icon ? `<svg class="icon"><use href="assets/icons/icon-${icon}.svg#icon"></use></svg>` : iconLoc} <span>${addr}</span></div>`;
+    // Mise à jour des coordonnées : colonnes (adresses | téléphone, e-mail | site, banque)
+    const contacts = container.querySelector('.header-contacts');
+    if (contacts) {
+        const c = config.contact;
+        const line = (icon, text) => `<div class="info-line"><svg class="icon"><use href="assets/icons/icon-${icon}.svg#icon"></use></svg> <span>${text}</span></div>`;
+        const group = (lines) => `<div class="contact-group">${lines.filter(Boolean).join('')}</div>`;
 
-        headerRight.innerHTML = `
-            ${addrLine(config.contact.addr1, config.contact.addr1_icon)}
-            ${config.contact.addr2 ? addrLine(config.contact.addr2, config.contact.addr2_icon) : ''}
-            <div class="contact-row">
-                <div class="contact-col">${iconPhone} <span>${config.contact.phone}</span></div>
-                <div class="contact-col">${iconEmail} <span>${config.contact.email}</span></div>
-                ${config.contact.website ? `<div class="contact-col">${iconWeb} <span>${config.contact.website}</span></div>` : ''}
-            </div>
-            ${config.contact.bank ? `<div class="info-line">${iconBank} <span>IBAN : ${config.contact.bank.iban} | BIC : ${config.contact.bank.bic}</span></div>` : ''}
-        `;
+        contacts.innerHTML = [
+            group([line(c.addr1_icon || 'location', c.addr1), c.addr2 && line(c.addr2_icon || 'location', c.addr2)]),
+            group([line('phone', c.phone), line('email', c.email)]),
+            group([c.website && line('website', c.website), c.bank && line('bank', `IBAN : ${c.bank.iban} • BIC : ${c.bank.bic}`)])
+        ].join('');
     }
 }
 

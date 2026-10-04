@@ -12,8 +12,8 @@ window.CITATIONS = {
         source: 'Muslim, 1163'
     },
     Ṣafar: {
-        text: 'Les actes ne valent que par les intentions.',
-        source: 'al-Bukhārī, 1'
+        text: 'Pas de mauvais augure […] et pas de Ṣafar.',
+        source: 'al-Bukhārī, 5757'
     },
     'Rabīʿ al-awwal': {
         text: 'Et Nous ne t’avons envoyé qu’en miséricorde pour l’univers.',
@@ -52,7 +52,7 @@ window.CITATIONS = {
         source: 'Coran, 2:197'
     },
     'Dhū al-Ḥijjah': {
-        text: 'Et fais aux gens une annonce pour le Hajj.',
-        source: 'Coran, 22:27'
+        text: 'Accomplis la Salât pour ton Seigneur et sacrifie.',
+        source: 'Coran, 108:2'
     }
 };

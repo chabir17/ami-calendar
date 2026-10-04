@@ -13,20 +13,16 @@
 
 .header-content {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.header-left {
-    display: flex;
     align-items: center;
     gap: 0.9rem;
 }
 
+/* Logo agrandi : déborde sur les marges intérieures, le bandeau garde sa hauteur */
 .logo-box {
-    width: 1.9cm;
-    height: 1.9cm;
-    margin: -0.15cm 0; /* déborde sur les marges intérieures : le bandeau garde sa hauteur */
+    flex-shrink: 0;
+    width: 2.2cm;
+    height: 2.2cm;
+    margin: -0.3cm 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -38,13 +34,23 @@
     object-fit: contain;
 }
 
-/* Noms de l'association : filet doré à gauche, français affirmé, tamoul en sous-titre */
-.org-names {
+/* Bloc principal : filet doré à gauche (séparation avec le logo) */
+.header-main {
+    flex: 1;
+    min-width: 0;
     display: flex;
     flex-direction: column;
-    gap: 0.15rem;
+    gap: 0.2rem;
     padding-left: 0.9rem;
     border-left: 1.5px solid color-mix(in srgb, var(--brand), white 25%);
+}
+
+/* Ligne 1 : nom français et nom tamoul côte à côte */
+.org-names {
+    display: flex;
+    align-items: baseline;
+    gap: 0.9rem;
+    white-space: nowrap;
 }
 
 .org-fr {
@@ -52,36 +58,44 @@
     font-size: 24px;
     font-weight: 700;
     letter-spacing: 0.045em;
-    line-height: 1.15;
+    line-height: 1.1;
 }
 
 .org-ta {
     color: var(--brand-text);
     font-size: 20px;
     font-weight: 500;
-    line-height: 1.3;
+    line-height: 1.1;
 }
 
-.header-right {
-    font-size: 11px;
+.org-ta::before {
+    content: '';
+    display: inline-block;
+    width: 1.5px;
+    height: 0.9em;
+    margin-right: 0.9rem;
+    background-color: color-mix(in srgb, var(--brand), white 25%);
+    vertical-align: -0.1em;
+}
+
+/* Ligne 2 : coordonnées en colonnes, séparées par de fins filets dorés */
+.header-contacts {
     display: flex;
-    flex-direction: column;
+    gap: 0.9rem;
+    padding-top: 0.2rem;
+    border-top: 1px solid color-mix(in srgb, var(--brand), white 45%);
+    font-size: 11px;
+    line-height: 1.35;
+    white-space: nowrap;
+}
+
+.contact-group + .contact-group {
+    padding-left: 0.9rem;
+    border-left: 1px solid color-mix(in srgb, var(--brand), white 45%);
 }
 
 .info-line {
     display: flex;
     align-items: center;
-    gap: 0.25rem;
-}
-
-.contact-row {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-}
-
-.contact-col {
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
+    gap: 0.3rem;
 }
