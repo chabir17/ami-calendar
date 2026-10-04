@@ -1,17 +1,39 @@
 /* --- HEADER & IDENTITÉ --- */
 .header-fixed {
     position: relative;
+    overflow: hidden;
     background-color: var(--bg-header);
-    background-image: var(--bg-pattern-custom, url('../assets/patterns/background-pattern.svg'));
     color: var(--col-text);
     /* Bandeau dans les marges (impression bureautique sans fond perdu) ;
        contenu sous la zone de reliure du bord haut */
     padding: calc(var(--binding-zone) - var(--page-pad)) 0.5cm 0.2cm;
     border-radius: 0.5rem;
-    border-bottom: 1.5px solid var(--brand);
+}
+
+/* Motif girih en halo derrière le logo, estompé vers la droite */
+.header-fixed::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: var(--bg-pattern-custom, url('../assets/patterns/background-pattern.svg'));
+    -webkit-mask-image: linear-gradient(to right, #000 0%, #000 6%, transparent 38%);
+    mask-image: linear-gradient(to right, #000 0%, #000 6%, transparent 38%);
+    pointer-events: none;
+}
+
+/* Filet doré du bas, estompé vers la droite */
+.header-fixed::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1.5px;
+    background: linear-gradient(to right, var(--brand) 0%, var(--brand) 50%, transparent 100%);
 }
 
 .header-content {
+    position: relative; /* au-dessus du motif */
     display: flex;
     align-items: center;
     gap: 0.9rem;
@@ -81,6 +103,7 @@
     font-size: 11px;
     line-height: 1.35;
     white-space: nowrap;
+    color: var(--col-text-light);
 }
 
 .info-line {

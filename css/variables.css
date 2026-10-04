@@ -48,6 +48,7 @@
 
     /* --- IMPRESSION (A4 paysage, reliure sur le bord haut) --- */
     --page-pad: 5mm; /* marge minimale : juste au-dela de la zone non imprimable du copieur (3-5 mm) */
+    --block-gap: 2.5mm; /* espacement unique entre header, calendrier et tableau */
     --binding-zone: 10mm; /* haut : trous de spirale metallique (<= 6.5 mm) + degagement, dans le bandeau */
 
     /* --- TYPOGRAPHIE --- */

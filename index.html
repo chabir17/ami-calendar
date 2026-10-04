@@ -94,16 +94,14 @@
 
                 <!-- CONTENU PRINCIPAL : Grille Calendrier + Tableau Prières -->
                 <main class="main-split-container">
-                    <!-- COLONNE GAUCHE : bande des mois + calendrier (le tableau des horaires monte jusqu'au header) -->
-                    <div class="left-column">
-                        <!-- TITRES : Mois et Année -->
-                        <!-- Ligne 1 : mois principal + année ; ligne 2 : traductions (même disposition chaque mois) -->
+                    <!-- SECTION GAUCHE : Calendrier Visuel -->
+                    <section class="left-visual-calendar">
+                        <!-- Titre du mois : grégorien (gauche) | hégirien (droite), dans l'en-tête de la carte -->
                         <section class="month-titles-zone">
                             <div class="titles-gregorian">
                                 <div class="title-main"><span class="greg-month-fr"></span> <span class="year-display"></span></div>
                                 <div class="title-sub">
                                     <span class="greg-month-ta tamil"></span>
-                                    <span class="greg-month-ar arabic"></span>
                                 </div>
                             </div>
                             <div class="titles-hijri">
@@ -114,57 +112,53 @@
                                 </div>
                             </div>
                         </section>
-
-                        <!-- SECTION GAUCHE : Calendrier Visuel -->
-                        <section class="left-visual-calendar">
-                            <div class="weekdays-header" id="weekdays-header">
-                                <div class="weekday-cell">
-                                    <div class="weekday-fr">Lundi</div>
-                                    <div class="arabic weekday-sub">الإثنين</div>
-                                    <div class="tamil weekday-sub">திங்கள்</div>
-                                </div>
-                                <div class="weekday-cell">
-                                    <div class="weekday-fr">Mardi</div>
-                                    <div class="arabic weekday-sub">الثلاثاء</div>
-                                    <div class="tamil weekday-sub">செவ்வாய்</div>
-                                </div>
-                                <div class="weekday-cell">
-                                    <div class="weekday-fr">Mercredi</div>
-                                    <div class="arabic weekday-sub">الأربعاء</div>
-                                    <div class="tamil weekday-sub">புதன்</div>
-                                </div>
-                                <div class="weekday-cell">
-                                    <div class="weekday-fr">Jeudi</div>
-                                    <div class="arabic weekday-sub">الخميس</div>
-                                    <div class="tamil weekday-sub">வியாழன்</div>
-                                </div>
-                                <div class="weekday-cell">
-                                    <div class="weekday-fr">Vendredi</div>
-                                    <div class="arabic weekday-sub">الجمعة</div>
-                                    <div class="tamil weekday-sub">வெள்ளி</div>
-                                </div>
-                                <div class="weekday-cell">
-                                    <div class="weekday-fr">Samedi</div>
-                                    <div class="arabic weekday-sub">السبت</div>
-                                    <div class="tamil weekday-sub">சனி</div>
-                                </div>
-                                <div class="weekday-cell">
-                                    <div class="weekday-fr">Dimanche</div>
-                                    <div class="arabic weekday-sub">الأحد</div>
-                                    <div class="tamil weekday-sub">ஞாயிறு</div>
-                                </div>
+                        <div class="weekdays-header" id="weekdays-header">
+                            <div class="weekday-cell">
+                                <div class="weekday-fr">Lundi</div>
+                                <div class="arabic weekday-sub">الإثنين</div>
+                                <div class="tamil weekday-sub">திங்கள்</div>
                             </div>
-                            <ami-calendar-grid></ami-calendar-grid>
-                            <!-- Bande du bas : vacances scolaires du mois (si besoin) + hadith du mois -->
-                            <div class="legend-box">
-                                <div class="legend-item" style="display: none">
-                                    <span class="legend-color box-holiday"></span>
-                                    <span class="legend-holiday-name"></span>
-                                </div>
-                                <p class="month-quote"><span class="quote-text"></span> <span class="quote-source"></span></p>
+                            <div class="weekday-cell">
+                                <div class="weekday-fr">Mardi</div>
+                                <div class="arabic weekday-sub">الثلاثاء</div>
+                                <div class="tamil weekday-sub">செவ்வாய்</div>
                             </div>
-                        </section>
-                    </div>
+                            <div class="weekday-cell">
+                                <div class="weekday-fr">Mercredi</div>
+                                <div class="arabic weekday-sub">الأربعاء</div>
+                                <div class="tamil weekday-sub">புதன்</div>
+                            </div>
+                            <div class="weekday-cell">
+                                <div class="weekday-fr">Jeudi</div>
+                                <div class="arabic weekday-sub">الخميس</div>
+                                <div class="tamil weekday-sub">வியாழன்</div>
+                            </div>
+                            <div class="weekday-cell">
+                                <div class="weekday-fr">Vendredi</div>
+                                <div class="arabic weekday-sub">الجمعة</div>
+                                <div class="tamil weekday-sub">வெள்ளி</div>
+                            </div>
+                            <div class="weekday-cell">
+                                <div class="weekday-fr">Samedi</div>
+                                <div class="arabic weekday-sub">السبت</div>
+                                <div class="tamil weekday-sub">சனி</div>
+                            </div>
+                            <div class="weekday-cell">
+                                <div class="weekday-fr">Dimanche</div>
+                                <div class="arabic weekday-sub">الأحد</div>
+                                <div class="tamil weekday-sub">ஞாயிறு</div>
+                            </div>
+                        </div>
+                        <ami-calendar-grid></ami-calendar-grid>
+                        <!-- Bande du bas : vacances scolaires du mois (si besoin) + hadith du mois -->
+                        <div class="legend-box">
+                            <div class="legend-item" style="display: none">
+                                <span class="legend-color box-holiday"></span>
+                                <span class="legend-holiday-name"></span>
+                            </div>
+                            <p class="month-quote"><span class="quote-text"></span> <span class="quote-source"></span></p>
+                        </div>
+                    </section>
 
                     <!-- SECTION DROITE : Tableau des Horaires -->
                     <section class="right-prayer-table-container">
