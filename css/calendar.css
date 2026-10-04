@@ -1,4 +1,4 @@
-/* --- TITRE DU MOIS : en-tête de la carte du calendrier (même fond que la ligne des jours) ---
+/* --- TITRE DU MOIS : en-tête de la carte du calendrier (bleu plus soutenu que la ligne des jours) ---
    Grégorien à gauche, hégirien à droite. Ligne 1 : mois + année. Ligne 2 : traductions.
    Même disposition et même hauteur pour les 12 mois. */
 .month-titles-zone {
@@ -7,27 +7,8 @@
     align-items: flex-end;
     gap: 0.75rem;
     padding: 0.4rem 0.6rem 0.3rem;
-    background: var(--bg-header);
-    /* Contour doré : recouvre la bordure bleue de la carte sur la hauteur du titre */
-    margin: -1px -1px 0;
-    border: 1px solid var(--border-beige);
-    border-radius: 0.5rem 0.5rem 0 0;
-    overflow: hidden;
-    position: relative;
-}
-
-/* Motif girih doré uniforme sur tout le bandeau */
-.month-titles-zone::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: var(--bg-pattern-custom, url('../assets/patterns/background-pattern.svg'));
-    pointer-events: none;
-}
-
-.titles-gregorian,
-.titles-hijri {
-    position: relative; /* au-dessus du motif */
+    background: var(--bg-blue-title);
+    border-bottom: 1px solid var(--border-blue); /* séparation avec la ligne des jours */
 }
 
 .titles-hijri {
@@ -45,7 +26,7 @@
     letter-spacing: 0.04em;
     text-transform: uppercase;
     line-height: 1.25;
-    color: var(--brand-deep); /* nuances dorées de l'année (thème) */
+    color: var(--col-blue);
 }
 
 .greg-month-fr {
@@ -54,14 +35,14 @@
 
 .year-display {
     font-weight: 400;
-    color: var(--brand-text);
+    color: color-mix(in srgb, var(--col-blue), white 30%);
 }
 
 /* Hégirien : mois en arabe */
 .hijri-month-ar {
     font-size: 21px;
     line-height: 1.45; /* queues des lettres arabes (ع, ي…) : ne touchent pas la ligne 2 */
-    color: var(--brand-dark);
+    color: var(--col-green);
 }
 
 /* Ligne 2 : traductions séparées par une puce */
@@ -102,6 +83,7 @@
     flex-direction: column;
     border: 1px solid var(--border-blue);
     border-radius: 0.5rem;
+    overflow: hidden;
     background-color: white;
 }
 
@@ -114,6 +96,7 @@
     text-align: center;
     padding: 0;
     font-size: 11px;
+    border-top: 1.5px solid var(--accent-blue);
     border-bottom: 1.5px solid var(--accent-blue);
 }
 

@@ -10,15 +10,12 @@
     padding: 1mm 0.5cm;
 }
 
-/* Motif girih doré : marqué au bord droit (deux couches superposées), estompé vers la gauche */
+/* Motif girih doré sur toute la largeur (deux couches superposées : visible sur fond blanc) */
 .header-fixed::before {
     content: '';
     position: absolute;
     inset: 0;
     background-image: var(--bg-pattern-custom, url('../assets/patterns/background-pattern.svg')), var(--bg-pattern-custom, url('../assets/patterns/background-pattern.svg'));
-    background-position: right top;
-    -webkit-mask-image: linear-gradient(to left, #000 0%, transparent 55%);
-    mask-image: linear-gradient(to left, #000 0%, transparent 55%);
     pointer-events: none;
 }
 

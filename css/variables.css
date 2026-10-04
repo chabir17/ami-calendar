@@ -39,11 +39,11 @@
     --bg-table-stripe: #f4f5f7;
 
     /* Pastels opaques (rendu fiable sur laser de bureau, papier blanc) */
+    --bg-blue-title: #d9e3f0; /* titre du mois (plus soutenu que la ligne des jours) */
     --bg-blue-faint: #eef3f9; /* en-tête des jours */
     --bg-green-faint: #e7f2e8; /* en-tête du tableau des horaires */
     --border-blue: #c5d3e4; /* bordures du calendrier */
     --border-green: #c3dec6; /* bordures du tableau */
-    --border-beige: color-mix(in srgb, var(--brand), white 45%); /* contour du titre du mois */
     --accent-blue: #7f9cc0; /* filet sous l'en-tête des jours */
     --accent-green: #84b98a; /* filet sous l'en-tête du tableau */
 
