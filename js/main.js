@@ -174,20 +174,33 @@ function updateZoneTitles(year, month, container) {
     const hijriEnd = getHijriDateSafe(new Date(year, jsMonth, daysInMonth));
 
     let hijriFrStr = '',
-        hijriArStr = '',
+        hijriArMonths = '',
+        hijriArYear = '',
         hijriTaStr = '';
     if (hijriStart.monthNameFR && hijriEnd.monthNameFR) {
         if (hijriStart.monthNameFR === hijriEnd.monthNameFR) {
             hijriFrStr = `${hijriStart.monthNameFR} ${hijriStart.year}`;
-            hijriArStr = `${hijriStart.monthNameAR} ${hijriStart.yearAr}`;
+            hijriArMonths = hijriStart.monthNameAR;
+            hijriArYear = hijriStart.yearAr;
             hijriTaStr = hijriStart.monthNameTA;
         } else {
             hijriFrStr = `${hijriStart.monthNameFR} / ${hijriEnd.monthNameFR} ${hijriEnd.year}`;
-            hijriArStr = `${hijriStart.monthNameAR} / ${hijriEnd.monthNameAR} ${hijriEnd.yearAr}`;
+            hijriArMonths = `${hijriStart.monthNameAR} / ${hijriEnd.monthNameAR}`;
+            hijriArYear = hijriEnd.yearAr;
             hijriTaStr = `${hijriStart.monthNameTA} / ${hijriEnd.monthNameTA}`;
         }
     }
     DOM.setText('.hijri-month-fr', hijriFrStr, container);
-    DOM.setText('.hijri-month-ar', hijriArStr, container);
+    // Mois en gras, année plus légère (comme « MAI 2027 »)
+    const hijriAr = container.querySelector('.hijri-month-ar');
+    if (hijriAr) {
+        const months = document.createElement('span');
+        months.className = 'hijri-months';
+        months.textContent = hijriArMonths;
+        const yearEl = document.createElement('span');
+        yearEl.className = 'hijri-year';
+        yearEl.textContent = hijriArYear;
+        hijriAr.replaceChildren(months, ' ', yearEl);
+    }
     DOM.setText('.hijri-month-ta', hijriTaStr, container);
 }

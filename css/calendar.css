@@ -7,8 +7,6 @@
     align-items: flex-end;
     gap: 0.75rem;
     padding: 0.4rem 0.6rem 0.3rem;
-    background: var(--bg-blue-title);
-    border-bottom: 1px solid var(--border-blue); /* séparation avec la ligne des jours */
 }
 
 .titles-hijri {
@@ -43,6 +41,15 @@
     font-size: 21px;
     line-height: 1.45; /* queues des lettres arabes (ع, ي…) : ne touchent pas la ligne 2 */
     color: var(--col-green);
+}
+
+.hijri-months {
+    font-weight: 700;
+}
+
+.hijri-year {
+    font-weight: 400;
+    color: color-mix(in srgb, var(--col-green), white 30%);
 }
 
 /* Ligne 2 : traductions séparées par une puce */
