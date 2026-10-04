@@ -10,14 +10,17 @@
     border-radius: 0.5rem;
 }
 
-/* Motif girih en halo derrière le logo, estompé vers la droite */
+/* Motif girih : marqué au bord droit (deux couches superposées), estompé vers la gauche */
 .header-fixed::before {
     content: '';
     position: absolute;
     inset: 0;
-    background-image: var(--bg-pattern-custom, url('../assets/patterns/background-pattern.svg'));
-    -webkit-mask-image: linear-gradient(to right, #000 0%, #000 6%, transparent 38%);
-    mask-image: linear-gradient(to right, #000 0%, #000 6%, transparent 38%);
+    background-image:
+        var(--bg-pattern-custom, url('../assets/patterns/background-pattern.svg')),
+        var(--bg-pattern-custom, url('../assets/patterns/background-pattern.svg'));
+    background-position: right top;
+    -webkit-mask-image: linear-gradient(to left, #000 0%, transparent 55%);
+    mask-image: linear-gradient(to left, #000 0%, transparent 55%);
     pointer-events: none;
 }
 
@@ -100,7 +103,7 @@
 .header-contacts {
     display: flex;
     gap: 1.75rem;
-    font-size: 11px;
+    font-size: 12px;
     line-height: 1.35;
     white-space: nowrap;
     color: var(--col-text-light);

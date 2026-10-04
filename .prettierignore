@@ -1,0 +1,3 @@
+# Bibliothèques tierces minifiées : ne pas reformater
+js/lib/
+node_modules/
