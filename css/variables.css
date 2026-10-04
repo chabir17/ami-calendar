@@ -13,6 +13,7 @@
 
     /* Bleu foncé (Référence Tour Eiffel) */
     --col-blue: #002e5d;
+    --col-on-blue-soft: #bfd0e6; /* texte secondaire sur fond bleu marine : 8.6:1 */
 
     /* Vert (Référence Mosquée) */
     --col-green: #2e7d32;

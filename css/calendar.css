@@ -1,4 +1,4 @@
-/* --- TITRE DU MOIS : en-tête de la carte du calendrier (bleu plus soutenu que la ligne des jours) ---
+/* --- TITRE DU MOIS : en-tête de la carte du calendrier, bleu marine avec motif girih blanc ---
    Grégorien à gauche, hégirien à droite. Ligne 1 : mois + année. Ligne 2 : traductions.
    Même disposition et même hauteur pour les 12 mois. */
 .month-titles-zone {
@@ -7,6 +7,9 @@
     align-items: flex-end;
     gap: 0.75rem;
     padding: 0.4rem 0.6rem 0.3rem;
+    background-color: var(--col-blue);
+    background-image: url('../assets/patterns/background-pattern-white.svg');
+    color: white;
 }
 
 .titles-hijri {
@@ -24,7 +27,7 @@
     letter-spacing: 0.04em;
     text-transform: uppercase;
     line-height: 1.25;
-    color: var(--col-blue);
+    color: white;
 }
 
 .greg-month-fr {
@@ -33,14 +36,14 @@
 
 .year-display {
     font-weight: 400;
-    color: color-mix(in srgb, var(--col-blue), white 30%);
+    color: var(--col-on-blue-soft);
 }
 
-/* Hégirien : mois en arabe (bleu, comme le grégorien) */
+/* Hégirien : mois en arabe (blanc, comme le grégorien) */
 .hijri-month-ar {
     font-size: 21px;
     line-height: 1.45; /* queues des lettres arabes (ع, ي…) : ne touchent pas la ligne 2 */
-    color: var(--col-blue); /* même couleur que le mois grégorien */
+    color: white; /* même couleur que le mois grégorien */
 }
 
 .hijri-months {
@@ -49,7 +52,7 @@
 
 .hijri-year {
     font-weight: 400;
-    color: color-mix(in srgb, var(--col-blue), white 30%);
+    color: var(--col-on-blue-soft);
 }
 
 /* Ligne 2 : traductions séparées par une puce */
@@ -59,7 +62,7 @@
     gap: 0.5rem;
     font-size: 12px;
     line-height: 1.5;
-    color: var(--col-text-light);
+    color: var(--col-on-blue-soft);
     white-space: nowrap;
 }
 
@@ -74,8 +77,8 @@
     font-family: var(--font-fr);
     font-size: 12px;
     font-style: normal;
-    color: var(--col-text-light);
-    opacity: 0.6;
+    color: var(--col-on-blue-soft);
+    opacity: 0.7;
 }
 
 .hijri-month-fr {
