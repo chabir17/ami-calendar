@@ -10,26 +10,32 @@
     padding: 1mm 0.5cm;
 }
 
-/* Filets dorés en haut et en bas, estompés vers la droite */
-.header-fixed::before,
-.header-fixed::after {
+/* Motif girih doré : marqué au bord droit (deux couches superposées), estompé vers la gauche */
+.header-fixed::before {
     content: '';
     position: absolute;
-    left: 0;
-    right: 0;
-    height: 1.5px;
-    background: linear-gradient(to right, var(--brand) 0%, var(--brand) 50%, transparent 100%);
+    inset: 0;
+    background-image: var(--bg-pattern-custom, url('../assets/patterns/background-pattern.svg')), var(--bg-pattern-custom, url('../assets/patterns/background-pattern.svg'));
+    background-position: right top;
+    -webkit-mask-image: linear-gradient(to left, #000 0%, transparent 55%);
+    mask-image: linear-gradient(to left, #000 0%, transparent 55%);
+    pointer-events: none;
 }
 
-.header-fixed::before {
-    top: 0;
-}
-
+/* Filets dorés en haut et en bas, estompés vers la droite */
 .header-fixed::after {
-    bottom: 0;
+    --rule: linear-gradient(to right, var(--brand) 0%, var(--brand) 50%, transparent 100%);
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        var(--rule) top / 100% 1.5px no-repeat,
+        var(--rule) bottom / 100% 1.5px no-repeat;
+    pointer-events: none;
 }
 
 .header-content {
+    position: relative; /* au-dessus du motif */
     display: flex;
     align-items: center;
     gap: 0.9rem;
