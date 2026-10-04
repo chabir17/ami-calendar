@@ -2,6 +2,7 @@
 .right-prayer-table-container {
     overflow: hidden;
     border: 1px solid var(--border-green);
+    border-top: 3mm solid var(--col-green); /* bande verte foncée, en écho au bandeau bleu du calendrier */
     border-radius: 0.5rem;
     display: flex;
     flex-direction: column;
