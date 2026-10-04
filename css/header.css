@@ -74,30 +74,13 @@
     color: var(--brand-text);
 }
 
-/* Ligne 2 : coordonnées en colonnes, séparées par des puces dorées */
+/* Ligne 2 : coordonnées en colonnes, séparées par un simple espace */
 .header-contacts {
     display: flex;
-    gap: 0.5rem;
+    gap: 1.75rem;
     font-size: 11px;
     line-height: 1.35;
     white-space: nowrap;
-}
-
-.contact-group + .contact-group {
-    position: relative;
-    padding-left: 1.4rem;
-}
-
-/* Puce centrée verticalement entre deux colonnes */
-.contact-group + .contact-group::before {
-    content: '•';
-    position: absolute;
-    left: 0.25rem;
-    top: 50%;
-    transform: translateY(-62%); /* la puce est dessinée sous le milieu de sa ligne */
-    color: var(--brand-text);
-    font-size: 15px;
-    line-height: 1;
 }
 
 .info-line {
