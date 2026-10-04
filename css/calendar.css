@@ -89,7 +89,7 @@
     text-align: center;
     padding: 0;
     font-size: 11px;
-    border-bottom: 1.5px solid var(--col-blue);
+    border-bottom: 1.5px solid var(--accent-blue);
 }
 
 .weekday-cell {

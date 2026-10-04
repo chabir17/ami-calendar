@@ -31,10 +31,12 @@ function updatePageDOM(container, config) {
         const iconEmail = `<svg class="icon"><use href="assets/icons/icon-email.svg#icon"></use></svg>`;
         const iconWeb = `<svg class="icon"><use href="assets/icons/icon-website.svg#icon"></use></svg>`;
         const iconBank = `<svg class="icon"><use href="assets/icons/icon-bank.svg#icon"></use></svg>`;
+        // Adresse avec libellé facultatif (ex. "Mosquée", "Siège social")
+        const addrLine = (addr, label) => `<div class="info-line">${iconLoc} <span>${label ? `<b class="info-label">${label} :</b> ` : ''}${addr}</span></div>`;
 
         headerRight.innerHTML = `
-            <div class="info-line">${iconLoc} <span>${config.contact.addr1}</span></div>
-            ${config.contact.addr2 ? `<div class="info-line">${iconLoc} <span>${config.contact.addr2}</span></div>` : ''}
+            ${addrLine(config.contact.addr1, config.contact.addr1_label)}
+            ${config.contact.addr2 ? addrLine(config.contact.addr2, config.contact.addr2_label) : ''}
             <div class="contact-row">
                 <div class="contact-col">${iconPhone} <span>${config.contact.phone}</span></div>
                 <div class="contact-col">${iconEmail} <span>${config.contact.email}</span></div>

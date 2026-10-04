@@ -5,7 +5,7 @@
     --brand: #c8b070;
     --brand-dark: color-mix(in srgb, var(--brand), black 45%);
     --brand-light: color-mix(in srgb, var(--brand), white 85%);
-    --bg-holiday: color-mix(in srgb, var(--brand), white 88%); /* fond des vacances scolaires : doré clair */
+    --bg-holiday: #faf3e0; /* fond des vacances scolaires : doré pastel */
     /* Noms de l'association : même famille dorée, deux tons contrastés (WCAG AA sur le bandeau) */
     --brand-deep: color-mix(in srgb, var(--brand), black 65%); /* nom français : 9.3:1 */
     --brand-text: color-mix(in srgb, var(--brand), black 40%); /* nom tamoul : 4.7:1 */
@@ -31,20 +31,19 @@
 
     /* --- FONDS "ÉCO-ENCRE" (PASTELS TRÈS CLAIRS POUR L'IMPRESSION) --- */
 
-    /* Vert très pâle (vendredis du tableau des horaires) */
-    --bg-friday: rgba(46, 125, 50, 0.11);
+    /* Vert pastel (vendredis du tableau des horaires) */
+    --bg-friday: #e2efe3;
 
-    /* Gris très pâle pour les rayures du tableau */
-    --bg-table-stripe: #f4f4f4;
+    /* Gris pastel pour les rayures du tableau */
+    --bg-table-stripe: #f4f5f7;
 
-    /* Fonds transparents (basés sur les couleurs principales) */
-    /* Bleu à 7% */
-    --bg-blue-faint: rgba(0, 46, 93, 0.07);
-    /* Vert à 7% */
-    --bg-green-faint: rgba(46, 125, 50, 0.07);
-    /* Bordures : mêmes teintes, plus marquées pour rester visibles à l'impression */
-    --border-blue: rgba(0, 46, 93, 0.18);
-    --border-green: rgba(46, 125, 50, 0.22);
+    /* Pastels opaques (rendu fiable sur laser de bureau, papier blanc) */
+    --bg-blue-faint: #e8eef6; /* en-tête des jours */
+    --bg-green-faint: #e7f2e8; /* en-tête du tableau des horaires */
+    --border-blue: #c5d3e4; /* bordures du calendrier */
+    --border-green: #c3dec6; /* bordures du tableau */
+    --accent-blue: #7f9cc0; /* filet sous l'en-tête des jours */
+    --accent-green: #84b98a; /* filet sous l'en-tête du tableau */
 
     /* --- IMPRESSION (A4 paysage, reliure sur le bord haut) --- */
     --page-pad: 5mm; /* marge minimale : juste au-dela de la zone non imprimable du copieur (3-5 mm) */

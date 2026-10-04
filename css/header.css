@@ -74,6 +74,13 @@
     gap: 0.25rem;
 }
 
+/* Libellé d'adresse (Mosquée, Siège social) */
+.info-label {
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--brand-text);
+}
+
 .contact-row {
     display: flex;
     justify-content: space-between;
