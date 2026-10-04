@@ -8,9 +8,9 @@
        la bordure du haut n'est pas perforée */
     margin-top: calc(var(--binding-zone) - var(--page-pad));
     padding: 1mm 0.5cm;
-    /* Filets bleu marine (couleur du logo) en haut et en bas */
-    border-top: 2px solid var(--col-blue);
-    border-bottom: 2px solid var(--col-blue);
+    /* Filets fins gris foncé en haut et en bas */
+    border-top: 1px solid var(--col-text-lighter);
+    border-bottom: 1px solid var(--col-text-lighter);
 }
 
 /* Motif girih bleu marine très pâle sur toute la largeur */
@@ -54,7 +54,7 @@
     gap: 0.25rem;
 }
 
-/* Ligne 1 : nom français et nom tamoul côte à côte */
+/* Ligne 1 : nom tamoul puis nom français, côte à côte */
 .org-names {
     display: flex;
     align-items: baseline;
@@ -70,7 +70,7 @@
     line-height: 1.1;
 }
 
-/* Nom tamoul : même couleur et même taille que le nom français, précédé d'une puce */
+/* Nom tamoul : même taille que le nom français */
 .org-ta {
     color: var(--col-saffron-text); /* safran du nom tamoul sur le logo */
     font-size: 24px;
@@ -78,7 +78,8 @@
     line-height: 1.1;
 }
 
-.org-ta::before {
+/* Puce entre les deux noms */
+.org-names > * + *::before {
     content: '•';
     margin-right: 0.9rem;
     font-family: var(--font-fr);
