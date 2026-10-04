@@ -77,7 +77,7 @@ class CalendarGrid extends HTMLElement {
             const { day, hijri, dayInfo } = cell;
 
             // Classes CSS
-            if (dayInfo.isEid) root.classList.add('is-friday');
+            if (dayInfo.isEid) root.classList.add('is-eid');
             if (dayInfo.isHoliday) root.classList.add('is-holiday');
             if (dayInfo.isPublicHoliday) root.classList.add('is-public-holiday');
 
@@ -96,7 +96,7 @@ class CalendarGrid extends HTMLElement {
                 if (dayInfo.isNewMoon) dstIcon.style.left = '18px';
             }
 
-            // Aïd + jour férié (case partagée) : l'Aïd en haut dans la moitié verte, le jour férié en bas
+            // Aïd + jour férié le même jour : l'Aïd en haut, le jour férié en bas
             let labels = dayInfo.labels;
             if (dayInfo.isEid && dayInfo.isPublicHoliday) {
                 const top = document.createElement('div');
@@ -108,7 +108,7 @@ class CalendarGrid extends HTMLElement {
 
             if (labels.length) {
                 // Plusieurs libellés, ou un libellé long qui passera sur deux lignes : le numéro remonte
-                // (sauf jour férié : le libellé tient en bas, et le haut d'une case partagée porte l'Aïd)
+                // (sauf jour férié : le libellé tient en bas, et le haut peut porter l'Aïd)
                 const tall = labels.length > 1 || labels.some((l) => l.text.length > 14);
                 if (tall && !dayInfo.isPublicHoliday) root.classList.add('multi-events');
                 const labelDiv = root.querySelector('.event-label');

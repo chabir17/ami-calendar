@@ -31,11 +31,8 @@
 
     /* --- FONDS "ÉCO-ENCRE" (PASTELS TRÈS CLAIRS POUR L'IMPRESSION) --- */
 
-    /* Vert très pâle */
+    /* Vert très pâle (vendredis du tableau des horaires) */
     --bg-friday: rgba(46, 125, 50, 0.11);
-
-    /* Rouge très pâle */
-    --bg-public-holiday: rgba(200, 0, 0, 0.09);
 
     /* Gris très pâle pour les rayures du tableau */
     --bg-table-stripe: #f4f4f4;

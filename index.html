@@ -155,30 +155,11 @@
                                 </div>
                             </div>
                             <ami-calendar-grid></ami-calendar-grid>
-                            <div class="legend-box">
-                                <div class="legend-item legend-public" style="display: none">
-                                    <span class="legend-color box-public"></span>
-                                    <span>Jour férié</span>
-                                </div>
-                                <div class="legend-item legend-eid" style="display: none">
-                                    <span class="legend-color box-friday"></span>
-                                    <span>Aïd</span>
-                                </div>
-                                <div class="legend-item legend-holiday" style="display: none">
+                            <!-- Légende : vacances scolaires uniquement (fériés, Aïd, lune, heure : écrits dans les cases) -->
+                            <div class="legend-box" style="display: none">
+                                <div class="legend-item">
                                     <span class="legend-color box-holiday"></span>
-                                    <span>Vacances scolaire - Zone C</span>
-                                </div>
-                                <div class="legend-item legend-moon" style="display: none">
-                                    <span class="legend-icon icon-moon"
-                                        ><svg class="icon"><use href="assets/icons/icon-moon.svg#icon"></use></svg
-                                    ></span>
-                                    <span>Nouvelle Lune</span>
-                                </div>
-                                <div class="legend-item legend-dst" style="display: none">
-                                    <span class="legend-icon icon-dst"
-                                        ><svg class="icon"><use href="assets/icons/icon-dst-forward.svg#icon"></use></svg
-                                    ></span>
-                                    <span>Changement d'heure</span>
+                                    <span class="legend-holiday-name"></span>
                                 </div>
                             </div>
                         </section>

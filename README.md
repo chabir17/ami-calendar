@@ -14,7 +14,7 @@ Le design est piloté par des variables CSS (`css/variables.css`) permettant une
 - **Thème Annuel** : Une couleur variable (`--brand`) permet d'adapter l'ambiance générale chaque année. Les variantes (sombre/claire) sont générées automatiquement.
 - **Contraste** : les textes utilisent des variantes foncées des couleurs (`--brand-deep`, `--brand-text`, `--col-green-dark`) qui respectent le niveau WCAG AA.
 - **Indicateurs de Jours** :
-    - Arrière-plans spécifiques pour les vendredis (`--bg-friday`) et les jours fériés (`--bg-public-holiday`).
+    - Numéro du jour en rouge pour les jours fériés, en vert pour l'Aïd (libellé écrit dans la case).
     - Vacances scolaires (Zone C) : fond doré clair (`--bg-holiday`) ; l'Aïd et les jours fériés restent prioritaires.
     - Icônes SVG (`assets/icons/`) : croissant vert pour la nouvelle lune, horloge bleue avec flèche avant/arrière pour le passage à l'heure d'été/hiver.
 

@@ -137,62 +137,21 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 /**
- * Met à jour l'affichage des légendes (Changement d'heure, Aïd) selon le mois.
+ * Met à jour la légende : noms des vacances scolaires du mois (masquée s'il n'y en a pas).
  */
 function updateLegends(year, month, container) {
-    // 1. Changement d'heure (Mars/Octobre)
-    const isDstMonth = month === 3 || month === 10;
-    const legendDst = DOM.setDisplay('.legend-dst', isDstMonth, container);
-
-    if (legendDst && isDstMonth) {
-        const legendText = legendDst.querySelector('span:last-child');
-        const isSummer = month === 3;
-        if (legendText) legendText.textContent = isSummer ? "Heure d'été +1 h" : "Heure d'hiver −1 h";
-
-        // Icône : flèche vers l'avant (été) ou vers l'arrière (hiver)
-        const legendIcon = legendDst.querySelector('.legend-icon');
-        if (legendIcon) {
-            legendIcon.innerHTML = `<svg class="icon"><use href="assets/icons/icon-dst-${isSummer ? 'forward' : 'back'}.svg#icon"></use></svg>`;
-        }
-    }
-
-    // 2. Légende Aïd & Vacances
-    let hasEid = false;
-    let eidName = '';
-    let hasPublicHoliday = false;
-    let newMoonMonthName = null;
     const holidayNames = new Set();
     const jsMonth = month - 1;
     const daysInMonth = new Date(year, month, 0).getDate();
 
     for (let d = 1; d <= daysInMonth; d++) {
         const date = new Date(year, jsMonth, d);
-        const hijriDate = getHijriDateSafe(date);
-        const info = getDayInfo(date, hijriDate);
-
-        if (info.isEid) {
-            hasEid = true;
-            eidName = info.eidName;
-        }
-        if (info.isPublicHoliday) hasPublicHoliday = true;
+        const info = getDayInfo(date, getHijriDateSafe(date));
         if (info.isHoliday && info.holidayName) holidayNames.add(info.holidayName);
-        if (info.isNewMoon) newMoonMonthName = hijriDate.monthNameFR;
     }
 
-    const elEid = DOM.setDisplay('.legend-eid', hasEid, container);
-    if (elEid && hasEid) elEid.querySelector('span:last-child').textContent = eidName || 'Aïd';
-
-    const elHoliday = DOM.setDisplay('.legend-holiday', holidayNames.size > 0, container);
-    if (elHoliday && holidayNames.size > 0) {
-        elHoliday.querySelector('span:last-child').textContent = Array.from(holidayNames).join(' / ');
-    }
-
-    DOM.setDisplay('.legend-public', hasPublicHoliday, container);
-
-    const elMoon = DOM.setDisplay('.legend-moon', !!newMoonMonthName, container);
-    if (elMoon && newMoonMonthName) {
-        elMoon.querySelector('span:last-child').textContent = newMoonMonthName;
-    }
+    DOM.setDisplay('.legend-box', holidayNames.size > 0, container);
+    DOM.setText('.legend-holiday-name', Array.from(holidayNames).join(' / '), container);
 }
 
 /**

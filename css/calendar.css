@@ -133,23 +133,9 @@
 }
 
 /* --- ÉTATS DES CELLULES (FONDS COLORÉS) --- */
-/* Vacances scolaires : fond doré clair (déclaré en premier : Aïd et jour férié restent prioritaires) */
+/* Vacances scolaires : seul état marqué par un fond (doré très clair) */
 .day-cell-visual.is-holiday {
     background-color: var(--bg-holiday);
-}
-
-.day-cell-visual.is-friday {
-    background-color: var(--bg-friday);
-}
-
-.day-cell-visual.is-public-holiday {
-    background-color: var(--bg-public-holiday);
-}
-
-/* Aïd + jour férié le même jour : moitié haute verte (Aïd), moitié basse rouge (jour férié) */
-.day-cell-visual.is-friday.is-public-holiday {
-    background-color: transparent;
-    background-image: linear-gradient(to bottom, var(--bg-friday) 50%, var(--bg-public-holiday) 50%);
 }
 
 /* Numéro du jour (Grégorien) */
@@ -157,6 +143,15 @@
     font-size: 42px;
     font-weight: 600;
     color: var(--col-text-lighter);
+}
+
+/* Jours fériés en rouge, Aïd en vert (prioritaire si les deux tombent le même jour) */
+.day-cell-visual.is-public-holiday .vis-greg {
+    color: var(--col-red-event);
+}
+
+.day-cell-visual.is-eid .vis-greg {
+    color: var(--col-green);
 }
 
 /* Numéro du jour (Hégirien) */
@@ -180,27 +175,19 @@
 }
 
 .new-moon-icon .icon,
-.dst-icon .icon,
-.legend-icon .icon {
+.dst-icon .icon {
     width: 0.8rem;
     height: 0.8rem;
     margin: 0;
 }
 
 /* Code couleur : croissant = hégirien (vert), horloge = grégorien (bleu) */
-.new-moon-icon .icon,
-.icon-moon .icon {
+.new-moon-icon .icon {
     color: var(--col-green);
 }
 
-.dst-icon .icon,
-.icon-dst .icon {
+.dst-icon .icon {
     color: var(--col-blue);
-}
-
-.legend-icon {
-    display: inline-flex;
-    line-height: 0;
 }
 
 .event-label {
@@ -224,7 +211,7 @@
     transform: translateY(-11px);
 }
 
-/* Case partagée Aïd + jour férié : libellé de l'Aïd en haut, dans la moitié verte */
+/* Aïd + jour férié le même jour : libellé de l'Aïd en haut, jour férié en bas */
 .event-label-top {
     position: absolute;
     top: 0.3rem;
@@ -281,14 +268,6 @@
     border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.box-friday {
-    background-color: var(--bg-friday);
-}
-
 .box-holiday {
     background-color: var(--bg-holiday);
-}
-
-.box-public {
-    background-color: var(--bg-public-holiday);
 }
