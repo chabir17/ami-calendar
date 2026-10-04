@@ -8,8 +8,9 @@
        la bordure du haut n'est pas perforée */
     margin-top: calc(var(--binding-zone) - var(--page-pad));
     padding: 1mm 0.5cm;
-    border: 1.5px solid var(--brand); /* carte dorée, coins arrondis comme le calendrier et le tableau */
-    border-radius: 0.5rem;
+    /* En-tête de lettre : bordures dorées en haut et en bas, angles droits */
+    border-top: 1.5px solid var(--brand);
+    border-bottom: 1.5px solid var(--brand);
 }
 
 /* Motif girih doré sur toute la largeur (deux couches superposées : visible sur fond blanc) */
