@@ -2,7 +2,6 @@
 .right-prayer-table-container {
     overflow: hidden;
     border: 1px solid var(--border-green);
-    border-top: 3mm solid var(--col-green); /* bande verte foncée, en écho au bandeau bleu du calendrier */
     border-radius: 0.5rem;
     display: flex;
     flex-direction: column;
@@ -24,15 +23,22 @@ ami-prayer-table {
     border-bottom: 1px solid var(--border-green);
 }
 
+/* En-tête vert foncé avec motif girih blanc, en écho au bandeau bleu du calendrier */
+.prayer-table thead {
+    background-color: var(--col-green-dark); /* texte blanc : 7.9:1 */
+    background-image: url('../assets/patterns/background-pattern-white.svg');
+}
+
 .prayer-table thead th {
-    background: var(--bg-green-faint);
-    border: 1px solid var(--border-green);
-    border-bottom: 1.5px solid var(--accent-green);
+    background: transparent;
+    border: 1px solid var(--col-green-dark);
+    border-left-color: rgba(255, 255, 255, 0.2);
+    border-right-color: rgba(255, 255, 255, 0.2);
     padding: 0.25rem 0.0625rem;
     font-size: 10px;
     font-weight: 400;
     vertical-align: middle;
-    color: var(--col-green-dark);
+    color: white;
 }
 
 /* Largeurs de colonnes fixes pour les prières */
@@ -48,14 +54,17 @@ ami-prayer-table {
     text-transform: uppercase;
 }
 
+/* Arabe et tamoul : vert très clair, plus discret que le français (5.9:1) */
 .th-ar {
     display: block;
     font-size: 12px;
+    color: var(--col-on-green-soft);
 }
 
 .th-ta {
     display: block;
     font-size: 10px;
+    color: var(--col-on-green-soft);
 }
 
 .th-header-symbol {
@@ -66,7 +75,7 @@ ami-prayer-table {
     width: 18px;
     height: 18px;
     margin: 0;
-    color: var(--col-green-dark);
+    color: white;
 }
 
 .prayer-table tbody td {
