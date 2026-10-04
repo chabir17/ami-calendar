@@ -8,9 +8,9 @@
        la bordure du haut n'est pas perforée */
     margin-top: calc(var(--binding-zone) - var(--page-pad));
     padding: 1mm 0.5cm;
-    /* Couleurs du logo : filet safran en haut, vert en bas (le blanc entre les deux évoque le drapeau indien) */
-    border-top: 2px solid var(--col-saffron);
-    border-bottom: 2px solid var(--col-green);
+    /* Filets bleu marine (couleur du logo) en haut et en bas */
+    border-top: 2px solid var(--col-blue);
+    border-bottom: 2px solid var(--col-blue);
 }
 
 /* Motif girih bleu marine très pâle sur toute la largeur */
