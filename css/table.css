@@ -1,7 +1,7 @@
 /* --- TABLEAU DES HORAIRES DE PRIÈRES (DROITE) --- */
 .right-prayer-table-container {
     overflow: hidden;
-    border: 1px solid var(--bg-green-faint);
+    border: 1px solid var(--border-green);
     border-radius: 0.5rem;
     display: flex;
     flex-direction: column;
@@ -20,12 +20,12 @@ ami-prayer-table {
     height: 100%;
     border-collapse: collapse;
     border: hidden;
-    border-bottom: 1px solid var(--bg-green-faint);
+    border-bottom: 1px solid var(--border-green);
 }
 
 .prayer-table thead th {
     background: var(--bg-green-faint);
-    border: 1px solid var(--bg-green-faint);
+    border: 1px solid var(--border-green);
     border-bottom: 1.5px solid var(--col-green);
     padding: 0.25rem 0.0625rem;
     font-size: 10px;
@@ -37,7 +37,7 @@ ami-prayer-table {
 /* Largeurs de colonnes fixes pour les prières */
 .prayer-table th:nth-child(n + 2):nth-child(-n + 7),
 .prayer-table td:nth-child(n + 2):nth-child(-n + 7) {
-    width: 12.75%;
+    width: 12.5%;
 }
 
 .th-fr {
@@ -69,10 +69,10 @@ ami-prayer-table {
 }
 
 .prayer-table tbody td {
-    border: 1px solid var(--bg-green-faint);
+    border: 1px solid var(--border-green);
     text-align: center;
     font-weight: 600;
-    font-size: 13.5px;
+    font-size: 15px;
     line-height: 1;
     font-variant-numeric: tabular-nums; /* colonnes d'heures parfaitement alignées */
     color: #1f1f1f;
@@ -89,11 +89,11 @@ ami-prayer-table {
 
 /* --- COLONNES SPÉCIALES (DATES) --- */
 .col-date-greg {
-    width: 16%;
+    width: 18%;
 }
 
 .col-hijri {
-    width: 7.5%;
+    width: 7%;
 }
 
 .date-cell {

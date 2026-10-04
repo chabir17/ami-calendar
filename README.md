@@ -15,7 +15,7 @@ Le design est piloté par des variables CSS (`css/variables.css`) permettant une
 - **Contraste** : les textes utilisent des variantes foncées des couleurs (`--brand-deep`, `--brand-text`, `--col-green-dark`) qui respectent le niveau WCAG AA.
 - **Indicateurs de Jours** :
     - Arrière-plans spécifiques pour les vendredis (`--bg-friday`) et les jours fériés (`--bg-public-holiday`).
-    - Vacances scolaires (Zone C) : bande dorée fine (`--col-holiday`) en bas des cases, continue sur la période et arrondie au premier et au dernier jour.
+    - Vacances scolaires (Zone C) : fond doré clair (`--bg-holiday`) ; l'Aïd et les jours fériés restent prioritaires.
     - Icônes SVG (`assets/icons/`) : croissant vert pour la nouvelle lune, horloge bleue avec flèche avant/arrière pour le passage à l'heure d'été/hiver.
 
 ### 🌐 Typographie Multilingue

@@ -78,16 +78,7 @@ class CalendarGrid extends HTMLElement {
 
             // Classes CSS
             if (dayInfo.isEid) root.classList.add('is-friday');
-            if (dayInfo.isHoliday) {
-                root.classList.add('is-holiday');
-                // Extrémités de la période (la veille / le lendemain ne sont pas en vacances) : bande arrondie
-                const isHolidayOn = (offset) => {
-                    const d = new Date(year, jsMonth, day + offset);
-                    return getDayInfo(d, getHijriDateSafe(d)).isHoliday;
-                };
-                if (!isHolidayOn(-1)) root.classList.add('holiday-start');
-                if (!isHolidayOn(1)) root.classList.add('holiday-end');
-            }
+            if (dayInfo.isHoliday) root.classList.add('is-holiday');
             if (dayInfo.isPublicHoliday) root.classList.add('is-public-holiday');
 
             // Contenu Textuel

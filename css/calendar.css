@@ -6,8 +6,8 @@
     justify-content: space-between;
     align-items: flex-end;
     gap: 1rem;
-    padding: 0.1rem 0.25rem;
-    margin: 0.15rem 0 0.25rem;
+    padding: 0 0.25rem;
+    margin-bottom: 0.25rem;
 }
 
 .titles-hijri {
@@ -74,7 +74,7 @@
 .left-visual-calendar {
     display: flex;
     flex-direction: column;
-    border: 1px solid var(--bg-blue-faint);
+    border: 1px solid var(--border-blue);
     border-radius: 0.5rem;
     overflow: hidden;
     background-color: white;
@@ -93,7 +93,7 @@
 }
 
 .weekday-cell {
-    border-right: 1px solid var(--bg-blue-faint);
+    border-right: 1px solid var(--border-blue);
     padding: 0.25rem 0;
 }
 
@@ -120,8 +120,8 @@
 }
 
 .day-cell-visual {
-    border-right: 1px solid var(--bg-blue-faint);
-    border-bottom: 1px solid var(--bg-blue-faint);
+    border-right: 1px solid var(--border-blue);
+    border-bottom: 1px solid var(--border-blue);
     position: relative;
     display: flex;
     justify-content: center;
@@ -133,35 +133,13 @@
 }
 
 /* --- ÉTATS DES CELLULES (FONDS COLORÉS) --- */
+/* Vacances scolaires : fond doré clair (déclaré en premier : Aïd et jour férié restent prioritaires) */
+.day-cell-visual.is-holiday {
+    background-color: var(--bg-holiday);
+}
+
 .day-cell-visual.is-friday {
     background-color: var(--bg-friday);
-}
-
-/* Vacances scolaires : bande fine en bas de case, continue sur la période, arrondie aux extrémités */
-.day-cell-visual.is-holiday::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: -1px; /* recouvre la bordure entre deux cases */
-    bottom: 4px;
-    height: 3px;
-    background-color: var(--col-holiday);
-}
-
-.day-cell-visual.holiday-start::after {
-    left: 6px;
-    border-top-left-radius: 3px;
-    border-bottom-left-radius: 3px;
-}
-
-.day-cell-visual.holiday-end::after {
-    right: 6px;
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
-}
-
-.day-cell-visual.is-holiday .event-label {
-    bottom: 10px;
 }
 
 .day-cell-visual.is-public-holiday {
@@ -279,7 +257,7 @@
 /* --- BARRE DE LÉGENDE (BAS) --- */
 .legend-box {
     padding: 0.5rem;
-    border-top: 1px solid var(--bg-blue-faint);
+    border-top: 1px solid var(--border-blue);
     margin-top: auto;
     display: flex;
     justify-content: space-evenly;
@@ -308,10 +286,7 @@
 }
 
 .box-holiday {
-    width: 0.9rem;
-    height: 3px;
-    border-radius: 3px;
-    background-color: var(--col-holiday);
+    background-color: var(--bg-holiday);
 }
 
 .box-public {

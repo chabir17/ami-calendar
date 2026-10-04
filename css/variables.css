@@ -5,7 +5,7 @@
     --brand: #c8b070;
     --brand-dark: color-mix(in srgb, var(--brand), black 45%);
     --brand-light: color-mix(in srgb, var(--brand), white 85%);
-    --col-holiday: var(--brand); /* bande des vacances scolaires : doré de l'année */
+    --bg-holiday: color-mix(in srgb, var(--brand), white 88%); /* fond des vacances scolaires : doré clair */
     /* Noms de l'association : même famille dorée, deux tons contrastés (WCAG AA sur le bandeau) */
     --brand-deep: color-mix(in srgb, var(--brand), black 65%); /* nom français : 9.3:1 */
     --brand-text: color-mix(in srgb, var(--brand), black 40%); /* nom tamoul : 4.7:1 */
@@ -45,6 +45,9 @@
     --bg-blue-faint: rgba(0, 46, 93, 0.07);
     /* Vert à 7% */
     --bg-green-faint: rgba(46, 125, 50, 0.07);
+    /* Bordures : mêmes teintes, plus marquées pour rester visibles à l'impression */
+    --border-blue: rgba(0, 46, 93, 0.18);
+    --border-green: rgba(46, 125, 50, 0.22);
 
     /* --- IMPRESSION (A4 paysage, reliure sur le bord haut) --- */
     --page-pad: 5mm; /* marge minimale : juste au-dela de la zone non imprimable du copieur (3-5 mm) */
