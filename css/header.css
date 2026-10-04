@@ -34,15 +34,13 @@
     object-fit: contain;
 }
 
-/* Bloc principal : filet doré à gauche (séparation avec le logo) */
+/* Bloc principal : noms puis coordonnées */
 .header-main {
     flex: 1;
     min-width: 0;
     display: flex;
     flex-direction: column;
-    gap: 0.2rem;
-    padding-left: 0.9rem;
-    border-left: 1.5px solid color-mix(in srgb, var(--brand), white 25%);
+    gap: 0.25rem;
 }
 
 /* Ligne 1 : nom français et nom tamoul côte à côte */
@@ -61,37 +59,45 @@
     line-height: 1.1;
 }
 
+/* Nom tamoul : même couleur et même taille que le nom français, précédé d'une puce */
 .org-ta {
-    color: var(--brand-text);
-    font-size: 20px;
+    color: var(--brand-deep);
+    font-size: 24px;
     font-weight: 500;
     line-height: 1.1;
 }
 
 .org-ta::before {
-    content: '';
-    display: inline-block;
-    width: 1.5px;
-    height: 0.9em;
+    content: '•';
     margin-right: 0.9rem;
-    background-color: color-mix(in srgb, var(--brand), white 25%);
-    vertical-align: -0.1em;
+    font-family: var(--font-fr);
+    color: var(--brand-text);
 }
 
-/* Ligne 2 : coordonnées en colonnes, séparées par de fins filets dorés */
+/* Ligne 2 : coordonnées en colonnes, séparées par des puces dorées */
 .header-contacts {
     display: flex;
-    gap: 0.9rem;
-    padding-top: 0.2rem;
-    border-top: 1px solid color-mix(in srgb, var(--brand), white 45%);
+    gap: 0.5rem;
     font-size: 11px;
     line-height: 1.35;
     white-space: nowrap;
 }
 
 .contact-group + .contact-group {
-    padding-left: 0.9rem;
-    border-left: 1px solid color-mix(in srgb, var(--brand), white 45%);
+    position: relative;
+    padding-left: 1.4rem;
+}
+
+/* Puce centrée verticalement entre deux colonnes */
+.contact-group + .contact-group::before {
+    content: '•';
+    position: absolute;
+    left: 0.25rem;
+    top: 50%;
+    transform: translateY(-62%); /* la puce est dessinée sous le milieu de sa ligne */
+    color: var(--brand-text);
+    font-size: 15px;
+    line-height: 1;
 }
 
 .info-line {
