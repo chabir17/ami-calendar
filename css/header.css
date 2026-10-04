@@ -19,9 +19,9 @@
     pointer-events: none;
 }
 
-/* Filets dorés en haut et en bas, estompés vers la droite */
+/* Filets dorés en haut et en bas, pleine largeur */
 .header-fixed::after {
-    --rule: linear-gradient(to right, var(--brand) 0%, var(--brand) 50%, transparent 100%);
+    --rule: linear-gradient(var(--brand), var(--brand));
     content: '';
     position: absolute;
     inset: 0;
