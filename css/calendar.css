@@ -36,11 +36,11 @@
     color: color-mix(in srgb, var(--col-blue), white 30%);
 }
 
-/* Hégirien : mois en arabe */
+/* Hégirien : mois en arabe (bleu, comme le grégorien) */
 .hijri-month-ar {
     font-size: 21px;
     line-height: 1.45; /* queues des lettres arabes (ع, ي…) : ne touchent pas la ligne 2 */
-    color: var(--col-green);
+    color: var(--col-blue); /* même couleur que le mois grégorien */
 }
 
 .hijri-months {
@@ -49,7 +49,7 @@
 
 .hijri-year {
     font-weight: 400;
-    color: color-mix(in srgb, var(--col-green), white 30%);
+    color: color-mix(in srgb, var(--col-blue), white 30%);
 }
 
 /* Ligne 2 : traductions séparées par une puce */
