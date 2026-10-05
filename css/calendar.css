@@ -163,6 +163,11 @@
     color: var(--col-text-lighter);
 }
 
+/* Week-end : numéro en gris plus clair (déclaré avant les jours fériés et l'Aïd, prioritaires) */
+.day-cell-visual.is-weekend .vis-greg {
+    color: var(--col-text-soft);
+}
+
 /* Jours fériés en rouge, Aïd en vert (prioritaire si les deux tombent le même jour) */
 .day-cell-visual.is-public-holiday .vis-greg {
     color: var(--col-red-event);
@@ -265,9 +270,8 @@
     border-top: 1px solid var(--border-blue);
     margin-top: auto;
     display: flex;
-    justify-content: center;
     align-items: center;
-    gap: var(--sp-2);
+    gap: var(--sp-1);
 }
 
 .legend-item {
@@ -290,6 +294,7 @@
     text-align: center;
     color: var(--col-text-light);
     letter-spacing: -0.01em; /* la citation la plus longue (janvier) tient sur une ligne */
+    flex: 1; /* légende à gauche, hadith centré dans l'espace restant : même composition chaque mois */
 }
 
 .legend-item + .month-quote {

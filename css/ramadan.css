@@ -240,15 +240,15 @@ body {
 .th-fr {
     display: block;
     text-transform: uppercase;
+    letter-spacing: 0.03em;
 }
 /* Arabe et tamoul de l'en-tête : graisse normale (seul le français est en gras) */
-.th-ar {
-    display: block;
-    font-weight: 400;
-}
+.th-ar,
 .th-ta {
     display: block;
+    font-size: var(--fs-sm); /* arabe et tamoul : même taille et même interligne */
     font-weight: 400;
+    line-height: 1.35;
 }
 /* Cellules */
 .ramadan-table td {
@@ -379,12 +379,21 @@ table.ramadan-table tbody td.ami-isha-fix {
 }
 
 /* Aïd en vert pastel, comme dans le calendrier annuel */
-.ramadan-table tr.is-eid {
-    background-color: var(--bg-friday);
+/* Aïd : ligne vert foncé, textes clairs */
+.ramadan-table tr.is-eid,
+.digital .ramadan-table tr.is-eid {
+    background-color: var(--col-green-dark);
 }
 
-.ramadan-table tr.is-eid .event-fr {
-    color: var(--col-green-dark); /* libellé de l'Aïd en vert, comme dans le calendrier annuel */
+.ramadan-table tr.is-eid td,
+.ramadan-table tr.is-eid .event-fr,
+.ramadan-table tr.is-eid .col-hijri,
+.ramadan-table tr.is-eid .col-day-name.arabic {
+    color: white;
+}
+
+.ramadan-table tr.is-eid .event-separator {
+    color: var(--bg-green-soft);
 }
 
 .ramadan-table tr.is-night-of-doubt td {
@@ -392,6 +401,22 @@ table.ramadan-table tbody td.ami-isha-fix {
 }
 .ramadan-table tr.is-eid td {
     border-top: 1px solid var(--rule) !important;
+}
+
+.laylat-al-qadr-sep .event-fr::before,
+.is-eid .event-fr::before {
+    content: '';
+    display: inline-block;
+    width: 0.65em;
+    height: 0.65em;
+    margin-right: var(--sp-1);
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cg fill='%23002e5d'%3E%3Crect x='4' y='4' width='12' height='12'/%3E%3Crect x='4' y='4' width='12' height='12' transform='rotate(45 10 10)'/%3E%3C/g%3E%3C/svg%3E")
+        center / contain no-repeat;
+    vertical-align: 0;
+}
+
+.is-eid .event-fr::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cg fill='%23ffffff'%3E%3Crect x='4' y='4' width='12' height='12'/%3E%3Crect x='4' y='4' width='12' height='12' transform='rotate(45 10 10)'/%3E%3C/g%3E%3C/svg%3E");
 }
 
 .special-event-label {
@@ -544,6 +569,11 @@ sup.ordinal {
 
 .digital table.ramadan-table thead th.col-ami-isha-fix {
     color: white !important;
+}
+
+/* Lignes zébrées : l'œil suit la ligne de la date à l'Icha AMI */
+.digital .ramadan-table tbody tr:nth-child(even):not(.is-friday):not(.is-eid):not(.row-separator):not(.is-night-of-doubt) {
+    background-color: var(--bg-blue-faint);
 }
 
 .digital .footer-contacts a {

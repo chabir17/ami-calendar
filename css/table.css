@@ -26,7 +26,7 @@ ami-prayer-table {
 .prayer-table thead th {
     background: var(--bg-green-faint);
     border: 1px solid var(--border-green);
-    border-bottom: 1.5px solid var(--accent-green);
+    border-bottom: 1.5px solid var(--col-green);
     padding: var(--sp-1) 1px;
     font-size: var(--fs-xs);
     font-weight: 400;
