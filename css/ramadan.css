@@ -527,13 +527,11 @@ sup.ordinal {
     --bg-friday: var(--bg-green-soft);
 }
 
-/* En-tête bleu marine avec motif girih bleu clair, fondu de droite à gauche */
+/* En-tête bleu marine avec motif girih bleu clair sur toute la largeur */
 .digital .ramadan-table thead tr {
     background-color: var(--col-blue);
-    background-image: linear-gradient(to left, transparent 0%, var(--col-blue) 75%), url('../assets/patterns/background-pattern-lightblue.svg');
-    background-position:
-        0 0,
-        right top;
+    background-image: url('../assets/patterns/background-pattern-lightblue.svg');
+    background-position: center top;
 }
 
 .digital .ramadan-table thead th {
