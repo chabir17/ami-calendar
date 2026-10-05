@@ -43,7 +43,7 @@ strong {
     padding: var(--page-pad);
     display: flex;
     flex-direction: column;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-page);
     position: relative;
     overflow: hidden;
     margin: var(--sp-4) 0;

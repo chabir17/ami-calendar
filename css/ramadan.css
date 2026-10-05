@@ -67,7 +67,7 @@ body {
 @media screen {
     .page.A4-portrait {
         margin: 0 auto;
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        box-shadow: var(--shadow-page);
     }
 }
 
@@ -95,7 +95,7 @@ body {
     display: flex;
     align-items: center;
     gap: var(--sp-3);
-    font-size: 30px !important; /* années mises en scène, de part et d'autre de la calligraphie */
+    font-size: var(--fs-title) !important;
     font-weight: 600;
     letter-spacing: 0.04em;
     line-height: 1;
@@ -529,7 +529,7 @@ sup.ordinal {
 
 .digital .ramadan-table thead th {
     background-color: var(--col-blue);
-    border-right-color: rgba(255, 255, 255, 0.2);
+    border-right-color: var(--border-on-dark);
     color: white;
 }
 

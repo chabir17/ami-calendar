@@ -38,6 +38,9 @@
 
     /* Fonds globaux */
     --bg-body: #eeeeee;
+    --shadow-page: 0 0 15px rgba(0, 0, 0, 0.1); /* ombre de la page à l'écran */
+    --border-swatch: rgba(0, 0, 0, 0.1); /* contour des pastilles de légende */
+    --border-on-dark: rgba(255, 255, 255, 0.2); /* séparateurs sur fond foncé */
 
     /* --- FONDS "ÉCO-ENCRE" (PASTELS TRÈS CLAIRS POUR L'IMPRESSION) --- */
 
@@ -68,6 +71,7 @@
     --fs-md: 14px; /* courant : jours de la semaine, texte des tableaux */
     --fs-xl: 22px; /* titres : nom de l'association, mois, années */
     --fs-figure: 16px; /* chiffres : horaires de prière (et noms de l'association en portrait) */
+    --fs-title: 30px; /* années de la page Ramadan */
     --fs-display: 42px; /* numéros des jours du calendrier */
 
     /* --- GRILLE D'ESPACEMENT : multiples de 4 px --- */
