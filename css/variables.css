@@ -5,10 +5,8 @@
     --brand: #c8b070;
     --brand-dark: color-mix(in srgb, var(--brand), black 45%);
     --brand-light: color-mix(in srgb, var(--brand), white 85%);
-    --bg-header: color-mix(in srgb, var(--brand), white 91%); /* fond du bandeau : léger */
     --bg-holiday: #faf3e0; /* fond des vacances scolaires : doré pastel */
     /* Noms de l'association : même famille dorée, deux tons contrastés (WCAG AA sur le bandeau) */
-    --brand-deep: color-mix(in srgb, var(--brand), black 65%); /* nom français : 9.3:1 */
     --brand-text: color-mix(in srgb, var(--brand), black 40%); /* nom tamoul : 4.7:1 */
 
     /* Bleu foncé (Référence Tour Eiffel) */
@@ -29,7 +27,6 @@
     --col-text: #333333;
     --col-text-light: #555555;
     --col-text-lighter: #444444;
-    --col-border: #cccccc;
 
     /* Fonds globaux */
     --bg-body: #eeeeee;
@@ -43,7 +40,6 @@
     --bg-table-stripe: #f4f5f7;
 
     /* Pastels opaques (rendu fiable sur laser de bureau, papier blanc) */
-    --bg-blue-title: #d9e3f0; /* titre du mois (plus soutenu que la ligne des jours) */
     --bg-blue-faint: #eef3f9; /* en-tête des jours */
     --bg-green-faint: #e7f2e8; /* en-tête du tableau des horaires */
     --border-blue: #c5d3e4; /* bordures du calendrier : bleu doux */

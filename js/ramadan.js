@@ -1,5 +1,5 @@
 import { initAdhan, getHijriDateSafe, getPrayerTimesSafe, fetchClientConfig, fetchRamadanOverrides, applyTheme, loadPrayerTimes } from './services.js';
-import { DOM, DATE_UTILS } from './utils.js';
+import { DOM, DATE_UTILS, contactsHTML } from './utils.js';
 
 // --- Configuration & Helpers ---
 
@@ -17,39 +17,9 @@ function renderLayout(container, config, year, hijriYearAr) {
         DOM.setText('.year-corner.top-right', hijriYearAr, titleEl);
     }
 
-    // Coordonnées sur 3 lignes : 3 colonnes (adresses | téléphone, WhatsApp | e-mail, site), puis IBAN • BIC
+    // Coordonnées sur 3 lignes : 3 colonnes, puis IBAN • BIC sur une ligne
     const contacts = container.querySelector('.footer-contacts');
-    if (contacts) {
-        const c = contact;
-        const line = (icon, text) => `<div class="info-line"><svg class="icon"><use href="assets/icons/icon-${icon}.svg#icon"></use></svg> <span>${text}</span></div>`;
-        const group = (lines) => `<div class="contact-group">${lines.filter(Boolean).join('')}</div>`;
-        contacts.innerHTML = [
-            group([line(c.addr1_icon || 'location', c.addr1), c.addr2 && line(c.addr2_icon || 'location', c.addr2)]),
-            group([line('phone', c.phone), c.whatsapp && line('whatsapp', c.whatsapp)]),
-            group([line('email', c.email), c.website && line('website', c.website)]),
-            c.bank && `<div class="contact-group contact-bank">${line('bank', `IBAN : ${c.bank.iban} • BIC : ${c.bank.bic}`)}</div>`
-        ].join('');
-    }
-}
-
-/**
- * Génère le QR Code de manière sécurisée
- */
-function generateQRCode(container, config) {
-    if (typeof QRCode === 'undefined' || !container) return;
-
-    // Priorité : URL de don > Site Web > Fallback
-    const url = config.contact?.donation_url || config.contact?.website || 'https://www.helloasso.com/associations/ami93';
-
-    container.innerHTML = ''; // Nettoyage
-    new QRCode(container, {
-        text: url,
-        width: 80,
-        height: 80,
-        colorDark: config.theme?.color_brand || '#0e1d3e',
-        colorLight: '#ffffff',
-        correctLevel: QRCode.CorrectLevel.H
-    });
+    if (contacts) contacts.innerHTML = contactsHTML(contact, true);
 }
 
 // --- Main Logic ---
@@ -237,7 +207,4 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     tbody.appendChild(fragment);
     app.appendChild(clone);
-
-    // Génération du QR Code
-    generateQRCode(document.getElementById('qrcode'), config);
 });

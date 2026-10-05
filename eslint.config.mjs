@@ -16,8 +16,7 @@ export default [
                 ...globals.browser,
                 CONFIG: 'readonly', // Votre variable globale définie dans data/config.js
                 TEXTS: 'readonly', // Votre variable globale définie dans data/lang.js
-                adhan: 'readonly', // La librairie externe Adhan
-                QRCode: 'readonly' // La librairie externe qrcode.js (page Ramadan)
+                adhan: 'readonly' // La librairie externe Adhan
             },
             ecmaVersion: 'latest',
             sourceType: 'module' // Pour supporter les imports/exports modernes si besoin

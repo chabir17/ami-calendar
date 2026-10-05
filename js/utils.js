@@ -32,6 +32,29 @@ export const DOM = {
 };
 
 /**
+ * HTML des coordonnées de l'association, en groupes de lignes avec icône.
+ * Colonnes : adresses | téléphone, WhatsApp | e-mail, site | banque.
+ * @param {Object} c - config.contact (addr1/addr2 + icônes facultatives, phone, whatsapp, email, website, bank)
+ * @param {boolean} bankOnOneLine - IBAN et BIC sur une seule ligne (sinon BIC sous l'IBAN)
+ */
+export function contactsHTML(c, bankOnOneLine = false) {
+    const line = (icon, text) => `<div class="info-line"><svg class="icon"><use href="assets/icons/icon-${icon}.svg#icon"></use></svg> <span>${text}</span></div>`;
+    const group = (lines, cls = '') => `<div class="contact-group${cls}">${lines.filter(Boolean).join('')}</div>`;
+    let bank = '';
+    if (c.bank) {
+        bank = bankOnOneLine
+            ? group([line('bank', `IBAN : ${c.bank.iban} • BIC : ${c.bank.bic}`)], ' contact-bank')
+            : group([line('bank', `IBAN : ${c.bank.iban}`), `<div class="info-line info-cont"><span>BIC : ${c.bank.bic}</span></div>`]);
+    }
+    return [
+        group([line(c.addr1_icon || 'location', c.addr1), c.addr2 && line(c.addr2_icon || 'location', c.addr2)]),
+        group([line('phone', c.phone), c.whatsapp && line('whatsapp', c.whatsapp)]),
+        group([line('email', c.email), c.website && line('website', c.website)]),
+        bank
+    ].join('');
+}
+
+/**
  * Données unifiées pour les mois hégiriens.
  * Gère les variations de translittération selon les OS/Navigateurs (CLDR versions).
  * Clé : Nom brut retourné par Intl (minuscule).

@@ -1,5 +1,5 @@
 import { initAdhan, fetchExternalData, getHijriDateSafe, getDayInfo, fetchClientConfig, applyTheme, loadPrayerTimes } from './services.js';
-import { DOM } from './utils.js';
+import { DOM, contactsHTML } from './utils.js';
 import './components.js';
 
 // ==========================================
@@ -23,20 +23,9 @@ function updatePageDOM(container, config) {
     DOM.setText('.org-ta', config.identity.name_ta, container);
     DOM.setSrc('.logo-img', config.identity.logo_url, container);
 
-    // Mise à jour des coordonnées : colonnes (adresses | téléphone, WhatsApp | e-mail, site | IBAN, BIC)
+    // Coordonnées en 4 colonnes (BIC sous l'IBAN)
     const contacts = container.querySelector('.header-contacts');
-    if (contacts) {
-        const c = config.contact;
-        const line = (icon, text) => `<div class="info-line"><svg class="icon"><use href="assets/icons/icon-${icon}.svg#icon"></use></svg> <span>${text}</span></div>`;
-        const group = (lines) => `<div class="contact-group">${lines.filter(Boolean).join('')}</div>`;
-
-        contacts.innerHTML = [
-            group([line(c.addr1_icon || 'location', c.addr1), c.addr2 && line(c.addr2_icon || 'location', c.addr2)]),
-            group([line('phone', c.phone), c.whatsapp && line('whatsapp', c.whatsapp)]),
-            group([line('email', c.email), c.website && line('website', c.website)]),
-            c.bank && group([line('bank', `IBAN : ${c.bank.iban}`), `<div class="info-line info-cont"><span>BIC : ${c.bank.bic}</span></div>`])
-        ].join('');
-    }
+    if (contacts) contacts.innerHTML = contactsHTML(config.contact);
 }
 
 /**

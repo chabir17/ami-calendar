@@ -30,10 +30,6 @@ body {
 .tamil {
     font-family: var(--font-ta);
 }
-.dir-rtl {
-    direction: rtl;
-}
-
 .icon {
     display: inline-block;
     width: 1rem;
@@ -43,10 +39,6 @@ body {
     color: var(--col-blue);
     margin-right: 0.125rem;
     flex-shrink: 0;
-}
-
-.justify-center {
-    justify-content: center;
 }
 
 /* --- PAGE A4 PORTRAIT --- */
@@ -232,11 +224,6 @@ body {
 .th-ta {
     display: block;
 }
-.th-header-symbol {
-    font-size: 24px;
-    line-height: 1;
-}
-
 /* Cellules */
 .ramadan-table td {
     border-right: 1px solid var(--brand-light);
@@ -324,10 +311,9 @@ table.ramadan-table tbody td.ami-isha-fix {
     vertical-align: middle;
 }
 
-.bullet-brand,
 .event-separator {
     color: var(--brand);
-    font-weight: 700;
+    font-weight: 600;
 }
 
 /* Échelles de police pour langues secondaires */
