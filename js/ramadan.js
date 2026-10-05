@@ -140,14 +140,13 @@ document.addEventListener('DOMContentLoaded', async () => {
             const separatorTr = document.createElement('tr');
             separatorTr.className = 'row-separator laylat-al-qadr-sep';
             separatorTr.innerHTML = `
-                <td colspan="10">
+                <td colspan="12">
                     <div class="event-stack">
                         <span class="event-fr">27<sup>ÈME</sup> NUIT DU RAMAḌĀN</span>
                         <span class="event-separator">•</span>
                         <span class="event-ta tamil">27-ம் இரவு</span>
                     </div>
-                </td>
-                <td colspan="2"></td>`;
+                </td>`;
             fragment.appendChild(separatorTr);
         }
 

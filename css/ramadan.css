@@ -184,7 +184,7 @@ body {
     border-radius: 0.5rem;
     overflow: hidden;
     background-color: white;
-    font-size: 13.5px;
+    font-size: 14px;
     table-layout: fixed;
     height: 100%; /* les lignes se répartissent la hauteur disponible : tout tient sur une page */
 }
@@ -215,11 +215,14 @@ body {
     display: block;
     text-transform: uppercase;
 }
+/* Arabe et tamoul de l'en-tête : graisse normale (seul le français est en gras) */
 .th-ar {
     display: block;
+    font-weight: 400;
 }
 .th-ta {
     display: block;
+    font-weight: 400;
 }
 /* Cellules */
 .ramadan-table td {
@@ -358,7 +361,20 @@ table.ramadan-table tbody td.ami-isha-fix {
     color: var(--brand-dark);
     text-transform: uppercase;
     letter-spacing: 1px;
-    padding: 0.25rem;
+    padding: 0;
+}
+
+/* Ligne de la 27e nuit : texte compact, même hauteur que les lignes de jours */
+.ramadan-table tr.laylat-al-qadr-sep td {
+    line-height: 1; /* police tamoule et exposant « ème » : ne rehaussent pas la ligne */
+}
+
+.ramadan-table tr.laylat-al-qadr-sep .event-fr {
+    font-size: 12px;
+}
+
+.ramadan-table tr.laylat-al-qadr-sep sup {
+    line-height: 0;
 }
 
 /* Noms de l'association : tamoul puis français, couleurs du logo */
