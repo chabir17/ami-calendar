@@ -8,7 +8,7 @@ const IMSAK_MINUTES_BEFORE_FAJR = 10;
 // Icha AMI (horaire de la mosquée pendant le Ramadan) : 1re et 2e quinzaine
 const AMI_ISHA = { firstHalf: '20:00', secondHalf: '20:20' };
 
-function renderLayout(container, config, year, hijriYearAr) {
+function renderLayout(container, config, year, hijriYearAr, isDigital) {
     const { identity, contact } = config;
 
     DOM.setText('.org-fr', identity.name_fr, container);
@@ -24,7 +24,7 @@ function renderLayout(container, config, year, hijriYearAr) {
 
     // Coordonnées sur 3 lignes : adresses | téléphones, e-mail, site | IBAN • BIC
     const contacts = container.querySelector('.footer-contacts');
-    if (contacts) contacts.innerHTML = contactsHTML(contact, 'rows');
+    if (contacts) contacts.innerHTML = contactsHTML(contact, 'rows', isDigital);
 }
 
 /**
@@ -76,6 +76,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     };
     const currentYear = new Date().getFullYear();
     const year = parseInt(urlParams.get('year')) || (isEidPassed(currentYear) ? currentYear + 1 : currentYear);
+    // Variante numérique (PDF à partager, sans contrainte d'encre) : ramadan.html?version=numerique
+    const isDigital = urlParams.get('version') === 'numerique';
 
     const calendarEvents = [];
     let hijriYearAr = '';
@@ -110,7 +112,12 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // 4. Rendu
     const clone = template.content.cloneNode(true);
-    renderLayout(clone, config, year, hijriYearAr);
+    renderLayout(clone, config, year, hijriYearAr, isDigital);
+    if (isDigital) {
+        clone.querySelector('.page').classList.add('digital');
+        DOM.setSrc('.ramadan-logo', 'assets/img/ramadan.png', clone); // calligraphie dorée d'origine
+        document.title = `Ramadan ${year} – horaires de prière – AMI La Courneuve`;
+    }
 
     // Mise à jour dynamique des mois (ex: Févr. / Mars)
     const uniqueMonths = [...new Set(calendarEvents.map((d) => d.date.getMonth()))].sort((a, b) => a - b);
@@ -173,6 +180,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (date.getDay() === 5 || eventType === 'eid') tr.classList.add('is-friday');
         if (date.getDay() === 0) tr.classList.add('week-end'); // filet plus marqué après chaque dimanche
         if (eventType && eventType !== 'laylat-al-qadr') tr.classList.add(`is-${eventType}`);
+        // Décades du Ramadan (1–10, 11–20, 21–30) : teintées en version numérique
+        if (hijri.monthNameRaw.toLowerCase().includes('ramadan')) tr.classList.add(`decade-${Math.min(3, Math.ceil(parseInt(hijri.day) / 10))}`);
 
         const dayOfWeekIdx = date.getDay() === 0 ? 6 : date.getDay() - 1;
         const dayShort = daysShortList ? daysShortList[dayOfWeekIdx] : dayFormatter.format(date);

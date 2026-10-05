@@ -31,30 +31,39 @@ export const DOM = {
     }
 };
 
+/** Numéro français « 01.48.36.48.66 » -> format international « 33148364866 » */
+const intlPhone = (num) => '33' + String(num).replace(/\D/g, '').replace(/^0/, '');
+
 /**
  * HTML des coordonnées de l'association (lignes avec icône).
  * - 'columns' (calendrier annuel) : 4 colonnes de 2 lignes (adresses | téléphones | en ligne | IBAN, BIC).
  * - 'rows' (page Ramadan) : 3 lignes (adresses | téléphones, e-mail, site | IBAN • BIC), siège en premier.
  * @param {Object} c - config.contact (addr1/addr2 + icônes facultatives, phone, whatsapp, email, website, bank)
  * @param {'columns'|'rows'} layout
+ * @param {boolean} links - coordonnées cliquables (appel, WhatsApp, e-mail, plan, site) pour les PDF numériques
  */
-export function contactsHTML(c, layout = 'columns') {
-    const line = (icon, text) => text && `<div class="info-line"><svg class="icon"><use href="assets/icons/icon-${icon}.svg#icon"></use></svg> <span>${text}</span></div>`;
+export function contactsHTML(c, layout = 'columns', links = false) {
+    const line = (icon, text, href) => {
+        if (!text) return '';
+        const label = links && href ? `<a href="${href}">${text}</a>` : text;
+        return `<div class="info-line"><svg class="icon"><use href="assets/icons/icon-${icon}.svg#icon"></use></svg> <span>${label}</span></div>`;
+    };
     const group = (lines) => `<div class="contact-group">${lines.filter(Boolean).join('')}</div>`;
-    const addr1 = line(c.addr1_icon || 'location', c.addr1);
-    const addr2 = line(c.addr2_icon || 'location', c.addr2);
+    const map = (addr) => addr && `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(addr)}`;
+    const addr1 = line(c.addr1_icon || 'location', c.addr1, map(c.addr1));
+    const addr2 = line(c.addr2_icon || 'location', c.addr2, map(c.addr2));
+    const phone = line('phone', c.phone, c.phone && `tel:+${intlPhone(c.phone)}`);
+    const whatsapp = line('whatsapp', c.whatsapp, c.whatsapp && `https://wa.me/${intlPhone(c.whatsapp)}`);
+    const email = line('email', c.email, c.email && `mailto:${c.email}`);
+    const website = line('website', c.website, c.website && `https://${c.website}`);
 
     if (layout === 'rows') {
-        return [
-            group([addr2, addr1]),
-            group([line('phone', c.phone), line('whatsapp', c.whatsapp), line('email', c.email), line('website', c.website)]),
-            c.bank && group([line('bank', `IBAN\u00a0: ${c.bank.iban} • BIC\u00a0: ${c.bank.bic}`)])
-        ].join('');
+        return [group([addr2, addr1]), group([phone, whatsapp, email, website]), c.bank && group([line('bank', `IBAN\u00a0: ${c.bank.iban} • BIC\u00a0: ${c.bank.bic}`)])].join('');
     }
     return [
         group([addr1, addr2]),
-        group([line('phone', c.phone), line('whatsapp', c.whatsapp)]),
-        group([line('email', c.email), line('website', c.website)]),
+        group([phone, whatsapp]),
+        group([email, website]),
         c.bank && group([line('bank', `IBAN\u00a0: ${c.bank.iban}`), `<div class="info-line info-cont"><span>BIC\u00a0: ${c.bank.bic}</span></div>`])
     ].join('');
 }

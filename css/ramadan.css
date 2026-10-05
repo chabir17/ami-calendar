@@ -468,6 +468,155 @@ sup.ordinal {
     height: 0.75rem;
 }
 
+/* --- PIED DE PAGE : invocation d'acceptation --- */
+.ramadan-footer {
+    padding-top: var(--sp-2);
+    text-align: center;
+    color: var(--col-text-soft);
+}
+
+.decades-legend {
+    display: none; /* version numérique uniquement */
+}
+
+.dua {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: var(--sp-3);
+    font-size: var(--fs-sm);
+}
+
+.dua-ar {
+    font-size: var(--fs-figure);
+    color: var(--col-green);
+}
+
+/* --- VARIANTE NUMÉRIQUE (?version=numerique) : PDF à partager, sans contrainte d'encre --- */
+.page.digital {
+    --bg-decade-1: #f6f0e1; /* miséricorde : sable */
+    --bg-decade-2: #e9eff8; /* pardon : bleu clair */
+    --bg-decade-3: #f0ebf5; /* délivrance du Feu : lilas clair (aucune teinte proche du vert des vendredis) */
+    padding: 0 0 var(--page-margin);
+}
+
+/* En-tête pleine largeur : bleu marine, girih doré, textes clairs */
+.digital .ramadan-identity,
+.digital .ramadan-header-simple {
+    background-color: var(--col-blue);
+    background-image: url('../assets/patterns/background-pattern.svg');
+    border: none;
+    padding-left: var(--page-margin);
+    padding-right: var(--page-margin);
+}
+
+.digital .ramadan-identity {
+    padding-top: var(--sp-4);
+}
+
+.digital .ramadan-identity::before {
+    display: none;
+}
+
+.digital .ramadan-header-simple {
+    padding-bottom: var(--sp-3);
+    border-bottom: 3px solid #c8b070;
+}
+
+.digital .org-names .org-ta {
+    color: #f2c49b;
+}
+
+.digital .org-names .org-fr {
+    color: white;
+}
+
+.digital .org-names > * + *::before,
+.digital .footer-contacts,
+.digital .footer-contacts .icon {
+    color: #d6e1ef;
+}
+
+.digital .footer-contacts a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.digital .logo-box {
+    background-color: white;
+    border-radius: 50%;
+}
+
+.digital .year-corner.top-left,
+.digital .year-corner.top-right {
+    color: white;
+}
+
+.digital .year-corner.top-left::after,
+.digital .year-corner.top-right::before {
+    background-color: #c8b070;
+}
+
+.digital .ramadan-main-title {
+    height: 3cm;
+}
+
+.digital .ramadan-logo {
+    height: 2.9cm;
+}
+
+.digital .ramadan-table-container,
+.digital .ramadan-footer {
+    padding-left: var(--page-margin);
+    padding-right: var(--page-margin);
+}
+
+.digital .ramadan-table-container {
+    padding-top: var(--sp-3);
+}
+
+/* Décades du Ramadan : teinte très légère par décade (les vendredis restent prioritaires) */
+.digital .ramadan-table tr.decade-1 {
+    background-color: var(--bg-decade-1);
+}
+.digital .ramadan-table tr.decade-2 {
+    background-color: var(--bg-decade-2);
+}
+.digital .ramadan-table tr.decade-3 {
+    background-color: var(--bg-decade-3);
+}
+.digital .ramadan-table tr.is-friday {
+    background-color: var(--bg-friday);
+}
+
+.digital .decades-legend {
+    display: flex;
+    justify-content: center;
+    gap: var(--sp-4);
+    margin-bottom: var(--sp-1);
+    font-size: var(--fs-xs);
+}
+
+.decade-key::before {
+    content: '';
+    display: inline-block;
+    width: 0.7rem;
+    height: 0.7rem;
+    margin-right: var(--sp-1);
+    border: 1px solid var(--border-blue);
+    border-radius: 2px;
+    vertical-align: -0.1em;
+}
+.decade-key.decade-1::before {
+    background-color: var(--bg-decade-1);
+}
+.decade-key.decade-2::before {
+    background-color: var(--bg-decade-2);
+}
+.decade-key.decade-3::before {
+    background-color: var(--bg-decade-3);
+}
+
 /* --- PRINT OPTIMIZATIONS --- */
 @media print {
     body {
