@@ -50,6 +50,7 @@ body {
     /* Rôles de couleur de la page (palette commune : variables.css).
        Version papier : pastels ; la version numérique (.digital) renforce les contrastes. */
     --rule: var(--accent-blue); /* filets, puces */
+    --fs-figure: 15px; /* horaires de la feuille Ramadan */
     --surface: var(--bg-blue-faint); /* fonds neutres : en-tête du tableau, événements */
     --surface-fast: var(--bg-terracotta-soft); /* cellules Imsak, Maghrib, Icha AMI */
     --surface-fast-head: var(--bg-terracotta); /* leurs en-têtes */
@@ -297,11 +298,12 @@ body {
 .ramadan-table .col-hijri {
     width: 5%;
     font-weight: 600;
-    color: var(--col-green); /* jour hégirien : vert, comme le calendrier annuel */
+    color: var(--col-text);
     border-right: none;
 }
 .ramadan-table .col-day-name.arabic {
     width: 6.5%;
+    direction: rtl; /* alignement à droite garanti, même pour les noms longs (الأربعاء) */
     text-align: right;
     color: var(--col-text); /* comme les jours en français et en tamoul */
     padding-right: var(--sp-2);
@@ -558,6 +560,11 @@ sup.ordinal {
 /* En-tête entièrement bleu marine ; les colonnes du jeûne restent signalées par leurs cellules et leur filet */
 .digital .ramadan-table thead th.th-fast {
     background-color: var(--col-blue);
+}
+
+/* Filet sous l'en-tête : bleu clair (visible sur le bleu marine), terracotta sous les colonnes du jeûne */
+.digital .ramadan-table thead th:not(.th-fast) {
+    border-bottom-color: var(--accent-blue);
 }
 
 .digital table.ramadan-table thead th.col-ami-isha-fix {
