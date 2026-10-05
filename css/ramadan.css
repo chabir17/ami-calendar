@@ -448,14 +448,6 @@ table.ramadan-table tbody td.ami-isha-fix {
     font-size: var(--fs-sm);
 }
 
-.ramadan-table tr.laylat-al-qadr-sep .event-date {
-    margin-left: var(--sp-2);
-    text-transform: none;
-    letter-spacing: 0;
-    font-size: var(--fs-sm);
-    color: var(--col-text);
-}
-
 /* Fin de semaine : filet plus marqué après le dimanche (repérage par blocs de 7 jours) */
 .ramadan-table tr.week-end td {
     border-bottom: 1.5px solid var(--rule);
@@ -523,20 +515,20 @@ sup.ordinal {
 
 /* --- PIED DE PAGE : invocation d'acceptation --- */
 .ramadan-footer {
-    padding-top: var(--sp-3);
+    padding-top: var(--sp-1);
     text-align: center;
     color: var(--col-text-soft);
 }
 
 .dua {
-    font-size: var(--fs-sm); /* discret */
-    color: var(--col-text-soft);
+    font-size: var(--fs-figure);
+    color: var(--col-text);
 }
 
 /* Parenthèses ornées : même glyphe, la seconde en miroir (rendu identique quel que soit le sens bidi) */
 .dua-orn {
     display: inline-block;
-    font-size: var(--fs-figure);
+    font-size: var(--fs-xl);
     color: var(--col-green);
 }
 
