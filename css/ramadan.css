@@ -257,7 +257,7 @@ body {
 
 .ramadan-table {
     width: 100%;
-    height: 100%; /* les lignes se répartissent la hauteur disponible : tout tient sur une page */
+    align-self: flex-start;
     table-layout: fixed;
     border-collapse: separate;
     border-spacing: 0;
@@ -312,7 +312,14 @@ body {
     line-height: 1.35;
 }
 
-/* Cellules : lignes horizontales seules (pas de traits verticaux) */
+/* Cellules : lignes horizontales seules (pas de traits verticaux).
+   Hauteur identique pour toutes les lignes (jours, événements, 27e nuit), calculée en JS
+   pour remplir la hauteur disponible (--row-h). */
+.ramadan-table tbody td {
+    height: var(--row-h, 22px);
+    overflow: hidden;
+}
+
 .ramadan-table td {
     padding: 0;
     border-bottom: 1px solid var(--border-blue);

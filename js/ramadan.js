@@ -216,4 +216,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     tbody.appendChild(fragment);
     app.appendChild(clone);
+
+    // Hauteur fixe et identique pour toutes les lignes : (hauteur disponible − en-tête) / nombre de lignes
+    await document.fonts.ready;
+    const table = app.querySelector('.ramadan-table');
+    const container = app.querySelector('.ramadan-table-container');
+    const paddingTop = parseFloat(getComputedStyle(container).paddingTop);
+    const available = container.clientHeight - paddingTop - table.tHead.offsetHeight - 2; // 2 : bordures du tableau
+    const rowHeight = Math.floor((available / table.tBodies[0].rows.length) * 10) / 10;
+    table.style.setProperty('--row-h', `${rowHeight}px`);
 });
