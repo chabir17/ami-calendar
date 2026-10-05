@@ -20,6 +20,9 @@ let adhanCoords = null;
 let adhanParams = null;
 let parsedHolidaysCache = null;
 
+// Libellés de jours fériés raccourcis pour tenir sur une ligne dans les cases du calendrier
+const SHORT_LABELS = { 'Lundi de Pentecôte': 'Pentecôte', 'Lundi de Pâques': 'Pâques' };
+
 // Horaires de prière officiels (data/prayer_times.csv), indexés par "MM-JJ", en heure d'hiver
 let prayerTimesTable = null;
 const PRAYER_KEYS = ['fajr', 'sunrise', 'dhuhr', 'asr', 'maghrib', 'isha'];
@@ -220,7 +223,7 @@ export function getDayInfo(date, hijri) {
     const key = `${yyyy}-${mm}-${dd}`;
     if (CONFIG.publicHolidays && CONFIG.publicHolidays[key]) {
         info.isPublicHoliday = true;
-        info.labels.push({ text: CONFIG.publicHolidays[key], type: 'public' });
+        info.labels.push({ text: SHORT_LABELS[CONFIG.publicHolidays[key]] || CONFIG.publicHolidays[key], type: 'public' });
     }
 
     // 4. Vérification Changement d'heure (Règle simplifiée UE)
@@ -231,11 +234,11 @@ export function getDayInfo(date, hijri) {
         if (m === 2) {
             info.isDST = true;
             info.dstType = 'summer';
-            info.labels.push({ text: "Heure d'été +1 h", type: 'dst' });
+            info.labels.push({ text: 'Heure\u00a0+1\u00a0h', type: 'dst' }); // on avance l'heure
         } else if (m === 9) {
             info.isDST = true;
             info.dstType = 'winter';
-            info.labels.push({ text: "Heure d'hiver −1 h", type: 'dst' });
+            info.labels.push({ text: 'Heure\u00a0−1\u00a0h', type: 'dst' }); // on recule l'heure
         }
     }
 

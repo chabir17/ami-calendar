@@ -571,11 +571,6 @@ sup.ordinal {
     color: white !important;
 }
 
-/* Lignes zébrées : l'œil suit la ligne de la date à l'Icha AMI */
-.digital .ramadan-table tbody tr:nth-child(even):not(.is-friday):not(.is-eid):not(.row-separator):not(.is-night-of-doubt) {
-    background-color: var(--bg-blue-faint);
-}
-
 .digital .footer-contacts a {
     color: inherit;
     text-decoration: none;

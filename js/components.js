@@ -108,10 +108,8 @@ class CalendarGrid extends HTMLElement {
             }
 
             if (labels.length) {
-                // Plusieurs libellés, ou un libellé long qui passera sur deux lignes : le numéro remonte
-                // (sauf jour férié : le libellé tient en bas, et le haut peut porter l'Aïd)
-                const tall = labels.length > 1 || labels.some((l) => l.text.length > 14);
-                if (tall && !dayInfo.isPublicHoliday) root.classList.add('multi-events');
+                // Libellés sur une seule ligne : le numéro ne remonte que s'il y a plusieurs libellés
+                if (labels.length > 1) root.classList.add('multi-events');
                 const labelDiv = root.querySelector('.event-label');
                 labelDiv.hidden = false;
                 for (const { text, type } of labels) {

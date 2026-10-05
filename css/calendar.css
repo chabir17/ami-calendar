@@ -225,8 +225,9 @@
     padding: 0 3px;
     position: absolute;
     bottom: 2px;
-    /* Libellés longs : passage à la ligne plutôt que troncature (cases étroites) */
     line-height: 1.15;
+    white-space: nowrap; /* une seule ligne : libellés courts, lettres légèrement resserrées */
+    letter-spacing: -0.02em;
 }
 
 /* Plusieurs événements : le numéro remonte pour ne pas toucher les libellés */
