@@ -27,6 +27,19 @@ function renderLayout(container, config, year, hijriYearAr) {
     if (contacts) contacts.innerHTML = contactsHTML(contact, 'rows');
 }
 
+/**
+ * Libellé d'une nuit : elle commence la veille au soir (ex. « nuit du vendredi 5 au samedi 6 mars »).
+ * @param {Date} date - le jour qui suit la nuit
+ */
+function nightLabel(date) {
+    const eve = new Date(date.getFullYear(), date.getMonth(), date.getDate() - 1);
+    const fr = window.TEXTS?.fr;
+    const dayName = (d) => fr.days[(d.getDay() + 6) % 7].toLowerCase();
+    const month = (d) => fr.months[d.getMonth()].toLowerCase();
+    const evePart = `${dayName(eve)} ${eve.getDate()}${eve.getMonth() !== date.getMonth() ? ' ' + month(eve) : ''}`;
+    return `nuit du ${evePart} au ${dayName(date)} ${date.getDate()} ${month(date)}`;
+}
+
 // --- Main Logic ---
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -148,6 +161,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <td colspan="13">
                     <div class="event-stack">
                         <span class="event-fr">27<sup>ÈME</sup> NUIT DU RAMAḌĀN</span>
+                        <span class="event-date">(${nightLabel(date)})</span>
                         <span class="event-separator">•</span>
                         <span class="event-ta tamil">27-ம் இரவு</span>
                     </div>

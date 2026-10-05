@@ -52,6 +52,7 @@ body {
     --brand: #7f9cc0; /* filets, puces : bleu moyen */
     --brand-dark: var(--col-blue); /* textes d'accent : bleu marine, 13.6:1 */
     --brand-light: #eef3f9; /* fonds neutres (en-tête du tableau, événements) : bleu pastel */
+    --bg-fast-head: #d6e1ef; /* en-têtes Imsak et Maghrib : bleu un cran plus soutenu */
     width: 210mm;
     height: 297mm;
     background-color: white;
@@ -244,7 +245,7 @@ body {
 
 /* Colonnes spécifiques (Date scindée) */
 .ramadan-table .col-day-name {
-    width: 7%;
+    width: 6%;
     text-align: left;
     padding-left: 0.5rem;
     text-transform: uppercase;
@@ -253,7 +254,7 @@ body {
     overflow: hidden;
 }
 .ramadan-table .col-day-name.tamil {
-    width: 11%;
+    width: 10%;
     padding-left: 0;
     font-size: 13px;
 }
@@ -273,7 +274,7 @@ body {
     border-right: none;
 }
 .ramadan-table .col-day-name.arabic {
-    width: 7%;
+    width: 6.5%;
     text-align: right;
     color: var(--col-text); /* comme les jours en français et en tamoul */
     padding-right: 0.5rem;
@@ -286,11 +287,24 @@ body {
     width: 8.6%;
 }
 
-/* Imsak et Maghrib (début et rupture du jeûne) : simplement en gras, sans fond */
+/* Horaires : élément dominant de la page (grands chiffres en gras) */
 .ramadan-table td.imsak,
-.ramadan-table td.maghrib {
+.ramadan-table td.fajr,
+.ramadan-table td.sunrise,
+.ramadan-table td.dhuhr,
+.ramadan-table td.asr,
+.ramadan-table td.maghrib,
+.ramadan-table td.isha,
+table.ramadan-table tbody td.ami-isha-fix {
+    font-size: 16px;
     font-weight: 600;
-    color: var(--col-blue);
+    font-variant-numeric: tabular-nums;
+    color: #1f1f1f;
+}
+
+/* Imsak et Maghrib (début et rupture du jeûne) : signalés par leur en-tête */
+.ramadan-table thead th.th-fast {
+    background-color: var(--bg-fast-head);
 }
 
 /* Cellules de prière standards (AMI) */
@@ -302,8 +316,6 @@ table.ramadan-table thead th.col-ami-isha-fix {
 
 table.ramadan-table tbody td.ami-isha-fix {
     width: 8.6% !important;
-    color: #333333 !important;
-    font-weight: 400 !important;
     background-color: transparent !important;
     vertical-align: middle;
 }
@@ -373,6 +385,14 @@ table.ramadan-table tbody td.ami-isha-fix {
 
 .ramadan-table tr.laylat-al-qadr-sep .event-fr {
     font-size: 12px;
+}
+
+.ramadan-table tr.laylat-al-qadr-sep .event-date {
+    margin-left: 0.4rem;
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 12px;
+    color: var(--col-text);
 }
 
 .ramadan-table tr.laylat-al-qadr-sep sup {
