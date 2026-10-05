@@ -15,7 +15,7 @@ body {
     font-family: var(--font-fr);
     color: var(--col-text);
     margin: 0 auto;
-    padding: 2rem;
+    padding: var(--sp-6);
     display: flex;
     justify-content: center;
     min-height: 100vh;
@@ -36,7 +36,7 @@ body {
     vertical-align: middle;
     fill: currentColor;
     color: var(--col-blue);
-    margin-right: 0.125rem;
+    margin-right: var(--sp-1);
     flex-shrink: 0;
 }
 
@@ -52,7 +52,8 @@ body {
     --brand: #7f9cc0; /* filets, puces : bleu moyen */
     --brand-dark: var(--col-blue); /* textes d'accent : bleu marine, 13.6:1 */
     --brand-light: #eef3f9; /* fonds neutres (en-tête du tableau, événements) : bleu pastel */
-    --bg-fast-head: #d6e1ef; /* en-têtes Imsak, Maghrib et Icha AMI : bleu un cran plus soutenu */
+    --bg-fast: #fbebe4; /* Imsak, Maghrib (iftār) et Icha AMI : terracotta très clair */
+    --bg-fast-head: #f6dccf; /* leurs en-têtes : terracotta un cran plus soutenu */
     width: 210mm;
     height: 297mm;
     background-color: white;
@@ -79,12 +80,12 @@ body {
 .ramadan-main-title {
     display: flex;
     align-items: center;
-    gap: 0.9rem;
-    height: 2cm; /* titre compact */
+    gap: var(--sp-3);
+    height: 2.6cm;
 }
 
 .ramadan-logo {
-    height: 1.9cm;
+    height: 2.5cm;
     flex-shrink: 0;
 }
 
@@ -93,8 +94,8 @@ body {
     flex: 1;
     display: flex;
     align-items: center;
-    gap: 0.9rem;
-    font-size: 26px !important;
+    gap: var(--sp-3);
+    font-size: var(--fs-xl) !important;
     font-weight: 600;
     line-height: 1;
 }
@@ -136,7 +137,7 @@ body {
     position: relative; /* au-dessus du motif */
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: var(--sp-3);
 }
 
 .footer-main {
@@ -144,7 +145,7 @@ body {
     min-width: 0;
     display: flex;
     flex-direction: column;
-    gap: 0.2rem;
+    gap: var(--sp-1);
 }
 
 /* --- COMPOSANTS UI (LOGO & CONTACTS) --- */
@@ -166,14 +167,14 @@ body {
 .info-line {
     display: flex;
     align-items: center;
-    gap: 0.25rem;
+    gap: var(--sp-1);
 }
 
 .ramadan-table-container {
     flex: 1;
     min-height: 0;
     display: flex;
-    padding-top: 0.5rem;
+    padding-top: var(--sp-2);
 }
 .ramadan-table {
     width: 100%;
@@ -183,7 +184,7 @@ body {
     border-radius: 0.5rem;
     overflow: hidden;
     background-color: white;
-    font-size: 14px;
+    font-size: var(--fs-md);
     table-layout: fixed;
     height: 100%; /* les lignes se répartissent la hauteur disponible : tout tient sur une page */
 }
@@ -193,7 +194,7 @@ body {
     background-color: var(--brand-light);
     border-right: 1px solid var(--border-blue);
     border-bottom: 2px solid var(--brand);
-    padding: 0.25rem 1px;
+    padding: var(--sp-1) 1px;
     font-weight: 600;
     vertical-align: middle;
     color: var(--brand-dark);
@@ -204,7 +205,7 @@ body {
 }
 
 .th-stack {
-    font-size: 11px;
+    font-size: var(--fs-sm);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -247,7 +248,7 @@ body {
 .ramadan-table .col-day-name {
     width: 6%;
     text-align: left;
-    padding-left: 0.5rem;
+    padding-left: var(--sp-2);
     text-transform: uppercase;
     border-right: none;
     white-space: nowrap;
@@ -256,7 +257,7 @@ body {
 .ramadan-table .col-day-name.tamil {
     width: 11.5%; /* « செவ்வாய் » en entier */
     padding-left: 0;
-    font-size: 13px;
+    font-size: var(--fs-sm);
 }
 .ramadan-table .col-day-num {
     width: 5%;
@@ -265,7 +266,7 @@ body {
 .ramadan-table .col-month-name {
     text-align: left;
     text-transform: uppercase;
-    padding-right: 0.5rem;
+    padding-right: var(--sp-2);
 }
 .ramadan-table .col-hijri {
     width: 5%;
@@ -277,7 +278,7 @@ body {
     width: 6.5%;
     text-align: right;
     color: var(--col-text); /* comme les jours en français et en tamoul */
-    padding-right: 0.5rem;
+    padding-right: var(--sp-2);
     padding-left: 0;
 }
 
@@ -296,20 +297,21 @@ body {
 .ramadan-table td.maghrib,
 .ramadan-table td.isha,
 table.ramadan-table tbody td.ami-isha-fix {
-    font-size: 16px;
+    font-size: var(--fs-figure);
     font-weight: 400;
     font-variant-numeric: tabular-nums;
     color: #1f1f1f;
 }
 
-/* Imsak, Maghrib et Icha AMI : demi-gras, comme leur en-tête mis en avant */
+/* Imsak, Maghrib (iftār) et Icha AMI : demi-gras sur fond terracotta très clair */
 .ramadan-table td.imsak,
 .ramadan-table td.maghrib,
 table.ramadan-table tbody td.ami-isha-fix {
     font-weight: 600;
+    background-color: var(--bg-fast) !important; /* prioritaire sur les lignes colorées (vendredis) */
 }
 
-/* Imsak, Maghrib (début et rupture du jeûne) et Icha AMI : en-tête mis en avant */
+/* Imsak, Maghrib et Icha AMI : en-tête terracotta */
 .ramadan-table thead th.th-fast {
     background-color: var(--bg-fast-head);
 }
@@ -323,7 +325,6 @@ table.ramadan-table thead th.col-ami-isha-fix {
 
 table.ramadan-table tbody td.ami-isha-fix {
     width: 8.6% !important;
-    background-color: transparent !important;
     vertical-align: middle;
 }
 
@@ -335,11 +336,11 @@ table.ramadan-table tbody td.ami-isha-fix {
 /* Échelles de police pour langues secondaires */
 .arabic,
 .event-ar {
-    font-size: 13px;
+    font-size: var(--fs-sm);
 }
 .tamil,
 .event-ta {
-    font-size: 13px;
+    font-size: var(--fs-sm);
 }
 
 /* --- ÉVÉNEMENTS SPÉCIAUX (TABLEAU) --- */
@@ -374,7 +375,7 @@ table.ramadan-table tbody td.ami-isha-fix {
     text-transform: uppercase;
     color: var(--brand-dark);
     letter-spacing: 0.5px;
-    font-size: 14px;
+    font-size: var(--fs-md);
 }
 
 /* Ligne séparatrice (27ème Nuit) */
@@ -391,14 +392,14 @@ table.ramadan-table tbody td.ami-isha-fix {
 }
 
 .ramadan-table tr.laylat-al-qadr-sep .event-fr {
-    font-size: 12px;
+    font-size: var(--fs-sm);
 }
 
 .ramadan-table tr.laylat-al-qadr-sep .event-date {
-    margin-left: 0.4rem;
+    margin-left: var(--sp-2);
     text-transform: none;
     letter-spacing: 0;
-    font-size: 12px;
+    font-size: var(--fs-sm);
     color: var(--col-text);
 }
 
@@ -420,19 +421,19 @@ sup.ordinal {
 .org-names {
     display: flex;
     align-items: baseline;
-    gap: 0.6rem;
+    gap: var(--sp-2);
     white-space: nowrap;
 }
 
 .org-names .org-ta {
-    font-size: 18px;
+    font-size: var(--fs-figure);
     font-weight: 600;
     line-height: 1.1;
     color: var(--col-saffron-text);
 }
 
 .org-names .org-fr {
-    font-size: 18px;
+    font-size: var(--fs-figure);
     font-weight: 600;
     letter-spacing: 0.04em;
     line-height: 1.1;
@@ -441,7 +442,7 @@ sup.ordinal {
 
 .org-names > * + *::before {
     content: '•';
-    margin-right: 0.6rem;
+    margin-right: var(--sp-2);
     font-family: var(--font-fr);
     color: var(--col-blue);
 }
@@ -450,16 +451,16 @@ sup.ordinal {
 .footer-contacts {
     display: flex;
     flex-direction: column;
-    gap: 0.15rem;
-    font-size: 10px;
+    gap: var(--sp-1);
+    font-size: var(--fs-xs);
     line-height: 1.35;
-    color: var(--col-text-light);
+    color: var(--col-text-soft); /* gris clair : le bloc reste une signature */
     white-space: nowrap;
 }
 
 .footer-contacts .contact-group {
     display: flex;
-    gap: 1.25rem;
+    gap: var(--sp-4);
 }
 
 .footer-contacts .icon {

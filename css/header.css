@@ -26,7 +26,7 @@
     position: relative; /* au-dessus du motif */
     display: flex;
     align-items: center;
-    gap: 0.9rem;
+    gap: var(--sp-3);
 }
 
 /* Logo centré verticalement entre les deux filets */
@@ -51,20 +51,20 @@
     min-width: 0;
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
+    gap: var(--sp-1);
 }
 
 /* Ligne 1 : nom tamoul puis nom français, côte à côte */
 .org-names {
     display: flex;
     align-items: baseline;
-    gap: 0.9rem;
+    gap: var(--sp-3);
     white-space: nowrap;
 }
 
 .org-fr {
     color: var(--col-green); /* vert du nom français sur le logo */
-    font-size: 24px;
+    font-size: var(--fs-xl);
     font-weight: 600;
     letter-spacing: 0.045em;
     line-height: 1.1;
@@ -73,7 +73,7 @@
 /* Nom tamoul : même taille que le nom français */
 .org-ta {
     color: var(--col-saffron-text); /* safran du nom tamoul sur le logo */
-    font-size: 24px;
+    font-size: var(--fs-xl);
     font-weight: 600;
     line-height: 1.1;
 }
@@ -81,7 +81,7 @@
 /* Puce entre les deux noms */
 .org-names > * + *::before {
     content: '•';
-    margin-right: 0.9rem;
+    margin-right: var(--sp-3);
     font-family: var(--font-fr);
     color: var(--col-blue);
 }
@@ -89,8 +89,8 @@
 /* Ligne 2 : coordonnées en colonnes, séparées par un simple espace */
 .header-contacts {
     display: flex;
-    gap: 1.75rem;
-    font-size: 12px;
+    gap: var(--sp-6);
+    font-size: var(--fs-sm);
     line-height: 1.35;
     white-space: nowrap;
     color: var(--col-text-light);
@@ -99,12 +99,12 @@
 .info-line {
     display: flex;
     align-items: center;
-    gap: 0.3rem;
+    gap: var(--sp-1);
 }
 
 /* Ligne sans icône (BIC sous l'IBAN) : alignée sur le texte de la ligne du dessus */
 .info-cont {
-    padding-left: calc(0.75rem + 0.3rem);
+    padding-left: calc(0.75rem + var(--sp-1)); /* largeur de l'icône + espace */
 }
 
 /* Icônes des coordonnées : bleu marine du logo */

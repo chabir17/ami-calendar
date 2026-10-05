@@ -27,6 +27,7 @@
     --col-text: #333333;
     --col-text-light: #555555;
     --col-text-lighter: #444444;
+    --col-text-soft: #6b6b6b; /* texte discret : 5.3:1 sur blanc */
 
     /* Fonds globaux */
     --bg-body: #eeeeee;
@@ -51,6 +52,21 @@
     --page-pad: 5mm; /* marge minimale : juste au-dela de la zone non imprimable du copieur (3-5 mm) */
     --block-gap: 2.5mm; /* espacement unique entre header, calendrier et tableau */
     --binding-zone: 10mm; /* haut : trous de spirale metallique (<= 6.5 mm) + degagement, dans le bandeau */
+
+    /* --- ÉCHELLE TYPOGRAPHIQUE : 4 tailles de texte + 2 tailles de chiffres --- */
+    --fs-xs: 10px; /* notes : en-têtes de tableau, libellés des cases, coordonnées compactes */
+    --fs-sm: 12px; /* secondaire : traductions, coordonnées, légende, citation */
+    --fs-md: 14px; /* courant : jours de la semaine, texte des tableaux */
+    --fs-xl: 22px; /* titres : nom de l'association, mois, années */
+    --fs-figure: 16px; /* chiffres : horaires de prière (et noms de l'association en portrait) */
+    --fs-display: 42px; /* numéros des jours du calendrier */
+
+    /* --- GRILLE D'ESPACEMENT : multiples de 4 px --- */
+    --sp-1: 0.25rem; /* 4 px */
+    --sp-2: 0.5rem; /* 8 px */
+    --sp-3: 0.75rem; /* 12 px */
+    --sp-4: 1rem; /* 16 px */
+    --sp-6: 1.5rem; /* 24 px */
 
     /* --- TYPOGRAPHIE --- */
     --font-fr: 'Noto Sans', sans-serif;

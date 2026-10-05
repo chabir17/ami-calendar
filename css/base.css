@@ -9,11 +9,11 @@ body {
     background: var(--bg-body);
     font-family: var(--font-fr);
     color: var(--col-text);
-    padding: 1.25rem;
+    padding: var(--sp-4);
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2.5rem;
+    gap: var(--sp-6);
 }
 
 /* --- 2. TYPOGRAPHIE & UTILITAIRES --- */
@@ -46,7 +46,7 @@ strong {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     position: relative;
     overflow: hidden;
-    margin: 1rem 0;
+    margin: var(--sp-4) 0;
 }
 
 /* Conteneur principal : Calendrier (~62 %) + Prières (~38 %) */
@@ -68,6 +68,6 @@ strong {
     vertical-align: middle;
     fill: currentColor;
     color: var(--brand-text); /* coordonnées du bandeau : visibles à l'impression */
-    margin-right: 0.125rem;
+    margin-right: var(--sp-1);
     flex-shrink: 0; /* Empêche l'écrasement dans les flexbox */
 }

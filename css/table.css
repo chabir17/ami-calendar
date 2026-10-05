@@ -27,8 +27,8 @@ ami-prayer-table {
     background: var(--bg-green-faint);
     border: 1px solid var(--border-green);
     border-bottom: 1.5px solid var(--accent-green);
-    padding: 0.25rem 0.0625rem;
-    font-size: 10px;
+    padding: var(--sp-1) 1px;
+    font-size: var(--fs-xs);
     font-weight: 400;
     vertical-align: middle;
     color: var(--col-green-dark);
@@ -42,19 +42,19 @@ ami-prayer-table {
 
 .th-fr {
     display: block;
-    font-size: 10px;
+    font-size: var(--fs-xs);
     font-weight: 600;
     text-transform: uppercase;
 }
 
 .th-ar {
     display: block;
-    font-size: 12px;
+    font-size: var(--fs-sm);
 }
 
 .th-ta {
     display: block;
-    font-size: 10px;
+    font-size: var(--fs-xs);
 }
 
 .th-header-symbol {
@@ -74,7 +74,7 @@ ami-prayer-table {
     border-right-color: var(--bg-green-faint);
     text-align: center;
     font-weight: 600;
-    font-size: 15px;
+    font-size: var(--fs-figure);
     line-height: 1;
     font-variant-numeric: tabular-nums; /* colonnes d'heures parfaitement alignées */
     color: #1f1f1f;
@@ -103,7 +103,7 @@ ami-prayer-table {
     flex-direction: row;
     justify-content: space-between;
     align-items: baseline;
-    padding: 0 0.375rem;
+    padding: 0 var(--sp-2);
 }
 
 /* Fin de semaine : filet plus marqué après le dimanche (repérage par blocs de 7 jours) */

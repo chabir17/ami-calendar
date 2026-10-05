@@ -5,8 +5,8 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    gap: 0.75rem;
-    padding: 0.4rem 0.6rem 0.3rem;
+    gap: var(--sp-3);
+    padding: var(--sp-2) var(--sp-2) var(--sp-1);
     background-color: var(--col-blue);
     background-image: url('../assets/patterns/background-pattern-lightblue.svg');
     color: white;
@@ -23,7 +23,7 @@
 /* Grégorien : mois en gras, année plus légère */
 .greg-month-fr,
 .year-display {
-    font-size: 20px;
+    font-size: var(--fs-xl);
     letter-spacing: 0.04em;
     text-transform: uppercase;
     line-height: 1.25;
@@ -41,7 +41,7 @@
 
 /* Hégirien : mois en arabe */
 .hijri-month-ar {
-    font-size: 21px;
+    font-size: var(--fs-xl);
     line-height: 1.45; /* queues des lettres arabes (ع, ي…) : ne touchent pas la ligne 2 */
     color: white; /* même couleur que le mois grégorien */
 }
@@ -59,8 +59,8 @@
 .title-sub {
     display: flex;
     align-items: baseline;
-    gap: 0.5rem;
-    font-size: 12px;
+    gap: var(--sp-2);
+    font-size: var(--fs-sm);
     line-height: 1.5;
     color: var(--col-on-blue-soft);
     white-space: nowrap;
@@ -73,9 +73,9 @@
 /* Puce entre deux traductions */
 .title-sub > * + *::before {
     content: '•';
-    margin-right: 0.5rem;
+    margin-right: var(--sp-2);
     font-family: var(--font-fr);
-    font-size: 12px;
+    font-size: var(--fs-sm);
     font-style: normal;
     color: var(--col-on-blue-soft);
     opacity: 0.7;
@@ -105,14 +105,14 @@
     color: var(--col-blue);
     text-align: center;
     padding: 0;
-    font-size: 11px;
+    font-size: var(--fs-sm);
     border-top: 1.5px solid var(--accent-blue);
     border-bottom: 1.5px solid var(--accent-blue);
 }
 
 .weekday-cell {
     border-right: 1px solid var(--border-blue);
-    padding: 0.25rem 0;
+    padding: var(--sp-1) 0;
 }
 
 .weekday-cell:last-child {
@@ -120,13 +120,13 @@
 }
 
 .weekday-fr {
-    font-size: 14px;
+    font-size: var(--fs-md);
     font-weight: 600;
     text-transform: uppercase;
 }
 
 .weekday-sub {
-    font-size: 12px;
+    font-size: var(--fs-sm);
 }
 
 /* Grille des jours (5 rangées pour couvrir le mois) */
@@ -158,7 +158,7 @@
 
 /* Numéro du jour (Grégorien) */
 .vis-greg {
-    font-size: 42px;
+    font-size: var(--fs-display);
     font-weight: 600;
     color: var(--col-text-lighter);
 }
@@ -174,7 +174,7 @@
 
 /* Numéro du jour (Hégirien) */
 .vis-hij {
-    font-size: 13px;
+    font-size: var(--fs-sm);
     color: var(--col-green);
     position: absolute;
     top: 0.25rem;
@@ -210,8 +210,8 @@
 
 .event-label {
     display: block;
-    font-size: 9.5px;
-    margin-top: 0.125rem;
+    font-size: var(--fs-xs);
+    margin-top: var(--sp-1);
     font-weight: 600;
     text-transform: uppercase;
     color: var(--col-red-event);
@@ -236,7 +236,7 @@
     left: 0.3rem;
     right: 1.5rem; /* laisse la place au jour hégirien (en haut à droite) */
     white-space: nowrap;
-    font-size: 9.5px;
+    font-size: var(--fs-xs);
     font-weight: 600;
     line-height: 1.15;
     text-align: center;
@@ -261,21 +261,21 @@
 
 /* --- BARRE DE LÉGENDE (BAS) --- */
 .legend-box {
-    padding: 0.4rem 0.75rem;
+    padding: var(--sp-2);
     border-top: 1px solid var(--border-blue);
     margin-top: auto;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 0.9rem;
+    gap: var(--sp-2);
 }
 
 .legend-item {
     flex-shrink: 0;
     display: flex;
     align-items: center;
-    gap: 0.35rem;
-    font-size: 11px;
+    gap: var(--sp-1);
+    font-size: var(--fs-xs); /* légende : niveau « note » */
     color: var(--col-text-light);
     font-weight: 600;
     text-transform: uppercase;
@@ -283,16 +283,17 @@
 
 /* Citation du mois : italique discret, séparée de la légende par un filet */
 .month-quote {
-    font-size: 11px;
+    font-size: var(--fs-sm);
     font-style: italic;
     line-height: 1.35;
     white-space: nowrap; /* une ligne chaque mois : textes courts dans data/citations.js */
     text-align: center;
     color: var(--col-text-light);
+    letter-spacing: -0.01em; /* la citation la plus longue (janvier) tient sur une ligne */
 }
 
 .legend-item + .month-quote {
-    padding-left: 0.9rem;
+    padding-left: var(--sp-2);
     border-left: 1px solid var(--border-blue);
 }
 
