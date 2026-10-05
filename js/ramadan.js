@@ -17,9 +17,9 @@ function renderLayout(container, config, year, hijriYearAr) {
         DOM.setText('.year-corner.top-right', hijriYearAr, titleEl);
     }
 
-    // Coordonnées sur 3 lignes : 3 colonnes, puis IBAN • BIC sur une ligne
+    // Coordonnées sur 3 lignes : adresses | téléphones, e-mail, site | IBAN • BIC
     const contacts = container.querySelector('.footer-contacts');
-    if (contacts) contacts.innerHTML = contactsHTML(contact, true);
+    if (contacts) contacts.innerHTML = contactsHTML(contact, 'rows');
 }
 
 // --- Main Logic ---

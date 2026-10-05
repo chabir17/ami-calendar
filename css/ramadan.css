@@ -390,21 +390,20 @@ table.ramadan-table tbody td.ami-isha-fix {
     color: var(--col-blue);
 }
 
-/* Coordonnées sur 3 lignes : 3 colonnes de 2 lignes, puis la banque sur toute la largeur */
+/* Coordonnées sur 3 lignes : chaque groupe est une ligne, éléments espacés */
 .footer-contacts {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    justify-content: start;
-    column-gap: 1.25rem;
-    row-gap: 0.15rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
     font-size: 10px;
     line-height: 1.35;
     color: var(--col-text-light);
     white-space: nowrap;
 }
 
-.contact-bank {
-    grid-column: 1 / -1;
+.footer-contacts .contact-group {
+    display: flex;
+    gap: 1.25rem;
 }
 
 .footer-contacts .icon {

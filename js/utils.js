@@ -32,25 +32,30 @@ export const DOM = {
 };
 
 /**
- * HTML des coordonnées de l'association, en groupes de lignes avec icône.
- * Colonnes : adresses | téléphone, WhatsApp | e-mail, site | banque.
+ * HTML des coordonnées de l'association (lignes avec icône).
+ * - 'columns' (calendrier annuel) : 4 colonnes de 2 lignes (adresses | téléphones | en ligne | IBAN, BIC).
+ * - 'rows' (page Ramadan) : 3 lignes (adresses | téléphones, e-mail, site | IBAN • BIC), siège en premier.
  * @param {Object} c - config.contact (addr1/addr2 + icônes facultatives, phone, whatsapp, email, website, bank)
- * @param {boolean} bankOnOneLine - IBAN et BIC sur une seule ligne (sinon BIC sous l'IBAN)
+ * @param {'columns'|'rows'} layout
  */
-export function contactsHTML(c, bankOnOneLine = false) {
-    const line = (icon, text) => `<div class="info-line"><svg class="icon"><use href="assets/icons/icon-${icon}.svg#icon"></use></svg> <span>${text}</span></div>`;
-    const group = (lines, cls = '') => `<div class="contact-group${cls}">${lines.filter(Boolean).join('')}</div>`;
-    let bank = '';
-    if (c.bank) {
-        bank = bankOnOneLine
-            ? group([line('bank', `IBAN : ${c.bank.iban} • BIC : ${c.bank.bic}`)], ' contact-bank')
-            : group([line('bank', `IBAN : ${c.bank.iban}`), `<div class="info-line info-cont"><span>BIC : ${c.bank.bic}</span></div>`]);
+export function contactsHTML(c, layout = 'columns') {
+    const line = (icon, text) => text && `<div class="info-line"><svg class="icon"><use href="assets/icons/icon-${icon}.svg#icon"></use></svg> <span>${text}</span></div>`;
+    const group = (lines) => `<div class="contact-group">${lines.filter(Boolean).join('')}</div>`;
+    const addr1 = line(c.addr1_icon || 'location', c.addr1);
+    const addr2 = line(c.addr2_icon || 'location', c.addr2);
+
+    if (layout === 'rows') {
+        return [
+            group([addr2, addr1]),
+            group([line('phone', c.phone), line('whatsapp', c.whatsapp), line('email', c.email), line('website', c.website)]),
+            c.bank && group([line('bank', `IBAN : ${c.bank.iban} • BIC : ${c.bank.bic}`)])
+        ].join('');
     }
     return [
-        group([line(c.addr1_icon || 'location', c.addr1), c.addr2 && line(c.addr2_icon || 'location', c.addr2)]),
-        group([line('phone', c.phone), c.whatsapp && line('whatsapp', c.whatsapp)]),
-        group([line('email', c.email), c.website && line('website', c.website)]),
-        bank
+        group([addr1, addr2]),
+        group([line('phone', c.phone), line('whatsapp', c.whatsapp)]),
+        group([line('email', c.email), line('website', c.website)]),
+        c.bank && group([line('bank', `IBAN : ${c.bank.iban}`), `<div class="info-line info-cont"><span>BIC : ${c.bank.bic}</span></div>`])
     ].join('');
 }
 
