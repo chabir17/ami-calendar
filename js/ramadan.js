@@ -115,7 +115,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     renderLayout(clone, config, year, hijriYearAr, isDigital);
     if (isDigital) {
         clone.querySelector('.page').classList.add('digital');
-        DOM.setSrc('.ramadan-logo', 'assets/img/ramadan.png', clone); // calligraphie dorée d'origine
         document.title = `Ramadan ${year} – horaires de prière – AMI La Courneuve`;
     }
 
@@ -180,8 +179,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (date.getDay() === 5 || eventType === 'eid') tr.classList.add('is-friday');
         if (date.getDay() === 0) tr.classList.add('week-end'); // filet plus marqué après chaque dimanche
         if (eventType && eventType !== 'laylat-al-qadr') tr.classList.add(`is-${eventType}`);
-        // Décades du Ramadan (1–10, 11–20, 21–30) : teintées en version numérique
-        if (hijri.monthNameRaw.toLowerCase().includes('ramadan')) tr.classList.add(`decade-${Math.min(3, Math.ceil(parseInt(hijri.day) / 10))}`);
 
         const dayOfWeekIdx = date.getDay() === 0 ? 6 : date.getDay() - 1;
         const dayShort = daysShortList ? daysShortList[dayOfWeekIdx] : dayFormatter.format(date);
