@@ -176,11 +176,6 @@ body {
     gap: 0.25rem;
 }
 
-/* Ligne sans icône (BIC sous l'IBAN) : alignée sur le texte de la ligne du dessus */
-.info-cont {
-    padding-left: calc(0.75rem + 0.25rem);
-}
-
 .ramadan-table-container {
     flex: 1;
     min-height: 0;
@@ -404,10 +399,10 @@ table.ramadan-table tbody td.ami-isha-fix {
     color: var(--col-blue);
 }
 
-/* Coordonnées : 2 colonnes de 2 groupes (format portrait) */
+/* Coordonnées sur 3 lignes : 3 colonnes de 2 lignes, puis la banque sur toute la largeur */
 .footer-contacts {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: auto auto auto;
     justify-content: start;
     column-gap: 1.25rem;
     row-gap: 0.15rem;
@@ -415,6 +410,10 @@ table.ramadan-table tbody td.ami-isha-fix {
     line-height: 1.35;
     color: var(--col-text-light);
     white-space: nowrap;
+}
+
+.contact-bank {
+    grid-column: 1 / -1;
 }
 
 .footer-contacts .icon {

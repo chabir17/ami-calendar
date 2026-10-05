@@ -17,7 +17,7 @@ function renderLayout(container, config, year, hijriYearAr) {
         DOM.setText('.year-corner.top-right', hijriYearAr, titleEl);
     }
 
-    // Coordonnées : colonnes (adresses | téléphone, WhatsApp | e-mail, site | IBAN, BIC)
+    // Coordonnées sur 3 lignes : 3 colonnes (adresses | téléphone, WhatsApp | e-mail, site), puis IBAN • BIC
     const contacts = container.querySelector('.footer-contacts');
     if (contacts) {
         const c = contact;
@@ -27,7 +27,7 @@ function renderLayout(container, config, year, hijriYearAr) {
             group([line(c.addr1_icon || 'location', c.addr1), c.addr2 && line(c.addr2_icon || 'location', c.addr2)]),
             group([line('phone', c.phone), c.whatsapp && line('whatsapp', c.whatsapp)]),
             group([line('email', c.email), c.website && line('website', c.website)]),
-            c.bank && group([line('bank', `IBAN : ${c.bank.iban}`), `<div class="info-line info-cont"><span>BIC : ${c.bank.bic}</span></div>`])
+            c.bank && `<div class="contact-group contact-bank">${line('bank', `IBAN : ${c.bank.iban} • BIC : ${c.bank.bic}`)}</div>`
         ].join('');
     }
 }
