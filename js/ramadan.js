@@ -23,7 +23,7 @@ function renderLayout(container, config, year, hijriYearAr, isDigital) {
     }
 
     // Coordonnées sur 3 lignes : adresses | téléphones, e-mail, site | IBAN • BIC
-    const contacts = container.querySelector('.footer-contacts');
+    const contacts = container.querySelector('.identity-contacts');
     if (contacts) contacts.innerHTML = contactsHTML(contact, 'rows', isDigital);
 }
 
@@ -78,13 +78,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         const hMonth = hijri.monthNameAR || '';
         const hDay = parseInt(hijri.day);
 
-        let isRamadan = hMonth.includes('رمضان');
-        let isNightOfDoubt = hMonth.includes('شعبان') && hDay === 29;
-        let isEid = hMonth.includes('شوال') && hDay === 1;
+        const isRamadan = hMonth.includes('رمضان');
+        const isNightOfDoubt = hMonth.includes('شعبان') && hDay === 29;
+        const isEid = hMonth.includes('شوال') && hDay === 1;
 
-        if (isRamadan) {
-            if (!hijriYearAr) hijriYearAr = hijri.yearAr;
-        }
+        if (isRamadan && !hijriYearAr) hijriYearAr = hijri.yearAr;
 
         if (isRamadan || isNightOfDoubt || isEid) {
             let eventType = null;
@@ -139,7 +137,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     calendarEvents.forEach(({ date, hijri, eventType }) => {
         const times = getPrayerTimesSafe(date);
-        const dateKey = DATE_UTILS.format(date, 'YYYY-MM-DD');
+        const dateKey = DATE_UTILS.format(date);
 
         if (overrides[dateKey]) {
             Object.assign(times, overrides[dateKey]);
@@ -161,7 +159,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
 
         const tr = document.createElement('tr');
-        if (date.getDay() === 5 || eventType === 'eid') tr.classList.add('is-friday');
+        if (date.getDay() === 5) tr.classList.add('is-friday');
         if (date.getDay() === 0) tr.classList.add('week-end'); // filet plus marqué après chaque dimanche
         if (eventType && eventType !== 'laylat-al-qadr') tr.classList.add(`is-${eventType}`);
 
@@ -196,7 +194,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             // Icha AMI : horaire de la quinzaine ; hors Ramadan, pas d'horaire
             const amiIshaTime = isRamadan ? (hDay <= 15 ? AMI_ISHA.firstHalf : AMI_ISHA.secondHalf) : '--:--';
             const imsak = times.imsak || shiftTime(times.fajr, -IMSAK_MINUTES_BEFORE_FAJR);
-            const amiIshaTd = `<td class="ami-isha-fix">${amiIshaTime}</td>`;
 
             tr.innerHTML = `
                 <td class="col-day-name">${dayShort}</td>
@@ -209,7 +206,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <td class="asr">${times.asr}</td>
                 <td class="maghrib">${times.maghrib}</td>
                 <td class="isha">${times.isha}</td>
-                ${amiIshaTd}
+                <td class="ami-isha-fix">${amiIshaTime}</td>
                 <td class="col-hijri">${hijriDayDisplay}</td>
                 <td class="col-day-name arabic">${dayArabic}</td>
             `;

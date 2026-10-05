@@ -22,6 +22,7 @@
     --col-terracotta: #a8461f; /* fond d'en-tête, texte blanc : 5.9:1 */
     --bg-terracotta: #f6dccf; /* fond soutenu */
     --bg-terracotta-soft: #fbebe4; /* fond très clair */
+    --bg-terracotta-mid: #f9e4da; /* fond intermédiaire (version contrastée) */
 
     /* Encre des chiffres et des textes sur fond foncé */
     --col-ink: #1f1f1f; /* horaires */
@@ -52,8 +53,6 @@
 
     /* Pastels opaques (rendu fiable sur laser de bureau, papier blanc) */
     --bg-blue-faint: #eef3f9; /* en-tête des jours */
-    --bg-blue-soft: #dfe8f3; /* événements (version contrastée) */
-    --bg-green-soft: #d9ead9; /* vendredis et Aïd (version contrastée) */
     --bg-green-faint: #e7f2e8; /* en-tête du tableau des horaires */
     --border-blue: #c5d3e4; /* bordures du calendrier : bleu doux */
     --border-green: #c3dec6; /* bordures du tableau : vert doux */
