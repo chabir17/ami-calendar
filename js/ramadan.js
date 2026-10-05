@@ -76,8 +76,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     };
     const currentYear = new Date().getFullYear();
     const year = parseInt(urlParams.get('year')) || (isEidPassed(currentYear) ? currentYear + 1 : currentYear);
-    // Variante numérique (PDF à partager, sans contrainte d'encre) : ramadan.html?version=numerique
-    const isDigital = urlParams.get('version') === 'numerique';
+    // Par défaut : version numérique (couleurs contrastées, liens cliquables).
+    // Version papier (pastels, économie d'encre) : ramadan.html?print=true
+    const isDigital = urlParams.get('print') !== 'true';
 
     const calendarEvents = [];
     let hijriYearAr = '';
@@ -113,10 +114,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     // 4. Rendu
     const clone = template.content.cloneNode(true);
     renderLayout(clone, config, year, hijriYearAr, isDigital);
-    if (isDigital) {
-        clone.querySelector('.page').classList.add('digital');
-        document.title = `Ramadan ${year} – horaires de prière – AMI La Courneuve`;
-    }
+    document.title = `Ramadan ${year} – horaires de prière – AMI La Courneuve`;
+    if (isDigital) clone.querySelector('.page').classList.add('digital');
 
     // Mise à jour dynamique des mois (ex: Févr. / Mars)
     const uniqueMonths = [...new Set(calendarEvents.map((d) => d.date.getMonth()))].sort((a, b) => a - b);
