@@ -1,7 +1,12 @@
-import { initAdhan, getHijriDateSafe, getPrayerTimesSafe, fetchClientConfig, fetchRamadanOverrides, applyTheme, loadPrayerTimes } from './services.js';
+import { initAdhan, getHijriDateSafe, getPrayerTimesSafe, fetchClientConfig, fetchRamadanOverrides, applyTheme, loadPrayerTimes, shiftTime } from './services.js';
 import { DOM, DATE_UTILS, contactsHTML } from './utils.js';
 
 // --- Configuration & Helpers ---
+
+// Imsak : début de l'abstinence, quelques minutes avant Fajr (par précaution)
+const IMSAK_MINUTES_BEFORE_FAJR = 10;
+// Icha AMI (horaire de la mosquée pendant le Ramadan) : 1re et 2e quinzaine
+const AMI_ISHA = { firstHalf: '20:00', secondHalf: '20:20' };
 
 function renderLayout(container, config, year, hijriYearAr) {
     const { identity, contact } = config;
@@ -140,7 +145,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             const separatorTr = document.createElement('tr');
             separatorTr.className = 'row-separator laylat-al-qadr-sep';
             separatorTr.innerHTML = `
-                <td colspan="12">
+                <td colspan="13">
                     <div class="event-stack">
                         <span class="event-fr">27<sup>ÈME</sup> NUIT DU RAMAḌĀN</span>
                         <span class="event-separator">•</span>
@@ -167,7 +172,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <td class="col-day-name">${dayShort}</td>
                 <td class="col-day-name tamil">${dayTamil}</td>
                 <td class="col-day-num">${dayNum}</td>
-                <td colspan="7" class="special-event-label">
+                <td colspan="8" class="special-event-label">
                     <div class="event-stack">
                         <span class="event-fr">${labels.fr}</span>
                         <span class="event-separator">•</span>
@@ -182,14 +187,16 @@ document.addEventListener('DOMContentLoaded', async () => {
         } else {
             const hDay = parseInt(hijri.day);
             const isRamadan = hijri.monthNameRaw.toLowerCase().includes('ramadan');
-            // Icha AMI : 20:10 la 1re quinzaine du Ramadan, 20:30 la 2e ; hors Ramadan, pas d'horaire
-            const amiIshaTime = isRamadan ? (hDay <= 15 ? '20:10' : '20:30') : '--:--';
+            // Icha AMI : horaire de la quinzaine ; hors Ramadan, pas d'horaire
+            const amiIshaTime = isRamadan ? (hDay <= 15 ? AMI_ISHA.firstHalf : AMI_ISHA.secondHalf) : '--:--';
+            const imsak = times.imsak || shiftTime(times.fajr, -IMSAK_MINUTES_BEFORE_FAJR);
             const amiIshaTd = `<td class="ami-isha-fix">${amiIshaTime}</td>`;
 
             tr.innerHTML = `
                 <td class="col-day-name">${dayShort}</td>
                 <td class="col-day-name tamil">${dayTamil}</td>
                 <td class="col-day-num">${dayNum}</td>
+                <td class="imsak">${imsak}</td>
                 <td class="fajr">${times.fajr}</td>
                 <td class="sunrise">${times.sunrise}</td>
                 <td class="dhuhr">${times.dhuhr}</td>

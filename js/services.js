@@ -67,7 +67,7 @@ export async function loadPrayerTimes() {
 }
 
 /** Ajoute des minutes à une heure "HH:MM" */
-function shiftTime(time, minutes) {
+export function shiftTime(time, minutes) {
     const [h, m] = time.split(':').map(Number);
     if (isNaN(h) || isNaN(m)) return '--:--';
     const total = (h * 60 + m + minutes + 1440) % 1440;
