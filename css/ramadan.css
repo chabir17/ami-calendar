@@ -1,8 +1,6 @@
 :root {
     /* --- LAYOUT RAMADAN --- */
     --page-margin: 1cm; /* marge sur les 4 bords */
-    --year-circle-size: 4.25rem;
-    --year-circle-spacing: 4rem;
 }
 
 /* --- RESET & GLOBAL --- */
@@ -49,11 +47,13 @@ body {
 }
 
 .page.A4-portrait {
-    /* Nuances de gris (économie d'encre couleur) à la place du doré du thème.
+    /* Couleurs du logo en pastels, à la place du doré du thème (impression couleur ou noir et blanc).
        Déclarées sur la page : le thème fixe --brand en style en ligne sur <html>. */
-    --brand: #8a8a8a; /* filets, puces */
-    --brand-dark: #3d3d3d; /* textes d'accent : 11:1 sur blanc */
-    --brand-light: #efefef; /* fonds (en-têtes, vendredis, Fajr / Maghrib) */
+    --brand: #7f9cc0; /* filets, puces : bleu moyen */
+    --brand-dark: var(--col-blue); /* textes d'accent : bleu marine, 13.6:1 */
+    --brand-light: #eef3f9; /* fonds neutres (en-tête du tableau, événements) : bleu pastel */
+    --bg-fast: #fdf0e4; /* Fajr et Maghrib (début et rupture du jeûne) : safran pastel */
+    --col-fast: #9a460c; /* texte Fajr / Maghrib : 5.8:1 sur le safran pastel */
     width: 210mm;
     height: 297mm;
     background-color: white;
@@ -77,54 +77,49 @@ body {
     position: relative;
 }
 
-/* .ramadan-header-simple::before removed (banner) */
-
 .ramadan-main-title {
-    position: relative;
-    color: var(--brand);
-    font-size: 36px;
-    font-weight: 600;
-    text-transform: uppercase;
-    text-align: center;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    align-items: center;
+    gap: 0.9rem;
     height: 2cm; /* titre compact */
 }
 
 .ramadan-logo {
     height: 1.9cm;
-    margin: 0 auto 0rem auto;
+    flex-shrink: 0;
 }
 
+/* Années de part et d'autre de la calligraphie, reliées à elle par un filet */
 .year-corner {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 26px !important;
-    text-align: center;
-    align-content: center;
+    flex: 1;
     display: flex;
-    justify-content: center;
     align-items: center;
-    color: var(--brand-dark);
+    gap: 0.9rem;
+    font-size: 26px !important;
     font-weight: 600;
-    border-radius: 50%;
-    background-color: var(--brand-light);
-    height: var(--year-circle-size);
-    width: var(--year-circle-size);
+    line-height: 1;
 }
+
 .year-corner.top-left {
-    left: var(--year-circle-spacing);
+    color: var(--col-blue);
 }
+
 .year-corner.top-right {
-    right: var(--year-circle-spacing);
+    color: var(--col-green);
+}
+
+.year-corner.top-left::after,
+.year-corner.top-right::before {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background-color: var(--brand);
 }
 
 /* --- EN-TÊTE : identité de l'association (comme le header du calendrier annuel) --- */
 .ramadan-identity {
     position: relative;
-    padding: 1mm 0.5cm;
+    padding: 1mm;
     background-color: white;
     border-top: 1px solid var(--col-text-lighter);
     border-bottom: 1px solid var(--col-text-lighter);
@@ -243,7 +238,7 @@ body {
 }
 
 .ramadan-table tr.is-friday {
-    background-color: var(--brand-light);
+    background-color: var(--bg-friday);
 }
 
 /* Colonnes spécifiques (Date scindée) */
@@ -294,8 +289,8 @@ body {
 .ramadan-table td.fajr,
 .ramadan-table td.maghrib {
     font-weight: 600;
-    color: var(--brand-dark);
-    background-color: var(--brand-light);
+    color: var(--col-fast);
+    background-color: var(--bg-fast);
 }
 
 /* Cellules de prière standards (AMI) */
@@ -330,9 +325,13 @@ table.ramadan-table tbody td.ami-isha-fix {
 
 /* --- ÉVÉNEMENTS SPÉCIAUX (TABLEAU) --- */
 .ramadan-table tr.row-event,
-.ramadan-table tr.is-friday,
 .ramadan-table tr.row-separator td {
     background-color: var(--brand-light);
+}
+
+/* Aïd en vert pastel, comme dans le calendrier annuel */
+.ramadan-table tr.is-eid {
+    background-color: var(--bg-friday);
 }
 
 .ramadan-table tr.is-night-of-doubt td {
