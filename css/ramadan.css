@@ -52,7 +52,7 @@ body {
     --brand: #7f9cc0; /* filets, puces : bleu moyen */
     --brand-dark: var(--col-blue); /* textes d'accent : bleu marine, 13.6:1 */
     --brand-light: #eef3f9; /* fonds neutres (en-tête du tableau, événements) : bleu pastel */
-    --bg-fast-head: #d6e1ef; /* en-têtes Imsak et Maghrib : bleu un cran plus soutenu */
+    --bg-fast-head: #d6e1ef; /* en-têtes Imsak, Maghrib et Icha AMI : bleu un cran plus soutenu */
     width: 210mm;
     height: 297mm;
     background-color: white;
@@ -254,7 +254,7 @@ body {
     overflow: hidden;
 }
 .ramadan-table .col-day-name.tamil {
-    width: 10%;
+    width: 11.5%; /* « செவ்வாய் » en entier */
     padding-left: 0;
     font-size: 13px;
 }
@@ -287,7 +287,7 @@ body {
     width: 8.6%;
 }
 
-/* Horaires : élément dominant de la page (grands chiffres en gras) */
+/* Horaires : grands chiffres alignés ; graisse normale, sauf colonnes mises en avant */
 .ramadan-table td.imsak,
 .ramadan-table td.fajr,
 .ramadan-table td.sunrise,
@@ -297,12 +297,19 @@ body {
 .ramadan-table td.isha,
 table.ramadan-table tbody td.ami-isha-fix {
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 400;
     font-variant-numeric: tabular-nums;
     color: #1f1f1f;
 }
 
-/* Imsak et Maghrib (début et rupture du jeûne) : signalés par leur en-tête */
+/* Imsak, Maghrib et Icha AMI : demi-gras, comme leur en-tête mis en avant */
+.ramadan-table td.imsak,
+.ramadan-table td.maghrib,
+table.ramadan-table tbody td.ami-isha-fix {
+    font-weight: 600;
+}
+
+/* Imsak, Maghrib (début et rupture du jeûne) et Icha AMI : en-tête mis en avant */
 .ramadan-table thead th.th-fast {
     background-color: var(--bg-fast-head);
 }
