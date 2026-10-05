@@ -555,8 +555,9 @@ sup.ordinal {
     color: var(--col-on-dark);
 }
 
+/* En-tête entièrement bleu marine ; les colonnes du jeûne restent signalées par leurs cellules et leur filet */
 .digital .ramadan-table thead th.th-fast {
-    background-color: var(--col-terracotta);
+    background-color: var(--col-blue);
 }
 
 .digital table.ramadan-table thead th.col-ami-isha-fix {

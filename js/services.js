@@ -20,6 +20,16 @@ let adhanCoords = null;
 let adhanParams = null;
 let parsedHolidaysCache = null;
 
+// Noms d'usage des jours fériés (l'API renvoie les libellés légaux, souvent la date elle-même : « 1er mai »)
+const HOLIDAY_NAMES = {
+    '1er janvier': "Jour de l'An",
+    '1er mai': 'Fête du Travail',
+    '8 mai': 'Victoire 1945',
+    '14 juillet': 'Fête nationale',
+    '11 novembre': 'Armistice 1918',
+    'Jour de Noël': 'Noël'
+};
+
 // Horaires de prière officiels (data/prayer_times.csv), indexés par "MM-JJ", en heure d'hiver
 let prayerTimesTable = null;
 const PRAYER_KEYS = ['fajr', 'sunrise', 'dhuhr', 'asr', 'maghrib', 'isha'];
@@ -220,7 +230,8 @@ export function getDayInfo(date, hijri) {
     const key = `${yyyy}-${mm}-${dd}`;
     if (CONFIG.publicHolidays && CONFIG.publicHolidays[key]) {
         info.isPublicHoliday = true;
-        info.labels.push({ text: CONFIG.publicHolidays[key], type: 'public' });
+        const name = CONFIG.publicHolidays[key];
+        info.labels.push({ text: HOLIDAY_NAMES[name] || name, type: 'public' });
     }
 
     // 4. Vérification Changement d'heure (Règle simplifiée UE)
