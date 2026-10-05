@@ -121,17 +121,17 @@ body {
     right: var(--year-circle-spacing);
 }
 
-/* --- PIED DE PAGE : identité de l'association (comme le header du calendrier annuel) --- */
-.ramadan-footer-styled {
+/* --- EN-TÊTE : identité de l'association (comme le header du calendrier annuel) --- */
+.ramadan-identity {
     position: relative;
-    margin: auto 2rem 1rem;
+    margin: 1rem 2rem 0; /* tout en haut de la page */
     padding: 1mm 0.5cm;
     background-color: white;
     border-top: 1px solid var(--col-text-lighter);
     border-bottom: 1px solid var(--col-text-lighter);
 }
 
-.ramadan-footer-styled::before {
+.ramadan-identity::before {
     content: '';
     position: absolute;
     inset: 0;
