@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             separatorTr.innerHTML = `
                 <td colspan="13">
                     <div class="event-stack">
-                        <span class="event-fr">27<sup>ÈME</sup> NUIT DU RAMAḌĀN</span>
+                        <span class="event-fr">27<sup class="ordinal">e</sup> NUIT DU RAMAḌĀN</span>
                         <span class="event-date">(${nightLabel(date)})</span>
                         <span class="event-separator">•</span>
                         <span class="event-ta tamil">27-ம் இரவு</span>
@@ -171,6 +171,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         const tr = document.createElement('tr');
         if (date.getDay() === 5 || eventType === 'eid') tr.classList.add('is-friday');
+        if (date.getDay() === 0) tr.classList.add('week-end'); // filet plus marqué après chaque dimanche
         if (eventType && eventType !== 'laylat-al-qadr') tr.classList.add(`is-${eventType}`);
 
         const dayOfWeekIdx = date.getDay() === 0 ? 6 : date.getDay() - 1;

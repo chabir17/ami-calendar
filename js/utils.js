@@ -48,14 +48,14 @@ export function contactsHTML(c, layout = 'columns') {
         return [
             group([addr2, addr1]),
             group([line('phone', c.phone), line('whatsapp', c.whatsapp), line('email', c.email), line('website', c.website)]),
-            c.bank && group([line('bank', `IBAN : ${c.bank.iban} • BIC : ${c.bank.bic}`)])
+            c.bank && group([line('bank', `IBAN\u00a0: ${c.bank.iban} • BIC\u00a0: ${c.bank.bic}`)])
         ].join('');
     }
     return [
         group([addr1, addr2]),
         group([line('phone', c.phone), line('whatsapp', c.whatsapp)]),
         group([line('email', c.email), line('website', c.website)]),
-        c.bank && group([line('bank', `IBAN : ${c.bank.iban}`), `<div class="info-line info-cont"><span>BIC : ${c.bank.bic}</span></div>`])
+        c.bank && group([line('bank', `IBAN\u00a0: ${c.bank.iban}`), `<div class="info-line info-cont"><span>BIC\u00a0: ${c.bank.bic}</span></div>`])
     ].join('');
 }
 

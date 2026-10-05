@@ -181,6 +181,7 @@ class PrayerTable extends HTMLElement {
             const tr = clone.querySelector('tr');
 
             if (isFriday) tr.classList.add('is-friday');
+            if (date.getDay() === 0 && day < daysInMonth) tr.classList.add('week-end'); // filet après chaque dimanche
 
             // Remplissage des données via sélecteurs
             tr.querySelector('.day-name').textContent = window.TEXTS.fr.daysShort[dayOfWeekIdx];

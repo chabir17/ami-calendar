@@ -70,6 +70,8 @@ ami-prayer-table {
 
 .prayer-table tbody td {
     border: 1px solid var(--border-green);
+    border-left-color: var(--bg-green-faint); /* traits verticaux très légers : le tableau respire */
+    border-right-color: var(--bg-green-faint);
     text-align: center;
     font-weight: 600;
     font-size: 15px;
@@ -102,4 +104,9 @@ ami-prayer-table {
     justify-content: space-between;
     align-items: baseline;
     padding: 0 0.375rem;
+}
+
+/* Fin de semaine : filet plus marqué après le dimanche (repérage par blocs de 7 jours) */
+.prayer-table tbody tr.week-end td {
+    border-bottom: 1.5px solid var(--accent-green);
 }

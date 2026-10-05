@@ -225,7 +225,7 @@ body {
 }
 /* Cellules */
 .ramadan-table td {
-    border-right: 1px solid var(--border-blue);
+    border-right: 1px solid var(--brand-light); /* traits verticaux très légers : le tableau respire */
     border-bottom: 1px solid var(--border-blue);
     text-align: center;
     line-height: 1.1;
@@ -400,6 +400,16 @@ table.ramadan-table tbody td.ami-isha-fix {
     letter-spacing: 0;
     font-size: 12px;
     color: var(--col-text);
+}
+
+/* Fin de semaine : filet plus marqué après le dimanche (repérage par blocs de 7 jours) */
+.ramadan-table tr.week-end td {
+    border-bottom: 1.5px solid var(--brand);
+}
+
+/* Ordinal « 27ᵉ » : e minuscule en exposant, même dans un titre en capitales */
+sup.ordinal {
+    text-transform: none;
 }
 
 .ramadan-table tr.laylat-al-qadr-sep sup {
