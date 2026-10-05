@@ -1,4 +1,4 @@
-import { initAdhan, getHijriDateSafe, getPrayerTimesSafe, fetchClientConfig, fetchRamadanOverrides, applyTheme } from './services.js';
+import { initAdhan, getHijriDateSafe, getPrayerTimesSafe, fetchClientConfig, fetchRamadanOverrides, applyTheme, loadPrayerTimes } from './services.js';
 import { DOM, DATE_UTILS } from './utils.js';
 
 // --- Configuration & Helpers ---
@@ -17,26 +17,18 @@ function renderLayout(container, config, year, hijriYearAr) {
         DOM.setText('.year-corner.top-right', hijriYearAr, titleEl);
     }
 
-    // Footer Contacts
-    // Helper pour remplir les champs contacts
-    const setContact = (selector, value) => {
-        const el = DOM.setDisplay(selector, !!value, container);
-        if (el && value) {
-            const span = el.querySelector('span');
-            if (span) span.textContent = value;
-        }
-    };
-
-    setContact('.contact-addr1', contact.addr1);
-    setContact('.contact-addr2', contact.addr2);
-    setContact('.contact-phone', contact.phone);
-    setContact('.contact-email', contact.email);
-    setContact('.contact-website', contact.website);
-
-    if (contact.bank) {
-        setContact('.contact-bank', `IBAN : ${contact.bank.iban} | BIC : ${contact.bank.bic}`);
-    } else {
-        DOM.setDisplay('.contact-bank', false, container);
+    // Coordonnées : colonnes (adresses | téléphone, WhatsApp | e-mail, site | IBAN, BIC)
+    const contacts = container.querySelector('.footer-contacts');
+    if (contacts) {
+        const c = contact;
+        const line = (icon, text) => `<div class="info-line"><svg class="icon"><use href="assets/icons/icon-${icon}.svg#icon"></use></svg> <span>${text}</span></div>`;
+        const group = (lines) => `<div class="contact-group">${lines.filter(Boolean).join('')}</div>`;
+        contacts.innerHTML = [
+            group([line(c.addr1_icon || 'location', c.addr1), c.addr2 && line(c.addr2_icon || 'location', c.addr2)]),
+            group([line('phone', c.phone), c.whatsapp && line('whatsapp', c.whatsapp)]),
+            group([line('email', c.email), c.website && line('website', c.website)]),
+            c.bank && group([line('bank', `IBAN : ${c.bank.iban}`), `<div class="info-line info-cont"><span>BIC : ${c.bank.bic}</span></div>`])
+        ].join('');
     }
 }
 
@@ -67,7 +59,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     const template = document.getElementById('ramadan-template');
 
     // 1. Chargement Config
-    const [config, overrides] = await Promise.all([fetchClientConfig('ami93120'), fetchRamadanOverrides()]);
+    // Horaires officiels (data/prayer_times.csv), comme le calendrier annuel ; les corrections manuelles restent prioritaires
+    const [config, overrides] = await Promise.all([fetchClientConfig('ami93120'), fetchRamadanOverrides(), loadPrayerTimes()]);
 
     if (!config) {
         app.innerHTML = '<div style="padding:2rem; text-align:center;">Configuration introuvable.</div>';
@@ -82,9 +75,19 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
     initAdhan();
 
-    // 3. Détermination de la période de Ramadan (Année en cours par défaut)
+    // 3. Détermination de la période de Ramadan : prochain Ramadan par défaut
+    //    (année en cours, ou suivante si l'Aïd el-Fitr de l'année est passé)
     const urlParams = new URLSearchParams(window.location.search);
-    const year = parseInt(urlParams.get('year')) || new Date().getFullYear();
+    const isEidPassed = (y) => {
+        const today = new Date();
+        for (const d = new Date(y, 0, 1); d <= today && d.getFullYear() === y; d.setDate(d.getDate() + 1)) {
+            const h = getHijriDateSafe(d);
+            if ((h.monthNameAR || '').includes('شوال') && parseInt(h.day) === 1) return true;
+        }
+        return false;
+    };
+    const currentYear = new Date().getFullYear();
+    const year = parseInt(urlParams.get('year')) || (isEidPassed(currentYear) ? currentYear + 1 : currentYear);
 
     const calendarEvents = [];
     let hijriYearAr = '';

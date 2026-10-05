@@ -40,7 +40,7 @@ body {
     height: 1rem;
     vertical-align: middle;
     fill: currentColor;
-    color: var(--brand);
+    color: var(--col-blue);
     margin-right: 0.125rem;
     flex-shrink: 0;
 }
@@ -121,27 +121,37 @@ body {
     right: var(--year-circle-spacing);
 }
 
-/* --- FOOTER STYLED (LOGO + INFOS) --- */
+/* --- PIED DE PAGE : identité de l'association (comme le header du calendrier annuel) --- */
 .ramadan-footer-styled {
-    margin-top: auto;
-    padding: 1rem;
+    position: relative;
+    margin: auto 2rem 1rem;
+    padding: 1mm 0.5cm;
     background-color: white;
-    border-top: 2px solid var(--brand);
+    border-top: 1px solid var(--col-text-lighter);
+    border-bottom: 1px solid var(--col-text-lighter);
+}
+
+.ramadan-footer-styled::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('../assets/patterns/background-pattern-navy.svg');
+    pointer-events: none;
 }
 
 .footer-row {
+    position: relative; /* au-dessus du motif */
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
+    gap: 0.75rem;
 }
 
-.footer-info {
+.footer-main {
+    flex: 1;
+    min-width: 0;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-    flex-grow: 1;
-    flex-shrink: 0;
+    gap: 0.2rem;
 }
 
 /* --- COMPOSANTS UI (LOGO & CONTACTS) --- */
@@ -166,20 +176,16 @@ body {
     gap: 0.25rem;
 }
 
-.contact-row {
-    display: flex;
-    gap: 1rem;
-}
-
-.contact-col {
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
+/* Ligne sans icône (BIC sous l'IBAN) : alignée sur le texte de la ligne du dessus */
+.info-cont {
+    padding-left: calc(0.75rem + 0.25rem);
 }
 
 .ramadan-table-container {
-    flex-grow: 1;
-    padding: 1rem 2rem;
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    padding: 0.75rem 2rem;
 }
 .ramadan-table {
     width: 100%;
@@ -191,6 +197,7 @@ body {
     background-color: white;
     font-size: 13.5px;
     table-layout: fixed;
+    height: 100%; /* les lignes se répartissent la hauteur disponible : tout tient sur une page */
 }
 
 /* En-têtes */
@@ -235,7 +242,8 @@ body {
     border-right: 1px solid var(--brand-light);
     border-bottom: 1px solid var(--brand-light);
     text-align: center;
-    height: 0.625cm;
+    line-height: 1.1;
+    padding: 0;
 }
 .ramadan-table td:last-child,
 .ramadan-table td:nth-last-child(2) {
@@ -366,28 +374,52 @@ table.ramadan-table tbody td.ami-isha-fix {
     padding: 0.25rem;
 }
 
-/* Ajustements Contenu Footer */
+/* Noms de l'association : tamoul puis français, couleurs du logo */
+.org-names {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    white-space: nowrap;
+}
+
 .org-names .org-ta {
-    font-size: 20px;
-    margin: 0;
-    color: var(--brand-dark);
-    line-height: 1.2;
-    margin-bottom: 0.5rem;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.1;
+    color: var(--col-saffron-text);
 }
 
 .org-names .org-fr {
-    font-size: 16px;
-    margin: 0;
-    color: var(--brand);
-    line-height: 1.2;
-    margin-top: 0.5rem;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    line-height: 1.1;
+    color: var(--col-green);
 }
 
+.org-names > * + *::before {
+    content: '•';
+    margin-right: 0.6rem;
+    font-family: var(--font-fr);
+    color: var(--col-blue);
+}
+
+/* Coordonnées : 2 colonnes de 2 groupes (format portrait) */
 .footer-contacts {
-    display: flex;
-    flex-direction: column;
-    gap: 0.125rem;
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: start;
+    column-gap: 1.25rem;
+    row-gap: 0.15rem;
     font-size: 10px;
+    line-height: 1.35;
+    color: var(--col-text-light);
+    white-space: nowrap;
+}
+
+.footer-contacts .icon {
+    width: 0.75rem;
+    height: 0.75rem;
 }
 
 /* --- PRINT OPTIMIZATIONS --- */
