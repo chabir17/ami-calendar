@@ -547,6 +547,8 @@ sup.ordinal {
 
 .digital .ramadan-table thead th.th-fast {
     background-color: var(--col-terracotta);
+    background-image: url('../assets/patterns/background-pattern-terracotta.svg'); /* girih terracotta clair */
+    background-position: center top;
 }
 
 .digital table.ramadan-table thead th.col-ami-isha-fix {
