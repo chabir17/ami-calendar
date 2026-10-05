@@ -215,7 +215,7 @@
 
 .event-label {
     display: block;
-    font-size: var(--fs-xs);
+    font-size: var(--fs-2xs);
     margin-top: var(--sp-1);
     font-weight: 600;
     text-transform: uppercase;
@@ -242,7 +242,7 @@
     left: 0.3rem;
     right: 1.5rem; /* laisse la place au jour hégirien (en haut à droite) */
     white-space: nowrap;
-    font-size: var(--fs-xs);
+    font-size: var(--fs-2xs);
     font-weight: 600;
     line-height: 1.15;
     text-align: center;

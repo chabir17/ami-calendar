@@ -66,6 +66,7 @@
     --binding-zone: 10mm; /* haut : trous de spirale metallique (<= 6.5 mm) + degagement, dans le bandeau */
 
     /* --- ÉCHELLE TYPOGRAPHIQUE : 4 tailles de texte + 2 tailles de chiffres --- */
+    --fs-2xs: 8.5px; /* libellés dans les cases du calendrier (noms complets sur une ligne) */
     --fs-xs: 10px; /* notes : en-têtes de tableau, libellés des cases, coordonnées compactes */
     --fs-sm: 12px; /* secondaire : traductions, coordonnées, légende, citation */
     --fs-md: 14px; /* courant : jours de la semaine, texte des tableaux */
