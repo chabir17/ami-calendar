@@ -74,7 +74,7 @@
 .org-ta {
     color: var(--col-saffron-text); /* safran du nom tamoul sur le logo */
     font-size: 24px;
-    font-weight: 500;
+    font-weight: 600;
     line-height: 1.1;
 }
 
