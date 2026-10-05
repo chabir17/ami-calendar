@@ -480,16 +480,8 @@ sup.ordinal {
 }
 
 .dua {
-    display: flex;
-    justify-content: center;
-    align-items: baseline;
-    gap: var(--sp-3);
-    font-size: var(--fs-sm);
-}
-
-.dua-ar {
-    font-size: var(--fs-figure);
-    color: var(--col-green);
+    font-size: var(--fs-sm); /* discret */
+    color: var(--col-text-soft);
 }
 
 /* --- VARIANTE NUMÉRIQUE (?version=numerique) : PDF à partager, sans contrainte d'encre --- */
