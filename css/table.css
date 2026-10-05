@@ -77,7 +77,7 @@ ami-prayer-table {
     font-size: var(--fs-figure);
     line-height: 1;
     font-variant-numeric: tabular-nums; /* colonnes d'heures parfaitement alignées */
-    color: #1f1f1f;
+    color: var(--col-ink);
     padding: 0; /* hauteur repartie par le tableau (height: 100%) : 28 a 31 lignes tiennent toujours */
 }
 

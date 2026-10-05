@@ -3,8 +3,6 @@
 
     /* Couleur thématique de l'année (Doré) */
     --brand: #c8b070;
-    --brand-dark: color-mix(in srgb, var(--brand), black 45%);
-    --brand-light: color-mix(in srgb, var(--brand), white 85%);
     --bg-holiday: #faf3e0; /* fond des vacances scolaires : doré pastel */
     /* Noms de l'association : même famille dorée, deux tons contrastés (WCAG AA sur le bandeau) */
     --brand-text: color-mix(in srgb, var(--brand), black 40%); /* nom tamoul : 4.7:1 */
@@ -19,6 +17,15 @@
 
     /* Safran (minaret et nom tamoul du logo) */
     --col-saffron-text: #b8520f; /* texte : 4.9:1 sur blanc */
+
+    /* Terracotta (horaires du jeûne : Imsak, iftār, Icha AMI) */
+    --col-terracotta: #a8461f; /* fond d'en-tête, texte blanc : 5.9:1 */
+    --bg-terracotta: #f6dccf; /* fond soutenu */
+    --bg-terracotta-soft: #fbebe4; /* fond très clair */
+
+    /* Encre des chiffres et des textes sur fond foncé */
+    --col-ink: #1f1f1f; /* horaires */
+    --col-on-dark: #d6e1ef; /* texte secondaire sur bleu marine */
 
     /* Rouge (Événements/Alertes) */
     --col-red-event: #9b2c2c; /* rouge brique sobre (jours fériés) : 7.5:1 sur blanc */
@@ -42,6 +49,8 @@
 
     /* Pastels opaques (rendu fiable sur laser de bureau, papier blanc) */
     --bg-blue-faint: #eef3f9; /* en-tête des jours */
+    --bg-blue-soft: #dfe8f3; /* événements (version contrastée) */
+    --bg-green-soft: #d9ead9; /* vendredis et Aïd (version contrastée) */
     --bg-green-faint: #e7f2e8; /* en-tête du tableau des horaires */
     --border-blue: #c5d3e4; /* bordures du calendrier : bleu doux */
     --border-green: #c3dec6; /* bordures du tableau : vert doux */

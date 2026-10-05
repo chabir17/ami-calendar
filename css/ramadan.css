@@ -11,7 +11,7 @@
 }
 
 body {
-    background: #eeeeee;
+    background: var(--bg-body);
     font-family: var(--font-fr);
     color: var(--col-text);
     margin: 0 auto;
@@ -47,13 +47,12 @@ body {
 }
 
 .page.A4-portrait {
-    /* Couleurs du logo en pastels, à la place du doré du thème (impression couleur ou noir et blanc).
-       Déclarées sur la page : le thème fixe --brand en style en ligne sur <html>. */
-    --brand: #7f9cc0; /* filets, puces : bleu moyen */
-    --brand-dark: var(--col-blue); /* textes d'accent : bleu marine, 13.6:1 */
-    --brand-light: #eef3f9; /* fonds neutres (en-tête du tableau, événements) : bleu pastel */
-    --bg-fast: #fbebe4; /* Imsak, Maghrib (iftār) et Icha AMI : terracotta très clair */
-    --bg-fast-head: #f6dccf; /* leurs en-têtes : terracotta un cran plus soutenu */
+    /* Rôles de couleur de la page (palette commune : variables.css).
+       Version papier : pastels ; la version numérique (.digital) renforce les contrastes. */
+    --rule: var(--accent-blue); /* filets, puces */
+    --surface: var(--bg-blue-faint); /* fonds neutres : en-tête du tableau, événements */
+    --surface-fast: var(--bg-terracotta-soft); /* cellules Imsak, Maghrib, Icha AMI */
+    --surface-fast-head: var(--bg-terracotta); /* leurs en-têtes */
     width: 210mm;
     height: 297mm;
     background-color: white;
@@ -146,7 +145,7 @@ body {
 /* --- EN-TÊTE : identité de l'association (comme le header du calendrier annuel) --- */
 .ramadan-identity {
     position: relative;
-    padding: 1mm;
+    padding: var(--sp-1) 0;
     background-color: white;
     border-top: 1px solid var(--col-text-lighter);
     border-bottom: 1px solid var(--col-text-lighter);
@@ -201,7 +200,7 @@ body {
     flex: 1;
     min-height: 0;
     display: flex;
-    padding-top: var(--sp-2);
+    padding-top: var(--sp-3);
 }
 .ramadan-table {
     width: 100%;
@@ -218,13 +217,13 @@ body {
 
 /* En-têtes */
 .ramadan-table thead th {
-    background-color: var(--brand-light);
+    background-color: var(--surface);
     border-right: 1px solid var(--border-blue);
-    border-bottom: 2px solid var(--brand);
-    padding: var(--sp-1) 1px;
+    border-bottom: 2px solid var(--col-blue);
+    padding: var(--sp-2) 1px;
     font-weight: 600;
     vertical-align: middle;
-    color: var(--brand-dark);
+    color: var(--col-blue);
 }
 .ramadan-table thead th:last-child,
 .ramadan-table thead th:nth-last-child(2) {
@@ -253,7 +252,7 @@ body {
 }
 /* Cellules */
 .ramadan-table td {
-    border-right: 1px solid var(--brand-light); /* traits verticaux très légers : le tableau respire */
+    border-right: none; /* pas de traits verticaux : seules les lignes horizontales structurent */
     border-bottom: 1px solid var(--border-blue);
     text-align: center;
     line-height: 1.1;
@@ -327,7 +326,7 @@ table.ramadan-table tbody td.ami-isha-fix {
     font-size: var(--fs-figure);
     font-weight: 400;
     font-variant-numeric: tabular-nums;
-    color: #1f1f1f;
+    color: var(--col-ink);
 }
 
 /* Imsak, Maghrib (iftār) et Icha AMI : demi-gras sur fond terracotta très clair */
@@ -335,18 +334,19 @@ table.ramadan-table tbody td.ami-isha-fix {
 .ramadan-table td.maghrib,
 table.ramadan-table tbody td.ami-isha-fix {
     font-weight: 600;
-    background-color: var(--bg-fast) !important; /* prioritaire sur les lignes colorées (vendredis) */
+    background-color: var(--surface-fast) !important; /* prioritaire sur les lignes colorées (vendredis) */
 }
 
-/* Imsak, Maghrib et Icha AMI : en-tête terracotta */
+/* Imsak, Maghrib et Icha AMI : en-tête terracotta, filet terracotta */
 .ramadan-table thead th.th-fast {
-    background-color: var(--bg-fast-head);
+    background-color: var(--surface-fast-head);
+    border-bottom-color: var(--col-terracotta);
 }
 
 /* Cellules de prière standards (AMI) */
 table.ramadan-table thead th.col-ami-isha-fix {
     width: 8.6% !important;
-    color: var(--brand-dark) !important;
+    color: var(--col-blue) !important;
     vertical-align: middle;
 }
 
@@ -356,7 +356,8 @@ table.ramadan-table tbody td.ami-isha-fix {
 }
 
 .event-separator {
-    color: var(--brand);
+    margin: 0 var(--sp-1);
+    color: var(--rule);
     font-weight: 600;
 }
 
@@ -374,7 +375,7 @@ table.ramadan-table tbody td.ami-isha-fix {
 /* Événements (nuit du doute, 27e nuit) : bleu pastel */
 .ramadan-table tr.is-night-of-doubt,
 .ramadan-table tr.row-separator td {
-    background-color: var(--brand-light);
+    background-color: var(--surface);
 }
 
 /* Aïd en vert pastel, comme dans le calendrier annuel */
@@ -387,10 +388,10 @@ table.ramadan-table tbody td.ami-isha-fix {
 }
 
 .ramadan-table tr.is-night-of-doubt td {
-    border-bottom: 1px solid var(--brand) !important;
+    border-bottom: 1px solid var(--rule) !important;
 }
 .ramadan-table tr.is-eid td {
-    border-top: 1px solid var(--brand) !important;
+    border-top: 1px solid var(--rule) !important;
 }
 
 .special-event-label {
@@ -400,14 +401,14 @@ table.ramadan-table tbody td.ami-isha-fix {
 
 .event-fr {
     text-transform: uppercase;
-    color: var(--brand-dark);
+    color: var(--col-blue);
     letter-spacing: 0.5px;
     font-size: var(--fs-md);
 }
 
 /* Ligne séparatrice (27ème Nuit) */
 .ramadan-table tr.row-separator td {
-    color: var(--brand-dark);
+    color: var(--col-blue);
     text-transform: uppercase;
     letter-spacing: 1px;
     padding: 0;
@@ -432,7 +433,7 @@ table.ramadan-table tbody td.ami-isha-fix {
 
 /* Fin de semaine : filet plus marqué après le dimanche (repérage par blocs de 7 jours) */
 .ramadan-table tr.week-end td {
-    border-bottom: 1.5px solid var(--brand);
+    border-bottom: 1.5px solid var(--rule);
 }
 
 /* Ordinal « 27ᵉ » : e minuscule en exposant, même dans un titre en capitales */
@@ -497,7 +498,7 @@ sup.ordinal {
 
 /* --- PIED DE PAGE : invocation d'acceptation --- */
 .ramadan-footer {
-    padding-top: var(--sp-2);
+    padding-top: var(--sp-3);
     text-align: center;
     color: var(--col-text-soft);
 }
@@ -521,25 +522,24 @@ sup.ordinal {
 /* --- VERSION NUMÉRIQUE (par défaut ; ?print=true pour la version papier) : couleurs plus contrastées ---
    En-têtes foncés et textes clairs ; colonnes mises en avant plus soutenues. */
 .page.digital {
-    --bg-fast: #f6dccf; /* Imsak, Maghrib, Icha AMI : terracotta plus soutenu */
-    --bg-friday: #d9ead9; /* vendredis et Aïd : vert plus soutenu */
-    --brand-light: #dfe8f3; /* événements : bleu plus soutenu */
+    --surface-fast: var(--bg-terracotta);
+    --surface: var(--bg-blue-soft);
+    --bg-friday: var(--bg-green-soft);
 }
 
 .digital .ramadan-table thead th {
     background-color: var(--col-blue);
     border-right-color: rgba(255, 255, 255, 0.2);
-    border-bottom-color: var(--col-blue);
     color: white;
 }
 
 .digital .ramadan-table thead .th-ar,
 .digital .ramadan-table thead .th-ta {
-    color: #d6e1ef;
+    color: var(--col-on-dark);
 }
 
 .digital .ramadan-table thead th.th-fast {
-    background-color: #a8461f; /* terracotta foncé : texte blanc 5.9:1 */
+    background-color: var(--col-terracotta);
 }
 
 .digital table.ramadan-table thead th.col-ami-isha-fix {
