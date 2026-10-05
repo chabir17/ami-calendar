@@ -527,15 +527,8 @@ sup.ordinal {
     --bg-friday: var(--bg-green-soft);
 }
 
-/* En-tête bleu marine avec motif girih bleu clair sur toute la largeur */
-.digital .ramadan-table thead tr {
-    background-color: var(--col-blue);
-    background-image: url('../assets/patterns/background-pattern-lightblue.svg');
-    background-position: center top;
-}
-
 .digital .ramadan-table thead th {
-    background-color: transparent;
+    background-color: var(--col-blue);
     border-right-color: var(--border-on-dark);
     color: white;
 }
@@ -547,8 +540,6 @@ sup.ordinal {
 
 .digital .ramadan-table thead th.th-fast {
     background-color: var(--col-terracotta);
-    background-image: url('../assets/patterns/background-pattern-terracotta.svg'); /* girih terracotta clair */
-    background-position: center top;
 }
 
 .digital table.ramadan-table thead th.col-ami-isha-fix {
