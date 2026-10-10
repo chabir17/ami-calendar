@@ -525,25 +525,12 @@ sup.ordinal {
 .page.digital {
     --surface-fast: var(--bg-terracotta-mid);
     /* version numérique (écran) : nuit d'hiver étoilée ; la version papier garde le fond crème économe en encre */
-    background: white url('../assets/img/ramadan-background-night.jpg') center / 100% 100% no-repeat;
-}
-
-/* Identité sur la neige : voile blanc estompé derrière le texte (lisibilité, sans bord visible) */
-.digital .ramadan-identity {
-    position: relative;
-    isolation: isolate;
-}
-
-.digital .ramadan-identity::before {
-    content: '';
-    position: absolute;
-    inset: -3mm -12mm;
-    z-index: -1;
-    background: radial-gradient(closest-side, rgb(255 255 255 / 0.92) 60%, rgb(255 255 255 / 0));
-}
-
-.digital .identity-contacts {
-    color: var(--col-text-light); /* coordonnées plus foncées sur la neige */
+    /* bandeau blanc de l'identité, séparé de la scène par un filet doré dégradé pleine largeur */
+    background:
+        linear-gradient(90deg, transparent, var(--deco-gold) 18%, #e3c983 50%, var(--deco-gold) 82%, transparent)
+            left 0 bottom var(--footer-h) / 100% 1.5px no-repeat,
+        linear-gradient(white, white) bottom / 100% var(--footer-h) no-repeat,
+        white url('../assets/img/ramadan-background-night.jpg') center / 100% 100% no-repeat;
 }
 
 /* En-tête entièrement bleu marine, textes clairs, filet bleu clair */
