@@ -66,11 +66,12 @@ body {
     width: 210mm;
     height: 297mm;
     display: grid;
-    /* zones calées sur l'image de fond : titre | tableau (56 → 241 mm) | invocation et identité (bande blanche dès 260 mm) */
-    grid-template-rows: 56mm 185mm 1fr;
+    --footer-h: 24mm; /* identité compacte, sur fond blanc sous l'image */
+    /* zones calées sur l'image de fond : titre | tableau | invocation + identité */
+    grid-template-rows: 54mm 1fr auto;
     grid-template-columns: minmax(0, 1fr); /* le contenu ne peut pas élargir la page */
     position: relative;
-    background: #fdf8ee url('../assets/img/ramadan-background.jpg') center / 100% 100% no-repeat;
+    background: white url('../assets/img/ramadan-background.jpg') top / 100% calc(100% - var(--footer-h)) no-repeat;
 }
 
 @media screen {
@@ -101,8 +102,8 @@ body {
 }
 
 .logo-box {
-    width: 2cm;
-    height: 2cm;
+    width: 1.7cm;
+    height: 1.7cm;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -179,7 +180,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 22mm 36mm 0; /* sous le croissant, entre les lanternes de l'image */
+    padding: 20mm 36mm 0; /* sous le croissant, entre les lanternes de l'image */
 }
 
 .ramadan-main-title {
@@ -484,7 +485,7 @@ sup.ordinal {
 /* --- PIED DE PAGE : invocation d'acceptation --- */
 .ramadan-footer {
     display: grid;
-    grid-template-rows: 19mm 1fr; /* invocation sur le fond crème | identité dans la bande blanche */
+    grid-template-rows: 12mm var(--footer-h); /* invocation sur le fond crème | identité sur le blanc */
     align-items: center;
     padding: 0 20mm;
     text-align: center;
