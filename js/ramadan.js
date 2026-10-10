@@ -221,8 +221,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     await document.fonts.ready;
     const table = app.querySelector('.ramadan-table');
     const container = app.querySelector('.ramadan-table-container');
-    const paddingTop = parseFloat(getComputedStyle(container).paddingTop);
-    const available = container.clientHeight - paddingTop - table.tHead.offsetHeight - 2; // 2 : bordures du tableau
+    const { paddingTop, paddingBottom } = getComputedStyle(container);
+    const available = container.clientHeight - parseFloat(paddingTop) - parseFloat(paddingBottom) - table.tHead.offsetHeight - 2; // 2 : bordures du tableau
     const rowHeight = Math.floor((available / table.tBodies[0].rows.length) * 10) / 10;
     table.style.setProperty('--row-h', `${rowHeight}px`);
 });

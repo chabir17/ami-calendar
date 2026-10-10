@@ -61,39 +61,16 @@ body {
     --surface-fast: var(--bg-terracotta-soft); /* cellules Imsak, Maghrib, Icha AMI */
     --surface-fast-head: var(--bg-terracotta); /* leurs en-têtes */
     --fs-figure: 15px; /* horaires de la feuille Ramadan */
-    --deco-gold: #c8a85a; /* décor : lanternes, croissant, filets dorés */
-    --bg-page: #fbf7ee; /* fond crème très clair (le tableau et le pied de page restent blancs) */
-    --arch-size: 4.2cm; /* arches des angles supérieurs */
+    --deco-gold: #c8a85a; /* filets et ornements dorés */
     --bg-friday: var(--bg-green-faint); /* vendredis : vert clair de l'en-tête du tableau annuel */
     width: 210mm;
     height: 297mm;
-    padding: var(--page-margin);
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    /* zones calées sur l'image de fond : titre | cadre doré (61,4 → 237,8 mm) | invocation et identité */
+    grid-template-rows: 61.4mm 176.4mm 1fr;
+    grid-template-columns: minmax(0, 1fr); /* le contenu ne peut pas élargir la page */
     position: relative;
-    background-color: var(--bg-page);
-    background-image: url('../assets/patterns/background-pattern-grey.svg');
-}
-
-/* Arches dorées et volutes bleues dans les angles supérieurs */
-.page.A4-portrait::before,
-.page.A4-portrait::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    width: var(--arch-size);
-    height: var(--arch-size);
-    background: url('../assets/icons/corner-arch.svg') center / contain no-repeat;
-    pointer-events: none;
-}
-
-.page.A4-portrait::before {
-    left: 0;
-}
-
-.page.A4-portrait::after {
-    right: 0;
-    transform: scaleX(-1);
+    background: #fdf8ee url('../assets/img/ramadan-background.jpg') center / 100% 100% no-repeat;
 }
 
 @media screen {
@@ -105,32 +82,7 @@ body {
 
 /* --- PIED DE PAGE : identité de l'association (comme le header du calendrier annuel) --- */
 .ramadan-identity {
-    position: relative;
-    margin: var(--sp-2) calc(-1 * var(--page-margin)) calc(-1 * var(--page-margin));
-    padding: var(--sp-3) var(--page-margin) var(--sp-4);
-    background-color: white; /* blanc uni, jusqu'aux bords de la page */
-    border-top: 1.5px solid var(--deco-gold);
-}
-
-/* Volutes d'angle bas, posées au-dessus du pied de page */
-.ramadan-identity::before,
-.ramadan-identity::after {
-    content: '';
-    position: absolute;
-    bottom: calc(100% + 2px);
-    width: 2.6cm;
-    height: 1.95cm;
-    background: url('../assets/icons/corner-arabesque.svg') center / contain no-repeat;
-    pointer-events: none;
-}
-
-.ramadan-identity::before {
-    left: var(--sp-1);
-}
-
-.ramadan-identity::after {
-    right: var(--sp-1);
-    transform: scaleX(-1);
+    margin-top: 3mm;
 }
 
 .identity-row {
@@ -207,7 +159,7 @@ body {
 
 .identity-contacts .contact-group {
     display: flex;
-    gap: var(--sp-4);
+    gap: var(--sp-3);
 }
 
 .identity-contacts .icon {
@@ -221,83 +173,13 @@ body {
     gap: var(--sp-1);
 }
 
-/* --- BANDEAU : 2027 — calligraphie — ١٤٤٨, entouré de lanternes et d'un croissant étoilé --- */
+/* --- BANDEAU : 2027 — calligraphie — ١٤٤٨ (lanternes, lune et étoiles : image de fond) --- */
 .ramadan-header-simple {
     position: relative;
-}
-
-.deco-lantern,
-.deco-crescent {
-    position: absolute;
-    pointer-events: none;
-}
-
-/* Lanternes suspendues dans les arches (deux de chaque côté, hauteurs décalées) */
-.deco-lantern {
-    top: calc(-1 * var(--page-margin));
-}
-
-.deco-lantern-left,
-.deco-lantern-right {
-    height: 3.4cm;
-}
-
-.deco-lantern-left-2,
-.deco-lantern-right-2 {
-    height: 2.5cm;
-}
-
-.deco-lantern-left {
-    left: -0.3cm;
-}
-
-.deco-lantern-left-2 {
-    left: 1.1cm;
-}
-
-.deco-lantern-right {
-    right: -0.3cm;
-}
-
-.deco-lantern-right-2 {
-    right: 1.1cm;
-}
-
-/* Croissant et étoiles, en haut à droite de la calligraphie */
-.deco-crescent {
-    top: -0.35cm;
-    right: 4.4cm;
-    width: 1.8cm;
-}
-
-/* Étoiles scintillantes dispersées autour du titre */
-.deco-sparkle {
-    position: absolute;
-    pointer-events: none;
-}
-
-.sparkle-1 {
-    top: 0.1cm;
-    left: 3.6cm;
-    width: 0.4cm;
-}
-
-.sparkle-2 {
-    top: 1.6cm;
-    left: 2.7cm;
-    width: 0.28cm;
-}
-
-.sparkle-3 {
-    top: 1.9cm;
-    right: 3.3cm;
-    width: 0.3cm;
-}
-
-.sparkle-4 {
-    top: 0.3cm;
-    left: 7.3cm;
-    width: 0.25cm;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6mm 36mm 0;
 }
 
 .ramadan-main-title {
@@ -364,10 +246,9 @@ body {
 
 /* --- TABLEAU --- */
 .ramadan-table-container {
-    flex: 1;
     min-height: 0;
     display: flex;
-    padding-top: var(--sp-3);
+    padding: 2.5mm 17.5mm; /* à l'intérieur du cadre doré de l'image */
 }
 
 .ramadan-table {
@@ -416,7 +297,7 @@ body {
 .th-fr {
     display: block;
     text-transform: uppercase;
-    letter-spacing: 0.03em;
+    letter-spacing: -0.03em; /* colonnes plus étroites dans le cadre de l’image (« MAGHRIB ») */
 }
 
 /* Arabe et tamoul de l'en-tête : même taille, même interligne, graisse normale */
@@ -425,6 +306,10 @@ body {
     display: block;
     font-weight: 400;
     line-height: 1.35;
+}
+
+.th-ta {
+    font-size: var(--fs-xs); /* tamoul plus large : tient dans les colonnes étroites */
 }
 
 /* Cellules : lignes horizontales seules (pas de traits verticaux).
@@ -457,7 +342,7 @@ body {
 
 /* Colonnes de dates */
 .ramadan-table .col-day-name {
-    width: 6%;
+    width: 7%;
     padding-left: var(--sp-2);
     text-align: left;
     text-transform: uppercase;
@@ -489,7 +374,7 @@ body {
 /* Colonnes d'horaires : largeur fixe, grands chiffres alignés */
 .ramadan-table th:nth-child(n + 2):nth-child(-n + 9),
 .ramadan-table td:nth-child(n + 4):nth-child(-n + 11) {
-    width: 8.6%;
+    width: 8.2%;
 }
 
 .ramadan-table td.imsak,
@@ -598,7 +483,7 @@ sup.ordinal {
 
 /* --- PIED DE PAGE : invocation d'acceptation --- */
 .ramadan-footer {
-    padding-top: var(--sp-1);
+    padding: 2.5mm 20mm 0;
     text-align: center;
 }
 
