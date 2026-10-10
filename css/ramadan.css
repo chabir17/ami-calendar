@@ -62,6 +62,8 @@ body {
     --surface-fast-head: var(--bg-terracotta); /* leurs en-têtes */
     --fs-figure: 15px; /* horaires de la feuille Ramadan */
     --deco-gold: #c8a85a; /* décor : lanternes, croissant, filets dorés */
+    --bg-page: #fbf7ee; /* fond crème très clair (le tableau et le pied de page restent blancs) */
+    --corner-size: 1.8cm; /* ornements d'angle */
     --bg-friday: var(--bg-green-faint); /* vendredis : vert clair de l'en-tête du tableau annuel */
     width: 210mm;
     height: 297mm;
@@ -69,8 +71,29 @@ body {
     display: flex;
     flex-direction: column;
     position: relative;
-    background-color: white;
+    background-color: var(--bg-page);
     background-image: url('../assets/patterns/background-pattern-grey.svg');
+}
+
+/* Ornements d'angle haut */
+.page.A4-portrait::before,
+.page.A4-portrait::after {
+    content: '';
+    position: absolute;
+    top: var(--sp-1);
+    width: var(--corner-size);
+    height: var(--corner-size);
+    background: url('../assets/icons/corner-ornament.svg') center / contain no-repeat;
+    pointer-events: none;
+}
+
+.page.A4-portrait::before {
+    left: var(--sp-1);
+}
+
+.page.A4-portrait::after {
+    right: var(--sp-1);
+    transform: scaleX(-1);
 }
 
 @media screen {
@@ -83,18 +106,32 @@ body {
 /* --- PIED DE PAGE : identité de l'association (comme le header du calendrier annuel) --- */
 .ramadan-identity {
     position: relative;
-    margin-top: var(--sp-2);
-    padding: var(--sp-2) 0 0;
-    background-color: white;
+    margin: var(--sp-2) calc(-1 * var(--page-margin)) calc(-1 * var(--page-margin));
+    padding: var(--sp-3) var(--page-margin) var(--sp-4);
+    background-color: white; /* blanc uni, jusqu'aux bords de la page */
     border-top: 1.5px solid var(--deco-gold);
 }
 
-.ramadan-identity::before {
+/* Ornements d'angle bas, posés au-dessus du pied de page (symétrie verticale) */
+.ramadan-identity::before,
+.ramadan-identity::after {
     content: '';
     position: absolute;
-    inset: 0;
-    background-image: url('../assets/patterns/background-pattern-navy.svg');
+    bottom: calc(100% + 2px);
+    width: var(--corner-size);
+    height: var(--corner-size);
+    background: url('../assets/icons/corner-ornament.svg') center / contain no-repeat;
     pointer-events: none;
+}
+
+.ramadan-identity::before {
+    left: var(--sp-1);
+    transform: scaleY(-1);
+}
+
+.ramadan-identity::after {
+    right: var(--sp-1);
+    transform: scale(-1, -1);
 }
 
 .identity-row {
@@ -203,23 +240,23 @@ body {
 }
 
 .deco-lantern-left {
-    left: 0;
+    left: 1.1cm;
     height: 3.3cm;
 }
 
 .deco-lantern-left-2 {
-    left: 1.2cm;
+    left: 2.3cm;
     height: 2.4cm;
     width: 0.75cm;
 }
 
 .deco-lantern-right {
-    right: 0;
+    right: 1.1cm;
     height: 3.3cm;
 }
 
 .deco-lantern-right-2 {
-    right: 1.2cm;
+    right: 2.3cm;
     height: 2.4cm;
     width: 0.75cm;
 }

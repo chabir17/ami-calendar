@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Ornement d'angle géométrique (orientation haut-gauche ; les autres angles sont obtenus par symétrie CSS) -->
+    <!-- Double équerre dorée -->
+    <path d="M6 96 V14 Q6 6 14 6 H96" stroke="#c8a85a" stroke-width="2" />
+    <path d="M12 80 V20 Q12 12 20 12 H80" stroke="#c8a85a" stroke-width="1" />
+    <!-- Arc intérieur reliant les deux bras -->
+    <path d="M12 52 Q22 22 52 12" stroke="#002e5d" stroke-width="1.2" opacity="0.55" />
+    <path d="M12 66 Q30 30 66 12" stroke="#c8a85a" stroke-width="0.8" />
+    <!-- Étoile à 8 branches dans l'angle -->
+    <g transform="translate(25 25)">
+        <rect x="-7" y="-7" width="14" height="14" fill="#c8a85a" />
+        <rect x="-7" y="-7" width="14" height="14" fill="#c8a85a" transform="rotate(45)" />
+        <circle r="3.2" fill="#fbf7ee" />
+        <circle r="1.4" fill="#002e5d" />
+    </g>
+    <!-- Losanges en bout de bras -->
+    <path d="M96 6 l-4 -3.5 l-4 3.5 l4 3.5 z" fill="#c8a85a" stroke="none" />
+    <path d="M6 96 l-3.5 -4 l3.5 -4 l3.5 4 z" fill="#c8a85a" stroke="none" />
+    <circle cx="84" cy="12" r="1.6" fill="#002e5d" stroke="none" opacity="0.6" />
+    <circle cx="12" cy="84" r="1.6" fill="#002e5d" stroke="none" opacity="0.6" />
+</svg>
