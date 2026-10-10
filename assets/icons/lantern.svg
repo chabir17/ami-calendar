@@ -1,14 +1,37 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 100" fill="none" stroke="#b8963e" stroke-width="1.6" stroke-linejoin="round">
-    <!-- Lanterne suspendue (fanous) : cordon, anneau, coiffe, corps ajouré, base -->
-    <line x1="20" y1="0" x2="20" y2="22" stroke-width="1" />
-    <circle cx="20" cy="25" r="3" />
-    <path d="M12 38 Q20 26 28 38 Z" fill="#e9d9a8" />
-    <path d="M10 38 h20 v3 h-20 z" fill="#d9bf72" />
-    <path d="M12 41 h16 l2 30 h-20 z" fill="#fbf3dc" />
-    <path d="M20 41 v30 M15 41 l-1 30 M25 41 l1 30" stroke-width="0.9" />
-    <path d="M14 56 q6 -5 12 0" stroke-width="0.9" />
-    <path d="M9 71 h22 v3 h-22 z" fill="#d9bf72" />
-    <path d="M13 74 Q20 84 27 74" fill="#e9d9a8" />
-    <line x1="20" y1="81" x2="20" y2="88" stroke-width="1" />
-    <circle cx="20" cy="90" r="1.6" fill="#b8963e" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 130">
+    <!-- Lanterne suspendue (fanous) dorée, lumière intérieure et halo doux -->
+    <defs>
+        <radialGradient id="halo" cx="50%" cy="50%" r="50%">
+            <stop offset="0" stop-color="#f7d98a" stop-opacity="0.55" />
+            <stop offset="1" stop-color="#f7d98a" stop-opacity="0" />
+        </radialGradient>
+        <linearGradient id="metal" x1="0" x2="1">
+            <stop offset="0" stop-color="#a8823a" />
+            <stop offset="0.5" stop-color="#e6c77a" />
+            <stop offset="1" stop-color="#a8823a" />
+        </linearGradient>
+        <radialGradient id="light" cx="50%" cy="55%" r="55%">
+            <stop offset="0" stop-color="#fff6d6" />
+            <stop offset="1" stop-color="#f1c96a" />
+        </radialGradient>
+    </defs>
+    <circle cx="30" cy="80" r="29" fill="url(#halo)" />
+    <!-- Cordon et anneau -->
+    <line x1="30" y1="0" x2="30" y2="30" stroke="#a8823a" stroke-width="1" />
+    <circle cx="30" cy="33" r="3.2" fill="none" stroke="#a8823a" stroke-width="1.6" />
+    <!-- Coiffe en dôme -->
+    <path d="M30 37 C22 40 18 46 17 52 H43 C42 46 38 40 30 37 Z" fill="url(#metal)" />
+    <rect x="14" y="52" width="32" height="4" rx="1" fill="url(#metal)" />
+    <!-- Corps vitré : lumière + montants ajourés -->
+    <path d="M17 56 H43 L41 98 H19 Z" fill="url(#light)" />
+    <g stroke="#a8823a" stroke-width="1.6" fill="none">
+        <path d="M17 56 H43 L41 98 H19 Z" />
+        <path d="M30 56 V98 M23.5 56 L24.5 98 M36.5 56 L35.5 98" stroke-width="1" />
+        <path d="M19 68 Q30 60 41 68" stroke-width="1.2" />
+        <path d="M20 86 Q30 92 40 86" stroke-width="1.2" />
+    </g>
+    <!-- Base et pointe -->
+    <rect x="15" y="98" width="30" height="4" rx="1" fill="url(#metal)" />
+    <path d="M19 102 H41 L34 112 H26 Z" fill="url(#metal)" />
+    <path d="M30 112 L33 118 L30 126 L27 118 Z" fill="#a8823a" />
 </svg>

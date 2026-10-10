@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Arche d'angle (haut-gauche ; l'angle droit est obtenu par symétrie CSS) :
+         ogive dorée en double trait, volutes bleues (arabesques) dans l'écoinçon -->
+    <!-- Ogive dorée -->
+    <path d="M200 6 C150 6 112 14 92 34 C78 48 76 62 62 74 C46 88 24 92 14 112 C8 126 6 160 6 200" stroke="#c8a85a" stroke-width="3" />
+    <path d="M200 14 C154 14 118 22 99 41 C86 54 83 68 68 81 C52 95 31 99 22 118 C16 131 14 162 14 200" stroke="#c8a85a" stroke-width="1.2" />
+    <!-- Volutes bleues dans l'écoinçon -->
+    <g stroke="#5b7ba6" stroke-width="3">
+        <path d="M20 20 C40 10 62 18 64 36 C66 52 50 58 42 50 C35 43 42 33 50 38" />
+        <path d="M64 36 C70 22 88 14 104 16" />
+        <path d="M20 20 C10 40 18 62 36 64 C52 66 58 50 50 42" />
+        <path d="M36 64 C22 70 14 88 16 104" />
+        <path d="M120 12 C130 4 146 6 150 16 C153 24 146 30 140 26" />
+        <path d="M12 120 C4 130 6 146 16 150 C24 153 30 146 26 140" />
+    </g>
+    <g fill="#5b7ba6">
+        <path d="M104 16 q8 -10 16 -4 q-8 8 -16 4 z" />
+        <path d="M16 104 q-10 8 -4 16 q8 -8 4 -16 z" />
+    </g>
+    <!-- Fleuron doré à l'angle -->
+    <g transform="translate(22 22) rotate(45)" fill="#c8a85a">
+        <path d="M0 -9 L3 0 L0 9 L-3 0 Z" />
+        <path d="M-9 0 L0 3 L9 0 L0 -3 Z" />
+    </g>
+</svg>

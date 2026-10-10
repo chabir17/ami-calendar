@@ -63,7 +63,7 @@ body {
     --fs-figure: 15px; /* horaires de la feuille Ramadan */
     --deco-gold: #c8a85a; /* décor : lanternes, croissant, filets dorés */
     --bg-page: #fbf7ee; /* fond crème très clair (le tableau et le pied de page restent blancs) */
-    --corner-size: 1.8cm; /* ornements d'angle */
+    --arch-size: 4.2cm; /* arches des angles supérieurs */
     --bg-friday: var(--bg-green-faint); /* vendredis : vert clair de l'en-tête du tableau annuel */
     width: 210mm;
     height: 297mm;
@@ -75,24 +75,24 @@ body {
     background-image: url('../assets/patterns/background-pattern-grey.svg');
 }
 
-/* Ornements d'angle haut */
+/* Arches dorées et volutes bleues dans les angles supérieurs */
 .page.A4-portrait::before,
 .page.A4-portrait::after {
     content: '';
     position: absolute;
-    top: var(--sp-1);
-    width: var(--corner-size);
-    height: var(--corner-size);
-    background: url('../assets/icons/corner-ornament.svg') center / contain no-repeat;
+    top: 0;
+    width: var(--arch-size);
+    height: var(--arch-size);
+    background: url('../assets/icons/corner-arch.svg') center / contain no-repeat;
     pointer-events: none;
 }
 
 .page.A4-portrait::before {
-    left: var(--sp-1);
+    left: 0;
 }
 
 .page.A4-portrait::after {
-    right: var(--sp-1);
+    right: 0;
     transform: scaleX(-1);
 }
 
@@ -112,26 +112,25 @@ body {
     border-top: 1.5px solid var(--deco-gold);
 }
 
-/* Ornements d'angle bas, posés au-dessus du pied de page (symétrie verticale) */
+/* Volutes d'angle bas, posées au-dessus du pied de page */
 .ramadan-identity::before,
 .ramadan-identity::after {
     content: '';
     position: absolute;
     bottom: calc(100% + 2px);
-    width: var(--corner-size);
-    height: var(--corner-size);
-    background: url('../assets/icons/corner-ornament.svg') center / contain no-repeat;
+    width: 2.6cm;
+    height: 1.95cm;
+    background: url('../assets/icons/corner-arabesque.svg') center / contain no-repeat;
     pointer-events: none;
 }
 
 .ramadan-identity::before {
     left: var(--sp-1);
-    transform: scaleY(-1);
 }
 
 .ramadan-identity::after {
     right: var(--sp-1);
-    transform: scale(-1, -1);
+    transform: scaleX(-1);
 }
 
 .identity-row {
@@ -233,39 +232,72 @@ body {
     pointer-events: none;
 }
 
-/* Lanternes suspendues depuis le haut de la page (deux de chaque côté, hauteurs décalées) */
+/* Lanternes suspendues dans les arches (deux de chaque côté, hauteurs décalées) */
 .deco-lantern {
     top: calc(-1 * var(--page-margin));
-    width: 1cm;
+}
+
+.deco-lantern-left,
+.deco-lantern-right {
+    height: 3.4cm;
+}
+
+.deco-lantern-left-2,
+.deco-lantern-right-2 {
+    height: 2.5cm;
 }
 
 .deco-lantern-left {
-    left: 1.1cm;
-    height: 3.3cm;
+    left: -0.3cm;
 }
 
 .deco-lantern-left-2 {
-    left: 2.3cm;
-    height: 2.4cm;
-    width: 0.75cm;
+    left: 1.1cm;
 }
 
 .deco-lantern-right {
-    right: 1.1cm;
-    height: 3.3cm;
+    right: -0.3cm;
 }
 
 .deco-lantern-right-2 {
-    right: 2.3cm;
-    height: 2.4cm;
-    width: 0.75cm;
+    right: 1.1cm;
 }
 
 /* Croissant et étoiles, en haut à droite de la calligraphie */
 .deco-crescent {
-    top: -0.1cm;
-    right: 4.6cm;
-    width: 1.3cm;
+    top: -0.35cm;
+    right: 4.4cm;
+    width: 1.8cm;
+}
+
+/* Étoiles scintillantes dispersées autour du titre */
+.deco-sparkle {
+    position: absolute;
+    pointer-events: none;
+}
+
+.sparkle-1 {
+    top: 0.1cm;
+    left: 3.6cm;
+    width: 0.4cm;
+}
+
+.sparkle-2 {
+    top: 1.6cm;
+    left: 2.7cm;
+    width: 0.28cm;
+}
+
+.sparkle-3 {
+    top: 1.9cm;
+    right: 3.3cm;
+    width: 0.3cm;
+}
+
+.sparkle-4 {
+    top: 0.3cm;
+    left: 7.3cm;
+    width: 0.25cm;
 }
 
 .ramadan-main-title {
@@ -273,11 +305,11 @@ body {
     justify-content: center; /* années resserrées autour de la calligraphie */
     align-items: center;
     gap: var(--sp-3);
-    height: 2.6cm;
+    height: 2.8cm;
 }
 
 .ramadan-logo {
-    height: 2.5cm;
+    height: 2.7cm;
     flex-shrink: 0;
 }
 
