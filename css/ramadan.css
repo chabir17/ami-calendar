@@ -70,11 +70,13 @@ body {
     grid-template-rows: 41mm 1fr auto;
     grid-template-columns: minmax(0, 1fr); /* le contenu ne peut pas élargir la page */
     position: relative;
-    /* fond d'hiver (cadre, lanternes, croissant, neige) ; version papier : voile blanc pour économiser l'encre */
+    /* fond d'hiver (cadre, lanternes, croissant, neige) au-dessus d'un bandeau blanc pour le pied de page ;
+       version papier : voile blanc pour économiser l'encre */
+    --footer-h: 30mm;
     --bg-veil: rgb(255 255 255 / 0.45);
     background:
-        linear-gradient(var(--bg-veil), var(--bg-veil)),
-        white url('../assets/img/ramadan-background.jpg') center / 100% 100% no-repeat;
+        linear-gradient(var(--bg-veil), var(--bg-veil)) top / 100% calc(100% - var(--footer-h)) no-repeat,
+        white url('../assets/img/ramadan-background.jpg') top / 100% calc(100% - var(--footer-h)) no-repeat;
 }
 
 @media screen {
@@ -491,13 +493,19 @@ sup.ordinal {
 /* --- PIED DE PAGE : invocation d'acceptation --- */
 .ramadan-footer {
     display: grid;
-    grid-template-rows: 9mm 21mm; /* pied de page de 3 cm : invocation | identité (logo de 2 cm) */
+    /* bas du cadre de l'image | bandeau blanc de 3 cm : invocation, identité (logo de 2 cm) */
+    grid-template-rows: 12mm 9mm 20mm;
     align-items: center;
-    padding: 0 15mm 11mm; /* au-dessus des filets bas du cadre de l'image */
+    padding: 0 15mm 1mm;
     text-align: center;
 }
 
+.ramadan-footer .dua {
+    grid-row: 2;
+}
+
 .ramadan-footer .ramadan-identity {
+    grid-row: 3;
     text-align: left;
 }
 
