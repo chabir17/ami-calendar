@@ -66,17 +66,22 @@ body {
     width: 210mm;
     height: 297mm;
     display: grid;
-    /* zones calées sur l'image de fond : titre | tableau | invocation + identité */
-    --footer-h: 20mm; /* bande blanche de l'identité, en bas de l'image */
-    grid-template-rows: 64mm 1fr auto;
+    /* bandeau compact | tableau (élément central, le plus grand possible) | invocation + identité */
+    grid-template-rows: 41mm 1fr auto;
     grid-template-columns: minmax(0, 1fr); /* le contenu ne peut pas élargir la page */
     position: relative;
-    /* version papier : voile blanc sur l'image pour économiser l'encre (retiré en version numérique) */
-    --bg-veil: rgb(255 255 255 / 0.45);
-    /* image pleine page au format A4, bande blanche de l'identité comprise */
-    background:
-        linear-gradient(var(--bg-veil), var(--bg-veil)),
-        white url('../assets/img/ramadan-background.jpg') center / 100% 100% no-repeat;
+    background-color: white; /* version papier : fond blanc, économie d'encre */
+}
+
+/* Cadre fin bleu marine doublé d'un filet doré, dans la marge d'impression */
+.page.A4-portrait::before {
+    content: '';
+    position: absolute;
+    inset: 5mm;
+    border: 1px solid var(--col-blue);
+    outline: 1px solid var(--deco-gold);
+    outline-offset: -1.5mm;
+    pointer-events: none;
 }
 
 @media screen {
@@ -110,8 +115,8 @@ body {
 }
 
 .logo-box {
-    width: 1.5cm;
-    height: 1.5cm;
+    width: 2cm;
+    height: 2cm;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -188,7 +193,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 35mm 33mm 0; /* sous le croissant, entre les lanternes de l'image */
+    padding: 10mm 20mm 0; /* bandeau compact : le tableau prend la place */
 }
 
 .ramadan-main-title {
@@ -257,7 +262,7 @@ body {
 .ramadan-table-container {
     min-height: 0;
     display: flex;
-    padding: 2mm 21mm; /* dégagé des lanternes et des ornements d'angle de l'image */
+    padding: 2mm 10mm; /* pleine largeur, à l'intérieur du cadre */
 }
 
 .ramadan-table {
@@ -493,9 +498,9 @@ sup.ordinal {
 /* --- PIED DE PAGE : invocation d'acceptation --- */
 .ramadan-footer {
     display: grid;
-    grid-template-rows: 13mm var(--footer-h); /* invocation dans le cadre de l'image | identité sur la bande blanche */
+    grid-template-rows: 9mm 21mm; /* pied de page de 3 cm : invocation | identité (logo de 2 cm) */
     align-items: center;
-    padding: 0 24mm;
+    padding: 0 15mm 7mm; /* au-dessus du cadre */
     text-align: center;
 }
 
@@ -504,7 +509,6 @@ sup.ordinal {
 }
 
 .dua {
-    margin-bottom: 3mm; /* au-dessus des filets bas du cadre */
     font-size: var(--fs-figure);
     color: var(--col-text);
 }
@@ -522,7 +526,7 @@ sup.ordinal {
 
 /* --- VERSION NUMÉRIQUE (par défaut) : en-tête foncé, teintes plus soutenues --- */
 .page.digital {
-    --bg-veil: transparent;
+    background-color: #fdf9f0; /* version numérique : crème très pâle */
     --surface-fast: var(--bg-terracotta-mid);
 }
 
