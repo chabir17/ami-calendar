@@ -26,23 +26,13 @@
 
         <template id="ramadan-template">
             <div class="page A4-portrait">
-                <!-- Identité : mêmes couleurs, icônes et coordonnées que le header du calendrier annuel -->
-                <header class="ramadan-identity">
-                    <div class="identity-row">
-                        <div class="logo-box">
-                            <img src="assets/img/AMI.png" alt="Logo de l'Association Musulmane de l'Inde" class="logo-img" />
-                        </div>
-                        <div class="identity-main">
-                            <div class="org-names">
-                                <h1 class="org-ta tamil">இந்திய முஸ்லிம் சங்கம்</h1>
-                                <h2 class="org-fr">ASSOCIATION MUSULMANE DE L'INDE</h2>
-                            </div>
-                            <div class="identity-contacts"></div>
-                        </div>
-                    </div>
-                </header>
-
                 <section class="ramadan-header-simple">
+                    <!-- Décor : lanternes suspendues et croissant étoilé -->
+                    <img src="assets/icons/lantern.svg" alt="" class="deco-lantern deco-lantern-left" />
+                    <img src="assets/icons/lantern.svg" alt="" class="deco-lantern deco-lantern-left-2" />
+                    <img src="assets/icons/lantern.svg" alt="" class="deco-lantern deco-lantern-right" />
+                    <img src="assets/icons/lantern.svg" alt="" class="deco-lantern deco-lantern-right-2" />
+                    <img src="assets/icons/crescent-stars.svg" alt="" class="deco-crescent" />
                     <div class="ramadan-main-title">
                         <div class="year-corner top-left"></div>
                         <img src="assets/img/ramadan-navy.png" alt="Ramadan" class="ramadan-logo" />
@@ -146,9 +136,24 @@
                     </table>
                 </section>
 
-                <!-- Pied de page : invocation d'acceptation -->
+                <!-- Pied de page : invocation d'acceptation, puis identité de l'association -->
                 <footer class="ramadan-footer">
                     <p class="dua arabic"><span class="dua-orn">﴾</span> تقبل الله منا ومنكم صالح الأعمال، وغفر الله لنا ولكم <span class="dua-orn dua-orn-end">﴾</span></p>
+                    <!-- Identité de l'association, en pied de page -->
+                    <div class="ramadan-identity">
+                        <div class="identity-row">
+                            <div class="logo-box">
+                                <img src="assets/img/AMI.png" alt="Logo de l'Association Musulmane de l'Inde" class="logo-img" />
+                            </div>
+                            <div class="identity-main">
+                                <div class="org-names">
+                                    <h1 class="org-ta tamil">இந்திய முஸ்லிம் சங்கம்</h1>
+                                    <h2 class="org-fr">ASSOCIATION MUSULMANE DE L'INDE</h2>
+                                </div>
+                                <div class="identity-contacts"></div>
+                            </div>
+                        </div>
+                    </div>
                 </footer>
             </div>
         </template>

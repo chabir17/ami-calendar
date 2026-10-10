@@ -61,6 +61,7 @@ body {
     --surface-fast: var(--bg-terracotta-soft); /* cellules Imsak, Maghrib, Icha AMI */
     --surface-fast-head: var(--bg-terracotta); /* leurs en-têtes */
     --fs-figure: 15px; /* horaires de la feuille Ramadan */
+    --deco-gold: #c8a85a; /* décor : lanternes, croissant, filets dorés */
     --bg-friday: var(--bg-green-faint); /* vendredis : vert clair de l'en-tête du tableau annuel */
     width: 210mm;
     height: 297mm;
@@ -79,13 +80,13 @@ body {
     }
 }
 
-/* --- EN-TÊTE : identité de l'association (comme le header du calendrier annuel) --- */
+/* --- PIED DE PAGE : identité de l'association (comme le header du calendrier annuel) --- */
 .ramadan-identity {
     position: relative;
-    padding: var(--sp-1) 0;
+    margin-top: var(--sp-2);
+    padding: var(--sp-2) 0 0;
     background-color: white;
-    border-top: 1px solid var(--col-text-lighter);
-    border-bottom: 1px solid var(--col-text-lighter);
+    border-top: 1.5px solid var(--deco-gold);
 }
 
 .ramadan-identity::before {
@@ -184,7 +185,52 @@ body {
     gap: var(--sp-1);
 }
 
-/* --- BANDEAU : 2027 — calligraphie — ١٤٤٨ --- */
+/* --- BANDEAU : 2027 — calligraphie — ١٤٤٨, entouré de lanternes et d'un croissant étoilé --- */
+.ramadan-header-simple {
+    position: relative;
+}
+
+.deco-lantern,
+.deco-crescent {
+    position: absolute;
+    pointer-events: none;
+}
+
+/* Lanternes suspendues depuis le haut de la page (deux de chaque côté, hauteurs décalées) */
+.deco-lantern {
+    top: calc(-1 * var(--page-margin));
+    width: 1cm;
+}
+
+.deco-lantern-left {
+    left: 0;
+    height: 3.3cm;
+}
+
+.deco-lantern-left-2 {
+    left: 1.2cm;
+    height: 2.4cm;
+    width: 0.75cm;
+}
+
+.deco-lantern-right {
+    right: 0;
+    height: 3.3cm;
+}
+
+.deco-lantern-right-2 {
+    right: 1.2cm;
+    height: 2.4cm;
+    width: 0.75cm;
+}
+
+/* Croissant et étoiles, en haut à droite de la calligraphie */
+.deco-crescent {
+    top: -0.1cm;
+    right: 4.6cm;
+    width: 1.3cm;
+}
+
 .ramadan-main-title {
     display: flex;
     justify-content: center; /* années resserrées autour de la calligraphie */
@@ -487,6 +533,10 @@ sup.ordinal {
     text-align: center;
 }
 
+.ramadan-footer .ramadan-identity {
+    text-align: left;
+}
+
 .dua {
     font-size: var(--fs-figure);
     color: var(--col-text);
@@ -496,7 +546,7 @@ sup.ordinal {
 .dua-orn {
     display: inline-block;
     font-size: var(--fs-xl);
-    color: var(--col-green);
+    color: var(--deco-gold);
 }
 
 .dua-orn-end {
