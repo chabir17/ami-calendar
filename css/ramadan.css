@@ -104,11 +104,11 @@ body {
     flex: 1;
     display: flex;
     align-items: center;
+    justify-content: center; /* logo + textes centrés sous la ligne, comme l'invocation */
     gap: var(--sp-3);
 }
 
 .identity-main {
-    flex: 1;
     min-width: 0;
     display: flex;
     flex-direction: column;
@@ -263,7 +263,7 @@ body {
 .ramadan-table-container {
     min-height: 0;
     display: flex;
-    padding: 2mm 18.5mm; /* entre les lanternes et les ornements d'angle de l'image */
+    padding: 2mm 21mm; /* dégagé des lanternes et des ornements d'angle de l'image */
 }
 
 .ramadan-table {
@@ -312,7 +312,7 @@ body {
 .th-fr {
     display: block;
     text-transform: uppercase;
-    letter-spacing: -0.05em; /* colonnes plus étroites dans le cadre de l’image (« MAGHRIB ») */
+    letter-spacing: -0.07em; /* colonnes étroites, dégagées des lanternes (« MAGHRIB ») */
 }
 
 /* Arabe et tamoul de l'en-tête : même taille, même interligne, graisse normale */
@@ -381,7 +381,7 @@ body {
 
 .ramadan-table .col-day-name.arabic {
     width: 6.5%;
-    padding: 0 var(--sp-2) 0 0;
+    padding: 0 var(--sp-1) 0 0;
     direction: rtl; /* alignement à droite garanti, même pour les noms longs (الأربعاء) */
     text-align: right;
 }
