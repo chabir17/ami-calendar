@@ -67,12 +67,11 @@ body {
     height: 297mm;
     display: grid;
     /* zones calées sur l'image de fond : titre | tableau | invocation + identité */
-    grid-template-rows: 62mm 1fr auto;
+    grid-template-rows: 73mm 1fr auto; /* le tableau commence sous les lanternes de l'image */
     grid-template-columns: minmax(0, 1fr); /* le contenu ne peut pas élargir la page */
     position: relative;
     /* version papier : voile blanc sur l'image pour économiser l'encre (retiré en version numérique) */
     --bg-veil: rgb(255 255 255 / 0.45);
-    --bg-panel: #fbf7f0; /* panneau de l'identité : crème de l'image sous le voile */
     background:
         linear-gradient(var(--bg-veil), var(--bg-veil)),
         white url('../assets/img/ramadan-background.jpg') center / 100% 100% no-repeat; /* image au format A4, pleine page */
@@ -90,10 +89,6 @@ body {
     justify-self: center;
     display: flex;
     align-items: center;
-    padding: 1mm 3mm;
-    border-radius: 4mm;
-    background-color: var(--bg-panel);
-    box-shadow: 0 0 3mm 2.5mm var(--bg-panel); /* bords estompés, par-dessus les volutes, entre les rosaces */
 }
 
 .identity-row {
@@ -191,7 +186,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 36mm 36mm 0; /* sous le croissant, entre les lanternes de l'image */
+    padding: 37mm 33mm 0; /* sous le croissant, entre les lanternes de l'image */
 }
 
 .ramadan-main-title {
@@ -199,11 +194,11 @@ body {
     justify-content: center; /* années resserrées autour de la calligraphie */
     align-items: center;
     gap: var(--sp-3);
-    height: 2.6cm;
+    height: 3.1cm;
 }
 
 .ramadan-logo {
-    height: 2.6cm; /* calligraphie sous le croissant de l'image */
+    height: 3.1cm; /* calligraphie sous le croissant, entre les lanternes de l'image */
     flex-shrink: 0;
 }
 
@@ -496,10 +491,10 @@ sup.ordinal {
 /* --- PIED DE PAGE : invocation d'acceptation --- */
 .ramadan-footer {
     display: grid;
-    grid-template-rows: auto auto; /* invocation | identité, posée entre les deux rosaces de l'image */
-    gap: 2mm;
+    grid-template-rows: auto auto; /* invocation | identité, dans le cadre de l'image */
+    gap: 1mm;
     align-items: center;
-    padding: 0 24mm 4mm; /* entre les rosaces, au-dessus du filet doré bas de l'image */
+    padding: 0 24mm 10mm; /* dans le cadre, au-dessus du filet doré bas de l'image */
     text-align: center;
 }
 
@@ -526,7 +521,6 @@ sup.ordinal {
 /* --- VERSION NUMÉRIQUE (par défaut) : en-tête foncé, teintes plus soutenues --- */
 .page.digital {
     --bg-veil: transparent;
-    --bg-panel: #f8f0e3; /* crème de l'image */
     --surface-fast: var(--bg-terracotta-mid);
 }
 
