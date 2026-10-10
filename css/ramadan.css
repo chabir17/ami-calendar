@@ -67,16 +67,16 @@ body {
     height: 297mm;
     display: grid;
     /* zones calées sur l'image de fond : titre | tableau | invocation + identité */
-    --footer-h: 20mm; /* bande blanche de l'identité, sous l'image */
+    --footer-h: 20mm; /* bande blanche de l'identité, en bas de l'image */
     grid-template-rows: 64mm 1fr auto;
     grid-template-columns: minmax(0, 1fr); /* le contenu ne peut pas élargir la page */
     position: relative;
     /* version papier : voile blanc sur l'image pour économiser l'encre (retiré en version numérique) */
     --bg-veil: rgb(255 255 255 / 0.45);
-    /* l'image (recadrée sous son cadre) occupe la page moins la bande blanche, sans déformation visible */
+    /* image pleine page au format A4, bande blanche de l'identité comprise */
     background:
-        linear-gradient(var(--bg-veil), var(--bg-veil)) top / 100% calc(100% - var(--footer-h)) no-repeat,
-        white url('../assets/img/ramadan-background.jpg') top / 100% calc(100% - var(--footer-h)) no-repeat;
+        linear-gradient(var(--bg-veil), var(--bg-veil)),
+        white url('../assets/img/ramadan-background.jpg') center / 100% 100% no-repeat;
 }
 
 @media screen {
