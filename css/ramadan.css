@@ -71,7 +71,11 @@ body {
     grid-template-rows: 54mm 1fr auto;
     grid-template-columns: minmax(0, 1fr); /* le contenu ne peut pas élargir la page */
     position: relative;
-    background: white url('../assets/img/ramadan-background.jpg') top / 100% calc(100% - var(--footer-h)) no-repeat;
+    /* version papier : voile blanc sur l'image pour économiser l'encre (retiré en version numérique) */
+    --bg-veil: rgb(255 255 255 / 0.45);
+    background:
+        linear-gradient(var(--bg-veil), var(--bg-veil)) top / 100% calc(100% - var(--footer-h)) no-repeat,
+        white url('../assets/img/ramadan-background.jpg') top / 100% calc(100% - var(--footer-h)) no-repeat;
 }
 
 @media screen {
@@ -527,6 +531,7 @@ sup.ordinal {
 
 /* --- VERSION NUMÉRIQUE (par défaut) : en-tête foncé, teintes plus soutenues --- */
 .page.digital {
+    --bg-veil: transparent;
     --surface-fast: var(--bg-terracotta-mid);
 }
 
