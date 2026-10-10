@@ -66,8 +66,8 @@ body {
     width: 210mm;
     height: 297mm;
     display: grid;
-    /* zones calées sur l'image de fond : titre | cadre doré (61,4 → 237,8 mm) | invocation et identité */
-    grid-template-rows: 61.4mm 176.4mm 1fr;
+    /* zones calées sur l'image de fond : titre | tableau (56 → 241 mm) | invocation et identité (bande blanche dès 260 mm) */
+    grid-template-rows: 56mm 185mm 1fr;
     grid-template-columns: minmax(0, 1fr); /* le contenu ne peut pas élargir la page */
     position: relative;
     background: #fdf8ee url('../assets/img/ramadan-background.jpg') center / 100% 100% no-repeat;
@@ -82,7 +82,7 @@ body {
 
 /* --- PIED DE PAGE : identité de l'association (comme le header du calendrier annuel) --- */
 .ramadan-identity {
-    margin-top: 3mm;
+    align-self: center;
 }
 
 .identity-row {
@@ -179,7 +179,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 6mm 36mm 0;
+    padding: 22mm 36mm 0; /* sous le croissant, entre les lanternes de l'image */
 }
 
 .ramadan-main-title {
@@ -248,7 +248,7 @@ body {
 .ramadan-table-container {
     min-height: 0;
     display: flex;
-    padding: 2.5mm 17.5mm; /* à l'intérieur du cadre doré de l'image */
+    padding: 2mm 18.5mm; /* entre les lanternes et les ornements d'angle de l'image */
 }
 
 .ramadan-table {
@@ -297,7 +297,7 @@ body {
 .th-fr {
     display: block;
     text-transform: uppercase;
-    letter-spacing: -0.03em; /* colonnes plus étroites dans le cadre de l’image (« MAGHRIB ») */
+    letter-spacing: -0.05em; /* colonnes plus étroites dans le cadre de l’image (« MAGHRIB ») */
 }
 
 /* Arabe et tamoul de l'en-tête : même taille, même interligne, graisse normale */
@@ -483,7 +483,10 @@ sup.ordinal {
 
 /* --- PIED DE PAGE : invocation d'acceptation --- */
 .ramadan-footer {
-    padding: 2.5mm 20mm 0;
+    display: grid;
+    grid-template-rows: 19mm 1fr; /* invocation sur le fond crème | identité dans la bande blanche */
+    align-items: center;
+    padding: 0 20mm;
     text-align: center;
 }
 
