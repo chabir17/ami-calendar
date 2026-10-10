@@ -194,7 +194,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20mm 36mm 0; /* sous le croissant, entre les lanternes de l'image */
+    padding: 18mm 36mm 0; /* sous le croissant, entre les lanternes de l'image */
 }
 
 .ramadan-main-title {
@@ -202,11 +202,11 @@ body {
     justify-content: center; /* années resserrées autour de la calligraphie */
     align-items: center;
     gap: var(--sp-3);
-    height: 2.8cm;
+    height: 3.1cm;
 }
 
 .ramadan-logo {
-    height: 2.7cm;
+    height: 3.1cm; /* calligraphie dominante dans le bandeau */
     flex-shrink: 0;
 }
 
@@ -233,7 +233,7 @@ body {
 .year-corner.top-left::after,
 .year-corner.top-right::before {
     content: '';
-    width: 2.2cm;
+    width: 1.6cm; /* raccourcis : années dégagées des lanternes malgré la calligraphie agrandie */
     height: 11px;
     background-repeat: no-repeat;
     background-size:
