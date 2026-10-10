@@ -68,7 +68,7 @@ body {
     display: grid;
     --footer-h: 24mm; /* identité compacte, sur fond blanc sous l'image */
     /* zones calées sur l'image de fond : titre | tableau | invocation + identité */
-    grid-template-rows: 54mm 1fr auto;
+    grid-template-rows: 59mm 1fr auto;
     grid-template-columns: minmax(0, 1fr); /* le contenu ne peut pas élargir la page */
     position: relative;
     /* version papier : voile blanc sur l'image pour économiser l'encre (retiré en version numérique) */
@@ -198,7 +198,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 18mm 36mm 0; /* sous le croissant, entre les lanternes de l'image */
+    padding: 33mm 36mm 0; /* sous le croissant, entre les lanternes de l'image */
 }
 
 .ramadan-main-title {
@@ -206,11 +206,11 @@ body {
     justify-content: center; /* années resserrées autour de la calligraphie */
     align-items: center;
     gap: var(--sp-3);
-    height: 3.1cm;
+    height: 2.6cm;
 }
 
 .ramadan-logo {
-    height: 3.1cm; /* calligraphie dominante dans le bandeau */
+    height: 2.6cm; /* calligraphie sous le croissant de l'image */
     flex-shrink: 0;
 }
 
@@ -503,7 +503,7 @@ sup.ordinal {
 /* --- PIED DE PAGE : invocation d'acceptation --- */
 .ramadan-footer {
     display: grid;
-    grid-template-rows: 12mm var(--footer-h); /* invocation sur le fond crème | identité sur le blanc */
+    grid-template-rows: 26mm var(--footer-h); /* invocation entre les ornements bas de l'image | identité sur le blanc */
     align-items: center;
     padding: 0 20mm;
     text-align: center;
