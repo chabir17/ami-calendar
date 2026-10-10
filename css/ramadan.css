@@ -70,7 +70,7 @@ body {
     grid-template-rows: 41mm 1fr auto;
     grid-template-columns: minmax(0, 1fr); /* le contenu ne peut pas élargir la page */
     position: relative;
-    /* fond d'hiver pleine page (neige, lanternes, croissants, sol enneigé, bandeau beige de l'identité) ;
+    /* fond pleine page (lanternes et croissants en haut, sol enneigé en bas, bandeau beige de l'identité) ;
        version papier : voile blanc pour économiser l'encre */
     --footer-h: 29mm; /* bandeau beige de l'identité, en bas de l'image */
     --bg-veil: rgb(255 255 255 / 0.45);
