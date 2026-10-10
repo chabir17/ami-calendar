@@ -507,7 +507,7 @@ sup.ordinal {
 
 .dua {
     font-size: var(--fs-figure);
-    color: var(--col-text);
+    color: var(--col-blue); /* bleu marine et or, comme la calligraphie du titre */
 }
 
 /* Parenthèses ornées : même glyphe, la seconde en miroir (rendu identique quel que soit le sens bidi) */
