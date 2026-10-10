@@ -72,7 +72,7 @@ body {
     position: relative;
     /* fond pleine page (lanternes et croissants en haut, sol enneigé en bas, bandeau beige de l'identité) ;
        version papier : voile blanc pour économiser l'encre */
-    --footer-h: 29mm; /* bandeau beige de l'identité, en bas de l'image */
+    --footer-h: 30.5mm; /* bandeau beige de l'identité, en bas de l'image */
     --bg-veil: rgb(255 255 255 / 0.45);
     background:
         linear-gradient(var(--bg-veil), var(--bg-veil)),
