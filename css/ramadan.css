@@ -70,9 +70,9 @@ body {
     grid-template-rows: 41mm 1fr auto;
     grid-template-columns: minmax(0, 1fr); /* le contenu ne peut pas élargir la page */
     position: relative;
-    /* fond d'hiver pleine page (cadre, lanternes, croissant, sol enneigé qui se fond dans le bandeau blanc) ;
+    /* fond d'hiver pleine page (neige, lanternes, croissants, sol enneigé, bandeau beige de l'identité) ;
        version papier : voile blanc pour économiser l'encre */
-    --footer-h: 30mm; /* bandeau blanc de l'identité, sous le sol enneigé */
+    --footer-h: 29mm; /* bandeau beige de l'identité, en bas de l'image */
     --bg-veil: rgb(255 255 255 / 0.45);
     background:
         linear-gradient(var(--bg-veil), var(--bg-veil)),
