@@ -70,9 +70,9 @@ body {
     grid-template-rows: 41mm 1fr auto;
     grid-template-columns: minmax(0, 1fr); /* le contenu ne peut pas élargir la page */
     position: relative;
-    /* fond d'hiver pleine page (cadre, lanternes, croissant, neige), bandeau blanc de 3 cm compris ;
+    /* fond d'hiver pleine page (cadre, lanternes, croissant, sol enneigé qui se fond dans le bandeau blanc) ;
        version papier : voile blanc pour économiser l'encre */
-    --footer-h: 30mm;
+    --footer-h: 30mm; /* bandeau blanc de l'identité, sous le sol enneigé */
     --bg-veil: rgb(255 255 255 / 0.45);
     background:
         linear-gradient(var(--bg-veil), var(--bg-veil)),
@@ -493,7 +493,7 @@ sup.ordinal {
 /* --- PIED DE PAGE : invocation d'acceptation --- */
 .ramadan-footer {
     display: grid;
-    /* invocation sous le tableau | bas du cadre de l'image | bandeau blanc de 3 cm : identité (logo de 2 cm) */
+    /* invocation sous le tableau | sol enneigé | bandeau blanc : identité (logo de 2 cm) */
     grid-template-rows: 9mm 4.5mm var(--footer-h);
     align-items: center;
     padding: 0 15mm;
