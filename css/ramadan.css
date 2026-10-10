@@ -67,14 +67,16 @@ body {
     height: 297mm;
     display: grid;
     /* zones calées sur l'image de fond : titre | tableau | invocation + identité */
-    grid-template-rows: 73mm 1fr auto; /* le tableau commence sous les lanternes de l'image */
+    --footer-h: 20mm; /* bande blanche de l'identité, sous l'image */
+    grid-template-rows: 64mm 1fr auto;
     grid-template-columns: minmax(0, 1fr); /* le contenu ne peut pas élargir la page */
     position: relative;
     /* version papier : voile blanc sur l'image pour économiser l'encre (retiré en version numérique) */
     --bg-veil: rgb(255 255 255 / 0.45);
+    /* l'image (recadrée sous son cadre) occupe la page moins la bande blanche, sans déformation visible */
     background:
-        linear-gradient(var(--bg-veil), var(--bg-veil)),
-        white url('../assets/img/ramadan-background.jpg') center / 100% 100% no-repeat; /* image au format A4, pleine page */
+        linear-gradient(var(--bg-veil), var(--bg-veil)) top / 100% calc(100% - var(--footer-h)) no-repeat,
+        white url('../assets/img/ramadan-background.jpg') top / 100% calc(100% - var(--footer-h)) no-repeat;
 }
 
 @media screen {
@@ -186,7 +188,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 37mm 33mm 0; /* sous le croissant, entre les lanternes de l'image */
+    padding: 35mm 33mm 0; /* sous le croissant, entre les lanternes de l'image */
 }
 
 .ramadan-main-title {
@@ -194,11 +196,11 @@ body {
     justify-content: center; /* années resserrées autour de la calligraphie */
     align-items: center;
     gap: var(--sp-3);
-    height: 3.1cm;
+    height: 2.8cm;
 }
 
 .ramadan-logo {
-    height: 3.1cm; /* calligraphie sous le croissant, entre les lanternes de l'image */
+    height: 2.8cm; /* calligraphie sous le croissant, entre les lanternes de l'image */
     flex-shrink: 0;
 }
 
@@ -491,10 +493,9 @@ sup.ordinal {
 /* --- PIED DE PAGE : invocation d'acceptation --- */
 .ramadan-footer {
     display: grid;
-    grid-template-rows: auto auto; /* invocation | identité, dans le cadre de l'image */
-    gap: 1mm;
+    grid-template-rows: 13mm var(--footer-h); /* invocation dans le cadre de l'image | identité sur la bande blanche */
     align-items: center;
-    padding: 0 24mm 10mm; /* dans le cadre, au-dessus du filet doré bas de l'image */
+    padding: 0 24mm;
     text-align: center;
 }
 
@@ -503,6 +504,7 @@ sup.ordinal {
 }
 
 .dua {
+    margin-bottom: 3mm; /* au-dessus des filets bas du cadre */
     font-size: var(--fs-figure);
     color: var(--col-text);
 }
