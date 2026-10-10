@@ -493,15 +493,11 @@ sup.ordinal {
 /* --- PIED DE PAGE : invocation d'acceptation --- */
 .ramadan-footer {
     display: grid;
-    /* bas du cadre de l'image | bandeau blanc de 3 cm : invocation, identité (logo de 2 cm) */
-    grid-template-rows: 12mm 9mm 20mm;
+    /* invocation sous le tableau | bas du cadre de l'image | bandeau blanc de 3 cm : identité (logo de 2 cm) */
+    grid-template-rows: 9mm 9.5mm var(--footer-h);
     align-items: center;
-    padding: 0 15mm 1mm;
+    padding: 0 15mm;
     text-align: center;
-}
-
-.ramadan-footer .dua {
-    grid-row: 2;
 }
 
 .ramadan-footer .ramadan-identity {
