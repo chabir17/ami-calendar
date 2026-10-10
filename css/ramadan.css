@@ -71,7 +71,10 @@ body {
     grid-template-rows: 54mm 1fr auto;
     grid-template-columns: minmax(0, 1fr); /* le contenu ne peut pas élargir la page */
     position: relative;
-    background: white url('../assets/img/ramadan-background.jpg') top / 100% calc(100% - var(--footer-h)) no-repeat;
+    /* l'image se fond dans le blanc du pied de page (fondu sous l'invocation) */
+    background:
+        linear-gradient(to bottom, transparent calc(100% - var(--footer-h) - 14mm), white calc(100% - var(--footer-h) - 1mm)),
+        white url('../assets/img/ramadan-background.jpg') top / 100% calc(100% - var(--footer-h)) no-repeat;
 }
 
 @media screen {
@@ -83,11 +86,40 @@ body {
 
 /* --- PIED DE PAGE : identité de l'association (comme le header du calendrier annuel) --- */
 .ramadan-identity {
-    align-self: center;
+    position: relative;
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+}
+
+/* Filet doré qui s'estompe aux extrémités, avec une étoile à huit branches au centre */
+.ramadan-identity::before,
+.ramadan-identity::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+}
+
+.ramadan-identity::before {
+    width: 70%;
+    height: 1px;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, transparent, var(--deco-gold) 25%, var(--deco-gold) 75%, transparent);
+}
+
+.ramadan-identity::after {
+    width: 3.2mm;
+    height: 3.2mm;
+    transform: translate(-50%, -50%);
+    background: white url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23c8a85a'%3E%3Crect x='4' y='4' width='12' height='12'/%3E%3Crect x='4' y='4' width='12' height='12' transform='rotate(45 10 10)'/%3E%3C/svg%3E")
+        center / contain no-repeat;
+    box-shadow: 0 0 0 1.2mm white; /* coupe le filet autour de l'étoile */
 }
 
 .identity-row {
     position: relative; /* au-dessus du motif */
+    flex: 1;
     display: flex;
     align-items: center;
     gap: var(--sp-3);
@@ -262,6 +294,10 @@ body {
     border-radius: 0.5rem;
     overflow: hidden;
     background-color: white;
+    /* fin filet doré détaché (rappel des ornements de l'image) et ombre douce : le tableau se pose sur le fond */
+    outline: 1px solid var(--deco-gold);
+    outline-offset: 1.2mm;
+    box-shadow: 0 0.8mm 3mm rgb(0 46 93 / 0.14);
     font-size: var(--fs-md);
 }
 
