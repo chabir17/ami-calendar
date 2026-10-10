@@ -523,8 +523,9 @@ sup.ordinal {
 
 /* --- VERSION NUMÉRIQUE (par défaut) : en-tête foncé, teintes plus soutenues --- */
 .page.digital {
-    --bg-veil: transparent; /* version numérique : fond en couleurs */
     --surface-fast: var(--bg-terracotta-mid);
+    /* version numérique (écran) : nuit d'hiver étoilée ; la version papier garde le fond crème économe en encre */
+    background: white url('../assets/img/ramadan-background-night.jpg') center / 100% 100% no-repeat;
 }
 
 /* En-tête entièrement bleu marine, textes clairs, filet bleu clair */

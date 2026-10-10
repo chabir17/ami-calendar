@@ -50,7 +50,7 @@ Toutes les valeurs visuelles sont des jetons définis dans `css/variables.css`, 
 | Espacements      | `--sp-1` 4 px · `--sp-2` 8 · `--sp-3` 12 · `--sp-4` 16 · `--sp-6` 24                                                                                                                  | Multiples de 4 px                                                     |
 | Graisses         | 400 et 600 (français, tamoul) ; 400 pour l'arabe (Amiri)                                                                                                                              |                                                                       |
 
-La page Ramadan utilise des **rôles** (`--rule`, `--surface`, `--surface-fast`, `--surface-fast-head`) déclarés sur `.page` ; la version numérique (`.digital`) ne fait que leur donner des teintes plus soutenues.
+La page Ramadan utilise des **rôles** (`--rule`, `--surface`, `--surface-fast`, `--surface-fast-head`) déclarés sur `.page` ; la version numérique (`.digital`) ne fait que leur donner des teintes plus soutenues. Chaque version a son image de fond pleine page : `assets/img/ramadan-background-night.jpg` (nuit d'hiver, numérique) et `assets/img/ramadan-background.jpg` (crème clair, papier, éclairci par un voile blanc). Le décor reste dans les coins, le haut du titre et la neige du bas : le tableau couvre tout le reste.
 
 ### Performance et Optimisations
 
