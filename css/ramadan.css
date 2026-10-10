@@ -521,6 +521,20 @@ sup.ordinal {
     transform: scaleX(-1);
 }
 
+/* En-tête uni bleu marine, textes clairs (les deux versions : contraste maximal, bande fine peu gourmande en encre) */
+.ramadan-table thead th,
+.ramadan-table thead th.th-fast {
+    background-color: var(--col-blue);
+    border-right-color: var(--border-on-dark);
+    border-bottom-color: var(--accent-blue);
+    color: white;
+}
+
+.ramadan-table thead .th-ar,
+.ramadan-table thead .th-ta {
+    color: var(--col-on-dark);
+}
+
 /* --- VERSION NUMÉRIQUE (par défaut) : en-tête foncé, teintes plus soutenues --- */
 .page.digital {
     --surface-fast: var(--bg-terracotta-mid);
@@ -533,20 +547,7 @@ sup.ordinal {
         white url('../assets/img/ramadan-background-night.jpg') center / 100% 100% no-repeat;
 }
 
-/* En-tête entièrement bleu marine, textes clairs, filet bleu clair */
-.digital .ramadan-table thead th,
-.digital .ramadan-table thead th.th-fast {
-    background-color: var(--col-blue);
-    border-right-color: var(--border-on-dark);
-    border-bottom-color: var(--accent-blue);
-    color: white;
-}
-
-.digital .ramadan-table thead .th-ar,
-.digital .ramadan-table thead .th-ta {
-    color: var(--col-on-dark);
-}
-
+/* Coordonnées cliquables, sans style de lien */
 .digital .identity-contacts a {
     color: inherit;
     text-decoration: none;
