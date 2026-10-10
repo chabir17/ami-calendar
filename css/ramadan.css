@@ -70,18 +70,11 @@ body {
     grid-template-rows: 41mm 1fr auto;
     grid-template-columns: minmax(0, 1fr); /* le contenu ne peut pas élargir la page */
     position: relative;
-    background-color: white; /* version papier : fond blanc, économie d'encre */
-}
-
-/* Cadre fin bleu marine doublé d'un filet doré, dans la marge d'impression */
-.page.A4-portrait::before {
-    content: '';
-    position: absolute;
-    inset: 5mm;
-    border: 1px solid var(--col-blue);
-    outline: 1px solid var(--deco-gold);
-    outline-offset: -1.5mm;
-    pointer-events: none;
+    /* fond d'hiver (cadre, lanternes, croissant, neige) ; version papier : voile blanc pour économiser l'encre */
+    --bg-veil: rgb(255 255 255 / 0.45);
+    background:
+        linear-gradient(var(--bg-veil), var(--bg-veil)),
+        white url('../assets/img/ramadan-background.jpg') center / 100% 100% no-repeat;
 }
 
 @media screen {
@@ -232,7 +225,7 @@ body {
 .year-corner.top-left::after,
 .year-corner.top-right::before {
     content: '';
-    width: 1.6cm; /* raccourcis : années dégagées des lanternes malgré la calligraphie agrandie */
+    width: 1cm; /* courts : années resserrées, croissant et lanternes de l'image dans les coins */
     height: 11px;
     background-repeat: no-repeat;
     background-size:
@@ -262,7 +255,7 @@ body {
 .ramadan-table-container {
     min-height: 0;
     display: flex;
-    padding: 2mm 10mm; /* pleine largeur, à l'intérieur du cadre */
+    padding: 2mm 11mm; /* pleine largeur, à l'intérieur du cadre de l'image */
 }
 
 .ramadan-table {
@@ -500,7 +493,7 @@ sup.ordinal {
     display: grid;
     grid-template-rows: 9mm 21mm; /* pied de page de 3 cm : invocation | identité (logo de 2 cm) */
     align-items: center;
-    padding: 0 15mm 7mm; /* au-dessus du cadre */
+    padding: 0 15mm 11mm; /* au-dessus des filets bas du cadre de l'image */
     text-align: center;
 }
 
@@ -526,7 +519,7 @@ sup.ordinal {
 
 /* --- VERSION NUMÉRIQUE (par défaut) : en-tête foncé, teintes plus soutenues --- */
 .page.digital {
-    background-color: #fdf9f0; /* version numérique : crème très pâle */
+    --bg-veil: transparent; /* version numérique : fond en couleurs */
     --surface-fast: var(--bg-terracotta-mid);
 }
 
