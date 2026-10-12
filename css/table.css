@@ -23,10 +23,10 @@ ami-prayer-table {
     border-bottom: 1px solid var(--border-green);
 }
 
-/* En-tête bleu marine à motif girih, comme le bandeau du mois voisin (une seule bande foncée en haut de page)
-   et l'en-tête du tableau de la feuille Ramadan ; filet vert : transition vers le corps du tableau */
+/* En-tête vert foncé à motif girih : même construction que le bandeau du mois voisin (bleu marine),
+   le vert reste la couleur des prières ; filet vert clair : transition vers le corps du tableau */
 .prayer-table thead th {
-    background: var(--col-blue) url('../assets/patterns/background-pattern-lightblue.svg');
+    background: var(--col-green-dark) url('../assets/patterns/background-pattern-lightgreen.svg');
     border: 1px solid var(--border-on-dark);
     border-bottom: 1.5px solid var(--accent-green);
     padding: var(--sp-1) 1px;
@@ -38,7 +38,7 @@ ami-prayer-table {
 
 .prayer-table thead .th-ar,
 .prayer-table thead .th-ta {
-    color: var(--col-on-dark);
+    color: var(--col-on-green);
 }
 
 /* Largeurs de colonnes fixes pour les prières */
