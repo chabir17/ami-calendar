@@ -32,8 +32,8 @@
 /* Logo centré verticalement entre les deux filets */
 .logo-box {
     flex-shrink: 0;
-    width: 2cm; /* 2 cm minimum */
-    height: 2cm;
+    width: 2.4cm;
+    height: 2.4cm;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -78,17 +78,23 @@
     line-height: 1.1;
 }
 
-/* Puce entre les deux noms */
+/* Séparateur entre les deux noms : étoile dorée à 8 branches (motif islamique, comme sur la feuille Ramadan) */
 .org-names > * + *::before {
-    content: '•';
+    content: '';
+    display: inline-block;
+    width: 0.55em;
+    height: 0.55em;
     margin-right: var(--sp-3);
-    font-family: var(--font-fr);
-    color: var(--col-blue);
+    vertical-align: 0.1em;
+    background-color: var(--col-gold);
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Crect x='4' y='4' width='12' height='12'/%3E%3Crect x='4' y='4' width='12' height='12' transform='rotate(45 10 10)'/%3E%3C/svg%3E")
+        center / contain no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Crect x='4' y='4' width='12' height='12'/%3E%3Crect x='4' y='4' width='12' height='12' transform='rotate(45 10 10)'/%3E%3C/svg%3E")
+        center / contain no-repeat;
 }
 
 /* Ligne 2 : coordonnées en colonnes, séparées par un simple espace */
-/* Coordonnées en 4 colonnes sur toute la largeur, séparées par des filets dorés verticaux
-   (espaces égaux de part et d'autre de chaque filet) */
+/* Coordonnées en 4 colonnes réparties sur toute la largeur (espaces égaux) */
 .header-contacts {
     display: flex;
     justify-content: space-between;
@@ -97,12 +103,6 @@
     line-height: 1.35;
     white-space: nowrap;
     color: var(--col-text-soft); /* plus clair que les noms : hiérarchie nette */
-}
-
-.contact-sep {
-    width: 1px;
-    align-self: stretch;
-    background-color: var(--col-gold);
 }
 
 .info-line {
