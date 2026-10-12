@@ -4,10 +4,6 @@
    Couleurs, tailles et espacements : jetons de css/variables.css
    ===================================================================== */
 
-:root {
-    --page-margin: 1cm; /* marge sur les 4 bords */
-}
-
 /* --- RESET & GLOBAL --- */
 * {
     box-sizing: border-box;
