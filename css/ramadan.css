@@ -60,8 +60,6 @@ body {
     --surface: var(--bg-blue-faint); /* fonds neutres (bleu clair des en-têtes du calendrier annuel) */
     --surface-fast: var(--bg-terracotta-soft); /* cellules Imsak, Maghrib, Icha AMI */
     --surface-fast-head: var(--bg-terracotta); /* leurs en-têtes */
-    --fs-figure: 15px; /* horaires de la feuille Ramadan */
-    --deco-gold: #c8a85a; /* filets et ornements dorés */
     --bg-friday: var(--bg-green-faint); /* vendredis : vert clair de l'en-tête du tableau annuel */
     width: 210mm;
     height: 297mm;
@@ -70,9 +68,9 @@ body {
     grid-template-rows: 41mm 1fr auto;
     grid-template-columns: minmax(0, 1fr); /* le contenu ne peut pas élargir la page */
     position: relative;
-    /* fond pleine page (lanternes et croissants en haut, sol enneigé en bas, bandeau beige de l'identité) ;
-       version papier : voile blanc pour économiser l'encre */
-    --footer-h: 30.5mm; /* bandeau beige de l'identité, en bas de l'image */
+    /* Version papier : fond crème à arche dorée, bande blanche de l'identité comprise dans l'image ;
+       voile blanc pour économiser l'encre (la version numérique a son propre fond, plus bas) */
+    --footer-h: 30.5mm; /* bande blanche de l'identité, en bas de page */
     --bg-veil: rgb(255 255 255 / 0.45);
     background:
         linear-gradient(var(--bg-veil), var(--bg-veil)),
@@ -86,7 +84,7 @@ body {
     }
 }
 
-/* --- PIED DE PAGE : identité de l'association (comme le header du calendrier annuel) --- */
+/* --- PIED DE PAGE : identité de l'association (mêmes noms et coordonnées que le header du calendrier annuel) --- */
 .ramadan-identity {
     justify-self: center;
     display: flex;
@@ -94,8 +92,6 @@ body {
 }
 
 .identity-row {
-    position: relative; /* au-dessus du motif */
-    flex: 1;
     display: flex;
     align-items: center;
     justify-content: center; /* logo + textes centrés sous la ligne, comme l'invocation */
@@ -182,7 +178,7 @@ body {
     gap: var(--sp-1);
 }
 
-/* --- BANDEAU : 2027 — calligraphie — ١٤٤٨ (lanternes, lune et étoiles : image de fond) --- */
+/* --- BANDEAU : 2027 — calligraphie — ١٤٤٨ (décor : image de fond) --- */
 .ramadan-header-simple {
     position: relative;
     display: flex;
@@ -200,7 +196,7 @@ body {
 }
 
 .ramadan-logo {
-    height: 2.8cm; /* calligraphie sous le croissant, entre les lanternes de l'image */
+    height: 2.8cm;
     flex-shrink: 0;
 }
 
@@ -266,7 +262,7 @@ body {
     table-layout: fixed;
     border-collapse: separate;
     border-spacing: 0;
-    border: 1px solid var(--deco-gold); /* bordure fine dorée, comme les ornements de l'image */
+    border: 1px solid var(--col-gold); /* bordure fine dorée, comme les ornements du fond */
     border-radius: 0.5rem;
     overflow: hidden;
     background-color: white;
@@ -490,10 +486,10 @@ sup.ordinal {
     color: var(--bg-green-faint);
 }
 
-/* --- PIED DE PAGE : invocation d'acceptation --- */
+/* --- PIED DE PAGE : invocation d'acceptation, puis identité sur la bande blanche --- */
 .ramadan-footer {
     display: grid;
-    /* invocation sous le tableau | sol enneigé | bandeau blanc : identité (logo de 2 cm) */
+    /* invocation sous le tableau | respiration | bande blanche : identité (logo de 2 cm) */
     grid-template-rows: 9mm 4.5mm var(--footer-h);
     align-items: center;
     padding: 0 15mm;
@@ -514,7 +510,7 @@ sup.ordinal {
 .dua-orn {
     display: inline-block;
     font-size: var(--fs-xl);
-    color: var(--deco-gold);
+    color: var(--col-gold);
 }
 
 .dua-orn-end {
@@ -535,14 +531,12 @@ sup.ordinal {
     color: var(--col-on-dark);
 }
 
-/* --- VERSION NUMÉRIQUE (par défaut) : en-tête foncé, teintes plus soutenues --- */
+/* --- VERSION NUMÉRIQUE (par défaut) : teintes plus soutenues, fond de nuit d'hiver --- */
 .page.digital {
     --surface-fast: var(--bg-terracotta-mid);
-    /* version numérique (écran) : nuit d'hiver étoilée ; la version papier garde le fond crème économe en encre */
-    /* bandeau blanc de l'identité, séparé de la scène par un filet doré dégradé pleine largeur */
+    /* bande blanche de l'identité, séparée de la scène par un filet doré dégradé pleine largeur */
     background:
-        linear-gradient(90deg, transparent, var(--deco-gold) 18%, #e3c983 50%, var(--deco-gold) 82%, transparent)
-            left 0 bottom var(--footer-h) / 100% 1.5px no-repeat,
+        linear-gradient(90deg, transparent, var(--col-gold) 18%, var(--col-gold-light) 50%, var(--col-gold) 82%, transparent) left 0 bottom var(--footer-h) / 100% 1.5px no-repeat,
         linear-gradient(white, white) bottom / 100% var(--footer-h) no-repeat,
         white url('../assets/img/ramadan-background-night.jpg') center / 100% 100% no-repeat;
 }

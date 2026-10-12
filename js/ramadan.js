@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     // 2. Initialisation
-    await applyTheme(config);
+    applyTheme(config);
 
     if (window.CONFIG) {
         Object.assign(window.CONFIG, config.location);

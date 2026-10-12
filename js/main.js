@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     [clientConfig] = await Promise.all([fetchClientConfig(), loadPrayerTimes()]);
 
     if (clientConfig) {
-        await applyTheme(clientConfig);
+        applyTheme(clientConfig);
         if (window.CONFIG && clientConfig.location) {
             Object.assign(window.CONFIG, clientConfig.location);
         }

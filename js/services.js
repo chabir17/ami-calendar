@@ -382,23 +382,10 @@ export async function fetchRamadanOverrides() {
 }
 
 /**
- * Applique le thème global (Couleurs, Pattern) au document.
+ * Applique la couleur de thème du client (--brand) au document.
  * @param {Object} config - Configuration client
  */
-export async function applyTheme(config) {
+export function applyTheme(config) {
     if (!config?.theme?.color_brand) return;
-
     document.documentElement.style.setProperty('--brand', config.theme.color_brand);
-
-    try {
-        const res = await fetch('assets/patterns/background-pattern.svg');
-        if (res.ok) {
-            let svgText = await res.text();
-            svgText = svgText.replace(/#d4af37/gi, config.theme.color_brand);
-            const dataUri = `data:image/svg+xml;base64,${btoa(svgText)}`;
-            document.documentElement.style.setProperty('--bg-pattern-custom', `url('${dataUri}')`);
-        }
-    } catch (e) {
-        console.warn('Erreur chargement pattern:', e);
-    }
 }

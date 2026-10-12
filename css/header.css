@@ -9,9 +9,8 @@
     margin-top: calc(var(--binding-zone) - var(--page-pad));
     padding: 2mm 0.5cm; /* le logo respire entre les deux filets */
     /* Filets fins dorés en haut et en bas (or des ornements de la feuille Ramadan) */
-    --rule-gold: #c8a85a;
-    border-top: 1px solid var(--rule-gold);
-    border-bottom: 1px solid var(--rule-gold);
+    border-top: 1px solid var(--col-gold);
+    border-bottom: 1px solid var(--col-gold);
 }
 
 /* Motif girih or clair sur toute la largeur (accord avec les filets dorés) */
@@ -65,7 +64,7 @@
 
 .org-fr {
     color: var(--col-green); /* vert du nom français sur le logo */
-    font-size: 24px; /* un cran au-dessus de --fs-xl */
+    font-size: var(--fs-brand);
     font-weight: 600;
     letter-spacing: 0.045em;
     line-height: 1.1;
@@ -74,7 +73,7 @@
 /* Nom tamoul : même taille que le nom français */
 .org-ta {
     color: var(--col-saffron-text); /* safran du nom tamoul sur le logo */
-    font-size: 24px;
+    font-size: var(--fs-brand);
     font-weight: 600;
     line-height: 1.1;
 }
@@ -91,7 +90,7 @@
 .header-contacts {
     display: flex;
     gap: var(--sp-6);
-    font-size: 11px; /* entre --fs-xs et --fs-sm : les coordonnées restent une signature */
+    font-size: var(--fs-contact); /* discrètes : les coordonnées restent une signature */
     line-height: 1.35;
     white-space: nowrap;
     color: var(--col-text-light);

@@ -18,6 +18,10 @@
     /* Safran (minaret et nom tamoul du logo) */
     --col-saffron-text: #b8520f; /* texte : 4.9:1 sur blanc */
 
+    /* Or (ornements, filets, motif du header) */
+    --col-gold: #c8a85a;
+    --col-gold-light: #e3c983; /* reflet au centre des filets dégradés */
+
     /* Terracotta (horaires du jeûne : Imsak, iftār, Icha AMI) */
     --col-terracotta: #a8461f; /* fond d'en-tête, texte blanc : 5.9:1 */
     --bg-terracotta: #f6dccf; /* fond soutenu */
@@ -67,10 +71,12 @@
     /* --- ÉCHELLE TYPOGRAPHIQUE : 4 tailles de texte + 2 tailles de chiffres --- */
     --fs-2xs: 8.5px; /* libellés dans les cases du calendrier (noms complets sur une ligne) */
     --fs-xs: 10px; /* notes : en-têtes de tableau, libellés des cases, coordonnées compactes */
+    --fs-contact: 11px; /* coordonnées du header du calendrier annuel */
     --fs-sm: 12px; /* secondaire : traductions, coordonnées, légende, citation */
     --fs-md: 14px; /* courant : jours de la semaine, texte des tableaux */
-    --fs-xl: 22px; /* titres : nom de l'association, mois, années */
-    --fs-figure: 15px; /* chiffres : horaires de prière (et noms de l'association en portrait) */
+    --fs-xl: 22px; /* titres : mois, années */
+    --fs-brand: 24px; /* noms de l'association (header du calendrier annuel) */
+    --fs-figure: 15px; /* chiffres : horaires de prière, invocation et noms de l'association (feuille Ramadan) */
     --fs-title: 30px; /* années de la page Ramadan */
     --fs-display: 42px; /* numéros des jours du calendrier */
 
