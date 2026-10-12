@@ -26,7 +26,7 @@ ami-prayer-table {
    le vert reste la couleur des prières ; filet vert clair : transition vers le corps du tableau */
 .prayer-table thead th {
     background: var(--col-green-deep);
-    border: none;
+    border: 1px solid var(--border-on-dark); /* séparateurs fins entre les colonnes */
     border-bottom: 1.5px solid var(--accent-green);
     padding: var(--sp-1) 1px;
     font-size: var(--fs-xs);
@@ -76,8 +76,9 @@ ami-prayer-table {
 }
 
 .prayer-table tbody td {
-    border: none;
-    border-bottom: 1px solid var(--border-green); /* lignes horizontales seules : les colonnes tiennent par l'alignement */
+    border: 1px solid var(--border-green);
+    border-left-color: var(--bg-green-faint); /* traits verticaux très légers : le tableau respire */
+    border-right-color: var(--bg-green-faint);
     text-align: center;
     font-weight: 600;
     font-size: var(--fs-figure);
