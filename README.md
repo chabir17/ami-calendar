@@ -19,7 +19,7 @@ Le design est piloté par des variables CSS (`css/variables.css`) permettant une
 - **Indicateurs de Jours** :
     - Numéro du jour en rouge pour les jours fériés, en vert pour l'Aïd (libellé écrit dans la case).
     - Vacances scolaires (Zone C) : fond doré clair (`--bg-holiday`) ; l'Aïd et les jours fériés restent prioritaires.
-    - Bande du bas : nom des vacances scolaires du mois et passage à l'heure d'été / d'hiver (masqués les mois où ils ne s'appliquent pas).
+    - Bande du bas : légende propre à chaque mois, dans l'ordre chronologique : jours vertueux (étoile verte : début du Ramadan, 10 dernières nuits, 6 jours de Shawwāl, 10 jours de Dhū al-Ḥijja, ʿArafa, Tashrīq, Tāsūʿāʾ et ʿĀshūrāʾ, d'après des hadiths authentiques, liste `VIRTUOUS_DAYS` dans `js/main.js`), vacances scolaires et passage à l'heure d'été / d'hiver. Masquée si le mois n'a aucun événement.
     - Icônes SVG (`assets/icons/`) : croissant vert pour la nouvelle lune, horloge bleue avec flèche avant/arrière pour le passage à l'heure d'été/hiver.
 
 ### 🌐 Typographie Multilingue

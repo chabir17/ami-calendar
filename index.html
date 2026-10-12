@@ -145,19 +145,8 @@
                             </div>
                         </div>
                         <ami-calendar-grid></ami-calendar-grid>
-                        <!-- Bande du bas : vacances scolaires et changement d'heure du mois (masqués s'il n'y en a pas) -->
-                        <div class="legend-box">
-                            <div class="legend-item legend-holiday">
-                                <span class="legend-color box-holiday"></span>
-                                <span class="legend-holiday-name"></span>
-                            </div>
-                            <div class="legend-item legend-dst">
-                                <span class="legend-icon"
-                                    ><svg class="icon"><use class="legend-dst-icon" href="assets/icons/icon-dst-forward.svg#icon"></use></svg
-                                ></span>
-                                <span class="legend-dst-name"></span>
-                            </div>
-                        </div>
+                        <!-- Bande du bas : légende des événements du mois (jours vertueux, vacances, changement d'heure), remplie par js/main.js -->
+                        <div class="legend-box"></div>
                     </section>
 
                     <!-- SECTION DROITE : Tableau des Horaires -->
