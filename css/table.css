@@ -106,6 +106,13 @@ ami-prayer-table {
     padding: 0 var(--sp-2);
 }
 
+/* Jour en 3 lettres majuscules (comme la feuille Ramadan), une taille sous les horaires */
+.date-cell .day-name {
+    text-transform: uppercase;
+    font-size: var(--fs-md);
+    letter-spacing: 0.04em;
+}
+
 /* Fin de semaine : filet plus marqué après le dimanche (repérage par blocs de 7 jours) */
 .prayer-table tbody tr.week-end td {
     border-bottom: 1.5px solid var(--accent-green);
