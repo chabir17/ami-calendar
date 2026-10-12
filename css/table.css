@@ -1,7 +1,8 @@
 /* --- TABLEAU DES HORAIRES DE PRIÈRES (DROITE) --- */
 .right-prayer-table-container {
     overflow: hidden;
-    border-radius: 0.5rem; /* sans contour, comme la carte du calendrier */
+    border: 1px solid var(--border-green); /* contour fin, comme la carte du calendrier */
+    border-radius: 0.5rem;
     display: flex;
     flex-direction: column;
     background-color: white;
