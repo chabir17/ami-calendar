@@ -14,7 +14,19 @@
     border-bottom: 1.5px solid var(--col-green);
 }
 
+/* Motif girih gris chaud derrière l'identité seulement : s'estompe avant les coordonnées */
+.header-fixed::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('../assets/patterns/background-pattern-neutral.svg');
+    -webkit-mask-image: linear-gradient(to right, black 0%, black 25%, transparent 55%);
+    mask-image: linear-gradient(to right, black 0%, black 25%, transparent 55%);
+    pointer-events: none;
+}
+
 .header-content {
+    position: relative; /* au-dessus du motif */
     display: flex;
     align-items: center;
     gap: var(--sp-3);
