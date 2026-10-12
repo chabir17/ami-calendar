@@ -65,7 +65,7 @@
 
 .org-fr {
     color: var(--col-green); /* vert du nom français sur le logo */
-    font-size: var(--fs-xl);
+    font-size: 24px; /* un cran au-dessus de --fs-xl */
     font-weight: 600;
     letter-spacing: 0.045em;
     line-height: 1.1;
@@ -74,7 +74,7 @@
 /* Nom tamoul : même taille que le nom français */
 .org-ta {
     color: var(--col-saffron-text); /* safran du nom tamoul sur le logo */
-    font-size: var(--fs-xl);
+    font-size: 24px;
     font-weight: 600;
     line-height: 1.1;
 }
@@ -91,7 +91,7 @@
 .header-contacts {
     display: flex;
     gap: var(--sp-6);
-    font-size: var(--fs-sm);
+    font-size: 11px; /* entre --fs-xs et --fs-sm : les coordonnées restent une signature */
     line-height: 1.35;
     white-space: nowrap;
     color: var(--col-text-light);
