@@ -140,7 +140,7 @@ function updateLegends(year, month, container) {
     const quote = window.CITATIONS?.[getHijriDateSafe(new Date(year, jsMonth, 15)).monthNameFR];
     DOM.setDisplay('.month-quote', !!quote, container, 'block');
     if (quote) {
-        DOM.setText('.quote-text', `« ${quote.text} »`, container);
+        DOM.setText('.quote-text', quote.text, container); // ornements dorés en CSS (pas de guillemets)
         DOM.setText('.quote-source', `— ${quote.source}`, container);
     }
     DOM.setDisplay('.legend-box', holidayNames.size > 0 || !!quote, container);

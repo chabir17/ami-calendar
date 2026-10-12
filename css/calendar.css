@@ -300,7 +300,7 @@
     white-space: nowrap; /* une ligne chaque mois : textes courts dans data/citations.js */
     text-align: center;
     color: var(--col-text-light);
-    letter-spacing: -0.01em; /* la citation la plus longue (janvier) tient sur une ligne */
+    letter-spacing: -0.02em; /* la citation la plus longue (janvier) tient sur une ligne, ornements compris */
     flex: 1; /* légende à gauche, hadith centré dans l'espace restant : même composition chaque mois */
 }
 
@@ -314,20 +314,25 @@
     border-left: none;
 }
 
-/* Étoiles dorées à 8 branches de part et d'autre du hadith (comme l'invocation de la feuille Ramadan) */
-.month-quote::before,
-.month-quote::after {
+/* Ornements dorés en accolade autour du hadith, à la place des guillemets
+   (les parenthèses ornées ﴾ ﴿ sont réservées au Coran) ; le second en miroir */
+.quote-text::before,
+.quote-text::after {
     content: '';
     display: inline-block;
-    width: 0.7em;
-    height: 0.7em;
-    margin: 0 var(--sp-2);
-    vertical-align: -0.05em;
+    width: 0.5em;
+    height: 1.25em;
+    margin: 0 2px;
+    vertical-align: -0.3em;
     background-color: var(--col-gold);
-    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Crect x='4' y='4' width='12' height='12'/%3E%3Crect x='4' y='4' width='12' height='12' transform='rotate(45 10 10)'/%3E%3C/svg%3E")
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 24'%3E%3Cpath d='M10.5 1.5C5.5 1.5 7 9 3.2 12C7 15 5.5 22.5 10.5 22.5' fill='none' stroke='%23000' stroke-width='1.6' stroke-linecap='round'/%3E%3Ccircle cx='1.6' cy='12' r='1.4'/%3E%3Ccircle cx='9.5' cy='6.5' r='0.9'/%3E%3Ccircle cx='9.5' cy='17.5' r='0.9'/%3E%3C/svg%3E")
         center / contain no-repeat;
-    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Crect x='4' y='4' width='12' height='12'/%3E%3Crect x='4' y='4' width='12' height='12' transform='rotate(45 10 10)'/%3E%3C/svg%3E")
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 24'%3E%3Cpath d='M10.5 1.5C5.5 1.5 7 9 3.2 12C7 15 5.5 22.5 10.5 22.5' fill='none' stroke='%23000' stroke-width='1.6' stroke-linecap='round'/%3E%3Ccircle cx='1.6' cy='12' r='1.4'/%3E%3Ccircle cx='9.5' cy='6.5' r='0.9'/%3E%3Ccircle cx='9.5' cy='17.5' r='0.9'/%3E%3C/svg%3E")
         center / contain no-repeat;
+}
+
+.quote-text::after {
+    transform: scaleX(-1);
 }
 
 .quote-source {
