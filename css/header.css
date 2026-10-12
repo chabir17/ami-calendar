@@ -8,7 +8,7 @@
        la bordure du haut n'est pas perforée */
     margin-top: calc(var(--binding-zone) - var(--page-pad));
     height: var(--header-h); /* filets compris (box-sizing: border-box) */
-    padding: 1mm 0.5cm;
+    padding: 1mm;
     /* Filets aux couleurs du logo : safran en haut (nom tamoul), vert en bas (nom français) */
     border-top: 2px solid var(--col-saffron-text);
     border-bottom: 2px solid var(--col-green);
@@ -53,7 +53,7 @@
     min-width: 0;
     display: flex;
     align-items: center;
-    justify-content: space-between; /* identité à gauche, coordonnées à droite */
+    /* identité à gauche ; coordonnées centrées dans l'espace restant (même vide de part et d'autre) */
     gap: var(--sp-6);
 }
 
@@ -82,8 +82,9 @@
 }
 
 /* Ligne 2 : coordonnées en colonnes, séparées par un simple espace */
-/* Coordonnées en 2 colonnes, calées à droite */
+/* Coordonnées en 2 colonnes, centrées entre les noms et le bord droit */
 .header-contacts {
+    margin: 0 auto;
     display: flex;
     gap: var(--sp-6);
     font-size: var(--fs-contact); /* discrètes : les coordonnées restent une signature */
