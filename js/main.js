@@ -120,18 +120,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 /**
- * Périodes vertueuses affichées dans la légende du mois (hadiths authentiques) : 10 dernières nuits du Ramadan
- * (al-Bukhārī 2020), 6 jours de Shawwāl (Muslim 1164), 10 premiers jours de Dhū al-Ḥijja (al-Bukhārī 969).
- * Les jours précis (début du Ramadan, ʿArafa, Tashrīq, ʿĀshūrāʾ) sont écrits dans les cases (js/services.js).
- */
-const VIRTUOUS_PERIODS = [
-    { month: 'Ramaḍān', from: 21, to: 30, label: '10 dernières nuits du Ramadan' },
-    { month: 'Shawwāl', from: 2, to: 7, label: '6 jours de Shawwāl' },
-    { month: 'Dhū al-Ḥijjah', from: 1, to: 10, label: '10 premiers jours de Dhū al-Ḥijja' }
-];
-
-/**
- * Légende du bas, propre à chaque mois : périodes vertueuses, vacances scolaires et changement d'heure,
+ * Légende du bas, propre à chaque mois : vacances scolaires et changement d'heure,
  * dans l'ordre chronologique. La bande reste affichée (même vide) : même composition chaque mois.
  */
 function updateLegend(year, month, container) {
@@ -148,15 +137,7 @@ function updateLegend(year, month, container) {
 
     for (let d = 1; d <= daysInMonth; d++) {
         const date = new Date(year, month - 1, d);
-        const hijri = getHijriDateSafe(date);
-        const info = getDayInfo(date, hijri);
-        const hDay = parseInt(hijri.day, 10);
-
-        for (const p of VIRTUOUS_PERIODS) {
-            if (hijri.monthNameFR === p.month && hDay >= p.from && hDay <= p.to) {
-                add(p.label, d, `<span class="legend-star"></span><span>${p.label}</span>`);
-            }
-        }
+        const info = getDayInfo(date, getHijriDateSafe(date));
         if (info.isHoliday && info.holidayName) {
             add(info.holidayName, d, `<span class="legend-color box-holiday"></span><span>${info.holidayName}</span>`);
         }

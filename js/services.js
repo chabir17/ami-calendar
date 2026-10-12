@@ -12,7 +12,6 @@ const HIJRI_CACHE = new Map();
 /**
  * Jours vertueux d'un jour précis (mois hégirien → jour → libellé), écrits dans la case comme l'Aïd :
  * début du Ramadan, ʿArafa (Muslim 1162), jours de Tashrīq (Muslim 1141), ʿĀshūrāʾ (Muslim 1162).
- * Les périodes (10 dernières nuits, 6 jours de Shawwāl, 10 jours de Dhū al-Ḥijja) figurent dans la légende du mois.
  */
 const VIRTUOUS_DAYS = {
     Ramaḍān: { 1: 'Début du Ramadan' },
