@@ -60,7 +60,7 @@ body {
     --surface: var(--bg-blue-faint); /* fonds neutres (bleu clair des en-têtes du calendrier annuel) */
     --surface-fast: var(--bg-terracotta-soft); /* cellules Imsak, Maghrib, Icha AMI */
     --surface-fast-head: var(--bg-terracotta); /* leurs en-têtes */
-    --bg-friday: var(--bg-green-faint); /* vendredis : vert clair de l'en-tête du tableau annuel */
+    --bg-friday: var(--bg-green-faint); /* vendredis : vert très clair, comme le calendrier annuel */
     width: 210mm;
     height: 297mm;
     display: grid;
