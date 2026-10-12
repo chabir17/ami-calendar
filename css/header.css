@@ -14,12 +14,12 @@
     border-bottom: 1px solid var(--rule-gold);
 }
 
-/* Motif girih bleu marine très pâle sur toute la largeur */
+/* Motif girih or clair sur toute la largeur (accord avec les filets dorés) */
 .header-fixed::before {
     content: '';
     position: absolute;
     inset: 0;
-    background-image: url('../assets/patterns/background-pattern-navy.svg');
+    background-image: url('../assets/patterns/background-pattern-gold.svg');
     pointer-events: none;
 }
 
