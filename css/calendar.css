@@ -261,6 +261,11 @@
 }
 
 /* Aïd (vert) */
+/* Jours vertueux (ʿArafa, ʿĀshūrāʾ…) : vert hégirien, numéro inchangé */
+.event-line.virtuous-label {
+    color: var(--col-green);
+}
+
 .event-line.eid-label {
     color: var(--col-green);
 }

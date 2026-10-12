@@ -8,6 +8,17 @@ import { DATE_UTILS } from './utils.js';
  * Constantes et Caches
  */
 const HIJRI_CACHE = new Map();
+
+/**
+ * Jours vertueux d'un jour précis (mois hégirien → jour → libellé), écrits dans la case comme l'Aïd :
+ * début du Ramadan, ʿArafa (Muslim 1162), jours de Tashrīq (Muslim 1141), Tāsūʿāʾ et ʿĀshūrāʾ (Muslim 1134, 1162).
+ * Les périodes (10 dernières nuits, 6 jours de Shawwāl, 10 jours de Dhū al-Ḥijja) figurent dans la légende du mois.
+ */
+const VIRTUOUS_DAYS = {
+    Ramaḍān: { 1: 'Début du Ramadan' },
+    'Dhū al-Ḥijjah': { 9: 'Jour de ʿArafa', 11: 'Tashrīq', 12: 'Tashrīq', 13: 'Tashrīq' },
+    Muḥarram: { 9: 'Tāsūʿāʾ', 10: 'ʿĀshūrāʾ' }
+};
 const CACHE_KEY = 'ami_calendar_cache_v2'; // v2 : vacances normalisées (doublons, ponts)
 // Configuration des décalages Hégiriens par période (YYYY-MM-DD)
 const HIJRI_OFFSETS = [
@@ -194,7 +205,7 @@ export function getDayInfo(date, hijri) {
     let info = {
         isHoliday: false,
         isPublicHoliday: false,
-        labels: [], // [{ text, type: 'eid' | 'public' | 'dst' }], tous affichés dans la case
+        labels: [], // [{ text, type: 'eid' | 'virtuous' | 'public' | 'dst' }], tous affichés dans la case
         isNewMoon: false,
         isEid: false,
         isDST: false
@@ -262,6 +273,10 @@ export function getDayInfo(date, hijri) {
     }
     // L'Aïd en premier : c'est l'information prioritaire pour les fidèles
     if (info.isEid) info.labels.unshift({ text: info.eidName, type: 'eid' });
+
+    // 6. Jours vertueux d'un jour précis, écrits dans la case (hadiths authentiques, voir VIRTUOUS_DAYS)
+    const virtuous = VIRTUOUS_DAYS[hijri.monthNameFR]?.[parseInt(hijri.day, 10)];
+    if (virtuous) info.labels.push({ text: virtuous, type: 'virtuous' });
     return info;
 }
 

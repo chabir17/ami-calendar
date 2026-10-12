@@ -120,32 +120,30 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 /**
- * Jours vertueux affichés dans la légende (date hégirienne → libellé), d'après des hadiths authentiques :
- * Ramadan et ses 10 dernières nuits (al-Bukhārī 2020), 6 jours de Shawwāl (Muslim 1164),
- * 10 premiers jours de Dhū al-Ḥijja (al-Bukhārī 969), ʿArafa (Muslim 1162), jours de Tashrīq (Muslim 1141),
- * Tāsūʿāʾ et ʿĀshūrāʾ (Muslim 1134, 1162). Dates hégiriennes sous réserve de l'observation du croissant.
+ * Périodes vertueuses affichées dans la légende du mois (hadiths authentiques) : 10 dernières nuits du Ramadan
+ * (al-Bukhārī 2020), 6 jours de Shawwāl (Muslim 1164), 10 premiers jours de Dhū al-Ḥijja (al-Bukhārī 969).
+ * Les jours précis (début du Ramadan, ʿArafa, Tashrīq, Tāsūʿāʾ, ʿĀshūrāʾ) sont écrits dans les cases (js/services.js).
  */
-const VIRTUOUS_DAYS = [
-    { month: 'Ramaḍān', from: 1, to: 1, label: 'Début du Ramadan' },
-    { month: 'Ramaḍān', from: 21, to: 21, label: '10 dernières nuits du Ramadan', since: true },
-    { month: 'Shawwāl', from: 2, to: 2, label: '6 jours de Shawwāl', since: true },
-    { month: 'Dhū al-Ḥijjah', from: 1, to: 1, label: '10 jours de Dhū al-Ḥijja', since: true },
-    { month: 'Dhū al-Ḥijjah', from: 9, to: 9, label: 'Jour de ʿArafa' },
-    { month: 'Dhū al-Ḥijjah', from: 11, to: 13, label: 'Tashrīq' },
-    { month: 'Muḥarram', from: 9, to: 10, label: 'Tāsūʿāʾ et ʿĀshūrāʾ' }
+const VIRTUOUS_PERIODS = [
+    { month: 'Ramaḍān', from: 21, to: 30, label: '10 dernières nuits du Ramadan' },
+    { month: 'Shawwāl', from: 2, to: 7, label: '6 jours de Shawwāl' },
+    { month: 'Dhū al-Ḥijjah', from: 1, to: 10, label: '10 premiers jours de Dhū al-Ḥijja' }
 ];
 
 /**
- * Légende du bas, propre à chaque mois : jours vertueux, vacances scolaires et changement d'heure,
+ * Légende du bas, propre à chaque mois : périodes vertueuses, vacances scolaires et changement d'heure,
  * dans l'ordre chronologique. La bande est masquée si le mois n'a aucun événement.
  */
 function updateLegend(year, month, container) {
     const box = container.querySelector('.legend-box');
     if (!box) return;
-    const fmt = new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long' });
-    const items = []; // { day, html }
-    const seenHolidays = new Set();
-    const virtuous = new Map(); // libellé → { first, last, since }
+    const items = []; // { day, html }, sans date : les jours sont repérables dans la grille
+    const seen = new Set();
+    const add = (key, day, html) => {
+        if (seen.has(key)) return;
+        seen.add(key);
+        items.push({ day, html });
+    };
     const daysInMonth = new Date(year, month, 0).getDate();
 
     for (let d = 1; d <= daysInMonth; d++) {
@@ -154,27 +152,19 @@ function updateLegend(year, month, container) {
         const info = getDayInfo(date, hijri);
         const hDay = parseInt(hijri.day, 10);
 
-        for (const v of VIRTUOUS_DAYS) {
-            if (hijri.monthNameFR === v.month && hDay >= v.from && hDay <= v.to) {
-                const r = virtuous.get(v.label) || { first: d, last: d, since: v.since };
-                r.last = d;
-                virtuous.set(v.label, r);
+        for (const p of VIRTUOUS_PERIODS) {
+            if (hijri.monthNameFR === p.month && hDay >= p.from && hDay <= p.to) {
+                add(p.label, d, `<span class="legend-star"></span><span>${p.label}</span>`);
             }
         }
-        if (info.isHoliday && info.holidayName && !seenHolidays.has(info.holidayName)) {
-            seenHolidays.add(info.holidayName);
-            items.push({ day: d, html: `<span class="legend-color box-holiday"></span><span>${info.holidayName}</span>` });
+        if (info.isHoliday && info.holidayName) {
+            add(info.holidayName, d, `<span class="legend-color box-holiday"></span><span>${info.holidayName}</span>`);
         }
         if (info.isDST) {
             const summer = info.dstType === 'summer';
             const icon = `<span class="legend-icon"><svg class="icon"><use href="assets/icons/icon-dst-${summer ? 'forward' : 'back'}.svg#icon"></use></svg></span>`;
-            items.push({ day: d, html: `${icon}<span>${summer ? "Heure d'été (+1 h)" : "Heure d'hiver (−1 h)"} : ${fmt.format(date)}</span>` });
+            add('dst', d, `${icon}<span>${summer ? "Passage à l'heure d'été" : "Passage à l'heure d'hiver"}</span>`);
         }
-    }
-    for (const [label, { first, last, since }] of virtuous) {
-        const a = fmt.format(new Date(year, month - 1, first));
-        const when = since ? `dès le ${a}` : first === last ? a : `${first}–${fmt.format(new Date(year, month - 1, last))}`;
-        items.push({ day: first, html: `<span class="legend-star"></span><span>${label} : ${when}</span>` });
     }
 
     items.sort((x, y) => x.day - y.day);
