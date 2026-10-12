@@ -15,6 +15,9 @@
     --col-green: #2e7d32;
     --col-green-dark: #1b5e20; /* texte sur fond vert pâle : 6.9:1 */
     --col-green-deep: #0e4413; /* fond d'en-tête : même saturation que --col-blue, à peine plus clair (OKLCH 0.34 / 0.096) pour paraître aussi sombre que le bleu marine */
+    /* Bandeaux foncés : léger dégradé vertical (haut éclairci de 14 %), même intensité pour les deux */
+    --grad-blue: linear-gradient(to bottom, color-mix(in oklab, var(--col-blue), white 14%), var(--col-blue));
+    --grad-green: linear-gradient(to bottom, color-mix(in oklab, var(--col-green-deep), white 14%), var(--col-green-deep));
     --col-on-green: #c1d5c0; /* texte secondaire sur --col-green-deep : pendant vert de --col-on-blue (7.3:1) */
 
     /* Safran (minaret et nom tamoul du logo) */

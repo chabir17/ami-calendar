@@ -1,4 +1,4 @@
-/* --- TITRE DU MOIS : en-tête de la carte du calendrier, bleu marine uni (pendant de l'en-tête vert des horaires) ---
+/* --- TITRE DU MOIS : en-tête de la carte du calendrier, bleu marine en léger dégradé (pendant de l'en-tête vert des horaires) ---
    Grégorien à gauche, hégirien à droite. Ligne 1 : mois + année. Ligne 2 : traductions.
    Même disposition et même hauteur pour les 12 mois. */
 .month-titles-zone {
@@ -7,7 +7,7 @@
     align-items: flex-end;
     gap: var(--sp-3);
     padding: var(--sp-2) var(--sp-2) var(--sp-1);
-    background-color: var(--col-blue);
+    background: var(--col-blue) var(--grad-blue);
     color: white;
     height: var(--band-h);
 }
