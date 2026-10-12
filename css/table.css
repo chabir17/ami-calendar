@@ -34,6 +34,7 @@ ami-prayer-table {
     font-weight: 400;
     vertical-align: middle;
     color: white;
+    height: var(--band-h); /* même hauteur que le bandeau du mois voisin */
 }
 
 .prayer-table thead .th-ar,

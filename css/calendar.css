@@ -10,6 +10,7 @@
     background-color: var(--col-blue);
     background-image: url('../assets/patterns/background-pattern-lightblue.svg');
     color: white;
+    height: var(--band-h);
 }
 
 .titles-hijri {
@@ -144,6 +145,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+/* Cases hors du mois : grisé très pâle, pour ne pas les confondre avec des jours sans événement */
+.day-cell-visual.empty {
+    background-color: var(--bg-table-stripe);
 }
 
 .day-cell-visual:nth-child(7n) {
@@ -306,6 +312,22 @@
 .legend-item[style*='none'] + .month-quote {
     padding-left: 0;
     border-left: none;
+}
+
+/* Étoiles dorées à 8 branches de part et d'autre du hadith (comme l'invocation de la feuille Ramadan) */
+.month-quote::before,
+.month-quote::after {
+    content: '';
+    display: inline-block;
+    width: 0.7em;
+    height: 0.7em;
+    margin: 0 var(--sp-2);
+    vertical-align: -0.05em;
+    background-color: var(--col-gold);
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Crect x='4' y='4' width='12' height='12'/%3E%3Crect x='4' y='4' width='12' height='12' transform='rotate(45 10 10)'/%3E%3C/svg%3E")
+        center / contain no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Crect x='4' y='4' width='12' height='12'/%3E%3Crect x='4' y='4' width='12' height='12' transform='rotate(45 10 10)'/%3E%3C/svg%3E")
+        center / contain no-repeat;
 }
 
 .quote-source {
