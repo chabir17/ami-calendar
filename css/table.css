@@ -23,10 +23,10 @@ ami-prayer-table {
     border-bottom: 1px solid var(--border-green);
 }
 
-/* En-tête vert foncé à motif girih : même construction que le bandeau du mois voisin (bleu marine),
+/* En-tête vert foncé à motif girih : pendant exact du bandeau du mois voisin (même luminosité que le bleu marine),
    le vert reste la couleur des prières ; filet vert clair : transition vers le corps du tableau */
 .prayer-table thead th {
-    background: var(--col-green-dark) url('../assets/patterns/background-pattern-lightgreen.svg');
+    background: var(--col-green-deep) url('../assets/patterns/background-pattern-lightgreen.svg');
     border: 1px solid var(--border-on-dark);
     border-bottom: 1.5px solid var(--accent-green);
     padding: var(--sp-1) 1px;
