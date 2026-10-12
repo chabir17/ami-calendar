@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 /**
  * Périodes vertueuses affichées dans la légende du mois (hadiths authentiques) : 10 dernières nuits du Ramadan
  * (al-Bukhārī 2020), 6 jours de Shawwāl (Muslim 1164), 10 premiers jours de Dhū al-Ḥijja (al-Bukhārī 969).
- * Les jours précis (début du Ramadan, ʿArafa, Tashrīq, Tāsūʿāʾ, ʿĀshūrāʾ) sont écrits dans les cases (js/services.js).
+ * Les jours précis (début du Ramadan, ʿArafa, Tashrīq, ʿĀshūrāʾ) sont écrits dans les cases (js/services.js).
  */
 const VIRTUOUS_PERIODS = [
     { month: 'Ramaḍān', from: 21, to: 30, label: '10 dernières nuits du Ramadan' },
@@ -132,7 +132,7 @@ const VIRTUOUS_PERIODS = [
 
 /**
  * Légende du bas, propre à chaque mois : périodes vertueuses, vacances scolaires et changement d'heure,
- * dans l'ordre chronologique. La bande est masquée si le mois n'a aucun événement.
+ * dans l'ordre chronologique. La bande reste affichée (même vide) : même composition chaque mois.
  */
 function updateLegend(year, month, container) {
     const box = container.querySelector('.legend-box');
@@ -169,7 +169,6 @@ function updateLegend(year, month, container) {
 
     items.sort((x, y) => x.day - y.day);
     box.innerHTML = items.map((i) => `<div class="legend-item">${i.html}</div>`).join('');
-    DOM.setDisplay('.legend-box', items.length > 0, container);
 }
 
 /**

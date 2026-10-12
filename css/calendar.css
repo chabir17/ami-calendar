@@ -280,6 +280,7 @@
     padding: var(--sp-2);
     border-top: 1px solid var(--border-blue);
     margin-top: auto;
+    min-height: 31px; /* hauteur d'une ligne de légende, même vide : même grille chaque mois */
     display: flex;
     align-items: center;
     flex-wrap: wrap; /* mois chargés : 2e ligne plutôt que des libellés tronqués */
