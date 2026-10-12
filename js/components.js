@@ -93,6 +93,7 @@ class CalendarGrid extends HTMLElement {
                 const dstIcon = root.querySelector('.dst-icon');
                 dstIcon.hidden = false;
                 const dir = dayInfo.dstType === 'winter' ? 'back' : 'forward';
+                // icon-dst-back.svg / icon-dst-forward.svg (nom construit dynamiquement)
                 dstIcon.innerHTML = `<svg class="icon"><use href="assets/icons/icon-dst-${dir}.svg#icon"></use></svg>`;
                 if (dayInfo.isNewMoon) dstIcon.style.left = '18px';
             }
