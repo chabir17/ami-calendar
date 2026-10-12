@@ -7,22 +7,17 @@
     /* Le bandeau commence sous la zone de reliure du bord haut (trous de spirale) :
        la bordure du haut n'est pas perforée */
     margin-top: calc(var(--binding-zone) - var(--page-pad));
-    padding: 3mm 0.5cm; /* l'identité respire entre les filets */
-    /* Filets « anglais » dorés en haut et en bas : un épais à l'extérieur, un fin à l'intérieur */
-    border-top: 2px solid var(--col-gold);
-    border-bottom: 2px solid var(--col-gold);
-    box-shadow:
-        inset 0 2px 0 var(--bg-ivory),
-        inset 0 2.75px 0 var(--col-gold),
-        inset 0 -2px 0 var(--bg-ivory),
-        inset 0 -2.75px 0 var(--col-gold);
+    padding: 2mm 0.5cm; /* le logo respire entre les deux filets */
+    /* Filets fins dorés en haut et en bas (papier à en-tête, or des ornements de la feuille Ramadan) */
+    border-top: 1px solid var(--col-gold);
+    border-bottom: 1px solid var(--col-gold);
 }
 
 /* Motif girih or clair sur toute la largeur (accord avec les filets dorés) */
 .header-fixed::before {
     content: '';
     position: absolute;
-    inset: 3px 0; /* sous les filets fins */
+    inset: 0;
     background-image: url('../assets/patterns/background-pattern-gold.svg');
     pointer-events: none;
 }
@@ -37,8 +32,8 @@
 /* Logo centré verticalement entre les deux filets */
 .logo-box {
     flex-shrink: 0;
-    width: 2.2cm; /* 2 cm minimum */
-    height: 2.2cm;
+    width: 2cm; /* 2 cm minimum */
+    height: 2cm;
     display: flex;
     align-items: center;
     justify-content: center;

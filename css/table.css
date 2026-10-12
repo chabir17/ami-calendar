@@ -1,8 +1,7 @@
 /* --- TABLEAU DES HORAIRES DE PRIÈRES (DROITE) --- */
 .right-prayer-table-container {
     overflow: hidden;
-    border: 1px solid var(--border-green);
-    border-radius: 0.5rem;
+    border-radius: 0.5rem; /* sans contour, comme la carte du calendrier */
     display: flex;
     flex-direction: column;
     background-color: white;
@@ -20,14 +19,13 @@ ami-prayer-table {
     height: 100%;
     border-collapse: collapse;
     border: hidden;
-    border-bottom: 1px solid var(--border-green);
 }
 
 /* En-tête vert foncé uni : même luminosité que le bandeau bleu marine du mois voisin,
    le vert reste la couleur des prières ; filet vert clair : transition vers le corps du tableau */
 .prayer-table thead th {
     background: var(--col-green-deep);
-    border: 1px solid var(--border-on-dark);
+    border: none;
     border-bottom: 1.5px solid var(--accent-green);
     padding: var(--sp-1) 1px;
     font-size: var(--fs-xs);
@@ -77,9 +75,8 @@ ami-prayer-table {
 }
 
 .prayer-table tbody td {
-    border: 1px solid var(--border-green);
-    border-left-color: var(--bg-green-faint); /* traits verticaux très légers : le tableau respire */
-    border-right-color: var(--bg-green-faint);
+    border: none;
+    border-bottom: 1px solid var(--border-green); /* lignes horizontales seules : les colonnes tiennent par l'alignement */
     text-align: center;
     font-weight: 600;
     font-size: var(--fs-figure);
