@@ -14,14 +14,12 @@
     border-bottom: 1.5px solid var(--col-green);
 }
 
-/* Motif girih gris chaud derrière l'identité seulement : s'estompe avant les coordonnées */
+/* Motif girih gris chaud très pâle sur toute la largeur (texture de papier à en-tête, sans couleur ajoutée) */
 .header-fixed::before {
     content: '';
     position: absolute;
     inset: 0;
     background-image: url('../assets/patterns/background-pattern-neutral.svg');
-    -webkit-mask-image: linear-gradient(to right, black 0%, black 25%, transparent 55%);
-    mask-image: linear-gradient(to right, black 0%, black 25%, transparent 55%);
     pointer-events: none;
 }
 
