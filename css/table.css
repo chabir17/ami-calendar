@@ -89,11 +89,6 @@ ami-prayer-table {
     padding: 0; /* hauteur repartie par le tableau (height: 100%) : 28 a 31 lignes tiennent toujours */
 }
 
-.prayer-table tbody tr:nth-child(even) {
-    background: var(--bg-table-stripe);
-}
-
-/* même spécificité que les rayures, déclaré après : prioritaire sans !important */
 .prayer-table tbody tr.is-friday {
     background: var(--bg-friday);
 }

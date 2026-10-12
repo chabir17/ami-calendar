@@ -1,4 +1,4 @@
-/* --- TITRE DU MOIS : en-tête de la carte du calendrier, bleu marine avec motif girih bleu clair ---
+/* --- TITRE DU MOIS : en-tête de la carte du calendrier, bleu marine uni (pendant de l'en-tête vert des horaires) ---
    Grégorien à gauche, hégirien à droite. Ligne 1 : mois + année. Ligne 2 : traductions.
    Même disposition et même hauteur pour les 12 mois. */
 .month-titles-zone {
@@ -8,7 +8,6 @@
     gap: var(--sp-3);
     padding: var(--sp-2) var(--sp-2) var(--sp-1);
     background-color: var(--col-blue);
-    background-image: url('../assets/patterns/background-pattern-lightblue.svg');
     color: white;
     height: var(--band-h);
 }
@@ -149,7 +148,7 @@
 
 /* Cases hors du mois : grisé très pâle, pour ne pas les confondre avec des jours sans événement */
 .day-cell-visual.empty {
-    background-color: var(--bg-table-stripe);
+    background-color: var(--bg-empty);
 }
 
 .day-cell-visual:nth-child(7n) {

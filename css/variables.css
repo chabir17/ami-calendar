@@ -14,7 +14,7 @@
     /* Vert (Référence Mosquée) */
     --col-green: #2e7d32;
     --col-green-dark: #1b5e20; /* texte sur fond vert pâle : 6.9:1 */
-    --col-green-deep: #1b4b1d; /* fond d'en-tête uni : même luminosité perçue que le bandeau bleu marine avec son motif (OKLCH 0.37 / 0.091) */
+    --col-green-deep: #013a08; /* fond d'en-tête : même luminosité et saturation que --col-blue (OKLCH 0.30 / 0.096) */
     --col-on-green: #c1d5c0; /* texte secondaire sur --col-green-deep : pendant vert de --col-on-blue (6.5:1) */
 
     /* Safran (minaret et nom tamoul du logo) */
@@ -51,8 +51,8 @@
     /* Vert pastel (vendredis du tableau des horaires) */
     --bg-friday: var(--bg-green-faint);
 
-    /* Gris pastel pour les rayures du tableau */
-    --bg-table-stripe: #f4f5f7;
+    /* Gris pastel : cases hors du mois */
+    --bg-empty: #f4f5f7;
 
     /* Pastels opaques (rendu fiable sur laser de bureau, papier blanc) */
     --bg-blue-faint: #eef3f9; /* en-tête des jours */
