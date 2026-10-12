@@ -23,10 +23,10 @@ ami-prayer-table {
     border-bottom: 1px solid var(--border-green);
 }
 
-/* En-tête vert foncé en léger dégradé : même luminosité que le bandeau bleu marine du mois voisin,
+/* En-tête vert foncé uni : même luminosité que le bandeau bleu marine du mois voisin,
    le vert reste la couleur des prières ; filet vert clair : transition vers le corps du tableau */
 .prayer-table thead th {
-    background: var(--col-green-deep) var(--grad-green); /* même dégradé dans chaque cellule : continu sur toute la ligne */
+    background: var(--col-green-deep);
     border: 1px solid var(--border-on-dark);
     border-bottom: 1.5px solid var(--accent-green);
     padding: var(--sp-1) 1px;

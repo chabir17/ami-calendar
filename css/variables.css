@@ -3,7 +3,8 @@
 
     /* Couleur thématique de l'année (Doré) */
     --brand: #c8a85a; /* surchargeable par client (clients/*.json) ; par défaut, l'or des ornements */
-    --bg-holiday: #faf3e0; /* fond des vacances scolaires : doré pastel */
+    --bg-holiday: #faf3e0;
+    --bg-ivory: #fbf8f1; /* fond du header de l'identité : papier à en-tête, distinct des cartes blanches */ /* fond des vacances scolaires : doré pastel */
     /* Noms de l'association : même famille dorée, deux tons contrastés (WCAG AA sur le bandeau) */
     --brand-text: color-mix(in srgb, var(--brand), black 40%); /* nom tamoul : 4.7:1 */
 
@@ -15,9 +16,6 @@
     --col-green: #2e7d32;
     --col-green-dark: #1b5e20; /* texte sur fond vert pâle : 6.9:1 */
     --col-green-deep: #0e4413; /* fond d'en-tête : même saturation que --col-blue, à peine plus clair (OKLCH 0.34 / 0.096) pour paraître aussi sombre que le bleu marine */
-    /* Bandeaux foncés : léger dégradé vertical (haut éclairci de 14 %), même intensité pour les deux */
-    --grad-blue: linear-gradient(to bottom, color-mix(in oklab, var(--col-blue), white 14%), var(--col-blue));
-    --grad-green: linear-gradient(to bottom, color-mix(in oklab, var(--col-green-deep), white 14%), var(--col-green-deep));
     --col-on-green: #c1d5c0; /* texte secondaire sur --col-green-deep : pendant vert de --col-on-blue (7.3:1) */
 
     /* Safran (minaret et nom tamoul du logo) */
