@@ -9,22 +9,12 @@
     margin-top: calc(var(--binding-zone) - var(--page-pad));
     height: var(--header-h); /* filets compris (box-sizing: border-box) */
     padding: 1mm 0.5cm;
-    /* Filets fins dorés en haut et en bas (papier à en-tête, or des ornements de la feuille Ramadan) */
-    border-top: 1px solid var(--col-gold);
-    border-bottom: 1px solid var(--col-gold);
-}
-
-/* Motif girih or clair sur toute la largeur (accord avec les filets dorés) */
-.header-fixed::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: url('../assets/patterns/background-pattern-gold.svg');
-    pointer-events: none;
+    /* Filets aux couleurs du logo : safran en haut (nom tamoul), vert en bas (nom français) */
+    border-top: 1.5px solid var(--col-saffron-text);
+    border-bottom: 1.5px solid var(--col-green);
 }
 
 .header-content {
-    position: relative; /* au-dessus du motif */
     display: flex;
     align-items: center;
     gap: var(--sp-3);

@@ -3,8 +3,8 @@
 
     /* Couleur thématique de l'année (Doré) */
     --brand: #c8a85a; /* surchargeable par client (clients/*.json) ; par défaut, l'or des ornements */
-    --bg-holiday: #faf3e0;
-    --bg-ivory: #fbf8f1; /* fond du header de l'identité : papier à en-tête, distinct des cartes blanches */ /* fond des vacances scolaires : doré pastel */
+    --bg-holiday: #fcf8ec; /* fond des vacances scolaires : doré très pâle */
+    --bg-ivory: #fbf8f1; /* fond du header de l'identité : papier à en-tête, distinct des cartes blanches */
     /* Noms de l'association : même famille dorée, deux tons contrastés (WCAG AA sur le bandeau) */
     --brand-text: color-mix(in srgb, var(--brand), black 40%); /* nom tamoul : 4.7:1 */
 

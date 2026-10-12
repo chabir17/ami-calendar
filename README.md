@@ -32,7 +32,7 @@ Le projet utilise des polices hébergées localement (dans `assets/fonts/`) pour
 
 ### 📐 Mise en Page
 
-- **Header** (`css/header.css`) : en-tête de lettre à angles droits, filets dorés (`--col-gold`) en haut et en bas, motif girih or clair à rosaces à 8 branches sur toute la largeur (`assets/patterns/background-pattern-gold.svg`). Logo de 2 cm minimum, noms tamoul et français côte à côte (`--fs-brand`), coordonnées en 4 colonnes (`--fs-contact` : adresses, téléphones, en ligne, banque). Le header commence sous la zone de reliure (`--binding-zone`).
+- **Header** (`css/header.css`) : en-tête de lettre à angles droits, fond ivoire uni (`--bg-ivory`), hauteur limitée à 24 mm (`--header-h`), filets aux couleurs du logo : safran en haut, vert en bas. Logo à pleine hauteur, noms tamoul et français côte à côte (`--fs-brand`) séparés par une étoile à 8 branches, coordonnées en 4 colonnes (`--fs-contact` : adresses, téléphones, en ligne, banque). Le header commence sous la zone de reliure (`--binding-zone`).
 - **Calendrier** : carte dont l'en-tête porte le titre du mois (grégorien à gauche, hégirien à droite : mois en gras, année plus légère, traductions tamoule et translittérée dessous), puis la ligne des jours.
 - **Tableau des horaires** : carte pleine hauteur à droite, en-tête vert foncé uni, aussi sombre en apparence que le bandeau bleu marine du mois.
 - Espacement unique entre les trois blocs (`--block-gap`).
