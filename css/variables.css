@@ -14,8 +14,8 @@
     /* Vert (Référence Mosquée) */
     --col-green: #2e7d32;
     --col-green-dark: #1b5e20; /* texte sur fond vert pâle : 6.9:1 */
-    --col-green-deep: #013a08; /* fond d'en-tête : même luminosité et saturation que --col-blue (OKLCH 0.30 / 0.096) */
-    --col-on-green: #c1d5c0; /* texte secondaire sur --col-green-deep : pendant vert de --col-on-blue (6.5:1) */
+    --col-green-deep: #0e4413; /* fond d'en-tête : même saturation que --col-blue, à peine plus clair (OKLCH 0.34 / 0.096) pour paraître aussi sombre que le bleu marine */
+    --col-on-green: #c1d5c0; /* texte secondaire sur --col-green-deep : pendant vert de --col-on-blue (7.3:1) */
 
     /* Safran (minaret et nom tamoul du logo) */
     --col-saffron-text: #b8520f; /* texte : 4.9:1 sur blanc */
