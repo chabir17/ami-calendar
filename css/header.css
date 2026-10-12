@@ -2,7 +2,7 @@
 .header-fixed {
     position: relative;
     overflow: hidden;
-    background-color: var(--bg-ivory);
+    background-color: white;
     color: var(--col-text);
     /* Le bandeau commence sous la zone de reliure du bord haut (trous de spirale) :
        la bordure du haut n'est pas perforée */
@@ -42,15 +42,16 @@
     flex: 1;
     min-width: 0;
     display: flex;
-    flex-direction: column;
-    gap: var(--sp-1);
+    align-items: center;
+    justify-content: space-between; /* identité à gauche, coordonnées à droite */
+    gap: var(--sp-6);
 }
 
 /* Ligne 1 : nom tamoul puis nom français, côte à côte */
 .org-names {
     display: flex;
-    align-items: baseline;
-    gap: var(--sp-3);
+    flex-direction: column; /* tamoul (safran) en haut, près du filet safran ; français (vert) en bas, près du filet vert */
+    gap: var(--sp-1);
     white-space: nowrap;
 }
 
@@ -70,27 +71,11 @@
     line-height: 1.1;
 }
 
-/* Séparateur entre les deux noms : étoile bleu marine à 8 branches (motif islamique, comme sur la feuille Ramadan) */
-.org-names > * + *::before {
-    content: '';
-    display: inline-block;
-    width: 0.55em;
-    height: 0.55em;
-    margin-right: var(--sp-3);
-    vertical-align: 0.1em;
-    background-color: var(--col-blue);
-    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Crect x='4' y='4' width='12' height='12'/%3E%3Crect x='4' y='4' width='12' height='12' transform='rotate(45 10 10)'/%3E%3C/svg%3E")
-        center / contain no-repeat;
-    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Crect x='4' y='4' width='12' height='12'/%3E%3Crect x='4' y='4' width='12' height='12' transform='rotate(45 10 10)'/%3E%3C/svg%3E")
-        center / contain no-repeat;
-}
-
 /* Ligne 2 : coordonnées en colonnes, séparées par un simple espace */
-/* Coordonnées en 4 colonnes réparties sur toute la largeur (espaces égaux) */
+/* Coordonnées en 2 colonnes, calées à droite */
 .header-contacts {
     display: flex;
-    justify-content: space-between;
-    gap: var(--sp-3);
+    gap: var(--sp-6);
     font-size: var(--fs-contact); /* discrètes : les coordonnées restent une signature */
     line-height: 1.35;
     white-space: nowrap;

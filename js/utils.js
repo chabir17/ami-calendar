@@ -36,7 +36,7 @@ const intlPhone = (num) => '33' + String(num).replace(/\D/g, '').replace(/^0/, '
 
 /**
  * HTML des coordonnées de l'association (lignes avec icône).
- * - 'columns' (calendrier annuel) : 4 colonnes de 2 lignes (adresses | téléphones | en ligne | IBAN, BIC).
+ * - 'columns' (calendrier annuel) : 2 colonnes de 4 lignes (adresses, IBAN, BIC | téléphones, e-mail, site).
  * - 'rows' (page Ramadan) : 3 lignes (adresses | téléphones, e-mail, site | IBAN • BIC), siège en premier.
  * @param {Object} c - config.contact (addr1/addr2 + icônes facultatives, phone, whatsapp, email, website, bank)
  * @param {'columns'|'rows'} layout
@@ -60,12 +60,8 @@ export function contactsHTML(c, layout = 'columns', links = false) {
     if (layout === 'rows') {
         return [group([addr2, addr1]), group([phone, whatsapp, email, website]), c.bank && group([line('bank', `IBAN\u00a0: ${c.bank.iban} • BIC\u00a0: ${c.bank.bic}`)])].join('');
     }
-    return [
-        group([addr1, addr2]),
-        group([phone, whatsapp]),
-        group([email, website]),
-        c.bank && group([line('bank', `IBAN\u00a0: ${c.bank.iban}`), `<div class="info-line info-cont"><span>BIC\u00a0: ${c.bank.bic}</span></div>`])
-    ].join('');
+    const bank = c.bank && [line('bank', `IBAN\u00a0: ${c.bank.iban}`), `<div class="info-line info-cont"><span>BIC\u00a0: ${c.bank.bic}</span></div>`];
+    return [group([addr1, addr2, ...(bank || [])]), group([phone, whatsapp, email, website])].join('');
 }
 
 /**
