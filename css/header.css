@@ -7,10 +7,11 @@
     /* Le bandeau commence sous la zone de reliure du bord haut (trous de spirale) :
        la bordure du haut n'est pas perforée */
     margin-top: calc(var(--binding-zone) - var(--page-pad));
-    padding: 1mm 0.5cm;
-    /* Filets fins gris foncé en haut et en bas */
-    border-top: 1px solid var(--col-text-lighter);
-    border-bottom: 1px solid var(--col-text-lighter);
+    padding: 2mm 0.5cm; /* le logo respire entre les deux filets */
+    /* Filets fins dorés en haut et en bas (or des ornements de la feuille Ramadan) */
+    --rule-gold: #c8a85a;
+    border-top: 1px solid var(--rule-gold);
+    border-bottom: 1px solid var(--rule-gold);
 }
 
 /* Motif girih bleu marine très pâle sur toute la largeur */
@@ -32,8 +33,8 @@
 /* Logo centré verticalement entre les deux filets */
 .logo-box {
     flex-shrink: 0;
-    width: 2cm;
-    height: 2cm;
+    width: 1.8cm;
+    height: 1.8cm;
     display: flex;
     align-items: center;
     justify-content: center;
