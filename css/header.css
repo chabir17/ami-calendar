@@ -51,17 +51,19 @@
 .header-main {
     flex: 1;
     min-width: 0;
+    align-self: stretch; /* hauteur du logo */
     display: flex;
     align-items: center;
-    /* identité à gauche ; coordonnées centrées dans l'espace restant (même vide de part et d'autre) */
-    gap: var(--sp-6);
+    /* identité à gauche ; coordonnées centrées dans l'espace restant */
+    gap: var(--sp-3);
 }
 
 /* Ligne 1 : nom tamoul puis nom français, côte à côte */
 .org-names {
+    align-self: stretch; /* les deux noms occupent toute la hauteur du logo */
     display: flex;
     flex-direction: column; /* tamoul (safran) en haut, près du filet safran ; français (vert) en bas, près du filet vert */
-    gap: var(--sp-1);
+    justify-content: space-between;
     white-space: nowrap;
 }
 
@@ -69,7 +71,7 @@
     color: var(--col-green); /* vert du nom français sur le logo */
     font-size: var(--fs-brand);
     font-weight: 600;
-    letter-spacing: 0.045em;
+    letter-spacing: 0.01em;
     line-height: 1.1;
 }
 
@@ -86,7 +88,7 @@
 .header-contacts {
     margin: 0 auto;
     display: flex;
-    gap: var(--sp-6);
+    gap: var(--sp-4);
     font-size: var(--fs-contact); /* discrètes : les coordonnées restent une signature */
     line-height: 1.35;
     white-space: nowrap;
