@@ -1,4 +1,4 @@
-import { initAdhan, fetchExternalData, getHijriDateSafe, fetchClientConfig, applyTheme, loadPrayerTimes } from './services.js';
+import { initAdhan, fetchExternalData, getHijriDateSafe, getDayInfo, fetchClientConfig, applyTheme, loadPrayerTimes } from './services.js';
 import { DOM, contactsHTML } from './utils.js';
 import './components.js';
 
@@ -96,6 +96,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         // Appliquer la logique calendrier
         updateZoneTitles(y, m, clone);
+        updateLegend(y, m, clone);
 
         // Configurer les Web Components
         const calendar = clone.querySelector('ami-calendar-grid');
@@ -117,6 +118,35 @@ document.addEventListener('DOMContentLoaded', async () => {
     // 6. Mise à jour asynchrone (API Vacances/Fériés)
     fetchExternalData(renderApp);
 });
+
+/**
+ * Légende du bas : nom des vacances scolaires et passage à l'heure d'été / d'hiver du mois.
+ * Chaque élément est masqué s'il ne concerne pas le mois ; la bande entière aussi.
+ */
+function updateLegend(year, month, container) {
+    const holidayNames = new Set();
+    let dstType = null;
+    const daysInMonth = new Date(year, month, 0).getDate();
+
+    for (let d = 1; d <= daysInMonth; d++) {
+        const date = new Date(year, month - 1, d);
+        const info = getDayInfo(date, getHijriDateSafe(date));
+        if (info.isHoliday && info.holidayName) holidayNames.add(info.holidayName);
+        if (info.isDST) dstType = info.dstType;
+    }
+
+    DOM.setDisplay('.legend-holiday', holidayNames.size > 0, container);
+    DOM.setText('.legend-holiday-name', [...holidayNames].join(' / '), container);
+
+    DOM.setDisplay('.legend-dst', !!dstType, container);
+    if (dstType) {
+        const summer = dstType === 'summer';
+        DOM.setText('.legend-dst-name', summer ? "Passage à l'heure d'été (+1 h)" : "Passage à l'heure d'hiver (−1 h)", container);
+        container.querySelector('.legend-dst-icon').setAttribute('href', `assets/icons/icon-dst-${summer ? 'forward' : 'back'}.svg#icon`);
+    }
+
+    DOM.setDisplay('.legend-box', holidayNames.size > 0 || !!dstType, container);
+}
 
 /**
  * Met à jour les titres (Mois Grégorien, Mois Hégirien, Année).

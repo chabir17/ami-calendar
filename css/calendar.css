@@ -270,15 +270,14 @@
     color: var(--col-blue);
 }
 
-/* --- LÉGENDE (BAS) : codes couleur et symboles, identique chaque mois --- */
+/* --- LÉGENDE (BAS) : vacances scolaires et changement d'heure du mois --- */
 .legend-box {
     padding: var(--sp-2);
     border-top: 1px solid var(--border-blue);
     margin-top: auto;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    gap: var(--sp-2);
+    gap: var(--sp-6);
 }
 
 .legend-item {
@@ -289,28 +288,7 @@
     color: var(--col-text-light);
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: -0.01em;
     white-space: nowrap;
-}
-
-/* Échantillons : mêmes couleurs que dans les cases */
-.legend-num {
-    font-size: var(--fs-sm);
-    font-weight: 600;
-    line-height: 1;
-}
-
-.legend-hijri {
-    font-weight: 400;
-    color: var(--col-green);
-}
-
-.legend-eid {
-    color: var(--col-green);
-}
-
-.legend-public {
-    color: var(--col-red-event);
 }
 
 .legend-icon {
@@ -321,14 +299,7 @@
     width: 0.8rem;
     height: 0.8rem;
     margin: 0;
-}
-
-.legend-moon .icon {
-    color: var(--col-green);
-}
-
-.legend-dst .icon {
-    color: var(--col-blue);
+    color: var(--col-blue); /* comme l'horloge dans la case du jour */
 }
 
 .legend-color {

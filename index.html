@@ -145,35 +145,17 @@
                             </div>
                         </div>
                         <ami-calendar-grid></ami-calendar-grid>
-                        <!-- Bande du bas : légende des codes couleur et symboles (identique chaque mois) -->
+                        <!-- Bande du bas : vacances scolaires et changement d'heure du mois (masqués s'il n'y en a pas) -->
                         <div class="legend-box">
-                            <div class="legend-item">
-                                <span class="legend-num legend-hijri">1</span>
-                                <span>Date hégirienne</span>
-                            </div>
-                            <div class="legend-item">
-                                <span class="legend-icon legend-moon"
-                                    ><svg class="icon"><use href="assets/icons/icon-moon.svg#icon"></use></svg
-                                ></span>
-                                <span>Nouveau mois hégirien</span>
-                            </div>
-                            <div class="legend-item">
-                                <span class="legend-num legend-eid">12</span>
-                                <span>Aïd</span>
-                            </div>
-                            <div class="legend-item">
-                                <span class="legend-num legend-public">12</span>
-                                <span>Jour férié</span>
-                            </div>
-                            <div class="legend-item">
+                            <div class="legend-item legend-holiday">
                                 <span class="legend-color box-holiday"></span>
-                                <span>Vacances (zone C)</span>
+                                <span class="legend-holiday-name"></span>
                             </div>
-                            <div class="legend-item">
-                                <span class="legend-icon legend-dst"
-                                    ><svg class="icon"><use href="assets/icons/icon-dst-back.svg#icon"></use></svg
+                            <div class="legend-item legend-dst">
+                                <span class="legend-icon"
+                                    ><svg class="icon"><use class="legend-dst-icon" href="assets/icons/icon-dst-forward.svg#icon"></use></svg
                                 ></span>
-                                <span>Changement d'heure</span>
+                                <span class="legend-dst-name"></span>
                             </div>
                         </div>
                     </section>
