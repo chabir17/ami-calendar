@@ -92,8 +92,9 @@ ami-prayer-table {
     background: var(--bg-table-stripe);
 }
 
+/* même spécificité que les rayures, déclaré après : prioritaire sans !important */
 .prayer-table tbody tr.is-friday {
-    background: var(--bg-friday) !important;
+    background: var(--bg-friday);
 }
 
 /* --- COLONNES SPÉCIALES (DATES) --- */

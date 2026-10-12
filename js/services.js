@@ -95,7 +95,7 @@ export function initAdhan() {
     if (adhanCoords && adhanParams) return;
 
     adhanCoords = new adhan.Coordinates(CONFIG.lat, CONFIG.lng);
-    adhanParams = adhan.CalculationMethod.MuslimWorldLeague();
+    adhanParams = (adhan.CalculationMethod[CONFIG.method] ?? adhan.CalculationMethod.MuslimWorldLeague)();
     adhanParams.madhab = CONFIG.asrMethod === 'Hanafi' ? adhan.Madhab.Hanafi : adhan.Madhab.Shafi;
     adhanParams.fajrAngle = 18;
     adhanParams.ishaAngle = 18;
