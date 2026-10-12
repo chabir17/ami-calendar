@@ -87,13 +87,22 @@
 }
 
 /* Ligne 2 : coordonnées en colonnes, séparées par un simple espace */
+/* Coordonnées en 4 colonnes sur toute la largeur, séparées par des filets dorés verticaux
+   (espaces égaux de part et d'autre de chaque filet) */
 .header-contacts {
     display: flex;
-    gap: var(--sp-6);
+    justify-content: space-between;
+    gap: var(--sp-3);
     font-size: var(--fs-contact); /* discrètes : les coordonnées restent une signature */
     line-height: 1.35;
     white-space: nowrap;
     color: var(--col-text-soft); /* plus clair que les noms : hiérarchie nette */
+}
+
+.contact-sep {
+    width: 1px;
+    align-self: stretch;
+    background-color: var(--col-gold);
 }
 
 .info-line {
