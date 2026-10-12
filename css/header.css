@@ -115,7 +115,7 @@
 
 /* Ligne sans icône (BIC sous l'IBAN) : alignée sur le texte de la ligne du dessus */
 .info-cont {
-    padding-left: calc(0.75rem + var(--sp-1)); /* largeur de l'icône + espace */
+    padding-left: calc(0.75rem + 2 * var(--sp-1)); /* icône + sa marge droite (.icon) + espace (gap) */
 }
 
 /* Icônes des coordonnées : bleu marine du logo */
