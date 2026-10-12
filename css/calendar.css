@@ -36,7 +36,7 @@
 
 .year-display {
     font-weight: 400;
-    color: var(--col-on-blue-soft);
+    color: var(--col-on-blue);
 }
 
 /* Hégirien : mois en arabe */
@@ -52,7 +52,7 @@
 
 .hijri-year {
     font-weight: 400;
-    color: var(--col-on-blue-soft);
+    color: var(--col-on-blue);
 }
 
 /* Ligne 2 : traductions séparées par une puce */
@@ -62,7 +62,7 @@
     gap: var(--sp-2);
     font-size: var(--fs-sm);
     line-height: 1.5;
-    color: var(--col-on-blue-soft);
+    color: var(--col-on-blue);
     white-space: nowrap;
 }
 
@@ -77,7 +77,7 @@
     font-family: var(--font-fr);
     font-size: var(--fs-sm);
     font-style: normal;
-    color: var(--col-on-blue-soft);
+    color: var(--col-on-blue);
     opacity: 0.7;
 }
 
@@ -160,7 +160,7 @@
 .vis-greg {
     font-size: var(--fs-display);
     font-weight: 600;
-    color: var(--col-text-lighter);
+    color: var(--col-text);
 }
 
 /* Week-end : numéro en gris plus clair (déclaré avant les jours fériés et l'Aïd, prioritaires) */

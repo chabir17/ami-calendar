@@ -59,8 +59,6 @@ body {
     --rule: var(--accent-blue); /* filets, puces */
     --surface: var(--bg-blue-faint); /* fonds neutres (bleu clair des en-têtes du calendrier annuel) */
     --surface-fast: var(--bg-terracotta-soft); /* cellules Imsak, Maghrib, Icha AMI */
-    --surface-fast-head: var(--bg-terracotta); /* leurs en-têtes */
-    --bg-friday: var(--bg-green-faint); /* vendredis : vert très clair, comme le calendrier annuel */
     width: 210mm;
     height: 297mm;
     display: grid;
@@ -283,12 +281,6 @@ body {
 .ramadan-table thead th:last-child,
 .ramadan-table thead th:nth-last-child(2) {
     border-right: none;
-}
-
-/* Imsak, Maghrib et Icha AMI : en-tête terracotta */
-.ramadan-table thead th.th-fast {
-    background-color: var(--surface-fast-head);
-    border-bottom-color: var(--accent-blue);
 }
 
 .th-stack {
@@ -528,12 +520,12 @@ sup.ordinal {
 
 .ramadan-table thead .th-ar,
 .ramadan-table thead .th-ta {
-    color: var(--col-on-dark);
+    color: var(--col-on-blue);
 }
 
 /* --- VERSION NUMÉRIQUE (par défaut) : teintes plus soutenues, fond de nuit d'hiver --- */
 .page.digital {
-    --surface-fast: var(--bg-terracotta-mid);
+    --surface-fast: var(--bg-terracotta);
     /* bande blanche de l'identité, séparée de la scène par un filet doré dégradé pleine largeur */
     background:
         linear-gradient(90deg, transparent, var(--col-gold) 18%, var(--col-gold-light) 50%, var(--col-gold) 82%, transparent) left 0 bottom var(--footer-h) / 100% 1.5px no-repeat,
