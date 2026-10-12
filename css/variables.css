@@ -57,11 +57,11 @@
 
     /* Pastels opaques (rendu fiable sur laser de bureau, papier blanc) */
     --bg-blue-faint: #eef3f9; /* en-tête des jours */
-    --bg-green-faint: #e7f2e8; /* en-tête du tableau des horaires */
+    --bg-green-faint: #e7f2e8; /* vert très clair : vendredis et lignes de la feuille Ramadan */
     --border-blue: #c5d3e4; /* bordures du calendrier : bleu doux */
     --border-green: #c3dec6; /* bordures du tableau : vert doux */
     --accent-blue: #7f9cc0; /* filet sous l'en-tête des jours */
-    --accent-green: #84b98a; /* filet sous l'en-tête du tableau */
+    --accent-green: #84b98a; /* filet sous l'en-tête du tableau, fins de semaine */
 
     /* --- IMPRESSION (A4 paysage, reliure sur le bord haut) --- */
     --page-pad: 5mm; /* marge minimale : juste au-dela de la zone non imprimable du copieur (3-5 mm) */
