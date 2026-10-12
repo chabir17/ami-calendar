@@ -1,4 +1,4 @@
-import { initAdhan, fetchExternalData, getHijriDateSafe, getDayInfo, fetchClientConfig, applyTheme, loadPrayerTimes } from './services.js';
+import { initAdhan, fetchExternalData, getHijriDateSafe, fetchClientConfig, applyTheme, loadPrayerTimes } from './services.js';
 import { DOM, contactsHTML } from './utils.js';
 import './components.js';
 
@@ -95,7 +95,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         updatePageDOM(clone, clientConfig);
 
         // Appliquer la logique calendrier
-        updateLegends(y, m, clone);
         updateZoneTitles(y, m, clone);
 
         // Configurer les Web Components
@@ -118,33 +117,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     // 6. Mise à jour asynchrone (API Vacances/Fériés)
     fetchExternalData(renderApp);
 });
-
-/**
- * Met à jour la bande du bas : vacances scolaires du mois (masquées s'il n'y en a pas)
- * et hadith du mois hégirien en cours au 15 du mois (data/citations.js).
- */
-function updateLegends(year, month, container) {
-    const holidayNames = new Set();
-    const jsMonth = month - 1;
-    const daysInMonth = new Date(year, month, 0).getDate();
-
-    for (let d = 1; d <= daysInMonth; d++) {
-        const date = new Date(year, jsMonth, d);
-        const info = getDayInfo(date, getHijriDateSafe(date));
-        if (info.isHoliday && info.holidayName) holidayNames.add(info.holidayName);
-    }
-
-    DOM.setDisplay('.legend-item', holidayNames.size > 0, container);
-    DOM.setText('.legend-holiday-name', Array.from(holidayNames).join(' / '), container);
-
-    const quote = window.CITATIONS?.[getHijriDateSafe(new Date(year, jsMonth, 15)).monthNameFR];
-    DOM.setDisplay('.month-quote', !!quote, container, 'block');
-    if (quote) {
-        DOM.setText('.quote-text', quote.text, container); // guillemets stylisés en CSS
-        DOM.setText('.quote-source', `— ${quote.source}`, container);
-    }
-    DOM.setDisplay('.legend-box', holidayNames.size > 0 || !!quote, container);
-}
 
 /**
  * Met à jour les titres (Mois Grégorien, Mois Hégirien, Année).

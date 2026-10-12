@@ -270,18 +270,18 @@
     color: var(--col-blue);
 }
 
-/* --- BARRE DE LÉGENDE (BAS) --- */
+/* --- LÉGENDE (BAS) : codes couleur et symboles, identique chaque mois --- */
 .legend-box {
     padding: var(--sp-2);
     border-top: 1px solid var(--border-blue);
     margin-top: auto;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: var(--sp-1);
+    gap: var(--sp-2);
 }
 
 .legend-item {
-    flex-shrink: 0;
     display: flex;
     align-items: center;
     gap: var(--sp-1);
@@ -289,55 +289,46 @@
     color: var(--col-text-light);
     font-weight: 600;
     text-transform: uppercase;
-}
-
-/* Citation du mois : italique discret, séparée de la légende par un filet */
-.month-quote {
-    font-size: var(--fs-sm);
-    font-style: italic;
-    line-height: 1.35;
-    white-space: nowrap; /* une ligne chaque mois : textes courts dans data/citations.js */
-    text-align: center;
-    color: var(--col-text-light);
-    letter-spacing: -0.02em; /* la citation la plus longue (janvier) tient sur une ligne, guillemets compris */
-    flex: 1; /* légende à gauche, hadith centré dans l'espace restant : même composition chaque mois */
-}
-
-.legend-item + .month-quote {
-    padding-left: var(--sp-2);
-    border-left: 1px solid var(--border-blue);
-}
-
-.legend-item[style*='none'] + .month-quote {
-    padding-left: 0;
-    border-left: none;
-}
-
-/* Guillemets stylisés : dessin calligraphique d'Amiri, en or, un peu plus grands que le texte */
-.quote-text::before,
-.quote-text::after {
-    font-family: var(--font-ar);
-    font-style: normal;
-    font-size: 1.5em;
-    line-height: 0;
-    vertical-align: -0.12em;
-    color: var(--col-gold);
-}
-
-.quote-text::before {
-    content: '«';
-    margin-right: 3px;
-}
-
-.quote-text::after {
-    content: '»';
-    margin-left: 3px;
-}
-
-.quote-source {
-    font-style: normal;
-    font-weight: 600;
+    letter-spacing: -0.01em;
     white-space: nowrap;
+}
+
+/* Échantillons : mêmes couleurs que dans les cases */
+.legend-num {
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    line-height: 1;
+}
+
+.legend-hijri {
+    font-weight: 400;
+    color: var(--col-green);
+}
+
+.legend-eid {
+    color: var(--col-green);
+}
+
+.legend-public {
+    color: var(--col-red-event);
+}
+
+.legend-icon {
+    line-height: 0;
+}
+
+.legend-icon .icon {
+    width: 0.8rem;
+    height: 0.8rem;
+    margin: 0;
+}
+
+.legend-moon .icon {
+    color: var(--col-green);
+}
+
+.legend-dst .icon {
+    color: var(--col-blue);
 }
 
 .legend-color {

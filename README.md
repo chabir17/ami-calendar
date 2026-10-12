@@ -19,7 +19,7 @@ Le design est piloté par des variables CSS (`css/variables.css`) permettant une
 - **Indicateurs de Jours** :
     - Numéro du jour en rouge pour les jours fériés, en vert pour l'Aïd (libellé écrit dans la case).
     - Vacances scolaires (Zone C) : fond doré clair (`--bg-holiday`) ; l'Aïd et les jours fériés restent prioritaires.
-    - Bande du bas : nom des vacances du mois et hadith du mois hégirien (al-Bukhārī, Muslim), modifiable dans `data/citations.js`.
+    - Bande du bas : légende fixe des codes couleur et symboles (date hégirienne, début du mois hégirien, Aïd, jour férié, vacances scolaires, changement d'heure).
     - Icônes SVG (`assets/icons/`) : croissant vert pour la nouvelle lune, horloge bleue avec flèche avant/arrière pour le passage à l'heure d'été/hiver.
 
 ### 🌐 Typographie Multilingue
@@ -106,9 +106,8 @@ Le calendrier est conçu pour une impression couleur **A4 paysage**, recto seul,
 
 1. **Dates hégiriennes** : faire valider le début du Ramadan et les Aïds par les imams ; en cas d'écart d'un jour, ajouter une période dans `HIJRI_OFFSETS` (`js/services.js`).
 2. **Horaires** : remplacer `data/prayer_times.csv` si la mosquée publie de nouveaux horaires ; vérifier Imsak et Icha AMI en tête de `js/ramadan.js`.
-3. **Hadiths du mois** (`data/citations.js`) : ils suivent les mois hégiriens, qui reculent d'environ 11 jours par an ; relire les 12 textes.
-4. **Thème** : changer `--brand` (couleur de l'année) si souhaité.
-5. **Vérifier** : générer les PDF (`index.html?year=…`, `ramadan.html?year=…` et `?print=true`), contrôler le nombre de pages, puis faire une impression de test.
+3. **Thème** : changer `--brand` (couleur de l'année) si souhaité.
+4. **Vérifier** : générer les PDF (`index.html?year=…`, `ramadan.html?year=…` et `?print=true`), contrôler le nombre de pages, puis faire une impression de test.
 
 ## Personnalisation
 

@@ -10,8 +10,8 @@
     height: var(--header-h); /* filets compris (box-sizing: border-box) */
     padding: 1mm;
     /* Filets aux couleurs du logo : safran en haut (nom tamoul), vert en bas (nom français) */
-    border-top: 2px solid var(--col-saffron-text);
-    border-bottom: 2px solid var(--col-green);
+    border-top: 1.5px solid var(--col-saffron-text);
+    border-bottom: 1.5px solid var(--col-green);
 }
 
 /* Motif girih gris chaud très pâle sur toute la largeur (texture de papier à en-tête, sans couleur ajoutée) */

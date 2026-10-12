@@ -27,7 +27,6 @@
 
         <script src="data/config.js" defer></script>
         <script src="data/lang.js" defer></script>
-        <script src="data/citations.js" defer></script>
         <script src="js/main.js" type="module" defer></script>
     </head>
 
@@ -146,13 +145,36 @@
                             </div>
                         </div>
                         <ami-calendar-grid></ami-calendar-grid>
-                        <!-- Bande du bas : vacances scolaires du mois (si besoin) + hadith du mois -->
+                        <!-- Bande du bas : légende des codes couleur et symboles (identique chaque mois) -->
                         <div class="legend-box">
-                            <div class="legend-item" style="display: none">
-                                <span class="legend-color box-holiday"></span>
-                                <span class="legend-holiday-name"></span>
+                            <div class="legend-item">
+                                <span class="legend-num legend-hijri">1</span>
+                                <span>Date hégirienne</span>
                             </div>
-                            <p class="month-quote"><span class="quote-text"></span> <span class="quote-source"></span></p>
+                            <div class="legend-item">
+                                <span class="legend-icon legend-moon"
+                                    ><svg class="icon"><use href="assets/icons/icon-moon.svg#icon"></use></svg
+                                ></span>
+                                <span>Nouveau mois hégirien</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-num legend-eid">12</span>
+                                <span>Aïd</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-num legend-public">12</span>
+                                <span>Jour férié</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-color box-holiday"></span>
+                                <span>Vacances (zone C)</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-icon legend-dst"
+                                    ><svg class="icon"><use href="assets/icons/icon-dst-back.svg#icon"></use></svg
+                                ></span>
+                                <span>Changement d'heure</span>
+                            </div>
                         </div>
                     </section>
 
