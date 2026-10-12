@@ -7,7 +7,8 @@
     /* Le bandeau commence sous la zone de reliure du bord haut (trous de spirale) :
        la bordure du haut n'est pas perforée */
     margin-top: calc(var(--binding-zone) - var(--page-pad));
-    padding: 2mm 0.5cm; /* le logo respire entre les deux filets */
+    height: var(--header-h); /* filets compris (box-sizing: border-box) */
+    padding: 1mm 0.5cm;
     /* Filets fins dorés en haut et en bas (papier à en-tête, or des ornements de la feuille Ramadan) */
     border-top: 1px solid var(--col-gold);
     border-bottom: 1px solid var(--col-gold);
@@ -32,8 +33,9 @@
 /* Logo centré verticalement entre les deux filets */
 .logo-box {
     flex-shrink: 0;
-    width: 2.4cm;
-    height: 2.4cm;
+    /* le plus grand possible dans la hauteur du header : 24 mm − marges − filets ≈ 2,15 cm */
+    width: calc(var(--header-h) - 2mm - 2px);
+    height: calc(var(--header-h) - 2mm - 2px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -78,7 +80,7 @@
     line-height: 1.1;
 }
 
-/* Séparateur entre les deux noms : étoile dorée à 8 branches (motif islamique, comme sur la feuille Ramadan) */
+/* Séparateur entre les deux noms : étoile bleu marine à 8 branches (motif islamique, comme sur la feuille Ramadan) */
 .org-names > * + *::before {
     content: '';
     display: inline-block;
@@ -86,7 +88,7 @@
     height: 0.55em;
     margin-right: var(--sp-3);
     vertical-align: 0.1em;
-    background-color: var(--col-gold);
+    background-color: var(--col-blue);
     -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Crect x='4' y='4' width='12' height='12'/%3E%3Crect x='4' y='4' width='12' height='12' transform='rotate(45 10 10)'/%3E%3C/svg%3E")
         center / contain no-repeat;
     mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Crect x='4' y='4' width='12' height='12'/%3E%3Crect x='4' y='4' width='12' height='12' transform='rotate(45 10 10)'/%3E%3C/svg%3E")
