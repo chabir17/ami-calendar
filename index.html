@@ -32,113 +32,37 @@
 
     <body>
         <!-- Conteneur principal de l'application -->
-        <!-- Frises du header : maillons entrelacés (maillons de gourmette par défaut ; chaînons, anneaux et losanges en variantes), répétés par js/main.js
-             au pas data-pas (px, défaut 4,2) ; 2e passage sur la moitié droite de chaque maillon : il passe dessus à droite, dessous à gauche -->
+        <!-- Frises du header : torsade de deux brins fins entrelacés (dessus/dessous alternés à chaque croisement),
+             motif vectoriel répété au pas de 8 px par js/main.js -->
         <svg width="0" height="0" style="position: absolute" aria-hidden="true">
             <defs>
-                <clipPath id="maillon-moitie"><rect x="2.9" y="-2" width="8" height="11" /></clipPath>
-                <symbol id="anneau-saffron" overflow="visible">
-                    <circle cx="2.9" cy="3.5" r="2.8" fill="none" stroke="white" stroke-width="1.5" />
-                    <circle cx="2.9" cy="3.5" r="2.8" fill="none" stroke="#b8520f" stroke-width="0.9" />
-                </symbol>
-                <symbol id="anneau-saffron-dessus" overflow="visible">
-                    <g clip-path="url(#maillon-moitie)">
-                        <circle cx="2.9" cy="3.5" r="2.8" fill="none" stroke="white" stroke-width="1.5" />
-                        <circle cx="2.9" cy="3.5" r="2.8" fill="none" stroke="#b8520f" stroke-width="0.9" />
+                <clipPath id="torsade-croisement-milieu"><rect x="3" y="-1" width="2" height="7" /></clipPath>
+                <clipPath id="torsade-croisement-bords">
+                    <rect x="-1" y="-1" width="2" height="7" />
+                    <rect x="7" y="-1" width="2" height="7" />
+                </clipPath>
+                <symbol id="torsade-saffron" overflow="visible">
+                    <path d="M0 2.25 C1.2 0.6 2.8 0.6 4 2.25 C5.2 3.9 6.8 3.9 8 2.25" fill="none" stroke="#b8520f" stroke-width="0.7" stroke-linecap="round" />
+                    <path d="M0 2.25 C1.2 3.9 2.8 3.9 4 2.25 C5.2 0.6 6.8 0.6 8 2.25" fill="none" stroke="#b8520f" stroke-width="0.7" stroke-linecap="round" />
+                    <g clip-path="url(#torsade-croisement-milieu)">
+                        <path d="M0 2.25 C1.2 0.6 2.8 0.6 4 2.25 C5.2 3.9 6.8 3.9 8 2.25" fill="none" stroke="white" stroke-width="1.7" />
+                        <path d="M0 2.25 C1.2 0.6 2.8 0.6 4 2.25 C5.2 3.9 6.8 3.9 8 2.25" fill="none" stroke="#b8520f" stroke-width="0.7" stroke-linecap="round" />
+                    </g>
+                    <g clip-path="url(#torsade-croisement-bords)">
+                        <path d="M0 2.25 C1.2 3.9 2.8 3.9 4 2.25 C5.2 0.6 6.8 0.6 8 2.25" fill="none" stroke="white" stroke-width="1.7" />
+                        <path d="M0 2.25 C1.2 3.9 2.8 3.9 4 2.25 C5.2 0.6 6.8 0.6 8 2.25" fill="none" stroke="#b8520f" stroke-width="0.7" stroke-linecap="round" />
                     </g>
                 </symbol>
-                <symbol id="anneau-green" overflow="visible">
-                    <circle cx="2.9" cy="3.5" r="2.8" fill="none" stroke="white" stroke-width="1.5" />
-                    <circle cx="2.9" cy="3.5" r="2.8" fill="none" stroke="#2e7d32" stroke-width="0.9" />
-                </symbol>
-                <symbol id="anneau-green-dessus" overflow="visible">
-                    <g clip-path="url(#maillon-moitie)">
-                        <circle cx="2.9" cy="3.5" r="2.8" fill="none" stroke="white" stroke-width="1.5" />
-                        <circle cx="2.9" cy="3.5" r="2.8" fill="none" stroke="#2e7d32" stroke-width="0.9" />
+                <symbol id="torsade-green" overflow="visible">
+                    <path d="M0 2.25 C1.2 0.6 2.8 0.6 4 2.25 C5.2 3.9 6.8 3.9 8 2.25" fill="none" stroke="#2e7d32" stroke-width="0.7" stroke-linecap="round" />
+                    <path d="M0 2.25 C1.2 3.9 2.8 3.9 4 2.25 C5.2 0.6 6.8 0.6 8 2.25" fill="none" stroke="#2e7d32" stroke-width="0.7" stroke-linecap="round" />
+                    <g clip-path="url(#torsade-croisement-milieu)">
+                        <path d="M0 2.25 C1.2 0.6 2.8 0.6 4 2.25 C5.2 3.9 6.8 3.9 8 2.25" fill="none" stroke="white" stroke-width="1.7" />
+                        <path d="M0 2.25 C1.2 0.6 2.8 0.6 4 2.25 C5.2 3.9 6.8 3.9 8 2.25" fill="none" stroke="#2e7d32" stroke-width="0.7" stroke-linecap="round" />
                     </g>
-                </symbol>
-                <symbol id="losange-saffron" overflow="visible">
-                    <rect x="0.95" y="1.55" width="3.9" height="3.9" transform="rotate(45 2.9 3.5)" fill="none" stroke="white" stroke-width="1.5" />
-                    <rect x="0.95" y="1.55" width="3.9" height="3.9" transform="rotate(45 2.9 3.5)" fill="none" stroke="#b8520f" stroke-width="0.9" />
-                </symbol>
-                <symbol id="losange-saffron-dessus" overflow="visible">
-                    <g clip-path="url(#maillon-moitie)">
-                        <rect x="0.95" y="1.55" width="3.9" height="3.9" transform="rotate(45 2.9 3.5)" fill="none" stroke="white" stroke-width="1.5" />
-                        <rect x="0.95" y="1.55" width="3.9" height="3.9" transform="rotate(45 2.9 3.5)" fill="none" stroke="#b8520f" stroke-width="0.9" />
-                    </g>
-                </symbol>
-                <symbol id="losange-green" overflow="visible">
-                    <rect x="0.95" y="1.55" width="3.9" height="3.9" transform="rotate(45 2.9 3.5)" fill="none" stroke="white" stroke-width="1.5" />
-                    <rect x="0.95" y="1.55" width="3.9" height="3.9" transform="rotate(45 2.9 3.5)" fill="none" stroke="#2e7d32" stroke-width="0.9" />
-                </symbol>
-                <symbol id="losange-green-dessus" overflow="visible">
-                    <g clip-path="url(#maillon-moitie)">
-                        <rect x="0.95" y="1.55" width="3.9" height="3.9" transform="rotate(45 2.9 3.5)" fill="none" stroke="white" stroke-width="1.5" />
-                        <rect x="0.95" y="1.55" width="3.9" height="3.9" transform="rotate(45 2.9 3.5)" fill="none" stroke="#2e7d32" stroke-width="0.9" />
-                    </g>
-                </symbol>
-                <symbol id="chainon-saffron" overflow="visible">
-                    <ellipse cx="2.9" cy="3.5" rx="3.5" ry="1.75" transform="rotate(-30 2.9 3.5)" fill="none" stroke="white" stroke-width="1.5" />
-                    <ellipse cx="2.9" cy="3.5" rx="3.5" ry="1.75" transform="rotate(-30 2.9 3.5)" fill="none" stroke="#b8520f" stroke-width="0.85" />
-                </symbol>
-                <symbol id="chainon-saffron-dessus" overflow="visible">
-                    <g clip-path="url(#maillon-moitie)">
-                        <ellipse cx="2.9" cy="3.5" rx="3.5" ry="1.75" transform="rotate(-30 2.9 3.5)" fill="none" stroke="white" stroke-width="1.5" />
-                        <ellipse cx="2.9" cy="3.5" rx="3.5" ry="1.75" transform="rotate(-30 2.9 3.5)" fill="none" stroke="#b8520f" stroke-width="0.85" />
-                    </g>
-                </symbol>
-                <symbol id="chainon-green" overflow="visible">
-                    <ellipse cx="2.9" cy="3.5" rx="3.5" ry="1.75" transform="rotate(-30 2.9 3.5)" fill="none" stroke="white" stroke-width="1.5" />
-                    <ellipse cx="2.9" cy="3.5" rx="3.5" ry="1.75" transform="rotate(-30 2.9 3.5)" fill="none" stroke="#2e7d32" stroke-width="0.85" />
-                </symbol>
-                <symbol id="chainon-green-dessus" overflow="visible">
-                    <g clip-path="url(#maillon-moitie)">
-                        <ellipse cx="2.9" cy="3.5" rx="3.5" ry="1.75" transform="rotate(-30 2.9 3.5)" fill="none" stroke="white" stroke-width="1.5" />
-                        <ellipse cx="2.9" cy="3.5" rx="3.5" ry="1.75" transform="rotate(-30 2.9 3.5)" fill="none" stroke="#2e7d32" stroke-width="0.85" />
-                    </g>
-                </symbol>
-                <symbol id="gourmette-saffron" overflow="visible">
-                    <path
-                        transform="rotate(-28 2.9 3.5)"
-                        fill-rule="evenodd"
-                        fill="#b8520f"
-                        stroke="white"
-                        stroke-width="0.6"
-                        d="M-0.1 2.1 h6 a1.4 1.4 0 0 1 0 2.8 h-6 a1.4 1.4 0 0 1 0 -2.8 Z M0.9 3.1 h4 a0.4 0.4 0 0 1 0 0.8 h-4 a0.4 0.4 0 0 1 0 -0.8 Z"
-                    />
-                </symbol>
-                <symbol id="gourmette-saffron-dessus" overflow="visible">
-                    <g clip-path="url(#maillon-moitie)">
-                        <path
-                            transform="rotate(-28 2.9 3.5)"
-                            fill-rule="evenodd"
-                            fill="#b8520f"
-                            stroke="white"
-                            stroke-width="0.6"
-                            d="M-0.1 2.1 h6 a1.4 1.4 0 0 1 0 2.8 h-6 a1.4 1.4 0 0 1 0 -2.8 Z M0.9 3.1 h4 a0.4 0.4 0 0 1 0 0.8 h-4 a0.4 0.4 0 0 1 0 -0.8 Z"
-                        />
-                    </g>
-                </symbol>
-                <symbol id="gourmette-green" overflow="visible">
-                    <path
-                        transform="rotate(-28 2.9 3.5)"
-                        fill-rule="evenodd"
-                        fill="#2e7d32"
-                        stroke="white"
-                        stroke-width="0.6"
-                        d="M-0.1 2.1 h6 a1.4 1.4 0 0 1 0 2.8 h-6 a1.4 1.4 0 0 1 0 -2.8 Z M0.9 3.1 h4 a0.4 0.4 0 0 1 0 0.8 h-4 a0.4 0.4 0 0 1 0 -0.8 Z"
-                    />
-                </symbol>
-                <symbol id="gourmette-green-dessus" overflow="visible">
-                    <g clip-path="url(#maillon-moitie)">
-                        <path
-                            transform="rotate(-28 2.9 3.5)"
-                            fill-rule="evenodd"
-                            fill="#2e7d32"
-                            stroke="white"
-                            stroke-width="0.6"
-                            d="M-0.1 2.1 h6 a1.4 1.4 0 0 1 0 2.8 h-6 a1.4 1.4 0 0 1 0 -2.8 Z M0.9 3.1 h4 a0.4 0.4 0 0 1 0 0.8 h-4 a0.4 0.4 0 0 1 0 -0.8 Z"
-                        />
+                    <g clip-path="url(#torsade-croisement-bords)">
+                        <path d="M0 2.25 C1.2 3.9 2.8 3.9 4 2.25 C5.2 0.6 6.8 0.6 8 2.25" fill="none" stroke="white" stroke-width="1.7" />
+                        <path d="M0 2.25 C1.2 3.9 2.8 3.9 4 2.25 C5.2 0.6 6.8 0.6 8 2.25" fill="none" stroke="#2e7d32" stroke-width="0.7" stroke-linecap="round" />
                     </g>
                 </symbol>
             </defs>
@@ -150,8 +74,8 @@
             <div class="page A4-landscape">
                 <!-- EN-TÊTE : logo et noms empilés (tamoul, français) à gauche | coordonnées en 2 colonnes à droite -->
                 <header class="header-fixed">
-                    <svg class="frise frise-top" data-maillon="gourmette-saffron" data-pas="3.6" aria-hidden="true"></svg>
-                    <svg class="frise frise-bottom" data-maillon="gourmette-green" data-pas="3.6" aria-hidden="true"></svg>
+                    <svg class="frise frise-top" data-maillon="torsade-saffron" aria-hidden="true"></svg>
+                    <svg class="frise frise-bottom" data-maillon="torsade-green" aria-hidden="true"></svg>
                     <div class="header-content">
                         <div class="logo-box">
                             <img src="assets/img/AMI.png" alt="Logo de l'Association Musulmane de l'Inde" class="logo-img" />

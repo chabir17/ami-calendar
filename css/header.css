@@ -7,8 +7,9 @@
        la bordure du haut n'est pas perforée */
     margin-top: calc(var(--binding-zone) - var(--page-pad));
     height: var(--header-h); /* frises comprises (box-sizing: border-box) */
-    --band-motif-h: 7px;
-    padding: var(--band-motif-h) 1mm; /* logo ≥ 2 cm : 24 mm − 2 frises */
+    --band-motif-h: 4.5px;
+    /* frise + 0,8 mm d'air avant les textes ; logo ≥ 2 cm (24 mm − 2 × (frise + air)) */
+    padding: calc(var(--band-motif-h) + 0.8mm) 1mm;
     background-color: white;
 }
 
@@ -21,7 +22,7 @@
     pointer-events: none;
 }
 
-/* Frises aux couleurs du logo (chaîne de maillons entrelacés : symboles SVG vectoriels, voir index.html) :
+/* Frises aux couleurs du logo (torsade fine à deux brins entrelacés : symbole SVG vectoriel, voir index.html) :
    safran en haut (nom tamoul), vert en bas (nom français) */
 .frise {
     position: absolute;

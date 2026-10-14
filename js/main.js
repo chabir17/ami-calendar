@@ -11,16 +11,15 @@ let pageTemplate = null;
 let clientConfig = null;
 
 /**
- * Frises du header : maillons répétés sur toute la largeur, indépendamment de la configuration client
- * (2e passage sur la moitié droite de chaque maillon, par-dessus le suivant : entrelacs).
+ * Frises du header : torsade (symbole SVG de index.html) répétée sur toute la largeur,
+ * indépendamment de la configuration client.
  * @param {HTMLElement} container - page clonée
  */
 function drawFrises(container) {
+    const PAS = 8; // px : largeur d'une période de la torsade
+    const xs = Array.from({ length: Math.ceil(1500 / PAS) }, (_, i) => i * PAS);
     container.querySelectorAll('.frise').forEach((svg) => {
-        const id = svg.dataset.maillon;
-        const pas = parseFloat(svg.dataset.pas) || 4.2; // px : les maillons (symboles dans index.html) se chevauchent
-        const xs = Array.from({ length: Math.ceil(1500 / pas) }, (_, i) => ((i - 1) * pas).toFixed(1));
-        svg.innerHTML = xs.map((x) => `<use href="#${id}" x="${x}" />`).join('') + xs.map((x) => `<use href="#${id}-dessus" x="${x}" />`).join('');
+        svg.innerHTML = xs.map((x) => `<use href="#${svg.dataset.maillon}" x="${x}" />`).join('');
     });
 }
 
