@@ -21,7 +21,7 @@
     pointer-events: none;
 }
 
-/* Frises aux couleurs du logo (chaîne de maillons inclinés entrelacés : symboles SVG vectoriels, voir index.html) :
+/* Frises aux couleurs du logo (chaîne de maillons entrelacés : symboles SVG vectoriels, voir index.html) :
    safran en haut (nom tamoul), vert en bas (nom français) */
 .frise {
     position: absolute;

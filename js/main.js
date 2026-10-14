@@ -11,6 +11,20 @@ let pageTemplate = null;
 let clientConfig = null;
 
 /**
+ * Frises du header : maillons répétés sur toute la largeur, indépendamment de la configuration client
+ * (2e passage sur la moitié droite de chaque maillon, par-dessus le suivant : entrelacs).
+ * @param {HTMLElement} container - page clonée
+ */
+function drawFrises(container) {
+    const MAILLON_PAS = 4.2; // px, pas des maillons (symboles dans index.html) : ils se chevauchent
+    const xs = Array.from({ length: 340 }, (_, i) => ((i - 1) * MAILLON_PAS).toFixed(1));
+    container.querySelectorAll('.frise').forEach((svg) => {
+        const id = svg.dataset.maillon;
+        svg.innerHTML = xs.map((x) => `<use href="#${id}" x="${x}" />`).join('') + xs.map((x) => `<use href="#${id}-dessus" x="${x}" />`).join('');
+    });
+}
+
+/**
  * Met à jour le contenu DOM d'une page spécifique (Header, Contacts)
  * à partir de la configuration client.
  * @param {HTMLElement} container - Le fragment ou l'élément de page cloné
@@ -22,14 +36,6 @@ function updatePageDOM(container, config) {
     DOM.setText('.org-fr', config.identity.name_fr, container);
     DOM.setText('.org-ta', config.identity.name_ta, container);
     DOM.setSrc('.logo-img', config.identity.logo_url, container);
-
-    // Frises du header : maillons répétés sur toute la largeur (2e passage : moitié droite par-dessus = entrelacs)
-    const MAILLON_PAS = 7.8; // px, pas des maillons (symboles dans index.html)
-    container.querySelectorAll('.frise').forEach((svg) => {
-        const id = svg.dataset.maillon;
-        const xs = Array.from({ length: 190 }, (_, i) => ((i - 1) * MAILLON_PAS).toFixed(1));
-        svg.innerHTML = xs.map((x) => `<use href="#${id}" x="${x}" />`).join('') + xs.map((x) => `<use href="#${id}-dessus" x="${x}" />`).join('');
-    });
 
     // Coordonnées en 2 colonnes (BIC sous l'IBAN)
     const contacts = container.querySelector('.header-contacts');
@@ -100,6 +106,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const clone = pageTemplate.cloneNode(true);
 
         // Appliquer les textes du client
+        drawFrises(clone);
         updatePageDOM(clone, clientConfig);
 
         // Appliquer la logique calendrier
