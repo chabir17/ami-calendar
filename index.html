@@ -32,8 +32,8 @@
 
     <body>
         <!-- Conteneur principal de l'application -->
-        <!-- Frises du header : maillons entrelacés (anneaux par défaut, losanges en variante), répétés par js/main.js
-             au pas de 4,2 px ; 2e passage sur la moitié droite de chaque maillon : il passe dessus à droite, dessous à gauche -->
+        <!-- Frises du header : maillons entrelacés (chaînons inclinés aplatis par défaut ; anneaux et losanges en variantes), répétés par js/main.js
+             au pas data-pas (px, défaut 4,2) ; 2e passage sur la moitié droite de chaque maillon : il passe dessus à droite, dessous à gauche -->
         <svg width="0" height="0" style="position: absolute" aria-hidden="true">
             <defs>
                 <clipPath id="maillon-moitie"><rect x="2.9" y="-2" width="8" height="11" /></clipPath>
@@ -77,6 +77,26 @@
                         <rect x="0.95" y="1.55" width="3.9" height="3.9" transform="rotate(45 2.9 3.5)" fill="none" stroke="#2e7d32" stroke-width="0.9" />
                     </g>
                 </symbol>
+                <symbol id="chainon-saffron" overflow="visible">
+                    <ellipse cx="2.9" cy="3.5" rx="3.5" ry="1.75" transform="rotate(-30 2.9 3.5)" fill="none" stroke="white" stroke-width="1.5" />
+                    <ellipse cx="2.9" cy="3.5" rx="3.5" ry="1.75" transform="rotate(-30 2.9 3.5)" fill="none" stroke="#b8520f" stroke-width="0.85" />
+                </symbol>
+                <symbol id="chainon-saffron-dessus" overflow="visible">
+                    <g clip-path="url(#maillon-moitie)">
+                        <ellipse cx="2.9" cy="3.5" rx="3.5" ry="1.75" transform="rotate(-30 2.9 3.5)" fill="none" stroke="white" stroke-width="1.5" />
+                        <ellipse cx="2.9" cy="3.5" rx="3.5" ry="1.75" transform="rotate(-30 2.9 3.5)" fill="none" stroke="#b8520f" stroke-width="0.85" />
+                    </g>
+                </symbol>
+                <symbol id="chainon-green" overflow="visible">
+                    <ellipse cx="2.9" cy="3.5" rx="3.5" ry="1.75" transform="rotate(-30 2.9 3.5)" fill="none" stroke="white" stroke-width="1.5" />
+                    <ellipse cx="2.9" cy="3.5" rx="3.5" ry="1.75" transform="rotate(-30 2.9 3.5)" fill="none" stroke="#2e7d32" stroke-width="0.85" />
+                </symbol>
+                <symbol id="chainon-green-dessus" overflow="visible">
+                    <g clip-path="url(#maillon-moitie)">
+                        <ellipse cx="2.9" cy="3.5" rx="3.5" ry="1.75" transform="rotate(-30 2.9 3.5)" fill="none" stroke="white" stroke-width="1.5" />
+                        <ellipse cx="2.9" cy="3.5" rx="3.5" ry="1.75" transform="rotate(-30 2.9 3.5)" fill="none" stroke="#2e7d32" stroke-width="0.85" />
+                    </g>
+                </symbol>
             </defs>
         </svg>
         <div id="app"></div>
@@ -86,8 +106,8 @@
             <div class="page A4-landscape">
                 <!-- EN-TÊTE : logo et noms empilés (tamoul, français) à gauche | coordonnées en 2 colonnes à droite -->
                 <header class="header-fixed">
-                    <svg class="frise frise-top" data-maillon="anneau-saffron" aria-hidden="true"></svg>
-                    <svg class="frise frise-bottom" data-maillon="anneau-green" aria-hidden="true"></svg>
+                    <svg class="frise frise-top" data-maillon="chainon-saffron" data-pas="4.8" aria-hidden="true"></svg>
+                    <svg class="frise frise-bottom" data-maillon="chainon-green" data-pas="4.8" aria-hidden="true"></svg>
                     <div class="header-content">
                         <div class="logo-box">
                             <img src="assets/img/AMI.png" alt="Logo de l'Association Musulmane de l'Inde" class="logo-img" />

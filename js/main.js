@@ -16,10 +16,10 @@ let clientConfig = null;
  * @param {HTMLElement} container - page clonée
  */
 function drawFrises(container) {
-    const MAILLON_PAS = 4.2; // px, pas des maillons (symboles dans index.html) : ils se chevauchent
-    const xs = Array.from({ length: 340 }, (_, i) => ((i - 1) * MAILLON_PAS).toFixed(1));
     container.querySelectorAll('.frise').forEach((svg) => {
         const id = svg.dataset.maillon;
+        const pas = parseFloat(svg.dataset.pas) || 4.2; // px : les maillons (symboles dans index.html) se chevauchent
+        const xs = Array.from({ length: Math.ceil(1500 / pas) }, (_, i) => ((i - 1) * pas).toFixed(1));
         svg.innerHTML = xs.map((x) => `<use href="#${id}" x="${x}" />`).join('') + xs.map((x) => `<use href="#${id}-dessus" x="${x}" />`).join('');
     });
 }
