@@ -7,16 +7,9 @@
        la bordure du haut n'est pas perforée */
     margin-top: calc(var(--binding-zone) - var(--page-pad));
     height: var(--header-h); /* frises comprises (box-sizing: border-box) */
-    --band-motif-h: 6px;
-    padding: calc(1mm + var(--band-motif-h)) 1mm;
-    /* Frises fines aux couleurs du logo (étoiles à 8 branches et losanges reliés par un fil) :
-       safran en haut (nom tamoul), vert en bas (nom français) */
-    background:
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 6'%3E%3Cg fill='%23b8520f'%3E%3Crect x='0' y='2.75' width='14' height='0.5' opacity='0.5'/%3E%3Crect x='1.6' y='1.1' width='3.8' height='3.8'/%3E%3Crect x='1.6' y='1.1' width='3.8' height='3.8' transform='rotate(45 3.5 3)'/%3E%3Crect x='9.6' y='2.1' width='1.8' height='1.8' transform='rotate(45 10.5 3)'/%3E%3C/g%3E%3C/svg%3E")
-            top left / 14px var(--band-motif-h) repeat-x,
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 6'%3E%3Cg fill='%232e7d32'%3E%3Crect x='0' y='2.75' width='14' height='0.5' opacity='0.5'/%3E%3Crect x='1.6' y='1.1' width='3.8' height='3.8'/%3E%3Crect x='1.6' y='1.1' width='3.8' height='3.8' transform='rotate(45 3.5 3)'/%3E%3Crect x='9.6' y='2.1' width='1.8' height='1.8' transform='rotate(45 10.5 3)'/%3E%3C/g%3E%3C/svg%3E")
-            bottom left / 14px var(--band-motif-h) repeat-x,
-        white;
+    --band-motif-h: 7px;
+    padding: var(--band-motif-h) 1mm; /* logo ≥ 2 cm : 24 mm − 2 frises */
+    background-color: white;
 }
 
 /* Motif girih gris chaud très pâle sur toute la largeur (texture de papier à en-tête, sans couleur ajoutée) */
@@ -28,6 +21,24 @@
     pointer-events: none;
 }
 
+/* Frises aux couleurs du logo (chaîne de maillons inclinés entrelacés : symboles SVG vectoriels, voir index.html) :
+   safran en haut (nom tamoul), vert en bas (nom français) */
+.frise {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: var(--band-motif-h);
+    overflow: hidden;
+}
+
+.frise-top {
+    top: 0;
+}
+
+.frise-bottom {
+    bottom: 0;
+}
+
 .header-content {
     position: relative; /* au-dessus du motif */
     height: 100%;
@@ -36,7 +47,7 @@
     gap: var(--sp-3);
 }
 
-/* Logo carré à pleine hauteur, entre les deux frises (≈ 1,9 cm) */
+/* Logo carré à pleine hauteur, entre les deux frises (≈ 2 cm) */
 .logo-box {
     flex-shrink: 0;
     height: 100%;

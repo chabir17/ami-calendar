@@ -32,6 +32,114 @@
 
     <body>
         <!-- Conteneur principal de l'application -->
+        <!-- Frises du header : maillons inclinés entrelacés (symboles vectoriels répétés par js/main.js ;
+             2e passage sur la moitié droite de chaque maillon : il passe dessus à droite, dessous à gauche) -->
+        <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+            <defs>
+                <symbol id="maillon-saffron" overflow="visible">
+                    <rect
+                        x="-7.6"
+                        y="-1.55"
+                        width="15.2"
+                        height="3.1"
+                        rx="1.55"
+                        transform="translate(3.9 3.5) rotate(-22) scale(0.78)"
+                        fill="none"
+                        stroke="white"
+                        stroke-width="2.6"
+                    />
+                    <rect
+                        x="-7.6"
+                        y="-1.55"
+                        width="15.2"
+                        height="3.1"
+                        rx="1.55"
+                        transform="translate(3.9 3.5) rotate(-22) scale(0.78)"
+                        fill="none"
+                        stroke="#b8520f"
+                        stroke-width="1"
+                    />
+                </symbol>
+                <clipPath id="maillon-moitie-saffron"><rect x="3.9" y="-5" width="12" height="20" /></clipPath>
+                <symbol id="maillon-saffron-dessus" overflow="visible">
+                    <g clip-path="url(#maillon-moitie-saffron)">
+                        <rect
+                            x="-7.6"
+                            y="-1.55"
+                            width="15.2"
+                            height="3.1"
+                            rx="1.55"
+                            transform="translate(3.9 3.5) rotate(-22) scale(0.78)"
+                            fill="none"
+                            stroke="white"
+                            stroke-width="2.6"
+                        />
+                        <rect
+                            x="-7.6"
+                            y="-1.55"
+                            width="15.2"
+                            height="3.1"
+                            rx="1.55"
+                            transform="translate(3.9 3.5) rotate(-22) scale(0.78)"
+                            fill="none"
+                            stroke="#b8520f"
+                            stroke-width="1"
+                        />
+                    </g>
+                </symbol>
+                <symbol id="maillon-green" overflow="visible">
+                    <rect
+                        x="-7.6"
+                        y="-1.55"
+                        width="15.2"
+                        height="3.1"
+                        rx="1.55"
+                        transform="translate(3.9 3.5) rotate(-22) scale(0.78)"
+                        fill="none"
+                        stroke="white"
+                        stroke-width="2.6"
+                    />
+                    <rect
+                        x="-7.6"
+                        y="-1.55"
+                        width="15.2"
+                        height="3.1"
+                        rx="1.55"
+                        transform="translate(3.9 3.5) rotate(-22) scale(0.78)"
+                        fill="none"
+                        stroke="#2e7d32"
+                        stroke-width="1"
+                    />
+                </symbol>
+                <clipPath id="maillon-moitie-green"><rect x="3.9" y="-5" width="12" height="20" /></clipPath>
+                <symbol id="maillon-green-dessus" overflow="visible">
+                    <g clip-path="url(#maillon-moitie-green)">
+                        <rect
+                            x="-7.6"
+                            y="-1.55"
+                            width="15.2"
+                            height="3.1"
+                            rx="1.55"
+                            transform="translate(3.9 3.5) rotate(-22) scale(0.78)"
+                            fill="none"
+                            stroke="white"
+                            stroke-width="2.6"
+                        />
+                        <rect
+                            x="-7.6"
+                            y="-1.55"
+                            width="15.2"
+                            height="3.1"
+                            rx="1.55"
+                            transform="translate(3.9 3.5) rotate(-22) scale(0.78)"
+                            fill="none"
+                            stroke="#2e7d32"
+                            stroke-width="1"
+                        />
+                    </g>
+                </symbol>
+            </defs>
+        </svg>
         <div id="app"></div>
 
         <!-- Template de la page (cloné par JS) -->
@@ -39,6 +147,8 @@
             <div class="page A4-landscape">
                 <!-- EN-TÊTE : logo et noms empilés (tamoul, français) à gauche | coordonnées en 2 colonnes à droite -->
                 <header class="header-fixed">
+                    <svg class="frise frise-top" data-maillon="maillon-saffron" aria-hidden="true"></svg>
+                    <svg class="frise frise-bottom" data-maillon="maillon-green" aria-hidden="true"></svg>
                     <div class="header-content">
                         <div class="logo-box">
                             <img src="assets/img/AMI.png" alt="Logo de l'Association Musulmane de l'Inde" class="logo-img" />

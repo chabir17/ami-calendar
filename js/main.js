@@ -23,7 +23,15 @@ function updatePageDOM(container, config) {
     DOM.setText('.org-ta', config.identity.name_ta, container);
     DOM.setSrc('.logo-img', config.identity.logo_url, container);
 
-    // Coordonnées en 4 colonnes (BIC sous l'IBAN)
+    // Frises du header : maillons répétés sur toute la largeur (2e passage : moitié droite par-dessus = entrelacs)
+    const MAILLON_PAS = 7.8; // px, pas des maillons (symboles dans index.html)
+    container.querySelectorAll('.frise').forEach((svg) => {
+        const id = svg.dataset.maillon;
+        const xs = Array.from({ length: 190 }, (_, i) => ((i - 1) * MAILLON_PAS).toFixed(1));
+        svg.innerHTML = xs.map((x) => `<use href="#${id}" x="${x}" />`).join('') + xs.map((x) => `<use href="#${id}-dessus" x="${x}" />`).join('');
+    });
+
+    // Coordonnées en 2 colonnes (BIC sous l'IBAN)
     const contacts = container.querySelector('.header-contacts');
     if (contacts) contacts.innerHTML = contactsHTML(config.contact);
 }
