@@ -21,7 +21,7 @@
     white-space: nowrap;
 }
 
-/* Grégorien : mois en gras, année plus légère (bleu marine) */
+/* Grégorien : nom du mois en titre (bleu marine, plus grand), année plus légère (bleu ardoise) */
 .greg-month-fr,
 .year-display {
     font-size: var(--fs-xl);
@@ -33,13 +33,15 @@
 
 .greg-month-fr {
     font-weight: 600;
+    font-size: var(--fs-month);
+    color: var(--col-blue);
 }
 
 .year-display {
     font-weight: 400; /* hiérarchie par la graisse, même bleu (contraste AA) */
 }
 
-/* Hégirien : mois en arabe, même bleu que le mois grégorien */
+/* Hégirien : nom(s) du mois en arabe en titre, comme le mois grégorien (extrémité droite) */
 .hijri-month-ar {
     font-size: var(--fs-xl);
     line-height: 1.45; /* queues des lettres arabes (ع, ي…) : ne touchent pas la ligne 2 */
@@ -48,6 +50,8 @@
 
 .hijri-months {
     font-weight: 500; /* arabe : 500 maximum */
+    font-size: var(--fs-month);
+    color: var(--col-blue);
 }
 
 .hijri-year {
@@ -70,13 +74,18 @@
 }
 
 /* Deux mois hégiriens aux noms longs : taille réduite (voir fitMonthTitles) */
-.month-titles-zone.is-compact .hijri-month-ar {
-    font-size: var(--fs-md);
+.month-titles-zone.is-compact .hijri-months {
+    font-size: var(--fs-xl);
 }
 
 .month-titles-zone.is-compact .titles-hijri .title-sub,
 .month-titles-zone.is-compact .titles-hijri .title-sub > * + *::before {
     font-size: var(--fs-xs);
+}
+
+.month-titles-zone.is-compact-2 .hijri-months,
+.month-titles-zone.is-compact-2 .hijri-year {
+    font-size: var(--fs-md);
 }
 
 /* Puce entre deux traductions */

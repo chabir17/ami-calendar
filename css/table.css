@@ -22,12 +22,12 @@ ami-prayer-table {
     border: hidden;
 }
 
-/* En-tête vert clair (pendant du bandeau bleu clair du mois) : prières en vert foncé, traductions en gris ;
+/* En-tête vert clair (pendant du bandeau bleu clair du mois) : noms des prières en titre (vert foncé plein), traductions en gris ;
    séparateurs blancs, filet vert : transition vers le corps du tableau */
 .prayer-table thead th {
     background: var(--bg-green-faint);
     border: none;
-    border-bottom: 1.5px solid var(--accent-green);
+    border-bottom: 0.5px solid var(--accent-green);
     box-shadow: inset calc(-1 * var(--hairline)) 0 0 white; /* séparateurs 0,5 px entre les colonnes */
     padding: var(--sp-1) 1px;
     font-size: var(--fs-xs);
@@ -50,9 +50,10 @@ ami-prayer-table {
 
 .th-fr {
     display: block;
-    font-size: var(--fs-xs);
+    font-size: var(--fs-sm);
     font-weight: 600;
     text-transform: uppercase;
+    color: var(--col-green-dark);
 }
 
 .th-ar {
