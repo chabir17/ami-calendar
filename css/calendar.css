@@ -108,12 +108,12 @@
     background-color: white;
 }
 
-/* En-tête des jours de la semaine : fond blanc ; vendredi en vert et dimanche en terracotta (trois langues) */
+/* En-tête des jours de la semaine : fond blanc ; chaque colonne prend la couleur de ses numéros */
 .weekdays-header {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     background: white;
-    color: var(--col-blue);
+    color: var(--col-text-light); /* même couleur que les numéros en dessous */
     text-align: center;
     padding: 0;
     font-size: var(--fs-sm);
@@ -137,17 +137,15 @@
 
 .weekday-sub {
     font-size: var(--fs-sm);
-    color: var(--col-text-light);
 }
 
-.weekday-cell:nth-child(5),
-.weekday-cell:nth-child(5) .weekday-sub {
-    color: var(--col-green);
+/* Chaque colonne a la couleur de ses numéros : vendredi et dimanche en teinte adoucie (trois langues) */
+.weekday-cell:nth-child(5) {
+    color: var(--col-friday);
 }
 
-.weekday-cell:nth-child(7),
-.weekday-cell:nth-child(7) .weekday-sub {
-    color: var(--col-terracotta);
+.weekday-cell:nth-child(7) {
+    color: var(--col-sunday);
 }
 
 /* Grille des jours (5 rangées pour couvrir le mois) */

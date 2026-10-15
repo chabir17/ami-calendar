@@ -61,7 +61,7 @@ Chaque mois est un clone de `#page-template` : une page A4 paysage (`--page-pad`
 Le bandeau du mois (bleu clair) et l'en-tête du tableau (vert clair) ont la même hauteur `--band-h` : leurs bas sont alignés.
 
 - **Bandeau du mois** : mois grégorien en bleu marine (année en `--accent-blue`), mois hégirien en arabe en bleu marine aussi (année en `--accent-blue`), traductions en gris.
-- **En-tête des jours** : fond blanc ; vendredi en vert et dimanche en terracotta, dans les trois langues.
+- **En-tête des jours** : fond blanc ; chaque colonne a la couleur de ses numéros (gris adouci, `--col-friday`, `--col-sunday`), dans les trois langues.
 - **Numéros des jours** : gris adouci `--col-text-light`, identique du lundi au samedi ; vendredis et dimanches en teintes adoucies `--col-friday` et `--col-sunday` (≥ 3:1), plus discrètes que les jours fériés et l'Aïd, qui restent prioritaires.
 - **En-tête du tableau** : fond vert clair, prières en vert foncé, séparateurs blancs.
 - **Cadres** : le contour de chaque bloc reprend la couleur de son en-tête (`--bg-blue-faint`, `--bg-green-faint`, 2 px).
