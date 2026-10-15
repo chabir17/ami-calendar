@@ -1,129 +1,80 @@
 # AMI Calendar
 
-Ce projet génère deux documents pour l'association AMI (La Courneuve), en français, arabe et tamoul :
+Calendriers imprimables de l'**Association Musulmane de l'Inde** (AMI, La Courneuve), en français, arabe et tamoul.
 
-- **Calendrier annuel** (`index.html`) : 12 pages A4 paysage, calendrier civil et hégirien, horaires de prière.
-- **Calendrier du Ramadan** (`ramadan.html`) : une page A4 portrait. Par défaut, version numérique (couleurs contrastées, coordonnées cliquables, à partager en PDF) ; `ramadan.html?print=true` pour la version papier (pastels, économie d'encre). Paramètre facultatif `?year=2028`.
+| Document               | Page           | Format              | Contenu                                                                              |
+| ---------------------- | -------------- | ------------------- | ------------------------------------------------------------------------------------ |
+| **Calendrier annuel**  | `index.html`   | 12 pages A4 paysage | Mois civil et hégirien, jours fériés, vacances (zone C), horaires des 5 prières      |
+| **Feuille du Ramadan** | `ramadan.html` | 1 page A4 portrait  | Horaires du mois de Ramadan (Imsak, prières, Icha AMI), nuit du doute, 27e nuit, Aïd |
 
-## Fonctionnalités
+Site statique en JavaScript natif, sans framework ni étape de compilation. Documentation technique détaillée : [docs/TECHNIQUE.md](docs/TECHNIQUE.md).
 
-### 🎨 Identité Visuelle et Thèmes
+## Démarrage
 
-Le design est piloté par des variables CSS (`css/variables.css`) permettant une personnalisation aisée :
+Les pages chargent des fichiers locaux (CSV, JSON) : il faut un petit serveur web, pas une ouverture directe du fichier.
 
-- **Palette Symbolique** :
-    - Bleu "Tour Eiffel" (`--col-blue`)
-    - Vert "Mosquée" (`--col-green`)
-- **Thème Annuel** : une couleur variable (`--brand`, calendrier annuel) permet d'adapter l'ambiance générale chaque année ; ses variantes sont calculées automatiquement.
-- **Contraste** : les textes utilisent des variantes foncées des couleurs (`--brand-text`, `--col-green-dark`, `--col-saffron-text`) qui respectent le niveau WCAG AA.
-- **Indicateurs de Jours** :
-    - Numéro du jour en rouge pour les jours fériés, en vert pour l'Aïd (libellé écrit dans la case).
-    - Vacances scolaires (Zone C) : fond doré clair (`--bg-holiday`) ; l'Aïd et les jours fériés restent prioritaires.
-    - Jours vertueux d'un jour précis écrits en vert dans la case, comme l'Aïd : début du Ramadan, jour de ʿArafa, Tashrīq et ʿĀshūrāʾ (`VIRTUOUS_DAYS` dans `js/services.js`, hadiths authentiques).
-    - Bande du bas : légende propre à chaque mois, sans dates, dans l'ordre chronologique : vacances scolaires et passage à l'heure d'été / d'hiver. Toujours affichée, même vide.
-    - Icônes SVG (`assets/icons/`) : croissant vert pour la nouvelle lune, horloge bleue avec flèche avant/arrière pour le passage à l'heure d'été/hiver.
+```bash
+npm install          # outils de développement (ESLint, Prettier, serve)
+npm start            # sert le dossier sur http://localhost:3000
+```
 
-### 🌐 Typographie Multilingue
+Sans Node : `python3 -m http.server 3000` depuis la racine du projet.
 
-Le projet utilise des polices hébergées localement (dans `assets/fonts/`) pour éviter les dépendances externes :
+### Paramètres d'URL
 
-- **Français** : `Noto Sans`
-- **Arabe** : `Amiri` (naskh classique, `Noto Naskh Arabic` en secours)
-- **Tamoul** : `Noto Serif Tamil` (400, 500, 600, 700)
+| Page           | Paramètre          | Effet                                                                                 |
+| -------------- | ------------------ | ------------------------------------------------------------------------------------- |
+| `index.html`   | `?year=2027`       | Année affichée (par défaut : l'année prochaine)                                       |
+|                | `?month=10`        | Un seul mois au lieu des 12                                                           |
+|                | `?mosque=ami93120` | Identité, coordonnées et position lues depuis `clients/ami93120.json`                 |
+| `ramadan.html` | `?year=2028`       | Ramadan de l'année donnée (par défaut : le prochain Ramadan)                          |
+|                | `?print=true`      | Version papier (fond clair, économe en encre) ; sans ce paramètre : version numérique |
 
-### 📐 Mise en Page
+## Générer les PDF
 
-- **Header** (`css/header.css`) : en-tête de lettre à angles droits sur fond blanc, hauteur limitée à 24 mm (`--header-h`), filets aux couleurs du logo (safran en haut, vert en bas). À gauche, logo à pleine hauteur et noms empilés : tamoul en safran, français en vert (`--fs-brand`, 28 px, sur toute la hauteur du logo) ; à droite, coordonnées en 2 colonnes (`--fs-contact` : adresses, IBAN, BIC | téléphones, e-mail, site). Le header commence sous la zone de reliure (`--binding-zone`).
-- **Calendrier** : carte dont l'en-tête porte le titre du mois (grégorien à gauche, hégirien à droite : mois en gras, année plus légère, traductions tamoule et translittérée dessous), puis la ligne des jours.
-- **Tableau des horaires** : carte pleine hauteur à droite, en-tête vert foncé uni, aussi sombre en apparence que le bandeau bleu marine du mois.
-- Espacement unique entre les trois blocs (`--block-gap`).
+1. Ouvrir la page dans **Chrome**, **connecté à internet** (les jours fériés et les vacances viennent des API officielles).
+2. Vérifier qu'un jour férié (ex. 1er mai) et une période de vacances apparaissent.
+3. Imprimer en PDF : format **A4** (paysage pour le calendrier, portrait pour le Ramadan), marges **Aucune**, échelle **100 %**, **Graphiques d'arrière-plan** cochés.
+4. Contrôler le nombre de pages : 12 pour le calendrier, 1 pour la feuille du Ramadan.
 
-### 🧩 Design system
+## Impression (copieur laser de l'association)
 
-Toutes les valeurs visuelles sont des jetons définis dans `css/variables.css`, partagés par les deux documents :
-
-| Famille          | Jetons                                                                                                                                                                                                                                                                                                          | Règle                                                                 |
-| ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| Couleurs de sens | `--col-blue` (structure, grégorien), `--col-green` (hégirien, vendredis, Aïd), `--col-green-deep` (en-tête des horaires, aussi sombre en apparence que le bleu marine), `--col-red-event` (jours fériés), `--col-terracotta` (horaires du jeûne), `--col-gold` (ornements, filets), `--brand` (thème du client) | Une couleur = un sens ; les textes restent au moins à 4,5:1 (WCAG AA) |
-| Fonds            | `--bg-blue-faint`, `--bg-green-faint`, `--bg-terracotta(-soft)`, `--bg-friday` (= `--bg-green-faint`), `--bg-holiday`                                                                                                                                                                                           | Pastels opaques, fiables sur laser de bureau                          |
-| Texte            | `--col-text`, `--col-text-light`, `--col-text-soft`, `--col-ink` (chiffres), `--col-on-blue` / `--col-on-green` (sur les en-têtes foncés)                                                                                                                                                                       |                                                                       |
-| Tailles          | `--fs-2xs` 8,5 · `--fs-xs` 10 · `--fs-contact` 11 · `--fs-sm` 12 · `--fs-md` 14 · `--fs-figure` 15 (horaires) · `--fs-xl` 22 (titres) · `--fs-brand` 24 · `--fs-title` 30 · `--fs-display` 42 (numéros des jours)                                                                                               | Aucune taille en dur dans les feuilles de style                       |
-| Espacements      | `--sp-1` 4 px · `--sp-2` 8 · `--sp-3` 12 · `--sp-4` 16 · `--sp-6` 24                                                                                                                                                                                                                                            | Multiples de 4 px                                                     |
-| Graisses         | 400 et 600 (français, tamoul) ; 400 pour l'arabe (Amiri)                                                                                                                                                                                                                                                        |                                                                       |
-
-La page Ramadan utilise des **rôles** (`--rule`, `--surface`, `--surface-fast`) déclarés sur `.page` ; la version numérique (`.digital`) ne fait que leur donner des teintes plus soutenues. Chaque version a son image de fond pleine page : `assets/img/ramadan-background-night.jpg` (nuit d'hiver, numérique) et `assets/img/ramadan-background.jpg` (crème à arche dorée, papier, éclairci par un voile blanc). Le décor reste dans les coins, le haut du titre et la neige du bas : le tableau couvre tout le reste.
-
-### Performance et Optimisations
-
-Le projet intègre plusieurs stratégies pour assurer un chargement rapide et une interface fluide :
-
-- **Chargement CSS Parallèle** : Les feuilles de style sont liées directement dans le HTML pour éviter les blocages liés aux `@import`.
-- **Rendu Non-Bloquant** : Les scripts JS (`defer`) et le CSS d'impression (`media="print"`) ne bloquent pas l'affichage initial.
-- **Stratégies de Cache** :
-    - **Données API** : cache `localStorage` appliqué immédiatement, puis API toujours interrogée ("stale-while-revalidate") pour récupérer les dates les plus récentes des jours fériés et vacances scolaires.
-    - **Calculs** : Mémoïsation des conversions de dates Hégiriennes pour optimiser le rendu de la grille.
-- **Pré-chargement** : Utilisation de `preload` pour les polices principales.
-
-## Structure du Projet
-
-### 📂 Organisation des Fichiers
-
-- **assets/** : Ressources statiques du projet.
-    - `fonts/` : Fichiers de police (`.ttf`) pour le fonctionnement hors-ligne.
-    - `icons/` : Pictogrammes SVG (localisation, téléphone, email, site web...).
-    - `img/` : Images principales (Logo de l'association).
-    - `patterns/` : Motifs d'arrière-plan (SVG).
-- **css/** : Feuilles de style modulaires.
-    - `variables.css` : Configuration globale (Thème couleur, polices).
-    - `fonts.css` : Importation des polices locales via `@font-face`.
-    - `header.css`, `table.css`, `calendar.css` : Styles spécifiques aux composants.
-    - `print.css` : Optimisations pour l'impression A4 Paysage.
-- **js/** : Logique applicative (Vanilla JS).
-    - `lib/` : Librairies tierces (Adhan.js minifié) pour fonctionnement hors-ligne.
-    - `components.js` : Définition des Web Components (`<ami-calendar-grid>`, `<ami-prayer-table>`).
-    - `utils.js` : Fonctions utilitaires partagées (DOM helpers, formatage de dates).
-    - `services.js` : Logique métier (Calculs Adhan, Hégire, et appels API).
-    - `main.js` : Point d'entrée, orchestration du rendu et gestion du cache.
-- **data/** : Fichiers de configuration.
-    - `config.js` : Paramètres géographiques (Lat/Lng) et méthodes de calcul.
-    - `lang.js` : Textes et traductions (Français, Arabe, Tamoul).
-
-### ⚙️ Logique et Données
-
-- **Horaires de Prière** : Lus depuis `data/prayer_times.csv`, un fichier générique réutilisable chaque année (une ligne par jour `Mois;Jour`). Les heures peuvent être fournies en heure d'hiver seule ou avec l'heure d'été d'une année quelconque : le saut d'une heure est détecté et neutralisé, puis l'heure d'été (+1h) est réappliquée du dernier dimanche de mars au dernier dimanche d'octobre de l'année affichée. Sans ligne `2;29`, le 29 février reprend les horaires du 28. À défaut de fichier, les horaires sont calculés via `Adhan.js` (inclus dans `js/lib/`).
-- **Dates Hégiriennes** : Conversion dynamique via `Intl.DateTimeFormat` (Islamic Civil).
-- **Jours Fériés & Vacances** : récupérés depuis les API gouvernementales (api.gouv.fr / education.gouv.fr), avec cache local appliqué immédiatement puis mis à jour.
-- **Page Ramadan** : Imsak = Fajr − 10 min (`IMSAK_MINUTES_BEFORE_FAJR`), Icha AMI par quinzaine (`AMI_ISHA`), en tête de `js/ramadan.js` ; corrections manuelles possibles dans `data/ramadan_overrides.json` (prioritaires).
-
-## Impression
-
-Le calendrier est conçu pour une impression couleur **A4 paysage**, recto seul, reliée sur le bord haut (spirale métallique), sur une imprimante de bureau.
-
-- **Marges** (`css/variables.css`) : `--page-pad` (5 mm, au-delà de la zone non imprimable du copieur) et `--binding-zone` (10 mm en haut, pour les perforations de la reliure).
-- **Réglages d'impression** : format A4 paysage, marges « Aucune », échelle 100 % (« Taille réelle »), graphiques d'arrière-plan activés.
-- Le tableau des horaires répartit ses lignes sur la hauteur disponible : les mois de 28 à 31 jours tiennent toujours sur la page.
+- Recto seul, reliure à spirale sur le bord haut : une zone de 10 mm est réservée en haut de chaque page (`--binding-zone`).
+- Marge de 5 mm sur les bords (`--page-pad`), au-delà de la zone non imprimable du copieur.
+- Dans le pilote : qualité **Graphique** ou **Photo**, **économie de toner désactivée** (sinon les aplats foncés deviennent tramés).
+- Papier conseillé pour le calendrier mural : **120 g/m²**, blanc, non couché, « laser couleur ».
+- Faire une page test (couleurs, frises du header, petits libellés de 8,5 px) avant de lancer le tirage complet.
 
 ## Préparer une nouvelle année
 
-1. **Dates hégiriennes** : faire valider le début du Ramadan et les Aïds par les imams ; en cas d'écart d'un jour, ajouter une période dans `HIJRI_OFFSETS` (`js/services.js`).
-2. **Horaires** : remplacer `data/prayer_times.csv` si la mosquée publie de nouveaux horaires ; vérifier Imsak et Icha AMI en tête de `js/ramadan.js`.
-3. **Thème** : changer `--brand` (couleur de l'année) si souhaité.
-4. **Vérifier** : générer les PDF (`index.html?year=…`, `ramadan.html?year=…` et `?print=true`), contrôler le nombre de pages, puis faire une impression de test.
+1. **Dates hégiriennes** : faire valider par les imams le début du Ramadan, les deux Aïds, ʿArafa et ʿĀshūrāʾ. En cas d'écart d'un jour avec le calcul, ajouter une période dans `HIJRI_OFFSETS` (`js/services.js`).
+2. **Horaires de prière** : remplacer `data/prayer_times.csv` si la mosquée publie de nouveaux horaires (format dans la documentation technique).
+3. **Feuille du Ramadan** : vérifier l'Imsak (`IMSAK_MINUTES_BEFORE_FAJR`) et l'Icha AMI (`AMI_ISHA`) en tête de `js/ramadan.js` ; corrections manuelles possibles dans `data/ramadan_overrides.json`.
+4. **Vérifier** les PDF : `index.html?year=…`, `ramadan.html?year=…` et `ramadan.html?year=…&print=true`.
 
-## Personnalisation
+## Ce que montre le calendrier annuel
 
-Pour modifier l'apparence du calendrier, éditez le fichier `css/variables.css`.
+- **Header** : logo, noms tamoul (safran) et français (vert), coordonnées ; encadré par deux fines torsades aux couleurs du logo.
+- **Bandeau du mois** (bleu marine) : mois grégorien à gauche, mois hégirien(s) à droite, avec traductions.
+- **Cases des jours** :
+    - numéro hégirien en petit, en haut à droite ; **en pastille verte** les jours islamiques particuliers ;
+    - croissant vert : premier jour du mois hégirien ;
+    - numéro **vert** : Aïd ; **rouge** : jour férié (libellé écrit dans la case) ;
+    - libellés verts : début du Ramadan, jour de ʿArafa, jours de Tashrīq, ʿĀshūrāʾ ;
+    - fond doré pâle : vacances scolaires (zone C) ; fond gris : jours hors du mois ;
+    - horloge bleue : passage à l'heure d'été ou d'hiver.
+- **Légende** (bas de page) : nom des vacances scolaires du mois et passage à l'heure d'été / d'hiver.
+- **Tableau des horaires** (en-tête vert foncé) : Fajr, Shuruq, Dhohr, Asr, Maghrib, Icha et jour hégirien ; vendredis surlignés, filet à chaque fin de semaine.
 
-**Exemple : Changer la couleur du thème de l'année**
+## Développement
 
-Il suffit de modifier la variable `--brand` ; ses variantes (`--brand-text`, motif du header…) en découlent.
-
-```css
-:root {
-    --brand: #c8b070; /* Remplacez par votre code couleur */
-}
+```bash
+npm run lint         # ESLint
+npm run prettier     # mise en forme de tout le projet
 ```
+
+Code, design tokens, données et points d'extension : voir [docs/TECHNIQUE.md](docs/TECHNIQUE.md).
 
 ## Auteur
 
-Développé dans l'espace de travail de Chabir.
+Chabir, pour l'Association Musulmane de l'Inde.
