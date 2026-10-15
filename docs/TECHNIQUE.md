@@ -15,7 +15,6 @@ Référence pour faire évoluer le code des deux documents de l'AMI. Pour l'usag
 ```
 index.html            Calendrier annuel : templates (page, case, ligne du tableau) + symboles SVG des frises
 ramadan.html          Feuille du Ramadan : template unique
-planningS1.html       Page indépendante (planning du semestre), hors calendriers
 css/
   variables.css       Jetons du design system (partagés)
   fonts.css           @font-face des polices locales
@@ -25,7 +24,6 @@ css/
   table.css           Tableau des horaires (calendrier annuel)
   print.css           Règles @media print du calendrier annuel
   ramadan.css         Feuille du Ramadan (autonome : A4 portrait, versions numérique / papier)
-  planningS1.css      Styles de planningS1.html
 js/
   main.js             Calendrier annuel : orchestration des pages, header, bandeau du mois, légende
   components.js       Web Components <ami-calendar-grid> et <ami-prayer-table>
