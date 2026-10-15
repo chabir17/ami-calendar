@@ -129,3 +129,8 @@ ami-prayer-table {
 .prayer-table tbody tr.week-end td {
     border-bottom: 1.5px solid var(--accent-green);
 }
+
+/* Dimanche du changement d'heure : filet terracotta, assorti au fond de la ligne */
+.prayer-table tbody tr.is-dst.week-end td {
+    border-bottom-color: var(--col-terracotta);
+}
