@@ -136,15 +136,18 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 /**
  * Bandeau du mois : si les deux mois hégiriens ne tiennent pas sur la largeur (ex. Jumādā al-ūlā / Jumādā ath-thāniya),
- * le côté hégirien passe en taille réduite (deux crans au plus) plutôt que d'être coupé.
+ * le côté hégirien passe en taille réduite (trois crans au plus : arabe, puis traductions, puis arabe encore) plutôt que d'être coupé.
  * @param {HTMLElement} root
  */
 function fitMonthTitles(root) {
     const overflows = (zone) => [zone, ...zone.querySelectorAll('.titles-hijri, .title-main, .title-sub')].some((e) => e.scrollWidth > e.clientWidth);
     root.querySelectorAll('.month-titles-zone').forEach((zone) => {
-        zone.classList.remove('is-compact', 'is-compact-2');
-        if (overflows(zone)) zone.classList.add('is-compact');
-        if (overflows(zone)) zone.classList.add('is-compact-2');
+        const levels = ['is-compact', 'is-compact-2', 'is-compact-3'];
+        zone.classList.remove(...levels);
+        for (const level of levels) {
+            if (!overflows(zone)) break;
+            zone.classList.add(level);
+        }
     });
 }
 

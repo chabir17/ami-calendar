@@ -63,7 +63,7 @@
     display: flex;
     align-items: baseline;
     gap: var(--sp-2);
-    font-size: var(--fs-sm);
+    font-size: var(--fs-md);
     line-height: 1.5;
     color: var(--col-text-light);
     white-space: nowrap;
@@ -80,11 +80,16 @@
 
 .month-titles-zone.is-compact .titles-hijri .title-sub,
 .month-titles-zone.is-compact .titles-hijri .title-sub > * + *::before {
+    font-size: var(--fs-sm);
+}
+
+.month-titles-zone.is-compact-2 .titles-hijri .title-sub,
+.month-titles-zone.is-compact-2 .titles-hijri .title-sub > * + *::before {
     font-size: var(--fs-xs);
 }
 
-.month-titles-zone.is-compact-2 .hijri-months,
-.month-titles-zone.is-compact-2 .hijri-year {
+.month-titles-zone.is-compact-3 .hijri-months,
+.month-titles-zone.is-compact-3 .hijri-year {
     font-size: var(--fs-md);
 }
 
@@ -93,7 +98,7 @@
     content: '•';
     margin-right: var(--sp-2);
     font-family: var(--font-fr);
-    font-size: var(--fs-sm);
+    font-size: var(--fs-md);
     font-style: normal;
     color: var(--col-text-light);
     opacity: 0.7;
