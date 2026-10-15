@@ -61,8 +61,8 @@ Chaque mois est un clone de `#page-template` : une page A4 paysage (`--page-pad`
 Le bandeau du mois (bleu clair) et l'en-tête du tableau (vert clair) ont la même hauteur `--band-h` : leurs bas sont alignés.
 
 - **Bandeau du mois** : mois grégorien en bleu ardoise `--col-title-blue` (année dans le même bleu, en graisse normale), mois hégirien en arabe dans le même bleu, traductions en gris.
-- **En-tête des jours** : fond blanc ; chaque colonne a exactement la couleur de ses numéros (`--col-day`, `--col-friday`, `--col-sunday`), dans les trois langues.
-- **Numéros des jours** : gris tirant vers le bleu marine `--col-day`, identique du lundi au samedi ; vendredis et dimanches en gris légèrement teinté (vert sauge `--col-friday`, terracotta `--col-sunday`) : seuls les jours fériés et l'Aïd sont en couleur pleine.
+- **En-tête des jours** : fond blanc ; chaque colonne a exactement la couleur de ses numéros (`--col-text-light`, `--col-friday`, `--col-sunday`), dans les trois langues.
+- **Numéros des jours** : gris neutre des textes courants `--col-text-light`, identique du lundi au samedi ; vendredis et dimanches en gris légèrement teinté (vert sauge `--col-friday`, terracotta `--col-sunday`) : seuls les jours fériés et l'Aïd sont en couleur pleine.
 - **En-tête du tableau** : fond vert clair, prières en vert sauge `--col-title-green`, séparateurs blancs.
 - **Cadres** : le contour de chaque bloc reprend la couleur de son en-tête (`--bg-blue-faint`, `--bg-green-faint`, 2 px).
 - **Bandeau trop long** (deux mois hégiriens aux noms longs) : `fitMonthTitles` ajoute `is-compact`, qui réduit le côté hégirien au lieu de le couper.
