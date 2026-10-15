@@ -77,18 +77,17 @@ Le bandeau du mois (bleu marine) et l'en-tête du tableau (vert foncé) ont la m
 
 Les deux composants héritent de `MonthElement`, qui observe `year` et `month` et regroupe les rendus à la frame suivante (`requestAnimationFrame`).
 
-**`<ami-calendar-grid>`** : grille fixe de **35 cases** (5 semaines × 7, lundi en premier). La grille ne dépasse jamais 5 semaines : les jours au-delà de la 35e case (mois sur 6 semaines) reviennent dans les premières cases vides, marqués d'un coin replié bleu (`is-wrapped`). Chaque case est clonée depuis `#calendar-cell-template` et reçoit des classes selon `getDayInfo` :
+**`<ami-calendar-grid>`** : grille fixe de **35 cases** (5 semaines × 7, lundi en premier). La grille ne dépasse jamais 5 semaines : les jours au-delà de la 35e case (mois sur 6 semaines) reviennent dans les premières cases vides. Chaque case est clonée depuis `#calendar-cell-template` et reçoit des classes selon `getDayInfo` :
 
-| Classe              | Condition                         | Effet                                      |
-| ------------------- | --------------------------------- | ------------------------------------------ |
-| `is-weekend`        | samedi, dimanche                  | numéro gris                                |
-| `is-holiday`        | vacances scolaires                | fond `--bg-holiday`                        |
-| `is-public-holiday` | jour férié                        | numéro rouge                               |
-| `is-eid`            | Aïd                               | numéro vert                                |
-| `is-islamic-event`  | Aïd ou jour vertueux              | date hégirienne (en haut à droite) en gras |
-| `is-wrapped`        | jour reporté en haut de la grille | coin replié bleu (bas gauche)              |
-| `multi-events`      | au moins deux libellés            | numéro remonté                             |
-| `empty`             | case hors du mois                 | fond `--bg-empty`                          |
+| Classe              | Condition              | Effet                                      |
+| ------------------- | ---------------------- | ------------------------------------------ |
+| `is-weekend`        | samedi, dimanche       | numéro gris                                |
+| `is-holiday`        | vacances scolaires     | fond `--bg-holiday`                        |
+| `is-public-holiday` | jour férié             | numéro rouge                               |
+| `is-eid`            | Aïd                    | numéro vert                                |
+| `is-islamic-event`  | Aïd ou jour vertueux   | date hégirienne (en haut à droite) en gras |
+| `multi-events`      | au moins deux libellés | numéro remonté                             |
+| `empty`             | case hors du mois      | fond `--bg-empty`                          |
 
 Éléments de la case :
 
@@ -99,10 +98,10 @@ Les deux composants héritent de `MonthElement`, qui observe `year` et `month` e
 
 **`<ami-prayer-table>`** : une ligne par jour depuis `#prayer-row-template` (jour abrégé sur 3 lettres, numéro, 6 horaires, jour hégirien). Classes :
 
-- `is-friday` : fond `--bg-friday` (le mot « VENDREDI » de l'en-tête de la grille est aussi en vert) ;
+- `is-friday` : fond `--bg-friday` ;
 - `week-end` : filet après chaque dimanche, sauf en fin de mois ;
 - `is-hijri-new` : 1er jour du mois hégirien, numéro en `--col-green-dark` dans la colonne hégirienne ;
-- `is-dst` : jour du changement d'heure, ligne entière en `--col-green-dark` (les horaires sautent d'une heure).
+- `is-dst` : jour du changement d'heure, fond gris pâle `--bg-empty` (les horaires sautent d'une heure).
 
 Le tableau occupe toute la hauteur : les mois de 28 à 31 jours tiennent sur la page.
 

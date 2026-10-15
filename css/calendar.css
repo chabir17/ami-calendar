@@ -119,11 +119,6 @@
     border-right: none;
 }
 
-/* Vendredi en vert, comme les vendredis surlignés du tableau des horaires */
-.weekday-cell:nth-child(5) .weekday-fr {
-    color: var(--col-green);
-}
-
 .weekday-fr {
     font-size: var(--fs-md);
     font-weight: 600;
@@ -199,17 +194,6 @@
 /* Jours islamiques particuliers : date hégirienne en gras (repérable sans ornement) */
 .is-islamic-event .vis-hij {
     font-weight: 600;
-}
-
-/* Fin du mois reportée en haut de la grille (5 semaines max) : coin replié */
-.day-cell-visual.is-wrapped::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    border-style: solid;
-    border-width: 0 0 14px 14px;
-    border-color: transparent transparent transparent var(--accent-blue);
 }
 
 /* --- ICÔNES ET LABELS D'ÉVÉNEMENTS --- */

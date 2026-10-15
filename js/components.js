@@ -51,9 +51,8 @@ class CalendarGrid extends MonthElement {
             const dayInfo = getDayInfo(date, hijri);
             let pos = startOffset + day - 1;
             // Layout compact (5 semaines max) : au-delà de 35 cases, le jour revient dans une case vide du début
-            const wrapped = pos >= 35;
-            if (wrapped) pos -= 35;
-            gridCells[pos] = { day, hijri, dayInfo, wrapped };
+            if (pos >= 35) pos -= 35;
+            gridCells[pos] = { day, hijri, dayInfo };
         }
 
         // Nettoyage et préparation
@@ -77,11 +76,10 @@ class CalendarGrid extends MonthElement {
             // Clonage du template
             const clone = template.content.cloneNode(true);
             const root = clone.querySelector('.day-cell-visual');
-            const { day, hijri, dayInfo, wrapped } = cell;
+            const { day, hijri, dayInfo } = cell;
 
             // Classes CSS
             if (i % 7 >= 5) root.classList.add('is-weekend'); // samedi, dimanche
-            if (wrapped) root.classList.add('is-wrapped'); // fin du mois reportée en haut de la grille (coin replié)
             if (dayInfo.isEid) root.classList.add('is-eid');
             if (dayInfo.isHoliday) root.classList.add('is-holiday');
             if (dayInfo.isPublicHoliday) root.classList.add('is-public-holiday');
