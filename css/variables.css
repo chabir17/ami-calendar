@@ -35,6 +35,9 @@
     /* Vendredi et dimanche : numéros des jours en teinte adoucie (repère hebdomadaire, plus discret que fériés et Aïd) */
     --col-friday: #5a9a62; /* 3.4:1 sur blanc, 3.2:1 sur --bg-holiday (grands chiffres) */
     --col-sunday: #c07a5c; /* 3.4:1 sur blanc, 3.2:1 sur --bg-holiday */
+    /* Même teinte, un ton plus foncé pour le petit texte (en-tête des jours, lignes du tableau) : contraste AA */
+    --col-friday-text: var(--col-title-green); /* 5.8:1 sur blanc, 5.0:1 sur --bg-friday */
+    --col-sunday-text: #a95f40; /* 4.8:1 sur blanc */
 
     /* Couleurs neutres */
     --col-text: #333333;

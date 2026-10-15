@@ -95,6 +95,15 @@ ami-prayer-table {
     background: var(--bg-friday);
 }
 
+/* Une ligne = un seul design : vendredi en vert, dimanche en terracotta (toutes les colonnes), comme dans la grille */
+.prayer-table tbody tr.is-friday td {
+    color: var(--col-friday-text);
+}
+
+.prayer-table tbody tr.is-sunday td {
+    color: var(--col-sunday-text);
+}
+
 /* --- COLONNES SPÉCIALES (DATES) --- */
 .col-date-greg {
     width: 18%;
@@ -126,6 +135,10 @@ ami-prayer-table {
 
 .prayer-table tbody tr.is-dst {
     background: var(--bg-terracotta-soft);
+}
+
+.prayer-table tbody tr.is-dst td {
+    color: var(--col-terracotta); /* sur fond terracotta clair : ton plein pour le contraste */
 }
 
 /* Fin de semaine : filet plus marqué après le dimanche (repérage par blocs de 7 jours) */

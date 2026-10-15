@@ -137,13 +137,13 @@
     font-size: var(--fs-sm);
 }
 
-/* Chaque colonne a la couleur de ses numéros : vendredi et dimanche en teinte adoucie (trois langues) */
+/* Chaque colonne a la teinte de ses numéros, un ton plus foncé pour le petit texte (contraste AA) */
 .weekday-cell:nth-child(5) {
-    color: var(--col-friday);
+    color: var(--col-friday-text);
 }
 
 .weekday-cell:nth-child(7) {
-    color: var(--col-sunday);
+    color: var(--col-sunday-text);
 }
 
 /* Grille des jours (5 rangées pour couvrir le mois) */
