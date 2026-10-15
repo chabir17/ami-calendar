@@ -79,7 +79,6 @@ class CalendarGrid extends MonthElement {
             const { day, hijri, dayInfo } = cell;
 
             // Classes CSS
-            if (i % 7 >= 5) root.classList.add('is-weekend'); // samedi, dimanche
             if (dayInfo.isEid) root.classList.add('is-eid');
             if (dayInfo.isHoliday) root.classList.add('is-holiday');
             if (dayInfo.isPublicHoliday) root.classList.add('is-public-holiday');

@@ -98,6 +98,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             fragment.appendChild(createPageNode(year, month));
         }
         appContainer.appendChild(fragment);
+        document.fonts.ready.then(() => fitMonthTitles(appContainer));
     };
 
     // Helper : Création d'une page unique
@@ -132,6 +133,17 @@ document.addEventListener('DOMContentLoaded', async () => {
     // 6. Mise à jour asynchrone (API Vacances/Fériés)
     fetchExternalData(renderApp);
 });
+
+/**
+ * Bandeau du mois : si les deux mois hégiriens ne tiennent pas sur la largeur (ex. Jumādā al-ūlā / Jumādā ath-thāniya),
+ * le côté hégirien passe en taille réduite plutôt que d'être coupé.
+ * @param {HTMLElement} root
+ */
+function fitMonthTitles(root) {
+    root.querySelectorAll('.month-titles-zone').forEach((zone) => {
+        zone.classList.toggle('is-compact', zone.scrollWidth > zone.clientWidth);
+    });
+}
 
 /**
  * Légende du bas, propre à chaque mois : vacances scolaires et changement d'heure,

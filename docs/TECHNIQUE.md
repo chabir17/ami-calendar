@@ -58,7 +58,14 @@ Chaque mois est un clone de `#page-template` : une page A4 paysage (`--page-pad`
 2. à gauche, **bandeau du mois** + **grille des jours** + **légende** ;
 3. à droite, **tableau des horaires**.
 
-Le bandeau du mois (bleu marine) et l'en-tête du tableau (vert foncé) ont la même hauteur `--band-h` : leurs bas sont alignés.
+Le bandeau du mois (bleu clair) et l'en-tête du tableau (vert clair) ont la même hauteur `--band-h` : leurs bas sont alignés.
+
+- **Bandeau du mois** : mois grégorien en bleu marine (année en `--accent-blue`), mois hégirien en arabe en bleu marine aussi (année en `--accent-blue`), traductions en gris.
+- **En-tête des jours** : fond blanc ; vendredi en vert et dimanche en terracotta, dans les trois langues.
+- **Numéros des jours** : gris adouci `--col-text-light`, identique du lundi au samedi ; vendredis et dimanches en teintes adoucies `--col-friday` et `--col-sunday` (≥ 3:1), plus discrètes que les jours fériés et l'Aïd, qui restent prioritaires.
+- **En-tête du tableau** : fond vert clair, prières en vert foncé, séparateurs blancs.
+- **Cadres** : le contour de chaque bloc reprend la couleur de son en-tête (`--bg-blue-faint`, `--bg-green-faint`, 2 px).
+- **Bandeau trop long** (deux mois hégiriens aux noms longs) : `fitMonthTitles` ajoute `is-compact`, qui réduit le côté hégirien au lieu de le couper.
 
 ### 3.2 Cycle de rendu (`main.js`)
 
@@ -81,7 +88,6 @@ Les deux composants héritent de `MonthElement`, qui observe `year` et `month` e
 
 | Classe              | Condition              | Effet                                      |
 | ------------------- | ---------------------- | ------------------------------------------ |
-| `is-weekend`        | samedi, dimanche       | numéro gris                                |
 | `is-holiday`        | vacances scolaires     | fond `--bg-holiday`                        |
 | `is-public-holiday` | jour férié             | numéro terracotta                          |
 | `is-eid`            | Aïd                    | numéro vert                                |
@@ -235,18 +241,18 @@ Chargée par `?mosque=<id>` (`fetchClientConfig` ; la feuille du Ramadan utilise
 
 ### 6.1 Jetons
 
-| Famille          | Jetons                                                                                                                                                                                                                                                                                          |
-| ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Couleurs de sens | `--col-blue` (structure, grégorien), `--col-green` (hégirien, prières), `--col-green-dark` (texte sur vert pâle), `--col-green-deep` (en-tête des horaires), `--col-saffron-text` (nom tamoul, frise du haut), `--col-terracotta` (fériés, changement d'heure ; jeûne de la feuille du Ramadan) |
-| Or et thème      | `--col-gold`, `--col-gold-light` (ornements de la feuille du Ramadan), `--brand` (thème client), `--brand-text` (`--brand` assombri, icônes par défaut)                                                                                                                                         |
-| Fonds            | `--bg-blue-faint` (en-tête des jours), `--bg-green-faint` (= `--bg-friday`), `--bg-holiday`, `--bg-empty`, `--bg-terracotta-soft`                                                                                                                                                               |
-| Texte            | `--col-text`, `--col-text-light`, `--col-text-soft`, `--col-ink` (chiffres), `--col-on-blue`, `--col-on-green` (sur fonds foncés)                                                                                                                                                               |
-| Bordures         | `--border-blue`, `--border-green`, `--accent-blue`, `--accent-green`, `--border-on-dark`, `--border-swatch`                                                                                                                                                                                     |
-| Écran            | `--bg-body` (fond autour des pages), `--shadow-page` (ombre des pages)                                                                                                                                                                                                                          |
-| Tailles (px)     | `--fs-2xs` 9 · `--fs-xs` 10 · `--fs-contact` 11 · `--fs-sm` 12 · `--fs-md` 14 · `--fs-figure` 15 · `--fs-brand-fr` 20 · `--fs-xl` 22 · `--fs-brand` 28 · `--fs-title` 30 · `--fs-display` 42                                                                                                    |
-| Espacements      | `--sp-1` 4 · `--sp-2` 8 · `--sp-3` 12 · `--sp-4` 16 · `--sp-6` 24 (px)                                                                                                                                                                                                                          |
-| Mise en page     | `--page-pad` 5 mm · `--binding-zone` 10 mm · `--block-gap` 2,5 mm · `--header-h` 24 mm · `--band-h` 64 px                                                                                                                                                                                       |
-| Polices          | `--font-fr` Noto Sans · `--font-ar` Amiri (Noto Naskh Arabic en secours) · `--font-ta` Noto Serif Tamil                                                                                                                                                                                         |
+| Famille          | Jetons                                                                                                                                                                                                                                               |
+| ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Couleurs de sens | `--col-blue` (structure, grégorien), `--col-green` (hégirien, prières), `--col-green-dark` (texte sur vert pâle), `--col-saffron-text` (nom tamoul, frise du haut), `--col-terracotta` (fériés, changement d'heure ; jeûne de la feuille du Ramadan) |
+| Or et thème      | `--col-gold`, `--col-gold-light` (ornements de la feuille du Ramadan), `--brand` (thème client), `--brand-text` (`--brand` assombri, icônes par défaut)                                                                                              |
+| Fonds            | `--bg-blue-faint` (bandeau du mois), `--bg-green-faint` (= `--bg-friday`), `--bg-holiday`, `--bg-empty`, `--bg-terracotta-soft`                                                                                                                      |
+| Texte            | `--col-text`, `--col-text-light`, `--col-text-soft`, `--col-ink` (chiffres), `--col-on-blue` (sur fond foncé, feuille du Ramadan)                                                                                                                    |
+| Bordures         | `--border-blue`, `--border-green`, `--accent-blue`, `--accent-green`, `--border-on-dark`, `--border-swatch`                                                                                                                                          |
+| Écran            | `--bg-body` (fond autour des pages), `--shadow-page` (ombre des pages)                                                                                                                                                                               |
+| Tailles (px)     | `--fs-2xs` 9 · `--fs-xs` 10 · `--fs-contact` 11 · `--fs-sm` 12 · `--fs-md` 14 · `--fs-figure` 15 · `--fs-brand-fr` 20 · `--fs-xl` 22 · `--fs-brand` 28 · `--fs-title` 30 · `--fs-display` 42                                                         |
+| Espacements      | `--sp-1` 4 · `--sp-2` 8 · `--sp-3` 12 · `--sp-4` 16 · `--sp-6` 24 (px)                                                                                                                                                                               |
+| Mise en page     | `--page-pad` 5 mm · `--binding-zone` 10 mm · `--block-gap` 2,5 mm · `--header-h` 24 mm · `--band-h` 64 px                                                                                                                                            |
+| Polices          | `--font-fr` Noto Sans · `--font-ar` Amiri (Noto Naskh Arabic en secours) · `--font-ta` Noto Serif Tamil                                                                                                                                              |
 
 Jetons locaux (déclarés sur le composant qui les utilise) : `--band-motif-h` et `--identity-gap` (header), `--row-h`, `--rule`, `--surface`, `--surface-fast`, `--footer-h`, `--bg-veil` (feuille du Ramadan).
 
@@ -254,7 +260,6 @@ Jetons locaux (déclarés sur le composant qui les utilise) : `--band-motif-h` e
 
 - **Une couleur = un sens.** Les textes respectent au moins 4,5:1 (WCAG AA) ; les ratios sont notés en commentaire des jetons.
 - **Flat design** : aplats, pas de dégradés ni d'ombres à l'impression.
-- `--col-green-deep` est réglé en **OKLCH** pour paraître aussi sombre que `--col-blue` (le vert sombre semble plus noir à luminosité égale).
 - Aucune couleur ni taille de police en dur dans les feuilles de style du calendrier ni dans ses SVG : ajouter un jeton plutôt qu'une valeur. Seule exception : `white` (le papier).
 - Les petits ajustements de mise en page en millimètres (air sous les frises, écart des noms) restent locaux, commentés à côté de la règle.
 - `ramadan.css` est autonome : il réutilise les jetons communs, mais garde ses propres rôles de couleur (voir 5).

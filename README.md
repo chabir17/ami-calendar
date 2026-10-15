@@ -54,7 +54,8 @@ Sans Node : `python3 -m http.server 3000` depuis la racine du projet.
 ## Ce que montre le calendrier annuel
 
 - **Header** : logo, noms tamoul (safran) et français (vert), coordonnées ; encadré par deux fines torsades aux couleurs du logo.
-- **Bandeau du mois** (bleu marine) : mois grégorien à gauche, mois hégirien(s) à droite, avec traductions.
+- **Bandeau du mois** (fond bleu clair) : mois grégorien à gauche, mois hégirien(s) à droite, en bleu marine, avec traductions.
+- **Jours de la semaine** : vendredi en vert et dimanche en terracotta, dans l'en-tête et pour les numéros (teinte adoucie).
 - **Cases des jours** :
     - numéro hégirien en petit, en haut à droite ; **en gras** les jours islamiques particuliers ;
     - croissant vert : premier jour du mois hégirien ;
@@ -63,7 +64,7 @@ Sans Node : `python3 -m http.server 3000` depuis la racine du projet.
     - fond doré pâle : vacances scolaires (zone C) ; fond gris : jours hors du mois ;
     - horloge terracotta : passage à l'heure d'été ou d'hiver.
 - **Légende** (bas de page) : nom des vacances scolaires du mois et passage à l'heure d'été / d'hiver.
-- **Tableau des horaires** (en-tête vert foncé) : Fajr, Shuruq, Dhohr, Asr, Maghrib, Icha et jour hégirien ; vendredis surlignés, filet à chaque fin de semaine, « 01 » en vert au 1er jour du mois hégirien, ligne sur fond terracotta clair le jour du changement d'heure.
+- **Tableau des horaires** (en-tête vert clair) : Fajr, Shuruq, Dhohr, Asr, Maghrib, Icha et jour hégirien ; vendredis surlignés, filet à chaque fin de semaine, « 01 » en vert au 1er jour du mois hégirien, ligne sur fond terracotta clair le jour du changement d'heure.
 
 ## Développement
 

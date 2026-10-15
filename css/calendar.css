@@ -1,5 +1,5 @@
-/* --- TITRE DU MOIS : en-tête de la carte du calendrier, bleu marine uni (pendant de l'en-tête vert des horaires) ---
-   Grégorien à gauche, hégirien à droite. Ligne 1 : mois + année. Ligne 2 : traductions.
+/* --- TITRE DU MOIS : en-tête clair de la carte du calendrier (pendant de l'en-tête vert clair des horaires) ---
+   Grégorien à gauche, hégirien à droite, en bleu marine. Ligne 1 : mois + année. Ligne 2 : traductions.
    Même disposition et même hauteur pour les 12 mois. */
 .month-titles-zone {
     display: flex;
@@ -7,8 +7,9 @@
     align-items: flex-end;
     gap: var(--sp-3);
     padding: var(--sp-2) var(--sp-2) var(--sp-1);
-    background-color: var(--col-blue);
-    color: white;
+    background-color: var(--bg-blue-faint);
+    border-bottom: 1px solid var(--border-blue);
+    color: var(--col-blue);
     height: var(--band-h);
 }
 
@@ -20,14 +21,14 @@
     white-space: nowrap;
 }
 
-/* Grégorien : mois en gras, année plus légère */
+/* Grégorien : mois en gras, année plus légère (bleu marine) */
 .greg-month-fr,
 .year-display {
     font-size: var(--fs-xl);
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    line-height: 1.25;
-    color: white;
+    line-height: 1.2;
+    color: var(--col-blue);
 }
 
 .greg-month-fr {
@@ -36,14 +37,14 @@
 
 .year-display {
     font-weight: 400;
-    color: var(--col-on-blue);
+    color: var(--accent-blue);
 }
 
-/* Hégirien : mois en arabe */
+/* Hégirien : mois en arabe, même bleu marine que le mois grégorien */
 .hijri-month-ar {
     font-size: var(--fs-xl);
     line-height: 1.45; /* queues des lettres arabes (ع, ي…) : ne touchent pas la ligne 2 */
-    color: white; /* même couleur que le mois grégorien */
+    color: var(--col-blue);
 }
 
 .hijri-months {
@@ -52,7 +53,7 @@
 
 .hijri-year {
     font-weight: 400;
-    color: var(--col-on-blue);
+    color: var(--accent-blue);
 }
 
 /* Ligne 2 : traductions séparées par une puce */
@@ -62,12 +63,22 @@
     gap: var(--sp-2);
     font-size: var(--fs-sm);
     line-height: 1.5;
-    color: var(--col-on-blue);
+    color: var(--col-text-light);
     white-space: nowrap;
 }
 
 .titles-hijri .title-sub {
     justify-content: flex-end;
+}
+
+/* Deux mois hégiriens aux noms longs : taille réduite (voir fitMonthTitles) */
+.month-titles-zone.is-compact .hijri-month-ar {
+    font-size: var(--fs-md);
+}
+
+.month-titles-zone.is-compact .titles-hijri .title-sub,
+.month-titles-zone.is-compact .titles-hijri .title-sub > * + *::before {
+    font-size: var(--fs-xs);
 }
 
 /* Puce entre deux traductions */
@@ -77,7 +88,7 @@
     font-family: var(--font-fr);
     font-size: var(--fs-sm);
     font-style: normal;
-    color: var(--col-on-blue);
+    color: var(--col-text-light);
     opacity: 0.7;
 }
 
@@ -91,22 +102,21 @@
     min-height: 0;
     display: flex;
     flex-direction: column;
-    border: 1px solid var(--border-blue); /* contour fin : les cases blanches du bord restent délimitées */
+    border: 2px solid var(--bg-blue-faint); /* cadre de la couleur du bandeau du mois : le bandeau prolonge le contour */
     border-radius: 0.5rem;
     overflow: hidden;
     background-color: white;
 }
 
-/* En-tête des jours de la semaine */
+/* En-tête des jours de la semaine : fond blanc ; vendredi en vert et dimanche en terracotta (trois langues) */
 .weekdays-header {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    background: var(--bg-blue-faint);
+    background: white;
     color: var(--col-blue);
     text-align: center;
     padding: 0;
     font-size: var(--fs-sm);
-    border-top: 1.5px solid var(--accent-blue);
     border-bottom: 1.5px solid var(--accent-blue);
 }
 
@@ -127,6 +137,17 @@
 
 .weekday-sub {
     font-size: var(--fs-sm);
+    color: var(--col-text-light);
+}
+
+.weekday-cell:nth-child(5),
+.weekday-cell:nth-child(5) .weekday-sub {
+    color: var(--col-green);
+}
+
+.weekday-cell:nth-child(7),
+.weekday-cell:nth-child(7) .weekday-sub {
+    color: var(--col-terracotta);
 }
 
 /* Grille des jours (5 rangées pour couvrir le mois) */
@@ -165,12 +186,16 @@
 .vis-greg {
     font-size: var(--fs-display);
     font-weight: 600;
-    color: var(--col-text);
+    color: var(--col-text-light); /* gris adouci, identique du lundi au samedi : les couleurs ressortent mieux */
 }
 
-/* Week-end : numéro en gris plus clair (déclaré avant les jours fériés et l'Aïd, prioritaires) */
-.day-cell-visual.is-weekend .vis-greg {
-    color: var(--col-text-soft);
+/* Vendredi et dimanche : numéro en teinte adoucie (les jours fériés et l'Aïd, déclarés après, restent prioritaires) */
+.day-cell-visual:nth-child(7n + 5) .vis-greg {
+    color: var(--col-friday);
+}
+
+.day-cell-visual:nth-child(7n) .vis-greg {
+    color: var(--col-sunday);
 }
 
 /* Jours fériés en terracotta, Aïd en vert (prioritaire si les deux tombent le même jour) */
