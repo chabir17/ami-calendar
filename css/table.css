@@ -73,7 +73,7 @@ ami-prayer-table {
     width: 18px;
     height: 18px;
     margin: 0;
-    color: var(--col-friday); /* vert adouci */
+    color: var(--col-friday-text); /* vert sauge */
 }
 
 .prayer-table tbody td {

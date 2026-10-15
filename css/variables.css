@@ -32,9 +32,10 @@
     --col-title-blue: #46628a; /* bandeau du mois : 5.6:1 sur --bg-blue-faint */
     --col-title-green: #3f7046; /* en-tête des horaires : 5.0:1 sur --bg-green-faint */
 
-    /* Vendredi et dimanche : numéros des jours en teinte adoucie (repère hebdomadaire, plus discret que fériés et Aïd) */
-    --col-friday: #5a9a62; /* 3.4:1 sur blanc, 3.2:1 sur --bg-holiday (grands chiffres) */
-    --col-sunday: #c07a5c; /* 3.4:1 sur blanc, 3.2:1 sur --bg-holiday */
+    /* Vendredi et dimanche : numéros en gris teinté (vert sauge / terracotta), presque neutres :
+       la couleur pleine reste réservée aux jours fériés et à l'Aïd */
+    --col-friday: #4e5c51; /* 7.1:1 sur blanc */
+    --col-sunday: #5f524c; /* 7.5:1 sur blanc */
     /* Même teinte, un ton plus foncé pour le petit texte (en-tête des jours, lignes du tableau) : contraste AA */
     --col-friday-text: var(--col-title-green); /* 5.8:1 sur blanc, 5.0:1 sur --bg-friday */
     --col-sunday-text: #a95f40; /* 4.8:1 sur blanc */

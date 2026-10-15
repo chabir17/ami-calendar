@@ -187,7 +187,7 @@
     color: var(--col-text-light); /* gris adouci, identique du lundi au samedi : les couleurs ressortent mieux */
 }
 
-/* Vendredi et dimanche : numéro en teinte adoucie (les jours fériés et l'Aïd, déclarés après, restent prioritaires) */
+/* Vendredi et dimanche : numéro en gris teinté (les jours fériés et l'Aïd, déclarés après, restent prioritaires) */
 .day-cell-visual:nth-child(7n + 5) .vis-greg {
     color: var(--col-friday);
 }
