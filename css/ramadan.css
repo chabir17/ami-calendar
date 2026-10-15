@@ -53,7 +53,7 @@ body {
 .page.A4-portrait {
     /* Rôles de couleur (pastels) */
     --rule: var(--accent-blue); /* filets, puces */
-    --surface: var(--bg-blue-faint); /* fonds neutres (bleu clair des en-têtes du calendrier annuel) */
+    --surface: var(--bg-blue-faint); /* fonds neutres (bleu clair) */
     --surface-fast: var(--bg-terracotta-soft); /* cellules Imsak, Maghrib, Icha AMI */
     width: 210mm;
     height: 297mm;

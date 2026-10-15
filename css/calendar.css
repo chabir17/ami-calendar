@@ -97,26 +97,29 @@
     background-color: white;
 }
 
-/* En-tête des jours de la semaine */
+/* En-tête des jours de la semaine : épuré (fond blanc, sans séparateurs), filet bleu marine qui le relie au bandeau.
+   Les trois langues prennent la couleur de la colonne : bleu marine, vendredi en vert, dimanche en terracotta */
 .weekdays-header {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    background: var(--bg-blue-faint);
+    background: white;
     color: var(--col-blue);
     text-align: center;
     padding: 0;
     font-size: var(--fs-sm);
-    border-top: 1.5px solid var(--accent-blue);
-    border-bottom: 1.5px solid var(--accent-blue);
+    border-bottom: 2px solid var(--col-blue);
 }
 
 .weekday-cell {
-    border-right: 1px solid var(--border-blue);
     padding: var(--sp-1) 0;
 }
 
-.weekday-cell:last-child {
-    border-right: none;
+.weekday-cell:nth-child(5) {
+    color: var(--col-green);
+}
+
+.weekday-cell:nth-child(7) {
+    color: var(--col-terracotta);
 }
 
 .weekday-fr {

@@ -105,6 +105,8 @@ Les deux composants héritent de `MonthElement`, qui observe `year` et `month` e
 
 Le tableau occupe toute la hauteur : les mois de 28 à 31 jours tiennent sur la page.
 
+**En-tête des jours** (`.weekdays-header`) : fond blanc sans séparateurs, filet bleu marine en dessous. Les trois langues prennent la couleur de la colonne : bleu marine, vendredi en vert, dimanche en terracotta (le repère hebdomadaire est porté par l'en-tête, pas par les numéros).
+
 ### 3.4 Header de l'identité (`header.css`)
 
 ```
@@ -239,7 +241,7 @@ Chargée par `?mosque=<id>` (`fetchClientConfig` ; la feuille du Ramadan utilise
 | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Couleurs de sens | `--col-blue` (structure, grégorien), `--col-green` (hégirien, prières), `--col-green-dark` (texte sur vert pâle), `--col-green-deep` (en-tête des horaires), `--col-saffron-text` (nom tamoul, frise du haut), `--col-terracotta` (fériés, changement d'heure ; jeûne de la feuille du Ramadan) |
 | Or et thème      | `--col-gold`, `--col-gold-light` (ornements de la feuille du Ramadan), `--brand` (thème client), `--brand-text` (`--brand` assombri, icônes par défaut)                                                                                                                                         |
-| Fonds            | `--bg-blue-faint` (en-tête des jours), `--bg-green-faint` (= `--bg-friday`), `--bg-holiday`, `--bg-empty`, `--bg-terracotta-soft`                                                                                                                                                               |
+| Fonds            | `--bg-blue-faint` (fonds neutres du Ramadan), `--bg-green-faint` (= `--bg-friday`), `--bg-holiday`, `--bg-empty`, `--bg-terracotta-soft`                                                                                                                                                        |
 | Texte            | `--col-text`, `--col-text-light`, `--col-text-soft`, `--col-ink` (chiffres), `--col-on-blue`, `--col-on-green` (sur fonds foncés)                                                                                                                                                               |
 | Bordures         | `--border-blue`, `--border-green`, `--accent-blue`, `--accent-green`, `--border-on-dark`, `--border-swatch`                                                                                                                                                                                     |
 | Écran            | `--bg-body` (fond autour des pages), `--shadow-page` (ombre des pages)                                                                                                                                                                                                                          |
