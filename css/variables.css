@@ -34,8 +34,8 @@
 
     /* Vendredi et dimanche : numéros en gris teinté (vert sauge / terracotta), presque neutres :
        la couleur pleine reste réservée aux jours fériés et à l'Aïd */
-    --col-friday: #4a6150; /* 6.7:1 sur blanc */
-    --col-sunday: #6b5147; /* 7.3:1 sur blanc */
+    --col-friday: #41694a; /* 6.3:1 sur blanc */
+    --col-sunday: #7a4f3e; /* 7.0:1 sur blanc */
 
     /* Couleurs neutres */
     --col-text: #333333;
