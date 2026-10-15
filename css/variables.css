@@ -18,14 +18,14 @@
     --col-on-green: #c1d5c0; /* texte secondaire sur --col-green-deep : pendant vert de --col-on-blue (7.3:1) */
 
     /* Safran (minaret et nom tamoul du logo) */
-    --col-saffron-text: #b8520f; /* nom tamoul, frise du haut, événements civils (fériés, changement d'heure) : 4.9:1 sur blanc, 4.7:1 sur --bg-holiday */
+    --col-saffron-text: #b8520f; /* nom tamoul, frise du haut : 4.9:1 sur blanc */
 
     /* Or (ornements, filets, motif du header) */
     --col-gold: #c8a85a;
     --col-gold-light: #e3c983; /* reflet au centre des filets dégradés */
 
     /* Terracotta (horaires du jeûne : Imsak, iftār, Icha AMI) */
-    --col-terracotta: #a8461f; /* jeûne (feuille Ramadan) : 5.9:1 sur blanc */
+    --col-terracotta: #a8461f; /* événements civils (fériés, changement d'heure), jeûne (feuille Ramadan) : 5.9:1 sur blanc, 5.5:1 sur --bg-holiday */
     --bg-terracotta-soft: #fbebe4; /* fond très clair : cellules du jeûne (feuille Ramadan), changement d'heure (tableau annuel) */
 
     /* Encre des chiffres et des textes sur fond foncé */
