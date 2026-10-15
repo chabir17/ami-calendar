@@ -63,7 +63,7 @@
     gap: var(--sp-2);
     font-size: var(--fs-md);
     line-height: 1.5;
-    color: var(--col-text-light);
+    color: var(--col-title-blue); /* traductions en bleu ardoise, comme dans l'en-tête des jours */
     white-space: nowrap;
 }
 
@@ -101,7 +101,7 @@
     font-family: var(--font-fr);
     font-size: var(--fs-md);
     font-style: normal;
-    color: var(--col-text-light);
+    color: var(--col-title-blue);
     opacity: 0.7;
 }
 
