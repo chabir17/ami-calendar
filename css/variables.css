@@ -59,7 +59,9 @@
     --bg-empty: #f8f9fa;
 
     /* Pastels opaques (rendu fiable sur laser de bureau, papier blanc) */
-    --bg-blue-faint: #eef3f9; /* bandeau du mois */
+    --bg-blue-head: #dbe5f1; /* bandeau du mois et cadre du calendrier (~9 % d'encre : structure visible à l'impression) */
+    --bg-blue-faint: #eef3f9; /* ligne des jours de la semaine, changement d'heure du tableau */
+    --bg-green-head: #d5e8d8; /* en-tête et cadre du tableau des horaires, plus soutenu que les vendredis */
     --bg-green-faint: #e7f2e8; /* vert très clair : traits verticaux du tableau, vendredis de la feuille Ramadan */
     --border-blue: #c5d3e4; /* bordures du calendrier : bleu doux */
     --border-green: #c3dec6; /* bordures du tableau : vert doux */

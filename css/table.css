@@ -1,7 +1,7 @@
 /* --- TABLEAU DES HORAIRES DE PRIÈRES (DROITE) --- */
 .right-prayer-table-container {
     overflow: hidden;
-    border: 1.5px solid var(--bg-green-faint); /* cadre de la couleur de l'en-tête : l'en-tête prolonge le contour */
+    border: 1.5px solid var(--bg-green-head); /* cadre de la couleur de l'en-tête : l'en-tête prolonge le contour */
     border-radius: var(--radius-card);
     display: flex;
     flex-direction: column;
@@ -25,7 +25,7 @@ ami-prayer-table {
 /* En-tête vert clair (pendant du bandeau bleu clair du mois) : noms des prières en titre (vert foncé plein), traductions en gris ;
    séparateurs blancs, filet vert : transition vers le corps du tableau */
 .prayer-table thead th {
-    background: var(--bg-green-faint);
+    background: var(--bg-green-head);
     border: none;
     border-bottom: 1.5px solid var(--accent-green);
     box-shadow: inset calc(-1 * var(--hairline)) 0 0 white; /* séparateurs 0,5 px entre les colonnes */

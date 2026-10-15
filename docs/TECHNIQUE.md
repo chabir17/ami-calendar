@@ -61,10 +61,10 @@ Chaque mois est un clone de `#page-template` : une page A4 paysage (`--page-pad`
 Le bandeau du mois (bleu clair) et l'en-tête du tableau (vert clair) ont la même hauteur `--band-h` : leurs bas sont alignés.
 
 - **Bandeau du mois** : les deux noms de mois sont les titres de la page, aux deux extrémités (bleu marine `--col-blue`, `--fs-month` 26 px) ; années de même taille, en graisse normale et bleu ardoise `--col-title-blue`, traductions en gris.
-- **En-tête des jours** : fond blanc ; chaque colonne a exactement la couleur de ses numéros (`--col-text-light`, `--col-friday`, `--col-sunday`), dans les trois langues.
+- **En-tête des jours** : fond bleu très clair `--bg-blue-faint` (un cran sous le bandeau, au-dessus des cases blanches) ; chaque colonne a exactement la couleur de ses numéros (`--col-text-light`, `--col-friday`, `--col-sunday`), dans les trois langues.
 - **Numéros des jours** : gris neutre des textes courants `--col-text-light`, identique du lundi au samedi ; vendredis et dimanches en gris légèrement teinté (vert sauge `--col-friday`, terracotta `--col-sunday`) : seuls les jours fériés et l'Aïd sont en couleur pleine.
 - **En-tête du tableau** : fond vert clair, noms des prières en titre (vert foncé `--col-green-dark`, `--fs-xs` pour garder des colonnes de même largeur), traductions en gris, séparateurs blancs.
-- **Cadres** : le contour de chaque bloc reprend la couleur de son en-tête (`--bg-blue-faint`, `--bg-green-faint`, 2 px).
+- **Cadres** : le contour de chaque bloc reprend la couleur de son en-tête (`--bg-blue-head`, `--bg-green-head`, 1,5 px), un cran plus soutenue que les surlignages (vendredis, changement d'heure).
 - **Bandeau trop long** (deux mois hégiriens aux noms longs) : `fitMonthTitles` ajoute `is-compact`, puis `is-compact-2` à `is-compact-4` si besoin (arabe, traductions, année grégorienne, arabe encore), qui réduit le côté hégirien au lieu de le couper.
 
 ### 3.2 Cycle de rendu (`main.js`)
@@ -245,7 +245,7 @@ Chargée par `?mosque=<id>` (`fetchClientConfig` ; la feuille du Ramadan utilise
 | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Couleurs de sens | `--col-blue` (structure, grégorien), `--col-green` (hégirien, prières), `--col-green-dark` (texte sur vert pâle), `--col-saffron-text` (nom tamoul, frise du haut), `--col-terracotta` (fériés ; jeûne de la feuille du Ramadan) |
 | Or et thème      | `--col-gold` (ornements de la feuille du Ramadan), `--brand` (thème client), `--brand-text` (`--brand` assombri, icônes par défaut)                                                                                              |
-| Fonds            | `--bg-blue-faint` (bandeau du mois), `--bg-green-faint` (= `--bg-friday`), `--bg-holiday`, `--bg-empty`, `--bg-terracotta-soft`                                                                                                  |
+| Fonds            | `--bg-blue-head` (bandeau du mois), `--bg-blue-faint` (ligne des jours), `--bg-green-head` (en-tête des horaires), `--bg-green-faint` (= `--bg-friday`), `--bg-holiday`, `--bg-empty`, `--bg-terracotta-soft`                    |
 | Texte            | `--col-text`, `--col-text-light`, `--col-text-soft`, `--col-ink` (chiffres), `--col-on-blue` (sur fond foncé, feuille du Ramadan)                                                                                                |
 | Bordures         | `--border-blue`, `--border-green`, `--accent-blue`, `--accent-green`, `--border-on-dark`, `--border-swatch`                                                                                                                      |
 | Écran            | `--bg-body` (fond autour des pages), `--shadow-page` (ombre des pages)                                                                                                                                                           |
