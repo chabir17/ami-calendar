@@ -121,12 +121,13 @@
     background-color: white;
 }
 
-/* En-tête des jours de la semaine : fond blanc ; chaque colonne prend la couleur de ses numéros */
+/* En-tête des jours de la semaine : traité comme un en-tête, les 7 jours dans la même couleur
+   (noms français en bleu ardoise des titres, traductions en gris) */
 .weekdays-header {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    background: var(--bg-blue-head); /* même fond que le bandeau du mois, séparés par un filet blanc */
-    color: var(--col-text-light); /* même couleur que les numéros en dessous */
+    background: var(--bg-blue-head); /* même fond que le bandeau du mois, séparés par un filet */
+    color: var(--col-text-light);
     text-align: center;
     padding: 0;
     font-size: var(--fs-sm);
@@ -146,19 +147,11 @@
     font-size: var(--fs-md);
     font-weight: 600;
     text-transform: uppercase;
+    color: var(--col-title-blue);
 }
 
 .weekday-sub {
     font-size: var(--fs-sm);
-}
-
-/* Chaque colonne a exactement la couleur de ses numéros */
-.weekday-cell:nth-child(5) {
-    color: var(--col-friday);
-}
-
-.weekday-cell:nth-child(7) {
-    color: var(--col-sunday);
 }
 
 /* Grille des jours (5 rangées pour couvrir le mois) */
