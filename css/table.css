@@ -130,7 +130,7 @@ ami-prayer-table {
     border-bottom: 1.5px solid var(--accent-green);
 }
 
-/* Dimanche du changement d'heure : filet rouge (événements civils), assorti au fond de la ligne */
+/* Dimanche du changement d'heure : filet safran (événements civils), assorti au fond de la ligne */
 .prayer-table tbody tr.is-dst.week-end td {
-    border-bottom-color: var(--col-red-event);
+    border-bottom-color: var(--col-saffron-text);
 }

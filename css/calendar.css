@@ -173,9 +173,9 @@
     color: var(--col-text-soft);
 }
 
-/* Jours fériés en rouge, Aïd en vert (prioritaire si les deux tombent le même jour) */
+/* Jours fériés en safran (couleur du nom tamoul), Aïd en vert (prioritaire si les deux tombent le même jour) */
 .day-cell-visual.is-public-holiday .vis-greg {
-    color: var(--col-red-event);
+    color: var(--col-saffron-text);
 }
 
 .day-cell-visual.is-eid .vis-greg {
@@ -214,13 +214,13 @@
     margin: 0;
 }
 
-/* Code couleur : croissant = hégirien (vert), horloge = changement d'heure (rouge des événements civils) */
+/* Code couleur : croissant = hégirien (vert), horloge = changement d'heure (safran des événements civils) */
 .new-moon-icon .icon {
     color: var(--col-green);
 }
 
 .dst-icon .icon {
-    color: var(--col-red-event);
+    color: var(--col-saffron-text);
 }
 
 .event-label {
@@ -228,7 +228,7 @@
     font-size: var(--fs-2xs);
     margin-top: var(--sp-1);
     font-weight: 600;
-    color: var(--col-red-event); /* jours fériés et changement d'heure : événements civils */
+    color: var(--col-saffron-text); /* jours fériés et changement d'heure : événements civils */
     text-align: center;
     width: 100%;
     padding: 0 3px;
@@ -303,7 +303,7 @@
     width: 0.8rem;
     height: 0.8rem;
     margin: 0;
-    color: var(--col-red-event); /* comme l'horloge dans la case du jour */
+    color: var(--col-saffron-text); /* comme l'horloge dans la case du jour */
 }
 
 .legend-color {
