@@ -26,7 +26,7 @@
 
     /* Terracotta (horaires du jeûne : Imsak, iftār, Icha AMI) */
     --col-terracotta: #a8461f; /* fond d'en-tête, texte blanc : 5.9:1 */
-    --bg-terracotta-soft: #fbebe4; /* fond très clair des cellules du jeûne (feuille Ramadan) */
+    --bg-terracotta-soft: #fbebe4; /* fond très clair : cellules du jeûne (feuille Ramadan), changement d'heure (tableau annuel) */
 
     /* Encre des chiffres et des textes sur fond foncé */
     --col-ink: #1f1f1f; /* horaires */

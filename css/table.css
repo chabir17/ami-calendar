@@ -116,13 +116,13 @@ ami-prayer-table {
     letter-spacing: 0.04em;
 }
 
-/* Repères dans le tableau : 1er jour du mois hégirien (numéro vert), changement d'heure (ligne en bleu, couleur du grégorien) */
+/* Repères dans le tableau : 1er jour du mois hégirien (numéro vert), changement d'heure (fond terracotta clair) */
 .prayer-table tr.is-hijri-new td.col-hijri {
     color: var(--col-green-dark);
 }
 
-.prayer-table tr.is-dst td {
-    color: var(--col-blue);
+.prayer-table tbody tr.is-dst {
+    background: var(--bg-terracotta-soft);
 }
 
 /* Fin de semaine : filet plus marqué après le dimanche (repérage par blocs de 7 jours) */
