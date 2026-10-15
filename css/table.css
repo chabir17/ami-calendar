@@ -39,7 +39,7 @@ ami-prayer-table {
 
 .prayer-table thead .th-ar,
 .prayer-table thead .th-ta {
-    color: var(--col-text-light);
+    color: var(--col-title-green); /* traductions en vert sauge, sous le nom français en vert foncé */
 }
 
 /* Largeurs de colonnes fixes pour les prières */
@@ -93,7 +93,7 @@ ami-prayer-table {
 }
 
 .prayer-table tbody tr.is-friday {
-    background: var(--bg-friday);
+    background: var(--bg-friday-light);
 }
 
 /* --- COLONNES SPÉCIALES (DATES) --- */

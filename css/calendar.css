@@ -122,7 +122,7 @@
 }
 
 /* En-tête des jours de la semaine : traité comme un en-tête, les 7 jours dans la même couleur
-   (noms français en bleu ardoise des titres, traductions en gris) */
+   (noms français en bleu marine, arabe et tamoul en bleu ardoise) */
 .weekdays-header {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
@@ -147,11 +147,12 @@
     font-size: var(--fs-md);
     font-weight: 600;
     text-transform: uppercase;
-    color: var(--col-title-blue);
+    color: var(--col-blue); /* nom français accentué */
 }
 
 .weekday-sub {
     font-size: var(--fs-sm);
+    color: var(--col-title-blue); /* arabe et tamoul en bleu ardoise */
 }
 
 /* Grille des jours (5 rangées pour couvrir le mois) */
