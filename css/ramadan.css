@@ -1,6 +1,6 @@
 /* =====================================================================
    FEUILLE DU RAMADAN (A4 portrait)
-   Version numérique par défaut (.digital) ; version papier : ?print=true
+   Version unique, pensée pour l'impression (fond clair, économe en encre)
    Couleurs, tailles et espacements : jetons de css/variables.css
    ===================================================================== */
 
@@ -51,7 +51,7 @@ body {
 }
 
 .page.A4-portrait {
-    /* Rôles de couleur (version papier : pastels) ; la version numérique les renforce plus bas */
+    /* Rôles de couleur (pastels) */
     --rule: var(--accent-blue); /* filets, puces */
     --surface: var(--bg-blue-faint); /* fonds neutres (bleu clair des en-têtes du calendrier annuel) */
     --surface-fast: var(--bg-terracotta-soft); /* cellules Imsak, Maghrib, Icha AMI */
@@ -62,8 +62,8 @@ body {
     grid-template-rows: 41mm 1fr auto;
     grid-template-columns: minmax(0, 1fr); /* le contenu ne peut pas élargir la page */
     position: relative;
-    /* Version papier : fond crème à arche dorée, bande blanche de l'identité comprise dans l'image ;
-       voile blanc pour économiser l'encre (la version numérique a son propre fond, plus bas) */
+    /* Fond crème à arche dorée, bande blanche de l'identité comprise dans l'image ;
+       voile blanc pour économiser l'encre */
     --footer-h: 30.5mm; /* bande blanche de l'identité, en bas de page */
     --bg-veil: rgb(255 255 255 / 0.45);
     background:
@@ -505,7 +505,7 @@ sup.ordinal {
     transform: scaleX(-1);
 }
 
-/* En-tête uni bleu marine, textes clairs (les deux versions : contraste maximal, bande fine peu gourmande en encre) */
+/* En-tête uni bleu marine, textes clairs (contraste maximal, bande fine peu gourmande en encre) */
 .ramadan-table thead th,
 .ramadan-table thead th.th-fast {
     background-color: var(--col-blue);
@@ -519,18 +519,8 @@ sup.ordinal {
     color: var(--col-on-blue);
 }
 
-/* --- VERSION NUMÉRIQUE (par défaut) : teintes plus soutenues, fond de nuit d'hiver --- */
-.page.digital {
-    --surface-fast: var(--bg-terracotta);
-    /* bande blanche de l'identité, séparée de la scène par un filet doré dégradé pleine largeur */
-    background:
-        linear-gradient(90deg, transparent, var(--col-gold) 18%, var(--col-gold-light) 50%, var(--col-gold) 82%, transparent) left 0 bottom var(--footer-h) / 100% 1.5px no-repeat,
-        linear-gradient(white, white) bottom / 100% var(--footer-h) no-repeat,
-        white url('../assets/img/ramadan-background-night.jpg') center / 100% 100% no-repeat;
-}
-
-/* Coordonnées cliquables, sans style de lien */
-.digital .identity-contacts a {
+/* Coordonnées cliquables dans le PDF partagé, sans style de lien */
+.identity-contacts a {
     color: inherit;
     text-decoration: none;
 }

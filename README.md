@@ -22,13 +22,12 @@ Sans Node : `python3 -m http.server 3000` depuis la racine du projet.
 
 ### Paramètres d'URL
 
-| Page           | Paramètre          | Effet                                                                                 |
-| -------------- | ------------------ | ------------------------------------------------------------------------------------- |
-| `index.html`   | `?year=2027`       | Année affichée (par défaut : l'année prochaine)                                       |
-|                | `?month=10`        | Un seul mois au lieu des 12                                                           |
-|                | `?mosque=ami93120` | Identité, coordonnées et position lues depuis `clients/ami93120.json`                 |
-| `ramadan.html` | `?year=2028`       | Ramadan de l'année donnée (par défaut : le prochain Ramadan)                          |
-|                | `?print=true`      | Version papier (fond clair, économe en encre) ; sans ce paramètre : version numérique |
+| Page           | Paramètre          | Effet                                                                 |
+| -------------- | ------------------ | --------------------------------------------------------------------- |
+| `index.html`   | `?year=2027`       | Année affichée (par défaut : l'année prochaine)                       |
+|                | `?month=10`        | Un seul mois au lieu des 12                                           |
+|                | `?mosque=ami93120` | Identité, coordonnées et position lues depuis `clients/ami93120.json` |
+| `ramadan.html` | `?year=2028`       | Ramadan de l'année donnée (par défaut : le prochain Ramadan)          |
 
 ## Générer les PDF
 
@@ -43,14 +42,14 @@ Sans Node : `python3 -m http.server 3000` depuis la racine du projet.
 - Marge de 5 mm sur les bords (`--page-pad`), au-delà de la zone non imprimable du copieur.
 - Dans le pilote : qualité **Graphique** ou **Photo**, **économie de toner désactivée** (sinon les aplats foncés deviennent tramés).
 - Papier conseillé pour le calendrier mural : **120 g/m²**, blanc, non couché, « laser couleur ».
-- Faire une page test (couleurs, frises du header, petits libellés de 8,5 px) avant de lancer le tirage complet.
+- Faire une page test (couleurs, frises du header, petits libellés de 9 px, fond pâle des vacances) avant de lancer le tirage complet.
 
 ## Préparer une nouvelle année
 
 1. **Dates hégiriennes** : faire valider par les imams le début du Ramadan, les deux Aïds, ʿArafa et ʿĀshūrāʾ. En cas d'écart d'un jour avec le calcul, ajouter une période dans `HIJRI_OFFSETS` (`js/services.js`).
 2. **Horaires de prière** : remplacer `data/prayer_times.csv` si la mosquée publie de nouveaux horaires (format dans la documentation technique).
 3. **Feuille du Ramadan** : vérifier l'Imsak (`IMSAK_MINUTES_BEFORE_FAJR`) et l'Icha AMI (`AMI_ISHA`) en tête de `js/ramadan.js` ; corrections manuelles possibles dans `data/ramadan_overrides.json`.
-4. **Vérifier** les PDF : `index.html?year=…`, `ramadan.html?year=…` et `ramadan.html?year=…&print=true`.
+4. **Vérifier** les PDF : `index.html?year=…`, et `ramadan.html?year=…`.
 
 ## Ce que montre le calendrier annuel
 
@@ -63,8 +62,8 @@ Sans Node : `python3 -m http.server 3000` depuis la racine du projet.
     - libellés verts : début du Ramadan, jour de ʿArafa, jours de Tashrīq, ʿĀshūrāʾ ;
     - fond doré pâle : vacances scolaires (zone C) ; fond gris : jours hors du mois ;
     - horloge bleue : passage à l'heure d'été ou d'hiver.
-- **Légende** (bas de page) : nom des vacances scolaires du mois et passage à l'heure d'été / d'hiver.
-- **Tableau des horaires** (en-tête vert foncé) : Fajr, Shuruq, Dhohr, Asr, Maghrib, Icha et jour hégirien ; vendredis surlignés, filet à chaque fin de semaine.
+- **Légende** (bas de page) : nom des vacances scolaires du mois, passage à l'heure d'été / d'hiver, et jour de fin de mois reporté en haut de la grille (coin replié bleu) quand le mois s'étend sur 6 semaines.
+- **Tableau des horaires** (en-tête vert foncé) : Fajr, Shuruq, Dhohr, Asr, Maghrib, Icha et jour hégirien ; vendredis surlignés, filet à chaque fin de semaine, croissant au 1er jour du mois hégirien, date en bleu avec horloge le jour du changement d'heure.
 
 ## Développement
 

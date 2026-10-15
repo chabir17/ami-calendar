@@ -23,7 +23,7 @@ css/
   calendar.css        Bandeau du mois, grille des jours, légende
   table.css           Tableau des horaires (calendrier annuel)
   print.css           Règles @media print du calendrier annuel
-  ramadan.css         Feuille du Ramadan (autonome : A4 portrait, versions numérique / papier)
+  ramadan.css         Feuille du Ramadan (autonome : A4 portrait, version unique pour l'impression)
 js/
   main.js             Calendrier annuel : orchestration des pages, header, bandeau du mois, légende
   components.js       Web Components <ami-calendar-grid> et <ami-prayer-table>
@@ -77,17 +77,18 @@ Le bandeau du mois (bleu marine) et l'en-tête du tableau (vert foncé) ont la m
 
 Les deux composants héritent de `MonthElement`, qui observe `year` et `month` et regroupe les rendus à la frame suivante (`requestAnimationFrame`).
 
-**`<ami-calendar-grid>`** : grille fixe de **35 cases** (5 semaines × 7, lundi en premier). Les jours au-delà de la 35e case (mois sur 6 semaines) reviennent dans les premières cases vides. Chaque case est clonée depuis `#calendar-cell-template` et reçoit des classes selon `getDayInfo` :
+**`<ami-calendar-grid>`** : grille fixe de **35 cases** (5 semaines × 7, lundi en premier). La grille ne dépasse jamais 5 semaines : les jours au-delà de la 35e case (mois sur 6 semaines) reviennent dans les premières cases vides, marqués d'un coin replié bleu (`is-wrapped`) et expliqués dans la légende. Chaque case est clonée depuis `#calendar-cell-template` et reçoit des classes selon `getDayInfo` :
 
-| Classe              | Condition              | Effet                                      |
-| ------------------- | ---------------------- | ------------------------------------------ |
-| `is-weekend`        | samedi, dimanche       | numéro gris                                |
-| `is-holiday`        | vacances scolaires     | fond `--bg-holiday`                        |
-| `is-public-holiday` | jour férié             | numéro rouge                               |
-| `is-eid`            | Aïd                    | numéro vert                                |
-| `is-islamic-event`  | Aïd ou jour vertueux   | date hégirienne (en haut à droite) en gras |
-| `multi-events`      | au moins deux libellés | numéro remonté                             |
-| `empty`             | case hors du mois      | fond `--bg-empty`                          |
+| Classe              | Condition                         | Effet                                      |
+| ------------------- | --------------------------------- | ------------------------------------------ |
+| `is-weekend`        | samedi, dimanche                  | numéro gris                                |
+| `is-holiday`        | vacances scolaires                | fond `--bg-holiday`                        |
+| `is-public-holiday` | jour férié                        | numéro rouge                               |
+| `is-eid`            | Aïd                               | numéro vert                                |
+| `is-islamic-event`  | Aïd ou jour vertueux              | date hégirienne (en haut à droite) en gras |
+| `is-wrapped`        | jour reporté en haut de la grille | coin replié bleu (bas gauche)              |
+| `multi-events`      | au moins deux libellés            | numéro remonté                             |
+| `empty`             | case hors du mois                 | fond `--bg-empty`                          |
 
 Éléments de la case :
 
@@ -96,7 +97,14 @@ Les deux composants héritent de `MonthElement`, qui observe `year` et `month` e
 - `.dst-icon` : horloge du changement d'heure (`dstIconHTML`), décalée si le croissant est aussi présent ;
 - `.event-label` : libellés `event-line {type}-label`, types `eid`, `virtuous`, `public`, `dst`, sur une ligne chacun. Si l'Aïd tombe un jour férié, l'Aïd passe en haut de la case (`.event-label-top`).
 
-**`<ami-prayer-table>`** : une ligne par jour depuis `#prayer-row-template` (jour abrégé sur 3 lettres, numéro, 6 horaires, jour hégirien). Classes `is-friday` (fond `--bg-friday`) et `week-end` (filet après chaque dimanche, sauf en fin de mois). Le tableau occupe toute la hauteur : les mois de 28 à 31 jours tiennent sur la page.
+**`<ami-prayer-table>`** : une ligne par jour depuis `#prayer-row-template` (jour abrégé sur 3 lettres, numéro, 6 horaires, jour hégirien). Classes :
+
+- `is-friday` : fond `--bg-friday` (le mot « VENDREDI » de l'en-tête de la grille est aussi en vert) ;
+- `week-end` : filet après chaque dimanche, sauf en fin de mois ;
+- `is-hijri-new` : 1er jour du mois hégirien, croissant et numéro en `--col-green-dark` dans la colonne hégirienne ;
+- `is-dst` : jour du changement d'heure, date en bleu avec l'horloge (les horaires sautent d'une heure).
+
+Le tableau occupe toute la hauteur : les mois de 28 à 31 jours tiennent sur la page.
 
 ### 3.4 Header de l'identité (`header.css`)
 
@@ -127,7 +135,7 @@ Le contenu statique du header dans `index.html` reprend exactement la structure 
 
 ### 3.5 Légende (`updateLegend`)
 
-Pour chaque jour du mois : nom de la période de vacances (une fois par période, avec une pastille `--bg-holiday`) et passage à l'heure d'été / d'hiver (icône), triés par date, **sans date affichée** (les jours se repèrent dans la grille). Les jours islamiques et les fériés n'y figurent pas : ils sont écrits dans les cases.
+Pour chaque jour du mois : nom de la période de vacances (une fois par période, pastille `--bg-holiday` à contour doré) et passage à l'heure d'été / d'hiver (icône), triés par date, **sans date affichée** (les jours se repèrent dans la grille). Si des jours sont reportés en haut de la grille, une entrée « Le 31 : en haut de la grille » (pastille au coin replié) les signale. Libellés en minuscules, `--fs-xs`, couleur `--col-text`. Les jours islamiques et les fériés n'y figurent pas : ils sont écrits dans les cases.
 
 La bande garde la même hauteur même vide (`min-height`), pour que la grille ait la même taille chaque mois.
 
@@ -211,7 +219,7 @@ Chargée par `?mosque=<id>` (`fetchClientConfig` ; la feuille du Ramadan utilise
 
 - `'columns'` (calendrier annuel) : grille de 3 lignes (voir 3.4) ;
 - `'rows'` (feuille du Ramadan) : 3 groupes `.contact-group` (adresses | téléphones, e-mail, site | IBAN • BIC), siège en premier ;
-- `links = true` : coordonnées cliquables (appel, WhatsApp, e-mail, plan, site), pour la version numérique.
+- `links = true` : coordonnées cliquables (appel, WhatsApp, e-mail, plan, site), utilisé par la feuille du Ramadan (PDF partagé).
 
 ## 5. Feuille du Ramadan (`ramadan.html`, `ramadan.js`)
 
@@ -221,11 +229,7 @@ Chargée par `?mosque=<id>` (`fetchClientConfig` ; la feuille du Ramadan utilise
 - **Corrections** : `data/ramadan_overrides.json` (`{ "AAAA-MM-JJ": { "fajr": "06:09", … } }`) remplace les horaires calculés. `node data/csv_to_json.js` le génère depuis `data/ramadan_raw.csv` (régler `START_DATE` en tête du script).
 - **Hauteur des lignes** : après chargement des polices, toutes les lignes reçoivent la même hauteur (`--row-h`) = hauteur disponible ÷ nombre de lignes. Le tableau reste l'élément prioritaire de la page.
 - **Pied de page** : invocation (`.dua`) sous le tableau, puis bande blanche de l'identité (`--footer-h`, logo, noms, coordonnées en `'rows'`).
-- **Versions** :
-    - numérique par défaut (classe `.digital`) : fond de nuit d'hiver, filet doré dégradé au-dessus de la bande blanche, liens cliquables ;
-    - papier avec `?print=true` : fond clair `ramadan-background.jpg`, voile blanc (`--bg-veil`), économe en encre.
-
-    Les rôles de couleur `--rule`, `--surface`, `--surface-fast` sont déclarés sur `.page` et renforcés par `.digital`.
+- **Version unique**, pensée pour l'impression : fond clair `ramadan-background.jpg` sous un voile blanc (`--bg-veil`), économe en encre ; coordonnées cliquables dans le PDF. Les rôles de couleur `--rule`, `--surface`, `--surface-fast` sont déclarés sur `.page`.
 
 ## 6. Design system (`css/variables.css`)
 
@@ -235,11 +239,11 @@ Chargée par `?mosque=<id>` (`fetchClientConfig` ; la feuille du Ramadan utilise
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Couleurs de sens | `--col-blue` (structure, grégorien), `--col-green` (hégirien, prières), `--col-green-dark` (texte sur vert pâle), `--col-green-deep` (en-tête des horaires), `--col-red-event` (fériés), `--col-saffron-text` (nom tamoul, frise du haut), `--col-terracotta` (jeûne) |
 | Or et thème      | `--col-gold`, `--col-gold-light` (ornements de la feuille du Ramadan), `--brand` (thème client), `--brand-text` (`--brand` assombri, icônes par défaut)                                                                                                               |
-| Fonds            | `--bg-blue-faint` (en-tête des jours), `--bg-green-faint` (= `--bg-friday`), `--bg-holiday`, `--bg-empty`, `--bg-terracotta`, `--bg-terracotta-soft`                                                                                                                  |
+| Fonds            | `--bg-blue-faint` (en-tête des jours), `--bg-green-faint` (= `--bg-friday`), `--bg-holiday`, `--bg-empty`, `--bg-terracotta-soft`                                                                                                                                     |
 | Texte            | `--col-text`, `--col-text-light`, `--col-text-soft`, `--col-ink` (chiffres), `--col-on-blue`, `--col-on-green` (sur fonds foncés)                                                                                                                                     |
 | Bordures         | `--border-blue`, `--border-green`, `--accent-blue`, `--accent-green`, `--border-on-dark`, `--border-swatch`                                                                                                                                                           |
 | Écran            | `--bg-body` (fond autour des pages), `--shadow-page` (ombre des pages)                                                                                                                                                                                                |
-| Tailles (px)     | `--fs-2xs` 8,5 · `--fs-xs` 10 · `--fs-contact` 11 · `--fs-sm` 12 · `--fs-md` 14 · `--fs-figure` 15 · `--fs-brand-fr` 20 · `--fs-xl` 22 · `--fs-brand` 28 · `--fs-title` 30 · `--fs-display` 42                                                                        |
+| Tailles (px)     | `--fs-2xs` 9 · `--fs-xs` 10 · `--fs-contact` 11 · `--fs-sm` 12 · `--fs-md` 14 · `--fs-figure` 15 · `--fs-brand-fr` 20 · `--fs-xl` 22 · `--fs-brand` 28 · `--fs-title` 30 · `--fs-display` 42                                                                          |
 | Espacements      | `--sp-1` 4 · `--sp-2` 8 · `--sp-3` 12 · `--sp-4` 16 · `--sp-6` 24 (px)                                                                                                                                                                                                |
 | Mise en page     | `--page-pad` 5 mm · `--binding-zone` 10 mm · `--block-gap` 2,5 mm · `--header-h` 24 mm · `--band-h` 64 px                                                                                                                                                             |
 | Polices          | `--font-fr` Noto Sans · `--font-ar` Amiri (Noto Naskh Arabic en secours) · `--font-ta` Noto Serif Tamil                                                                                                                                                               |
@@ -249,7 +253,7 @@ Jetons locaux (déclarés sur le composant qui les utilise) : `--band-motif-h` e
 ### 6.2 Règles
 
 - **Une couleur = un sens.** Les textes respectent au moins 4,5:1 (WCAG AA) ; les ratios sont notés en commentaire des jetons.
-- **Flat design** : aplats, pas de dégradés ni d'ombres à l'impression (exception : le filet doré de la version numérique du Ramadan).
+- **Flat design** : aplats, pas de dégradés ni d'ombres à l'impression.
 - `--col-green-deep` est réglé en **OKLCH** pour paraître aussi sombre que `--col-blue` (le vert sombre semble plus noir à luminosité égale).
 - Aucune couleur ni taille de police en dur dans les feuilles de style du calendrier ni dans ses SVG : ajouter un jeton plutôt qu'une valeur. Seule exception : `white` (le papier).
 - Les petits ajustements de mise en page en millimètres (air sous les frises, écart des noms) restent locaux, commentés à côté de la règle.
@@ -266,7 +270,7 @@ npm run prettier   # Prettier (HTML, CSS, JS, JSON, Markdown)
 
 Il n'y a pas de tests automatisés. Avant de livrer une modification :
 
-1. Rendu PDF sans débordement : 12 pages pour `index.html?year=…` (tester au moins deux années), 1 page pour chaque version de `ramadan.html`.
+1. Rendu PDF sans débordement : 12 pages pour `index.html?year=…` (tester au moins deux années), 1 page pour `ramadan.html`.
 2. Vérifier le header avec et sans `?mosque=ami93120` (contenu généré et contenu statique).
 3. En cas de refactoring, comparer le contenu rendu avant / après (titres, cases, tableaux, légende) sur plusieurs années.
 4. Vérifier un mois avec changement d'heure (mars, octobre), un mois avec Aïd et un mois de 31 jours commençant un samedi ou un dimanche (6 semaines).

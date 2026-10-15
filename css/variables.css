@@ -26,8 +26,7 @@
 
     /* Terracotta (horaires du jeûne : Imsak, iftār, Icha AMI) */
     --col-terracotta: #a8461f; /* fond d'en-tête, texte blanc : 5.9:1 */
-    --bg-terracotta: #f9e4da; /* fond soutenu (version numérique) */
-    --bg-terracotta-soft: #fbebe4; /* fond très clair (version papier) */
+    --bg-terracotta-soft: #fbebe4; /* fond très clair des cellules du jeûne (feuille Ramadan) */
 
     /* Encre des chiffres et des textes sur fond foncé */
     --col-ink: #1f1f1f; /* horaires */
@@ -70,7 +69,7 @@
     --binding-zone: 10mm; /* haut : trous de spirale metallique (<= 6.5 mm) + degagement, dans le bandeau */
 
     /* --- ÉCHELLE TYPOGRAPHIQUE : 4 tailles de texte + 2 tailles de chiffres --- */
-    --fs-2xs: 8.5px; /* libellés dans les cases du calendrier (noms complets sur une ligne) */
+    --fs-2xs: 9px; /* libellés dans les cases du calendrier (noms complets sur une ligne, minuscules) */
     --fs-xs: 10px; /* notes : en-têtes de tableau, libellés des cases, coordonnées compactes */
     --fs-contact: 11px; /* coordonnées du header du calendrier annuel */
     --fs-sm: 12px; /* secondaire : traductions, coordonnées, légende */

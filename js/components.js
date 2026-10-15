@@ -1,5 +1,5 @@
 import { getHijriDateSafe, getDayInfo, getPrayerTimesSafe } from './services.js';
-import { dstIconHTML } from './utils.js';
+import { dstIconHTML, DATE_UTILS } from './utils.js';
 
 // ==========================================
 // COMPOSANTS WEB (Custom Elements : grille du mois & tableau des horaires)
@@ -50,9 +50,10 @@ class CalendarGrid extends MonthElement {
             const hijri = getHijriDateSafe(date);
             const dayInfo = getDayInfo(date, hijri);
             let pos = startOffset + day - 1;
-            // Layout compact : si > 35 cases, on boucle au début
-            if (pos >= 35) pos -= 35;
-            gridCells[pos] = { day, hijri, dayInfo };
+            // Layout compact (5 semaines max) : au-delà de 35 cases, le jour revient dans une case vide du début
+            const wrapped = pos >= 35;
+            if (wrapped) pos -= 35;
+            gridCells[pos] = { day, hijri, dayInfo, wrapped };
         }
 
         // Nettoyage et préparation
@@ -76,10 +77,11 @@ class CalendarGrid extends MonthElement {
             // Clonage du template
             const clone = template.content.cloneNode(true);
             const root = clone.querySelector('.day-cell-visual');
-            const { day, hijri, dayInfo } = cell;
+            const { day, hijri, dayInfo, wrapped } = cell;
 
             // Classes CSS
             if (i % 7 >= 5) root.classList.add('is-weekend'); // samedi, dimanche
+            if (wrapped) root.classList.add('is-wrapped'); // fin du mois reportée en haut de la grille (coin replié)
             if (dayInfo.isEid) root.classList.add('is-eid');
             if (dayInfo.isHoliday) root.classList.add('is-holiday');
             if (dayInfo.isPublicHoliday) root.classList.add('is-public-holiday');
@@ -156,6 +158,7 @@ class PrayerTable extends MonthElement {
             const dayOfWeekIdx = (weekday + 6) % 7; // lundi = 0
             const hijri = getHijriDateSafe(date);
             const times = getPrayerTimesSafe(date);
+            const dstType = DATE_UTILS.dstChange(date);
 
             const clone = template.content.cloneNode(true);
             const tr = clone.querySelector('tr');
@@ -168,6 +171,16 @@ class PrayerTable extends MonthElement {
             tr.querySelector('.day-num').textContent = day.toString().padStart(2, '0');
             for (const key of ['fajr', 'sunrise', 'dhuhr', 'asr', 'maghrib', 'isha']) tr.querySelector(`.${key}`).textContent = times[key];
             tr.querySelector('.col-hijri').textContent = hijri.day.padStart(2, '0');
+
+            // Repères : 1er jour du mois hégirien, changement d'heure (horaires décalés d'une heure)
+            if (parseInt(hijri.day, 10) === 1) {
+                tr.classList.add('is-hijri-new');
+                tr.querySelector('.col-hijri').insertAdjacentHTML('afterbegin', '<svg class="icon"><use href="assets/icons/icon-moon.svg#icon"></use></svg>');
+            }
+            if (dstType) {
+                tr.classList.add('is-dst');
+                tr.querySelector('.day-name').insertAdjacentHTML('beforeend', dstIconHTML(dstType));
+            }
 
             tbody.appendChild(clone);
         }

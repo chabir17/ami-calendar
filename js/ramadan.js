@@ -8,7 +8,7 @@ const IMSAK_MINUTES_BEFORE_FAJR = 10;
 // Icha AMI (horaire de la mosquée pendant le Ramadan) : 1re et 2e quinzaine
 const AMI_ISHA = { firstHalf: '20:00', secondHalf: '20:20' };
 
-function renderLayout(container, config, year, hijriYearAr, isDigital) {
+function renderLayout(container, config, year, hijriYearAr) {
     const { identity, contact } = config;
 
     DOM.setText('.org-fr', identity.name_fr, container);
@@ -22,9 +22,9 @@ function renderLayout(container, config, year, hijriYearAr, isDigital) {
         DOM.setText('.year-corner.top-right', hijriYearAr, titleEl);
     }
 
-    // Coordonnées sur 3 lignes : adresses | téléphones, e-mail, site | IBAN • BIC
+    // Coordonnées sur 3 lignes : adresses | téléphones, e-mail, site | IBAN • BIC ; cliquables dans le PDF partagé
     const contacts = container.querySelector('.identity-contacts');
-    if (contacts) contacts.innerHTML = contactsHTML(contact, 'rows', isDigital);
+    if (contacts) contacts.innerHTML = contactsHTML(contact, 'rows', true);
 }
 
 // --- Main Logic ---
@@ -63,9 +63,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     };
     const currentYear = new Date().getFullYear();
     const year = parseInt(urlParams.get('year')) || (isEidPassed(currentYear) ? currentYear + 1 : currentYear);
-    // Par défaut : version numérique (couleurs contrastées, liens cliquables).
-    // Version papier (pastels, économie d'encre) : ramadan.html?print=true
-    const isDigital = urlParams.get('print') !== 'true';
 
     const calendarEvents = [];
     let hijriYearAr = '';
@@ -97,9 +94,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // 4. Rendu
     const clone = template.content.cloneNode(true);
-    renderLayout(clone, config, year, hijriYearAr, isDigital);
+    renderLayout(clone, config, year, hijriYearAr);
     document.title = `Ramadan ${year} – horaires de prière – AMI La Courneuve`;
-    if (isDigital) clone.querySelector('.page').classList.add('digital');
 
     // Mise à jour dynamique des mois (ex: Févr. / Mars)
     const uniqueMonths = [...new Set(calendarEvents.map((d) => d.date.getMonth()))].sort((a, b) => a - b);
