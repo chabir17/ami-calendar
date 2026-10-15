@@ -27,7 +27,7 @@ ami-prayer-table {
 .prayer-table thead th {
     background: var(--bg-green-head);
     border: none;
-    border-bottom: 1.5px solid var(--bg-green-faint);
+    border-bottom: 1.5px solid var(--border-green);
     box-shadow: inset calc(-1 * var(--hairline)) 0 0 white; /* séparateurs 0,5 px entre les colonnes */
     padding: var(--sp-1) 1px;
     font-size: var(--fs-xs);
@@ -131,10 +131,10 @@ ami-prayer-table {
 
 /* Fin de semaine : filet plus marqué après le dimanche (repérage par blocs de 7 jours) */
 .prayer-table tbody tr.week-end td {
-    border-bottom: 1px solid var(--bg-green-faint);
+    border-bottom: 1.5px solid var(--border-green);
 }
 
 /* Dimanche du changement d'heure : filet bleu, assorti au fond de la ligne */
 .prayer-table tbody tr.is-dst.week-end td {
-    border-bottom-color: var(--bg-blue-faint);
+    border-bottom-color: var(--border-blue);
 }

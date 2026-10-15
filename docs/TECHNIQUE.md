@@ -61,7 +61,7 @@ Chaque mois est un clone de `#page-template` : une page A4 paysage (`--page-pad`
 Le bandeau du mois (bleu clair) et l'en-tête du tableau (vert clair) ont la même hauteur `--band-h` : leurs bas sont alignés.
 
 - **Bandeau du mois** : les deux noms de mois sont les titres de la page, aux deux extrémités (bleu marine `--col-blue`, `--fs-month` 26 px) ; années de même taille, en graisse normale et bleu ardoise `--col-title-blue`, traductions en gris.
-- **En-tête des jours** : même fond que le bandeau du mois (`--bg-blue-head`), séparé de lui par un filet blanc ; séparateurs blancs comme l'en-tête du tableau ; chaque colonne a exactement la couleur de ses numéros (`--col-text-light`, `--col-friday`, `--col-sunday`), dans les trois langues.
+- **En-tête des jours** : même fond que le bandeau du mois (`--bg-blue-head`), séparé de lui par un filet `--border-blue` ; séparateurs blancs comme l'en-tête du tableau ; chaque colonne a exactement la couleur de ses numéros (`--col-text-light`, `--col-friday`, `--col-sunday`), dans les trois langues.
 - **Numéros des jours** : gris neutre des textes courants `--col-text-light`, identique du lundi au samedi ; vendredis et dimanches en gris légèrement teinté (vert sauge `--col-friday`, terracotta `--col-sunday`) : seuls les jours fériés et l'Aïd sont en couleur pleine.
 - **En-tête du tableau** : fond vert clair, noms des prières en titre (vert foncé `--col-green-dark`, `--fs-xs` pour garder des colonnes de même largeur), traductions en gris, séparateurs blancs.
 - **Cadres** : le contour de chaque bloc reprend la couleur de son en-tête (`--bg-blue-head`, `--bg-green-head`, 1,5 px), un cran plus soutenue que les surlignages (vendredis, changement d'heure).
@@ -107,7 +107,7 @@ Les deux composants héritent de `MonthElement`, qui observe `year` et `month` e
 - `is-friday` : fond `--bg-friday` (texte normal) ; le dimanche est repéré par le filet de fin de semaine ;
 - `week-end` : filet après chaque dimanche, sauf en fin de mois ;
 - `is-hijri-new` : 1er jour du mois hégirien, numéro en `--col-green-dark` dans la colonne hégirienne ;
-- `is-dst` : jour du changement d'heure, fond bleu clair `--bg-blue-faint` et filet de fin de semaine en `--bg-blue-faint`, texte normal (les horaires sautent d'une heure).
+- `is-dst` : jour du changement d'heure, fond bleu clair `--bg-blue-faint` et filet de fin de semaine en `--border-blue`, texte normal (les horaires sautent d'une heure).
 
 Le tableau occupe toute la hauteur : les mois de 28 à 31 jours tiennent sur la page.
 
