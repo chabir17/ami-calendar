@@ -111,7 +111,7 @@
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     background: white;
-    color: var(--col-text-light); /* même couleur que les numéros en dessous */
+    color: var(--col-day); /* même couleur que les numéros en dessous */
     text-align: center;
     padding: 0;
     font-size: var(--fs-sm);
@@ -137,13 +137,13 @@
     font-size: var(--fs-sm);
 }
 
-/* Chaque colonne a la teinte de ses numéros, un ton plus foncé pour le petit texte (contraste AA) */
+/* Chaque colonne a exactement la couleur de ses numéros */
 .weekday-cell:nth-child(5) {
-    color: var(--col-friday-text);
+    color: var(--col-friday);
 }
 
 .weekday-cell:nth-child(7) {
-    color: var(--col-sunday-text);
+    color: var(--col-sunday);
 }
 
 /* Grille des jours (5 rangées pour couvrir le mois) */
@@ -184,7 +184,7 @@
 .vis-greg {
     font-size: var(--fs-display);
     font-weight: 600;
-    color: var(--col-text-light); /* gris adouci, identique du lundi au samedi : les couleurs ressortent mieux */
+    color: var(--col-day); /* gris bleuté, identique du lundi au samedi : les couleurs ressortent mieux */
 }
 
 /* Vendredi et dimanche : numéro en gris teinté (les jours fériés et l'Aïd, déclarés après, restent prioritaires) */
