@@ -83,7 +83,7 @@
     --fs-sm: 12px; /* secondaire : traductions, coordonnées, légende */
     --fs-md: 14px; /* courant : jours de la semaine, texte des tableaux */
     --fs-xl: 22px; /* titres : mois, années */
-    --fs-month: 26px; /* noms des mois du bandeau (titres de la page) */
+    --fs-month: 24px; /* noms des mois du bandeau (titres de la page) */
     --fs-brand: 28px; /* nom tamoul de l'association (header du calendrier annuel) */
     --fs-brand-fr: 20px; /* nom français : majuscules plus larges, même largeur que le nom tamoul */
     --fs-figure: 15px; /* chiffres : horaires de prière, invocation et noms de l'association (feuille Ramadan) */

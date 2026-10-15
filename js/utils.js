@@ -74,15 +74,16 @@ export function contactsHTML(c, layout = 'columns', links = false) {
 
 /**
  * Mois hégiriens, dans l'ordre (index 0 = Muḥarram) : translittération standard, arabe, tamoul.
+ * short / taShort : formes abrégées (I, II) des mois jumeaux, pour le bandeau quand deux mois se partagent la ligne.
  * Indexés par numéro de mois : aucune dépendance aux noms renvoyés par le navigateur (variables selon l'OS).
  */
 const HIJRI_MONTHS = [
     { std: 'Muḥarram', ar: 'محرم', ta: 'முஹர்ரம்' },
     { std: 'Ṣafar', ar: 'صفر', ta: 'ஸஃபர்' },
-    { std: 'Rabīʿ al-awwal', ar: 'ربيع الأول', ta: 'ரபீஉல் அவ்வல்' },
-    { std: 'Rabīʿ ath-thānī', ar: 'ربيع الآخر', ta: 'ரபீஉல் ஆகிர்' },
-    { std: 'Jumādā al-ūlā', ar: 'جمادى الأولى', ta: 'ஜுமாதல் ஊலா' },
-    { std: 'Jumādā ath-thāniya', ar: 'جمادى الآخرة', ta: 'ஜுமாதல் ஆகிரா' },
+    { std: 'Rabīʿ al-awwal', short: 'Rabīʿ I', ar: 'ربيع الأول', ta: 'ரபீஉல் அவ்வல்', taShort: 'ரபீஉ I' },
+    { std: 'Rabīʿ ath-thānī', short: 'Rabīʿ II', ar: 'ربيع الآخر', ta: 'ரபீஉல் ஆகிர்', taShort: 'ரபீஉ II' },
+    { std: 'Jumādā al-ūlā', short: 'Jumādā I', ar: 'جمادى الأولى', ta: 'ஜுமாதல் ஊலா', taShort: 'ஜுமாதா I' },
+    { std: 'Jumādā ath-thāniya', short: 'Jumādā II', ar: 'جمادى الآخرة', ta: 'ஜுமாதல் ஆகிரா', taShort: 'ஜுமாதா II' },
     { std: 'Rajab', ar: 'رجب', ta: 'ரஜப்' },
     { std: 'Shaʿbān', ar: 'شعبان', ta: 'ஷஃபான்' },
     { std: 'Ramaḍān', ar: 'رمضان', ta: 'ரமளான்' },

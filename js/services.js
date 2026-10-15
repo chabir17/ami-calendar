@@ -150,16 +150,16 @@ export function getHijriDateSafe(date) {
         adjustedDate.setDate(adjustedDate.getDate() + offset);
 
         const h = DATE_UTILS.toHijriCivil(adjustedDate);
-        const { ar, std, ta } = DATE_UTILS.getHijriNames(h.month);
+        const { ar, std, short = std, ta, taShort = ta } = DATE_UTILS.getHijriNames(h.month);
         const day = String(h.day);
         const year = String(h.year);
 
         // monthNameFR : translittération standard (Ramaḍān, Shawwāl…), seule clé de comparaison fiable entre navigateurs
-        const result = { day, monthNameFR: std, monthNameAR: ar, monthNameTA: ta, year, yearAr: DATE_UTILS.toArabicDigits(year) };
+        const result = { day, monthNameFR: std, monthNameShort: short, monthNameAR: ar, monthNameTA: ta, monthNameTAShort: taShort, year, yearAr: DATE_UTILS.toArabicDigits(year) };
         HIJRI_CACHE.set(timeKey, result);
         return result;
     } catch {
-        return { day: '?', monthNameFR: '', monthNameAR: '', monthNameTA: '', year: '', yearAr: '' };
+        return { day: '?', monthNameFR: '', monthNameShort: '', monthNameAR: '', monthNameTA: '', monthNameTAShort: '', year: '', yearAr: '' };
     }
 }
 

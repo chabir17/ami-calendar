@@ -60,12 +60,12 @@ Chaque mois est un clone de `#page-template` : une page A4 paysage (`--page-pad`
 
 Le bandeau du mois (bleu clair) et l'en-tête du tableau (vert clair) ont la même hauteur `--band-h` : leurs bas sont alignés.
 
-- **Bandeau du mois** : les deux noms de mois sont les titres de la page, aux deux extrémités (bleu marine `--col-blue`, `--fs-month` 26 px) ; années de même taille, en graisse normale et bleu ardoise `--col-title-blue` ; traductions (tamoul, translittération) dans le même bleu ardoise.
+- **Bandeau du mois** : les deux noms de mois sont les titres de la page, aux deux extrémités (bleu marine `--col-blue`, `--fs-month` 24 px) ; années de même taille, en graisse normale et bleu ardoise `--col-title-blue` ; traductions (tamoul, translittération) dans le même bleu ardoise.
 - **En-tête des jours** : fond un cran plus pâle que le bandeau du mois (`--bg-weekdays`), séparé de lui par un filet `--border-blue` ; les 7 jours dans la même couleur (noms français en bleu marine `--col-blue`, arabe et tamoul en bleu ardoise `--col-title-blue`), séparateurs blancs.
 - **Numéros des jours** : gris neutre des textes courants `--col-text-light`, identique du lundi au samedi ; vendredis et dimanches en gris légèrement teinté (vert sauge `--col-friday`, terracotta `--col-sunday`) : seuls les jours fériés et l'Aïd sont en couleur pleine.
 - **En-tête du tableau** : fond vert clair, noms des prières en titre (vert foncé `--col-green-dark`, `--fs-xs` pour garder des colonnes de même largeur), arabe et tamoul en vert sauge `--col-title-green`, séparateurs blancs.
 - **Cadres** : le contour de chaque bloc reprend la couleur de son en-tête (`--bg-blue-head`, `--bg-green-head`, 1,5 px), un cran plus soutenue que les surlignages (vendredis, changement d'heure).
-- **Bandeau trop long** (deux mois hégiriens aux noms longs) : `fitMonthTitles` ajoute `is-compact`, puis `is-compact-2` à `is-compact-4` si besoin (arabe, traductions, année grégorienne, arabe encore), qui réduit le côté hégirien au lieu de le couper.
+- **Bandeau trop long** (deux mois hégiriens aux noms longs) : quand deux mois se partagent le bandeau, les mois jumeaux sont abrégés en tamoul et en translittération (`Rabīʿ I / Rabīʿ II`, `Jumādā I / Jumādā II`, champs `short` et `taShort` de `HIJRI_MONTHS`), ce qui garde la même taille de texte chaque mois (vérifié de 2025 à 2030). En dernier recours, `fitMonthTitles` ajoute `is-compact`, puis `is-compact-2` à `is-compact-4` (arabe, traductions en 12 px puis 10 px, année grégorienne et arabe), qui réduit le côté hégirien au lieu de le couper.
 
 ### 3.2 Cycle de rendu (`main.js`)
 
@@ -250,7 +250,7 @@ Chargée par `?mosque=<id>` (`fetchClientConfig` ; la feuille du Ramadan utilise
 | Texte            | `--col-text`, `--col-text-light`, `--col-text-soft`, `--col-ink` (chiffres), `--col-on-blue` (sur fond foncé, feuille du Ramadan)                                                                                                   |
 | Bordures         | `--border-blue`, `--border-green`, `--accent-blue` (feuille Ramadan), `--border-on-dark`, `--border-swatch`                                                                                                                         |
 | Écran            | `--bg-body` (fond autour des pages), `--shadow-page` (ombre des pages)                                                                                                                                                              |
-| Tailles (px)     | `--fs-2xs` 9 · `--fs-xs` 10 · `--fs-contact` 11 · `--fs-sm` 12 · `--fs-md` 14 · `--fs-figure` 15 · `--fs-brand-fr` 20 · `--fs-xl` 22 · `--fs-month` 26 · `--fs-brand` 28 · `--fs-title` 30 · `--fs-display` 42                      |
+| Tailles (px)     | `--fs-2xs` 9 · `--fs-xs` 10 · `--fs-contact` 11 · `--fs-sm` 12 · `--fs-md` 14 · `--fs-figure` 15 · `--fs-brand-fr` 20 · `--fs-xl` 22 · `--fs-month` 24 · `--fs-brand` 28 · `--fs-title` 30 · `--fs-display` 42                      |
 | Rayons           | `--radius-card` 0,5 rem (blocs du calendrier et du tableau)                                                                                                                                                                         |
 | Espacements      | `--sp-1` 4 · `--sp-2` 8 · `--sp-3` 12 · `--sp-4` 16 · `--sp-6` 24 (px)                                                                                                                                                              |
 | Mise en page     | `--page-pad` 5 mm · `--binding-zone` 10 mm · `--block-gap` 2,5 mm · `--header-h` 24 mm · `--band-h` 64 px                                                                                                                           |

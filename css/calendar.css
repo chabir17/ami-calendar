@@ -71,22 +71,23 @@
     justify-content: flex-end;
 }
 
-/* Deux mois hégiriens aux noms longs : taille réduite (voir fitMonthTitles) */
+/* Deux mois hégiriens aux noms longs : taille réduite par crans (voir fitMonthTitles).
+   1er cran : titre arabe seul ; les traductions gardent leur taille tant que possible (mois jumeaux abrégés : Jumādā I / II) */
 .month-titles-zone.is-compact .hijri-month-ar {
     font-size: var(--fs-xl);
 }
 
-.month-titles-zone.is-compact .titles-hijri .title-sub,
-.month-titles-zone.is-compact .titles-hijri .title-sub > * + *::before {
+.month-titles-zone.is-compact-2 .titles-hijri .title-sub,
+.month-titles-zone.is-compact-2 .titles-hijri .title-sub > * + *::before {
     font-size: var(--fs-sm);
 }
 
-.month-titles-zone.is-compact-2 .titles-hijri .title-sub,
-.month-titles-zone.is-compact-2 .titles-hijri .title-sub > * + *::before {
+.month-titles-zone.is-compact-3 .titles-hijri .title-sub,
+.month-titles-zone.is-compact-3 .titles-hijri .title-sub > * + *::before {
     font-size: var(--fs-xs);
 }
 
-.month-titles-zone.is-compact-3 .year-display {
+.month-titles-zone.is-compact-4 .year-display {
     font-size: var(--fs-xl);
 }
 

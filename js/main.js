@@ -210,10 +210,11 @@ function updateZoneTitles(year, month, container) {
             hijriArYear = hijriStart.yearAr;
             hijriTaStr = hijriStart.monthNameTA;
         } else {
-            hijriFrStr = `${hijriStart.monthNameFR} / ${hijriEnd.monthNameFR} ${hijriEnd.year}`;
+            // Deux mois : formes abrégées des mois jumeaux (Rabīʿ I, Jumādā II…), même taille de texte que les autres mois
+            hijriFrStr = `${hijriStart.monthNameShort} / ${hijriEnd.monthNameShort} ${hijriEnd.year}`;
             hijriArMonths = `${hijriStart.monthNameAR} / ${hijriEnd.monthNameAR}`;
             hijriArYear = hijriEnd.yearAr;
-            hijriTaStr = `${hijriStart.monthNameTA} / ${hijriEnd.monthNameTA}`;
+            hijriTaStr = `${hijriStart.monthNameTAShort} / ${hijriEnd.monthNameTAShort}`;
         }
     }
     DOM.setText('.hijri-month-fr', hijriFrStr, container);
