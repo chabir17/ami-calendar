@@ -68,15 +68,15 @@ Les deux composants héritent de `MonthElement`, qui observe `year` et `month` e
 
 - **`<ami-calendar-grid>`** : grille fixe de **35 cases** (5 semaines × 7, lundi en premier). Les jours au-delà de la 35e case (mois sur 6 semaines) reviennent dans les premières cases vides. Chaque case est clonée depuis `#calendar-cell-template` et reçoit des classes selon `getDayInfo` :
 
-    | Classe              | Condition              | Effet                             |
-    | ------------------- | ---------------------- | --------------------------------- |
-    | `is-weekend`        | samedi, dimanche       | numéro gris                       |
-    | `is-holiday`        | vacances scolaires     | fond `--bg-holiday`               |
-    | `is-public-holiday` | jour férié             | numéro rouge                      |
-    | `is-eid`            | Aïd                    | numéro vert                       |
-    | `is-islamic-event`  | Aïd ou jour vertueux   | date hégirienne en pastille verte |
-    | `multi-events`      | au moins deux libellés | numéro remonté                    |
-    | `empty`             | case hors du mois      | fond `--bg-empty`                 |
+    | Classe              | Condition              | Effet                           |
+    | ------------------- | ---------------------- | ------------------------------- |
+    | `is-weekend`        | samedi, dimanche       | numéro gris                     |
+    | `is-holiday`        | vacances scolaires     | fond `--bg-holiday`             |
+    | `is-public-holiday` | jour férié             | numéro rouge                    |
+    | `is-eid`            | Aïd                    | numéro vert                     |
+    | `is-islamic-event`  | Aïd ou jour vertueux   | date hégirienne cerclée de vert |
+    | `multi-events`      | au moins deux libellés | numéro remonté                  |
+    | `empty`             | case hors du mois      | fond `--bg-empty`               |
 
     Les libellés (`event-line {type}-label`, types `eid`, `virtuous`, `public`, `dst`) sont écrits sous le numéro. Si l'Aïd tombe un jour férié, l'Aïd passe en haut de la case (`event-label-top`).
 
@@ -89,7 +89,7 @@ Les deux composants héritent de `MonthElement`, qui observe `year` et `month` e
     - Le motif est en **SVG vectoriel inline** : un `background-image` ou un `<pattern>` SVG est pixellisé par Chrome à l'export PDF.
     - Torsade à deux brins : à chaque croisement, un `clipPath` redessine le brin du dessus (sur un halo blanc), en alternant.
 - Noms : tamoul en `--fs-brand` (28 px), français en `--fs-brand-fr` (20 px) pour une largeur équivalente ; ils occupent toute la hauteur du logo.
-- Coordonnées : `contactsHTML(c, 'columns')` produit deux colonnes (adresses, IBAN, BIC | téléphones, e-mail, site).
+- Coordonnées : `contactsHTML(c, 'columns')` produit une grille de 3 lignes (adresse | téléphones, adresse | e-mail et site, puis IBAN • BIC sur toute la largeur).
 - Motif girih gris pâle (`background-pattern-neutral.svg`, 15 % d'opacité) entre les deux frises.
 
 ### 3.4 Légende (`updateLegend`)

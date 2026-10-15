@@ -72,13 +72,12 @@
     gap: var(--sp-3);
 }
 
-/* Noms et colonnes de coordonnées : même hauteur que le logo, lignes réparties du haut au bas
-   (le haut du tamoul et le haut des coordonnées, le bas du français et le bas des coordonnées s'alignent) */
-.org-names,
-.header-contacts .contact-group {
+/* Noms resserrés au centre de la hauteur du logo : lus comme un seul bloc d'identité */
+.org-names {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 1.5mm;
     padding: 1mm 0 0; /* le tamoul (hampes hautes) ne touche pas la frise safran */
     white-space: nowrap;
 }
@@ -101,11 +100,16 @@
     letter-spacing: 0.01em;
 }
 
-/* Coordonnées en 2 colonnes : discrètes, plus claires que les noms (hiérarchie nette) */
+/* Coordonnées en grille de 3 lignes (adresse | téléphones, adresse | web, banque) :
+   discrètes, plus claires que les noms (hiérarchie nette) ; haut et bas alignés sur les noms */
 .header-contacts {
     margin: 0 auto;
-    display: flex;
-    gap: var(--sp-4);
+    display: grid;
+    grid-template-columns: auto auto;
+    align-content: space-between;
+    gap: 0 var(--sp-6);
+    padding-top: 1mm;
+    white-space: nowrap;
     font-size: var(--fs-contact);
     line-height: 1.35;
     color: var(--col-text-soft);
@@ -117,9 +121,19 @@
     gap: var(--sp-1);
 }
 
-/* Ligne sans icône (BIC sous l'IBAN) : alignée sur le texte de la ligne du dessus */
-.info-cont {
-    padding-left: calc(0.75rem + 2 * var(--sp-1)); /* icône + sa marge droite (.icon) + espace (gap) */
+/* Plusieurs coordonnées sur une même ligne (téléphones ; e-mail et site) */
+.info-line:has(.info-item) {
+    gap: var(--sp-4);
+}
+
+.info-wide {
+    grid-column: 1 / -1;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-1);
 }
 
 /* Icônes des coordonnées : bleu marine du logo */

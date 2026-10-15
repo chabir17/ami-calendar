@@ -37,32 +37,39 @@ const intlPhone = (num) => '33' + String(num).replace(/\D/g, '').replace(/^0/, '
 
 /**
  * HTML des coordonnées de l'association (lignes avec icône).
- * - 'columns' (calendrier annuel) : 2 colonnes de 4 lignes (adresses, IBAN, BIC | téléphones, e-mail, site).
+ * - 'columns' (calendrier annuel) : grille de 3 lignes (adresse | téléphones, adresse | e-mail et site, IBAN • BIC).
  * - 'rows' (page Ramadan) : 3 lignes (adresses | téléphones, e-mail, site | IBAN • BIC), siège en premier.
  * @param {Object} c - config.contact (addr1/addr2 + icônes facultatives, phone, whatsapp, email, website, bank)
  * @param {'columns'|'rows'} layout
  * @param {boolean} links - coordonnées cliquables (appel, WhatsApp, e-mail, plan, site) pour les PDF numériques
  */
 export function contactsHTML(c, layout = 'columns', links = false) {
-    const line = (icon, text, href) => {
+    const item = (icon, text, href) => {
         if (!text) return '';
         const label = links && href ? `<a href="${href}">${text}</a>` : text;
-        return `<div class="info-line"><svg class="icon"><use href="assets/icons/icon-${icon}.svg#icon"></use></svg> <span>${label}</span></div>`;
+        return `<svg class="icon"><use href="assets/icons/icon-${icon}.svg#icon"></use></svg> <span>${label}</span>`;
+    };
+    // Une ligne réunit une ou plusieurs coordonnées (chacune avec son icône)
+    const line = (...items) => {
+        const xs = items.filter(Boolean);
+        if (!xs.length) return '';
+        return xs.length === 1 ? `<div class="info-line">${xs[0]}</div>` : `<div class="info-line">${xs.map((x) => `<span class="info-item">${x}</span>`).join('')}</div>`;
     };
     const group = (lines) => `<div class="contact-group">${lines.filter(Boolean).join('')}</div>`;
     const map = (addr) => addr && `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(addr)}`;
-    const addr1 = line(c.addr1_icon || 'location', c.addr1, map(c.addr1));
-    const addr2 = line(c.addr2_icon || 'location', c.addr2, map(c.addr2));
-    const phone = line('phone', c.phone, c.phone && `tel:+${intlPhone(c.phone)}`);
-    const whatsapp = line('whatsapp', c.whatsapp, c.whatsapp && `https://wa.me/${intlPhone(c.whatsapp)}`);
-    const email = line('email', c.email, c.email && `mailto:${c.email}`);
-    const website = line('website', c.website, c.website && `https://${c.website}`);
+    const addr1 = item(c.addr1_icon || 'location', c.addr1, map(c.addr1));
+    const addr2 = item(c.addr2_icon || 'location', c.addr2, map(c.addr2));
+    const phone = item('phone', c.phone, c.phone && `tel:+${intlPhone(c.phone)}`);
+    const whatsapp = item('whatsapp', c.whatsapp, c.whatsapp && `https://wa.me/${intlPhone(c.whatsapp)}`);
+    const email = item('email', c.email, c.email && `mailto:${c.email}`);
+    const website = item('website', c.website, c.website && `https://${c.website}`);
+    const bank = c.bank && item('bank', `IBAN\u00a0: ${c.bank.iban} • BIC\u00a0: ${c.bank.bic}`);
 
     if (layout === 'rows') {
-        return [group([addr2, addr1]), group([phone, whatsapp, email, website]), c.bank && group([line('bank', `IBAN\u00a0: ${c.bank.iban} • BIC\u00a0: ${c.bank.bic}`)])].join('');
+        return [group([line(addr2), line(addr1)]), group([phone, whatsapp, email, website].map((x) => line(x))), group([line(bank)])].join('');
     }
-    const bank = c.bank && [line('bank', `IBAN\u00a0: ${c.bank.iban}`), `<div class="info-line info-cont"><span>BIC\u00a0: ${c.bank.bic}</span></div>`];
-    return [group([addr1, addr2, ...(bank || [])]), group([phone, whatsapp, email, website])].join('');
+    // Grille de 3 lignes : adresse | téléphones, adresse | e-mail et site, puis IBAN • BIC sur toute la largeur
+    return [line(addr1), line(phone, whatsapp), line(addr2), line(email, website), bank && `<div class="info-line info-wide">${bank}</div>`].filter(Boolean).join('');
 }
 
 /**
