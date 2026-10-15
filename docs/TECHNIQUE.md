@@ -60,10 +60,10 @@ Chaque mois est un clone de `#page-template` : une page A4 paysage (`--page-pad`
 
 Le bandeau du mois (bleu clair) et l'en-tête du tableau (vert clair) ont la même hauteur `--band-h` : leurs bas sont alignés.
 
-- **Bandeau du mois** : mois grégorien en bleu marine (année en `--accent-blue`), mois hégirien en arabe en bleu marine aussi (année en `--accent-blue`), traductions en gris.
+- **Bandeau du mois** : mois grégorien en bleu ardoise `--col-title-blue` (année dans le même bleu, en graisse normale), mois hégirien en arabe dans le même bleu, traductions en gris.
 - **En-tête des jours** : fond blanc ; chaque colonne a la couleur de ses numéros (gris adouci, `--col-friday`, `--col-sunday`), dans les trois langues.
 - **Numéros des jours** : gris adouci `--col-text-light`, identique du lundi au samedi ; vendredis et dimanches en teintes adoucies `--col-friday` et `--col-sunday` (≥ 3:1), plus discrètes que les jours fériés et l'Aïd, qui restent prioritaires.
-- **En-tête du tableau** : fond vert clair, prières en vert foncé, séparateurs blancs.
+- **En-tête du tableau** : fond vert clair, prières en vert sauge `--col-title-green`, séparateurs blancs.
 - **Cadres** : le contour de chaque bloc reprend la couleur de son en-tête (`--bg-blue-faint`, `--bg-green-faint`, 2 px).
 - **Bandeau trop long** (deux mois hégiriens aux noms longs) : `fitMonthTitles` ajoute `is-compact`, qui réduit le côté hégirien au lieu de le couper.
 
@@ -244,12 +244,13 @@ Chargée par `?mosque=<id>` (`fetchClientConfig` ; la feuille du Ramadan utilise
 | Famille          | Jetons                                                                                                                                                                                                                                               |
 | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Couleurs de sens | `--col-blue` (structure, grégorien), `--col-green` (hégirien, prières), `--col-green-dark` (texte sur vert pâle), `--col-saffron-text` (nom tamoul, frise du haut), `--col-terracotta` (fériés, changement d'heure ; jeûne de la feuille du Ramadan) |
-| Or et thème      | `--col-gold`, `--col-gold-light` (ornements de la feuille du Ramadan), `--brand` (thème client), `--brand-text` (`--brand` assombri, icônes par défaut)                                                                                              |
+| Or et thème      | `--col-gold` (ornements de la feuille du Ramadan), `--brand` (thème client), `--brand-text` (`--brand` assombri, icônes par défaut)                                                                                                                  |
 | Fonds            | `--bg-blue-faint` (bandeau du mois), `--bg-green-faint` (= `--bg-friday`), `--bg-holiday`, `--bg-empty`, `--bg-terracotta-soft`                                                                                                                      |
 | Texte            | `--col-text`, `--col-text-light`, `--col-text-soft`, `--col-ink` (chiffres), `--col-on-blue` (sur fond foncé, feuille du Ramadan)                                                                                                                    |
 | Bordures         | `--border-blue`, `--border-green`, `--accent-blue`, `--accent-green`, `--border-on-dark`, `--border-swatch`                                                                                                                                          |
 | Écran            | `--bg-body` (fond autour des pages), `--shadow-page` (ombre des pages)                                                                                                                                                                               |
 | Tailles (px)     | `--fs-2xs` 9 · `--fs-xs` 10 · `--fs-contact` 11 · `--fs-sm` 12 · `--fs-md` 14 · `--fs-figure` 15 · `--fs-brand-fr` 20 · `--fs-xl` 22 · `--fs-brand` 28 · `--fs-title` 30 · `--fs-display` 42                                                         |
+| Rayons           | `--radius-card` 0,5 rem (blocs du calendrier et du tableau)                                                                                                                                                                                          |
 | Espacements      | `--sp-1` 4 · `--sp-2` 8 · `--sp-3` 12 · `--sp-4` 16 · `--sp-6` 24 (px)                                                                                                                                                                               |
 | Mise en page     | `--page-pad` 5 mm · `--binding-zone` 10 mm · `--block-gap` 2,5 mm · `--header-h` 24 mm · `--band-h` 64 px                                                                                                                                            |
 | Polices          | `--font-fr` Noto Sans · `--font-ar` Amiri (Noto Naskh Arabic en secours) · `--font-ta` Noto Serif Tamil                                                                                                                                              |

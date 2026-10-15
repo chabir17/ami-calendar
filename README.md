@@ -54,7 +54,7 @@ Sans Node : `python3 -m http.server 3000` depuis la racine du projet.
 ## Ce que montre le calendrier annuel
 
 - **Header** : logo, noms tamoul (safran) et français (vert), coordonnées ; encadré par deux fines torsades aux couleurs du logo.
-- **Bandeau du mois** (fond bleu clair) : mois grégorien à gauche, mois hégirien(s) à droite, en bleu marine, avec traductions.
+- **Bandeau du mois** (fond bleu clair) : mois grégorien à gauche, mois hégirien(s) à droite, en bleu ardoise, avec traductions.
 - **Jours de la semaine** : vendredi en vert et dimanche en terracotta, dans l'en-tête et pour les numéros (teinte adoucie).
 - **Cases des jours** :
     - numéro hégirien en petit, en haut à droite ; **en gras** les jours islamiques particuliers ;

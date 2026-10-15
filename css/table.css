@@ -2,7 +2,7 @@
 .right-prayer-table-container {
     overflow: hidden;
     border: 1.5px solid var(--bg-green-faint); /* cadre de la couleur de l'en-tête : l'en-tête prolonge le contour */
-    border-radius: 0.5rem;
+    border-radius: var(--radius-card);
     display: flex;
     flex-direction: column;
     background-color: white;
@@ -33,7 +33,7 @@ ami-prayer-table {
     font-size: var(--fs-xs);
     font-weight: 400;
     vertical-align: middle;
-    color: var(--col-green-dark);
+    color: var(--col-title-green);
     height: var(--band-h); /* même hauteur que le bandeau du mois voisin */
 }
 
@@ -73,7 +73,7 @@ ami-prayer-table {
     width: 18px;
     height: 18px;
     margin: 0;
-    color: var(--col-green);
+    color: var(--col-friday); /* vert adouci */
 }
 
 .prayer-table tbody td {

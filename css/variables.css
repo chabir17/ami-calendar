@@ -20,7 +20,6 @@
 
     /* Or (ornements, filets, motif du header) */
     --col-gold: #c8a85a;
-    --col-gold-light: #e3c983; /* reflet au centre des filets dégradés */
 
     /* Terracotta (horaires du jeûne : Imsak, iftār, Icha AMI) */
     --col-terracotta: #a8461f; /* événements civils (fériés, changement d'heure), jeûne (feuille Ramadan) : 5.9:1 sur blanc, 5.5:1 sur --bg-holiday */
@@ -28,6 +27,10 @@
 
     /* Encre des chiffres et des textes sur fond foncé */
     --col-ink: #1f1f1f; /* horaires */
+
+    /* Titres adoucis des en-têtes (page calme : la couleur pleine est réservée aux exceptions) */
+    --col-title-blue: #46628a; /* bandeau du mois : 5.6:1 sur --bg-blue-faint */
+    --col-title-green: #3f7046; /* en-tête des horaires : 5.0:1 sur --bg-green-faint */
 
     /* Vendredi et dimanche : numéros des jours en teinte adoucie (repère hebdomadaire, plus discret que fériés et Aïd) */
     --col-friday: #5a9a62; /* 3.4:1 sur blanc, 3.2:1 sur --bg-holiday (grands chiffres) */
@@ -88,6 +91,9 @@
     --sp-3: 0.75rem; /* 12 px */
     --sp-4: 1rem; /* 16 px */
     --sp-6: 1.5rem; /* 24 px */
+
+    /* --- RAYONS --- */
+    --radius-card: 0.5rem; /* blocs du calendrier et du tableau */
 
     /* --- TYPOGRAPHIE --- */
     --font-fr: 'Noto Sans', sans-serif;
