@@ -158,7 +158,6 @@ class PrayerTable extends MonthElement {
             const dayOfWeekIdx = (weekday + 6) % 7; // lundi = 0
             const hijri = getHijriDateSafe(date);
             const times = getPrayerTimesSafe(date);
-            const dstType = DATE_UTILS.dstChange(date);
 
             const clone = template.content.cloneNode(true);
             const tr = clone.querySelector('tr');
@@ -174,10 +173,7 @@ class PrayerTable extends MonthElement {
 
             // Repères : 1er jour du mois hégirien, changement d'heure (horaires décalés d'une heure)
             if (parseInt(hijri.day, 10) === 1) tr.classList.add('is-hijri-new');
-            if (dstType) {
-                tr.classList.add('is-dst');
-                tr.querySelector('.day-name').insertAdjacentHTML('beforeend', dstIconHTML(dstType));
-            }
+            if (DATE_UTILS.dstChange(date)) tr.classList.add('is-dst');
 
             tbody.appendChild(clone);
         }
