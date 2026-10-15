@@ -251,7 +251,9 @@ function normalizeSchoolHolidays(records) {
                 // Été annoncé sans date de fin : jusqu'au 31 août ; sinon (pont) : le jour même
                 end = /été/i.test(f.description || '') ? `${start.slice(0, 4)}-08-31` : start;
             }
-            const name = (f.description || 'Vacances').replace(/^Début des /, '').replace(/\b(Hiver|Été|Printemps|Automne)\b/g, (s) => s.toLowerCase());
+            const name = (f.description || 'Vacances')
+                .replace(/^Début des /, '')
+                .replace(/(d'|de )(Hiver|Été|Printemps|Automne)/g, (m, prefix, season) => prefix + season.toLowerCase()); // \b ignore les lettres accentuées (É)
             return { name, start, end };
         });
 }
