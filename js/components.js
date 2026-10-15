@@ -173,10 +173,7 @@ class PrayerTable extends MonthElement {
             tr.querySelector('.col-hijri').textContent = hijri.day.padStart(2, '0');
 
             // Repères : 1er jour du mois hégirien, changement d'heure (horaires décalés d'une heure)
-            if (parseInt(hijri.day, 10) === 1) {
-                tr.classList.add('is-hijri-new');
-                tr.querySelector('.col-hijri').insertAdjacentHTML('afterbegin', '<svg class="icon"><use href="assets/icons/icon-moon.svg#icon"></use></svg>');
-            }
+            if (parseInt(hijri.day, 10) === 1) tr.classList.add('is-hijri-new');
             if (dstType) {
                 tr.classList.add('is-dst');
                 tr.querySelector('.day-name').insertAdjacentHTML('beforeend', dstIconHTML(dstType));

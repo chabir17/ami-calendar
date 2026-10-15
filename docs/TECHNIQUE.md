@@ -101,7 +101,7 @@ Les deux composants héritent de `MonthElement`, qui observe `year` et `month` e
 
 - `is-friday` : fond `--bg-friday` (le mot « VENDREDI » de l'en-tête de la grille est aussi en vert) ;
 - `week-end` : filet après chaque dimanche, sauf en fin de mois ;
-- `is-hijri-new` : 1er jour du mois hégirien, croissant et numéro en `--col-green-dark` dans la colonne hégirienne ;
+- `is-hijri-new` : 1er jour du mois hégirien, numéro en `--col-green-dark` dans la colonne hégirienne ;
 - `is-dst` : jour du changement d'heure, date en bleu avec l'horloge (les horaires sautent d'une heure).
 
 Le tableau occupe toute la hauteur : les mois de 28 à 31 jours tiennent sur la page.
