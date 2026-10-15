@@ -1,7 +1,7 @@
 /* --- TABLEAU DES HORAIRES DE PRIÈRES (DROITE) --- */
 .right-prayer-table-container {
     overflow: hidden;
-    border: 2px solid var(--bg-green-faint); /* cadre de la couleur de l'en-tête : l'en-tête prolonge le contour */
+    border: 1.5px solid var(--bg-green-faint); /* cadre de la couleur de l'en-tête : l'en-tête prolonge le contour */
     border-radius: 0.5rem;
     display: flex;
     flex-direction: column;

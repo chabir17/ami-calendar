@@ -50,7 +50,7 @@
     --bg-friday: var(--bg-green-faint);
 
     /* Gris pastel : cases hors du mois */
-    --bg-empty: #f4f5f7;
+    --bg-empty: #f8f9fa;
 
     /* Pastels opaques (rendu fiable sur laser de bureau, papier blanc) */
     --bg-blue-faint: #eef3f9; /* bandeau du mois */
