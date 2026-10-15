@@ -1,26 +1,23 @@
 import { getHijriDateSafe, getDayInfo, getPrayerTimesSafe } from './services.js';
+import { dstIconHTML } from './utils.js';
 
 // ==========================================
-// 2. COMPOSANTS WEB (Custom Elements : Grille & Tableau)
+// COMPOSANTS WEB (Custom Elements : grille du mois & tableau des horaires)
 // ==========================================
 
 /**
- * Composant affichant la grille mensuelle du calendrier.
+ * Base commune : rendu (regroupé à la frame suivante) quand les attributs year / month changent.
  */
-class CalendarGrid extends HTMLElement {
-    constructor() {
-        super();
+class MonthElement extends HTMLElement {
+    static get observedAttributes() {
+        return ['year', 'month'];
     }
     connectedCallback() {
         this.queueRender();
     }
-    static get observedAttributes() {
-        return ['year', 'month'];
-    }
     attributeChangedCallback(name, oldValue, newValue) {
         if (oldValue !== newValue) this.queueRender();
     }
-
     queueRender() {
         if (this._renderPending) return;
         this._renderPending = true;
@@ -29,7 +26,12 @@ class CalendarGrid extends HTMLElement {
             this._renderPending = false;
         });
     }
+}
 
+/**
+ * Composant affichant la grille mensuelle du calendrier.
+ */
+class CalendarGrid extends MonthElement {
     render() {
         const year = parseInt(this.getAttribute('year'));
         const month = parseInt(this.getAttribute('month'));
@@ -38,7 +40,7 @@ class CalendarGrid extends HTMLElement {
         const jsMonth = month - 1;
         const daysInMonth = new Date(year, month, 0).getDate();
         // Décalage pour le 1er jour (Lundi = 0 ... Dimanche = 6)
-        let startOffset = (new Date(year, jsMonth, 1).getDay() || 7) - 1;
+        const startOffset = (new Date(year, jsMonth, 1).getDay() || 7) - 1;
 
         // Création d'une grille fixe de 35 cellules (5 lignes x 7 jours)
         const gridCells = new Array(35).fill(null);
@@ -92,9 +94,7 @@ class CalendarGrid extends HTMLElement {
             if (dayInfo.isDST) {
                 const dstIcon = root.querySelector('.dst-icon');
                 dstIcon.hidden = false;
-                const dir = dayInfo.dstType === 'winter' ? 'back' : 'forward';
-                // icon-dst-back.svg / icon-dst-forward.svg (nom construit dynamiquement)
-                dstIcon.innerHTML = `<svg class="icon"><use href="assets/icons/icon-dst-${dir}.svg#icon"></use></svg>`;
+                dstIcon.innerHTML = dstIconHTML(dayInfo.dstType);
                 if (dayInfo.isNewMoon) dstIcon.style.left = '18px';
             }
 
@@ -132,29 +132,7 @@ if (!customElements.get('ami-calendar-grid')) {
 /**
  * Composant affichant le tableau des horaires de prières.
  */
-class PrayerTable extends HTMLElement {
-    constructor() {
-        super();
-    }
-    connectedCallback() {
-        this.queueRender();
-    }
-    static get observedAttributes() {
-        return ['year', 'month'];
-    }
-    attributeChangedCallback(name, oldValue, newValue) {
-        if (oldValue !== newValue) this.queueRender();
-    }
-
-    queueRender() {
-        if (this._renderPending) return;
-        this._renderPending = true;
-        requestAnimationFrame(() => {
-            this.render();
-            this._renderPending = false;
-        });
-    }
-
+class PrayerTable extends MonthElement {
     render() {
         const year = parseInt(this.getAttribute('year'));
         const month = parseInt(this.getAttribute('month'));
@@ -172,26 +150,21 @@ class PrayerTable extends HTMLElement {
 
         for (let day = 1; day <= daysInMonth; day++) {
             const date = new Date(year, jsMonth, day);
-            const dayOfWeekIdx = date.getDay() === 0 ? 6 : date.getDay() - 1;
-            const isFriday = date.getDay() === 5;
-            let hijri = getHijriDateSafe(date);
-            let times = getPrayerTimesSafe(date);
+            const weekday = date.getDay(); // 0 = dimanche
+            const dayOfWeekIdx = (weekday + 6) % 7; // lundi = 0
+            const hijri = getHijriDateSafe(date);
+            const times = getPrayerTimesSafe(date);
 
             const clone = template.content.cloneNode(true);
             const tr = clone.querySelector('tr');
 
-            if (isFriday) tr.classList.add('is-friday');
-            if (date.getDay() === 0 && day < daysInMonth) tr.classList.add('week-end'); // filet après chaque dimanche
+            if (weekday === 5) tr.classList.add('is-friday');
+            if (weekday === 0 && day < daysInMonth) tr.classList.add('week-end'); // filet après chaque dimanche
 
             // Remplissage des données via sélecteurs
             tr.querySelector('.day-name').textContent = window.TEXTS.fr.daysShort[dayOfWeekIdx];
             tr.querySelector('.day-num').textContent = day.toString().padStart(2, '0');
-            tr.querySelector('.fajr').textContent = times.fajr;
-            tr.querySelector('.sunrise').textContent = times.sunrise;
-            tr.querySelector('.dhuhr').textContent = times.dhuhr;
-            tr.querySelector('.asr').textContent = times.asr;
-            tr.querySelector('.maghrib').textContent = times.maghrib;
-            tr.querySelector('.isha').textContent = times.isha;
+            for (const key of ['fajr', 'sunrise', 'dhuhr', 'asr', 'maghrib', 'isha']) tr.querySelector(`.${key}`).textContent = times[key];
             tr.querySelector('.col-hijri').textContent = hijri.day.padStart(2, '0');
 
             tbody.appendChild(clone);

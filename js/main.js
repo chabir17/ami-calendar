@@ -1,9 +1,9 @@
 import { initAdhan, fetchExternalData, getHijriDateSafe, getDayInfo, fetchClientConfig, applyTheme, loadPrayerTimes } from './services.js';
-import { DOM, contactsHTML } from './utils.js';
+import { DOM, contactsHTML, dstIconHTML } from './utils.js';
 import './components.js';
 
 // ==========================================
-// 3. ORCHESTRATION & UI (Main)
+// CALENDRIER ANNUEL : orchestration des 12 pages
 // ==========================================
 
 // État global
@@ -156,9 +156,8 @@ function updateLegend(year, month, container) {
             add(info.holidayName, d, `<span class="legend-color box-holiday"></span><span>${info.holidayName}</span>`);
         }
         if (info.isDST) {
-            const summer = info.dstType === 'summer';
-            const icon = `<span class="legend-icon"><svg class="icon"><use href="assets/icons/icon-dst-${summer ? 'forward' : 'back'}.svg#icon"></use></svg></span>`;
-            add('dst', d, `${icon}<span>${summer ? "Passage à l'heure d'été" : "Passage à l'heure d'hiver"}</span>`);
+            const label = info.dstType === 'summer' ? "Passage à l'heure d'été" : "Passage à l'heure d'hiver";
+            add('dst', d, `<span class="legend-icon">${dstIconHTML(info.dstType)}</span><span>${label}</span>`);
         }
     }
 

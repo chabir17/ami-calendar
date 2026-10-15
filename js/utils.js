@@ -6,9 +6,6 @@
  * Helpers DOM pour simplifier la manipulation des éléments.
  */
 export const DOM = {
-    /** Sélectionne un élément (raccourci pour querySelector) */
-    get: (selector, root = document) => root.querySelector(selector),
-
     /** Définit le texte d'un élément s'il existe */
     setText: (selector, text, root = document) => {
         const el = root.querySelector(selector);
@@ -19,16 +16,20 @@ export const DOM = {
     setSrc: (selector, src, root = document) => {
         const el = root.querySelector(selector);
         if (el) el.src = src;
-    },
-
-    /** Affiche ou masque un élément (display: flex ou none) */
-    setDisplay: (selector, show, root = document, displayType = 'flex') => {
-        const el = root.querySelector(selector);
-        if (el) {
-            el.style.display = show ? displayType : 'none';
-        }
-        return el;
     }
+};
+
+/** Icône du changement d'heure : horloge qui avance (été) ou recule (hiver) */
+export const dstIconHTML = (dstType) => `<svg class="icon"><use href="assets/icons/icon-dst-${dstType === 'summer' ? 'forward' : 'back'}.svg#icon"></use></svg>`;
+
+/** Formatteur réutilisé (créer un Intl.DateTimeFormat est coûteux) */
+const PARIS_DATE_FORMATTER = new Intl.DateTimeFormat('fr-FR', { timeZone: 'Europe/Paris', year: 'numeric', month: '2-digit', day: '2-digit' });
+
+/** Dernier dimanche d'un mois (month : 0-11) */
+const lastSunday = (year, month) => {
+    const d = new Date(year, month + 1, 0);
+    d.setDate(d.getDate() - d.getDay());
+    return d;
 };
 
 /** Numéro français « 01.48.36.48.66 » -> format international « 33148364866 » */
@@ -159,18 +160,8 @@ export const DATE_UTILS = {
      */
     toParisISO: (dateInput) => {
         const date = dateInput instanceof Date ? dateInput : new Date(dateInput);
-        const dtf = new Intl.DateTimeFormat('fr-FR', {
-            timeZone: 'Europe/Paris',
-            year: 'numeric',
-            month: '2-digit',
-            day: '2-digit'
-        });
-
-        // Extraction sécurisée des parties
-        const parts = dtf.formatToParts(date);
-        const getPart = (type) => parts.find((p) => p.type === type).value;
-
-        return `${getPart('year')}-${getPart('month')}-${getPart('day')}`;
+        const parts = Object.fromEntries(PARIS_DATE_FORMATTER.formatToParts(date).map((p) => [p.type, p.value]));
+        return `${parts.year}-${parts.month}-${parts.day}`;
     },
 
     /**
@@ -179,13 +170,15 @@ export const DATE_UTILS = {
      */
     isSummerTime: (date) => {
         const y = date.getFullYear();
-        const lastSunday = (month) => {
-            const d = new Date(y, month + 1, 0);
-            d.setDate(d.getDate() - d.getDay());
-            return d;
-        };
         const day = new Date(y, date.getMonth(), date.getDate());
-        return day >= lastSunday(2) && day < lastSunday(9);
+        return day >= lastSunday(y, 2) && day < lastSunday(y, 9);
+    },
+
+    /** Jour du changement d'heure : 'summer' (dernier dimanche de mars), 'winter' (d'octobre) ou null */
+    dstChange: (date) => {
+        const m = date.getMonth();
+        if ((m !== 2 && m !== 9) || date.getDate() !== lastSunday(date.getFullYear(), m).getDate()) return null;
+        return m === 2 ? 'summer' : 'winter';
     },
 
     /** Convertit les chiffres latins en chiffres arabes */

@@ -1,12 +1,9 @@
 import { DATE_UTILS } from './utils.js';
 
 // ==========================================
-// 1. SERVICES & LOGIQUE MÉTIER (Date, Prières, API)
+// SERVICES & LOGIQUE MÉTIER (dates hégiriennes, prières, jours particuliers, API)
 // ==========================================
 
-/**
- * Constantes et Caches
- */
 const HIJRI_CACHE = new Map();
 
 /**
@@ -18,14 +15,17 @@ const VIRTUOUS_DAYS = {
     'Dhū al-Ḥijjah': { 9: 'Jour de ʿArafa', 11: 'Tashrīq', 12: 'Tashrīq', 13: 'Tashrīq' },
     Muḥarram: { 10: 'ʿĀshūrāʾ' }
 };
+// Aïds (mois hégirien → jour → libellé)
+const EID_NAMES = { Shawwāl: { 1: 'Eid-ul-Fitr' }, 'Dhū al-Ḥijjah': { 10: 'Eid-ul-Adha' } };
+
 const CACHE_KEY = 'ami_calendar_cache_v2'; // v2 : vacances normalisées (doublons, ponts)
-// Configuration des décalages Hégiriens par période (YYYY-MM-DD)
+// Décalages hégiriens par période (YYYY-MM-DD), à ajuster selon les dates annoncées par les imams
 const HIJRI_OFFSETS = [
     { start: '2026-02-01', end: '2026-03-19', offset: 0 }, // Ramadan 2026 (Début 18 Fév)
     { start: '2026-03-20', end: '2026-12-31', offset: 0 } // Eid 2026 (20 Mars)
 ];
 
-// Variables globales pour Adhan
+// Calcul Adhan (secours si le CSV est indisponible) et cache des vacances scolaires
 let adhanCoords = null;
 let adhanParams = null;
 let parsedHolidaysCache = null;
@@ -125,23 +125,11 @@ export function getPrayerTimesSafe(date) {
         return Object.fromEntries(PRAYER_KEYS.map((key, i) => [key, shiftTime(row[i], offset)]));
     }
 
-    if (!adhanCoords || !adhanParams) {
-        return { fajr: '--:--', sunrise: '--:--', dhuhr: '--:--', asr: '--:--', maghrib: '--:--', isha: '--:--' };
-    }
+    if (!adhanCoords || !adhanParams) return Object.fromEntries(PRAYER_KEYS.map((key) => [key, '--:--']));
 
     const pTimes = new adhan.PrayerTimes(adhanCoords, date, adhanParams);
-    const format = (t) => {
-        if (!t || isNaN(t.getTime())) return '--:--';
-        return `${t.getHours().toString().padStart(2, '0')}:${t.getMinutes().toString().padStart(2, '0')}`;
-    };
-    return {
-        fajr: format(pTimes.fajr),
-        sunrise: format(pTimes.sunrise),
-        dhuhr: format(pTimes.dhuhr),
-        asr: format(pTimes.asr),
-        maghrib: format(pTimes.maghrib),
-        isha: format(pTimes.isha)
-    };
+    const format = (t) => (t && !isNaN(t.getTime()) ? `${String(t.getHours()).padStart(2, '0')}:${String(t.getMinutes()).padStart(2, '0')}` : '--:--');
+    return Object.fromEntries(PRAYER_KEYS.map((key) => [key, format(pTimes[key])]));
 }
 
 /**
@@ -155,43 +143,21 @@ export function getHijriDateSafe(date) {
     if (HIJRI_CACHE.has(timeKey)) return HIJRI_CACHE.get(timeKey);
 
     try {
-        let day = '',
-            monthFr = '',
-            year = '';
-
-        // Calcul de l'offset dynamique
-        let offset = 0;
+        // Décalage éventuel de la période (HIJRI_OFFSETS)
         const dateISO = DATE_UTILS.toParisISO(date);
-        const config = HIJRI_OFFSETS.find((c) => dateISO >= c.start && dateISO <= c.end);
-        if (config) offset = config.offset;
-
-        // Application de l'ajustement
+        const offset = HIJRI_OFFSETS.find((c) => dateISO >= c.start && dateISO <= c.end)?.offset ?? 0;
         const adjustedDate = new Date(date);
         adjustedDate.setDate(adjustedDate.getDate() + offset);
 
-        const parts = DATE_UTILS.HIJRI_FORMATTER.formatToParts(adjustedDate);
-        parts.forEach((p) => {
-            if (p.type === 'day') day = p.value;
-            if (p.type === 'month') monthFr = p.value;
-            if (p.type === 'year') year = p.value;
-        });
+        const { day = '', month = '', year = '' } = Object.fromEntries(DATE_UTILS.HIJRI_FORMATTER.formatToParts(adjustedDate).map((p) => [p.type, p.value]));
+        const { ar, std, ta } = DATE_UTILS.getHijriNames(month);
 
-        const { ar: monthAr, std: monthStd, ta: monthTa } = DATE_UTILS.getHijriNames(monthFr);
-        const yearAr = DATE_UTILS.toArabicDigits(year);
-
-        const result = {
-            day: day,
-            monthNameFR: monthStd,
-            monthNameRaw: monthFr,
-            monthNameAR: monthAr,
-            monthNameTA: monthTa,
-            year: year,
-            yearAr: yearAr
-        };
+        // monthNameFR : translittération standard (Ramaḍān, Shawwāl…), seule clé de comparaison fiable entre navigateurs
+        const result = { day, monthNameFR: std, monthNameAR: ar, monthNameTA: ta, year, yearAr: DATE_UTILS.toArabicDigits(year) };
         HIJRI_CACHE.set(timeKey, result);
         return result;
     } catch {
-        return { day: '?', monthNameFR: '', monthNameRaw: '', monthNameAR: '', monthNameTA: '', year: '', yearAr: '' };
+        return { day: '?', monthNameFR: '', monthNameAR: '', monthNameTA: '', year: '', yearAr: '' };
     }
 }
 
@@ -201,7 +167,7 @@ export function getHijriDateSafe(date) {
  * @param {Object} hijri
  */
 export function getDayInfo(date, hijri) {
-    let info = {
+    const info = {
         isHoliday: false,
         isPublicHoliday: false,
         labels: [], // [{ text, type: 'eid' | 'virtuous' | 'public' | 'dst' }], tous affichés dans la case
@@ -211,12 +177,12 @@ export function getDayInfo(date, hijri) {
     };
     if (typeof CONFIG === 'undefined' || !CONFIG) return info;
 
-    // 1. Initialisation lazy du cache des vacances scolaires
+    // 1. Vacances scolaires (cache des périodes calculé une fois)
     if (!parsedHolidaysCache && CONFIG.schoolHolidays) {
         parsedHolidaysCache = CONFIG.schoolHolidays.map((p) => {
-            let start = new Date(p.start);
+            const start = new Date(p.start);
             start.setHours(0, 0, 0, 0);
-            let end = new Date(p.end);
+            const end = new Date(p.end);
             end.setHours(23, 59, 59, 999);
             return { start: start.getTime(), end: end.getTime(), name: p.name };
         });
@@ -233,48 +199,33 @@ export function getDayInfo(date, hijri) {
         }
     }
 
-    // 3. Vérification Jours Fériés
-    const yyyy = date.getFullYear();
-    const mm = String(date.getMonth() + 1).padStart(2, '0');
-    const dd = String(date.getDate()).padStart(2, '0');
-    const key = `${yyyy}-${mm}-${dd}`;
-    if (CONFIG.publicHolidays && CONFIG.publicHolidays[key]) {
+    // 2. Jours fériés
+    const holiday = CONFIG.publicHolidays?.[DATE_UTILS.format(date)];
+    if (holiday) {
         info.isPublicHoliday = true;
-        const name = CONFIG.publicHolidays[key];
-        info.labels.push({ text: HOLIDAY_NAMES[name] || name, type: 'public' });
+        info.labels.push({ text: HOLIDAY_NAMES[holiday] || holiday, type: 'public' });
     }
 
-    // 4. Vérification Changement d'heure (Règle simplifiée UE)
-    const m = date.getMonth();
-    const d = date.getDate();
-    const dayOfWeek = date.getDay();
-    if (dayOfWeek === 0 && d + 7 > 31) {
-        if (m === 2) {
-            info.isDST = true;
-            info.dstType = 'summer';
-            info.labels.push({ text: "Heure d'été\u00a0+1\u00a0h", type: 'dst' });
-        } else if (m === 9) {
-            info.isDST = true;
-            info.dstType = 'winter';
-            info.labels.push({ text: "Heure d'hiver\u00a0−1\u00a0h", type: 'dst' });
-        }
+    // 3. Changement d'heure (derniers dimanches de mars et d'octobre)
+    const dst = DATE_UTILS.dstChange(date);
+    if (dst) {
+        info.isDST = true;
+        info.dstType = dst;
+        info.labels.push({ text: dst === 'summer' ? "Heure d'été\u00a0+1\u00a0h" : "Heure d'hiver\u00a0−1\u00a0h", type: 'dst' });
     }
 
-    // 5. Vérification Lune & Aïd
-    if (hijri.day == '1') info.isNewMoon = true;
-    const hMonth = hijri.monthNameRaw ? hijri.monthNameRaw.toLowerCase() : '';
-    if (hijri.day == '1' && (hMonth.includes('chawwal') || hMonth.includes('schawwal'))) {
+    // 4. Nouveau mois hégirien et Aïds
+    const hDay = parseInt(hijri.day, 10);
+    if (hDay === 1) info.isNewMoon = true;
+    const eidName = EID_NAMES[hijri.monthNameFR]?.[hDay];
+    if (eidName) {
         info.isEid = true;
-        info.eidName = 'Eid-ul-Fitr';
-    } else if (hijri.day == '10' && (hMonth.includes('hijja') || hMonth.includes('hija'))) {
-        info.isEid = true;
-        info.eidName = 'Eid-ul-Adha';
+        info.eidName = eidName;
+        info.labels.unshift({ text: eidName, type: 'eid' }); // l'Aïd en premier : information prioritaire
     }
-    // L'Aïd en premier : c'est l'information prioritaire pour les fidèles
-    if (info.isEid) info.labels.unshift({ text: info.eidName, type: 'eid' });
 
-    // 6. Jours vertueux d'un jour précis, écrits dans la case (hadiths authentiques, voir VIRTUOUS_DAYS)
-    const virtuous = VIRTUOUS_DAYS[hijri.monthNameFR]?.[parseInt(hijri.day, 10)];
+    // 5. Jours vertueux d'un jour précis, écrits dans la case (hadiths authentiques, voir VIRTUOUS_DAYS)
+    const virtuous = VIRTUOUS_DAYS[hijri.monthNameFR]?.[hDay];
     if (virtuous) info.labels.push({ text: virtuous, type: 'virtuous' });
     return info;
 }

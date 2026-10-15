@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const today = new Date();
         for (const d = new Date(y, 0, 1); d <= today && d.getFullYear() === y; d.setDate(d.getDate() + 1)) {
             const h = getHijriDateSafe(d);
-            if ((h.monthNameAR || '').includes('شوال') && parseInt(h.day) === 1) return true;
+            if (h.monthNameFR === 'Shawwāl' && parseInt(h.day, 10) === 1) return true;
         }
         return false;
     };
@@ -75,12 +75,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     while (dateCursor <= endScan) {
         const hijri = getHijriDateSafe(dateCursor);
-        const hMonth = hijri.monthNameAR || '';
-        const hDay = parseInt(hijri.day);
+        const hDay = parseInt(hijri.day, 10);
 
-        const isRamadan = hMonth.includes('رمضان');
-        const isNightOfDoubt = hMonth.includes('شعبان') && hDay === 29;
-        const isEid = hMonth.includes('شوال') && hDay === 1;
+        const isRamadan = hijri.monthNameFR === 'Ramaḍān';
+        const isNightOfDoubt = hijri.monthNameFR === 'Shaʿbān' && hDay === 29;
+        const isEid = hijri.monthNameFR === 'Shawwāl' && hDay === 1;
 
         if (isRamadan && !hijriYearAr) hijriYearAr = hijri.yearAr;
 
@@ -189,8 +188,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <td class="col-day-name arabic">${dayArabic}</td>
             `;
         } else {
-            const hDay = parseInt(hijri.day);
-            const isRamadan = hijri.monthNameRaw.toLowerCase().includes('ramadan');
+            const hDay = parseInt(hijri.day, 10);
+            const isRamadan = hijri.monthNameFR === 'Ramaḍān';
             // Icha AMI : horaire de la quinzaine ; hors Ramadan, pas d'horaire
             const amiIshaTime = isRamadan ? (hDay <= 15 ? AMI_ISHA.firstHalf : AMI_ISHA.secondHalf) : '--:--';
             const imsak = times.imsak || shiftTime(times.fajr, -IMSAK_MINUTES_BEFORE_FAJR);
