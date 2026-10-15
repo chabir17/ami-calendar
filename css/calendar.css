@@ -191,6 +191,18 @@
     right: 0.25rem;
 }
 
+/* Jours islamiques particuliers : date hégirienne en pastille verte pleine (repérable d'un coup d'œil) */
+.is-islamic-event .vis-hij {
+    min-width: 1.35em;
+    padding: 0 0.3em;
+    border-radius: 999px;
+    background-color: var(--col-green);
+    color: white;
+    font-weight: 600;
+    line-height: 1.35;
+    text-align: center;
+}
+
 /* --- ICÔNES ET LABELS D'ÉVÉNEMENTS --- */
 .new-moon-icon,
 .dst-icon {
