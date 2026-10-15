@@ -107,7 +107,7 @@ Les deux composants héritent de `MonthElement`, qui observe `year` et `month` e
 - `is-friday` : fond `--bg-friday` (texte normal) ; le dimanche est repéré par le filet de fin de semaine ;
 - `week-end` : filet après chaque dimanche, sauf en fin de mois ;
 - `is-hijri-new` : 1er jour du mois hégirien, numéro en `--col-green-dark` dans la colonne hégirienne ;
-- `is-dst` : jour du changement d'heure, fond bleu clair `--bg-blue-faint` et filet de fin de semaine en `--rule-blue`, texte normal (les horaires sautent d'une heure).
+- `is-dst` : jour du changement d'heure, fond bleu clair `--bg-blue-faint` et filet de fin de semaine en `--bg-blue-faint`, texte normal (les horaires sautent d'une heure).
 
 Le tableau occupe toute la hauteur : les mois de 28 à 31 jours tiennent sur la page.
 
@@ -245,9 +245,10 @@ Chargée par `?mosque=<id>` (`fetchClientConfig` ; la feuille du Ramadan utilise
 | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Couleurs de sens | `--col-blue` (structure, grégorien), `--col-green` (hégirien, prières), `--col-green-dark` (texte sur vert pâle), `--col-saffron-text` (nom tamoul, frise du haut), `--col-terracotta` (fériés ; jeûne de la feuille du Ramadan)    |
 | Or et thème      | `--col-gold` (ornements de la feuille du Ramadan), `--brand` (thème client), `--brand-text` (`--brand` assombri, icônes par défaut)                                                                                                 |
+| Filets           | `--bg-blue-faint`, `--bg-green-faint` : filets sous les en-têtes et de fin de semaine (même teinte que les fonds pâles)                                                                                                             |
 | Fonds            | `--bg-blue-head` (bandeau du mois et ligne des jours), `--bg-blue-faint` (changement d'heure), `--bg-green-head` (en-tête des horaires), `--bg-green-faint` (= `--bg-friday`), `--bg-holiday`, `--bg-empty`, `--bg-terracotta-soft` |
 | Texte            | `--col-text`, `--col-text-light`, `--col-text-soft`, `--col-ink` (chiffres), `--col-on-blue` (sur fond foncé, feuille du Ramadan)                                                                                                   |
-| Bordures         | `--border-blue`, `--border-green`, `--rule-blue`, `--rule-green` (filets d'en-tête et de fin de semaine), `--accent-blue` (feuille Ramadan), `--border-on-dark`, `--border-swatch`                                                  |
+| Bordures         | `--border-blue`, `--border-green`, `--accent-blue` (feuille Ramadan), `--border-on-dark`, `--border-swatch`                                                                                                                         |
 | Écran            | `--bg-body` (fond autour des pages), `--shadow-page` (ombre des pages)                                                                                                                                                              |
 | Tailles (px)     | `--fs-2xs` 9 · `--fs-xs` 10 · `--fs-contact` 11 · `--fs-sm` 12 · `--fs-md` 14 · `--fs-figure` 15 · `--fs-brand-fr` 20 · `--fs-xl` 22 · `--fs-month` 26 · `--fs-brand` 28 · `--fs-title` 30 · `--fs-display` 42                      |
 | Rayons           | `--radius-card` 0,5 rem (blocs du calendrier et du tableau)                                                                                                                                                                         |
