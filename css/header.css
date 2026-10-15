@@ -9,7 +9,7 @@
     height: var(--header-h); /* frises comprises (box-sizing: border-box) */
     --band-motif-h: 4.5px;
     /* frise + 0,8 mm d'air avant les textes ; logo ≥ 2 cm (24 mm − 2 × (frise + air)) */
-    padding: calc(var(--band-motif-h) + 0.8mm) 1mm;
+    padding: calc(var(--band-motif-h) + 0.8mm) 0; /* bords gauche/droit alignés sur le calendrier et le tableau */
     background-color: white;
 }
 
@@ -47,7 +47,7 @@
     height: 100%;
     display: flex;
     align-items: stretch;
-    gap: var(--sp-3);
+    gap: var(--sp-4);
 }
 
 /* Logo carré à pleine hauteur, entre les deux frises (≈ 2 cm) */
@@ -66,7 +66,7 @@
     object-fit: contain;
 }
 
-/* Bloc principal : identité à gauche, coordonnées centrées dans l'espace restant.
+/* Bloc principal : identité à gauche, coordonnées calées à droite (bords alignés sur le calendrier et le tableau).
    Noms et coordonnées centrés verticalement avec le même interligne : hauts et bas alignés */
 .header-main {
     --identity-gap: 1.5mm;
@@ -104,9 +104,9 @@
 }
 
 /* Coordonnées en grille de 3 lignes (adresse | téléphones, adresse | web, banque) :
-   discrètes, plus claires que les noms (hiérarchie nette) */
+   discrètes, plus claires que les noms (hiérarchie nette) ; calées à droite, sur le bord du tableau des horaires */
 .header-contacts {
-    margin: 0 auto;
+    margin-left: auto;
     display: grid;
     grid-template-columns: auto auto;
     align-content: center;

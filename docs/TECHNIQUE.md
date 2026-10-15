@@ -121,6 +121,7 @@ Le tableau occupe toute la hauteur : les mois de 28 à 31 jours tiennent sur la 
     - Torsade à deux brins : à chaque croisement, un `clipPath` redessine le brin du dessus (sur un halo blanc), en alternant.
     - Les traits sont en `currentColor` : leur couleur vient des jetons, via `color` sur `.frise-top` (`--col-saffron-text`) et `.frise-bottom` (`--col-green`).
     - Hauteur `--band-motif-h` (4,5 px), plus 0,8 mm d'air avant le contenu.
+- **Alignements** : pas de marge latérale : le logo s'aligne sur le bord gauche du calendrier, les coordonnées (calées à droite) sur le bord droit du tableau des horaires.
 - **Logo** : carré à pleine hauteur du contenu (environ 2 cm).
 - **Noms** (`.org-names`) : tamoul en `--fs-brand` (28 px, safran), français en `--fs-brand-fr` (20 px, vert), de largeur équivalente. Centrés verticalement, écart `--identity-gap` (1,5 mm) : ils se lisent comme un seul bloc.
 - **Coordonnées** (`.header-contacts`) : grille de 3 lignes produite par `contactsHTML(c, 'columns')` :
