@@ -23,7 +23,7 @@
 
     /* Terracotta (horaires du jeûne : Imsak, iftār, Icha AMI) */
     --col-terracotta: #a8461f; /* événements civils (fériés, changement d'heure), jeûne (feuille Ramadan) : 5.9:1 sur blanc, 5.5:1 sur --bg-holiday */
-    --bg-terracotta-soft: #fbebe4; /* fond très clair : cellules du jeûne (feuille Ramadan), changement d'heure (tableau annuel) */
+    --bg-terracotta-soft: #fbebe4; /* fond très clair des cellules du jeûne (feuille Ramadan) */
 
     /* Encre des chiffres et des textes sur fond foncé */
     --col-ink: #1f1f1f; /* horaires */
@@ -34,8 +34,8 @@
 
     /* Vendredi et dimanche : numéros en gris teinté (vert sauge / terracotta), presque neutres :
        la couleur pleine reste réservée aux jours fériés et à l'Aïd */
-    --col-friday: #4e5c51; /* 7.1:1 sur blanc */
-    --col-sunday: #5f524c; /* 7.5:1 sur blanc */
+    --col-friday: #4a6150; /* 6.7:1 sur blanc */
+    --col-sunday: #6b5147; /* 7.3:1 sur blanc */
 
     /* Couleurs neutres */
     --col-text: #333333;

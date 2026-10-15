@@ -119,17 +119,13 @@ ami-prayer-table {
     letter-spacing: 0.04em;
 }
 
-/* Repères dans le tableau : 1er jour du mois hégirien (numéro vert), changement d'heure (fond terracotta clair) */
+/* Repères dans le tableau : 1er jour du mois hégirien (numéro vert), changement d'heure (fond bleu clair, texte normal) */
 .prayer-table tr.is-hijri-new td.col-hijri {
     color: var(--col-green-dark);
 }
 
 .prayer-table tbody tr.is-dst {
-    background: var(--bg-terracotta-soft);
-}
-
-.prayer-table tbody tr.is-dst td {
-    color: var(--col-terracotta); /* sur fond terracotta clair : ton plein pour le contraste */
+    background: var(--bg-blue-faint);
 }
 
 /* Fin de semaine : filet plus marqué après le dimanche (repérage par blocs de 7 jours) */
@@ -137,7 +133,7 @@ ami-prayer-table {
     border-bottom: 1.5px solid var(--accent-green);
 }
 
-/* Dimanche du changement d'heure : filet terracotta (événements civils), assorti au fond de la ligne */
+/* Dimanche du changement d'heure : filet bleu, assorti au fond de la ligne */
 .prayer-table tbody tr.is-dst.week-end td {
-    border-bottom-color: var(--col-terracotta);
+    border-bottom-color: var(--accent-blue);
 }
