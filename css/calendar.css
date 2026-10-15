@@ -126,7 +126,7 @@
 .weekdays-header {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    background: var(--bg-blue-head); /* même fond que le bandeau du mois, séparés par un filet */
+    background: var(--bg-weekdays); /* un cran plus pâle que le bandeau du mois, séparés par un filet */
     color: var(--col-text-light);
     text-align: center;
     padding: 0;

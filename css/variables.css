@@ -54,6 +54,7 @@
 
     /* Vert pastel (vendredis du tableau des horaires) */
     --bg-friday: var(--bg-green-faint); /* vendredis de la feuille Ramadan */
+    --bg-weekdays: #f4f7fb; /* ligne des jours de la semaine : un cran plus pâle que le bandeau du mois */
     --bg-friday-light: #f1f8f2; /* vendredis du tableau annuel : plus pâle que l'en-tête vert (--bg-green-head) */
 
     /* Gris pastel : cases hors du mois */
