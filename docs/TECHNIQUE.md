@@ -167,7 +167,7 @@ La bande garde la même hauteur même vide (`min-height`), pour que la grille ai
 
 - Conversion **arithmétique** du calendrier hégirien civil tabulaire (`DATE_UTILS.toHijriCivil`), mise en cache par date. Résultat identique à `Intl` « islamic-civil » (vérifié jour par jour de 2020 à 2039), mais sans dépendre du navigateur.
 - **Décalage manuel** : `HIJRI_OFFSETS` liste des périodes `{ start, end, offset }` (jours) pour suivre les dates annoncées par les imams. Les années sans entrée suivent le calcul.
-- Les noms des mois viennent de `HIJRI_MONTHS` (`utils.js`), indexé par numéro de mois : **translittération standard** (`Ramaḍān`, `Shawwāl`, `Dhū al-Ḥijjah`…), arabe et tamoul. Les noms renvoyés par `Intl` ne sont plus utilisés : ils varient selon le navigateur (sur mobile, les mois hégiriens ne s'affichaient pas).
+- Les noms des mois viennent de `HIJRI_MONTHS` (`utils.js`), indexé par numéro de mois : **translittération standard** (`Ramaḍān`, `Shawwāl`, `Dhū al-Ḥijjah`…), arabe et tamoul. Les noms renvoyés par `Intl` ne sont plus utilisés : ils varient selon le navigateur (Chrome sur Android embarque des données de langue allégées : pour le 7ᵉ mois, il renvoyait « juillet » au lieu de « Rajab »).
 - Retour : `{ day, monthNameFR, monthNameAR, monthNameTA, year, yearAr }`. **Toute comparaison de mois se fait sur `monthNameFR`** (nom standard), jamais sur un nom brut.
 
 ### 4.3 Jours particuliers (`getDayInfo`)
@@ -296,5 +296,6 @@ Rendu PDF en ligne de commande (serveur local lancé) :
 - **Images de fond SVG et PDF** : Chrome pixellise `background-image` et `<pattern>` SVG à l'export. Pour un motif net (frises), utiliser du SVG inline avec `<use>`.
 - **Header en double** : le contenu statique de `index.html` et `contactsHTML` doivent garder la même structure (voir 3.4).
 - **Dates hégiriennes** : calcul astronomique civil, pouvant différer d'un jour de l'observation du croissant. À valider chaque année (`HIJRI_OFFSETS`).
+- **Affichage sur smartphone** : la balise `viewport` fixe la largeur d'affichage à celle de la page (1160 px pour l'annuel, 830 px pour le Ramadan) pour que la page entière tienne à l'écran. Avec `width=device-width`, la page centrée débordait des deux côtés et la partie gauche devenait inaccessible. `align-items: safe center` sur `body` garde ce bord gauche visible dans une fenêtre étroite.
 - **Jours fériés / vacances** : dépendent du réseau au premier chargement (voir 4.4).
 - **Version papier du Ramadan** : les images de fond d'origine font environ 720 × 1024 px ; les agrandir (×4) pour un tirage net.
