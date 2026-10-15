@@ -290,6 +290,7 @@ Rendu PDF en ligne de commande (serveur local lancé) :
 ## 8. Pièges connus
 
 - **Noms de fichiers construits dynamiquement** : `icon-dst-${…}.svg` et `icon-${addr_icon}.svg`. Une recherche textuelle ne les trouve pas : ne pas les supprimer comme « inutilisés ».
+- **Filets de 0,5 px** : Chrome arrondit une `border` de 0,5 px à 1 px, même à l'impression. Les filets internes de la grille et du tableau sont donc tracés en `box-shadow: inset` avec `--hairline` (0,5 px réels dans le PDF).
 - **Images de fond SVG et PDF** : Chrome pixellise `background-image` et `<pattern>` SVG à l'export. Pour un motif net (frises), utiliser du SVG inline avec `<use>`.
 - **Header en double** : le contenu statique de `index.html` et `contactsHTML` doivent garder la même structure (voir 3.4).
 - **Dates hégiriennes** : calcul astronomique civil, pouvant différer d'un jour de l'observation du croissant. À valider chaque année (`HIJRI_OFFSETS`).

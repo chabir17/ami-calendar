@@ -42,6 +42,8 @@
     --bg-body: #eeeeee;
     --shadow-page: 0 0 15px rgba(0, 0, 0, 0.1); /* ombre de la page à l'écran */
     --border-swatch: rgba(0, 0, 0, 0.1); /* contour des pastilles de légende */
+    /* Filets internes de 0,5 px : tracés en box-shadow (Chrome arrondit une border de 0,5 px à 1 px, même dans le PDF) */
+    --hairline: 0.5px;
     --border-on-dark: rgba(255, 255, 255, 0.2); /* séparateurs sur fond foncé (feuille Ramadan) */
 
     /* --- FONDS "ÉCO-ENCRE" (PASTELS TRÈS CLAIRS POUR L'IMPRESSION) --- */

@@ -8,7 +8,7 @@
     gap: var(--sp-3);
     padding: var(--sp-2) var(--sp-2) var(--sp-1);
     background-color: var(--bg-blue-faint);
-    border-bottom: 1px solid var(--border-blue);
+    box-shadow: inset 0 calc(-1 * var(--hairline)) 0 var(--border-blue); /* filet 0,5 px */
     color: var(--col-blue);
     height: var(--band-h);
 }
@@ -121,12 +121,12 @@
 }
 
 .weekday-cell {
-    border-right: 1px solid var(--border-blue);
+    box-shadow: inset calc(-1 * var(--hairline)) 0 0 var(--border-blue); /* séparateur 0,5 px */
     padding: var(--sp-1) 0;
 }
 
 .weekday-cell:last-child {
-    border-right: none;
+    box-shadow: none;
 }
 
 .weekday-fr {
@@ -159,8 +159,10 @@
 }
 
 .day-cell-visual {
-    border-right: 1px solid var(--border-blue);
-    border-bottom: 1px solid var(--border-blue);
+    /* filets 0,5 px à droite et en bas */
+    box-shadow:
+        inset calc(-1 * var(--hairline)) 0 0 var(--border-blue),
+        inset 0 calc(-1 * var(--hairline)) 0 var(--border-blue);
     position: relative;
     display: flex;
     justify-content: center;
@@ -173,7 +175,7 @@
 }
 
 .day-cell-visual:nth-child(7n) {
-    border-right: none;
+    box-shadow: inset 0 calc(-1 * var(--hairline)) 0 var(--border-blue);
 }
 
 /* --- ÉTATS DES CELLULES (FONDS COLORÉS) --- */
@@ -301,7 +303,7 @@
 /* --- LÉGENDE (BAS) : vacances scolaires et changement d'heure du mois --- */
 .legend-box {
     padding: var(--sp-2);
-    border-top: 1px solid var(--border-blue);
+    box-shadow: inset 0 var(--hairline) 0 var(--border-blue); /* filet 0,5 px */
     margin-top: auto;
     min-height: 31px; /* hauteur d'une ligne de légende, même vide : même grille chaque mois */
     display: flex;
