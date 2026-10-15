@@ -201,7 +201,7 @@
     font-weight: 600;
 }
 
-/* Fin du mois reportée en haut de la grille (5 semaines max) : coin replié, expliqué dans la légende */
+/* Fin du mois reportée en haut de la grille (5 semaines max) : coin replié */
 .day-cell-visual.is-wrapped::before {
     content: '';
     position: absolute;
@@ -337,10 +337,4 @@
 .box-holiday {
     background-color: var(--bg-holiday);
     border-color: var(--col-gold); /* fond très pâle : contour doré pour rester visible */
-}
-
-/* Coin replié, comme dans la case reportée */
-.box-wrapped {
-    background: linear-gradient(45deg, var(--accent-blue) 50%, white 50%);
-    border-color: var(--border-blue);
 }

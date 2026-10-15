@@ -77,7 +77,7 @@ Le bandeau du mois (bleu marine) et l'en-tête du tableau (vert foncé) ont la m
 
 Les deux composants héritent de `MonthElement`, qui observe `year` et `month` et regroupe les rendus à la frame suivante (`requestAnimationFrame`).
 
-**`<ami-calendar-grid>`** : grille fixe de **35 cases** (5 semaines × 7, lundi en premier). La grille ne dépasse jamais 5 semaines : les jours au-delà de la 35e case (mois sur 6 semaines) reviennent dans les premières cases vides, marqués d'un coin replié bleu (`is-wrapped`) et expliqués dans la légende. Chaque case est clonée depuis `#calendar-cell-template` et reçoit des classes selon `getDayInfo` :
+**`<ami-calendar-grid>`** : grille fixe de **35 cases** (5 semaines × 7, lundi en premier). La grille ne dépasse jamais 5 semaines : les jours au-delà de la 35e case (mois sur 6 semaines) reviennent dans les premières cases vides, marqués d'un coin replié bleu (`is-wrapped`). Chaque case est clonée depuis `#calendar-cell-template` et reçoit des classes selon `getDayInfo` :
 
 | Classe              | Condition                         | Effet                                      |
 | ------------------- | --------------------------------- | ------------------------------------------ |
@@ -135,7 +135,7 @@ Le contenu statique du header dans `index.html` reprend exactement la structure 
 
 ### 3.5 Légende (`updateLegend`)
 
-Pour chaque jour du mois : nom de la période de vacances (une fois par période, pastille `--bg-holiday` à contour doré) et passage à l'heure d'été / d'hiver (icône), triés par date, **sans date affichée** (les jours se repèrent dans la grille). Si des jours sont reportés en haut de la grille, une entrée « Le 31 : en haut de la grille » (pastille au coin replié) les signale. Libellés en minuscules, `--fs-xs`, couleur `--col-text`. Les jours islamiques et les fériés n'y figurent pas : ils sont écrits dans les cases.
+Pour chaque jour du mois : nom de la période de vacances (une fois par période, pastille `--bg-holiday` à contour doré) et passage à l'heure d'été / d'hiver (icône), triés par date, **sans date affichée** (les jours se repèrent dans la grille). Libellés en minuscules, `--fs-xs`, couleur `--col-text`. Les jours islamiques et les fériés n'y figurent pas : ils sont écrits dans les cases.
 
 La bande garde la même hauteur même vide (`min-height`), pour que la grille ait la même taille chaque mois.
 

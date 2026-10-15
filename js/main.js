@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 /**
- * Légende du bas, propre à chaque mois : vacances scolaires, changement d'heure et jours reportés en haut de la grille,
+ * Légende du bas, propre à chaque mois : vacances scolaires et changement d'heure,
  * dans l'ordre chronologique. La bande reste affichée (même vide) : même composition chaque mois.
  */
 function updateLegend(year, month, container) {
@@ -159,14 +159,6 @@ function updateLegend(year, month, container) {
             const label = info.dstType === 'summer' ? "Passage à l'heure d'été" : "Passage à l'heure d'hiver";
             add('dst', d, `<span class="legend-icon">${dstIconHTML(info.dstType)}</span><span>${label}</span>`);
         }
-    }
-
-    // Fin du mois reportée en haut de la grille (mois sur 6 semaines, grille limitée à 5)
-    const startOffset = (new Date(year, month - 1, 1).getDay() || 7) - 1;
-    const firstWrapped = 36 - startOffset;
-    if (firstWrapped <= daysInMonth) {
-        const days = firstWrapped === daysInMonth ? `${daysInMonth}` : `${firstWrapped} et ${daysInMonth}`;
-        add('wrapped', daysInMonth, `<span class="legend-color box-wrapped"></span><span>Le ${days} : en haut de la grille</span>`);
     }
 
     items.sort((x, y) => x.day - y.day);
