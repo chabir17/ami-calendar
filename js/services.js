@@ -149,8 +149,10 @@ export function getHijriDateSafe(date) {
         const adjustedDate = new Date(date);
         adjustedDate.setDate(adjustedDate.getDate() + offset);
 
-        const { day = '', month = '', year = '' } = Object.fromEntries(DATE_UTILS.HIJRI_FORMATTER.formatToParts(adjustedDate).map((p) => [p.type, p.value]));
-        const { ar, std, ta } = DATE_UTILS.getHijriNames(month);
+        const h = DATE_UTILS.toHijriCivil(adjustedDate);
+        const { ar, std, ta } = DATE_UTILS.getHijriNames(h.month);
+        const day = String(h.day);
+        const year = String(h.year);
 
         // monthNameFR : translittération standard (Ramaḍān, Shawwāl…), seule clé de comparaison fiable entre navigateurs
         const result = { day, monthNameFR: std, monthNameAR: ar, monthNameTA: ta, year, yearAr: DATE_UTILS.toArabicDigits(year) };

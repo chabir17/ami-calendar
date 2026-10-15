@@ -73,81 +73,42 @@ export function contactsHTML(c, layout = 'columns', links = false) {
 }
 
 /**
- * Données unifiées pour les mois hégiriens.
- * Gère les variations de translittération selon les OS/Navigateurs (CLDR versions).
- * Clé : Nom brut retourné par Intl (minuscule).
- * Valeur : { ar: Arabe, std: Translittération Standard }
+ * Mois hégiriens, dans l'ordre (index 0 = Muḥarram) : translittération standard, arabe, tamoul.
+ * Indexés par numéro de mois : aucune dépendance aux noms renvoyés par le navigateur (variables selon l'OS).
  */
-const HIJRI_MONTHS_DATA = {
-    mouharram: { ar: 'محرم', std: 'Muḥarram' },
-    muharram: { ar: 'محرم', std: 'Muḥarram' },
-    safar: { ar: 'صفر', std: 'Ṣafar' },
-    'rabia al awal': { ar: 'ربيع الأول', std: 'Rabīʿ al-awwal' },
-    'rabiʻ al-awwal': { ar: 'ربيع الأول', std: 'Rabīʿ al-awwal' },
-    'rabiʻ i': { ar: 'ربيع الأول', std: 'Rabīʿ al-awwal' },
-    "rabi' i": { ar: 'ربيع الأول', std: 'Rabīʿ al-awwal' },
-    'rabia ath-thani': { ar: 'ربيع الآخر', std: 'Rabīʿ ath-thānī' },
-    'rabiʻ ath-thani': { ar: 'ربيع الآخر', std: 'Rabīʿ ath-thānī' },
-    'rabiʻ ii': { ar: 'ربيع الآخر', std: 'Rabīʿ ath-thānī' },
-    "rabi' ii": { ar: 'ربيع الآخر', std: 'Rabīʿ ath-thānī' },
-    'joumada al oula': { ar: 'جمادى الأولى', std: 'Jumādā al-ūlā' },
-    'jumada al-ula': { ar: 'جمادى الأولى', std: 'Jumādā al-ūlā' },
-    'jumada i': { ar: 'جمادى الأولى', std: 'Jumādā al-ūlā' },
-    "jumada' i": { ar: 'جمادى الأولى', std: 'Jumādā al-ūlā' },
-    'joumada ath-thania': { ar: 'جمادى الآخرة', std: 'Jumādā ath-thāniya' },
-    'jumada al-akhira': { ar: 'جمادى الآخرة', std: 'Jumādā ath-thāniya' },
-    'jumada ii': { ar: 'جمادى الآخرة', std: 'Jumādā ath-thāniya' },
-    "jumada' ii": { ar: 'جمادى الآخرة', std: 'Jumādā ath-thāniya' },
-    rajab: { ar: 'رجب', std: 'Rajab' },
-    chaʻban: { ar: 'شعبان', std: 'Shaʿbān' },
-    chaabane: { ar: 'شعبان', std: 'Shaʿbān' },
-    "cha'ban": { ar: 'شعبان', std: 'Shaʿbān' },
-    shaʻban: { ar: 'شعبان', std: 'Shaʿbān' },
-    shaban: { ar: 'شعبان', std: 'Shaʿbān' },
-    ramadan: { ar: 'رمضان', std: 'Ramaḍān' },
-    chawwal: { ar: 'شوال', std: 'Shawwāl' },
-    shawwal: { ar: 'شوال', std: 'Shawwāl' },
-    'dhou al qi`da': { ar: 'ذو القعدة', std: 'Dhū al-Qaʿdah' },
-    'dhou al-qiʻda': { ar: 'ذو القعدة', std: 'Dhū al-Qaʿdah' },
-    'dhu al-qaʻdah': { ar: 'ذو القعدة', std: 'Dhū al-Qaʿdah' },
-    'dhul qadah': { ar: 'ذو القعدة', std: 'Dhū al-Qaʿdah' },
-    'dhuʻl-qiʻdah': { ar: 'ذو القعدة', std: 'Dhū al-Qaʿdah' },
-    "dhu'l-qi'dah": { ar: 'ذو القعدة', std: 'Dhū al-Qaʿdah' },
-    'dhou al-hijja': { ar: 'ذو الحجة', std: 'Dhū al-Ḥijjah' },
-    'dhu al-hijjah': { ar: 'ذو الحجة', std: 'Dhū al-Ḥijjah' },
-    'dhul hijjah': { ar: 'ذو الحجة', std: 'Dhū al-Ḥijjah' },
-    'dhuʻl-hijjah': { ar: 'ذو الحجة', std: 'Dhū al-Ḥijjah' },
-    "dhu'l-hijjah": { ar: 'ذو الحجة', std: 'Dhū al-Ḥijjah' }
-};
+const HIJRI_MONTHS = [
+    { std: 'Muḥarram', ar: 'محرم', ta: 'முஹர்ரம்' },
+    { std: 'Ṣafar', ar: 'صفر', ta: 'ஸஃபர்' },
+    { std: 'Rabīʿ al-awwal', ar: 'ربيع الأول', ta: 'ரபீஉல் அவ்வல்' },
+    { std: 'Rabīʿ ath-thānī', ar: 'ربيع الآخر', ta: 'ரபீஉல் ஆகிர்' },
+    { std: 'Jumādā al-ūlā', ar: 'جمادى الأولى', ta: 'ஜுமாதல் ஊலா' },
+    { std: 'Jumādā ath-thāniya', ar: 'جمادى الآخرة', ta: 'ஜுமாதல் ஆகிரா' },
+    { std: 'Rajab', ar: 'رجب', ta: 'ரஜப்' },
+    { std: 'Shaʿbān', ar: 'شعبان', ta: 'ஷஃபான்' },
+    { std: 'Ramaḍān', ar: 'رمضان', ta: 'ரமளான்' },
+    { std: 'Shawwāl', ar: 'شوال', ta: 'ஷவ்வால்' },
+    { std: 'Dhū al-Qaʿdah', ar: 'ذو القعدة', ta: 'துல் கஃதா' },
+    { std: 'Dhū al-Ḥijjah', ar: 'ذو الحجة', ta: 'துல் ஹஜ்' }
+];
 
-/**
- * Noms tamouls des mois hégiriens, indexés par la translittération standard.
- */
-const HIJRI_MONTHS_TA = {
-    Muḥarram: 'முஹர்ரம்',
-    Ṣafar: 'ஸஃபர்',
-    'Rabīʿ al-awwal': 'ரபீஉல் அவ்வல்',
-    'Rabīʿ ath-thānī': 'ரபீஉல் ஆகிர்',
-    'Jumādā al-ūlā': 'ஜுமாதல் ஊலா',
-    'Jumādā ath-thāniya': 'ஜுமாதல் ஆகிரா',
-    Rajab: 'ரஜப்',
-    Shaʿbān: 'ஷஃபான்',
-    Ramaḍān: 'ரமளான்',
-    Shawwāl: 'ஷவ்வால்',
-    'Dhū al-Qaʿdah': 'துல் கஃதா',
-    'Dhū al-Ḥijjah': 'துல் ஹஜ்'
-};
+/** Jour julien du 1er jour d'un mois du calendrier hégirien civil (tabulaire, époque du 16 juillet 622) */
+const hijriToJD = (y, m, d) => d + Math.ceil(29.5 * (m - 1)) + (y - 1) * 354 + Math.floor((3 + 11 * y) / 30) + 1948438.5;
 
 /**
  * Configuration et formatage pour les dates.
  */
 export const DATE_UTILS = {
-    /** Formatteur Hégirien (Islamique Civil) */
-    HIJRI_FORMATTER: new Intl.DateTimeFormat('fr-FR-u-ca-islamic-civil', {
-        day: 'numeric',
-        month: 'long',
-        year: 'numeric'
-    }),
+    /**
+     * Date hégirienne civile (calendrier tabulaire, identique à Intl « islamic-civil ») calculée sans Intl :
+     * même résultat sur tous les navigateurs, y compris mobiles (où le calendrier ou les noms de mois Intl varient).
+     * @returns {{ day: number, month: number, year: number }} mois de 1 (Muḥarram) à 12
+     */
+    toHijriCivil: (date) => {
+        const jd = Math.floor(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) / 86400000 + 2440587.5) + 0.5;
+        const year = Math.floor((30 * (jd - 1948439.5) + 10646) / 10631);
+        const month = Math.min(12, Math.ceil((jd - (29 + hijriToJD(year, 1, 1))) / 29.5) + 1);
+        return { day: jd - hijriToJD(year, month, 1) + 1, month, year };
+    },
 
     ARABIC_DIGITS: ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'],
 
@@ -191,17 +152,6 @@ export const DATE_UTILS = {
     /** Convertit les chiffres latins en chiffres arabes */
     toArabicDigits: (str) => str.replace(/\d/g, (d) => DATE_UTILS.ARABIC_DIGITS[d]),
 
-    /**
-     * Récupère les noms localisés (Arabe, Standard & Tamoul) à partir du nom brut Intl.
-     */
-    getHijriNames: (rawName) => {
-        const key = rawName.toLowerCase().trim();
-        const data = HIJRI_MONTHS_DATA[key];
-        const std = data ? data.std : rawName;
-        return {
-            ar: data ? data.ar : key,
-            std,
-            ta: HIJRI_MONTHS_TA[std] || ''
-        };
-    }
+    /** Noms du mois hégirien (1 = Muḥarram … 12 = Dhū al-Ḥijjah) : standard, arabe, tamoul */
+    getHijriNames: (month) => HIJRI_MONTHS[month - 1]
 };

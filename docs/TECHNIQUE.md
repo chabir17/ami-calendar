@@ -165,9 +165,9 @@ La bande garde la même hauteur même vide (`min-height`), pour que la grille ai
 
 ### 4.2 Dates hégiriennes (`getHijriDateSafe`)
 
-- Conversion par `Intl.DateTimeFormat` en calendrier `islamic-civil`, mise en cache par date.
+- Conversion **arithmétique** du calendrier hégirien civil tabulaire (`DATE_UTILS.toHijriCivil`), mise en cache par date. Résultat identique à `Intl` « islamic-civil » (vérifié jour par jour de 2020 à 2039), mais sans dépendre du navigateur.
 - **Décalage manuel** : `HIJRI_OFFSETS` liste des périodes `{ start, end, offset }` (jours) pour suivre les dates annoncées par les imams. Les années sans entrée suivent le calcul.
-- Les noms bruts renvoyés par `Intl` varient selon le navigateur et la version ICU : `HIJRI_MONTHS_DATA` (`utils.js`) les ramène à une **translittération standard** (`Ramaḍān`, `Shawwāl`, `Dhū al-Ḥijjah`…), avec l'arabe ; `HIJRI_MONTHS_TA` donne le tamoul.
+- Les noms des mois viennent de `HIJRI_MONTHS` (`utils.js`), indexé par numéro de mois : **translittération standard** (`Ramaḍān`, `Shawwāl`, `Dhū al-Ḥijjah`…), arabe et tamoul. Les noms renvoyés par `Intl` ne sont plus utilisés : ils varient selon le navigateur (sur mobile, les mois hégiriens ne s'affichaient pas).
 - Retour : `{ day, monthNameFR, monthNameAR, monthNameTA, year, yearAr }`. **Toute comparaison de mois se fait sur `monthNameFR`** (nom standard), jamais sur un nom brut.
 
 ### 4.3 Jours particuliers (`getDayInfo`)
