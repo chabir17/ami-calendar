@@ -235,6 +235,7 @@ export function getDayInfo(date, hijri) {
  * - L'API donne la date de reprise : on recule d'un jour pour obtenir le dernier jour de vacances.
  * - Les doublons Élèves / Enseignants (été) sont réduits à la période des élèves.
  * - Une période d'un seul jour (pont) ou sans fin connue ("Début des Vacances d'Été") reste visible.
+ * - Saisons en minuscules ("Vacances d'Hiver" → "Vacances d'hiver") ; Noël et Toussaint gardent leur majuscule.
  * @param {Array} records - Enregistrements bruts de l'API
  */
 function normalizeSchoolHolidays(records) {
@@ -250,7 +251,8 @@ function normalizeSchoolHolidays(records) {
                 // Été annoncé sans date de fin : jusqu'au 31 août ; sinon (pont) : le jour même
                 end = /été/i.test(f.description || '') ? `${start.slice(0, 4)}-08-31` : start;
             }
-            return { name: (f.description || 'Vacances').replace(/^Début des /, ''), start, end };
+            const name = (f.description || 'Vacances').replace(/^Début des /, '').replace(/\b(Hiver|Été|Printemps|Automne)\b/g, (s) => s.toLowerCase());
+            return { name, start, end };
         });
 }
 
