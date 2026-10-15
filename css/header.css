@@ -34,10 +34,12 @@
 
 .frise-top {
     top: 0;
+    color: var(--col-saffron-text); /* trait des torsades (stroke="currentColor") */
 }
 
 .frise-bottom {
     bottom: 0;
+    color: var(--col-green);
 }
 
 .header-content {

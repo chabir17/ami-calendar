@@ -88,7 +88,9 @@ Les deux composants héritent de `MonthElement`, qui observe `year` et `month` e
 - **Frises** : deux `<svg class="frise">` dont l'attribut `data-maillon` désigne un symbole défini en tête de `index.html` (`torsade-saffron`, `torsade-green`). `drawFrises` y répète le symbole tous les 8 px avec `<use>`.
     - Le motif est en **SVG vectoriel inline** : un `background-image` ou un `<pattern>` SVG est pixellisé par Chrome à l'export PDF.
     - Torsade à deux brins : à chaque croisement, un `clipPath` redessine le brin du dessus (sur un halo blanc), en alternant.
-- Noms : tamoul en `--fs-brand` (28 px), français en `--fs-brand-fr` (20 px) pour une largeur équivalente ; ils occupent toute la hauteur du logo.
+    - Les traits sont en `currentColor` : leur couleur vient des jetons, via `color` sur `.frise-top` (`--col-saffron-text`) et `.frise-bottom` (`--col-green`).
+- Logo carré de 2 cm (hauteur du header moins les frises et leur marge).
+- Noms : tamoul en `--fs-brand` (28 px), français en `--fs-brand-fr` (20 px) pour une largeur équivalente ; centrés sur la hauteur du logo, 1,5 mm d'écart, lus comme un seul bloc.
 - Coordonnées : `contactsHTML(c, 'columns')` produit une grille de 3 lignes (adresse | téléphones, adresse | e-mail et site, puis IBAN • BIC sur toute la largeur).
 - Motif girih gris pâle (`background-pattern-neutral.svg`, 15 % d'opacité) entre les deux frises.
 
@@ -176,22 +178,25 @@ Chargée par `?mosque=<id>` (la feuille du Ramadan utilise `ami93120` par défau
 
 ## 6. Design system (`css/variables.css`)
 
-| Famille          | Jetons                                                                                                                                                                                                                                                           |
-| ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Couleurs de sens | `--col-blue` (structure, grégorien), `--col-green` (hégirien, prières), `--col-green-deep` (en-tête des horaires), `--col-red-event` (fériés), `--col-saffron-text` (nom tamoul), `--col-terracotta` (jeûne), `--col-gold` (ornements), `--brand` (thème client) |
-| Fonds            | `--bg-blue-faint`, `--bg-green-faint` (= `--bg-friday`), `--bg-holiday`, `--bg-empty`, `--bg-terracotta(-soft)`                                                                                                                                                  |
-| Texte            | `--col-text`, `--col-text-light`, `--col-text-soft`, `--col-ink` (chiffres), `--col-on-blue`, `--col-on-green` (sur fonds foncés)                                                                                                                                |
-| Bordures         | `--border-blue`, `--border-green`, `--accent-blue`, `--accent-green`, `--border-on-dark`, `--border-swatch`                                                                                                                                                      |
-| Tailles (px)     | `--fs-2xs` 8,5 · `--fs-xs` 10 · `--fs-contact` 11 · `--fs-sm` 12 · `--fs-md` 14 · `--fs-figure` 15 · `--fs-brand-fr` 20 · `--fs-xl` 22 · `--fs-brand` 28 · `--fs-title` 30 · `--fs-display` 42                                                                   |
-| Espacements      | `--sp-1` 4 · `--sp-2` 8 · `--sp-3` 12 · `--sp-4` 16 · `--sp-6` 24 (px)                                                                                                                                                                                           |
-| Mise en page     | `--page-pad` 5 mm · `--binding-zone` 10 mm · `--block-gap` 2,5 mm · `--header-h` 24 mm · `--band-h` 64 px                                                                                                                                                        |
-| Polices          | `--font-fr` Noto Sans · `--font-ar` Amiri (Noto Naskh Arabic en secours) · `--font-ta` Noto Serif Tamil                                                                                                                                                          |
+| Famille          | Jetons                                                                                                                                                                                                                                                                                                                                           |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Couleurs de sens | `--col-blue` (structure, grégorien), `--col-green` (hégirien, prières), `--col-green-dark` (texte sur vert pâle), `--col-green-deep` (en-tête des horaires), `--col-red-event` (fériés), `--col-saffron-text` (nom tamoul), `--col-terracotta` (jeûne), `--col-gold` / `--col-gold-light` (ornements), `--brand` / `--brand-text` (thème client) |
+| Fonds            | `--bg-blue-faint`, `--bg-green-faint` (= `--bg-friday`), `--bg-holiday`, `--bg-empty`, `--bg-terracotta(-soft)`                                                                                                                                                                                                                                  |
+| Texte            | `--col-text`, `--col-text-light`, `--col-text-soft`, `--col-ink` (chiffres), `--col-on-blue`, `--col-on-green` (sur fonds foncés)                                                                                                                                                                                                                |
+| Bordures         | `--border-blue`, `--border-green`, `--accent-blue`, `--accent-green`, `--border-on-dark`, `--border-swatch`                                                                                                                                                                                                                                      |
+| Tailles (px)     | `--fs-2xs` 8,5 · `--fs-xs` 10 · `--fs-contact` 11 · `--fs-sm` 12 · `--fs-md` 14 · `--fs-figure` 15 · `--fs-brand-fr` 20 · `--fs-xl` 22 · `--fs-brand` 28 · `--fs-title` 30 · `--fs-display` 42                                                                                                                                                   |
+| Espacements      | `--sp-1` 4 · `--sp-2` 8 · `--sp-3` 12 · `--sp-4` 16 · `--sp-6` 24 (px)                                                                                                                                                                                                                                                                           |
+| Écran            | `--bg-body` (fond autour des pages), `--shadow-page` (ombre des pages)                                                                                                                                                                                                                                                                           |
+| Mise en page     | `--page-pad` 5 mm · `--binding-zone` 10 mm · `--block-gap` 2,5 mm · `--header-h` 24 mm · `--band-h` 64 px                                                                                                                                                                                                                                        |
+| Polices          | `--font-fr` Noto Sans · `--font-ar` Amiri (Noto Naskh Arabic en secours) · `--font-ta` Noto Serif Tamil                                                                                                                                                                                                                                          |
 
 Règles :
 
 - **Une couleur = un sens.** Les textes respectent au moins 4,5:1 (WCAG AA) ; les ratios sont notés en commentaire des jetons.
 - `--col-green-deep` est réglé en **OKLCH** pour paraître aussi sombre que `--col-blue` (le vert sombre semble plus noir à luminosité égale).
-- Aucune couleur ni taille de police en dur dans les feuilles de style du calendrier : ajouter un jeton plutôt qu'une valeur.
+- Aucune couleur ni taille de police en dur dans les feuilles de style du calendrier ni dans ses SVG : ajouter un jeton plutôt qu'une valeur. Seule exception : `white` (le papier).
+- Les petits ajustements de mise en page en millimètres (air sous les frises, écart des noms) restent locaux, commentés à côté de la règle.
+- `ramadan.css` est autonome : il réutilise les jetons communs, mais garde ses propres rôles de couleur (voir 5).
 - Graisses : 400 et 600 pour le français et le tamoul, 400 à 500 pour l'arabe (Amiri).
 
 ## 7. Qualité et vérification
