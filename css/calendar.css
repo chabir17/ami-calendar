@@ -42,7 +42,7 @@
 
 /* Hégirien : nom(s) du mois en arabe en titre, comme le mois grégorien (extrémité droite) */
 .hijri-month-ar {
-    font-size: var(--fs-month); /* mois et année de même taille */
+    font-size: var(--fs-xl); /* 22 px : l'écriture arabe, plus haute à taille égale, s'équilibre avec le grégorien en 24 px */
     line-height: 1.45; /* queues des lettres arabes (ع, ي…) : ne touchent pas la ligne 2 */
     color: var(--col-title-blue);
 }
@@ -72,22 +72,18 @@
 }
 
 /* Deux mois hégiriens aux noms longs : taille réduite par crans (voir fitMonthTitles).
-   1er cran : titre arabe seul ; les traductions gardent leur taille tant que possible (mois jumeaux abrégés : Jumādā I / II) */
-.month-titles-zone.is-compact .hijri-month-ar {
-    font-size: var(--fs-xl);
+   Rarement utile : les mois jumeaux sont abrégés (Jumādā I / II) quand deux mois partagent le bandeau */
+.month-titles-zone.is-compact .titles-hijri .title-sub,
+.month-titles-zone.is-compact .titles-hijri .title-sub > * + *::before {
+    font-size: var(--fs-sm);
 }
 
 .month-titles-zone.is-compact-2 .titles-hijri .title-sub,
 .month-titles-zone.is-compact-2 .titles-hijri .title-sub > * + *::before {
-    font-size: var(--fs-sm);
-}
-
-.month-titles-zone.is-compact-3 .titles-hijri .title-sub,
-.month-titles-zone.is-compact-3 .titles-hijri .title-sub > * + *::before {
     font-size: var(--fs-xs);
 }
 
-.month-titles-zone.is-compact-4 .year-display {
+.month-titles-zone.is-compact-3 .year-display {
     font-size: var(--fs-xl);
 }
 
