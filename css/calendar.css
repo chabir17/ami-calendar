@@ -8,7 +8,7 @@
     gap: var(--sp-3);
     padding: var(--sp-2) var(--sp-2) var(--sp-1);
     background-color: var(--bg-blue-head);
-    box-shadow: inset 0 calc(-1 * var(--hairline)) 0 white; /* filet blanc 0,5 px entre bandeau et ligne des jours */
+    border-bottom: 1.5px solid white; /* séparation blanche entre bandeau et ligne des jours (même fond) */
     color: var(--col-title-blue);
     height: var(--band-h);
 }
@@ -125,12 +125,12 @@
 .weekdays-header {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    background: var(--bg-blue-faint); /* un cran sous le bandeau : bandeau, jours, cases blanches */
+    background: var(--bg-blue-head); /* même fond que le bandeau du mois, séparés par un filet blanc */
     color: var(--col-text-light); /* même couleur que les numéros en dessous */
     text-align: center;
     padding: 0;
     font-size: var(--fs-sm);
-    border-bottom: 1.5px solid var(--accent-blue);
+    border-bottom: 1.5px solid var(--rule-blue);
 }
 
 .weekday-cell {
