@@ -63,7 +63,7 @@ Le bandeau du mois (bleu clair) et l'en-tête du tableau (vert clair) ont la mê
 - **Bandeau du mois** : les deux noms de mois sont les titres de la page, aux deux extrémités (bleu marine `--col-blue`, `--fs-month` 26 px) ; années en bleu ardoise `--col-title-blue` 22 px, traductions en gris.
 - **En-tête des jours** : fond blanc ; chaque colonne a exactement la couleur de ses numéros (`--col-text-light`, `--col-friday`, `--col-sunday`), dans les trois langues.
 - **Numéros des jours** : gris neutre des textes courants `--col-text-light`, identique du lundi au samedi ; vendredis et dimanches en gris légèrement teinté (vert sauge `--col-friday`, terracotta `--col-sunday`) : seuls les jours fériés et l'Aïd sont en couleur pleine.
-- **En-tête du tableau** : fond vert clair, noms des prières en titre (vert foncé `--col-green-dark`, `--fs-sm`), traductions en gris, séparateurs blancs.
+- **En-tête du tableau** : fond vert clair, noms des prières en titre (vert foncé `--col-green-dark`, `--fs-xs` pour garder des colonnes de même largeur), traductions en gris, séparateurs blancs.
 - **Cadres** : le contour de chaque bloc reprend la couleur de son en-tête (`--bg-blue-faint`, `--bg-green-faint`, 2 px).
 - **Bandeau trop long** (deux mois hégiriens aux noms longs) : `fitMonthTitles` ajoute `is-compact` (puis `is-compact-2` si besoin), qui réduit le côté hégirien au lieu de le couper.
 
