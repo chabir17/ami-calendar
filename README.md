@@ -57,7 +57,7 @@ Sans Node : `python3 -m http.server 3000` depuis la racine du projet.
 - **Header** : logo, noms tamoul (safran) et français (vert), coordonnées ; encadré par deux fines torsades aux couleurs du logo.
 - **Bandeau du mois** (bleu marine) : mois grégorien à gauche, mois hégirien(s) à droite, avec traductions.
 - **Cases des jours** :
-    - numéro hégirien en petit, en haut à droite ; **cerclé de vert** les jours islamiques particuliers ;
+    - numéro hégirien en petit, en haut à droite ; **en gras** les jours islamiques particuliers ;
     - croissant vert : premier jour du mois hégirien ;
     - numéro **vert** : Aïd ; **rouge** : jour férié (libellé écrit dans la case) ;
     - libellés verts : début du Ramadan, jour de ʿArafa, jours de Tashrīq, ʿĀshūrāʾ ;

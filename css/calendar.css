@@ -191,16 +191,9 @@
     right: 0.25rem;
 }
 
-/* Jours islamiques particuliers : date hégirienne cerclée de vert (repérable d'un coup d'œil, sans aplat) */
+/* Jours islamiques particuliers : date hégirienne en gras (repérable sans ornement) */
 .is-islamic-event .vis-hij {
-    min-width: 1.35em;
-    padding: 0 0.3em;
-    border: 1px solid var(--col-green);
-    border-radius: 999px;
-    color: var(--col-green);
     font-weight: 600;
-    line-height: 1.35;
-    text-align: center;
 }
 
 /* --- ICÔNES ET LABELS D'ÉVÉNEMENTS --- */

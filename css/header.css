@@ -66,8 +66,10 @@
     object-fit: contain;
 }
 
-/* Bloc principal : identité à gauche, coordonnées centrées dans l'espace restant */
+/* Bloc principal : identité à gauche, coordonnées centrées dans l'espace restant.
+   Noms et coordonnées centrés verticalement avec le même interligne : hauts et bas alignés */
 .header-main {
+    --identity-gap: 1.5mm;
     flex: 1;
     min-width: 0;
     display: flex;
@@ -79,21 +81,20 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 1.5mm;
-    padding: 1mm 0 0; /* le tamoul (hampes hautes) ne touche pas la frise safran */
+    gap: var(--identity-gap);
     white-space: nowrap;
 }
 
-/* Tamoul (safran) en haut, près du filet safran ; français (vert) en bas, près du filet vert : couleurs du logo */
+/* Tamoul (safran) en haut, près de la frise safran ; français (vert) en bas, près de la frise verte : couleurs du logo */
 .org-ta,
 .org-fr {
-    font-size: var(--fs-brand);
     font-weight: 600;
     line-height: 1.1;
 }
 
 .org-ta {
     color: var(--col-saffron-text);
+    font-size: var(--fs-brand);
 }
 
 .org-fr {
@@ -103,14 +104,13 @@
 }
 
 /* Coordonnées en grille de 3 lignes (adresse | téléphones, adresse | web, banque) :
-   discrètes, plus claires que les noms (hiérarchie nette) ; haut et bas alignés sur les noms */
+   discrètes, plus claires que les noms (hiérarchie nette) */
 .header-contacts {
     margin: 0 auto;
     display: grid;
     grid-template-columns: auto auto;
-    align-content: space-between;
-    gap: 0 var(--sp-6);
-    padding-top: 1mm;
+    align-content: center;
+    gap: var(--identity-gap) var(--sp-6);
     white-space: nowrap;
     font-size: var(--fs-contact);
     line-height: 1.35;
