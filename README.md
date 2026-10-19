@@ -2,10 +2,10 @@
 
 Calendriers imprimables de l'**Association Musulmane de l'Inde** (AMI, La Courneuve), en français, arabe et tamoul.
 
-| Document               | Page           | Format              | Contenu                                                                              |
-| ---------------------- | -------------- | ------------------- | ------------------------------------------------------------------------------------ |
-| **Calendrier annuel**  | `index.html`   | 12 pages A4 paysage | Mois civil et hégirien, jours fériés, vacances (zone C), horaires des 5 prières      |
-| **Feuille du Ramadan** | `ramadan.html` | 1 page A4 portrait  | Horaires du mois de Ramadan (Imsak, prières, Icha AMI), nuit du doute, 27e nuit, Aïd |
+| Document               | Page           | Format              | Contenu                                                                                    |
+| ---------------------- | -------------- | ------------------- | ------------------------------------------------------------------------------------------ |
+| **Calendrier annuel**  | `index.html`   | 13 pages A4 paysage | Couverture, puis mois civil et hégirien, fériés, vacances (zone C), horaires des 5 prières |
+| **Feuille du Ramadan** | `ramadan.html` | 1 page A4 portrait  | Horaires du mois de Ramadan (Imsak, prières, Icha AMI), nuit du doute, 27e nuit, Aïd       |
 
 Site statique en JavaScript natif, sans framework ni étape de compilation. Documentation technique détaillée : [docs/TECHNIQUE.md](docs/TECHNIQUE.md).
 
@@ -26,23 +26,24 @@ Sans Node : `python3 -m http.server 3000` depuis la racine du projet.
 | -------------- | ------------------ | --------------------------------------------------------------------- |
 | `index.html`   | `?year=2027`       | Année affichée (par défaut : l'année prochaine)                       |
 |                | `?month=10`        | Un seul mois au lieu des 12                                           |
+|                | `?month=cover`     | Couverture seule (tirage à part)                                      |
 |                | `?mosque=ami93120` | Identité, coordonnées et position lues depuis `clients/ami93120.json` |
 | `ramadan.html` | `?year=2028`       | Ramadan de l'année donnée (par défaut : le prochain Ramadan)          |
 
 ## Générer les PDF
 
 1. Ouvrir la page dans **Chrome**, **connecté à internet** (les jours fériés et les vacances viennent des API officielles).
-2. Vérifier qu'un jour férié (ex. 1er mai) et une période de vacances apparaissent.
+2. Vérifier qu'un jour férié (ex. 1er mai) et une période de vacances apparaissent. Un bandeau doré en haut de l'écran (non imprimé) signale les données manquantes.
 3. Imprimer en PDF : format **A4** (paysage pour le calendrier, portrait pour le Ramadan), marges **Aucune**, échelle **100 %**, **Graphiques d'arrière-plan** cochés.
-4. Contrôler le nombre de pages : 12 pour le calendrier, 1 pour la feuille du Ramadan.
+4. Contrôler le nombre de pages : 13 pour le calendrier (couverture comprise), 1 pour la feuille du Ramadan.
 
 ## Impression (copieur laser de l'association)
 
 - Recto seul, reliure à spirale sur le bord haut : une zone de 10 mm est réservée en haut de chaque page (`--binding-zone`).
-- Marge de 5 mm sur les bords (`--page-pad`), au-delà de la zone non imprimable du copieur.
+- Marge de 5 mm sur les bords (`--page-pad`), au-delà de la zone non imprimable du copieur ; 10 mm sur les côtés et en bas de la couverture.
 - Dans le pilote : qualité **Graphique** ou **Photo**, **économie de toner désactivée** (sinon les aplats foncés deviennent tramés).
 - Papier conseillé pour le calendrier mural : **120 g/m²**, blanc, non couché, « laser couleur ».
-- Faire une page test (couleurs, frises du header, petits libellés de 9 px, fond pâle des vacances) avant de lancer le tirage complet.
+- Faire une page test (couleurs, frises du header, petits libellés de 9 px, fond pâle des vacances) avant de lancer le tirage complet ; sur la couverture, scanner les deux QR codes Mawaqit.
 
 ## Préparer une nouvelle année
 
@@ -52,6 +53,8 @@ Sans Node : `python3 -m http.server 3000` depuis la racine du projet.
 4. **Vérifier** les PDF : `index.html?year=…`, et `ramadan.html?year=…`.
 
 ## Ce que montre le calendrier annuel
+
+- **Couverture** : logo, année grégorienne et années hégiriennes, aperçu des 12 mois (vacances, début du Ramadan, Aïds, jours fériés), QR codes Mawaqit de la mosquée et de la salle de prière, coordonnées et IBAN.
 
 - **Header** : logo, noms tamoul (safran) et français (vert), coordonnées ; encadré par deux fines torsades aux couleurs du logo.
 - **Bandeau du mois** (fond bleu clair) : mois grégorien à gauche, mois hégirien(s) à droite, en bleu ardoise, avec traductions.

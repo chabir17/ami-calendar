@@ -71,3 +71,14 @@ strong {
     margin-right: var(--sp-1);
     flex-shrink: 0; /* Empêche l'écrasement dans les flexbox */
 }
+
+/* Avertissement de données manquantes (jours fériés, vacances) : écran seulement, masqué à l'impression */
+.data-warning {
+    max-width: 297mm;
+    padding: var(--sp-2) var(--sp-4);
+    border: 1px solid var(--col-gold);
+    border-radius: var(--radius-card);
+    background: var(--bg-holiday);
+    font-size: var(--fs-md);
+    color: var(--col-text);
+}

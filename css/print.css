@@ -13,6 +13,10 @@
         display: block;
     }
 
+    .data-warning {
+        display: none;
+    }
+
     .page {
         box-shadow: none; /* l'ombre (écran) de la page suivante débordait en bas de chaque page */
         break-inside: avoid;

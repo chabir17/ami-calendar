@@ -81,8 +81,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     const isAllMonths = !monthParam;
+    const isCoverOnly = monthParam === 'cover'; // ?month=cover : couverture seule (tirage à part)
     let month = parseInt(monthParam);
-    if (!isAllMonths && (!month || month < 1 || month > 12)) month = 1;
+    if (!isAllMonths && !isCoverOnly && (!month || month < 1 || month > 12)) month = 1;
 
     // 4. Fonction de rendu optimisée (DocumentFragment)
     const renderApp = () => {
@@ -90,7 +91,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         appContainer.innerHTML = ''; // Reset propre du conteneur
         const fragment = document.createDocumentFragment();
 
-        if (isAllMonths) {
+        if (isCoverOnly) {
+            fragment.appendChild(createCoverNode(year));
+        } else if (isAllMonths) {
+            fragment.appendChild(createCoverNode(year));
             for (let m = 1; m <= 12; m++) {
                 fragment.appendChild(createPageNode(year, m));
             }
@@ -98,7 +102,11 @@ document.addEventListener('DOMContentLoaded', async () => {
             fragment.appendChild(createPageNode(year, month));
         }
         appContainer.appendChild(fragment);
-        document.fonts.ready.then(() => fitMonthTitles(appContainer));
+        document.fonts.ready.then(() => {
+            fitMonthTitles(appContainer);
+            fitMiniHeads(appContainer);
+            drawCoverBackdrop(appContainer);
+        });
     };
 
     // Helper : Création d'une page unique
@@ -127,12 +135,46 @@ document.addEventListener('DOMContentLoaded', async () => {
         return clone;
     };
 
+    // Page de couverture : mise en page propre (template #cover-template)
+    const createCoverNode = (y) => {
+        const clone = document.getElementById('cover-template').content.cloneNode(true);
+        drawFrises(clone);
+        updatePageDOM(clone, clientConfig);
+        updateCover(y, clone);
+        return clone;
+    };
+
     // 5. Premier rendu
     renderApp();
 
     // 6. Mise à jour asynchrone (API Vacances/Fériés)
-    fetchExternalData(renderApp);
+    fetchExternalData(renderApp).then(() => warnMissingData(year));
 });
+
+/**
+ * Avertissement à l'écran (jamais imprimé) quand les jours fériés ou les vacances scolaires de l'année manquent :
+ * page ouverte hors connexion, ou vacances pas encore publiées par l'Éducation nationale.
+ * @param {number} year
+ */
+function warnMissingData(year) {
+    document.querySelector('.data-warning')?.remove();
+    const holidays = window.CONFIG?.schoolHolidays || [];
+    const hasPublic = Object.keys(window.CONFIG?.publicHolidays || {}).some((d) => d.startsWith(`${year}-`));
+    const lastEnd = holidays.reduce((max, h) => (h.end > max ? h.end : max), '');
+    let message = '';
+    if (!hasPublic || !holidays.some((h) => h.end >= `${year}-01-01` && h.start <= `${year}-12-31`)) {
+        message = `Jours fériés ou vacances scolaires ${year} non chargés : connectez-vous à internet, puis rechargez la page avant d'imprimer.`;
+    } else if (lastEnd < `${year}-12-01`) {
+        const until = new Date(lastEnd).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+        message = `Vacances scolaires connues jusqu'au ${until} : les suivantes ne sont pas encore publiées par l'Éducation nationale.`;
+    }
+    if (!message) return;
+    const banner = document.createElement('div');
+    banner.className = 'data-warning';
+    banner.setAttribute('role', 'status');
+    banner.textContent = message;
+    document.body.prepend(banner);
+}
 
 /**
  * Bandeau du mois : si les deux mois hégiriens ne tiennent pas sur la largeur (ex. Jumādā al-ūlā / Jumādā ath-thāniya),
@@ -148,6 +190,92 @@ function fitMonthTitles(root) {
             if (!overflows(zone)) break;
             zone.classList.add(level);
         }
+    });
+}
+
+/** Mois hégiriens d'un mini-mois, un par ligne ; l'année n'est écrite qu'une fois par année (après son dernier mois) */
+const hijriLines = (months) => {
+    const list = [...months];
+    return list.map(([name, y], i) => `<span>${name}${list[i + 1]?.[1] === y ? '' : ` <span class="mini-hijri-year">${y}</span>`}</span>`).join('');
+};
+
+/**
+ * Couverture : années et aperçu des 12 mois (vacances scolaires, début du Ramadan, Aïds et jours fériés repérés),
+ * calculés comme dans les pages des mois (getHijriDateSafe, getDayInfo).
+ */
+function updateCover(year, container) {
+    const hStart = getHijriDateSafe(new Date(year, 0, 1));
+    const hEnd = getHijriDateSafe(new Date(year, 11, 31));
+    DOM.setText('.cover-year', year, container);
+    // Années hégiriennes sur deux lignes, à droite de l'année grégorienne
+    const hijriYears = container.querySelector('.cover-hijri');
+    if (hijriYears) hijriYears.innerHTML = hStart.year === hEnd.year ? hEnd.yearAr : `<span>${hStart.yearAr}</span><span>${hEnd.yearAr}</span>`;
+
+    const months = [];
+    for (let m = 0; m < 12; m++) {
+        const first = new Date(year, m, 1);
+        const days = new Date(year, m + 1, 0).getDate();
+        const cells = Array.from({ length: (first.getDay() + 6) % 7 }, () => '<span></span>');
+        const hijriMonths = new Map(); // nom arabe → année hégirienne
+        for (let d = 1; d <= days; d++) {
+            const date = new Date(year, m, d);
+            const hijri = getHijriDateSafe(date);
+            const info = getDayInfo(date, hijri);
+            hijriMonths.set(hijri.monthNameAR, hijri.yearAr);
+            const cls = [];
+            if (info.isHoliday) cls.push('is-holiday');
+            if (hijri.monthNameFR === 'Ramaḍān' && parseInt(hijri.day, 10) === 1) cls.push('is-ramadan'); // début du Ramadan seulement
+            if (info.isEid) cls.push('is-eid');
+            if (info.isPublicHoliday) cls.push('is-public');
+            cells.push(`<span class="${cls.join(' ')}">${d}</span>`);
+        }
+        months.push(`<div class="mini-month">
+            <div class="mini-head"><span class="mini-names"><span class="mini-name">${window.TEXTS?.fr.months[m] ?? ''}</span><span class="mini-name-ta tamil">${window.TEXTS?.ta.months[m] ?? ''}</span></span><span class="mini-hijri arabic">${hijriLines(hijriMonths)}</span></div>
+            <div class="mini-grid"><b>L</b><b>M</b><b>M</b><b>J</b><b>V</b><b>S</b><b>D</b>${cells.join('')}</div>
+        </div>`);
+    }
+    const monthsBox = container.querySelector('.cover-months');
+    if (monthsBox) monthsBox.innerHTML = months.join('');
+}
+
+/**
+ * Couverture : en-têtes des mini-mois trop larges (mois hégiriens aux noms longs, ex. Rabīʿ al-awwal / Rabīʿ ath-thānī)
+ * réduits par crans (arabe plus petit, puis nom français resserré) plutôt que de chevaucher le nom du mois.
+ * @param {HTMLElement} root
+ */
+function fitMiniHeads(root) {
+    const levels = ['is-compact', 'is-compact-2'];
+    root.querySelectorAll('.mini-head').forEach((head) => {
+        head.classList.remove(...levels);
+        for (const level of levels) {
+            if (head.scrollWidth <= head.clientWidth) break;
+            head.classList.add(level);
+        }
+    });
+}
+
+/**
+ * Couverture : fond des vacances scolaires de chaque mini-mois en SVG vectoriel, derrière les chiffres
+ * (cases jointives, sans liseré entre elles dans le PDF). Le début du Ramadan et les Aïds sont des pastilles CSS par-dessus.
+ * @param {HTMLElement} root
+ */
+function drawCoverBackdrop(root) {
+    const NS = 'http://www.w3.org/2000/svg';
+    root.querySelectorAll('.mini-grid').forEach((grid) => {
+        grid.querySelector('.mini-backdrop')?.remove();
+        const cells = grid.querySelectorAll('.is-holiday');
+        if (!cells.length) return;
+        const g = grid.getBoundingClientRect();
+        // Cases débordant de 0,5 px : pas de jointure visible entre deux cases
+        const rects = [...cells].map((c) => {
+            const r = c.getBoundingClientRect();
+            return `<rect x="${r.left - g.left - 0.5}" y="${r.top - g.top - 0.5}" width="${r.width + 1}" height="${r.height + 1}" />`;
+        });
+        const svg = document.createElementNS(NS, 'svg');
+        svg.setAttribute('class', 'mini-backdrop');
+        svg.setAttribute('aria-hidden', 'true');
+        svg.innerHTML = rects.join('');
+        grid.append(svg); // en dernier : ne décale pas les :nth-child des vendredis et dimanches
     });
 }
 
