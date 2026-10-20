@@ -4,7 +4,7 @@
    colonne (affiche | informations pratiques : Mawaqit, contacts, dons, source) | 12 mois et verset en dessous.
    Mêmes jetons que les pages des mois (couleurs du logo, bleu marine, filets 0,5 px). */
 .cover-page {
-    --cover-gap: 2.5mm; /* espacement unique entre les cartes et autour d'elles dans le panneau */
+    --cover-gap: 2.5mm; /* espacement unique entre les blocs de la page */
     padding-top: var(--binding-zone); /* trous de spirale : zone laissée libre, comme au-dessus du header des mois */
     padding-inline: 5mm; /* marges latérales et basse : comme les pages des mois */
     padding-bottom: 5mm;
@@ -19,19 +19,19 @@
     gap: var(--cover-gap);
 }
 
-/* --- COLONNE D'IDENTITÉ (formule hybride) : l'affiche (logo, années) est posée directement sur le panneau,
-   comme une couverture ; seules les informations pratiques sont dans une carte blanche, comme les mois.
-   Couleurs : bleu marine pour les titres et le texte principal, bleu ardoise pour les traductions, or pour les filets,
-   gris pour les textes courants ; le vert et le safran restent réservés aux marques des mois (Aïd, vendredis, fériés). --- */
+/* --- COLONNE D'IDENTITÉ : l'affiche (logo, années) est posée directement sur le panneau, comme une couverture ;
+   seules les informations pratiques sont dans une carte blanche.
+   Couleurs : bleu marine pour les titres, bleu ardoise pour les traductions, or pour les ornements, gris pour les textes
+   courants ; le vert et le terracotta restent réservés aux marques des mois (Aïd, vendredis, fériés) et au verset. --- */
 .cover-identity {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: var(--cover-gap);
     padding: var(--cover-gap);
-    border-radius: var(--radius-card);
-    position: relative;
     overflow: hidden; /* le fond SVG suit les coins arrondis */
+    border-radius: var(--radius-card);
     background: var(--bg-blue-head); /* repli sous le fond SVG */
     text-align: center;
 }
@@ -42,6 +42,10 @@
     inset: 0;
     width: 100%;
     height: 100%;
+}
+
+.cover-identity > :not(.cover-identity-bg) {
+    position: relative;
 }
 
 /* Dégradé : soutenu en haut, bleu des bandeaux des mois aux deux tiers, presque blanc en bas ; motif en bleu ardoise */
@@ -61,11 +65,7 @@
     fill: var(--col-title-blue);
 }
 
-.cover-identity > :not(.cover-identity-bg) {
-    position: relative;
-}
-
-/* 1. Affiche : logo, année grégorienne en grand, années hégiriennes dessous ; occupe la hauteur libre */
+/* Affiche : logo, année grégorienne en grand, années hégiriennes, ornement ; occupe la hauteur libre */
 .cover-title {
     flex: 1;
     display: flex;
@@ -75,7 +75,7 @@
 }
 
 .cover-logo {
-    width: 62mm; /* au moins 5 cm de côté ; agrandi depuis que le verset est sous les mois */
+    width: 62mm; /* au moins 5 cm de côté */
     height: 62mm;
     object-fit: contain;
 }
@@ -89,13 +89,6 @@
     color: var(--col-blue);
 }
 
-/* Petit ornement doré sous les années : ferme l'affiche, écho de l'or du verset */
-.cover-title-orn {
-    width: 22mm;
-    height: 2mm;
-    margin-top: var(--sp-2);
-}
-
 .cover-hijri {
     margin-top: var(--sp-1);
     font-size: var(--fs-xl);
@@ -103,46 +96,11 @@
     color: var(--col-title-blue); /* bleu ardoise : traduction de l'année, comme dans le bandeau des mois */
 }
 
-/* 3. Seule carte de la colonne : informations pratiques */
-.cover-info {
-    width: 100%;
-    border-radius: var(--radius-card);
-    background: white;
-}
-
-/* Citation coranique (traductions seulement) : encart bleu très pâle sous les 12 mois, centrée, une ligne par langue (français en bleu marine
-   italique, tamoul en bleu ardoise) entre parenthèses ornées dorées ﴾ ﴿, chacune suivie de sa référence en or foncé */
-.cover-verse {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: var(--cover-gap) 3mm 0; /* rentré comme le contenu des mini-mois (marge intérieure de 3 mm) : aligné sur les grilles */
-    padding: 1.2mm var(--sp-4);
-    border-radius: var(--radius-card);
-    background: var(--bg-blue-head); /* même bleu que l'encart des dons */
-}
-
-.cover-verse-text {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5mm;
-    white-space: nowrap;
-    font-size: var(--fs-xs);
-    line-height: 1.4;
-}
-
-.cover-verse-fr {
-    font-style: italic;
-    color: var(--col-blue);
-}
-
-.cover-verse-ta {
-    color: var(--col-title-blue);
-}
-
-/* Ornement doré sous les années : perles et losange pleins, filets fins */
+/* Petit ornement doré sous les années (filets fins, perles et losange pleins) : ferme l'affiche */
 .cover-title-orn {
+    width: 22mm;
+    height: 2mm;
+    margin-top: var(--sp-2);
     fill: var(--col-gold);
 }
 
@@ -153,33 +111,18 @@
     stroke-linecap: round;
 }
 
-/* Parenthèses ornées ﴾ ﴿, propres aux citations coraniques, en or (simple ponctuation, pas de texte arabe) */
-.cover-verse-mark {
-    margin-inline: 0.15em;
-    font-size: 1.25em;
-    font-style: normal;
-    line-height: 0;
-    color: var(--col-gold-text); /* or foncé : traits fins, l'or clair disparaîtrait à l'impression */
-}
-
-/* Référence en or foncé : distincte des traductions (bleu), accordée aux ornements */
-.cover-verse cite {
-    margin-left: 0.15em;
-    font-size: var(--fs-2xs);
-    font-style: normal;
-    font-weight: 600;
-    color: var(--col-gold-text);
-}
-
-/* Informations pratiques : trois parties séparées par des filets, même espacement de part et d'autre :
-   Mawaqit (QR codes) | contacts (grille 2 × 2) | encart des dons | source des horaires */
+/* --- INFORMATIONS PRATIQUES : seule carte de la colonne ; parties séparées par des filets, même espacement de part
+   et d'autre : Mawaqit (QR codes) | contacts (grille 2 × 2) | encart des dons | source des horaires --- */
 .cover-info {
     --info-gap: 1.6mm;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: var(--info-gap);
     padding: 2.5mm;
+    border-radius: var(--radius-card);
+    background: white;
 }
 
 .cover-info > * + * {
@@ -188,7 +131,7 @@
     border-top: 0.75px solid var(--bg-blue-head); /* filet séparateur */
 }
 
-/* --- MAWAQIT : deux QR codes côte à côte, nom et adresse dessous --- */
+/* Mawaqit : titre, deux QR codes côte à côte, nom et adresse dessous */
 .cover-section-title {
     font-size: var(--fs-2xs);
     font-weight: 600;
@@ -211,7 +154,7 @@
     gap: var(--sp-1);
 }
 
-/* QR code sur la carte blanche (qui sert de zone de silence), icône Mawaqit au centre */
+/* QR code sur la carte blanche (qui sert de zone de silence) */
 .cover-qr-code {
     position: relative;
     width: 20mm; /* 2 cm : lisible à bout de bras */
@@ -253,12 +196,6 @@
     color: var(--col-blue);
 }
 
-.cover-qr-addr {
-    line-height: 1.35;
-    font-size: var(--fs-2xs);
-    color: var(--col-text-light);
-}
-
 .cover-qr-name .icon {
     width: 0.75rem;
     height: 0.75rem;
@@ -266,8 +203,14 @@
     color: var(--col-blue);
 }
 
-/* --- COORDONNÉES : grille 2 × 2 alignée sur les deux QR codes ; chaque moyen de contact précédé d'une pastille
-   d'icône bleu pâle, qui suffit à l'identifier (pas de libellé) --- */
+.cover-qr-addr {
+    line-height: 1.35;
+    font-size: var(--fs-2xs);
+    color: var(--col-text-light);
+}
+
+/* Contacts : grille 2 × 2 alignée sur les deux QR codes ; chaque moyen de contact précédé d'une pastille d'icône
+   bleu pâle, qui suffit à l'identifier (pas de libellé) */
 .cover-contacts {
     display: grid;
     grid-template-columns: repeat(2, max-content);
@@ -303,7 +246,7 @@
     color: var(--col-blue);
 }
 
-/* --- DONS : encart bleu très pâle, pastille blanche, coordonnées bancaires en petit --- */
+/* Dons : encart bleu très pâle, coordonnées bancaires en petit */
 .cover-info > .cover-donate {
     display: flex;
     align-items: center;
@@ -311,7 +254,7 @@
     padding: 1mm 2.5mm;
     border-top: none; /* l'encart se délimite par son fond */
     border-radius: var(--radius-card);
-    background: var(--bg-blue-head); /* même bleu que l'encart du verset */
+    background: var(--bg-blue-head);
     text-align: left;
 }
 
@@ -336,10 +279,33 @@
     color: var(--col-title-blue);
 }
 
+/* Source des horaires : pastille du symbole de la GMP et mention, en pied de carte */
+.cover-source {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--sp-1);
+    font-size: var(--fs-2xs);
+    color: var(--col-text-light);
+}
+
+.cover-source b {
+    font-weight: 600;
+    color: var(--col-text);
+}
+
+.cover-source-logo {
+    flex-shrink: 0;
+    width: 7mm;
+    height: 7mm;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 0.75px solid var(--bg-blue-head); /* pastille blanche cerclée */
+}
+
 /* --- APERÇU DES 12 MOIS --- */
 .cover-months-zone {
     min-height: 0;
-    background: white; /* se fond dans la page */
     display: flex;
     flex-direction: column;
 }
@@ -358,22 +324,19 @@
     flex-direction: column;
     min-height: 0;
     padding: 1.5mm 3mm;
-    border-radius: var(--radius-card);
-    background: white;
 }
 
 .mini-head {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
     gap: var(--sp-1);
     padding: 3px 0;
-    position: relative;
     white-space: nowrap;
 }
 
-/* Filet sous l'en-tête du mini-mois */
-/* Filet 0,5 px sous l'en-tête du mois (pseudo-élément : une ombre portée laisse des traces fantômes dans le PDF) */
+/* Filet 0,5 px sous l'en-tête (pseudo-élément : une ombre portée laisse des traces fantômes dans le PDF) */
 .mini-head::after {
     content: '';
     position: absolute;
@@ -390,18 +353,18 @@
     flex-direction: column;
 }
 
-.mini-name-ta {
-    font-size: var(--fs-xs);
-    line-height: 1.4;
-    color: var(--col-title-blue);
-}
-
 .mini-name {
     font-size: var(--fs-md);
     font-weight: 600;
     letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--col-blue);
+}
+
+.mini-name-ta {
+    font-size: var(--fs-xs);
+    line-height: 1.4;
+    color: var(--col-title-blue);
 }
 
 /* Mois hégiriens l'un sous l'autre, calés à droite */
@@ -429,6 +392,8 @@
 }
 
 .mini-grid {
+    position: relative;
+    isolation: isolate; /* fond des vacances (z-index -1) derrière les chiffres, sans passer sous la page */
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     grid-auto-rows: 18px; /* sans interligne : fonds des vacances continus */
@@ -459,15 +424,7 @@
     color: var(--col-sunday);
 }
 
-/* Vacances scolaires : fond doré pâle (SVG derrière les chiffres, voir drawCoverBackdrop) ;
-   Aïd : pastille vert pastel doux ; jour férié : terracotta */
-
-/* Fond vectoriel de la grille (les dégradés CSS sont pixellisés dans le PDF), derrière les chiffres */
-.mini-grid {
-    position: relative;
-    isolation: isolate;
-}
-
+/* Vacances scolaires : fond doré pâle en SVG vectoriel derrière les chiffres (voir drawCoverBackdrop) */
 .mini-backdrop {
     position: absolute;
     inset: 0;
@@ -482,18 +439,19 @@
     fill: var(--bg-holiday);
 }
 
+/* Jour férié : terracotta, prioritaire sur la couleur des vendredis et dimanches */
 .mini-grid span.is-public {
-    /* prioritaire sur la couleur des vendredis et dimanches */
     font-weight: 600;
     color: var(--col-terracotta);
 }
 
-/* Pastille vectorielle de l'Aïd (un dégradé serait pixellisé dans le PDF) */
+/* Aïd : pastille vert pastel (pseudo-élément : un dégradé serait pixellisé dans le PDF) ; vert foncé prioritaire
+   sur la couleur des vendredis, dimanches et jours fériés */
 .mini-grid span.is-eid {
     position: relative;
     isolation: isolate;
     font-weight: 600;
-    color: var(--col-green-dark); /* vert foncé : prioritaire sur la couleur des vendredis, dimanches et jours fériés */
+    color: var(--col-green-dark);
 }
 
 .mini-grid .is-eid::before {
@@ -506,26 +464,84 @@
     background: var(--bg-eid);
 }
 
-/* Source des horaires du calendrier : pastille du symbole de la GMP et mention, en pied de la carte pratique */
-.cover-source {
+/* --- VERSET (traductions seulement), en deux lignes : encart vert très pâle sous les 12 mois. Entre deux
+   grandes parenthèses ornées ﴾ ﴿ : le français (gris foncé italique) au-dessus du tamoul (gris moyen), puis l'icône
+   du Coran et les deux références, chacune en face de sa langue ; accents tout en vert, accordés au fond --- */
+.cover-verse {
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: var(--sp-2);
+    margin: var(--cover-gap) 3mm 0; /* rentré comme le contenu des mini-mois (marge intérieure de 3 mm) : aligné sur les grilles */
+    padding: 1.2mm var(--sp-3);
+    border-radius: var(--radius-card);
+    background: var(--bg-friday-light);
+    font-size: var(--fs-xs);
+    line-height: 1.45;
+    white-space: nowrap;
+}
+
+.cover-verse-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Grandes parenthèses ornées ﴾ ﴿ (ponctuation des citations coraniques, pas de texte arabe), sur la hauteur des deux lignes */
+.cover-verse-mark {
+    font-size: 2em; /* 20 px : couvre les deux lignes sans dépasser de l'encart */
+    color: var(--col-green); /* vert du logo : traits fins, assez soutenu pour l'impression */
+}
+
+/* Source : icône du Coran (livre ouvert sur son pupitre) puis les deux références en vert foncé, chacune en face de
+   sa langue ; un filet vert vertical la sépare du texte */
+.cover-verse-source {
+    display: flex;
+    align-items: center;
     gap: var(--sp-1);
-    font-size: var(--fs-2xs);
-    color: var(--col-text-light);
+    margin-left: var(--sp-1);
+    padding-left: var(--sp-2);
+    border-left: 0.75px solid var(--border-green);
 }
 
-.cover-source b {
-    font-weight: 600;
-    color: var(--col-text);
-}
-
-.cover-source-logo {
+.cover-verse-icon {
     flex-shrink: 0;
     width: 7mm;
     height: 7mm;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 0.75px solid var(--bg-blue-head); /* pastille blanche cerclée */
+    fill: none;
+    stroke: var(--col-green);
+    stroke-width: 1.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.cover-verse-icon .icon-page {
+    fill: white; /* pages claires sur le fond vert */
+}
+
+.cover-verse-icon .icon-star {
+    fill: var(--col-green);
+    stroke: none;
+}
+
+.cover-verse-refs {
+    display: flex;
+    flex-direction: column;
+    font-size: var(--fs-2xs);
+    line-height: calc(var(--fs-xs) * 1.45); /* même interligne que le texte : chaque référence en face de sa ligne */
+    font-weight: 600;
+    color: var(--col-green-dark); /* vert foncé, 7,3:1 */
+}
+
+.cover-verse cite {
+    font-style: normal;
+}
+
+.cover-verse-fr {
+    font-style: italic;
+    color: var(--col-text); /* gris foncé : texte principal, 11,7:1 sur le fond de l'encart */
+}
+
+.cover-verse-ta {
+    color: var(--col-text-light); /* gris moyen : traduction, 6,9:1 */
 }

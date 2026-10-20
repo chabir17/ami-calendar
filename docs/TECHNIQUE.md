@@ -161,7 +161,7 @@ Première page du PDF, avec une mise en page propre (ni header à torsades, ni g
 │ │ Scannez : … [QR]×2│ │                                              │
 │ │ contacts 2 × 2    │ │                                              │
 │ │ ┌ dons (IBAN) ──┐ │ │ ┌ encart du verset ─────────────────────────┐ │
-│ │ source : GMP      │ │ │  ﴾ français ﴿ réf. / ﴾ tamoul ﴿ réf.      │ │
+│ │ source : GMP      │ │ │  ﴾ français / tamoul │ [Coran] réf. / réf. ﴿  │ │
 │ └───────────────────┘ │ └──────────────────────────────────────────┘ │
 └───────────────────────┴──────────────────────────────────────────────┘
 ```
@@ -177,7 +177,7 @@ Première page du PDF, avec une mise en page propre (ni header à torsades, ni g
     - **Aïd** : pastille ronde de 18 px (`--bg-eid`) en pseudo-élément, chiffre en gras `--col-green-dark` ; prioritaire sur un jour férié.
     - Pas de légende : les marques se comprennent d'elles-mêmes (à revoir après les retours de l'impression).
     - `fitMiniHeads` réduit l'arabe puis resserre le nom français si un en-tête est trop large (aucun cas de 2025 à 2030).
-- **Verset** (An-Nisāʾ, 4:103) : encart `--bg-blue-head` sous les mois, son bas aligné sur celui de la colonne ; une ligne par langue (français en bleu marine italique, puis tamoul en bleu ardoise), entre parenthèses ornées ﴾ ﴿ dorées, chacune suivie de sa référence en or foncé (`--col-gold-text`). **Traductions seulement** : le texte arabe du Coran n'est pas imprimé sur un support destiné à être jeté.
+- **Verset** (An-Nisāʾ, 4:103), en deux lignes : encart vert très pâle (`--bg-friday-light`) sous les mois, aligné sur leurs grilles, son bas sur celui de la colonne. Entre deux grandes parenthèses ornées ﴾ ﴿ (vert du logo) : le français en gris foncé italique au-dessus du tamoul en gris moyen, puis, après un filet vert, l'icône du Coran (livre ouvert sur son pupitre, SVG inline) et les deux références en vert foncé, chacune en face de sa langue. **Traductions seulement** : le texte arabe du Coran n'est pas imprimé sur un support destiné à être jeté.
 
 ## 4. Logique métier (`services.js`)
 
@@ -278,7 +278,7 @@ Chargée par `?mosque=<id>` (`fetchClientConfig` ; la feuille du Ramadan utilise
 | Famille          | Jetons                                                                                                                                                                                                                                                                                                                           |
 | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Couleurs de sens | `--col-blue` (structure, grégorien), `--col-green` (hégirien, prières), `--col-green-dark` (texte sur vert pâle), `--col-saffron-text` (nom tamoul, frise du haut), `--col-terracotta` (fériés ; jeûne de la feuille du Ramadan)                                                                                                 |
-| Or et thème      | `--col-gold` (ornements de la feuille du Ramadan et de la couverture), `--col-gold-text` (références du verset de la couverture), `--brand` (thème client), `--brand-text` (`--brand` assombri, icônes par défaut)                                                                                                               |
+| Or et thème      | `--col-gold` (ornements de la feuille du Ramadan, ornement sous les années de la couverture), `--brand` (thème client), `--brand-text` (`--brand` assombri, icônes par défaut)                                                                                                                                                   |
 | Filets           | `--bg-blue-faint`, `--bg-green-faint` : filets sous les en-têtes et de fin de semaine (même teinte que les fonds pâles)                                                                                                                                                                                                          |
 | Fonds            | `--bg-blue-head` (bandeau du mois et ligne des jours), `--bg-blue-faint` (changement d'heure), `--bg-green-head` (en-tête des horaires), `--bg-green-faint` (= `--bg-friday`), `--bg-holiday`, `--bg-empty`, `--bg-terracotta-soft`, `--bg-eid` (pastille de la couverture), `--bg-cover-top` (haut du dégradé de la couverture) |
 | Texte            | `--col-text`, `--col-text-light`, `--col-text-soft`, `--col-ink` (chiffres), `--col-on-blue` (sur fond foncé, feuille du Ramadan)                                                                                                                                                                                                |

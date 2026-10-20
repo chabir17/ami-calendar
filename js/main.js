@@ -207,8 +207,8 @@ function updateCover(year, container) {
     const hStart = getHijriDateSafe(new Date(year, 0, 1));
     const hEnd = getHijriDateSafe(new Date(year, 11, 31));
     DOM.setText('.cover-year', year, container);
-    // Années hégiriennes sous l'année grégorienne (RTL : la première année à droite)
-    // Ordre chronologique de gauche à droite : marques LRM autour du tiret (sinon l'algorithme bidi inverse les chiffres arabes)
+    // Années hégiriennes sous l'année grégorienne, dans l'ordre chronologique de gauche à droite :
+    // marques LRM autour du tiret (sinon l'algorithme bidi inverse les deux nombres en chiffres arabes)
     DOM.setText('.cover-hijri', hStart.year === hEnd.year ? hEnd.yearAr : `${hStart.yearAr}\u200E – \u200E${hEnd.yearAr}`, container);
 
     const months = [];

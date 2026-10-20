@@ -20,7 +20,6 @@
 
     /* Or (ornements, filets, motif du header) */
     --col-gold: #c8a85a;
-    --col-gold-text: #856a2e; /* or foncé pour du texte (références du verset de la couverture) : 5.1:1 sur blanc */
 
     /* Terracotta (horaires du jeûne : Imsak, iftār, Icha AMI) */
     --col-terracotta: #a8461f; /* événements civils (fériés, changement d'heure), jeûne (feuille Ramadan) : 5.9:1 sur blanc, 5.5:1 sur --bg-holiday */
