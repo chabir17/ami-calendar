@@ -161,7 +161,7 @@ Première page du PDF, avec une mise en page propre (ni header à torsades, ni g
 │ │ Scannez : … [QR]×2│ │                                              │
 │ │ contacts 2 × 2    │ │                                              │
 │ │ ┌ dons (IBAN) ──┐ │ │ ┌ encart du verset ─────────────────────────┐ │
-│ │ source : GMP      │ │ │  ﴾ français / tamoul │ [Coran] réf. / réf. ﴿  │ │
+│ │ source : GMP      │ │ │   ﴾ français / tamoul ۝ ﴿  Coran 4:103 ×2 │ │
 │ └───────────────────┘ │ └──────────────────────────────────────────┘ │
 └───────────────────────┴──────────────────────────────────────────────┘
 ```
@@ -177,7 +177,7 @@ Première page du PDF, avec une mise en page propre (ni header à torsades, ni g
     - **Aïd** : pastille ronde de 18 px (`--bg-eid`) en pseudo-élément, chiffre en gras `--col-green-dark` ; prioritaire sur un jour férié.
     - Pas de légende : les marques se comprennent d'elles-mêmes (à revoir après les retours de l'impression).
     - `fitMiniHeads` réduit l'arabe puis resserre le nom français si un en-tête est trop large (aucun cas de 2025 à 2030).
-- **Verset** (An-Nisāʾ, 4:103), en deux lignes : encart vert très pâle (`--bg-friday-light`) sous les mois, aligné sur leurs grilles, son bas sur celui de la colonne. Entre deux grandes parenthèses ornées ﴾ ﴿ (vert du logo) : le français en gris foncé italique au-dessus du tamoul en gris moyen, puis, après un filet vert, l'icône du Coran (livre ouvert sur son pupitre, SVG inline) et les deux références en vert foncé, chacune en face de sa langue. **Traductions seulement** : le texte arabe du Coran n'est pas imprimé sur un support destiné à être jeté.
+- **Verset** (An-Nisāʾ, 4:103), en deux lignes, présenté comme dans un Coran imprimé : encart vert très pâle (`--bg-friday-light`) sous les mois, aligné sur leurs grilles, son bas sur celui de la colonne. Centré dans l'encart (grille `1fr auto 1fr`), entre deux grandes parenthèses ornées ﴾ ﴿ (vert du logo) : le français en gris foncé italique au-dessus du tamoul en gris moyen, puis le numéro dans le symbole de fin de verset ۝ (U+06DD, chiffres ١٠٣ inscrits dans le cercle par Amiri). Calée à droite, la référence sourate:verset, chacune en face de sa langue : « Coran 4:103 » et « குர்ஆன் 4:103 », en vert discret. **Traductions seulement** : le texte arabe du Coran n'est pas imprimé sur un support destiné à être jeté.
 
 ## 4. Logique métier (`services.js`)
 
