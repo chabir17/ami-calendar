@@ -116,10 +116,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: var(--cover-gap);
+    margin: var(--cover-gap) 3mm 0; /* rentré comme le contenu des mini-mois (marge intérieure de 3 mm) : aligné sur les grilles */
     padding: 1.2mm var(--sp-4);
     border-radius: var(--radius-card);
-    background: var(--bg-blue-head); /* encart bleu très pâle sur toute la largeur des mois, comme le bas de la colonne */
+    background: var(--bg-blue-head); /* même bleu que l'encart des dons */
 }
 
 .cover-verse-text {
@@ -159,7 +159,7 @@
     font-size: 1.25em;
     font-style: normal;
     line-height: 0;
-    color: var(--col-gold);
+    color: var(--col-gold-text); /* or foncé : traits fins, l'or clair disparaîtrait à l'impression */
 }
 
 /* Référence en or foncé : distincte des traductions (bleu), accordée aux ornements */
@@ -311,10 +311,11 @@
     padding: 1mm 2.5mm;
     border-top: none; /* l'encart se délimite par son fond */
     border-radius: var(--radius-card);
-    background: var(--bg-weekdays);
+    background: var(--bg-blue-head); /* même bleu que l'encart du verset */
     text-align: left;
 }
 
+/* Pastille inversée sur l'encart teinté (blanche sur bleu pâle, comme celles des contacts sont bleu pâle sur blanc) */
 .cover-donate .cover-badge {
     background: white;
 }
