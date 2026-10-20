@@ -20,6 +20,7 @@
 
     /* Or (ornements, filets, motif du header) */
     --col-gold: #c8a85a;
+    --col-gold-text: #856a2e; /* or foncé pour du texte (références du verset de la couverture) : 5.1:1 sur blanc */
 
     /* Terracotta (horaires du jeûne : Imsak, iftār, Icha AMI) */
     --col-terracotta: #a8461f; /* événements civils (fériés, changement d'heure), jeûne (feuille Ramadan) : 5.9:1 sur blanc, 5.5:1 sur --bg-holiday */
@@ -54,6 +55,7 @@
 
     /* Vert pastel (vendredis du tableau des horaires) */
     --bg-friday: var(--bg-green-faint); /* vendredis de la feuille Ramadan */
+    --bg-cover-top: #c8d8eb; /* couverture : haut du dégradé de la colonne d'identité (aucun texte à ce niveau : années hégiriennes en bleu ardoise à 5:1 plus bas) */
     --bg-weekdays: #f4f7fb; /* ligne des jours de la semaine : un cran plus pâle que le bandeau du mois */
     --bg-friday-light: #f1f8f2; /* vendredis du tableau annuel : plus pâle que l'en-tête vert (--bg-green-head) */
 
@@ -64,7 +66,6 @@
     --bg-blue-head: #eef3f9; /* bandeau du mois, ligne des jours et cadre du calendrier : bleu très pâle (teinte d'origine) */
     --bg-blue-faint: #eef3f9; /* changement d'heure du tableau, fonds neutres de la feuille Ramadan */
     --bg-green-head: #e7f2e8; /* en-tête et cadre du tableau des horaires : vert très pâle (teinte d'origine, comme les vendredis) */
-    --bg-ramadan: #e1f0e2; /* couverture : pastille du début du Ramadan, vert pastel clair */
     --bg-eid: #bfe0c2; /* couverture : pastille de l'Aïd, vert pastel un cran plus soutenu (texte --col-green-dark : 5,5:1) */
     --bg-green-faint: #e7f2e8; /* vert très clair : traits verticaux du tableau, vendredis de la feuille Ramadan */
     --border-blue: #c5d3e4; /* bordures du calendrier : bleu doux */
@@ -86,6 +87,7 @@
     --fs-md: 14px; /* courant : jours de la semaine, texte des tableaux */
     --fs-xl: 22px; /* titres : mois, années */
     --fs-month: 24px; /* noms des mois du bandeau (titres de la page) */
+    --fs-cover-year: 54px; /* année grégorienne de la couverture */
     --fs-brand: 28px; /* nom tamoul de l'association (header du calendrier annuel) */
     --fs-brand-fr: 20px; /* nom français : majuscules plus larges, même largeur que le nom tamoul */
     --fs-figure: 15px; /* chiffres : horaires de prière, invocation et noms de l'association (feuille Ramadan) */

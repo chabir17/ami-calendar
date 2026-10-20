@@ -200,22 +200,24 @@ const hijriLines = (months) => {
 };
 
 /**
- * Couverture : années et aperçu des 12 mois (vacances scolaires, début du Ramadan, Aïds et jours fériés repérés),
+ * Couverture : années et aperçu des 12 mois sur 5 semaines (vacances scolaires, Aïds et jours fériés repérés),
  * calculés comme dans les pages des mois (getHijriDateSafe, getDayInfo).
  */
 function updateCover(year, container) {
     const hStart = getHijriDateSafe(new Date(year, 0, 1));
     const hEnd = getHijriDateSafe(new Date(year, 11, 31));
     DOM.setText('.cover-year', year, container);
-    // Années hégiriennes sur deux lignes, à droite de l'année grégorienne
-    const hijriYears = container.querySelector('.cover-hijri');
-    if (hijriYears) hijriYears.innerHTML = hStart.year === hEnd.year ? hEnd.yearAr : `<span>${hStart.yearAr}</span><span>${hEnd.yearAr}</span>`;
+    // Années hégiriennes sous l'année grégorienne (RTL : la première année à droite)
+    // Ordre chronologique de gauche à droite : marques LRM autour du tiret (sinon l'algorithme bidi inverse les chiffres arabes)
+    DOM.setText('.cover-hijri', hStart.year === hEnd.year ? hEnd.yearAr : `${hStart.yearAr}\u200E – \u200E${hEnd.yearAr}`, container);
 
     const months = [];
     for (let m = 0; m < 12; m++) {
         const first = new Date(year, m, 1);
         const days = new Date(year, m + 1, 0).getDate();
-        const cells = Array.from({ length: (first.getDay() + 6) % 7 }, () => '<span></span>');
+        // Grille de 5 semaines (35 cases), comme les pages des mois : les jours au-delà remontent dans les premières cases vides
+        const offset = (first.getDay() + 6) % 7;
+        const cells = Array.from({ length: 35 }, () => '<span></span>');
         const hijriMonths = new Map(); // nom arabe → année hégirienne
         for (let d = 1; d <= days; d++) {
             const date = new Date(year, m, d);
@@ -224,10 +226,9 @@ function updateCover(year, container) {
             hijriMonths.set(hijri.monthNameAR, hijri.yearAr);
             const cls = [];
             if (info.isHoliday) cls.push('is-holiday');
-            if (hijri.monthNameFR === 'Ramaḍān' && parseInt(hijri.day, 10) === 1) cls.push('is-ramadan'); // début du Ramadan seulement
             if (info.isEid) cls.push('is-eid');
             if (info.isPublicHoliday) cls.push('is-public');
-            cells.push(`<span class="${cls.join(' ')}">${d}</span>`);
+            cells[(offset + d - 1) % 35] = `<span class="${cls.join(' ')}">${d}</span>`;
         }
         months.push(`<div class="mini-month">
             <div class="mini-head"><span class="mini-names"><span class="mini-name">${window.TEXTS?.fr.months[m] ?? ''}</span><span class="mini-name-ta tamil">${window.TEXTS?.ta.months[m] ?? ''}</span></span><span class="mini-hijri arabic">${hijriLines(hijriMonths)}</span></div>
@@ -256,7 +257,7 @@ function fitMiniHeads(root) {
 
 /**
  * Couverture : fond des vacances scolaires de chaque mini-mois en SVG vectoriel, derrière les chiffres
- * (cases jointives, sans liseré entre elles dans le PDF). Le début du Ramadan et les Aïds sont des pastilles CSS par-dessus.
+ * (cases jointives, sans liseré entre elles dans le PDF). Les Aïds sont des pastilles CSS par-dessus.
  * @param {HTMLElement} root
  */
 function drawCoverBackdrop(root) {

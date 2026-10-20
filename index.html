@@ -252,75 +252,151 @@
         <!-- Template pour une cellule du calendrier (Optimisation JS) -->
         <!-- Page de couverture : colonne logo, années, Mawaqit et coordonnées | aperçu des 12 mois (3 × 4) sur toute la hauteur -->
         <template id="cover-template">
+            <!-- Couverture : colonne d'identité (affiche : logo, années | carte pratique : Mawaqit, contacts, dons, source)
+                 | 12 mois (3 × 4) et verset sur la prière en dessous -->
             <div class="page A4-landscape cover-page">
                 <div class="cover-body">
                     <aside class="cover-identity">
-                        <img src="assets/img/AMI.png" alt="Logo de l'Association Musulmane de l'Inde" class="cover-logo logo-img" />
-                        <div class="cover-ornament" aria-hidden="true"><span></span></div>
-                        <div class="cover-years">
+                        <!-- Fond de la colonne, en SVG pour rester vectoriel dans le PDF : dégradé bleu (soutenu en haut, bleu des bandeaux des mois aux deux tiers, presque blanc en bas) et
+                             motif girih bleu, net derrière le logo, qui s'estompe vers le bas -->
+                        <svg class="cover-identity-bg" aria-hidden="true">
+                            <defs>
+                                <linearGradient id="cover-bg-grad" x1="0" y1="0" x2="0" y2="1">
+                                    <stop class="cover-bg-top" offset="0" />
+                                    <stop class="cover-bg-mid" offset="0.65" />
+                                    <stop class="cover-bg-bottom" offset="1" />
+                                </linearGradient>
+                                <linearGradient id="cover-girih-fade" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="0" stop-color="#fff" />
+                                    <stop offset="0.4" stop-color="#fff" />
+                                    <stop offset="0.62" stop-color="#404040" />
+                                </linearGradient>
+                                <mask id="cover-girih-fade-mask" maskContentUnits="objectBoundingBox">
+                                    <rect width="1" height="1" fill="url(#cover-girih-fade)" />
+                                </mask>
+                                <path
+                                    id="cover-girih-path"
+                                    fill="none"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M0 16.8L-4.92 11.88M0 73.2L-4.92 78.12M-4.92 11.88L-11.88 11.88M-4.92 78.12L-11.88 78.12M-11.88 40.08L0 45M-11.88 49.92L0 45M0 16.8L-19.94 36.74M0 73.2L-19.94 53.26M16.8 0L11.88 -4.92M73.2 0L78.12 -4.92M11.88 -4.92L11.88 -11.88M78.12 -4.92L78.12 -11.88M40.08 -11.88L45 0M49.92 -11.88L45 0M16.8 0L36.74 -19.94M73.2 0L53.26 -19.94M16.8 0L11.88 4.92M16.8 90L11.88 85.08M73.2 0L78.12 4.92M73.2 90L78.12 85.08M11.88 4.92L11.88 11.88M11.88 85.08L11.88 78.12M78.12 4.92L78.12 11.88M78.12 85.08L78.12 78.12M11.88 11.88L40.08 11.88M11.88 78.12L40.08 78.12M78.12 11.88L49.92 11.88M78.12 78.12L49.92 78.12M40.08 11.88L45 0M40.08 78.12L45 90M49.92 11.88L45 0M49.92 78.12L45 90M16.8 0L36.74 19.94M16.8 90L36.74 70.06M73.2 0L53.26 19.94M73.2 90L53.26 70.06M36.74 19.94L31.82 31.82M36.74 70.06L31.82 58.18M53.26 19.94L58.18 31.82M53.26 70.06L58.18 58.18M31.82 31.82L45 26.36M31.82 58.18L45 63.64M58.18 31.82L45 26.36M58.18 58.18L45 63.64M0 16.8L4.92 11.88M0 73.2L4.92 78.12M90 16.8L85.08 11.88M90 73.2L85.08 78.12M4.92 11.88L11.88 11.88M4.92 78.12L11.88 78.12M85.08 11.88L78.12 11.88M85.08 78.12L78.12 78.12M11.88 11.88L11.88 40.08M11.88 78.12L11.88 49.92M78.12 11.88L78.12 40.08M78.12 78.12L78.12 49.92M11.88 40.08L0 45M11.88 49.92L0 45M78.12 40.08L90 45M78.12 49.92L90 45M0 16.8L19.94 36.74M0 73.2L19.94 53.26M90 16.8L70.06 36.74M90 73.2L70.06 53.26M19.94 36.74L31.82 31.82M19.94 53.26L31.82 58.18M70.06 36.74L58.18 31.82M70.06 53.26L58.18 58.18M31.82 31.82L26.36 45M31.82 58.18L26.36 45M58.18 31.82L63.64 45M58.18 58.18L63.64 45M16.8 90L11.88 94.92M73.2 90L78.12 94.92M11.88 94.92L11.88 101.88M78.12 94.92L78.12 101.88M40.08 101.88L45 90M49.92 101.88L45 90M16.8 90L36.74 109.94M73.2 90L53.26 109.94M90 16.8L94.92 11.88M90 73.2L94.92 78.12M94.92 11.88L101.88 11.88M94.92 78.12L101.88 78.12M101.88 40.08L90 45M101.88 49.92L90 45M90 16.8L109.94 36.74M90 73.2L109.94 53.26"
+                                />
+                                <mask id="cover-girih-line" maskUnits="userSpaceOnUse" x="0" y="0" width="90" height="90">
+                                    <use href="#cover-girih-path" stroke="#fff" stroke-width="3" />
+                                    <use href="#cover-girih-path" stroke="#000" stroke-width="2" />
+                                </mask>
+                                <pattern id="cover-girih" width="90" height="90" patternUnits="userSpaceOnUse">
+                                    <rect class="cover-girih-tile" width="90" height="90" mask="url(#cover-girih-line)" />
+                                </pattern>
+                            </defs>
+                            <rect width="100%" height="100%" fill="url(#cover-bg-grad)" />
+                            <rect width="100%" height="100%" fill="url(#cover-girih)" fill-opacity="0.16" mask="url(#cover-girih-fade-mask)" />
+                        </svg>
+                        <!-- 1. Affiche : logo et années, posés directement sur le panneau (point focal de la page) -->
+                        <div class="cover-title">
+                            <img src="assets/img/AMI.png" alt="Logo de l'Association Musulmane de l'Inde" class="cover-logo logo-img" />
                             <div class="cover-year"></div>
-                            <div class="cover-hijri arabic dir-rtl"></div>
+                            <div class="cover-hijri arabic" dir="ltr"></div>
+                            <svg class="cover-title-orn" viewBox="0 0 64 6" aria-hidden="true">
+                                <path class="orn-line" d="M0 3H25M39 3H64" />
+                                <circle cx="27.5" cy="3" r="0.9" />
+                                <path d="M32 0.5L34.5 3L32 5.5L29.5 3Z" />
+                                <circle cx="36.5" cy="3" r="0.9" />
+                            </svg>
                         </div>
-                        <p class="cover-sources">Horaires de la Grande Mosquée de Paris • Dates hégiriennes calculées,<br />à un jour près selon l'observation du croissant</p>
-                        <!-- Pied de colonne : titre Mawaqit commun, un QR code par lieu (nom et adresse), puis contacts et dons -->
-                        <footer class="cover-footer">
-                            <div class="cover-footer-title">Horaires et annonces sur Mawaqit</div>
-                            <figure class="cover-qr">
-                                <div class="cover-qr-code">
-                                    <img src="assets/img/qr-mawaqit-pasteur.svg" alt="QR code Mawaqit de la Mosquée AMI, boulevard Pasteur" />
-                                    <img class="cover-qr-logo" src="assets/img/mawaqit-icon.png" alt="" />
+                        <!-- 3. Informations pratiques (seule carte de la colonne) : Mawaqit, sources et contacts -->
+                        <div class="cover-info">
+                            <section class="cover-mawaqit">
+                                <h3 class="cover-section-title">Scannez&nbsp;: horaires et annonces</h3>
+                                <div class="cover-qr-list">
+                                    <figure class="cover-qr">
+                                        <div class="cover-qr-code">
+                                            <img src="assets/img/qr-mawaqit-pasteur.svg" alt="QR code Mawaqit de la Mosquée AMI, boulevard Pasteur" />
+                                            <img class="cover-qr-logo" src="assets/img/mawaqit-icon.png" alt="" />
+                                        </div>
+                                        <figcaption>
+                                            <span class="cover-qr-name"
+                                                ><svg class="icon"><use href="assets/icons/icon-mosque.svg#icon"></use></svg> Mosquée</span
+                                            >
+                                            <span class="cover-qr-addr">91-93 bd Pasteur<br />93120 La Courneuve</span>
+                                        </figcaption>
+                                    </figure>
+                                    <figure class="cover-qr">
+                                        <div class="cover-qr-code">
+                                            <img src="assets/img/qr-mawaqit-musset.svg" alt="QR code Mawaqit de la Salle de prière AMI, place Alfred de Musset" />
+                                            <img class="cover-qr-logo" src="assets/img/mawaqit-icon.png" alt="" />
+                                        </div>
+                                        <figcaption>
+                                            <span class="cover-qr-name"
+                                                ><svg class="icon"><use href="assets/icons/icon-office.svg#icon"></use></svg> Salle de prière</span
+                                            >
+                                            <span class="cover-qr-addr">7-8 pl. Alfred de Musset<br />93120 La Courneuve</span>
+                                        </figcaption>
+                                    </figure>
                                 </div>
-                                <figcaption>
-                                    <span class="cover-qr-name"
-                                        ><svg class="icon"><use href="assets/icons/icon-mosque.svg#icon"></use></svg> Mosquée</span
-                                    >
-                                    <span class="cover-qr-addr">91-93 boulevard Pasteur<br />93120 La Courneuve</span>
-                                </figcaption>
-                            </figure>
-                            <figure class="cover-qr">
-                                <div class="cover-qr-code">
-                                    <img src="assets/img/qr-mawaqit-musset.svg" alt="QR code Mawaqit de la Salle de prière AMI, place Alfred de Musset" />
-                                    <img class="cover-qr-logo" src="assets/img/mawaqit-icon.png" alt="" />
+                            </section>
+                            <!-- Coordonnées : grille 2 × 2, une pastille d'icône par moyen de contact -->
+                            <ul class="cover-contacts">
+                                <li>
+                                    <span class="cover-badge"
+                                        ><svg class="icon"><use href="assets/icons/icon-phone.svg#icon"></use></svg></span
+                                    >01.48.36.48.66
+                                </li>
+                                <li>
+                                    <span class="cover-badge"
+                                        ><svg class="icon"><use href="assets/icons/icon-whatsapp.svg#icon"></use></svg></span
+                                    >07.86.14.66.55
+                                </li>
+                                <li>
+                                    <span class="cover-badge"
+                                        ><svg class="icon"><use href="assets/icons/icon-email.svg#icon"></use></svg></span
+                                    >ami93120@gmail.com
+                                </li>
+                                <li>
+                                    <span class="cover-badge"
+                                        ><svg class="icon"><use href="assets/icons/icon-website.svg#icon"></use></svg></span
+                                    >ami93.com
+                                </li>
+                            </ul>
+                            <!-- Dons : encart teinté, distinct des contacts -->
+                            <div class="cover-donate">
+                                <span class="cover-badge"
+                                    ><svg class="icon"><use href="assets/icons/icon-bank.svg#icon"></use></svg
+                                ></span>
+                                <div class="cover-donate-text">
+                                    <span class="cover-donate-title">Soutenez votre mosquée</span>
+                                    <span>IBAN&nbsp;: FR07 2004 1000 0140 0610 1N02 017</span>
+                                    <span>BIC&nbsp;: PSSTFRPPPAR</span>
                                 </div>
-                                <figcaption>
-                                    <span class="cover-qr-name"
-                                        ><svg class="icon"><use href="assets/icons/icon-office.svg#icon"></use></svg> Salle de prière</span
-                                    >
-                                    <span class="cover-qr-addr">7-8 place Alfred de Musset<br />93120 La Courneuve</span>
-                                </figcaption>
-                            </figure>
-                            <div class="cover-contacts">
-                                <div class="cover-contacts-row">
-                                    <span
-                                        ><svg class="icon"><use href="assets/icons/icon-phone.svg#icon"></use></svg> 01.48.36.48.66</span
-                                    ><span
-                                        ><svg class="icon"><use href="assets/icons/icon-whatsapp.svg#icon"></use></svg> 07.86.14.66.55</span
-                                    >
-                                </div>
-                                <div class="cover-contacts-row">
-                                    <span
-                                        ><svg class="icon"><use href="assets/icons/icon-email.svg#icon"></use></svg> ami93120@gmail.com</span
-                                    ><span
-                                        ><svg class="icon"><use href="assets/icons/icon-website.svg#icon"></use></svg> ami93.com</span
-                                    >
-                                </div>
-                                <div class="cover-contacts-row cover-bank">
-                                    <span
-                                        ><svg class="icon"><use href="assets/icons/icon-bank.svg#icon"></use></svg> IBAN&nbsp;: FR07 2004 1000 0140 0610 1N02 017</span
-                                    >
-                                </div>
-                                <div class="cover-contacts-row cover-bank cover-bic"><span>BIC&nbsp;: PSSTFRPPPAR</span></div>
                             </div>
-                        </footer>
+                            <!-- Source des horaires du calendrier, en pied de carte -->
+                            <p class="cover-source">
+                                <img src="assets/img/logo-gmp.png" alt="" class="cover-source-logo" /><span>Horaires de prière&nbsp;: <b>Grande Mosquée de Paris</b></span>
+                            </p>
+                        </div>
                     </aside>
                     <section class="cover-months-zone">
                         <div class="cover-months"></div>
-                        <div class="cover-legend">
-                            <span class="cover-legend-item"><span class="swatch swatch-holiday"></span>Vacances scolaires (zone C)</span>
-                            <span class="cover-legend-item"><span class="swatch swatch-ramadan"></span>Début du Ramadan</span>
-                            <span class="cover-legend-item"><span class="swatch swatch-eid"></span>Aïd</span>
-                            <span class="cover-legend-item"><span class="swatch swatch-public"></span>Jour férié</span>
-                        </div>
+                        <!-- Verset sur la prière à son heure (An-Nisāʾ, 4:103), sous les mois (une ligne par langue), en traduction seulement : le texte
+                             arabe du Coran n'est pas imprimé sur un support destiné à être jeté -->
+                        <figure class="cover-verse">
+                            <div class="cover-verse-text">
+                                <p class="cover-verse-fr">
+                                    <span class="cover-verse-mark arabic">﴾</span>La prière est, pour les croyants, une prescription à des temps déterminés.<span
+                                        class="cover-verse-mark arabic"
+                                        >﴿</span
+                                    >
+                                    <cite>An-Nisāʾ, 103</cite>
+                                </p>
+                                <p class="cover-verse-ta tamil">
+                                    <span class="cover-verse-mark arabic">﴾</span>நிச்சயமாக தொழுகை முஃமின்கள் மீது நேரம் குறிக்கப்பட்ட கடமையாக இருக்கிறது.<span
+                                        class="cover-verse-mark arabic"
+                                        >﴿</span
+                                    >
+                                    <cite>அந்-நிஸா, 103</cite>
+                                </p>
+                            </div>
+                        </figure>
                     </section>
                 </div>
             </div>

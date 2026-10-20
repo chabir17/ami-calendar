@@ -40,10 +40,10 @@ Sans Node : `python3 -m http.server 3000` depuis la racine du projet.
 ## Impression (copieur laser de l'association)
 
 - Recto seul, reliure à spirale sur le bord haut : une zone de 10 mm est réservée en haut de chaque page (`--binding-zone`).
-- Marge de 5 mm sur les bords (`--page-pad`), au-delà de la zone non imprimable du copieur ; 10 mm sur les côtés et en bas de la couverture.
+- Marge de 5 mm sur les bords (`--page-pad`), au-delà de la zone non imprimable du copieur, couverture comprise.
 - Dans le pilote : qualité **Graphique** ou **Photo**, **économie de toner désactivée** (sinon les aplats foncés deviennent tramés).
 - Papier conseillé pour le calendrier mural : **120 g/m²**, blanc, non couché, « laser couleur ».
-- Faire une page test (couleurs, frises du header, petits libellés de 9 px, fond pâle des vacances) avant de lancer le tirage complet ; sur la couverture, scanner les deux QR codes Mawaqit.
+- Faire une page test (couleurs, frises du header, petits libellés de 9 px, fond pâle des vacances) avant de lancer le tirage complet ; sur la couverture, scanner les deux QR codes Mawaqit et vérifier le dégradé bleu de la colonne et le motif girih.
 
 ## Préparer une nouvelle année
 
