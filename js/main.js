@@ -207,17 +207,14 @@ const hijriLines = (months) => {
 function updateCover(year, container) {
     const hStart = getHijriDateSafe(new Date(year, 0, 1));
     const hEnd = getHijriDateSafe(new Date(year, 11, 31));
-    // Année en deux parties : le siècle (« 20 ») en bleu, l'année du siècle (« 27 ») en or
+    // Année en deux parties : le siècle (« 20 ») en bleu clair, l'année du siècle (« 27 ») en bleu foncé
     const yearParts = `<tspan class="cover-year-century">${String(year).slice(0, 2)}</tspan><tspan class="cover-year-short">${String(year).slice(2)}</tspan>`;
     container.querySelectorAll('.cover-year-text').forEach((t) => (t.innerHTML = yearParts));
     container.querySelector('.cover-year')?.setAttribute('aria-label', year);
     // Années hégiriennes à droite de l'année grégorienne, l'une sous l'autre dans l'ordre chronologique
     const hijriBox = container.querySelector('.cover-hijri');
-    // Chaque année en deux parties, comme l'année grégorienne : « ١٤ » en vert pâle, « ٤٨ » en vert clair
-    if (hijriBox)
-        hijriBox.innerHTML = [...new Set([hStart.yearAr, hEnd.yearAr])]
-            .map((y) => `<span><span class="cover-hijri-century">${y.slice(0, 2)}</span><span class="cover-hijri-short">${y.slice(2)}</span></span>`)
-            .join('');
+    // Années hégiriennes l'une sous l'autre, dans l'ordre chronologique (une seule si l'année grégorienne tient dans une année hégirienne)
+    if (hijriBox) hijriBox.innerHTML = [...new Set([hStart.yearAr, hEnd.yearAr])].map((y) => `<span>${y}</span>`).join('');
 
     const months = [];
     for (let m = 0; m < 12; m++) {

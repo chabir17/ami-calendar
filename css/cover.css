@@ -323,59 +323,18 @@
 }
 
 /* En-tête des années, épuré et centré sur les mois : l'année grégorienne et les années hégiriennes l'une sous l'autre
-   (les couleurs suffisent à distinguer les deux calendriers), posés sur le filet qui ouvre les mois */
+   (les couleurs suffisent à distinguer les deux calendriers), séparés des mois par un simple espace blanc */
 .cover-years {
-    position: relative;
     display: flex;
-    align-items: center;
+    align-items: flex-start; /* années en haut de la zone : l'espace libre reste en dessous, avant les mois */
     justify-content: center; /* centré sur les mois, comme le verset en bas de page */
     gap: 8mm;
-    padding: 1mm 2mm 5mm; /* calé sur les grilles des mois ; air avant le filet */
+    flex: 1; /* occupe la hauteur libre : grand espace blanc avant les mois */
+    padding: 0 2mm;
     white-space: nowrap;
 }
 
-/* Transition vers les mois : filet bleu doux aligné sur les grilles, fermé au centre par une étoile à huit branches */
-.cover-years::before {
-    content: '';
-    position: absolute;
-    left: 2mm;
-    right: 2mm;
-    bottom: 2mm;
-    height: var(--hairline);
-    background: var(--border-blue);
-}
-
-/* Fermoir du filet : étoile à huit branches (contour doré, cœur en petite étoile pleine) sur un blanc qui coupe le filet,
-   prolongée de deux traits dorés qui s'estompent dans le filet bleu */
-.cover-years-star {
-    position: absolute;
-    left: 50%;
-    bottom: calc(2mm - 2mm); /* centrée sur le filet */
-    width: 27mm;
-    height: 4mm;
-    transform: translateX(-50%);
-}
-
-.cover-star-stop {
-    stop-color: var(--col-gold);
-}
-
-.cover-star-mask {
-    fill: white;
-}
-
-.cover-star-outer {
-    fill: white;
-    stroke: var(--col-gold);
-    stroke-width: 0.6;
-    stroke-linejoin: round;
-}
-
-.cover-star-inner {
-    fill: var(--col-gold);
-}
-
-/* Année : chiffres gras, « 20 » en dégradé bleu (marine → ardoise), « 27 » en dégradé doré, motif girih blanc en
+/* Année : chiffres gras, « 20 » en dégradé bleu clair (ardoise → bleu doux), « 27 » en dégradé bleu foncé (marine → bleu nuit), motif girih blanc en
    filigrane dans tous les chiffres */
 .cover-year {
     overflow: visible;
@@ -388,19 +347,19 @@
 }
 
 .cover-year-top {
-    stop-color: var(--col-blue);
-}
-
-.cover-year-bottom {
     stop-color: var(--col-title-blue);
 }
 
-.cover-year-gold-top {
-    stop-color: var(--col-gold);
+.cover-year-bottom {
+    stop-color: var(--col-blue-soft);
 }
 
-.cover-year-gold-bottom {
-    stop-color: var(--col-gold-deep);
+.cover-year-dark-top {
+    stop-color: var(--col-blue);
+}
+
+.cover-year-dark-bottom {
+    stop-color: var(--col-blue-deep);
 }
 
 .cover-year-century {
@@ -408,7 +367,7 @@
 }
 
 .cover-year-short {
-    fill: url(#cover-year-gold);
+    fill: url(#cover-year-dark);
 }
 
 .cover-year-motif tspan {
@@ -433,19 +392,11 @@
     direction: ltr; /* chiffres dans l'ordre, malgré les deux parties */
 }
 
-/* Deux verts, comme le bleu et l'or de l'année : « ١٤ » pâle, « ٤٨ » plus vif */
-.cover-hijri-short {
-    color: var(--col-hijri-bright);
-}
-
 /* 12 mois sur trois lignes de quatre */
 .cover-months {
-    flex: 1;
     display: grid;
-    grid-template-rows: repeat(3, auto);
-    align-content: space-between; /* les trois lignes de mois occupent toute la hauteur libre */
     grid-template-columns: repeat(4, minmax(0, 1fr)); /* largeurs égales, quel que soit l'en-tête */
-    gap: var(--cover-gap) 4mm; /* colonnes plus espacées : deux mois voisins ne se confondent pas */
+    gap: 4mm; /* même écart entre les mois, horizontalement et verticalement */
 }
 
 /* Chaque mois : en-tête souligné d'un filet, sans fond ni cadre pour rester léger */

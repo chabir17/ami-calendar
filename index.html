@@ -382,9 +382,9 @@
                         </div>
                     </aside>
                     <section class="cover-months-zone">
-                        <!-- En-tête : année grégorienne et années hégiriennes l'une sous l'autre ; fermoir étoilé sur le filet -->
+                        <!-- En-tête : année grégorienne et années hégiriennes l'une sous l'autre, séparés des mois par un simple espace -->
                         <header class="cover-years">
-                            <!-- Année en SVG (vectorielle dans le PDF) : « 20 » en dégradé bleu et « 27 » en dégradé doré, motif girih en filigrane dans les
+                            <!-- Année en SVG (vectorielle dans le PDF) : « 20 » en bleu clair et « 27 » en bleu foncé (dégradés), motif girih en filigrane dans les
                                  chiffres ; le texte et la largeur sont posés par updateCover et fitCoverYear -->
                             <svg class="cover-year" aria-label="" role="img">
                                 <defs>
@@ -392,9 +392,9 @@
                                         <stop class="cover-year-top" offset="0" />
                                         <stop class="cover-year-bottom" offset="1" />
                                     </linearGradient>
-                                    <linearGradient id="cover-year-gold" x1="0" y1="0" x2="0" y2="1">
-                                        <stop class="cover-year-gold-top" offset="0" />
-                                        <stop class="cover-year-gold-bottom" offset="1" />
+                                    <linearGradient id="cover-year-dark" x1="0" y1="0" x2="0" y2="1">
+                                        <stop class="cover-year-dark-top" offset="0" />
+                                        <stop class="cover-year-dark-bottom" offset="1" />
                                     </linearGradient>
                                     <pattern id="cover-year-girih" width="90" height="90" patternUnits="userSpaceOnUse" patternTransform="scale(0.42)">
                                         <rect class="cover-year-girih-tile" width="90" height="90" mask="url(#cover-girih-line)" />
@@ -404,30 +404,6 @@
                                 <text class="cover-year-text cover-year-motif" fill="url(#cover-year-girih)"></text>
                             </svg>
                             <div class="cover-hijri arabic"></div>
-                            <!-- Fermoir du filet : étoile à huit branches (khatam, motif du girih) à cœur plein, prolongée de deux traits dorés qui s'estompent -->
-                            <svg class="cover-years-star" viewBox="-40 -6 80 12" aria-hidden="true">
-                                <defs>
-                                    <linearGradient id="cover-star-fade-l" x1="0" y1="0" x2="1" y2="0">
-                                        <stop class="cover-star-stop" offset="0" stop-opacity="0" />
-                                        <stop class="cover-star-stop" offset="1" />
-                                    </linearGradient>
-                                    <linearGradient id="cover-star-fade-r" x1="0" y1="0" x2="1" y2="0">
-                                        <stop class="cover-star-stop" offset="0" />
-                                        <stop class="cover-star-stop" offset="1" stop-opacity="0" />
-                                    </linearGradient>
-                                </defs>
-                                <rect class="cover-star-mask" x="-8" y="-6" width="16" height="12" />
-                                <rect x="-40" y="-0.25" width="32" height="0.5" fill="url(#cover-star-fade-l)" />
-                                <rect x="8" y="-0.25" width="32" height="0.5" fill="url(#cover-star-fade-r)" />
-                                <path
-                                    class="cover-star-outer"
-                                    d="M0.00 -5.40L1.58 -3.82L3.82 -3.82L3.82 -1.58L5.40 0.00L3.82 1.58L3.82 3.82L1.58 3.82L0.00 5.40L-1.58 3.82L-3.82 3.82L-3.82 1.58L-5.40 0.00L-3.82 -1.58L-3.82 -3.82L-1.58 -3.82Z"
-                                />
-                                <path
-                                    class="cover-star-inner"
-                                    d="M0.00 -2.30L0.67 -1.63L1.63 -1.63L1.63 -0.67L2.30 0.00L1.63 0.67L1.63 1.63L0.67 1.63L0.00 2.30L-0.67 1.63L-1.63 1.63L-1.63 0.67L-2.30 0.00L-1.63 -0.67L-1.63 -1.63L-0.67 -1.63Z"
-                                />
-                            </svg>
                         </header>
                         <div class="cover-months"></div>
                         <!-- Verset sur la prière à son heure (An-Nisāʾ, 4:103), sous les mois (deux lignes : français et tamoul, puis le numéro dans le symbole de fin de verset, entre deux grandes parenthèses ornées ; à droite, la référence en français et en tamoul), en traduction seulement : le texte
