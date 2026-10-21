@@ -153,8 +153,8 @@ Première page du PDF, avec une mise en page propre (ni header à torsades, ni g
 
 ```
 ┌───────────────────────┬──────────────────────────────────────────────┐
-│░░░░ [logo 66 mm] ░░░░░│           2027 ┆ ١٤٤٨                        │
-│░░░░░░░░░░░░░░░░░░░░░░│                ┆ ١٤٤٩                        │
+│░░░░ [logo 66 mm] ░░░░░│           2027   ١٤٤٨                        │
+│░░░░░░░░░░░░░░░░░░░░░░│                  ١٤٤٩                        │
 │░░░░░░░░░░░░░░░░░░░░░░│ ──────────────────────✶──────────────────────│
 │ ┌ carte blanche ────┐ │ JANVIER  رجب  FÉVRIER …  MARS …   AVRIL …   │
 │ │ (◷) Horaires…     │ │ … 12 mini-mois, 4 colonnes × 3 lignes,       │
@@ -162,8 +162,8 @@ Première page du PDF, avec une mise en page propre (ni header à torsades, ni g
 │ │ Mosquée   Salle…  │ │                                              │
 │ │ (GMP) Horaires…   │ │                                              │
 │ │ contacts 2 × 2    │ │                                              │
-│ │ (LBP) Soutenez…   │ │ ┌ encart du verset ────────────────────────┐ │
-│ │       IBAN, BIC   │ │ │  ﴾ français / tamoul ۝ ﴿     Coran 4:103 ×2 │ │
+│ │ (♡) Soutenez…     │ │ ┌ encart du verset ────────────────────────┐ │
+│ │ (LBP) IBAN, BIC   │ │ │  ﴾ français / tamoul ۝ ﴿     Coran 4:103 ×2 │ │
 │ └───────────────────┘ │ └─────────────────────────────────────────┘ │
 └───────────────────────┴──────────────────────────────────────────────┘
 ```
@@ -172,11 +172,11 @@ Première page du PDF, avec une mise en page propre (ni header à torsades, ni g
     - **Fond** : SVG inline `.cover-identity-bg` (vectoriel dans le PDF, voir 8) : dégradé vertical `--bg-cover-top` → `--bg-blue-head` (aux deux tiers) → `--bg-weekdays`, et motif girih en `--col-title-blue` à 16 %, net en haut et estompé vers le bas par un masque. Couleurs portées par des classes (`.cover-bg-top`…) et des jetons, pas dans le SVG.
     - **Logo** de 66 mm, en haut : il est sur la même bande que l'en-tête des années.
     - **Carte pratique** (blanche, alignée à gauche comme une fiche), rubriques séparées par des filets `--border-blue` (`--info-gap`), pastilles de 7 mm pour les en-têtes et de 5 mm pour les éléments (lieux, contacts), chacune ouverte par une pastille ronde bleu pâle et un titre français (petites capitales) et tamoul :
-        - **Horaires de prière et annonces** (pastille Mawaqit) : les deux lieux côte à côte, QR code puis nom (pastille : mosquée, tapis de prière `icon-prayer-room`) et rue centrés dessous, la ville écrite une seule fois ; en dernière ligne, la source des horaires imprimés (pastille GMP, « Horaires de ce calendrier : Grande Mosquée de Paris », « இந்த நாட்காட்டியின் நேரங்கள் », en 10 px), complément de Mawaqit (horaires à jour et annonces) ;
+        - **Horaires de prière et annonces** (pastille Mawaqit) : les deux lieux côte à côte, QR code puis nom (pastille : mosquée, tapis de prière `icon-prayer-room`) et rue centrés dessous, la ville écrite une seule fois ; en dernière ligne, la source des horaires imprimés (pastille GMP, deux lignes en 10 px : « Horaires : Grande Mosquée de Paris », « நேரங்கள்: பாரிஸ் பெரிய பள்ளிவாசல் »), complément de Mawaqit (horaires à jour et annonces) ;
         - **contacts** en grille 2 × 2, sans titre, avec pastilles d'icône (téléphone fixe, WhatsApp, courriel, site) ; une icône n'a qu'un seul sens sur la page ;
-        - **Soutenez votre mosquée** (pastille La Banque Postale) : IBAN et BIC en 10 px, sous le titre.
+        - **Soutenez votre mosquée** (pastille « don » : main portant un cœur, `icon-donate`) : IBAN et BIC en 10 px, précédés du symbole de La Banque Postale en pastille.
     - **Logos partenaires** en bleu marine monochrome, dans les mêmes pastilles que les icônes : `mawaqit-icon-mono.png`, `logo-lbp-mono.svg` (oiseau redessiné en vectoriel), `logo-gmp-mono.png`. Les versions en couleur restent dans `assets/img/` (l'icône Mawaqit en couleur est celle du centre des QR codes). Usage des marques à faire autoriser.
-- **En-tête des années** (`.cover-years`), épuré, centré sur les mois et posé sur un filet `--border-blue` ponctué d'une étoile à huit branches (khatam, motif du girih ; contour doré, cœur blanc) : l'année (`--fs-cover-year`, gras, en SVG ajusté par `fitCoverYear` : « 20 » en dégradé bleu, « 27 » en dégradé doré `--col-gold` → `--col-gold-deep`, motif girih blanc en filigrane), un simple filet doré vertical, les années hégiriennes l'une sous l'autre dans l'ordre chronologique (`--fs-cover-hijri`, en deux verts comme l'année : « ١٤ » vert pâle `--col-hijri-soft`, « ٤٨ » vert clair `--col-hijri-bright` ; une seule si l'année grégorienne tient dans une année hégirienne) .
+- **En-tête des années** (`.cover-years`), épuré, centré sur les mois et posé sur un filet `--border-blue` fermé au centre par une étoile à huit branches (khatam, motif du girih : contour doré, petite étoile pleine au cœur, deux traits dorés qui s'estompent dans le filet) : l'année (`--fs-cover-year`, gras, en SVG ajusté par `fitCoverYear` : « 20 » en dégradé bleu, « 27 » en dégradé doré `--col-gold` → `--col-gold-deep`, motif girih blanc en filigrane), les années hégiriennes l'une sous l'autre dans l'ordre chronologique (`--fs-cover-hijri`, en deux verts comme l'année : « ١٤ » vert pâle `--col-hijri-soft`, « ٤٨ » vert clair `--col-hijri-bright` ; une seule si l'année grégorienne tient dans une année hégirienne) .
 - **QR codes** : SVG statiques `assets/img/qr-mawaqit-pasteur.svg` et `qr-mawaqit-musset.svg`, générés avec la bibliothèque npm `qrcode` (correction d'erreur **H**, couleur `--col-blue`, sans marge), 22 mm, la carte blanche servant de zone de silence ; icône Mawaqit au centre (6,5 mm, environ 27 % de la largeur, compensée par la correction H). Pour changer une URL, regénérer le SVG avec les mêmes options.
 - **Mini-mois** (`updateCover`), 4 colonnes × 3 lignes occupant la hauteur libre, lignes de 20 px : sans fond ni cadre, nom français et tamoul à gauche, mois hégiriens en arabe à droite, un par ligne, l'année écrite une seule fois par année hégirienne (`hijriLines`). Un filet `--border-blue` sous l'en-tête. Jours à partir du lundi, sur 5 semaines : un 6ᵉ lundi éventuel revient sur la première ligne.
     - Vendredis et dimanches en gris teinté (`--col-friday`, `--col-sunday`), fériés en terracotta gras.

@@ -122,6 +122,20 @@
     text-align: left;
 }
 
+/* Pastille d'en-tête portant une icône (rubrique des dons) plutôt qu'un logo */
+.cover-section-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cover-section-icon .icon {
+    width: 0.85rem;
+    height: 0.85rem;
+    margin: 0;
+    color: var(--col-blue);
+}
+
 .cover-section-logo {
     flex-shrink: 0;
     width: 7mm;
@@ -258,18 +272,30 @@
 
 /* Dons : coordonnées bancaires centrées sous l'en-tête, en 10 px (à recopier à la main) */
 .cover-bank {
-    padding-left: calc(7mm + var(--sp-2)); /* sous le texte du titre, après la pastille */
+    display: flex;
+    align-items: center;
+    gap: 1.5mm;
     line-height: 1.45;
     font-size: var(--fs-xs);
     color: var(--col-text-light);
     white-space: nowrap;
 }
 
+/* Symbole de La Banque Postale devant les coordonnées bancaires, pastille comme celles des contacts */
+.cover-bank-logo {
+    flex-shrink: 0;
+    width: 5mm;
+    height: 5mm;
+    padding: 0.7mm;
+    border-radius: 50%;
+    background: var(--bg-blue-head);
+}
+
 /* Source des horaires imprimés : dernière ligne de la rubrique Mawaqit, pastille de la GMP à gauche de la mention */
 .cover-source {
     display: flex;
     align-items: center;
-    gap: var(--sp-2);
+    gap: 1.5mm;
     margin-top: 3mm;
     padding-top: 2.5mm;
     border-top: var(--hairline) dashed var(--border-blue); /* sépare la source des QR codes, au sein de la rubrique */
@@ -296,19 +322,19 @@
     flex-direction: column;
 }
 
-/* En-tête des années, épuré et centré sur les mois : l'année grégorienne, un simple filet doré vertical et les années
-   hégiriennes l'une sous l'autre, posés sur le filet qui ouvre les mois */
+/* En-tête des années, épuré et centré sur les mois : l'année grégorienne et les années hégiriennes l'une sous l'autre
+   (les couleurs suffisent à distinguer les deux calendriers), posés sur le filet qui ouvre les mois */
 .cover-years {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center; /* centré sur les mois, comme le verset en bas de page */
-    gap: var(--sp-6);
+    gap: 8mm;
     padding: 1mm 2mm 5mm; /* calé sur les grilles des mois ; air avant le filet */
     white-space: nowrap;
 }
 
-/* Transition vers les mois : filet bleu doux aligné sur les grilles, ponctué d'une étoile à huit branches */
+/* Transition vers les mois : filet bleu doux aligné sur les grilles, fermé au centre par une étoile à huit branches */
 .cover-years::before {
     content: '';
     position: absolute;
@@ -319,18 +345,34 @@
     background: var(--border-blue);
 }
 
-/* Étoile à huit branches au centre du filet : contour doré, cœur blanc qui interrompt le filet */
+/* Fermoir du filet : étoile à huit branches (contour doré, cœur en petite étoile pleine) sur un blanc qui coupe le filet,
+   prolongée de deux traits dorés qui s'estompent dans le filet bleu */
 .cover-years-star {
     position: absolute;
     left: 50%;
-    bottom: calc(2mm - 1.75mm); /* centrée sur le filet */
-    width: 3.5mm;
-    height: 3.5mm;
+    bottom: calc(2mm - 2mm); /* centrée sur le filet */
+    width: 27mm;
+    height: 4mm;
     transform: translateX(-50%);
+}
+
+.cover-star-stop {
+    stop-color: var(--col-gold);
+}
+
+.cover-star-mask {
+    fill: white;
+}
+
+.cover-star-outer {
     fill: white;
     stroke: var(--col-gold);
-    stroke-width: 0.7;
+    stroke-width: 0.6;
     stroke-linejoin: round;
+}
+
+.cover-star-inner {
+    fill: var(--col-gold);
 }
 
 /* Année : chiffres gras, « 20 » en dégradé bleu (marine → ardoise), « 27 » en dégradé doré, motif girih blanc en
@@ -394,13 +436,6 @@
 /* Deux verts, comme le bleu et l'or de l'année : « ١٤ » pâle, « ٤٨ » plus vif */
 .cover-hijri-short {
     color: var(--col-hijri-bright);
-}
-
-/* Filet doré vertical entre les deux années, de la hauteur des chiffres */
-.cover-years-sep {
-    width: var(--hairline);
-    height: 22mm;
-    background: var(--col-gold);
 }
 
 /* 12 mois sur trois lignes de quatre */

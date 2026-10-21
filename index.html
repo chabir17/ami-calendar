@@ -337,7 +337,10 @@
                                 <!-- Source des horaires imprimés, en complément de Mawaqit (horaires à jour et annonces) -->
                                 <p class="cover-source">
                                     <img src="assets/img/logo-gmp-mono.png" alt="" class="cover-section-logo" />
-                                    <span>Horaires de ce calendrier&nbsp;: <b>Grande Mosquée de Paris</b><span class="tamil">இந்த நாட்காட்டியின் நேரங்கள்</span></span>
+                                    <span
+                                        ><span>Horaires&nbsp;: <b>Grande Mosquée de Paris</b></span
+                                        ><span class="tamil">நேரங்கள்: பாரிஸ் பெரிய பள்ளிவாசல்</span></span
+                                    >
                                 </p>
                             </section>
                             <!-- Coordonnées : grille 2 × 2, une pastille d'icône par moyen de contact (sans titre : les icônes suffisent) -->
@@ -363,18 +366,23 @@
                                     >ami93.com
                                 </li>
                             </ul>
-                            <!-- Dons : en-tête comme celui de Mawaqit (pastille et titre bilingue), coordonnées bancaires dessous -->
+                            <!-- Dons : en-tête (pastille « don », titre bilingue), puis coordonnées bancaires précédées du symbole de La Banque Postale -->
                             <section class="cover-donate">
                                 <h3 class="cover-section-title">
-                                    <img src="assets/img/logo-lbp-mono.svg" alt="" class="cover-section-logo" />
+                                    <span class="cover-section-logo cover-section-icon"
+                                        ><svg class="icon"><use href="assets/icons/icon-donate.svg#icon"></use></svg
+                                    ></span>
                                     <span class="cover-section-text">Soutenez votre mosquée<span class="tamil">உங்கள் பள்ளிவாசலை ஆதரியுங்கள்</span></span>
                                 </h3>
-                                <p class="cover-bank">IBAN&nbsp;: FR07 2004 1000 0140 0610 1N02 017<br />BIC&nbsp;: PSSTFRPPPAR</p>
+                                <p class="cover-bank">
+                                    <img src="assets/img/logo-lbp-mono.svg" alt="La Banque Postale" class="cover-bank-logo" />
+                                    <span>IBAN&nbsp;: FR07 2004 1000 0140 0610 1N02 017<br />BIC&nbsp;: PSSTFRPPPAR</span>
+                                </p>
                             </section>
                         </div>
                     </aside>
                     <section class="cover-months-zone">
-                        <!-- En-tête : année grégorienne, filet doré vertical, années hégiriennes l'une sous l'autre ; étoile à huit branches sur le filet -->
+                        <!-- En-tête : année grégorienne et années hégiriennes l'une sous l'autre ; fermoir étoilé sur le filet -->
                         <header class="cover-years">
                             <!-- Année en SVG (vectorielle dans le PDF) : « 20 » en dégradé bleu et « 27 » en dégradé doré, motif girih en filigrane dans les
                                  chiffres ; le texte et la largeur sont posés par updateCover et fitCoverYear -->
@@ -395,12 +403,29 @@
                                 <text class="cover-year-text"></text>
                                 <text class="cover-year-text cover-year-motif" fill="url(#cover-year-girih)"></text>
                             </svg>
-                            <span class="cover-years-sep" aria-hidden="true"></span>
                             <div class="cover-hijri arabic"></div>
-                            <!-- Étoile à huit branches (khatam, motif du girih) posée au centre du filet -->
-                            <svg class="cover-years-star" viewBox="-6 -6 12 12" aria-hidden="true">
+                            <!-- Fermoir du filet : étoile à huit branches (khatam, motif du girih) à cœur plein, prolongée de deux traits dorés qui s'estompent -->
+                            <svg class="cover-years-star" viewBox="-40 -6 80 12" aria-hidden="true">
+                                <defs>
+                                    <linearGradient id="cover-star-fade-l" x1="0" y1="0" x2="1" y2="0">
+                                        <stop class="cover-star-stop" offset="0" stop-opacity="0" />
+                                        <stop class="cover-star-stop" offset="1" />
+                                    </linearGradient>
+                                    <linearGradient id="cover-star-fade-r" x1="0" y1="0" x2="1" y2="0">
+                                        <stop class="cover-star-stop" offset="0" />
+                                        <stop class="cover-star-stop" offset="1" stop-opacity="0" />
+                                    </linearGradient>
+                                </defs>
+                                <rect class="cover-star-mask" x="-8" y="-6" width="16" height="12" />
+                                <rect x="-40" y="-0.25" width="32" height="0.5" fill="url(#cover-star-fade-l)" />
+                                <rect x="8" y="-0.25" width="32" height="0.5" fill="url(#cover-star-fade-r)" />
                                 <path
-                                    d="M0.00 -5.10L1.49 -3.61L3.61 -3.61L3.61 -1.49L5.10 0.00L3.61 1.49L3.61 3.61L1.49 3.61L0.00 5.10L-1.49 3.61L-3.61 3.61L-3.61 1.49L-5.10 0.00L-3.61 -1.49L-3.61 -3.61L-1.49 -3.61Z"
+                                    class="cover-star-outer"
+                                    d="M0.00 -5.40L1.58 -3.82L3.82 -3.82L3.82 -1.58L5.40 0.00L3.82 1.58L3.82 3.82L1.58 3.82L0.00 5.40L-1.58 3.82L-3.82 3.82L-3.82 1.58L-5.40 0.00L-3.82 -1.58L-3.82 -3.82L-1.58 -3.82Z"
+                                />
+                                <path
+                                    class="cover-star-inner"
+                                    d="M0.00 -2.30L0.67 -1.63L1.63 -1.63L1.63 -0.67L2.30 0.00L1.63 0.67L1.63 1.63L0.67 1.63L0.00 2.30L-0.67 1.63L-1.63 1.63L-1.63 0.67L-2.30 0.00L-1.63 -0.67L-1.63 -1.63L-0.67 -1.63Z"
                                 />
                             </svg>
                         </header>
