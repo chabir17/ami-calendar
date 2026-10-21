@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="icon" viewBox="0 0 24 24">
+    <!-- Téléphone fixe : combiné posé sur le socle à clavier, même style plein que les autres icônes -->
+    <path d="M12 3.5c-4.2 0-7.8 1-9.4 2.6-.5.5-.7 1.2-.5 1.9l.6 2c.2.5.7.8 1.2.7l3.2-.6c.5-.1.9-.6.8-1.1L7.7 7.6C9 7.2 10.5 7 12 7s3 .2 4.3.6l-.2 1.4c-.1.5.3 1 .8 1.1l3.2.6c.5.1 1-.2 1.2-.7l.6-2c.2-.7 0-1.4-.5-1.9C19.8 4.5 16.2 3.5 12 3.5z" />
+    <path
+        fill-rule="evenodd"
+        d="M8.5 9.5h7l4 5.5V19a1.5 1.5 0 0 1-1.5 1.5H6A1.5 1.5 0 0 1 4.5 19v-4zM9 13h1.6v1.4H9zm2.2 0h1.6v1.4h-1.6zm2.2 0H15v1.4h-1.6zM9 15.6h1.6V17H9zm2.2 0h1.6V17h-1.6zm2.2 0H15V17h-1.6z"
+    />
+</svg>

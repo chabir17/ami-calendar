@@ -153,28 +153,35 @@ Première page du PDF, avec une mise en page propre (ni header à torsades, ni g
 
 ```
 ┌───────────────────────┬──────────────────────────────────────────────┐
-│░░░░ [logo 62 mm] ░░░░░│  JANVIER        رجب      FÉVRIER …   MARS …  │
-│░░░░░░░ 2027 ░░░░░░░░░░│  ஜனவரி    شعبان ١٤٤٨                          │
-│░░░ ١٤٤٨ – ١٤٤٩ ░░░░░░│  L M M J V S D                                │
-│░░░░░░░ ─•◆•─ ░░░░░░░░│  … 12 mini-mois, 3 colonnes × 4 lignes,       │
-│ ┌ carte blanche ────┐ │    sans fond (fondus dans la page) …          │
-│ │ Scannez : … [QR]×2│ │                                              │
+│░░░░ [logo 66 mm] ░░░░░│           2027 ┆ ١٤٤٨                        │
+│░░░░░░░░░░░░░░░░░░░░░░│                ┆ ١٤٤٩                        │
+│░░░░░░░░░░░░░░░░░░░░░░│ ──────────────────────✶──────────────────────│
+│ ┌ carte blanche ────┐ │ JANVIER  رجب  FÉVRIER …  MARS …   AVRIL …   │
+│ │ (◷) Horaires…     │ │ … 12 mini-mois, 4 colonnes × 3 lignes,       │
+│ │ [QR]      [QR]    │ │   sans fond (fondus dans la page) …          │
+│ │ Mosquée   Salle…  │ │                                              │
+│ │ (GMP) Horaires…   │ │                                              │
 │ │ contacts 2 × 2    │ │                                              │
-│ │ ┌ dons (IBAN) ──┐ │ │ ┌ encart du verset ─────────────────────────┐ │
-│ │ source : GMP      │ │ │   ﴾ français / tamoul ۝ ﴿  Coran 4:103 ×2 │ │
-│ └───────────────────┘ │ └──────────────────────────────────────────┘ │
+│ │ (LBP) Soutenez…   │ │ ┌ encart du verset ────────────────────────┐ │
+│ │       IBAN, BIC   │ │ │  ﴾ français / tamoul ۝ ﴿     Coran 4:103 ×2 │ │
+│ └───────────────────┘ │ └─────────────────────────────────────────┘ │
 └───────────────────────┴──────────────────────────────────────────────┘
 ```
 
-- **Colonne d'identité** (76 mm, coins arrondis) : seul aplat de couleur de la page.
+- **Colonne d'identité** (76 mm, coins arrondis) : seul aplat de couleur de la page ; logo en haut, carte pratique en bas.
     - **Fond** : SVG inline `.cover-identity-bg` (vectoriel dans le PDF, voir 8) : dégradé vertical `--bg-cover-top` → `--bg-blue-head` (aux deux tiers) → `--bg-weekdays`, et motif girih en `--col-title-blue` à 16 %, net en haut et estompé vers le bas par un masque. Couleurs portées par des classes (`.cover-bg-top`…) et des jetons, pas dans le SVG.
-    - **Affiche** : logo de 62 mm, année (`--fs-cover-year`, bleu marine), années hégiriennes en bleu ardoise, écrites de gauche à droite dans l'ordre chronologique (marques LRM autour du tiret, voir 8), petit ornement doré.
-    - **Carte pratique** (blanche), parties séparées par des filets (`--info-gap`) : titre « Scannez : horaires et annonces » et un QR code par lieu (nom en bleu, adresse) ; contacts en grille 2 × 2 avec pastilles d'icône ; encart des dons « Soutenez votre mosquée » (IBAN, BIC) ; source des horaires (icône et nom de la Grande Mosquée de Paris).
-- **QR codes** : SVG statiques `assets/img/qr-mawaqit-pasteur.svg` et `qr-mawaqit-musset.svg`, générés avec la bibliothèque npm `qrcode` (correction d'erreur **H**, couleur `--col-blue`, sans marge), 20 mm, la carte blanche servant de zone de silence ; icône Mawaqit au centre (6,5 mm, environ 27 % de la largeur, compensée par la correction H). Pour changer une URL, regénérer le SVG avec les mêmes options.
-- **Mini-mois** (`updateCover`) : cartes blanches sans cadre, nom français et tamoul à gauche, mois hégiriens en arabe à droite, un par ligne, l'année écrite une seule fois par année hégirienne (`hijriLines`). Un filet `--border-blue` sous l'en-tête. Jours à partir du lundi, sur 5 semaines : un 6ᵉ lundi éventuel revient sur la première ligne.
+    - **Logo** de 66 mm, en haut : il est sur la même bande que l'en-tête des années.
+    - **Carte pratique** (blanche, alignée à gauche comme une fiche), rubriques séparées par des filets `--border-blue` (`--info-gap`), pastilles de 7 mm pour les en-têtes et de 5 mm pour les éléments (lieux, contacts), chacune ouverte par une pastille ronde bleu pâle et un titre français (petites capitales) et tamoul :
+        - **Horaires de prière et annonces** (pastille Mawaqit) : les deux lieux côte à côte, QR code puis nom (pastille : mosquée, tapis de prière `icon-prayer-room`) et rue centrés dessous, la ville écrite une seule fois ; en dernière ligne, la source des horaires imprimés (pastille GMP, « Horaires de ce calendrier : Grande Mosquée de Paris », « இந்த நாட்காட்டியின் நேரங்கள் », en 10 px), complément de Mawaqit (horaires à jour et annonces) ;
+        - **contacts** en grille 2 × 2, sans titre, avec pastilles d'icône (téléphone fixe, WhatsApp, courriel, site) ; une icône n'a qu'un seul sens sur la page ;
+        - **Soutenez votre mosquée** (pastille La Banque Postale) : IBAN et BIC en 10 px, sous le titre.
+    - **Logos partenaires** en bleu marine monochrome, dans les mêmes pastilles que les icônes : `mawaqit-icon-mono.png`, `logo-lbp-mono.svg` (oiseau redessiné en vectoriel), `logo-gmp-mono.png`. Les versions en couleur restent dans `assets/img/` (l'icône Mawaqit en couleur est celle du centre des QR codes). Usage des marques à faire autoriser.
+- **En-tête des années** (`.cover-years`), épuré, centré sur les mois et posé sur un filet `--border-blue` ponctué d'une étoile à huit branches (khatam, motif du girih ; contour doré, cœur blanc) : l'année (`--fs-cover-year`, gras, en SVG ajusté par `fitCoverYear` : « 20 » en dégradé bleu, « 27 » en dégradé doré `--col-gold` → `--col-gold-deep`, motif girih blanc en filigrane), un simple filet doré vertical, les années hégiriennes l'une sous l'autre dans l'ordre chronologique (`--fs-cover-hijri`, en deux verts comme l'année : « ١٤ » vert pâle `--col-hijri-soft`, « ٤٨ » vert clair `--col-hijri-bright` ; une seule si l'année grégorienne tient dans une année hégirienne) .
+- **QR codes** : SVG statiques `assets/img/qr-mawaqit-pasteur.svg` et `qr-mawaqit-musset.svg`, générés avec la bibliothèque npm `qrcode` (correction d'erreur **H**, couleur `--col-blue`, sans marge), 22 mm, la carte blanche servant de zone de silence ; icône Mawaqit au centre (6,5 mm, environ 27 % de la largeur, compensée par la correction H). Pour changer une URL, regénérer le SVG avec les mêmes options.
+- **Mini-mois** (`updateCover`), 4 colonnes × 3 lignes occupant la hauteur libre, lignes de 20 px : sans fond ni cadre, nom français et tamoul à gauche, mois hégiriens en arabe à droite, un par ligne, l'année écrite une seule fois par année hégirienne (`hijriLines`). Un filet `--border-blue` sous l'en-tête. Jours à partir du lundi, sur 5 semaines : un 6ᵉ lundi éventuel revient sur la première ligne.
     - Vendredis et dimanches en gris teinté (`--col-friday`, `--col-sunday`), fériés en terracotta gras.
     - **Vacances** : fond `--bg-holiday` dessiné en SVG derrière les chiffres par `drawCoverBackdrop` (cases jointives, sans liseré entre elles dans le PDF).
-    - **Aïd** : pastille ronde de 18 px (`--bg-eid`) en pseudo-élément, chiffre en gras `--col-green-dark` ; prioritaire sur un jour férié.
+    - **Aïd** : pastille ronde de 19 px (`--bg-eid`) en pseudo-élément, chiffre en gras `--col-green-dark` ; prioritaire sur un jour férié.
     - Pas de légende : les marques se comprennent d'elles-mêmes (à revoir après les retours de l'impression).
     - `fitMiniHeads` réduit l'arabe puis resserre le nom français si un en-tête est trop large (aucun cas de 2025 à 2030).
 - **Verset** (An-Nisāʾ, 4:103), en deux lignes, présenté comme dans un Coran imprimé : encart vert très pâle (`--bg-friday-light`) sous les mois, aligné sur leurs grilles, son bas sur celui de la colonne. Centré dans l'encart (grille `1fr auto 1fr`), entre deux grandes parenthèses ornées ﴾ ﴿ (vert du logo) : le français en gris foncé italique au-dessus du tamoul en gris moyen, puis le numéro dans le symbole de fin de verset ۝ (U+06DD, chiffres ١٠٣ inscrits dans le cercle par Amiri). Calée à droite, la référence sourate:verset, chacune en face de sa langue : « Coran 4:103 » et « குர்ஆன் 4:103 », en vert discret. **Traductions seulement** : le texte arabe du Coran n'est pas imprimé sur un support destiné à être jeté.
@@ -329,7 +336,7 @@ Rendu PDF en ligne de commande (serveur local lancé) :
 - **Filets de 0,5 px** : Chrome arrondit une `border` de 0,5 px à 1 px, même à l'impression. Les filets internes de la grille et du tableau sont donc tracés en `box-shadow: inset` avec `--hairline` (0,5 px réels dans le PDF).
 - **Images de fond SVG et PDF** : Chrome pixellise `background-image` et `<pattern>` SVG à l'export, ainsi que les dégradés CSS (`radial-gradient`, `repeating-linear-gradient`). Pour un motif net (frises), utiliser du SVG inline avec `<use>` ; pour une pastille, un pseudo-élément à `border-radius: 50%`.
 - **Dégradés et motifs en PDF** : un dégradé CSS est pixellisé, un `linearGradient` SVG inline reste vectoriel. Les motifs masqués (girih de la couverture) sortent en image à 300 ppp, qualité d'impression suffisante.
-- **Chiffres arabes et sens d'écriture** : « ١٤٤٨ – ١٤٤٩ » s'affiche inversé, même avec `dir="ltr"`, car l'algorithme bidi traite le tiret entre deux nombres arabes comme du texte de droite à gauche. Des marques LRM (`\u200E`) de part et d'autre du tiret gardent l'ordre chronologique (`updateCover`).
+- **Chiffres arabes et sens d'écriture** : sur une même ligne, « ١٤٤٨ – ١٤٤٩ » s'afficherait inversé (l'algorithme bidi traite le tiret entre deux nombres arabes comme du texte de droite à gauche). La couverture empile donc les deux années, une par élément (`updateCover`).
 - **Filets en ombre portée** : un `box-shadow` qui dessine un filet le long d'un bloc isolé (sans voisins) laisse des traces fantômes sur ses bords dans le PDF. Sur la couverture, ces filets sont des pseudo-éléments (`::after` de 0,5 px).
 - **Header en double** : le contenu statique de `index.html` et `contactsHTML` doivent garder la même structure (voir 3.4).
 - **Dates hégiriennes** : calcul astronomique civil, pouvant différer d'un jour de l'observation du croissant. À valider chaque année (`HIJRI_OFFSETS`).

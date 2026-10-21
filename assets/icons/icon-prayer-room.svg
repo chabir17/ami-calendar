@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="icon" viewBox="0 0 24 24">
+    <!-- Salle de prière : tapis de prière (niche du mihrab en réserve, franges en bas), même style plein que les autres icônes -->
+    <path
+        fill-rule="evenodd"
+        d="M5 3.5a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1V19H5zM8 17h8v-6.5c0-2-1.6-3.6-4-5-2.4 1.4-4 3-4 5z"
+    />
+    <path d="M6.5 20h1.5v2.5H6.5zm3.25 0h1.5v2.5h-1.5zm3 0h1.5v2.5h-1.5zm3.25 0H17.5v2.5H16z" />
+</svg>

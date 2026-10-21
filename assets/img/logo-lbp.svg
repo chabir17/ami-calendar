@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-65 -422 1400 1400">
+    <!-- Symbole de La Banque Postale (oiseau), redessiné en vectoriel d'après le logo officiel, sans le texte -->
+    <g fill="#3ba8e5">
+        <path d="M285 0H970C1010 0 1035 45 1013 80L978 140H558L285 14C277 10 278 0 285 0Z" />
+        <path d="M558 193H1243C1262 193 1266 220 1247 224L10 557C0 560 -5 547 5 543Z" />
+        <path d="M833 391L779 485C754 528 705 548 655 549L292 556C285 556 284 547 292 545Z" />
+    </g>
+</svg>

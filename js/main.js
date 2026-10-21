@@ -106,6 +106,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             fitMonthTitles(appContainer);
             fitMiniHeads(appContainer);
             drawCoverBackdrop(appContainer);
+            fitCoverYear(appContainer);
         });
     };
 
@@ -206,10 +207,17 @@ const hijriLines = (months) => {
 function updateCover(year, container) {
     const hStart = getHijriDateSafe(new Date(year, 0, 1));
     const hEnd = getHijriDateSafe(new Date(year, 11, 31));
-    DOM.setText('.cover-year', year, container);
-    // Années hégiriennes sous l'année grégorienne, dans l'ordre chronologique de gauche à droite :
-    // marques LRM autour du tiret (sinon l'algorithme bidi inverse les deux nombres en chiffres arabes)
-    DOM.setText('.cover-hijri', hStart.year === hEnd.year ? hEnd.yearAr : `${hStart.yearAr}\u200E – \u200E${hEnd.yearAr}`, container);
+    // Année en deux parties : le siècle (« 20 ») en bleu, l'année du siècle (« 27 ») en or
+    const yearParts = `<tspan class="cover-year-century">${String(year).slice(0, 2)}</tspan><tspan class="cover-year-short">${String(year).slice(2)}</tspan>`;
+    container.querySelectorAll('.cover-year-text').forEach((t) => (t.innerHTML = yearParts));
+    container.querySelector('.cover-year')?.setAttribute('aria-label', year);
+    // Années hégiriennes à droite de l'année grégorienne, l'une sous l'autre dans l'ordre chronologique
+    const hijriBox = container.querySelector('.cover-hijri');
+    // Chaque année en deux parties, comme l'année grégorienne : « ١٤ » en vert pâle, « ٤٨ » en vert clair
+    if (hijriBox)
+        hijriBox.innerHTML = [...new Set([hStart.yearAr, hEnd.yearAr])]
+            .map((y) => `<span><span class="cover-hijri-century">${y.slice(0, 2)}</span><span class="cover-hijri-short">${y.slice(2)}</span></span>`)
+            .join('');
 
     const months = [];
     for (let m = 0; m < 12; m++) {
@@ -237,6 +245,24 @@ function updateCover(year, container) {
     }
     const monthsBox = container.querySelector('.cover-months');
     if (monthsBox) monthsBox.innerHTML = months.join('');
+}
+
+/**
+ * Couverture : cadre de l'année (SVG) ajusté aux chiffres une fois la police chargée,
+ * pour que le dégradé et le motif couvrent exactement la hauteur des chiffres.
+ * @param {HTMLElement} root
+ */
+function fitCoverYear(root) {
+    root.querySelectorAll('svg.cover-year').forEach((svg) => {
+        const text = svg.querySelector('.cover-year-text');
+        const box = text?.getBBox();
+        if (!box?.width) return;
+        // Hauteur des chiffres seulement (≈ 0,72 em au-dessus de la ligne de base), sans l'interligne de la police
+        const h = parseFloat(getComputedStyle(text).fontSize) * 0.72;
+        svg.setAttribute('viewBox', `${box.x} ${-h} ${box.width} ${h}`);
+        svg.setAttribute('width', box.width);
+        svg.setAttribute('height', h);
+    });
 }
 
 /**

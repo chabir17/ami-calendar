@@ -20,6 +20,9 @@
 
     /* Or (ornements, filets, motif du header) */
     --col-gold: #c8a85a;
+    --col-gold-deep: #a8853a; /* bas du dégradé doré de l'année (couverture) */
+    --col-hijri-soft: #6c9e75; /* années hégiriennes de la couverture, « 14 » : vert pâle, 3.1:1 (texte de grande taille) */
+    --col-hijri-bright: #3f9149; /* années hégiriennes de la couverture, « 48 » : vert clair, 3.9:1 */
 
     /* Terracotta (horaires du jeûne : Imsak, iftār, Icha AMI) */
     --col-terracotta: #a8461f; /* événements civils (fériés, changement d'heure), jeûne (feuille Ramadan) : 5.9:1 sur blanc, 5.5:1 sur --bg-holiday */
@@ -86,7 +89,8 @@
     --fs-md: 14px; /* courant : jours de la semaine, texte des tableaux */
     --fs-xl: 22px; /* titres : mois, années */
     --fs-month: 24px; /* noms des mois du bandeau (titres de la page) */
-    --fs-cover-year: 54px; /* année grégorienne de la couverture */
+    --fs-cover-year: 120px; /* année grégorienne de la couverture, au-dessus des mois */
+    --fs-cover-hijri: 58px; /* années hégiriennes de la couverture, l'une sous l'autre à droite de l'année grégorienne */
     --fs-brand: 28px; /* nom tamoul de l'association (header du calendrier annuel) */
     --fs-brand-fr: 20px; /* nom français : majuscules plus larges, même largeur que le nom tamoul */
     --fs-figure: 15px; /* chiffres : horaires de prière, invocation et noms de l'association (feuille Ramadan) */
