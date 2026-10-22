@@ -90,8 +90,8 @@
     --fs-md: 14px; /* courant : jours de la semaine, texte des tableaux */
     --fs-xl: 22px; /* titres : mois, années */
     --fs-month: 24px; /* noms des mois du bandeau (titres de la page) */
-    --fs-cover-year: 120px; /* année grégorienne de la couverture, au-dessus des mois */
-    --fs-cover-hijri: 42px; /* années hégiriennes de la couverture, l'une sous l'autre à droite de l'année grégorienne */
+    --fs-cover-year: 160px; /* année grégorienne de la couverture, au-dessus des mois */
+    --fs-cover-hijri: 56px; /* années hégiriennes de la couverture, l'une sous l'autre à droite de l'année grégorienne */
     --fs-brand: 28px; /* nom tamoul de l'association (header du calendrier annuel) */
     --fs-brand-fr: 20px; /* nom français : majuscules plus larges, même largeur que le nom tamoul */
     --fs-figure: 15px; /* chiffres : horaires de prière, invocation et noms de l'association (feuille Ramadan) */

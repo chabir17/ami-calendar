@@ -398,7 +398,7 @@
 }
 
 .cover-year-motif {
-    opacity: 0.22;
+    opacity: 0.3; /* filigrane visible mais discret, sans gêner la lecture des chiffres */
 }
 
 .cover-hijri {
