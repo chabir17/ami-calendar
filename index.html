@@ -408,12 +408,21 @@
                                         <stop class="cover-year-dark-top" offset="0" />
                                         <stop class="cover-year-dark-bottom" offset="1" />
                                     </linearGradient>
+                                    <!-- Fondu du motif : invisible en haut des chiffres (partie claire), de plus en plus net vers le bas (partie foncée) ; calé sur la hauteur des chiffres par fitCoverYear -->
+                                    <linearGradient id="cover-year-fade" x1="0" y1="0" x2="0" y2="1">
+                                        <stop class="cover-year-fade-top" offset="0" />
+                                        <stop class="cover-year-fade-mid" offset="0.4" />
+                                        <stop class="cover-year-fade-bottom" offset="1" />
+                                    </linearGradient>
+                                    <mask id="cover-year-fade-mask" maskUnits="userSpaceOnUse" x="-2000" y="-2000" width="4000" height="4000">
+                                        <rect x="-2000" y="-2000" width="4000" height="4000" fill="url(#cover-year-fade)" />
+                                    </mask>
                                     <pattern id="cover-year-girih" width="90" height="90" patternUnits="userSpaceOnUse" patternTransform="scale(0.6)">
                                         <rect class="cover-year-girih-tile" width="90" height="90" mask="url(#cover-girih-line)" />
                                     </pattern>
                                 </defs>
                                 <text class="cover-year-text"></text>
-                                <text class="cover-year-text cover-year-motif" fill="url(#cover-year-girih)"></text>
+                                <text class="cover-year-text cover-year-motif" fill="url(#cover-year-girih)" mask="url(#cover-year-fade-mask)"></text>
                             </svg>
                             <div class="cover-hijri arabic"></div>
                         </header>

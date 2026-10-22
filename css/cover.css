@@ -407,7 +407,22 @@
 }
 
 .cover-year-motif {
-    opacity: 0.3; /* filigrane visible mais discret, sans gêner la lecture des chiffres */
+    opacity: 0.45; /* intensité maximale, en bas des chiffres ; le fondu ci-dessous l'atténue vers le haut (sans le supprimer) */
+}
+
+.cover-year-fade-top {
+    stop-color: white;
+    stop-opacity: 0.35;
+}
+
+.cover-year-fade-mid {
+    stop-color: white;
+    stop-opacity: 0.55;
+}
+
+.cover-year-fade-bottom {
+    stop-color: white;
+    stop-opacity: 1;
 }
 
 .cover-hijri {
