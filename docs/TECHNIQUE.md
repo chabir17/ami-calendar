@@ -318,7 +318,7 @@ npm run lint       # ESLint (globals CONFIG, TEXTS, adhan déclarés dans eslint
 npm run prettier   # Prettier (HTML, CSS, JS, JSON, Markdown)
 ```
 
-Il n'y a pas de tests automatisés. Avant de livrer une modification :
+Il n'y a pas de tests unitaires, mais `npm run check` (`scripts/check.mjs`) automatise le point 1 ci-dessous : il lance Chrome en mode headless et compte les pages PDF (13 par année, couverture sur 1 page sans débordement, Ramadan sur 1 page). Années par défaut 2025–2030, ou `npm run check -- 2027`. Avant de livrer une modification :
 
 1. Rendu PDF sans débordement : 13 pages pour `index.html?year=…` (couverture + 12 mois ; tester au moins deux années), 1 page pour `index.html?month=cover` et pour `ramadan.html`.
 2. Vérifier le header avec et sans `?mosque=ami93120` (contenu généré et contenu statique).

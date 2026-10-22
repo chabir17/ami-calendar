@@ -5,6 +5,7 @@
     "scripts": {
         "start": "serve .",
         "test": "echo \"Error: no test specified\" && exit 1",
+        "check": "node scripts/check.mjs",
         "prettier": "prettier --write .",
         "lint": "eslint .",
         "lint:fix": "eslint . --fix"

@@ -32,6 +32,14 @@ export default [
         }
     },
 
+    // 1 ter. Script de vérification (Node, ES module ; Chrome fournit document dans evaluate)
+    {
+        files: ['scripts/*.mjs'],
+        languageOptions: {
+            globals: { ...globals.node, WebSocket: 'readonly' }
+        }
+    },
+
     // 2. Règles recommandées par défaut (detecte les erreurs courantes)
     pluginJs.configs.recommended,
 
