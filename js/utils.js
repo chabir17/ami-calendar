@@ -37,7 +37,7 @@ const intlPhone = (num) => '33' + String(num).replace(/\D/g, '').replace(/^0/, '
 
 /**
  * HTML des coordonnées de l'association (lignes avec icône).
- * - 'columns' (calendrier annuel) : grille de 3 lignes (adresse | téléphones, adresse | e-mail et site, IBAN • BIC).
+ * - 'columns' (calendrier annuel) : 3 lignes (adresses des deux lieux | téléphones, e-mail, site | IBAN • BIC).
  * - 'rows' (page Ramadan) : 3 lignes (adresses | téléphones, e-mail, site | IBAN • BIC), siège en premier.
  * @param {Object} c - config.contact (addr1/addr2 + icônes facultatives, phone, whatsapp, email, website, bank)
  * @param {'columns'|'rows'} layout
@@ -72,8 +72,8 @@ export function contactsHTML(c, layout = 'columns', links = false) {
     if (layout === 'rows') {
         return [group([line(addr2), line(addr1)]), group([phone, whatsapp, email, website].map((x) => line(x))), group([line(bank)])].join('');
     }
-    // Grille de 3 lignes : adresse | téléphones, adresse | e-mail et site, puis IBAN • BIC sur toute la largeur
-    return [line(addr1), line(phone, whatsapp), line(addr2), line(email, website), bank && `<div class="info-line info-wide">${bank}</div>`].filter(Boolean).join('');
+    // 3 lignes : les deux adresses, puis les coordonnées de contact, puis IBAN • BIC
+    return [line(addr1, addr2), line(phone, whatsapp, email, website), line(bank)].filter(Boolean).join('');
 }
 
 /**

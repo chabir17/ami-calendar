@@ -132,12 +132,12 @@ Le tableau occupe toute la hauteur : les mois de 28 à 31 jours tiennent sur la 
 - **Alignements** : pas de marge latérale : le logo s'aligne sur le bord gauche du calendrier, les coordonnées (calées à droite) sur le bord droit du tableau des horaires.
 - **Logo** : carré à pleine hauteur du contenu (environ 2 cm).
 - **Noms** (`.org-names`) : tamoul en `--fs-brand` (28 px, safran), français en `--fs-brand-fr` (20 px, vert), de largeur équivalente. Centrés verticalement, écart `--identity-gap` (1,5 mm) : ils se lisent comme un seul bloc.
-- **Coordonnées** (`.header-contacts`) : grille de 3 lignes produite par `contactsHTML(c, 'columns')` :
-    - ligne 1 : adresse 1 | téléphone et WhatsApp ;
-    - ligne 2 : adresse 2 | e-mail et site ;
-    - ligne 3 : IBAN • BIC sur toute la largeur (`.info-wide`).
+- **Coordonnées** (`.header-contacts`) : 3 lignes produites par `contactsHTML(c, 'columns')` :
+    - ligne 1 : adresses des deux lieux (mosquée, salle de prière) ;
+    - ligne 2 : coordonnées de contact (téléphone fixe, WhatsApp, e-mail, site) ;
+    - ligne 3 : IBAN • BIC.
 
-    Plusieurs coordonnées sur une ligne sont des `.info-item` (icône + texte). La grille est centrée verticalement avec le même interligne `--identity-gap` que les noms : les hauts et les bas des deux blocs sont alignés. Icônes en `--col-blue`, texte en `--col-text-soft` (`--fs-contact`, 11 px).
+    Plusieurs coordonnées sur une ligne sont des `.info-item` (icône + texte). Le bloc est centré verticalement avec le même interligne `--identity-gap` que les noms : les hauts et les bas des deux blocs sont alignés. Icônes en `--col-blue` dans une pastille ronde `--bg-blue-head`, comme sur la couverture ; texte en `--col-text-soft` (`--fs-contact`, 10 px).
 
 Le contenu statique du header dans `index.html` reprend exactement la structure générée par `contactsHTML` : toute modification de l'une doit être reportée dans l'autre.
 
@@ -293,7 +293,7 @@ Chargée par `?mosque=<id>` (`fetchClientConfig` ; la feuille du Ramadan utilise
 | Texte            | `--col-text`, `--col-text-light`, `--col-text-soft`, `--col-ink` (chiffres), `--col-on-blue` (sur fond foncé, feuille du Ramadan)                                                                                                                                                                                                |
 | Bordures         | `--border-blue`, `--border-green`, `--accent-blue` (feuille Ramadan), `--border-on-dark`, `--border-swatch`                                                                                                                                                                                                                      |
 | Écran            | `--bg-body` (fond autour des pages), `--shadow-page` (ombre des pages)                                                                                                                                                                                                                                                           |
-| Tailles (px)     | `--fs-2xs` 9 · `--fs-xs` 10 · `--fs-contact` 11 · `--fs-sm` 12 · `--fs-md` 14 · `--fs-figure` 15 · `--fs-brand-fr` 20 · `--fs-xl` 22 · `--fs-month` 24 · `--fs-brand` 28 · `--fs-title` 30 · `--fs-display` 42 · `--fs-cover-year` 54                                                                                            |
+| Tailles (px)     | `--fs-2xs` 9 · `--fs-xs` 10 · `--fs-contact` 10 · `--fs-sm` 12 · `--fs-md` 14 · `--fs-figure` 15 · `--fs-brand-fr` 20 · `--fs-xl` 22 · `--fs-month` 24 · `--fs-brand` 28 · `--fs-title` 30 · `--fs-display` 42 · `--fs-cover-hijri` 42 · `--fs-cover-year` 120                                                                   |
 | Rayons           | `--radius-card` 0,5 rem (blocs du calendrier et du tableau)                                                                                                                                                                                                                                                                      |
 | Espacements      | `--sp-1` 4 · `--sp-2` 8 · `--sp-3` 12 · `--sp-4` 16 · `--sp-6` 24 (px)                                                                                                                                                                                                                                                           |
 | Mise en page     | `--page-pad` 5 mm · `--binding-zone` 10 mm · `--block-gap` 2,5 mm · `--header-h` 24 mm · `--band-h` 64 px                                                                                                                                                                                                                        |

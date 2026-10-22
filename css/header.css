@@ -103,14 +103,14 @@
     letter-spacing: 0.01em;
 }
 
-/* Coordonnées en grille de 3 lignes (adresse | téléphones, adresse | web, banque) :
+/* Coordonnées en 3 lignes (adresses des deux lieux | contact : téléphones, e-mail, site | banque) :
    discrètes, plus claires que les noms (hiérarchie nette) ; calées à droite, sur le bord du tableau des horaires */
 .header-contacts {
     margin-left: auto;
-    display: grid;
-    grid-template-columns: auto auto;
-    align-content: center;
-    gap: var(--identity-gap) var(--sp-6);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--identity-gap);
     white-space: nowrap;
     font-size: var(--fs-contact);
     line-height: 1.35;
@@ -123,13 +123,9 @@
     gap: var(--sp-1);
 }
 
-/* Plusieurs coordonnées sur une même ligne (téléphones ; e-mail et site) */
+/* Plusieurs coordonnées sur une même ligne (adresses ; téléphones, e-mail et site) */
 .info-line:has(.info-item) {
     gap: var(--sp-4);
-}
-
-.info-wide {
-    grid-column: 1 / -1;
 }
 
 .info-item {
@@ -138,7 +134,14 @@
     gap: var(--sp-1);
 }
 
-/* Icônes des coordonnées : bleu marine du logo */
+/* Icônes des coordonnées : bleu marine du logo, dans une pastille bleu pâle */
 .header-contacts .icon {
+    box-sizing: content-box;
+    width: 0.62rem; /* icône un peu réduite dans sa pastille : même encombrement qu'avant */
+    height: 0.62rem;
+    padding: 2.5px;
+    margin-right: 0;
+    border-radius: 50%;
+    background: var(--bg-blue-head); /* pastille bleu pâle, comme sur la couverture */
     color: var(--col-blue);
 }

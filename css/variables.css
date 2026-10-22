@@ -85,7 +85,7 @@
     /* --- ÉCHELLE TYPOGRAPHIQUE : 4 tailles de texte + 2 tailles de chiffres --- */
     --fs-2xs: 9px; /* libellés dans les cases du calendrier (noms complets sur une ligne, minuscules) */
     --fs-xs: 10px; /* notes : en-têtes de tableau, libellés des cases, coordonnées compactes */
-    --fs-contact: 11px; /* coordonnées du header du calendrier annuel */
+    --fs-contact: 10px; /* coordonnées du header du calendrier annuel */
     --fs-sm: 12px; /* secondaire : traductions, coordonnées, légende */
     --fs-md: 14px; /* courant : jours de la semaine, texte des tableaux */
     --fs-xl: 22px; /* titres : mois, années */
