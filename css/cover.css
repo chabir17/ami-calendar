@@ -302,6 +302,15 @@
     background: var(--bg-blue-head);
 }
 
+/* Mentions légales : dernière ligne de la carte, discrète, sans trait (le trait des rubriques suffit) */
+.cover-legal {
+    font-size: 8px;
+    line-height: 1.3;
+    text-align: center;
+    color: var(--col-text-light);
+    white-space: nowrap;
+}
+
 /* Sources (horaires imprimés, dates hégiriennes) : fin de la rubrique Mawaqit, pastille à gauche de la mention */
 .cover-source {
     display: flex;
