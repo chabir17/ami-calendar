@@ -1,7 +1,7 @@
 /* --- PAGE DE COUVERTURE ---
    Page blanche : la colonne d'identité, sur un panneau bleu en dégradé à motif girih, porte le logo ; les 12 mois (4 × 3),
    sans fond, se fondent dans la page :
-   colonne (logo | informations pratiques : Mawaqit, contacts, dons, source) | années, 12 mois et verset en dessous.
+   colonne (logo | informations pratiques : Mawaqit et sources, contacts, dons) | années, 12 mois et verset en dessous.
    Mêmes jetons que les pages des mois (couleurs du logo, bleu marine, filets 0,5 px). */
 .cover-page {
     --cover-gap: 2.5mm; /* espacement unique entre les blocs de la page */
@@ -21,13 +21,13 @@
 
 /* --- COLONNE D'IDENTITÉ : le logo est posé directement sur le panneau, comme une couverture ;
    seules les informations pratiques sont dans une carte blanche.
-   Couleurs : bleu marine pour les titres, bleu ardoise pour les traductions, or pour les ornements, gris pour les textes
-   courants ; le vert et le terracotta restent réservés aux marques des mois (Aïd, vendredis, fériés) et au verset. --- */
+   Couleurs : bleu marine pour les titres, bleu ardoise pour les traductions, gris pour les textes courants ; le vert et
+   le terracotta restent réservés aux années hégiriennes, aux marques des mois (Aïd, vendredis, fériés) et au verset. --- */
 .cover-identity {
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* logo en haut, aligné sur la ligne des années ; carte pratique en bas */
+    justify-content: space-between; /* logo en haut, carte pratique en bas */
     align-items: center;
     gap: var(--cover-gap);
     padding: var(--cover-gap);
@@ -79,9 +79,9 @@
     object-fit: contain;
 }
 
-/* --- INFORMATIONS PRATIQUES : seule carte de la colonne ; parties séparées par des filets, même espacement de part
-   et d'autre : Mawaqit (QR codes) | contacts (grille 2 × 2) | dons ; chaque rubrique ouverte par une pastille et un
-   titre bilingue --- */
+/* --- INFORMATIONS PRATIQUES : seule carte de la colonne ; parties séparées par des traits fins, même espacement de
+   part et d'autre : Mawaqit (QR codes) | sources (horaires, dates hégiriennes) | contacts (grille 2 × 2) | dons ;
+   Mawaqit et dons ouverts par une pastille et un titre bilingue --- */
 .cover-info {
     --info-gap: 3mm;
     width: 100%;
@@ -113,8 +113,7 @@
     background: var(--border-blue);
 }
 
-/* Mawaqit : titre, deux QR codes côte à côte, nom et adresse dessous */
-/* En-tête de rubrique : pastille du partenaire à gauche, titre français (petites capitales) et tamoul dessous */
+/* En-tête de rubrique : pastille à gauche, titre français (petites capitales) et tamoul dessous */
 .cover-section-title {
     display: flex;
     align-items: center;
@@ -127,7 +126,6 @@
     color: var(--col-title-blue);
 }
 
-/* Titres de la carte : français en petites capitales, tamoul dessous en minuscules ; air avant le contenu */
 .cover-section-text {
     display: flex;
     flex-direction: column;
@@ -135,7 +133,7 @@
     text-align: left;
 }
 
-/* Pastille d'en-tête portant une icône (rubrique des dons) plutôt qu'un logo */
+/* Pastille portant une icône (dons, dates hégiriennes) plutôt qu'un logo */
 .cover-section-icon {
     display: inline-flex;
     align-items: center;
@@ -283,7 +281,7 @@
     color: var(--col-blue);
 }
 
-/* Dons : coordonnées bancaires centrées sous l'en-tête, en 10 px (à recopier à la main) */
+/* Dons : coordonnées bancaires sous l'en-tête, en 10 px (à recopier à la main) */
 .cover-bank {
     display: flex;
     align-items: center;
@@ -304,7 +302,7 @@
     background: var(--bg-blue-head);
 }
 
-/* Source des horaires imprimés : dernière ligne de la rubrique Mawaqit, pastille de la GMP à gauche de la mention */
+/* Sources (horaires imprimés, dates hégiriennes) : fin de la rubrique Mawaqit, pastille à gauche de la mention */
 .cover-source {
     display: flex;
     align-items: center;
@@ -355,8 +353,8 @@
     white-space: nowrap;
 }
 
-/* Année : chiffres gras, « 20 » en dégradé vertical marqué (bleu très clair → ardoise), « 27 » en dégradé vertical marqué (bleu moyen → bleu nuit), motif girih blanc en
-   filigrane dans tous les chiffres */
+/* Année : chiffres gras en dégradés verticaux marqués, « 20 » clair (bleu très clair → ardoise), « 27 » foncé
+   (bleu moyen → bleu nuit), motif girih blanc en filigrane dans tous les chiffres */
 .cover-year {
     overflow: visible;
 }
@@ -410,7 +408,6 @@
     font-size: var(--fs-cover-hijri);
     line-height: 1.05;
     color: var(--col-hijri-soft); /* plus doux que l'année : traduction, en retrait */
-    direction: ltr; /* chiffres dans l'ordre, malgré les deux parties */
 }
 
 /* 12 mois sur trois lignes de quatre */
@@ -548,8 +545,8 @@
     color: var(--col-terracotta);
 }
 
-/* Aïd : pastille vert pastel (pseudo-élément : un dégradé serait pixellisé dans le PDF) ; vert foncé prioritaire
-   sur la couleur des vendredis, dimanches et jours fériés */
+/* Aïd : pastille vert pastel (pseudo-élément : un dégradé serait pixellisé dans le PDF) ; chiffre vert sauge en gras,
+   prioritaire sur la couleur des dimanches et jours fériés */
 .mini-grid span.is-eid {
     position: relative;
     isolation: isolate;
