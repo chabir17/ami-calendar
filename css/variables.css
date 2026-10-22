@@ -38,7 +38,7 @@
 
     /* Vendredi et dimanche : numéros en gris teinté (vert sauge / terracotta), presque neutres :
        la couleur pleine reste réservée aux jours fériés et à l'Aïd */
-    --col-friday: #41694a; /* 6.3:1 sur blanc */
+    --col-friday: #41694a; /* 6.3:1 sur blanc ; couverture : vert unique des textes et ornements verts (vendredis, Aïd, verset) */
     --col-sunday: #7a4f3e; /* 7.0:1 sur blanc */
 
     /* Couleurs neutres */
@@ -69,7 +69,7 @@
     --bg-blue-head: #eef3f9; /* bandeau du mois, ligne des jours et cadre du calendrier : bleu très pâle (teinte d'origine) */
     --bg-blue-faint: #eef3f9; /* changement d'heure du tableau, fonds neutres de la feuille Ramadan */
     --bg-green-head: #e7f2e8; /* en-tête et cadre du tableau des horaires : vert très pâle (teinte d'origine, comme les vendredis) */
-    --bg-eid: #bfe0c2; /* couverture : pastille de l'Aïd, vert pastel un cran plus soutenu (texte --col-green-dark : 5,5:1) */
+    --bg-eid: #cfe7d2; /* couverture : pastille de l'Aïd, vert pastel (texte --col-friday : 4.8:1) */
     --bg-green-faint: #e7f2e8; /* vert très clair : traits verticaux du tableau, vendredis de la feuille Ramadan */
     --border-blue: #c5d3e4; /* bordures du calendrier : bleu doux */
     --border-green: #c3dec6; /* bordures du tableau : vert doux */

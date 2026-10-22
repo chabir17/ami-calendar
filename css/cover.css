@@ -94,10 +94,23 @@
     background: white;
 }
 
-.cover-info > * + * {
+.cover-info > * + *,
+.cover-source {
+    position: relative;
     width: 100%;
     padding-top: var(--info-gap);
-    border-top: var(--hairline) solid var(--border-blue); /* filet séparateur, plus net que le fond des pastilles */
+}
+
+/* Séparateurs : traits fins continus de 0,5 px (pseudo-élément : une bordure de 0,5 px est arrondie à 1 px par Chrome) */
+.cover-info > * + *::before,
+.cover-source::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--hairline);
+    background: var(--border-blue);
 }
 
 /* Mawaqit : titre, deux QR codes côte à côte, nom et adresse dessous */
@@ -296,9 +309,7 @@
     display: flex;
     align-items: center;
     gap: 1.5mm;
-    margin-top: 3mm;
-    padding-top: 2.5mm;
-    border-top: var(--hairline) dashed var(--border-blue); /* sépare la source des QR codes, au sein de la rubrique */
+    margin-top: 3mm; /* trait fin continu au-dessus, comme entre les rubriques */
     font-size: var(--fs-xs); /* 10 px, comme les adresses et les contacts */
     line-height: 1.4;
     color: var(--col-text-light);
@@ -533,7 +544,7 @@
     position: relative;
     isolation: isolate;
     font-weight: 600;
-    color: var(--col-green-dark);
+    color: var(--col-friday); /* même vert que les vendredis et le verset (4,8:1 sur la pastille) */
 }
 
 .mini-grid .is-eid::before {
@@ -590,7 +601,7 @@
 .cover-verse-mark,
 .cover-verse-ayah {
     font-size: 2em; /* 20 px : à la hauteur des deux lignes, sans dépasser de l'encart */
-    color: var(--col-green); /* vert du logo : traits fins, assez soutenu pour l'impression */
+    color: var(--col-friday); /* vert unique de la couverture (texte et ornements verts) */
 }
 
 .cover-verse-ayah {
@@ -609,7 +620,7 @@
     font-size: var(--fs-2xs);
     font-weight: 600;
     line-height: calc(var(--fs-xs) * 1.45); /* même interligne que le verset : chaque ligne en face de la sienne */
-    color: var(--col-title-green); /* 5,4:1 */
+    color: var(--col-friday); /* 5,8:1 sur le fond de l'encart */
 }
 
 .cover-verse cite {

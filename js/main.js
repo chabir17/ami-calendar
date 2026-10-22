@@ -194,11 +194,20 @@ function fitMonthTitles(root) {
     });
 }
 
-/** Mois hégiriens d'un mini-mois, un par ligne ; l'année n'est écrite qu'une fois par année (après son dernier mois) */
-const hijriLines = (months) => {
-    const list = [...months];
-    return list.map(([name, y], i) => `<span>${name}${list[i + 1]?.[1] === y ? '' : ` <span class="mini-hijri-year">${y}</span>`}</span>`).join('');
-};
+/**
+ * Mois hégiriens d'un mini-mois, un par ligne. L'année hégirienne figure déjà dans l'en-tête de la couverture :
+ * elle n'est rappelée qu'au mois où elle change (Muharram), une seule fois dans l'année.
+ * @param {Map<string, string>} months - nom arabe → année hégirienne (chiffres arabes)
+ * @param {{year: string}} state - dernière année hégirienne affichée, partagée entre les mini-mois
+ */
+const hijriLines = (months, state) =>
+    [...months]
+        .map(([name, y]) => {
+            if (y === state.year) return `<span>${name}</span>`;
+            state.year = y;
+            return `<span>${name} <span class="mini-hijri-year">${y}</span></span>`;
+        })
+        .join('');
 
 /**
  * Couverture : années et aperçu des 12 mois sur 5 semaines (vacances scolaires, Aïds et jours fériés repérés),
@@ -217,6 +226,7 @@ function updateCover(year, container) {
     if (hijriBox) hijriBox.innerHTML = [...new Set([hStart.yearAr, hEnd.yearAr])].map((y) => `<span>${y}</span>`).join('');
 
     const months = [];
+    const hijriState = { year: hStart.yearAr }; // l'année de départ est dans l'en-tête
     for (let m = 0; m < 12; m++) {
         const first = new Date(year, m, 1);
         const days = new Date(year, m + 1, 0).getDate();
@@ -236,7 +246,7 @@ function updateCover(year, container) {
             cells[(offset + d - 1) % 35] = `<span class="${cls.join(' ')}">${d}</span>`;
         }
         months.push(`<div class="mini-month">
-            <div class="mini-head"><span class="mini-names"><span class="mini-name">${window.TEXTS?.fr.months[m] ?? ''}</span><span class="mini-name-ta tamil">${window.TEXTS?.ta.months[m] ?? ''}</span></span><span class="mini-hijri arabic">${hijriLines(hijriMonths)}</span></div>
+            <div class="mini-head"><span class="mini-names"><span class="mini-name">${window.TEXTS?.fr.months[m] ?? ''}</span><span class="mini-name-ta tamil">${window.TEXTS?.ta.months[m] ?? ''}</span></span><span class="mini-hijri arabic">${hijriLines(hijriMonths, hijriState)}</span></div>
             <div class="mini-grid"><b>L</b><b>M</b><b>M</b><b>J</b><b>V</b><b>S</b><b>D</b>${cells.join('')}</div>
         </div>`);
     }
