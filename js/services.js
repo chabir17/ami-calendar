@@ -149,7 +149,7 @@ export function getHijriDateSafe(date) {
         const adjustedDate = new Date(date);
         adjustedDate.setDate(adjustedDate.getDate() + offset);
 
-        const h = DATE_UTILS.toHijriCivil(adjustedDate);
+        const h = DATE_UTILS.toHijriUmmAlQura(adjustedDate);
         const { ar, std, short = std, ta, taShort = ta } = DATE_UTILS.getHijriNames(h.month);
         const day = String(h.day);
         const year = String(h.year);

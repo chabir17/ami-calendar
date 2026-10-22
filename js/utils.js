@@ -97,6 +97,39 @@ const HIJRI_MONTHS = [
 ];
 
 /** Jour julien du 1er jour d'un mois du calendrier hégirien civil (tabulaire, époque du 16 juillet 622) */
+/**
+ * Calendrier Umm al-Qura (référence de l'AMI) : date grégorienne du 1er de chaque mois hégirien, de Muḥarram à Dhū al-Ḥijja
+ * (« MM-JJ », l'année grégorienne se déduit de l'ordre). Table figée, générée avec Intl « islamic-umalqura » (ICU) :
+ * même résultat sur tous les navigateurs. À prolonger pour les années suivantes (voir docs/TECHNIQUE.md, 4.2).
+ */
+const UMM_AL_QURA_STARTS = {
+    1445: '07-19 08-17 09-16 10-16 11-15 12-14 01-13 02-11 03-11 04-10 05-09 06-07',
+    1446: '07-07 08-05 09-04 10-04 11-03 12-02 01-01 01-31 03-01 03-30 04-29 05-28',
+    1447: '06-26 07-26 08-24 09-23 10-23 11-22 12-21 01-20 02-18 03-20 04-18 05-18',
+    1448: '06-16 07-15 08-14 09-12 10-12 11-11 12-10 01-09 02-08 03-09 04-08 05-07',
+    1449: '06-06 07-05 08-03 09-02 10-01 10-31 11-29 12-29 01-28 02-26 03-27 04-26',
+    1450: '05-25 06-24 07-23 08-22 09-20 10-19 11-18 12-17 01-16 02-14 03-16 04-15',
+    1451: '05-14 06-13 07-13 08-12 09-10 10-09 11-08 12-07 01-05 02-04 03-06 04-04',
+    1452: '05-04 06-03 07-02 08-01 08-31 09-29 10-28 11-27 12-26 01-24 02-23 03-24',
+    1453: '04-23 05-23 06-21 07-21 08-20 09-18 10-18 11-16 12-16 01-14 02-12 03-13'
+};
+
+/** Débuts de mois Umm al-Qura en jours UTC depuis 1970, triés : [{ year, month, day0 }] */
+const UMM_AL_QURA = (() => {
+    const out = [];
+    let gy = 2023;
+    let prev = 0;
+    for (const [y, list] of Object.entries(UMM_AL_QURA_STARTS)) {
+        list.split(' ').forEach((md, i) => {
+            const [m, d] = md.split('-').map(Number);
+            if (m < prev) gy++; // passage à l'année grégorienne suivante
+            prev = m;
+            out.push({ year: Number(y), month: i + 1, day0: Date.UTC(gy, m - 1, d) / 86400000 });
+        });
+    }
+    return out;
+})();
+
 const hijriToJD = (y, m, d) => d + Math.ceil(29.5 * (m - 1)) + (y - 1) * 354 + Math.floor((3 + 11 * y) / 30) + 1948438.5;
 
 /**
@@ -104,8 +137,23 @@ const hijriToJD = (y, m, d) => d + Math.ceil(29.5 * (m - 1)) + (y - 1) * 354 + M
  */
 export const DATE_UTILS = {
     /**
-     * Date hégirienne civile (calendrier tabulaire, identique à Intl « islamic-civil ») calculée sans Intl :
-     * même résultat sur tous les navigateurs, y compris mobiles (où le calendrier ou les noms de mois Intl varient).
+     * Date hégirienne selon le calendrier Umm al-Qura (table UMM_AL_QURA_STARTS), sans Intl : même résultat sur tous
+     * les navigateurs, y compris mobiles (où le calendrier ou les noms de mois Intl varient).
+     * @returns {{ day: number, month: number, year: number }} mois de 1 (Muḥarram) à 12
+     */
+    toHijriUmmAlQura: (date) => {
+        const day0 = Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) / 86400000;
+        const last = UMM_AL_QURA[UMM_AL_QURA.length - 1];
+        if (day0 < UMM_AL_QURA[0].day0 || day0 >= last.day0 + 30) return DATE_UTILS.toHijriCivil(date); // hors table : calcul civil
+        let i = UMM_AL_QURA.length - 1;
+        while (UMM_AL_QURA[i].day0 > day0) i--;
+        const { year, month } = UMM_AL_QURA[i];
+        return { day: day0 - UMM_AL_QURA[i].day0 + 1, month, year };
+    },
+
+    /**
+     * Date hégirienne civile (calendrier tabulaire, identique à Intl « islamic-civil »), calculée sans Intl :
+     * secours de toHijriUmmAlQura hors de sa table.
      * @returns {{ day: number, month: number, year: number }} mois de 1 (Muḥarram) à 12
      */
     toHijriCivil: (date) => {

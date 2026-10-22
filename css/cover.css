@@ -321,6 +321,16 @@
     flex-direction: column;
 }
 
+/* Deuxième source (dates hégiriennes) : suit la première sans séparateur */
+.cover-source + .cover-source {
+    margin-top: 1.5mm;
+    padding-top: 0;
+}
+
+.cover-source + .cover-source::before {
+    content: none;
+}
+
 .cover-source b {
     font-weight: 600;
     color: var(--col-text);
