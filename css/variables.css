@@ -20,8 +20,9 @@
 
     /* Or (ornements, filets, motif du header) */
     --col-gold: #c8a85a;
-    --col-blue-deep: #001d3d; /* bas du dégradé bleu foncé de « 27 » (couverture) */
-    --col-blue-soft: #8aa3c6; /* bas du dégradé bleu clair de « 20 » (couverture) : nettement plus clair que « 27 » */
+    --col-year-dark-top: #2f5283; /* « 27 » de la couverture : haut du dégradé (bleu moyen) */
+    --col-year-dark-bottom: #001a36; /* « 27 » de la couverture : bas du dégradé (bleu nuit) */
+    --col-year-light-top: #aec1dc; /* « 20 » de la couverture : haut du dégradé (bleu très clair) */
     --col-hijri-soft: #6c9e75; /* années hégiriennes de la couverture : vert pâle, 3.1:1 (grand texte) */
 
     /* Terracotta (horaires du jeûne : Imsak, iftār, Icha AMI) */

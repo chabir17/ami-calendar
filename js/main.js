@@ -259,6 +259,14 @@ function fitCoverYear(root) {
         svg.setAttribute('viewBox', `${box.x} ${-h} ${box.width} ${h}`);
         svg.setAttribute('width', box.width);
         svg.setAttribute('height', h);
+        // Dégradés calés sur la hauteur des chiffres (et non sur la boîte de la police, plus haute) : contraste plein
+        svg.querySelectorAll('linearGradient').forEach((g) => {
+            g.setAttribute('gradientUnits', 'userSpaceOnUse');
+            g.setAttribute('x1', 0);
+            g.setAttribute('x2', 0);
+            g.setAttribute('y1', -h);
+            g.setAttribute('y2', 0);
+        });
     });
 }
 

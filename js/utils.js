@@ -57,9 +57,13 @@ export function contactsHTML(c, layout = 'columns', links = false) {
     };
     const group = (lines) => `<div class="contact-group">${lines.filter(Boolean).join('')}</div>`;
     const map = (addr) => addr && `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(addr)}`;
-    const addr1 = item(c.addr1_icon || 'location', c.addr1, map(c.addr1));
-    const addr2 = item(c.addr2_icon || 'location', c.addr2, map(c.addr2));
-    const phone = item('phone', c.phone, c.phone && `tel:+${intlPhone(c.phone)}`);
+    // Calendrier annuel : mêmes icônes que la couverture (téléphone fixe, tapis de prière pour la salle de prière) ;
+    // la feuille du Ramadan garde les siennes (designs distincts)
+    const annual = layout === 'columns';
+    const placeIcon = (icon) => (annual && icon === 'office' ? 'prayer-room' : icon || 'location');
+    const addr1 = item(placeIcon(c.addr1_icon), c.addr1, map(c.addr1));
+    const addr2 = item(placeIcon(c.addr2_icon), c.addr2, map(c.addr2));
+    const phone = item(annual ? 'landline' : 'phone', c.phone, c.phone && `tel:+${intlPhone(c.phone)}`);
     const whatsapp = item('whatsapp', c.whatsapp, c.whatsapp && `https://wa.me/${intlPhone(c.whatsapp)}`);
     const email = item('email', c.email, c.email && `mailto:${c.email}`);
     const website = item('website', c.website, c.website && `https://${c.website}`);

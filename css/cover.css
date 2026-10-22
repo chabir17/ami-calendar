@@ -74,8 +74,8 @@
 }
 
 .cover-logo {
-    width: 66mm; /* au moins 5 cm de côté ; presque toute la largeur de la colonne */
-    height: 66mm;
+    width: 56mm; /* au moins 5 cm de côté ; l'année reste le point d'entrée de la page */
+    height: 56mm;
     object-fit: contain;
 }
 
@@ -334,7 +334,7 @@
     white-space: nowrap;
 }
 
-/* Année : chiffres gras, « 20 » en dégradé bleu clair (ardoise → bleu doux), « 27 » en dégradé bleu foncé (marine → bleu nuit), motif girih blanc en
+/* Année : chiffres gras, « 20 » en dégradé vertical marqué (bleu très clair → ardoise), « 27 » en dégradé vertical marqué (bleu moyen → bleu nuit), motif girih blanc en
    filigrane dans tous les chiffres */
 .cover-year {
     overflow: visible;
@@ -347,19 +347,19 @@
 }
 
 .cover-year-top {
-    stop-color: var(--col-title-blue);
+    stop-color: var(--col-year-light-top);
 }
 
 .cover-year-bottom {
-    stop-color: var(--col-blue-soft);
+    stop-color: var(--col-title-blue);
 }
 
 .cover-year-dark-top {
-    stop-color: var(--col-blue);
+    stop-color: var(--col-year-dark-top);
 }
 
 .cover-year-dark-bottom {
-    stop-color: var(--col-blue-deep);
+    stop-color: var(--col-year-dark-bottom);
 }
 
 .cover-year-century {
