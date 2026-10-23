@@ -1,5 +1,5 @@
-/* --- TITRE DU MOIS : en-tête clair de la carte du calendrier (pendant de l'en-tête vert clair des horaires) ---
-   Grégorien à gauche, hégirien à droite, en bleu marine. Ligne 1 : mois + année. Ligne 2 : traductions.
+/* --- TITRE DU MOIS : bandeau bleu marine plein de la carte du calendrier (pendant de l'en-tête vert forêt des horaires) ---
+   Grégorien à gauche, hégirien à droite, en blanc. Ligne 1 : mois + année. Ligne 2 : traductions.
    Même disposition et même hauteur pour les 12 mois. */
 .month-titles-zone {
     display: flex;
@@ -131,7 +131,7 @@
 .weekdays-header {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    background: var(--bg-weekdays); /* un cran plus pâle que le bandeau du mois, séparés par un filet */
+    background: var(--bg-weekdays); /* bleu très pâle sous le bandeau plein du mois */
     color: var(--col-text-light);
     text-align: center;
     padding: 0;

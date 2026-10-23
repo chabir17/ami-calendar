@@ -35,7 +35,6 @@
     /* Titres adoucis des en-têtes (page calme : la couleur pleine est réservée aux exceptions) */
     --col-title-blue: #46628a; /* bandeau du mois : 5.3:1 sur --bg-blue-head */
     --col-dst: #8a6a14; /* changement d'heure : horloge, libellé et légende, beige doré foncé (5.1:1 sur blanc) */
-    --col-title-green: #3f7046; /* en-tête des horaires : 5.0:1 sur --bg-green-faint */
 
     /* Vendredi et dimanche : numéros en gris teinté (vert sauge / terracotta), presque neutres :
        la couleur pleine reste réservée aux jours fériés et à l'Aïd */

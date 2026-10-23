@@ -32,8 +32,8 @@ ami-prayer-table {
     border: hidden;
 }
 
-/* En-tête vert clair (pendant du bandeau bleu clair du mois) : noms des prières en titre (vert foncé plein), traductions en gris ;
-   séparateurs blancs, filet vert : transition vers le corps du tableau */
+/* En-tête vert forêt plein (pendant du bandeau bleu marine du mois), texte blanc : noms des prières en titre, traductions en blanc atténué ;
+   séparateurs blancs entre les colonnes */
 .prayer-table thead th {
     background: var(--bg-head-green);
     border: none;
