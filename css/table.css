@@ -1,11 +1,21 @@
 /* --- TABLEAU DES HORAIRES DE PRIÈRES (DROITE) --- */
 .right-prayer-table-container {
     overflow: hidden;
-    border: 1.5px solid var(--bg-green-head); /* cadre de la couleur de l'en-tête : l'en-tête prolonge le contour */
+    position: relative;
     border-radius: var(--radius-card);
     display: flex;
     flex-direction: column;
     background-color: white;
+}
+
+/* Cadre très fin (0,5 px) de la couleur de l'en-tête, au-dessus du contenu (pseudo-élément : une border de 0,5 px devient 1 px au PDF) */
+.right-prayer-table-container::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: inset 0 0 0 var(--hairline) var(--bg-head-green);
+    pointer-events: none;
 }
 
 /* Le composant remplit la colonne ; le tableau s'adapte a la hauteur disponible */
@@ -25,21 +35,21 @@ ami-prayer-table {
 /* En-tête vert clair (pendant du bandeau bleu clair du mois) : noms des prières en titre (vert foncé plein), traductions en gris ;
    séparateurs blancs, filet vert : transition vers le corps du tableau */
 .prayer-table thead th {
-    background: var(--bg-green-head);
+    background: var(--bg-head-green);
     border: none;
-    border-bottom: 1.5px solid var(--border-green);
     box-shadow: inset calc(-1 * var(--hairline)) 0 0 white; /* séparateurs 0,5 px entre les colonnes */
     padding: var(--sp-1) 1px;
     font-size: var(--fs-xs);
     font-weight: 400;
     vertical-align: middle;
-    color: var(--col-title-green);
+    color: white;
     height: var(--band-h); /* même hauteur que le bandeau du mois voisin */
 }
 
 .prayer-table thead .th-ar,
 .prayer-table thead .th-ta {
-    color: var(--col-title-green); /* traductions en vert sauge, sous le nom français en vert foncé */
+    color: var(--col-on-dark-soft); /* traductions en blanc atténué, sous le nom français */
+    font-weight: 500; /* texte clair sur fond foncé : un cran de plus pour la lisibilité */
 }
 
 /* Largeurs de colonnes fixes pour les prières */
@@ -53,7 +63,7 @@ ami-prayer-table {
     font-size: var(--fs-xs); /* 10 px : colonnes des horaires de même largeur */
     font-weight: 600;
     text-transform: uppercase;
-    color: var(--col-green-dark);
+    color: white;
 }
 
 .th-ar {
@@ -74,7 +84,7 @@ ami-prayer-table {
     width: 18px;
     height: 18px;
     margin: 0;
-    color: var(--col-title-green); /* vert sauge */
+    color: white;
 }
 
 .prayer-table tbody td {

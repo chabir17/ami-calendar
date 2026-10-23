@@ -7,9 +7,8 @@
     align-items: flex-end;
     gap: var(--sp-3);
     padding: var(--sp-2) var(--sp-2) var(--sp-1);
-    background-color: var(--bg-blue-head);
-    border-bottom: 1.5px solid var(--border-blue); /* séparation entre bandeau et ligne des jours (même fond), teinte de la grille */
-    color: var(--col-title-blue);
+    background-color: var(--bg-head-blue);
+    color: white;
     height: var(--band-h);
 }
 
@@ -28,28 +27,27 @@
     letter-spacing: 0.04em;
     text-transform: uppercase;
     line-height: 1.2;
-    color: var(--col-title-blue);
+    color: white;
 }
 
 .greg-month-fr {
     font-weight: 600;
-    color: var(--col-blue);
 }
 
 .year-display {
-    font-weight: 400; /* hiérarchie par la graisse, même bleu (contraste AA) */
+    font-weight: 400; /* hiérarchie par la graisse, même blanc */
+    color: var(--col-on-dark-soft);
 }
 
 /* Hégirien : nom(s) du mois en arabe en titre, comme le mois grégorien (extrémité droite) */
 .hijri-month-ar {
     font-size: var(--fs-xl); /* 22 px : l'écriture arabe, plus haute à taille égale, s'équilibre avec le grégorien en 24 px */
     line-height: 1.45; /* queues des lettres arabes (ع, ي…) : ne touchent pas la ligne 2 */
-    color: var(--col-title-blue);
+    color: white;
 }
 
 .hijri-months {
     font-weight: 500; /* arabe : 500 maximum */
-    color: var(--col-blue);
 }
 
 .hijri-year {
@@ -63,7 +61,7 @@
     gap: var(--sp-2);
     font-size: var(--fs-md);
     line-height: 1.5;
-    color: var(--col-title-blue); /* traductions en bleu ardoise, comme dans l'en-tête des jours */
+    color: var(--col-on-dark-soft); /* traductions en blanc atténué */
     white-space: nowrap;
 }
 
@@ -112,10 +110,20 @@
     min-height: 0;
     display: flex;
     flex-direction: column;
-    border: 1.5px solid var(--bg-blue-head); /* cadre de la couleur du bandeau du mois : le bandeau prolonge le contour */
+    position: relative;
     border-radius: var(--radius-card);
     overflow: hidden;
     background-color: white;
+}
+
+/* Cadre très fin (0,5 px) de la couleur du bandeau du mois, au-dessus du contenu (pseudo-élément : une border de 0,5 px devient 1 px au PDF) */
+.left-visual-calendar::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: inset 0 0 0 var(--hairline) var(--bg-head-blue);
+    pointer-events: none;
 }
 
 /* En-tête des jours de la semaine : traité comme un en-tête, les 7 jours dans la même couleur

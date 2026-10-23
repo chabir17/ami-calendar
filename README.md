@@ -67,7 +67,7 @@ Sans Node : `python3 -m http.server 3000` depuis la racine du projet.
     - fond doré pâle : vacances scolaires (zone C) ; fond gris : jours hors du mois ;
     - horloge beige doré : passage à l'heure d'été ou d'hiver.
 - **Légende** (bas de page) : nom des vacances scolaires du mois et passage à l'heure d'été / d'hiver.
-- **Tableau des horaires** (en-tête vert clair) : Fajr, Shuruq, Dhohr, Asr, Maghrib, Icha et jour hégirien ; colonnes de date en bandes vert pâle comme l'en-tête, vendredis surlignés (un cran plus soutenu dans ces colonnes), filet à chaque fin de semaine, « 01 » en vert au 1er jour du mois hégirien, ligne sur fond beige doré le jour du changement d'heure.
+- **Tableau des horaires** (en-tête vert forêt) : Fajr, Shuruq, Dhohr, Asr, Maghrib, Icha et jour hégirien ; colonnes de date en bandes vert pâle comme l'en-tête, vendredis surlignés (un cran plus soutenu dans ces colonnes), filet à chaque fin de semaine, « 01 » en vert au 1er jour du mois hégirien, ligne sur fond beige doré le jour du changement d'heure.
 
 ## Développement
 
