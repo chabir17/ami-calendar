@@ -166,10 +166,14 @@ class PrayerTable extends MonthElement {
             tr.querySelector('.day-name').textContent = window.TEXTS.fr.daysShort[dayOfWeekIdx];
             tr.querySelector('.day-num').textContent = day.toString().padStart(2, '0');
             for (const key of ['fajr', 'sunrise', 'dhuhr', 'asr', 'maghrib', 'isha']) tr.querySelector(`.${key}`).textContent = times[key];
-            tr.querySelector('.col-hijri').textContent = hijri.day.padStart(2, '0');
+            const hijriDay = hijri.day.padStart(2, '0');
+            tr.querySelector('.col-hijri').textContent = hijriDay;
 
             // Repères : 1er jour du mois hégirien, changement d'heure (horaires décalés d'une heure)
-            if (parseInt(hijri.day, 10) === 1) tr.classList.add('is-hijri-new');
+            if (parseInt(hijri.day, 10) === 1) {
+                tr.classList.add('is-hijri-new');
+                tr.querySelector('.col-hijri').innerHTML = `<span class="hijri-new-disc">${hijriDay}</span>`;
+            }
             if (DATE_UTILS.dstChange(date)) tr.classList.add('is-dst');
 
             tbody.appendChild(clone);

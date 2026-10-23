@@ -22,7 +22,7 @@ Référence unique des couleurs, de la typographie, des espacements, des icônes
 | ----------------------- | ------------------------------ | ---------------------------------------------------------------------------- |
 | `--col-blue`            | `#002e5d`                      | Bleu de la tour Eiffel : noms de mois (titre), pastille et icônes            |
 | `--col-green`           | `#2e7d32`                      | Vert de la mosquée : repères islamiques, frise du bas du header              |
-| `--col-green-dark`      | `#1b5e20`                      | Texte sur fond vert pâle (6,9:1) : « 01 » du jour hégirien                   |
+| `--col-green-dark`      | `#1b5e20`                      | Texte sur fond vert pâle (6,9:1)                                             |
 | `--col-saffron-text`    | `#b8520f`                      | Safran du minaret : nom tamoul, frise du haut du header (4,9:1)              |
 | `--col-gold`, `--brand` | `#c8a85a`                      | Or des ornements ; `--brand` est surchargeable par client (`clients/*.json`) |
 | `--brand-text`          | 40 % plus sombre que `--brand` | Textes dorés du header (4,7:1)                                               |
@@ -184,13 +184,13 @@ Fond `--bg-head-blue` (plein), texte blanc, hauteur `--band-h`. Mois grégorien 
 
 En-tête `--bg-head-green` (plein), titres en blanc, traductions en `--col-on-dark-soft` 500. Corps : horaires en `--col-ink` 600, 15 px, traits verticaux très légers, filets horizontaux `--border-green`.
 
-| Élément            | Rendu                                                                                            |
-| ------------------ | ------------------------------------------------------------------------------------------------ |
-| Colonnes de date   | Bandes `--bg-green-head` : jour de la semaine en 14 px / 500, numéro grégorien en 600            |
-| Jour hégirien      | Noir ; le « 01 » du début de mois en `--col-green-dark`                                          |
-| Vendredi           | Ligne `--bg-friday-light` ; dans les colonnes de date, `--bg-green-friday`                       |
-| Fin de semaine     | Filet de 1,5 px `--border-green` après le dimanche                                               |
-| Changement d'heure | Ligne entière (colonnes de date comprises) en `--bg-holiday`, filet `--border-dst`, texte normal |
+| Élément            | Rendu                                                                                                                   |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------------- |
+| Colonnes de date   | Bandes `--bg-green-head` : jour de la semaine en 14 px / 500, numéro grégorien en 600                                   |
+| Jour hégirien      | Noir ; le « 01 » du début de mois en blanc dans une pastille `--bg-head-green` (15 px de haut, ne grandit pas la ligne) |
+| Vendredi           | Ligne `--bg-friday-light` ; dans les colonnes de date, `--bg-green-friday`                                              |
+| Fin de semaine     | Filet de 1,5 px `--border-green` après le dimanche                                                                      |
+| Changement d'heure | Ligne entière (colonnes de date comprises) en `--bg-holiday`, filet `--border-dst`, texte normal                        |
 
 ### 6.4 Header
 
