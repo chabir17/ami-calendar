@@ -56,8 +56,8 @@ Tous opaques ; ce sont des aplats, jamais des dégradés.
 | Jeton                  | Valeur    | Usage                                                                                                           |
 | ---------------------- | --------- | --------------------------------------------------------------------------------------------------------------- |
 | `--bg-blue-head`       | `#e5edf6` | Pastilles d'icônes, couverture (fonds pâles)                                                                    |
-| `--bg-head-blue`       | `#364f6f` | Bandeau du mois et cadre du calendrier : bleu marine plein (L* ≈ 33, chroma ≈ 21, blanc dessus 8,4:1)           |
-| `--bg-head-green`      | `#35553c` | En-tête et cadre du tableau : vert forêt plein, même assombrissement (L* ≈ 33, chroma ≈ 21, blanc dessus 8,4:1) |
+| `--bg-head-blue`       | `#364f6f` | Bandeau du mois et cadre du calendrier : bleu ardoise plein (L* ≈ 33, chroma ≈ 21, blanc dessus 8,4:1)          |
+| `--bg-head-green`      | `#35553c` | En-tête et cadre du tableau : vert sapin plein, même assombrissement (L* ≈ 33, chroma ≈ 21, blanc dessus 8,4:1) |
 | `--col-on-dark-soft`   | `#dbe6f3` | Traductions et année sur les en-têtes foncés                                                                    |
 | `--bg-blue-faint`      | `#eef3f9` | Feuille du Ramadan uniquement (indépendant du bandeau du mois)                                                  |
 | `--bg-weekdays`        | `#eef3f9` | Ligne des jours de la semaine (un cran plus pâle)                                                               |
