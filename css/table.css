@@ -133,13 +133,19 @@ ami-prayer-table {
     background: var(--bg-green-friday);
 }
 
-/* Repères dans le tableau : 1er jour du mois hégirien (numéro vert), changement d'heure (fond bleu clair, texte normal) */
+/* Repères dans le tableau : 1er jour du mois hégirien (numéro vert), changement d'heure (fond beige doré, texte normal) */
 .prayer-table tr.is-hijri-new td.col-hijri {
     color: var(--col-green-dark);
 }
 
 .prayer-table tbody tr.is-dst {
-    background: var(--bg-blue-faint);
+    background: var(--bg-holiday);
+}
+
+/* Ligne du changement d'heure : beige sur toute la largeur, y compris les colonnes de date (qui recouvrent sinon le fond de la ligne) */
+.prayer-table tbody tr.is-dst td.col-date-greg,
+.prayer-table tbody tr.is-dst td.col-hijri {
+    background: var(--bg-holiday);
 }
 
 /* Fin de semaine : filet plus marqué après le dimanche (repérage par blocs de 7 jours) */
@@ -147,7 +153,7 @@ ami-prayer-table {
     border-bottom: 1.5px solid var(--border-green);
 }
 
-/* Dimanche du changement d'heure : filet bleu, assorti au fond de la ligne */
+/* Dimanche du changement d'heure : filet doré, assorti au fond de la ligne */
 .prayer-table tbody tr.is-dst.week-end td {
-    border-bottom-color: var(--border-blue);
+    border-bottom-color: var(--border-dst);
 }

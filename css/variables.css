@@ -34,6 +34,7 @@
 
     /* Titres adoucis des en-têtes (page calme : la couleur pleine est réservée aux exceptions) */
     --col-title-blue: #46628a; /* bandeau du mois : 5.6:1 sur --bg-blue-faint */
+    --col-dst: #8a6a14; /* changement d'heure : horloge, libellé et légende, beige doré foncé (5.1:1 sur blanc) */
     --col-title-green: #3f7046; /* en-tête des horaires : 5.0:1 sur --bg-green-faint */
 
     /* Vendredi et dimanche : numéros en gris teinté (vert sauge / terracotta), presque neutres :
@@ -72,6 +73,7 @@
     --bg-eid: #cfe7d2; /* couverture : pastille de l'Aïd, vert pastel (texte --col-friday : 4.8:1) */
     --bg-green-faint: #e7f2e8; /* vert très clair : traits verticaux du tableau, vendredis de la feuille Ramadan */
     --bg-green-friday: #d6e9d9; /* colonnes de date du tableau, le vendredi : un cran au-dessus de --bg-green-head */
+    --border-dst: #e6d9b0; /* filet de la ligne du changement d'heure dans le tableau : doré doux, assorti à --bg-holiday */
     --border-blue: #c5d3e4; /* bordures du calendrier : bleu doux */
     --border-green: #c3dec6; /* bordures du tableau : vert doux */
     --accent-blue: #7f9cc0; /* filets et puces de la feuille Ramadan */

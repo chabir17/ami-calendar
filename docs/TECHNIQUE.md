@@ -101,7 +101,7 @@ Les deux composants héritent de `MonthElement`, qui observe `year` et `month` e
 
 - `.vis-greg` (numéro du jour) et `.vis-hij` (jour hégirien, vert, en haut à droite) ;
 - `.new-moon-icon` : croissant au 1er jour du mois hégirien ;
-- `.dst-icon` : horloge bleue du changement d'heure (`dstIconHTML`), décalée si le croissant est aussi présent ;
+- `.dst-icon` : horloge beige doré (`--col-dst`) du changement d'heure (`dstIconHTML`), décalée si le croissant est aussi présent ;
 - `.event-label` : libellés `event-line {type}-label`, types `eid`, `virtuous`, `public`, `dst`, sur une ligne chacun. Si l'Aïd tombe un jour férié, l'Aïd passe en haut de la case (`.event-label-top`).
 
 **`<ami-prayer-table>`** : une ligne par jour depuis `#prayer-row-template` (jour abrégé sur 3 lettres, numéro, 6 horaires, jour hégirien). Classes :
@@ -109,7 +109,7 @@ Les deux composants héritent de `MonthElement`, qui observe `year` et `month` e
 - `is-friday` : fond `--bg-friday-light`, plus pâle que l'en-tête (texte normal) ; le dimanche est repéré par le filet de fin de semaine ;
 - `week-end` : filet après chaque dimanche, sauf en fin de mois ;
 - `is-hijri-new` : 1er jour du mois hégirien, numéro en `--col-green-dark` dans la colonne hégirienne ;
-- `is-dst` : jour du changement d'heure, fond bleu clair `--bg-blue-faint` et filet de fin de semaine en `--border-blue`, texte normal (les horaires sautent d'une heure).
+- `is-dst` : jour du changement d'heure, fond beige doré `--bg-holiday` et filet de fin de semaine en `--border-dst`, texte normal (les horaires sautent d'une heure).
 
 Le tableau occupe toute la hauteur : les mois de 28 à 31 jours tiennent sur la page.
 
@@ -215,14 +215,14 @@ Première page du PDF, avec une mise en page propre (ni header à torsades, ni g
 
 ### 4.3 Jours particuliers (`getDayInfo`)
 
-| Information           | Règle                                                                                            | Rendu                                 |
-| --------------------- | ------------------------------------------------------------------------------------------------ | ------------------------------------- |
-| Vacances scolaires    | période de `CONFIG.schoolHolidays` contenant le jour                                             | fond doré pâle, nom dans la légende   |
-| Jour férié            | `CONFIG.publicHolidays['AAAA-MM-JJ']`, libellé raccourci par `HOLIDAY_NAMES`                     | numéro terracotta, libellé            |
-| Changement d'heure    | `DATE_UTILS.dstChange` : derniers dimanches de mars (`summer`) et d'octobre (`winter`)           | icône et libellé bleus, légende       |
-| Nouveau mois hégirien | jour hégirien = 1                                                                                | croissant                             |
-| Aïd                   | `EID_NAMES` : 1er Shawwāl (Eid-ul-Fitr), 10 Dhū al-Ḥijjah (Eid-ul-Adha)                          | numéro vert, libellé en premier       |
-| Jours vertueux        | `VIRTUOUS_DAYS` : 1er Ramaḍān, 9 Dhū al-Ḥijjah (ʿArafa), 11-13 (Tashrīq), 10 Muḥarram (ʿĀshūrāʾ) | libellé vert, date hégirienne en gras |
+| Information           | Règle                                                                                            | Rendu                                              |
+| --------------------- | ------------------------------------------------------------------------------------------------ | -------------------------------------------------- |
+| Vacances scolaires    | période de `CONFIG.schoolHolidays` contenant le jour                                             | fond doré pâle, nom dans la légende                |
+| Jour férié            | `CONFIG.publicHolidays['AAAA-MM-JJ']`, libellé raccourci par `HOLIDAY_NAMES`                     | numéro terracotta, libellé                         |
+| Changement d'heure    | `DATE_UTILS.dstChange` : derniers dimanches de mars (`summer`) et d'octobre (`winter`)           | icône et libellé beige doré (`--col-dst`), légende |
+| Nouveau mois hégirien | jour hégirien = 1                                                                                | croissant                                          |
+| Aïd                   | `EID_NAMES` : 1er Shawwāl (Eid-ul-Fitr), 10 Dhū al-Ḥijjah (Eid-ul-Adha)                          | numéro vert, libellé en premier                    |
+| Jours vertueux        | `VIRTUOUS_DAYS` : 1er Ramaḍān, 9 Dhū al-Ḥijjah (ʿArafa), 11-13 (Tashrīq), 10 Muḥarram (ʿĀshūrāʾ) | libellé vert, date hégirienne en gras              |
 
 Retour : `{ isHoliday, holidayName, isPublicHoliday, isDST, dstType, isNewMoon, isEid, eidName, labels: [{ text, type }] }`.
 
@@ -284,20 +284,20 @@ Chargée par `?mosque=<id>` (`fetchClientConfig` ; la feuille du Ramadan utilise
 
 ### 6.1 Jetons
 
-| Famille          | Jetons                                                                                                                                                                                                                                                                                                                           |
-| ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Couleurs de sens | `--col-blue` (structure, grégorien), `--col-green` (hégirien, prières), `--col-green-dark` (texte sur vert pâle), `--col-saffron-text` (nom tamoul, frise du haut), `--col-terracotta` (fériés ; jeûne de la feuille du Ramadan)                                                                                                 |
-| Or et thème      | `--col-gold` (ornements de la feuille du Ramadan, ornement sous les années de la couverture), `--brand` (thème client), `--brand-text` (`--brand` assombri, icônes par défaut)                                                                                                                                                   |
-| Filets           | `--bg-blue-faint`, `--bg-green-faint` : filets sous les en-têtes et de fin de semaine (même teinte que les fonds pâles)                                                                                                                                                                                                          |
-| Fonds            | `--bg-blue-head` (bandeau du mois et ligne des jours), `--bg-blue-faint` (changement d'heure), `--bg-green-head` (en-tête des horaires), `--bg-green-faint` (= `--bg-friday`), `--bg-holiday`, `--bg-empty`, `--bg-terracotta-soft`, `--bg-eid` (pastille de la couverture), `--bg-cover-top` (haut du dégradé de la couverture) |
-| Texte            | `--col-text`, `--col-text-light`, `--col-text-soft`, `--col-ink` (chiffres), `--col-on-blue` (sur fond foncé, feuille du Ramadan)                                                                                                                                                                                                |
-| Bordures         | `--border-blue`, `--border-green`, `--accent-blue` (feuille Ramadan), `--border-on-dark`, `--border-swatch`                                                                                                                                                                                                                      |
-| Écran            | `--bg-body` (fond autour des pages), `--shadow-page` (ombre des pages)                                                                                                                                                                                                                                                           |
-| Tailles (px)     | `--fs-2xs` 9 · `--fs-xs` 10 · `--fs-contact` 10 · `--fs-sm` 12 · `--fs-md` 14 · `--fs-figure` 15 · `--fs-brand-fr` 20 · `--fs-xl` 22 · `--fs-month` 24 · `--fs-brand` 28 · `--fs-title` 30 · `--fs-display` 42 · `--fs-cover-hijri` 49 · `--fs-cover-year` 140                                                                   |
-| Rayons           | `--radius-card` 0,5 rem (blocs du calendrier et du tableau)                                                                                                                                                                                                                                                                      |
-| Espacements      | `--sp-1` 4 · `--sp-2` 8 · `--sp-3` 12 · `--sp-4` 16 · `--sp-6` 24 (px)                                                                                                                                                                                                                                                           |
-| Mise en page     | `--page-pad` 5 mm · `--binding-zone` 10 mm · `--block-gap` 2,5 mm · `--header-h` 24 mm · `--band-h` 64 px                                                                                                                                                                                                                        |
-| Polices          | `--font-fr` Noto Sans · `--font-ar` Amiri (Noto Naskh Arabic en secours) · `--font-ta` Noto Serif Tamil                                                                                                                                                                                                                          |
+| Famille          | Jetons                                                                                                                                                                                                                                                                                                                      |
+| ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Couleurs de sens | `--col-blue` (structure, grégorien), `--col-green` (hégirien, prières), `--col-green-dark` (texte sur vert pâle), `--col-saffron-text` (nom tamoul, frise du haut), `--col-terracotta` (fériés ; jeûne de la feuille du Ramadan)                                                                                            |
+| Or et thème      | `--col-gold` (ornements de la feuille du Ramadan, ornement sous les années de la couverture), `--brand` (thème client), `--brand-text` (`--brand` assombri, icônes par défaut)                                                                                                                                              |
+| Filets           | `--bg-blue-faint`, `--bg-green-faint` : filets sous les en-têtes et de fin de semaine (même teinte que les fonds pâles)                                                                                                                                                                                                     |
+| Fonds            | `--bg-blue-head` (bandeau du mois et ligne des jours), `--bg-blue-faint` (fonds neutres), `--bg-green-head` (en-tête des horaires), `--bg-green-faint` (= `--bg-friday`), `--bg-holiday`, `--bg-empty`, `--bg-terracotta-soft`, `--bg-eid` (pastille de la couverture), `--bg-cover-top` (haut du dégradé de la couverture) |
+| Texte            | `--col-text`, `--col-text-light`, `--col-text-soft`, `--col-ink` (chiffres), `--col-on-blue` (sur fond foncé, feuille du Ramadan)                                                                                                                                                                                           |
+| Bordures         | `--border-blue`, `--border-green`, `--accent-blue` (feuille Ramadan), `--border-on-dark`, `--border-swatch`                                                                                                                                                                                                                 |
+| Écran            | `--bg-body` (fond autour des pages), `--shadow-page` (ombre des pages)                                                                                                                                                                                                                                                      |
+| Tailles (px)     | `--fs-2xs` 9 · `--fs-xs` 10 · `--fs-contact` 10 · `--fs-sm` 12 · `--fs-md` 14 · `--fs-figure` 15 · `--fs-brand-fr` 20 · `--fs-xl` 22 · `--fs-month` 24 · `--fs-brand` 28 · `--fs-title` 30 · `--fs-display` 42 · `--fs-cover-hijri` 49 · `--fs-cover-year` 140                                                              |
+| Rayons           | `--radius-card` 0,5 rem (blocs du calendrier et du tableau)                                                                                                                                                                                                                                                                 |
+| Espacements      | `--sp-1` 4 · `--sp-2` 8 · `--sp-3` 12 · `--sp-4` 16 · `--sp-6` 24 (px)                                                                                                                                                                                                                                                      |
+| Mise en page     | `--page-pad` 5 mm · `--binding-zone` 10 mm · `--block-gap` 2,5 mm · `--header-h` 24 mm · `--band-h` 64 px                                                                                                                                                                                                                   |
+| Polices          | `--font-fr` Noto Sans · `--font-ar` Amiri (Noto Naskh Arabic en secours) · `--font-ta` Noto Serif Tamil                                                                                                                                                                                                                     |
 
 Jetons locaux (déclarés sur le composant qui les utilise) : `--band-motif-h` et `--identity-gap` (header), `--row-h`, `--rule`, `--surface`, `--surface-fast`, `--footer-h`, `--bg-veil` (feuille du Ramadan).
 

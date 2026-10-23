@@ -243,13 +243,13 @@
     margin: 0;
 }
 
-/* Code couleur : croissant = hégirien (vert), horloge = changement d'heure (bleu du calendrier civil) */
+/* Code couleur : croissant = hégirien (vert), horloge = changement d'heure (beige doré) */
 .new-moon-icon .icon {
     color: var(--col-green);
 }
 
 .dst-icon .icon {
-    color: var(--col-title-blue);
+    color: var(--col-dst);
 }
 
 .event-label {
@@ -302,9 +302,9 @@
     color: var(--col-green);
 }
 
-/* Changement d'heure : bleu du calendrier civil (le terracotta reste réservé aux jours fériés) */
+/* Changement d'heure : beige doré foncé (le terracotta reste réservé aux jours fériés) */
 .event-line.dst-label {
-    color: var(--col-title-blue);
+    color: var(--col-dst);
 }
 
 /* --- LÉGENDE (BAS) : vacances scolaires et changement d'heure du mois --- */
@@ -337,7 +337,7 @@
     width: 0.8rem;
     height: 0.8rem;
     margin: 0;
-    color: var(--col-title-blue); /* comme l'horloge dans la case du jour */
+    color: var(--col-dst); /* comme l'horloge dans la case du jour */
 }
 
 .legend-color {
