@@ -61,7 +61,7 @@ Chaque mois est un clone de `#page-template` : une page A4 paysage (`--page-pad`
 
 Le bandeau du mois (bleu marine plein) et l'en-tête du tableau (vert forêt plein, même luminosité) ont la même hauteur `--band-h` : leurs bas sont alignés.
 
-- **Bandeau du mois** : les deux noms de mois sont les titres de la page, aux deux extrémités (bleu marine `--col-blue` ; grégorien en `--fs-month` 24 px, arabe en `--fs-xl` 22 px, l'écriture arabe étant plus haute à taille égale) ; années de même taille, en graisse normale et bleu ardoise `--col-title-blue` ; traductions (tamoul, translittération) dans le même bleu ardoise.
+- **Bandeau du mois** : les deux noms de mois sont les titres de la page, aux deux extrémités (blancs sur le bandeau plein `--bg-head-blue` ; grégorien en `--fs-month` 24 px, arabe en `--fs-xl` 22 px, l'écriture arabe étant plus haute à taille égale) ; années de même taille, en graisse normale ; traductions (tamoul, translittération) en `--col-on-dark-soft`.
 - **En-tête des jours** : fond `--bg-grid`, le même bleu-gris que la grille et la légende, sous le bandeau plein du mois ; les 7 jours dans la même couleur (noms français en bleu marine `--col-blue`, arabe et tamoul en bleu ardoise `--col-title-blue`), séparateurs blancs.
 - **Numéros des jours** : gris neutre des textes courants `--col-text-light`, identique du lundi au samedi ; vendredis et dimanches en gris légèrement teinté (vert sauge `--col-friday`, terracotta `--col-sunday`) : seuls les jours fériés et l'Aïd sont en couleur pleine.
 - **En-tête du tableau** : fond vert forêt plein `--bg-head-green`, texte blanc : noms des prières en titre (`--fs-xs` pour garder des colonnes de même largeur), arabe et tamoul en blanc atténué `--col-on-dark-soft`, séparateurs blancs.

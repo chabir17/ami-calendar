@@ -33,7 +33,7 @@
     --col-ink: #1f1f1f; /* horaires */
 
     /* Titres adoucis des en-têtes (page calme : la couleur pleine est réservée aux exceptions) */
-    --col-title-blue: #46628a; /* bandeau du mois : 5.3:1 sur --bg-blue-head */
+    --col-title-blue: #46628a; /* arabe et tamoul de la ligne des jours, couverture */
     --col-dst: #946700; /* changement d'heure : horloge, libellé et légende, ambre doré (5.0:1 sur blanc) */
     --bg-dst: #f8edc6; /* ligne du changement d'heure dans le tableau : doré plus soutenu que --bg-holiday, pour ne pas se confondre avec les vacances (ΔE ≈ 21 au blanc) */
 
@@ -60,7 +60,7 @@
     /* Vert pastel (vendredis et colonnes de date du tableau des horaires) */
     --bg-friday: var(--bg-green-faint); /* vendredis de la feuille Ramadan */
     --bg-cover-top: #c8d8eb; /* couverture : haut du dégradé de la colonne d'identité (aucun texte à ce niveau : années hégiriennes en bleu ardoise à 5:1 plus bas) */
-    --bg-weekdays: #eef3f9; /* ligne des jours de la semaine : un cran plus pâle que le bandeau du mois */
+    --bg-weekdays: #eef3f9; /* bas du dégradé de la couverture */
     --bg-friday-light: #e7f2e8; /* vendredis du tableau annuel et encart du verset de la couverture : même vert que --bg-green-head (ΔE ≈ 8,5 au blanc, visible sur le copieur laser ; l'ancien #f1f8f2 était à 5) */
 
     /* Gris pastel : cases hors du mois */

@@ -33,7 +33,7 @@ C'est la table à connaître. Chaque ligne dit **ce que la couleur signifie** ; 
 
 | Sens                                | Couleur (jeton)                                                                     | Où                                                                                                                   |
 | ----------------------------------- | ----------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| Calendrier grégorien, structure     | Bleu : `--col-blue`, `--col-title-blue` (`#46628a`, 5,6:1)                          | Noms et années du bandeau du mois, jours de la semaine, mini-mois, « 20 » et « 27 » de la couverture                 |
+| Calendrier grégorien, structure     | Bleu : `--col-blue`, `--col-title-blue` (`#46628a`, 5,6:1)                          | Arabe et tamoul de la ligne des jours, jours de la semaine, mini-mois, « 20 » et « 27 » de la couverture             |
 | Hégirien, islamique, prière         | Vert : `--col-green`, `--col-friday` (`#41694a`, 6,3:1)                             | Jour hégirien et croissant des cases, Aïd, Tashrīq, ʿArafa, vendredis, « 01 » du tableau, verset, années hégiriennes |
 | Années hégiriennes de la couverture | Vert pâle : `--col-hijri-soft` (`#6c9e75`, 3,1:1, grand texte uniquement)           | Années hégiriennes en 49 px                                                                                          |
 | Jour férié (civil)                  | Terracotta : `--col-terracotta` (`#a8461f`, 5,9:1)                                  | Numéro et libellé du jour férié. **Réservé aux fériés** (et au jeûne sur la feuille du Ramadan)                      |
@@ -51,7 +51,7 @@ Tous opaques ; ce sont des aplats, jamais des dégradés.
 
 **Principe des en-têtes pleins** : le niveau d'assombrissement le plus bas qui fait encore ressortir le texte blanc (économie d'encre, moins de risque de traces au laser). Les deux en-têtes ont la même luminosité (L* ≈ 33).
 
-**Seuil de visibilité à l'impression** : un fond doit s'écarter du blanc d'au moins **ΔE ≈ 8** (CIE Lab) pour se voir sur le copieur laser de l'association (essai du 23/10/2026 : le vert `--bg-green-head`, à ΔE 8,5, se voit ; le beige à 6,7 et le bleu à 5,6 ne se voyaient pas). Les fonds sous ce seuil (`--bg-friday-light` à 5,0 ; `--bg-empty` à 5,5 depuis le relèvement du 23/10/2026) sont des repères secondaires : à relever si l'impression les efface.
+**Seuil de visibilité à l'impression** : un fond doit s'écarter du blanc d'au moins **ΔE ≈ 8** (CIE Lab) pour se voir sur le copieur laser de l'association (essai du 23/10/2026 : le vert `--bg-green-head`, à ΔE 8,5, se voit ; le beige à 6,7 et le bleu à 5,6 ne se voyaient pas). Les fonds sous ce seuil (`--bg-friday-light` à 5,0) sont des repères secondaires : à relever si l'impression les efface.
 
 | Jeton                  | Valeur    | Usage                                                                                                                                                                                        |
 | ---------------------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -165,7 +165,7 @@ Logos tiers en version monochrome bleue (Mawaqit, La Banque Postale, Grande Mosq
 
 ### 6.1 Bandeau du mois et ligne des jours
 
-Fond `--bg-head-blue` (plein), texte blanc, hauteur `--band-h`. Mois grégorien (gauche, 600, année en 400), mois hégirien en arabe (droite, 500) ; traductions en `--col-on-dark-soft`. La ligne des jours (`--bg-weekdays`) affiche français, arabe, tamoul.
+Fond `--bg-head-blue` (plein), texte blanc, hauteur `--band-h`. Mois grégorien (gauche, 600, année en 400), mois hégirien en arabe (droite, 500) ; traductions en `--col-on-dark-soft`. La ligne des jours (`--bg-grid`) affiche français, arabe, tamoul.
 
 ### 6.2 Cases du calendrier
 
