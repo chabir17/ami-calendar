@@ -20,7 +20,7 @@
     white-space: nowrap;
 }
 
-/* Grégorien : nom du mois en titre (bleu marine), année de même taille, plus légère (bleu ardoise) */
+/* Grégorien : nom du mois en titre (blanc 600), année de même taille, plus légère (400, blanc atténué) */
 .greg-month-fr,
 .year-display {
     font-size: var(--fs-month);
