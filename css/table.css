@@ -113,11 +113,24 @@ ami-prayer-table {
     padding: 0 var(--sp-2);
 }
 
-/* Jour en 3 lettres majuscules (comme la feuille Ramadan), une taille sous les horaires */
+/* Jour en 3 lettres majuscules (comme la feuille Ramadan), plus léger (500) que le numéro, qui reste l'élément principal de la date */
 .date-cell .day-name {
     text-transform: uppercase;
     font-size: var(--fs-md);
-    letter-spacing: 0.04em;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+}
+
+/* Colonnes de date en bandes vert pâle, comme l'en-tête du tableau ; le vendredi y garde un cran plus soutenu,
+   car le fond de colonne recouvre celui de la ligne */
+.prayer-table tbody td.col-date-greg,
+.prayer-table tbody td.col-hijri {
+    background: var(--bg-green-head);
+}
+
+.prayer-table tbody tr.is-friday td.col-date-greg,
+.prayer-table tbody tr.is-friday td.col-hijri {
+    background: var(--bg-green-friday);
 }
 
 /* Repères dans le tableau : 1er jour du mois hégirien (numéro vert), changement d'heure (fond bleu clair, texte normal) */
