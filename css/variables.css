@@ -112,7 +112,7 @@
     --sp-6: 1.5rem; /* 24 px */
 
     /* --- RAYONS --- */
-    --grid-gap: 0.125rem; /* 2 px : espace entre les cases du calendrier et marge de la grille (remonter à 0.1875rem = 3 px si les espaces s'effacent à l'impression) */
+    --grid-gap: 0.25rem; /* 4 px : espace entre les cases du calendrier et marge de la grille */
     --radius-cell: 0.5rem; /* 8 px : cases des jours */
     --radius-card: 0.5rem; /* blocs du calendrier et du tableau */
 

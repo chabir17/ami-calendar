@@ -82,7 +82,7 @@ Filets internes de **0,5 px** (`--hairline`), tracés en `box-shadow: inset` ou 
 | `--border-green` | `#c3dec6` | Grille du tableau, fin de semaine, cadre du tableau                     |
 | `--border-dst`   | `#e3c978` | Filet sous la ligne du changement d'heure                               |
 
-Pas de cadre autour des blocs : l'en-tête plein dessine le haut, la barre de légende (`--bg-grid`) ferme le bas du calendrier. Dans le calendrier, les cases blanches (coins `--radius-cell`, 8 px) sont séparées par des espaces `--grid-gap` (0,125 rem, 2 px) sur fond `--bg-grid`, sans filets.
+Pas de cadre autour des blocs : l'en-tête plein dessine le haut, la barre de légende (`--bg-grid`) ferme le bas du calendrier. Dans le calendrier, les cases blanches (coins `--radius-cell`, 8 px) sont séparées par des espaces `--grid-gap` (0,25 rem, 4 px) sur fond `--bg-grid`, sans filets.
 
 ### 2.5 Neutres
 
