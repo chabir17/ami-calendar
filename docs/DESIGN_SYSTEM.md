@@ -82,7 +82,7 @@ Filets internes de **0,5 px** (`--hairline`), tracés en `box-shadow: inset` ou 
 | `--border-green` | `#c3dec6` | Grille du tableau, fin de semaine, cadre du tableau                     |
 | `--border-dst`   | `#e3c978` | Filet sous la ligne du changement d'heure                               |
 
-Les cadres extérieurs sont des filets de 0,5 px (pseudo-élément `::after`, `--hairline`) de la couleur de leur en-tête (`--bg-head-blue`, `--bg-head-green`).
+Les cadres extérieurs sont des filets de 0,5 px et doux (`box-shadow` avec `--hairline`) : `--border-blue` pour le calendrier, `--border-green` pour le tableau. L'en-tête plein dessine déjà le haut de chaque bloc.
 
 ### 2.5 Neutres
 
