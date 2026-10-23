@@ -155,34 +155,24 @@
     grid-template-columns: repeat(7, 1fr);
     grid-template-rows: repeat(5, 1fr);
     flex-grow: 1;
+    gap: 3px; /* l'espace laisse voir le fond : quadrillage sans filets de 0,5 px */
+    padding: 3px;
+    background: var(--bg-blue-head);
 }
 
 .day-cell-visual {
-    /* filets 0,5 px à droite et en bas */
-    box-shadow:
-        inset calc(-1 * var(--hairline)) 0 0 var(--border-blue),
-        inset 0 calc(-1 * var(--hairline)) 0 var(--border-blue);
+    border-radius: 7px; /* cases détachées sur le fond de la grille */
+    background-color: white;
+    overflow: hidden;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* Cases hors du mois : grisé très pâle, pour ne pas les confondre avec des jours sans événement */
+/* Cases hors du mois : transparentes, elles se fondent dans le fond de la grille */
 .day-cell-visual.empty {
-    background-color: var(--bg-empty);
-}
-
-.day-cell-visual:nth-child(7n) {
-    box-shadow: inset 0 calc(-1 * var(--hairline)) 0 var(--border-blue);
-}
-
-/* Colonne du lundi : filet à gauche, pour fermer la grille sans cadre autour du bloc */
-.day-cell-visual:nth-child(7n + 1) {
-    box-shadow:
-        inset var(--hairline) 0 0 var(--border-blue),
-        inset calc(-1 * var(--hairline)) 0 0 var(--border-blue),
-        inset 0 calc(-1 * var(--hairline)) 0 var(--border-blue);
+    background-color: transparent;
 }
 
 /* --- ÉTATS DES CELLULES (FONDS COLORÉS) --- */
@@ -315,8 +305,7 @@
 /* --- LÉGENDE (BAS) : vacances scolaires et changement d'heure du mois --- */
 .legend-box {
     padding: var(--sp-2);
-    background: var(--bg-blue-head); /* bleu pâle, comme la ligne des jours : ferme le bas du calendrier */
-    box-shadow: inset 0 var(--hairline) 0 var(--border-blue); /* filet 0,5 px */
+    background: var(--bg-blue-head); /* bleu pâle, comme la ligne des jours et le fond de la grille : ferme le bas du calendrier */
     margin-top: auto;
     min-height: 31px; /* hauteur d'une ligne de légende, même vide : même grille chaque mois */
     display: flex;

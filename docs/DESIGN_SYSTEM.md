@@ -67,7 +67,6 @@ Tous opaques ; ce sont des aplats, jamais des dégradés.
 | `--bg-green-friday`    | `#d6e9d9` | Vendredis dans les colonnes de date : un cran au-dessus de `--bg-green-head`                                    |
 | `--bg-holiday`         | `#fbf6e7` | Vacances scolaires                                                                                              |
 | `--bg-dst`             | `#f8edc6` | Ligne du changement d'heure dans le tableau : plus soutenu que les vacances (ΔE ≈ 21 au blanc)                  |
-| `--bg-empty`           | `#eef0f3` | Cases hors du mois                                                                                              |
 | `--bg-eid`             | `#cfe7d2` | Pastille de l'Aïd sur les mini-mois de la couverture                                                            |
 | `--bg-cover-top`       | `#c8d8eb` | Haut du dégradé de la colonne d'identité de la couverture                                                       |
 | `--bg-terracotta-soft` | `#fbebe4` | Cellules du jeûne (feuille du Ramadan uniquement)                                                               |
@@ -82,7 +81,7 @@ Filets internes de **0,5 px** (`--hairline`), tracés en `box-shadow: inset` ou 
 | `--border-green` | `#c3dec6` | Grille du tableau, fin de semaine, cadre du tableau                     |
 | `--border-dst`   | `#e3c978` | Filet sous la ligne du changement d'heure                               |
 
-Pas de cadre autour des blocs : l'en-tête plein dessine le haut, et les filets de la grille (cases du calendrier, y compris un filet à gauche de la colonne du lundi) ou les bandes du tableau dessinent le reste.
+Pas de cadre autour des blocs : l'en-tête plein dessine le haut, la barre de légende (`--bg-blue-head`) ferme le bas du calendrier. Dans le calendrier, les cases blanches (coins de 7 px) sont séparées par des espaces de 3 px sur fond `--bg-blue-head`, sans filets.
 
 ### 2.5 Neutres
 
@@ -179,7 +178,7 @@ Fond `--bg-head-blue` (plein), texte blanc, hauteur `--band-h`. Mois grégorien 
 | Premier jour du mois hégirien | Croissant vert en haut à gauche (décalé si l'horloge est aussi présente)              |
 | Changement d'heure            | Horloge et libellé ambre doré (`--col-dst`)                                           |
 | Vacances scolaires            | Fond `--bg-holiday` ; légende avec pastille bordée de `--col-gold`                    |
-| Hors du mois                  | Fond `--bg-empty`, sans numéro                                                        |
+| Hors du mois                  | Case transparente (fond de la grille), sans numéro                                    |
 
 ### 6.3 Tableau des horaires
 
