@@ -70,8 +70,8 @@
     --bg-blue-head: #e5edf6; /* bandeau du mois, cadre du calendrier et pastilles d'icônes : bleu pâle (écart au blanc ≈ celui du vert pâle, visible sur le copieur laser) */
     --bg-blue-faint: #eef3f9; /* fonds neutres bleus de la feuille Ramadan (seul usage : indépendant du bandeau du mois du calendrier annuel) */
     --col-on-dark-soft: #dbe6f3; /* texte secondaire sur les en-têtes foncés (traductions) */
-    --bg-head-blue: #002e5d; /* bandeau du mois et cadre du calendrier : bleu marine plein (L* ≈ 19), texte blanc */
-    --bg-head-green: #0a3a12; /* en-tête et cadre du tableau des horaires : vert forêt plein, même assombrissement que le bleu marine (L* ≈ 20) */
+    --bg-head-blue: #1f4a7a; /* bandeau du mois et cadre du calendrier : bleu marine plein (L* ≈ 31), texte blanc */
+    --bg-head-green: #1a5322; /* en-tête et cadre du tableau des horaires : vert forêt plein, même assombrissement que le bleu marine (L* ≈ 31) */
     --bg-green-head: #e7f2e8; /* en-tête et cadre du tableau des horaires : vert très pâle (teinte d'origine, comme les vendredis) */
     --bg-eid: #cfe7d2; /* couverture : pastille de l'Aïd, vert pastel (texte --col-friday : 4.8:1) */
     --bg-green-faint: #e7f2e8; /* vert très clair : traits verticaux du tableau, vendredis de la feuille Ramadan */
