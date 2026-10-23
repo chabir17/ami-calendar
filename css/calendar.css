@@ -152,7 +152,7 @@
     font-size: var(--fs-md);
     font-weight: 600;
     text-transform: uppercase;
-    color: var(--col-blue); /* nom français accentué */
+    color: var(--bg-head-blue); /* nom français accentué, de la teinte du bandeau du mois */
 }
 
 .weekday-sub {

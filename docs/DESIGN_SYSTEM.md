@@ -31,17 +31,17 @@ Référence unique des couleurs, de la typographie, des espacements, des icônes
 
 C'est la table à connaître. Chaque ligne dit **ce que la couleur signifie** ; ne pas l'employer pour autre chose.
 
-| Sens                                | Couleur (jeton)                                                                       | Où                                                                                                                   |
-| ----------------------------------- | ------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| Calendrier grégorien, structure     | Bleu : `--col-blue`, `--col-title-blue` (`#46628a`, 5,6:1)                            | Noms et années du bandeau du mois, jours de la semaine, mini-mois, « 20 » et « 27 » de la couverture                 |
-| Hégirien, islamique, prière         | Vert : `--col-green`, `--col-friday` (`#41694a`, 6,3:1)                               | Jour hégirien et croissant des cases, Aïd, Tashrīq, ʿArafa, vendredis, « 01 » du tableau, verset, années hégiriennes |
-| Années hégiriennes de la couverture | Vert pâle : `--col-hijri-soft` (`#6c9e75`, 3,1:1, grand texte uniquement)             | Années hégiriennes en 49 px                                                                                          |
-| Jour férié (civil)                  | Terracotta : `--col-terracotta` (`#a8461f`, 5,9:1)                                    | Numéro et libellé du jour férié. **Réservé aux fériés** (et au jeûne sur la feuille du Ramadan)                      |
-| Dimanche                            | Terracotta très teinté : `--col-sunday` (`#7a4f3e`, 7,0:1)                            | Numéro du dimanche (presque neutre, pour ne pas concurrencer les fériés)                                             |
-| Vacances scolaires                  | Beige doré pâle : `--bg-holiday` (`#fbf6e7`)                                          | Fond des cases de vacances (zone C), pastille de légende (contour `--col-gold`)                                      |
-| Changement d'heure                  | Beige doré foncé : `--col-dst` (`#8a6a14`, 5,1:1 sur blanc, 4,7:1 sur `--bg-holiday`) | Horloge et libellé de la case, légende ; ligne du tableau en `--bg-holiday` avec filet `--border-dst`                |
-| Identité tamoule                    | Safran : `--col-saffron-text`                                                         | Nom tamoul, frise du haut                                                                                            |
-| Neutre                              | Gris : `--col-text`, `--col-text-light`, `--col-text-soft`                            | Numéros du jour ordinaire, textes courants, cases hors du mois                                                       |
+| Sens                                | Couleur (jeton)                                                           | Où                                                                                                                   |
+| ----------------------------------- | ------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| Calendrier grégorien, structure     | Bleu : `--col-blue`, `--col-title-blue` (`#46628a`, 5,6:1)                | Noms et années du bandeau du mois, jours de la semaine, mini-mois, « 20 » et « 27 » de la couverture                 |
+| Hégirien, islamique, prière         | Vert : `--col-green`, `--col-friday` (`#41694a`, 6,3:1)                   | Jour hégirien et croissant des cases, Aïd, Tashrīq, ʿArafa, vendredis, « 01 » du tableau, verset, années hégiriennes |
+| Années hégiriennes de la couverture | Vert pâle : `--col-hijri-soft` (`#6c9e75`, 3,1:1, grand texte uniquement) | Années hégiriennes en 49 px                                                                                          |
+| Jour férié (civil)                  | Terracotta : `--col-terracotta` (`#a8461f`, 5,9:1)                        | Numéro et libellé du jour férié. **Réservé aux fériés** (et au jeûne sur la feuille du Ramadan)                      |
+| Dimanche                            | Terracotta très teinté : `--col-sunday` (`#7a4f3e`, 7,0:1)                | Numéro du dimanche (presque neutre, pour ne pas concurrencer les fériés)                                             |
+| Vacances scolaires                  | Beige doré pâle : `--bg-holiday` (`#fbf6e7`)                              | Fond des cases de vacances (zone C), pastille de légende (contour `--col-gold`)                                      |
+| Changement d'heure                  | Ambre doré : `--col-dst` (`#946700`, 5,0:1 sur blanc)                     | Horloge et libellé de la case, légende ; ligne du tableau en `--bg-holiday` avec filet `--border-dst`                |
+| Identité tamoule                    | Safran : `--col-saffron-text`                                             | Nom tamoul, frise du haut                                                                                            |
+| Neutre                              | Gris : `--col-text`, `--col-text-light`, `--col-text-soft`                | Numéros du jour ordinaire, textes courants, cases hors du mois                                                       |
 
 Priorité quand plusieurs sens tombent le même jour : **Aïd (vert) > jour férié (terracotta) > vendredi > dimanche > jour ordinaire**.
 
@@ -65,7 +65,8 @@ Tous opaques ; ce sont des aplats, jamais des dégradés.
 | `--bg-green-faint`     | `#e7f2e8` | Traits verticaux du tableau, vendredis de la feuille du Ramadan                                                 |
 | `--bg-friday-light`    | `#f1f8f2` | Vendredis du tableau annuel (ligne entière)                                                                     |
 | `--bg-green-friday`    | `#d6e9d9` | Vendredis dans les colonnes de date : un cran au-dessus de `--bg-green-head`                                    |
-| `--bg-holiday`         | `#fbf6e7` | Vacances scolaires ; ligne du changement d'heure dans le tableau                                                |
+| `--bg-holiday`         | `#fbf6e7` | Vacances scolaires                                                                                              |
+| `--bg-dst`             | `#f8edc6` | Ligne du changement d'heure dans le tableau : plus soutenu que les vacances (ΔE ≈ 21 au blanc)                  |
 | `--bg-empty`           | `#eef0f3` | Cases hors du mois                                                                                              |
 | `--bg-eid`             | `#cfe7d2` | Pastille de l'Aïd sur les mini-mois de la couverture                                                            |
 | `--bg-cover-top`       | `#c8d8eb` | Haut du dégradé de la colonne d'identité de la couverture                                                       |
@@ -79,7 +80,7 @@ Filets internes de **0,5 px** (`--hairline`), tracés en `box-shadow: inset` ou 
 | ---------------- | --------- | ----------------------------------------------------------------------- |
 | `--border-blue`  | `#c5d3e4` | Grille du calendrier, séparateurs de la couverture, cadre du calendrier |
 | `--border-green` | `#c3dec6` | Grille du tableau, fin de semaine, cadre du tableau                     |
-| `--border-dst`   | `#e6d9b0` | Filet sous la ligne du changement d'heure                               |
+| `--border-dst`   | `#e3c978` | Filet sous la ligne du changement d'heure                               |
 
 Les cadres extérieurs sont des filets de 0,5 px (pseudo-élément `::after`, `--hairline`) de la couleur de leur en-tête (`--bg-head-blue`, `--bg-head-green`).
 
@@ -176,7 +177,7 @@ Fond `--bg-head-blue` (plein), texte blanc, hauteur `--band-h`. Mois grégorien 
 | Aïd                           | Numéro vert ; libellé vert ; prioritaire sur le férié (libellé de l'Aïd en haut)      |
 | Jour islamique particulier    | Date hégirienne en gras et libellé vert (début du Ramadan, ʿArafa, Tashrīq, ʿĀshūrāʾ) |
 | Premier jour du mois hégirien | Croissant vert en haut à gauche (décalé si l'horloge est aussi présente)              |
-| Changement d'heure            | Horloge et libellé beige doré foncé (`--col-dst`)                                     |
+| Changement d'heure            | Horloge et libellé ambre doré (`--col-dst`)                                           |
 | Vacances scolaires            | Fond `--bg-holiday` ; légende avec pastille bordée de `--col-gold`                    |
 | Hors du mois                  | Fond `--bg-empty`, sans numéro                                                        |
 
@@ -190,7 +191,7 @@ En-tête `--bg-head-green` (plein), titres en blanc, traductions en `--col-on-da
 | Jour hégirien      | Noir ; le « 01 » du début de mois en blanc dans une pastille `--bg-head-green` (15 px de haut, ne grandit pas la ligne) |
 | Vendredi           | Ligne `--bg-friday-light` ; dans les colonnes de date, `--bg-green-friday`                                              |
 | Fin de semaine     | Filet de 1,5 px `--border-green` après le dimanche                                                                      |
-| Changement d'heure | Ligne entière (colonnes de date comprises) en `--bg-holiday`, filet `--border-dst`, texte normal                        |
+| Changement d'heure | Ligne entière (colonnes de date comprises) en `--bg-dst`, filet `--border-dst`, texte normal                            |
 
 ### 6.4 Header
 

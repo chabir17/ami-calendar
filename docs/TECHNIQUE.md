@@ -101,7 +101,7 @@ Les deux composants héritent de `MonthElement`, qui observe `year` et `month` e
 
 - `.vis-greg` (numéro du jour) et `.vis-hij` (jour hégirien, vert, en haut à droite) ;
 - `.new-moon-icon` : croissant au 1er jour du mois hégirien ;
-- `.dst-icon` : horloge beige doré (`--col-dst`) du changement d'heure (`dstIconHTML`), décalée si le croissant est aussi présent ;
+- `.dst-icon` : horloge ambre doré (`--col-dst`) du changement d'heure (`dstIconHTML`), décalée si le croissant est aussi présent ;
 - `.event-label` : libellés `event-line {type}-label`, types `eid`, `virtuous`, `public`, `dst`, sur une ligne chacun. Si l'Aïd tombe un jour férié, l'Aïd passe en haut de la case (`.event-label-top`).
 
 **`<ami-prayer-table>`** : une ligne par jour depuis `#prayer-row-template` (jour abrégé sur 3 lettres, numéro, 6 horaires, jour hégirien). Classes :
@@ -109,7 +109,7 @@ Les deux composants héritent de `MonthElement`, qui observe `year` et `month` e
 - `is-friday` : fond `--bg-friday-light`, plus pâle que l'en-tête (texte normal) ; le dimanche est repéré par le filet de fin de semaine ;
 - `week-end` : filet après chaque dimanche, sauf en fin de mois ;
 - `is-hijri-new` : 1er jour du mois hégirien, numéro en `--col-green-dark` dans la colonne hégirienne ;
-- `is-dst` : jour du changement d'heure, fond beige doré `--bg-holiday` et filet de fin de semaine en `--border-dst`, texte normal (les horaires sautent d'une heure).
+- `is-dst` : jour du changement d'heure, fond doré `--bg-dst` (plus soutenu que les vacances) et filet de fin de semaine en `--border-dst`, texte normal (les horaires sautent d'une heure).
 
 Le tableau occupe toute la hauteur : les mois de 28 à 31 jours tiennent sur la page.
 
@@ -219,7 +219,7 @@ Première page du PDF, avec une mise en page propre (ni header à torsades, ni g
 | --------------------- | ------------------------------------------------------------------------------------------------ | -------------------------------------------------- |
 | Vacances scolaires    | période de `CONFIG.schoolHolidays` contenant le jour                                             | fond doré pâle, nom dans la légende                |
 | Jour férié            | `CONFIG.publicHolidays['AAAA-MM-JJ']`, libellé raccourci par `HOLIDAY_NAMES`                     | numéro terracotta, libellé                         |
-| Changement d'heure    | `DATE_UTILS.dstChange` : derniers dimanches de mars (`summer`) et d'octobre (`winter`)           | icône et libellé beige doré (`--col-dst`), légende |
+| Changement d'heure    | `DATE_UTILS.dstChange` : derniers dimanches de mars (`summer`) et d'octobre (`winter`)           | icône et libellé ambre doré (`--col-dst`), légende |
 | Nouveau mois hégirien | jour hégirien = 1                                                                                | croissant                                          |
 | Aïd                   | `EID_NAMES` : 1er Shawwāl (Eid-ul-Fitr), 10 Dhū al-Ḥijjah (Eid-ul-Adha)                          | numéro vert, libellé en premier                    |
 | Jours vertueux        | `VIRTUOUS_DAYS` : 1er Ramaḍān, 9 Dhū al-Ḥijjah (ʿArafa), 11-13 (Tashrīq), 10 Muḥarram (ʿĀshūrāʾ) | libellé vert, date hégirienne en gras              |

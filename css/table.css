@@ -149,23 +149,23 @@ ami-prayer-table {
     align-items: center;
     justify-content: center;
     height: 15px; /* tient dans la ligne : n'agrandit pas la rangée */
-    padding: 0 5px;
+    padding: 0 3px;
     border-radius: 8px;
     background: var(--bg-head-green); /* même vert que l'en-tête du tableau */
     color: white;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
     line-height: 1;
 }
 
 .prayer-table tbody tr.is-dst {
-    background: var(--bg-holiday);
+    background: var(--bg-dst);
 }
 
 /* Ligne du changement d'heure : beige sur toute la largeur, y compris les colonnes de date (qui recouvrent sinon le fond de la ligne) */
 .prayer-table tbody tr.is-dst td.col-date-greg,
 .prayer-table tbody tr.is-dst td.col-hijri {
-    background: var(--bg-holiday);
+    background: var(--bg-dst);
 }
 
 /* Fin de semaine : filet plus marqué après le dimanche (repérage par blocs de 7 jours) */
