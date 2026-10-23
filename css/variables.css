@@ -3,7 +3,7 @@
 
     /* Couleur thématique de l'année (Doré) */
     --brand: #c8a85a; /* surchargeable par client (clients/*.json) ; par défaut, l'or des ornements */
-    --bg-holiday: #fcf8ec; /* fond des vacances scolaires : doré très pâle */
+    --bg-holiday: #fbf6e7; /* fond des vacances scolaires et de la ligne du changement d'heure : doré pâle (écart de teinte au blanc ≈ celui du vert pâle, visible sur le copieur laser) */
     /* Noms de l'association : même famille dorée, deux tons contrastés (WCAG AA sur le bandeau) */
     --brand-text: color-mix(in srgb, var(--brand), black 40%); /* nom tamoul : 4.7:1 */
 
@@ -33,7 +33,7 @@
     --col-ink: #1f1f1f; /* horaires */
 
     /* Titres adoucis des en-têtes (page calme : la couleur pleine est réservée aux exceptions) */
-    --col-title-blue: #46628a; /* bandeau du mois : 5.6:1 sur --bg-blue-faint */
+    --col-title-blue: #46628a; /* bandeau du mois : 5.3:1 sur --bg-blue-head */
     --col-dst: #8a6a14; /* changement d'heure : horloge, libellé et légende, beige doré foncé (5.1:1 sur blanc) */
     --col-title-green: #3f7046; /* en-tête des horaires : 5.0:1 sur --bg-green-faint */
 
@@ -60,15 +60,15 @@
     /* Vert pastel (vendredis et colonnes de date du tableau des horaires) */
     --bg-friday: var(--bg-green-faint); /* vendredis de la feuille Ramadan */
     --bg-cover-top: #c8d8eb; /* couverture : haut du dégradé de la colonne d'identité (aucun texte à ce niveau : années hégiriennes en bleu ardoise à 5:1 plus bas) */
-    --bg-weekdays: #f4f7fb; /* ligne des jours de la semaine : un cran plus pâle que le bandeau du mois */
+    --bg-weekdays: #eef3f9; /* ligne des jours de la semaine : un cran plus pâle que le bandeau du mois */
     --bg-friday-light: #f1f8f2; /* vendredis du tableau annuel : plus pâle que l'en-tête vert (--bg-green-head) */
 
     /* Gris pastel : cases hors du mois */
     --bg-empty: #f8f9fa;
 
     /* Pastels opaques (rendu fiable sur laser de bureau, papier blanc) */
-    --bg-blue-head: #eef3f9; /* bandeau du mois, ligne des jours et cadre du calendrier : bleu très pâle (teinte d'origine) */
-    --bg-blue-faint: #eef3f9; /* fonds neutres bleus (feuille Ramadan) */
+    --bg-blue-head: #e5edf6; /* bandeau du mois, cadre du calendrier et pastilles d'icônes : bleu pâle (écart au blanc ≈ celui du vert pâle, visible sur le copieur laser) */
+    --bg-blue-faint: #eef3f9; /* fonds neutres bleus de la feuille Ramadan (seul usage : indépendant du bandeau du mois du calendrier annuel) */
     --bg-green-head: #e7f2e8; /* en-tête et cadre du tableau des horaires : vert très pâle (teinte d'origine, comme les vendredis) */
     --bg-eid: #cfe7d2; /* couverture : pastille de l'Aïd, vert pastel (texte --col-friday : 4.8:1) */
     --bg-green-faint: #e7f2e8; /* vert très clair : traits verticaux du tableau, vendredis de la feuille Ramadan */

@@ -38,8 +38,8 @@ C'est la table à connaître. Chaque ligne dit **ce que la couleur signifie** ; 
 | Années hégiriennes de la couverture | Vert pâle : `--col-hijri-soft` (`#6c9e75`, 3,1:1, grand texte uniquement)                       | Années hégiriennes en 49 px                                                                                                                           |
 | Jour férié (civil)                  | Terracotta : `--col-terracotta` (`#a8461f`, 5,9:1)                                              | Numéro et libellé du jour férié. **Réservé aux fériés** (et au jeûne sur la feuille du Ramadan)                                                       |
 | Dimanche                            | Terracotta très teinté : `--col-sunday` (`#7a4f3e`, 7,0:1)                                      | Numéro du dimanche (presque neutre, pour ne pas concurrencer les fériés)                                                                              |
-| Vacances scolaires                  | Beige doré pâle : `--bg-holiday` (`#fcf8ec`)                                                    | Fond des cases de vacances (zone C), pastille de légende (contour `--col-gold`)                                                                       |
-| Changement d'heure                  | Beige doré foncé : `--col-dst` (`#8a6a14`, 5,1:1)                                               | Horloge et libellé de la case, légende ; ligne du tableau en `--bg-holiday` avec filet `--border-dst`                                                 |
+| Vacances scolaires                  | Beige doré pâle : `--bg-holiday` (`#fbf6e7`)                                                    | Fond des cases de vacances (zone C), pastille de légende (contour `--col-gold`)                                                                       |
+| Changement d'heure                  | Beige doré foncé : `--col-dst` (`#8a6a14`, 5,1:1 sur blanc, 4,7:1 sur `--bg-holiday`)           | Horloge et libellé de la case, légende ; ligne du tableau en `--bg-holiday` avec filet `--border-dst`                                                 |
 | Identité tamoule                    | Safran : `--col-saffron-text`                                                                   | Nom tamoul, frise du haut                                                                                                                             |
 | Neutre                              | Gris : `--col-text`, `--col-text-light`, `--col-text-soft`                                      | Numéros du jour ordinaire, textes courants, cases hors du mois                                                                                        |
 
@@ -49,16 +49,18 @@ Priorité quand plusieurs sens tombent le même jour : **Aïd (vert) > jour fér
 
 Tous opaques ; ce sont des aplats, jamais des dégradés.
 
+**Seuil de visibilité à l'impression** : un fond doit s'écarter du blanc d'au moins **ΔE ≈ 8** (CIE Lab) pour se voir sur le copieur laser de l'association (essai du 23/10/2026 : le vert `--bg-green-head`, à ΔE 8,5, se voit ; le beige à 6,7 et le bleu à 5,6 ne se voyaient pas). Les fonds sous ce seuil (`--bg-friday-light` à 5,0, `--bg-empty` à 2,2) sont des repères secondaires : à relever si l'impression les efface.
+
 | Jeton                  | Valeur    | Usage                                                                          |
 | ---------------------- | --------- | ------------------------------------------------------------------------------ |
-| `--bg-blue-head`       | `#eef3f9` | Bandeau du mois, ligne des jours, cadre du calendrier, pastilles d'icônes      |
-| `--bg-blue-faint`      | `#eef3f9` | Fonds neutres bleus (feuille du Ramadan), filets bleus                         |
-| `--bg-weekdays`        | `#f4f7fb` | Ligne des jours de la semaine (un cran plus pâle)                              |
+| `--bg-blue-head`       | `#e5edf6` | Bandeau du mois, cadre du calendrier, pastilles d'icônes                       |
+| `--bg-blue-faint`      | `#eef3f9` | Feuille du Ramadan uniquement (indépendant du bandeau du mois)                 |
+| `--bg-weekdays`        | `#eef3f9` | Ligne des jours de la semaine (un cran plus pâle)                              |
 | `--bg-green-head`      | `#e7f2e8` | En-tête du tableau, colonnes de date (grégorien et hégirien), cadre du tableau |
 | `--bg-green-faint`     | `#e7f2e8` | Traits verticaux du tableau, vendredis de la feuille du Ramadan                |
 | `--bg-friday-light`    | `#f1f8f2` | Vendredis du tableau annuel (ligne entière)                                    |
 | `--bg-green-friday`    | `#d6e9d9` | Vendredis dans les colonnes de date : un cran au-dessus de `--bg-green-head`   |
-| `--bg-holiday`         | `#fcf8ec` | Vacances scolaires ; ligne du changement d'heure dans le tableau               |
+| `--bg-holiday`         | `#fbf6e7` | Vacances scolaires ; ligne du changement d'heure dans le tableau               |
 | `--bg-empty`           | `#f8f9fa` | Cases hors du mois                                                             |
 | `--bg-eid`             | `#cfe7d2` | Pastille de l'Aïd sur les mini-mois de la couverture                           |
 | `--bg-cover-top`       | `#c8d8eb` | Haut du dégradé de la colonne d'identité de la couverture                      |
