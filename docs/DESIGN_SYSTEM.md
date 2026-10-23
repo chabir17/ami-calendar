@@ -56,7 +56,7 @@ Tous opaques ; ce sont des aplats, jamais des dégradés.
 | Jeton                  | Valeur    | Usage                                                                                                                                                                                         |
 | ---------------------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `--bg-blue-head`       | `#e5edf6` | Pastilles d'icônes, couverture (fonds pâles)                                                                                                                                                  |
-| `--bg-grid`            | `#e0e9f3` | Ligne des jours de la semaine, fond de la grille des jours (visible dans les espaces de 3 px entre les cases) et barre de légende : bleu-gris le plus clair encore visible (ΔE ≈ 10 au blanc) |
+| `--bg-grid`            | `#e0e9f3` | Ligne des jours de la semaine, fond de la grille des jours (visible dans les espaces de 2 px entre les cases) et barre de légende : bleu-gris le plus clair encore visible (ΔE ≈ 10 au blanc) |
 | `--bg-head-blue`       | `#364f6f` | Bandeau du mois et cadre du calendrier : bleu ardoise plein (L* ≈ 33, chroma ≈ 21, blanc dessus 8,4:1)                                                                                        |
 | `--bg-head-green`      | `#35553c` | En-tête et cadre du tableau : vert sapin plein, même assombrissement (L* ≈ 33, chroma ≈ 21, blanc dessus 8,4:1)                                                                               |
 | `--col-on-dark-soft`   | `#dbe6f3` | Traductions et année sur les en-têtes foncés                                                                                                                                                  |
@@ -82,7 +82,7 @@ Filets internes de **0,5 px** (`--hairline`), tracés en `box-shadow: inset` ou 
 | `--border-green` | `#c3dec6` | Grille du tableau, fin de semaine, cadre du tableau                     |
 | `--border-dst`   | `#e3c978` | Filet sous la ligne du changement d'heure                               |
 
-Pas de cadre autour des blocs : l'en-tête plein dessine le haut, la barre de légende (`--bg-grid`) ferme le bas du calendrier. Dans le calendrier, les cases blanches (coins de 7 px) sont séparées par des espaces de 3 px sur fond `--bg-grid`, sans filets.
+Pas de cadre autour des blocs : l'en-tête plein dessine le haut, la barre de légende (`--bg-grid`) ferme le bas du calendrier. Dans le calendrier, les cases blanches (coins `--radius-cell`, 8 px) sont séparées par des espaces `--grid-gap` (0,125 rem, 2 px) sur fond `--bg-grid`, sans filets.
 
 ### 2.5 Neutres
 

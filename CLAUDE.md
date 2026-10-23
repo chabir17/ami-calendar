@@ -13,6 +13,11 @@ Calendrier imprimable trilingue (FR / AR / TA) de l'association AMI (La Courneuv
 - `npm run check [-- 2027]` : **à lancer après toute modification visuelle.** Contrôle 13 pages par année, couverture sur 1 page sans débordement (années 2025–2030 par défaut), Ramadan sur 1 page. Affiche aussi une couverture d’encre approchée (comparaison entre versions). Nécessite Chrome, `pdfinfo` et internet. Ne pas réécrire de scripts de mesure : étendre `scripts/check.mjs` si besoin.
 - `npm run prettier` puis `npm run lint` avant de commiter.
 
+## Unités CSS
+
+- Tailles de texte (`font-size`) : en `px`, via les jetons `--fs-*`.
+- Espacements, marges, rayons : en `rem` (jetons `--sp-*`, `--grid-gap`, `--radius-*`), ou en `mm`/`cm` pour la mise en page d'impression (page, marges, reliure), selon le contexte.
+
 ## Règles de contenu (décidées par l'utilisateur)
 
 - Aucun texte coranique en arabe sur la page (le calendrier peut être jeté) ; traductions et ponctuation acceptées.
