@@ -7,7 +7,7 @@ Référence pour faire évoluer le code des deux documents de l'AMI. Pour l'usag
 - **Site statique, sans build** : HTML, CSS et JavaScript natif (modules ES). Aucune dépendance d'exécution hors `js/lib/adhan.min.js`, embarqué. Les outils Node (ESLint, Prettier, serve) ne servent qu'au développement.
 - **Hors ligne par défaut** : polices, icônes, librairie et horaires sont locaux. Seuls les jours fériés et les vacances scolaires viennent d'API publiques, avec cache local.
 - **Pensé pour l'impression** : chaque page est un bloc de dimensions fixes en millimètres (A4), que Chrome imprime en PDF. Rien ne doit déborder : le contrôle se fait au nombre de pages du PDF.
-- **Design system par jetons** : couleurs, tailles et espacements sont des variables CSS de `css/variables.css` (voir 6).
+- **Design system par jetons** : couleurs, tailles et espacements sont des variables CSS de `css/variables.css` (voir [DESIGN_SYSTEM.md](DESIGN_SYSTEM.md)).
 - **Deux documents indépendants** : le calendrier annuel et la feuille du Ramadan partagent les services, les données et les jetons, mais **pas leur mise en page**. La feuille du Ramadan est encore en conception : on ne cherche pas à aligner son design sur celui du calendrier.
 
 ## 2. Arborescence
@@ -282,34 +282,16 @@ Chargée par `?mosque=<id>` (`fetchClientConfig` ; la feuille du Ramadan utilise
 
 ## 6. Design system (`css/variables.css`)
 
-### 6.1 Jetons
+Couleurs et leur sens, typographie, espacements, icônes et composants sont décrits dans **[DESIGN_SYSTEM.md](DESIGN_SYSTEM.md)**, qui fait référence. À retenir ici :
 
-| Famille          | Jetons                                                                                                                                                                                                                                                                                                                      |
-| ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Couleurs de sens | `--col-blue` (structure, grégorien), `--col-green` (hégirien, prières), `--col-green-dark` (texte sur vert pâle), `--col-saffron-text` (nom tamoul, frise du haut), `--col-terracotta` (fériés ; jeûne de la feuille du Ramadan)                                                                                            |
-| Or et thème      | `--col-gold` (ornements de la feuille du Ramadan, ornement sous les années de la couverture), `--brand` (thème client), `--brand-text` (`--brand` assombri, icônes par défaut)                                                                                                                                              |
-| Filets           | `--bg-blue-faint`, `--bg-green-faint` : filets sous les en-têtes et de fin de semaine (même teinte que les fonds pâles)                                                                                                                                                                                                     |
-| Fonds            | `--bg-blue-head` (bandeau du mois et ligne des jours), `--bg-blue-faint` (fonds neutres), `--bg-green-head` (en-tête des horaires), `--bg-green-faint` (= `--bg-friday`), `--bg-holiday`, `--bg-empty`, `--bg-terracotta-soft`, `--bg-eid` (pastille de la couverture), `--bg-cover-top` (haut du dégradé de la couverture) |
-| Texte            | `--col-text`, `--col-text-light`, `--col-text-soft`, `--col-ink` (chiffres), `--col-on-blue` (sur fond foncé, feuille du Ramadan)                                                                                                                                                                                           |
-| Bordures         | `--border-blue`, `--border-green`, `--accent-blue` (feuille Ramadan), `--border-on-dark`, `--border-swatch`                                                                                                                                                                                                                 |
-| Écran            | `--bg-body` (fond autour des pages), `--shadow-page` (ombre des pages)                                                                                                                                                                                                                                                      |
-| Tailles (px)     | `--fs-2xs` 9 · `--fs-xs` 10 · `--fs-contact` 10 · `--fs-sm` 12 · `--fs-md` 14 · `--fs-figure` 15 · `--fs-brand-fr` 20 · `--fs-xl` 22 · `--fs-month` 24 · `--fs-brand` 28 · `--fs-title` 30 · `--fs-display` 42 · `--fs-cover-hijri` 49 · `--fs-cover-year` 140                                                              |
-| Rayons           | `--radius-card` 0,5 rem (blocs du calendrier et du tableau)                                                                                                                                                                                                                                                                 |
-| Espacements      | `--sp-1` 4 · `--sp-2` 8 · `--sp-3` 12 · `--sp-4` 16 · `--sp-6` 24 (px)                                                                                                                                                                                                                                                      |
-| Mise en page     | `--page-pad` 5 mm · `--binding-zone` 10 mm · `--block-gap` 2,5 mm · `--header-h` 24 mm · `--band-h` 64 px                                                                                                                                                                                                                   |
-| Polices          | `--font-fr` Noto Sans · `--font-ar` Amiri (Noto Naskh Arabic en secours) · `--font-ta` Noto Serif Tamil                                                                                                                                                                                                                     |
-
-Jetons locaux (déclarés sur le composant qui les utilise) : `--band-motif-h` et `--identity-gap` (header), `--row-h`, `--rule`, `--surface`, `--surface-fast`, `--footer-h`, `--bg-veil` (feuille du Ramadan).
-
-### 6.2 Règles
-
-- **Une couleur = un sens.** Les textes respectent au moins 4,5:1 (WCAG AA) ; les ratios sont notés en commentaire des jetons.
-- **Flat design** : aplats, pas de dégradés ni d'ombres à l'impression. Seule exception : le fond de la colonne d'identité de la couverture (dégradé SVG, voir 3.6).
-- Aucune couleur ni taille de police en dur dans les feuilles de style du calendrier ni dans ses SVG : ajouter un jeton plutôt qu'une valeur. Exceptions : `white` (le papier) et les valeurs de luminance des masques SVG de la couverture (`#fff`, `#404040`).
+- **Une couleur = un sens**, une icône = un sens ; textes à 4,5:1 minimum (ratios en commentaire des jetons).
+- **Flat design** : aplats et filets de 0,5 px ; seuls dégradés : SVG vectoriels (fond de la colonne d'identité, année et girih de la couverture).
+- **Aucune couleur ni taille de police en dur** dans les feuilles de style du calendrier ni dans ses SVG : ajouter un jeton (exceptions : `white`, les valeurs de luminance des masques SVG de la couverture).
 - Les petits ajustements de mise en page en millimètres (air sous les frises, écart des noms) restent locaux, commentés à côté de la règle.
-- `ramadan.css` est autonome : il réutilise les jetons communs, mais garde ses propres rôles de couleur (voir 5).
-- Graisses : 400 et 600 pour le français et le tamoul, 400 à 500 pour l'arabe (Amiri).
 - Fonds pastel **opaques** (pas de transparence) : rendu fiable sur le copieur laser.
+- Graisses : 400 à 600 pour le français et le tamoul, 400 à 500 pour l'arabe (Amiri) ; l'année de la couverture (700) est un élément d'affichage.
+- `ramadan.css` est autonome : il réutilise les jetons communs, mais garde ses propres rôles de couleur (voir 5).
+- Jetons locaux (déclarés sur le composant qui les utilise) : `--band-motif-h` et `--identity-gap` (header), `--row-h`, `--rule`, `--surface`, `--surface-fast`, `--footer-h`, `--bg-veil` (feuille du Ramadan).
 
 ## 7. Qualité et vérification
 

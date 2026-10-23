@@ -5,7 +5,7 @@ Calendrier imprimable trilingue (FR / AR / TA) de l'association AMI (La Courneuv
 - `index.html` : calendrier annuel, 13 pages A4 paysage (couverture + 12 mois). `?month=cover` = couverture seule.
 - `ramadan.html` : feuille du Ramadan, 1 page A4 portrait. **Design distinct et encore en conception : ne pas l'aligner sur le calendrier annuel.**
 - JavaScript natif (modules ES), CSS avec jetons dans `css/variables.css`, aucune compilation. Pages à dimensions fixes en mm.
-- Documentation détaillée : `docs/TECHNIQUE.md` (§3.6 couverture, §6 design system, §8 pièges). La lire par section, ne pas la recopier ici. La mettre à jour quand on change un jeton, une structure ou un piège.
+- Documentation détaillée : `docs/TECHNIQUE.md` (§3.6 couverture, §8 pièges) et `docs/DESIGN_SYSTEM.md` (couleurs et leur sens, typographie, icônes, composants : à mettre à jour avec tout changement de jeton). La lire par section, ne pas la recopier ici. La mettre à jour quand on change un jeton, une structure ou un piège.
 
 ## Commandes
 

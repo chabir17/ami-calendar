@@ -7,7 +7,7 @@ Calendriers imprimables de l'**Association Musulmane de l'Inde** (AMI, La Courne
 | **Calendrier annuel**  | `index.html`   | 13 pages A4 paysage | Couverture, puis mois civil et hégirien, fériés, vacances (zone C), horaires des 5 prières |
 | **Feuille du Ramadan** | `ramadan.html` | 1 page A4 portrait  | Horaires du mois de Ramadan (Imsak, prières, Icha AMI), nuit du doute, 27e nuit, Aïd       |
 
-Site statique en JavaScript natif, sans framework ni étape de compilation. Documentation technique détaillée : [docs/TECHNIQUE.md](docs/TECHNIQUE.md).
+Site statique en JavaScript natif, sans framework ni étape de compilation. Documentation technique détaillée : [docs/TECHNIQUE.md](docs/TECHNIQUE.md). Couleurs, typographie, icônes et composants : [docs/DESIGN_SYSTEM.md](docs/DESIGN_SYSTEM.md).
 
 ## Démarrage
 
@@ -65,7 +65,7 @@ Sans Node : `python3 -m http.server 3000` depuis la racine du projet.
     - numéro **vert** : Aïd ; **terracotta** : jour férié (libellé écrit dans la case) ;
     - libellés verts : début du Ramadan, jour de ʿArafa, jours de Tashrīq, ʿĀshūrāʾ ;
     - fond doré pâle : vacances scolaires (zone C) ; fond gris : jours hors du mois ;
-    - horloge bleue : passage à l'heure d'été ou d'hiver.
+    - horloge beige doré : passage à l'heure d'été ou d'hiver.
 - **Légende** (bas de page) : nom des vacances scolaires du mois et passage à l'heure d'été / d'hiver.
 - **Tableau des horaires** (en-tête vert clair) : Fajr, Shuruq, Dhohr, Asr, Maghrib, Icha et jour hégirien ; colonnes de date en bandes vert pâle comme l'en-tête, vendredis surlignés (un cran plus soutenu dans ces colonnes), filet à chaque fin de semaine, « 01 » en vert au 1er jour du mois hégirien, ligne sur fond beige doré le jour du changement d'heure.
 

@@ -26,7 +26,7 @@
     --col-hijri-soft: #6c9e75; /* années hégiriennes de la couverture : vert pâle, 3.1:1 (grand texte) */
 
     /* Terracotta (horaires du jeûne : Imsak, iftār, Icha AMI) */
-    --col-terracotta: #a8461f; /* événements civils (fériés, changement d'heure), jeûne (feuille Ramadan) : 5.9:1 sur blanc, 5.5:1 sur --bg-holiday */
+    --col-terracotta: #a8461f; /* jours fériés (civil), jeûne (feuille Ramadan) : 5.9:1 sur blanc, 5.5:1 sur --bg-holiday */
     --bg-terracotta-soft: #fbebe4; /* fond très clair des cellules du jeûne (feuille Ramadan) */
 
     /* Encre des chiffres et des textes sur fond foncé */
@@ -57,7 +57,7 @@
 
     /* --- FONDS "ÉCO-ENCRE" (PASTELS TRÈS CLAIRS POUR L'IMPRESSION) --- */
 
-    /* Vert pastel (vendredis du tableau des horaires) */
+    /* Vert pastel (vendredis et colonnes de date du tableau des horaires) */
     --bg-friday: var(--bg-green-faint); /* vendredis de la feuille Ramadan */
     --bg-cover-top: #c8d8eb; /* couverture : haut du dégradé de la colonne d'identité (aucun texte à ce niveau : années hégiriennes en bleu ardoise à 5:1 plus bas) */
     --bg-weekdays: #f4f7fb; /* ligne des jours de la semaine : un cran plus pâle que le bandeau du mois */
@@ -68,7 +68,7 @@
 
     /* Pastels opaques (rendu fiable sur laser de bureau, papier blanc) */
     --bg-blue-head: #eef3f9; /* bandeau du mois, ligne des jours et cadre du calendrier : bleu très pâle (teinte d'origine) */
-    --bg-blue-faint: #eef3f9; /* changement d'heure du tableau, fonds neutres de la feuille Ramadan */
+    --bg-blue-faint: #eef3f9; /* fonds neutres bleus (feuille Ramadan) */
     --bg-green-head: #e7f2e8; /* en-tête et cadre du tableau des horaires : vert très pâle (teinte d'origine, comme les vendredis) */
     --bg-eid: #cfe7d2; /* couverture : pastille de l'Aïd, vert pastel (texte --col-friday : 4.8:1) */
     --bg-green-faint: #e7f2e8; /* vert très clair : traits verticaux du tableau, vendredis de la feuille Ramadan */
