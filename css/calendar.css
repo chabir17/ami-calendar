@@ -113,7 +113,7 @@
     border-radius: var(--radius-card);
     overflow: hidden;
     background-color: white;
-    box-shadow: 0 0 0 var(--hairline) var(--border-frame-blue); /* cadre très fin et doux : l'en-tête plein dessine déjà le haut du bloc */
+    border: 1px solid var(--border-blue); /* cadre fin et doux : l'en-tête plein dessine déjà le haut du bloc */
 }
 
 /* En-tête des jours de la semaine : traité comme un en-tête, les 7 jours dans la même couleur

@@ -78,8 +78,6 @@
     --bg-green-friday: #d6e9d9; /* colonnes de date du tableau, le vendredi : un cran au-dessus de --bg-green-head */
     --border-dst: #e3c978; /* filet de la ligne du changement d'heure dans le tableau : doré, assorti à --bg-dst */
     --border-blue: #c5d3e4; /* bordures du calendrier : bleu doux */
-    --border-frame-blue: #9db3cf; /* cadre extérieur du calendrier : filet de 0,5 px, plus soutenu que --border-blue (qui s'efface à ce trait fin) */
-    --border-frame-green: #9cc7a1; /* cadre extérieur du tableau des horaires */
     --border-green: #c3dec6; /* bordures du tableau : vert doux */
     --accent-blue: #7f9cc0; /* filets et puces de la feuille Ramadan */
 
