@@ -64,7 +64,7 @@
     --bg-friday-light: #f1f8f2; /* vendredis du tableau annuel : plus pâle que l'en-tête vert (--bg-green-head) */
 
     /* Gris pastel : cases hors du mois */
-    --bg-empty: #f8f9fa;
+    --bg-empty: #eef0f3; /* cases hors du mois : gris pâle, assez soutenu pour se voir à l'impression (ΔE ≈ 5,5 au blanc) */
 
     /* Pastels opaques (rendu fiable sur laser de bureau, papier blanc) */
     --bg-blue-head: #e5edf6; /* bandeau du mois, cadre du calendrier et pastilles d'icônes : bleu pâle (écart au blanc ≈ celui du vert pâle, visible sur le copieur laser) */

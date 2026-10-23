@@ -49,7 +49,7 @@ Priorité quand plusieurs sens tombent le même jour : **Aïd (vert) > jour fér
 
 Tous opaques ; ce sont des aplats, jamais des dégradés.
 
-**Seuil de visibilité à l'impression** : un fond doit s'écarter du blanc d'au moins **ΔE ≈ 8** (CIE Lab) pour se voir sur le copieur laser de l'association (essai du 23/10/2026 : le vert `--bg-green-head`, à ΔE 8,5, se voit ; le beige à 6,7 et le bleu à 5,6 ne se voyaient pas). Les fonds sous ce seuil (`--bg-friday-light` à 5,0, `--bg-empty` à 2,2) sont des repères secondaires : à relever si l'impression les efface.
+**Seuil de visibilité à l'impression** : un fond doit s'écarter du blanc d'au moins **ΔE ≈ 8** (CIE Lab) pour se voir sur le copieur laser de l'association (essai du 23/10/2026 : le vert `--bg-green-head`, à ΔE 8,5, se voit ; le beige à 6,7 et le bleu à 5,6 ne se voyaient pas). Les fonds sous ce seuil (`--bg-friday-light` à 5,0 ; `--bg-empty` à 5,5 depuis le relèvement du 23/10/2026) sont des repères secondaires : à relever si l'impression les efface.
 
 | Jeton                  | Valeur    | Usage                                                                          |
 | ---------------------- | --------- | ------------------------------------------------------------------------------ |
@@ -61,7 +61,7 @@ Tous opaques ; ce sont des aplats, jamais des dégradés.
 | `--bg-friday-light`    | `#f1f8f2` | Vendredis du tableau annuel (ligne entière)                                    |
 | `--bg-green-friday`    | `#d6e9d9` | Vendredis dans les colonnes de date : un cran au-dessus de `--bg-green-head`   |
 | `--bg-holiday`         | `#fbf6e7` | Vacances scolaires ; ligne du changement d'heure dans le tableau               |
-| `--bg-empty`           | `#f8f9fa` | Cases hors du mois                                                             |
+| `--bg-empty`           | `#eef0f3` | Cases hors du mois                                                             |
 | `--bg-eid`             | `#cfe7d2` | Pastille de l'Aïd sur les mini-mois de la couverture                           |
 | `--bg-cover-top`       | `#c8d8eb` | Haut du dégradé de la colonne d'identité de la couverture                      |
 | `--bg-terracotta-soft` | `#fbebe4` | Cellules du jeûne (feuille du Ramadan uniquement)                              |
