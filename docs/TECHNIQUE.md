@@ -106,7 +106,7 @@ Les deux composants héritent de `MonthElement`, qui observe `year` et `month` e
 
 **`<ami-prayer-table>`** : une ligne par jour depuis `#prayer-row-template` (jour abrégé sur 3 lettres, numéro, 6 horaires, jour hégirien). Classes :
 
-- `is-friday` : fond `--bg-friday-light`, plus pâle que l'en-tête (texte normal) ; le dimanche est repéré par le filet de fin de semaine ;
+- `is-friday` : fond `--bg-friday-light` (même vert que l'en-tête, texte normal) ; le dimanche est repéré par le filet de fin de semaine ;
 - `week-end` : filet après chaque dimanche, sauf en fin de mois ;
 - `is-hijri-new` : 1er jour du mois hégirien, numéro en `--col-green-dark` dans la colonne hégirienne ;
 - `is-dst` : jour du changement d'heure, fond doré `--bg-dst` (plus soutenu que les vacances) et filet de fin de semaine en `--border-dst`, texte normal (les horaires sautent d'une heure).

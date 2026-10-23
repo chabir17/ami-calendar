@@ -61,7 +61,7 @@
     --bg-friday: var(--bg-green-faint); /* vendredis de la feuille Ramadan */
     --bg-cover-top: #c8d8eb; /* couverture : haut du dégradé de la colonne d'identité (aucun texte à ce niveau : années hégiriennes en bleu ardoise à 5:1 plus bas) */
     --bg-weekdays: #eef3f9; /* ligne des jours de la semaine : un cran plus pâle que le bandeau du mois */
-    --bg-friday-light: #f1f8f2; /* vendredis du tableau annuel : plus pâle que l'en-tête vert (--bg-green-head) */
+    --bg-friday-light: #e7f2e8; /* vendredis du tableau annuel et encart du verset de la couverture : même vert que --bg-green-head (ΔE ≈ 8,5 au blanc, visible sur le copieur laser ; l'ancien #f1f8f2 était à 5) */
 
     /* Gris pastel : cases hors du mois */
     --bg-empty: #eef0f3; /* cases hors du mois : gris pâle, assez soutenu pour se voir à l'impression (ΔE ≈ 5,5 au blanc) */

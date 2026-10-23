@@ -63,7 +63,7 @@ Tous opaques ; ce sont des aplats, jamais des dégradés.
 | `--bg-weekdays`        | `#eef3f9` | Ligne des jours de la semaine (un cran plus pâle)                                                               |
 | `--bg-green-head`      | `#e7f2e8` | Colonnes de date (grégorien et hégirien) du tableau                                                             |
 | `--bg-green-faint`     | `#e7f2e8` | Traits verticaux du tableau, vendredis de la feuille du Ramadan                                                 |
-| `--bg-friday-light`    | `#f1f8f2` | Vendredis du tableau annuel (ligne entière)                                                                     |
+| `--bg-friday-light`    | `#e7f2e8` | Vendredis du tableau annuel (ligne entière), encart du verset de la couverture (relevé de #f1f8f2, ΔE 5 → 8,5)  |
 | `--bg-green-friday`    | `#d6e9d9` | Vendredis dans les colonnes de date : un cran au-dessus de `--bg-green-head`                                    |
 | `--bg-holiday`         | `#fbf6e7` | Vacances scolaires                                                                                              |
 | `--bg-dst`             | `#f8edc6` | Ligne du changement d'heure dans le tableau : plus soutenu que les vacances (ΔE ≈ 21 au blanc)                  |
