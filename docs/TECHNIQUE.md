@@ -65,7 +65,7 @@ Le bandeau du mois (bleu marine plein) et l'en-tête du tableau (vert forêt ple
 - **En-tête des jours** : fond bleu très pâle `--bg-weekdays`, sous le bandeau plein du mois ; les 7 jours dans la même couleur (noms français en bleu marine `--col-blue`, arabe et tamoul en bleu ardoise `--col-title-blue`), séparateurs blancs.
 - **Numéros des jours** : gris neutre des textes courants `--col-text-light`, identique du lundi au samedi ; vendredis et dimanches en gris légèrement teinté (vert sauge `--col-friday`, terracotta `--col-sunday`) : seuls les jours fériés et l'Aïd sont en couleur pleine.
 - **En-tête du tableau** : fond vert forêt plein `--bg-head-green`, texte blanc : noms des prières en titre (`--fs-xs` pour garder des colonnes de même largeur), arabe et tamoul en blanc atténué `--col-on-dark-soft`, séparateurs blancs.
-- **Cadres** : filet de 0,5 px et doux autour de chaque bloc (`--border-blue`, `--border-green`) ; l'en-tête plein dessine le haut du bloc.
+- **Cadres** : filet de 0,5 px et doux autour de chaque bloc (`--border-frame-blue`, `--border-frame-green`) ; l'en-tête plein dessine le haut du bloc.
 - **Bandeau trop long** (deux mois hégiriens aux noms longs) : quand deux mois se partagent le bandeau, les mois jumeaux sont abrégés en tamoul et en translittération (`Rabīʿ I / Rabīʿ II`, `Jumādā I / Jumādā II`, champs `short` et `taShort` de `HIJRI_MONTHS`), ce qui garde la même taille de texte chaque mois (vérifié de 2025 à 2030). En dernier recours, `fitMonthTitles` ajoute `is-compact`, puis `is-compact-2` à `is-compact-4` (traductions en 12 px puis 10 px, année grégorienne, arabe), qui réduit le côté hégirien au lieu de le couper.
 
 ### 3.2 Cycle de rendu (`main.js`)
