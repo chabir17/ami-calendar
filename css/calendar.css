@@ -120,7 +120,7 @@
 .weekdays-header {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    background: var(--bg-weekdays); /* bleu très pâle sous le bandeau plein du mois */
+    background: var(--bg-grid); /* même bleu-gris que la grille et la légende, sous le bandeau plein du mois */
     color: var(--col-text-light);
     text-align: center;
     padding: 0;

@@ -53,24 +53,24 @@ Tous opaques ; ce sont des aplats, jamais des dégradés.
 
 **Seuil de visibilité à l'impression** : un fond doit s'écarter du blanc d'au moins **ΔE ≈ 8** (CIE Lab) pour se voir sur le copieur laser de l'association (essai du 23/10/2026 : le vert `--bg-green-head`, à ΔE 8,5, se voit ; le beige à 6,7 et le bleu à 5,6 ne se voyaient pas). Les fonds sous ce seuil (`--bg-friday-light` à 5,0 ; `--bg-empty` à 5,5 depuis le relèvement du 23/10/2026) sont des repères secondaires : à relever si l'impression les efface.
 
-| Jeton                  | Valeur    | Usage                                                                                                                                                          |
-| ---------------------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `--bg-blue-head`       | `#e5edf6` | Pastilles d'icônes, couverture (fonds pâles)                                                                                                                   |
-| `--bg-grid`            | `#e0e9f3` | Fond de la grille des jours (visible dans les espaces de 3 px entre les cases) et barre de légende : bleu-gris le plus clair encore visible (ΔE ≈ 10 au blanc) |
-| `--bg-head-blue`       | `#364f6f` | Bandeau du mois et cadre du calendrier : bleu ardoise plein (L* ≈ 33, chroma ≈ 21, blanc dessus 8,4:1)                                                         |
-| `--bg-head-green`      | `#35553c` | En-tête et cadre du tableau : vert sapin plein, même assombrissement (L* ≈ 33, chroma ≈ 21, blanc dessus 8,4:1)                                                |
-| `--col-on-dark-soft`   | `#dbe6f3` | Traductions et année sur les en-têtes foncés                                                                                                                   |
-| `--bg-blue-faint`      | `#eef3f9` | Feuille du Ramadan uniquement (indépendant du bandeau du mois)                                                                                                 |
-| `--bg-weekdays`        | `#eef3f9` | Ligne des jours de la semaine (un cran plus pâle)                                                                                                              |
-| `--bg-green-head`      | `#e7f2e8` | Colonnes de date (grégorien et hégirien) du tableau                                                                                                            |
-| `--bg-green-faint`     | `#e7f2e8` | Traits verticaux du tableau, vendredis de la feuille du Ramadan                                                                                                |
-| `--bg-friday-light`    | `#e7f2e8` | Vendredis du tableau annuel (ligne entière), encart du verset de la couverture (relevé de #f1f8f2, ΔE 5 → 8,5)                                                 |
-| `--bg-green-friday`    | `#d6e9d9` | Vendredis dans les colonnes de date : un cran au-dessus de `--bg-green-head`                                                                                   |
-| `--bg-holiday`         | `#fbf6e7` | Vacances scolaires                                                                                                                                             |
-| `--bg-dst`             | `#f8edc6` | Ligne du changement d'heure dans le tableau : plus soutenu que les vacances (ΔE ≈ 21 au blanc)                                                                 |
-| `--bg-eid`             | `#cfe7d2` | Pastille de l'Aïd sur les mini-mois de la couverture                                                                                                           |
-| `--bg-cover-top`       | `#c8d8eb` | Haut du dégradé de la colonne d'identité de la couverture                                                                                                      |
-| `--bg-terracotta-soft` | `#fbebe4` | Cellules du jeûne (feuille du Ramadan uniquement)                                                                                                              |
+| Jeton                  | Valeur    | Usage                                                                                                                                                                                         |
+| ---------------------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `--bg-blue-head`       | `#e5edf6` | Pastilles d'icônes, couverture (fonds pâles)                                                                                                                                                  |
+| `--bg-grid`            | `#e0e9f3` | Ligne des jours de la semaine, fond de la grille des jours (visible dans les espaces de 3 px entre les cases) et barre de légende : bleu-gris le plus clair encore visible (ΔE ≈ 10 au blanc) |
+| `--bg-head-blue`       | `#364f6f` | Bandeau du mois et cadre du calendrier : bleu ardoise plein (L* ≈ 33, chroma ≈ 21, blanc dessus 8,4:1)                                                                                        |
+| `--bg-head-green`      | `#35553c` | En-tête et cadre du tableau : vert sapin plein, même assombrissement (L* ≈ 33, chroma ≈ 21, blanc dessus 8,4:1)                                                                               |
+| `--col-on-dark-soft`   | `#dbe6f3` | Traductions et année sur les en-têtes foncés                                                                                                                                                  |
+| `--bg-blue-faint`      | `#eef3f9` | Feuille du Ramadan uniquement (indépendant du bandeau du mois)                                                                                                                                |
+| `--bg-weekdays`        | `#eef3f9` | Bas du dégradé de la couverture (la ligne des jours des pages utilise `--bg-grid`)                                                                                                            |
+| `--bg-green-head`      | `#e7f2e8` | Colonnes de date (grégorien et hégirien) du tableau                                                                                                                                           |
+| `--bg-green-faint`     | `#e7f2e8` | Traits verticaux du tableau, vendredis de la feuille du Ramadan                                                                                                                               |
+| `--bg-friday-light`    | `#e7f2e8` | Vendredis du tableau annuel (ligne entière), encart du verset de la couverture (relevé de #f1f8f2, ΔE 5 → 8,5)                                                                                |
+| `--bg-green-friday`    | `#d6e9d9` | Vendredis dans les colonnes de date : un cran au-dessus de `--bg-green-head`                                                                                                                  |
+| `--bg-holiday`         | `#fbf6e7` | Vacances scolaires                                                                                                                                                                            |
+| `--bg-dst`             | `#f8edc6` | Ligne du changement d'heure dans le tableau : plus soutenu que les vacances (ΔE ≈ 21 au blanc)                                                                                                |
+| `--bg-eid`             | `#cfe7d2` | Pastille de l'Aïd sur les mini-mois de la couverture                                                                                                                                          |
+| `--bg-cover-top`       | `#c8d8eb` | Haut du dégradé de la colonne d'identité de la couverture                                                                                                                                     |
+| `--bg-terracotta-soft` | `#fbebe4` | Cellules du jeûne (feuille du Ramadan uniquement)                                                                                                                                             |
 
 ### 2.4 Filets et bordures
 
