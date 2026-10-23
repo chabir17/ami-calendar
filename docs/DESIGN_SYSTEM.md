@@ -31,17 +31,17 @@ Référence unique des couleurs, de la typographie, des espacements, des icônes
 
 C'est la table à connaître. Chaque ligne dit **ce que la couleur signifie** ; ne pas l'employer pour autre chose.
 
-| Sens                                | Couleur (jeton)                                                           | Où                                                                                                                   |
-| ----------------------------------- | ------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| Calendrier grégorien, structure     | Bleu : `--col-blue`, `--col-title-blue` (`#46628a`, 5,6:1)                | Noms et années du bandeau du mois, jours de la semaine, mini-mois, « 20 » et « 27 » de la couverture                 |
-| Hégirien, islamique, prière         | Vert : `--col-green`, `--col-friday` (`#41694a`, 6,3:1)                   | Jour hégirien et croissant des cases, Aïd, Tashrīq, ʿArafa, vendredis, « 01 » du tableau, verset, années hégiriennes |
-| Années hégiriennes de la couverture | Vert pâle : `--col-hijri-soft` (`#6c9e75`, 3,1:1, grand texte uniquement) | Années hégiriennes en 49 px                                                                                          |
-| Jour férié (civil)                  | Terracotta : `--col-terracotta` (`#a8461f`, 5,9:1)                        | Numéro et libellé du jour férié. **Réservé aux fériés** (et au jeûne sur la feuille du Ramadan)                      |
-| Dimanche                            | Terracotta très teinté : `--col-sunday` (`#7a4f3e`, 7,0:1)                | Numéro du dimanche (presque neutre, pour ne pas concurrencer les fériés)                                             |
-| Vacances scolaires                  | Beige doré pâle : `--bg-holiday` (`#fbf6e7`)                              | Fond des cases de vacances (zone C), pastille de légende (contour `--col-gold`)                                      |
-| Changement d'heure                  | Ambre doré : `--col-dst` (`#946700`, 5,0:1 sur blanc)                     | Horloge et libellé de la case, légende ; ligne du tableau en `--bg-holiday` avec filet `--border-dst`                |
-| Identité tamoule                    | Safran : `--col-saffron-text`                                             | Nom tamoul, frise du haut                                                                                            |
-| Neutre                              | Gris : `--col-text`, `--col-text-light`, `--col-text-soft`                | Numéros du jour ordinaire, textes courants, cases hors du mois                                                       |
+| Sens                                | Couleur (jeton)                                                                     | Où                                                                                                                   |
+| ----------------------------------- | ----------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| Calendrier grégorien, structure     | Bleu : `--col-blue`, `--col-title-blue` (`#46628a`, 5,6:1)                          | Noms et années du bandeau du mois, jours de la semaine, mini-mois, « 20 » et « 27 » de la couverture                 |
+| Hégirien, islamique, prière         | Vert : `--col-green`, `--col-friday` (`#41694a`, 6,3:1)                             | Jour hégirien et croissant des cases, Aïd, Tashrīq, ʿArafa, vendredis, « 01 » du tableau, verset, années hégiriennes |
+| Années hégiriennes de la couverture | Vert pâle : `--col-hijri-soft` (`#6c9e75`, 3,1:1, grand texte uniquement)           | Années hégiriennes en 49 px                                                                                          |
+| Jour férié (civil)                  | Terracotta : `--col-terracotta` (`#a8461f`, 5,9:1)                                  | Numéro et libellé du jour férié. **Réservé aux fériés** (et au jeûne sur la feuille du Ramadan)                      |
+| Dimanche                            | Orange brûlé : `--col-sunday` (`#9d592a`, 5,4:1), distinct du terracotta des fériés | Numéro du dimanche (presque neutre, pour ne pas concurrencer les fériés)                                             |
+| Vacances scolaires                  | Beige doré pâle : `--bg-holiday` (`#fbf6e7`)                                        | Fond des cases de vacances (zone C), pastille de légende (contour `--col-gold`)                                      |
+| Changement d'heure                  | Ambre doré : `--col-dst` (`#946700`, 5,0:1 sur blanc)                               | Horloge et libellé de la case, légende ; ligne du tableau en `--bg-holiday` avec filet `--border-dst`                |
+| Identité tamoule                    | Safran : `--col-saffron-text`                                                       | Nom tamoul, frise du haut                                                                                            |
+| Neutre                              | Gris : `--col-text`, `--col-text-light`, `--col-text-soft`                          | Numéros du jour ordinaire, textes courants, cases hors du mois                                                       |
 
 Priorité quand plusieurs sens tombent le même jour : **Aïd (vert) > jour férié (terracotta) > vendredi > dimanche > jour ordinaire**.
 
@@ -82,7 +82,7 @@ Filets internes de **0,5 px** (`--hairline`), tracés en `box-shadow: inset` ou 
 | `--border-green` | `#c3dec6` | Grille du tableau, fin de semaine, cadre du tableau                     |
 | `--border-dst`   | `#e3c978` | Filet sous la ligne du changement d'heure                               |
 
-Les cadres extérieurs sont de vraies bordures de 1 px (pas de `box-shadow`), en teinte douce : `--border-blue` pour le calendrier, `--border-green` pour le tableau. L'en-tête plein dessine déjà le haut de chaque bloc.
+Pas de cadre autour des blocs : l'en-tête plein dessine le haut, et les filets de la grille (cases du calendrier, y compris un filet à gauche de la colonne du lundi) ou les bandes du tableau dessinent le reste.
 
 ### 2.5 Neutres
 

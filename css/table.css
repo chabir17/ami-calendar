@@ -2,7 +2,6 @@
 .right-prayer-table-container {
     overflow: hidden;
     border-radius: var(--radius-card);
-    border: 1px solid var(--border-green); /* cadre fin et doux : l'en-tête plein dessine déjà le haut du bloc */
     display: flex;
     flex-direction: column;
     background-color: white;
