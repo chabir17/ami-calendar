@@ -77,7 +77,7 @@
     --bg-green-faint: #e7f2e8; /* vert très clair : traits verticaux du tableau, vendredis de la feuille Ramadan */
     --bg-green-friday: #d6e9d9; /* colonnes de date du tableau, le vendredi : un cran au-dessus de --bg-green-head */
     --border-dst: #e3c978; /* filet de la ligne du changement d'heure dans le tableau : doré, assorti à --bg-dst */
-    --border-blue: #c5d3e4; /* bordures du calendrier : bleu doux */
+    --border-blue: #c5d3e4; /* séparateurs de la couverture et du Ramadan : bleu doux */
     --border-green: #c3dec6; /* bordures du tableau : vert doux */
     --accent-blue: #7f9cc0; /* filets et puces de la feuille Ramadan */
 
