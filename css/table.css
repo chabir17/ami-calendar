@@ -27,7 +27,7 @@ ami-prayer-table {
     background: var(--bg-head-green);
     border: none;
     box-shadow: inset calc(-1 * var(--hairline)) 0 0 white; /* séparateurs 0,5 px entre les colonnes */
-    padding: var(--sp-1) 1px;
+    padding: var(--sp-1) 0.0625rem; /* 1 px */
     font-size: var(--fs-xs);
     font-weight: 400;
     vertical-align: middle;
@@ -138,8 +138,8 @@ ami-prayer-table {
     align-items: center;
     justify-content: center;
     height: 15px; /* tient dans la ligne : n'agrandit pas la rangée */
-    padding: 0 3px;
-    border-radius: 8px;
+    padding: 0 0.1875rem; /* 3 px */
+    border-radius: var(--radius-cell);
     background: var(--bg-head-green); /* même vert que l'en-tête du tableau */
     color: white;
     font-size: 12px;

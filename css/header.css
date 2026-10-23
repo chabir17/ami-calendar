@@ -139,7 +139,7 @@
     box-sizing: content-box;
     width: 0.62rem; /* icône un peu réduite dans sa pastille : même encombrement qu'avant */
     height: 0.62rem;
-    padding: 2.5px;
+    padding: 0.15625rem; /* 2,5 px */
     margin-right: 0;
     border-radius: 50%;
     background: var(--bg-blue-head); /* pastille bleu pâle, comme sur la couverture */

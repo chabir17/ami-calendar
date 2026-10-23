@@ -255,9 +255,9 @@
     color: var(--col-terracotta); /* jours fériés et changement d'heure : événements civils */
     text-align: center;
     width: 100%;
-    padding: 0 3px;
+    padding: 0 0.1875rem; /* 3 px */
     position: absolute;
-    bottom: 2px;
+    bottom: 0.125rem; /* 2 px */
     line-height: 1.15;
     white-space: nowrap; /* une seule ligne : libellés courts, lettres légèrement resserrées */
     letter-spacing: -0.02em;
@@ -311,7 +311,7 @@
     display: flex;
     align-items: center;
     flex-wrap: wrap; /* mois chargés : 2e ligne plutôt que des libellés tronqués */
-    gap: 2px var(--sp-4);
+    gap: 0.125rem var(--sp-4);
 }
 
 .legend-item {
@@ -338,7 +338,7 @@
 .legend-color {
     width: 0.9rem;
     height: 0.9rem;
-    border-radius: 3px;
+    border-radius: 0.1875rem; /* 3 px */
     border: 1px solid var(--border-swatch);
 }
 
