@@ -157,7 +157,7 @@
     flex-grow: 1;
     gap: 3px; /* l'espace laisse voir le fond : quadrillage sans filets de 0,5 px */
     padding: 3px;
-    background: var(--bg-blue-head);
+    background: var(--bg-grid);
 }
 
 .day-cell-visual {
@@ -304,10 +304,10 @@
 
 /* --- LÉGENDE (BAS) : vacances scolaires et changement d'heure du mois --- */
 .legend-box {
-    padding: var(--sp-2);
-    background: var(--bg-blue-head); /* bleu pâle, comme la ligne des jours et le fond de la grille : ferme le bas du calendrier */
+    padding: var(--sp-1) var(--sp-2); /* barre compacte : la marge sous la dernière rangée reste proche des 3 px de la grille */
+    background: var(--bg-grid); /* même fond que la grille : ferme le bas du calendrier */
     margin-top: auto;
-    min-height: 31px; /* hauteur d'une ligne de légende, même vide : même grille chaque mois */
+    min-height: 24px; /* hauteur d'une ligne de légende, même vide : même grille chaque mois */
     display: flex;
     align-items: center;
     flex-wrap: wrap; /* mois chargés : 2e ligne plutôt que des libellés tronqués */
