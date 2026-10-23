@@ -57,7 +57,7 @@ Tous opaques ; ce sont des aplats, jamais des dégradés.
 | ---------------------- | --------- | -------------------------------------------------------------------------------------------------- |
 | `--bg-blue-head`       | `#e5edf6` | Pastilles d'icônes, couverture (fonds pâles)                                                       |
 | `--bg-head-blue`       | `#1f4a7a` | Bandeau du mois et cadre du calendrier : bleu marine plein (L* ≈ 31, blanc dessus 9,1:1)           |
-| `--bg-head-green`      | `#1a5322` | En-tête et cadre du tableau : vert forêt plein, même assombrissement (L* ≈ 31, blanc dessus ≈ 9:1) |
+| `--bg-head-green`      | `#0b551f` | En-tête et cadre du tableau : vert forêt plein, même assombrissement (L* ≈ 31, blanc dessus ≈ 9:1) |
 | `--col-on-dark-soft`   | `#dbe6f3` | Traductions et année sur les en-têtes foncés                                                       |
 | `--bg-blue-faint`      | `#eef3f9` | Feuille du Ramadan uniquement (indépendant du bandeau du mois)                                     |
 | `--bg-weekdays`        | `#eef3f9` | Ligne des jours de la semaine (un cran plus pâle)                                                  |
