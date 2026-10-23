@@ -392,8 +392,6 @@
 
 .cover-year-century {
     fill: url(#cover-year-grad);
-    font-size: 0.95em; /* « 20 » un peu plus petit : le « 27 », qui change chaque année, ressort */
-    letter-spacing: 0.08em; /* un peu plus d'air entre le « 0 » et le « 2 » */
 }
 
 .cover-year-short {
