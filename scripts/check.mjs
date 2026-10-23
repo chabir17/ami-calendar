@@ -2,7 +2,7 @@
 // Usage : npm run check [-- 2026 2027 …]   (années par défaut : 2025 à 2030)
 // Prérequis : Chrome (macOS), pdfinfo (poppler), accès internet (fériés et vacances).
 import { spawn, execFileSync } from 'node:child_process';
-import { mkdtempSync, writeFileSync, rmSync } from 'node:fs';
+import { mkdtempSync, writeFileSync, readFileSync, readdirSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
@@ -74,7 +74,29 @@ async function inspect(path, { cover = false } = {}) {
     writeFileSync(pdf, Buffer.from(result.data, 'base64'));
     ws.close();
     const pages = Number(/Pages:\s+(\d+)/.exec(execFileSync('pdfinfo', [pdf]).toString())[1]);
-    return { pages, measure };
+    return { pages, measure, pdf };
+}
+
+// Couverture d'encre approchée (CMJN naïf depuis le RGB, moyenne de la page, en %) : sert à comparer des versions entre elles,
+// pas à prédire la consommation réelle (pas de profil ICC du copieur). Une valeur par page.
+function inkCoverage(pdf) {
+    const prefix = join(tmp, `ink-${Date.now()}`);
+    execFileSync('pdftoppm', ['-r', '30', pdf, prefix]); // PPM (P6) : lisible sans dépendance
+    return readdirSync(tmp)
+        .filter((f) => f.startsWith(prefix.split('/').pop()) && f.endsWith('.ppm'))
+        .sort()
+        .map((f) => {
+            const buf = readFileSync(join(tmp, f));
+            const [w, h] = buf.toString('latin1', 0, 20).split(/\s+/).slice(1, 3).map(Number);
+            const data = buf.subarray(buf.length - w * h * 3);
+            let total = 0;
+            for (let i = 0; i < data.length; i += 3) {
+                const [r, g, b] = [data[i] / 255, data[i + 1] / 255, data[i + 2] / 255];
+                const k = 1 - Math.max(r, g, b);
+                total += k + (k < 1 ? (1 - r - k + (1 - g - k) + (1 - b - k)) / (1 - k) : 0);
+            }
+            return (100 * total) / (w * h);
+        });
 }
 
 try {
@@ -82,8 +104,12 @@ try {
     await waitFor(`http://127.0.0.1:${CDP_PORT}/json/version`);
 
     for (const y of years) {
-        const { pages } = await inspect(`/?year=${y}&mosque=ami93120`);
+        const { pages, pdf } = await inspect(`/?year=${y}&mosque=ami93120`);
         report(pages === 13, `${y} : calendrier annuel`, `${pages} page(s), 13 attendues`);
+        const ink = inkCoverage(pdf);
+        console.log(
+            `     encre (approx., CMJN cumulés) : moyenne ${(ink.reduce((a, b) => a + b, 0) / ink.length).toFixed(1)} %, page la plus chargée ${Math.max(...ink).toFixed(1)} %`
+        );
         const { pages: coverPages, measure: m } = await inspect(`/?year=${y}&month=cover`, { cover: true });
         const fits = m.body <= m.limit + 1 && m.identity <= m.limit + 1 && m.verse <= m.limit + 1 && m.clipped === 0;
         report(coverPages === 1 && fits, `${y} : couverture`, `${coverPages} page(s), verset à ${m.verse} / limite ${m.limit}, ${m.clipped} élément(s) rogné(s)`);

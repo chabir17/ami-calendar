@@ -10,7 +10,7 @@ Calendrier imprimable trilingue (FR / AR / TA) de l'association AMI (La Courneuv
 ## Commandes
 
 - `npm start` : serveur local (port 3000).
-- `npm run check [-- 2027]` : **à lancer après toute modification visuelle.** Contrôle 13 pages par année, couverture sur 1 page sans débordement (années 2025–2030 par défaut), Ramadan sur 1 page. Nécessite Chrome, `pdfinfo` et internet. Ne pas réécrire de scripts de mesure : étendre `scripts/check.mjs` si besoin.
+- `npm run check [-- 2027]` : **à lancer après toute modification visuelle.** Contrôle 13 pages par année, couverture sur 1 page sans débordement (années 2025–2030 par défaut), Ramadan sur 1 page. Affiche aussi une couverture d’encre approchée (comparaison entre versions). Nécessite Chrome, `pdfinfo` et internet. Ne pas réécrire de scripts de mesure : étendre `scripts/check.mjs` si besoin.
 - `npm run prettier` puis `npm run lint` avant de commiter.
 
 ## Règles de contenu (décidées par l'utilisateur)
