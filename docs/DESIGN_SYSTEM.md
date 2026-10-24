@@ -56,7 +56,7 @@ Tous opaques ; ce sont des aplats, jamais des dégradés.
 | Jeton                  | Valeur    | Usage                                                                                                                                                                                    |
 | ---------------------- | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `--bg-blue-head`       | `#e5edf6` | Pastilles d'icônes, couverture (fonds pâles)                                                                                                                                             |
-| `--bg-legend`          | `#cddbed` | Bande de légende, pleine largeur, un cran plus soutenue que `--bg-grid`                                                                                                                  |
+| `--bg-band`            | `#cddbed` | Bandes pleine largeur de la ligne des jours et de la légende (elles encadrent la grille), un cran plus soutenues que `--bg-grid` ; textes `--bg-head-blue` (6:1)                         |
 | `--bg-grid`            | `#e5edf6` | Fond commun de la ligne des jours, de la grille des jours (visible dans les espaces de 4 px entre les cases) et de la légende : même intensité que `--bg-green-head` (ΔE ≈ 8,5 au blanc) |
 | `--bg-head-blue`       | `#364f6f` | Bandeau du mois et cadre du calendrier : bleu ardoise plein (L* ≈ 33, chroma ≈ 21, blanc dessus 8,4:1)                                                                                   |
 | `--bg-head-green`      | `#35553c` | En-tête et cadre du tableau : vert sapin plein, même assombrissement (L* ≈ 33, chroma ≈ 21, blanc dessus 8,4:1)                                                                          |
@@ -84,7 +84,7 @@ Filets internes de **0,5 px** (`--hairline`), tracés en `box-shadow: inset` ou 
 | `--border-green` | `#c3dec6` | Grille du tableau, fin de semaine, cadre du tableau      |
 | `--border-dst`   | `#e3c978` | Filet sous la ligne du changement d'heure                |
 
-Pas de cadre autour des blocs : l'en-tête plein dessine le haut, la légende, une bande pleine largeur `--bg-legend`, ferme le bas du calendrier. Dans le calendrier, les cases blanches (coins `--radius-cell`, 8 px) sont séparées par des espaces `--grid-gap` (0,25 rem, 4 px) sur fond `--bg-grid`, sans filets.
+Pas de cadre autour des blocs : l'en-tête plein dessine le haut, la légende, une bande pleine largeur `--bg-band`, ferme le bas du calendrier. Dans le calendrier, les cases blanches (coins `--radius-cell`, 8 px) sont séparées par des espaces `--grid-gap` (0,25 rem, 4 px) sur fond `--bg-grid`, sans filets.
 
 ### 2.5 Neutres
 
@@ -167,7 +167,7 @@ Logos tiers en version monochrome bleue (Mawaqit, La Banque Postale, Grande Mosq
 
 ### 6.1 Bandeau du mois et ligne des jours
 
-Fond `--bg-head-blue` (plein), texte blanc, hauteur `--band-h`. Mois grégorien (gauche, 600, année en 400), mois hégirien en arabe (droite, 500) ; traductions en `--col-on-dark-soft`. La ligne des jours affiche français, arabe, tamoul sans bloc, sur le fond `--bg-grid`, alignés sur les colonnes de la grille ; les 7 jours dans les mêmes couleurs.
+Fond `--bg-head-blue` (plein), texte blanc, hauteur `--band-h`. Mois grégorien (gauche, 600, année en 400), mois hégirien en arabe (droite, 500) ; traductions en `--col-on-dark-soft`. La ligne des jours affiche français, arabe, tamoul dans une bande pleine largeur `--bg-band`, alignés sur les colonnes de la grille ; les 7 jours dans les mêmes couleurs.
 
 ### 6.2 Cases du calendrier
 
