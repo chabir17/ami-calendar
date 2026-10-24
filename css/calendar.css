@@ -278,37 +278,24 @@
     color: var(--col-green);
 }
 
-/* Une ligne par événement (ex. Aïd + jour férié le même jour), en pastille dont la teinte dit la nature de l'événement */
-.event-line,
-.event-label-top {
+/* Une ligne par événement (ex. Aïd + jour férié le même jour) */
+.event-line {
     display: block;
-    width: fit-content;
-    margin: 0 auto;
-    padding: 0 0.3125rem; /* 5 px */
-    border-radius: 999px;
-}
-
-.event-label-top {
-    background: var(--bg-pill-hijri);
-    color: var(--col-green-dark);
-}
-
-.event-line.public-label {
-    background: var(--bg-pill-public);
 }
 
 /* Aïd (vert) */
 /* Jours vertueux (ʿArafa, ʿĀshūrāʾ…) : vert hégirien, numéro inchangé */
-.event-line.virtuous-label,
+.event-line.virtuous-label {
+    color: var(--col-green);
+}
+
 .event-line.eid-label {
-    background: var(--bg-pill-hijri);
-    color: var(--col-green-dark);
+    color: var(--col-green);
 }
 
 /* Changement d'heure : beige doré foncé (le terracotta reste réservé aux jours fériés) */
 .event-line.dst-label {
-    background: var(--bg-dst);
-    color: var(--col-dst-text);
+    color: var(--col-dst);
 }
 
 /* --- LÉGENDE (BAS) : vacances scolaires et changement d'heure du mois --- */
