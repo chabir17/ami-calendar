@@ -40,6 +40,9 @@
     /* Vendredi et dimanche : numéros en gris teinté (vert sauge / terracotta), presque neutres :
        la couleur pleine reste réservée aux jours fériés et à l'Aïd */
     --col-friday: #41694a; /* 6.3:1 sur blanc ; couverture : vert unique des textes et ornements verts (vendredis, Aïd, verset) */
+    --bg-pill-public: #f9e4da; /* pastille des jours fériés dans les cases : terracotta pâle (ΔE ≈ 12 au blanc ; texte --col-terracotta, 4,8:1) */
+    --bg-pill-hijri: #e0eee1; /* pastille de l'Aïd et des jours vertueux : vert pâle (ΔE ≈ 10 ; texte --col-green-dark, 6:1) */
+    --col-dst-text: #7a5600; /* texte de la pastille du changement d'heure sur --bg-dst : 5,7:1 */
     --col-sunday: #9d592a; /* orange brûlé, distinct du terracotta des fériés : 5.4:1 sur blanc */
 
     /* Couleurs neutres */
