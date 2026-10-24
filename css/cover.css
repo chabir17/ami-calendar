@@ -49,17 +49,17 @@
     position: relative;
 }
 
-/* Dégradé : soutenu en haut, bleu des bandeaux des mois aux deux tiers, presque blanc en bas ; motif en bleu ardoise */
+/* Dégradé : soutenu en haut, bleu moyen aux deux tiers, pâle en bas ; motif en bleu ardoise */
 .cover-bg-top {
     stop-color: var(--bg-cover-top);
 }
 
 .cover-bg-mid {
-    stop-color: var(--bg-blue-head);
+    stop-color: var(--bg-cover-mid);
 }
 
 .cover-bg-bottom {
-    stop-color: var(--bg-weekdays);
+    stop-color: var(--bg-cover-bottom);
 }
 
 .cover-girih-tile {

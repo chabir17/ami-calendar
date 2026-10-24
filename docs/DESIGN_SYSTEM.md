@@ -61,7 +61,6 @@ Tous opaques ; ce sont des aplats, jamais des dégradés.
 | `--bg-head-green`      | `#35553c` | En-tête et cadre du tableau : vert sapin plein, même assombrissement (L* ≈ 33, chroma ≈ 21, blanc dessus 8,4:1)                                                                              |
 | `--col-on-dark-soft`   | `#dbe6f3` | Traductions et année sur les en-têtes foncés                                                                                                                                                 |
 | `--bg-blue-faint`      | `#eef3f9` | Feuille du Ramadan uniquement (indépendant du bandeau du mois)                                                                                                                               |
-| `--bg-weekdays`        | `#eef3f9` | Bas du dégradé de la couverture (la ligne des jours des pages utilise `--bg-grid`)                                                                                                           |
 | `--bg-green-head`      | `#e7f2e8` | Colonnes de date (grégorien et hégirien) du tableau                                                                                                                                          |
 | `--bg-green-faint`     | `#e7f2e8` | Traits verticaux du tableau, vendredis de la feuille du Ramadan                                                                                                                              |
 | `--bg-friday-light`    | `#e7f2e8` | Vendredis du tableau annuel (ligne entière), encart du verset de la couverture (relevé de #f1f8f2, ΔE 5 → 8,5)                                                                               |
@@ -69,7 +68,9 @@ Tous opaques ; ce sont des aplats, jamais des dégradés.
 | `--bg-holiday`         | `#fbf6e7` | Vacances scolaires                                                                                                                                                                           |
 | `--bg-dst`             | `#f8edc6` | Ligne du changement d'heure dans le tableau : plus soutenu que les vacances (ΔE ≈ 21 au blanc)                                                                                               |
 | `--bg-eid`             | `#cfe7d2` | Pastille de l'Aïd sur les mini-mois de la couverture                                                                                                                                         |
-| `--bg-cover-top`       | `#c8d8eb` | Haut du dégradé de la colonne d'identité de la couverture                                                                                                                                    |
+| `--bg-cover-top`       | `#b3c8e1` | Haut du dégradé de la colonne d'identité de la couverture                                                                                                                                    |
+| `--bg-cover-mid`       | `#d3e0ef` | Milieu du dégradé (aux deux tiers)                                                                                                                                                           |
+| `--bg-cover-bottom`    | `#e5edf6` | Bas du dégradé                                                                                                                                                                               |
 | `--bg-terracotta-soft` | `#fbebe4` | Cellules du jeûne (feuille du Ramadan uniquement)                                                                                                                                            |
 
 ### 2.4 Filets et bordures
