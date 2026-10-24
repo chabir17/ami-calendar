@@ -115,32 +115,38 @@
     background-color: white;
 }
 
-/* En-tête des jours de la semaine : traité comme un en-tête, les 7 jours dans la même couleur
-   (noms français en bleu marine, arabe et tamoul en bleu ardoise) */
+/* En-tête des jours de la semaine : mêmes marges et mêmes espaces que la grille, pour que chaque nom soit centré sur sa colonne
+   de cases ; noms français en bleu du bandeau, arabe et tamoul en bleu ardoise ; vendredi en vert et dimanche en orange,
+   comme les numéros des cases */
 .weekdays-header {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
+    gap: var(--grid-gap);
     background: var(--bg-grid); /* même bleu-gris que la grille et la légende, sous le bandeau plein du mois */
     color: var(--col-text-light);
     text-align: center;
-    padding: 0;
+    padding: 0 var(--grid-gap);
     font-size: var(--fs-sm);
 }
 
 .weekday-cell {
-    box-shadow: inset calc(-1 * var(--hairline)) 0 0 white; /* séparateur blanc 0,5 px, comme l'en-tête du tableau */
-    padding: var(--sp-1) 0;
-}
-
-.weekday-cell:last-child {
-    box-shadow: none;
+    padding: var(--sp-2) 0 var(--sp-1);
 }
 
 .weekday-fr {
     font-size: var(--fs-md);
     font-weight: 600;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--bg-head-blue); /* nom français accentué, de la teinte du bandeau du mois */
+}
+
+.weekday-cell:nth-child(5) .weekday-fr {
+    color: var(--col-friday);
+}
+
+.weekday-cell:nth-child(7) .weekday-fr {
+    color: var(--col-sunday);
 }
 
 .weekday-sub {
