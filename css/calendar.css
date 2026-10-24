@@ -115,14 +115,13 @@
     background-color: var(--bg-grid); /* fond commun de la ligne des jours, de la grille et de la légende */
 }
 
-/* En-tête des jours de la semaine : bande pleine largeur sous le bandeau du mois, de la même teinte que la légende (elles
-   encadrent la grille) ; mêmes marges et mêmes espaces que la grille pour que chaque nom soit centré sur sa colonne de cases ;
+/* En-tête des jours de la semaine : même fond que la grille et la légende, sous le bandeau du mois ; mêmes marges et mêmes espaces que la grille pour que chaque nom soit centré sur sa colonne de cases ;
    les 7 jours dans les mêmes couleurs (le vendredi et le dimanche sont signalés par les numéros des cases) */
 .weekdays-header {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     gap: var(--grid-gap);
-    background: var(--bg-band);
+    background: var(--bg-grid);
     text-align: center;
     padding: 0 var(--grid-gap);
     font-size: var(--fs-sm);
@@ -142,7 +141,7 @@
 
 .weekday-sub {
     font-size: var(--fs-sm);
-    color: var(--bg-head-blue); /* arabe et tamoul : même bleu que le français (6:1 sur --bg-band), en graisse normale */
+    color: var(--bg-head-blue); /* arabe et tamoul : même bleu que le français (7:1 sur --bg-grid), en graisse normale */
 }
 
 /* Grille des jours (5 rangées pour couvrir le mois) */
@@ -301,7 +300,7 @@
 /* --- LÉGENDE (BAS) : vacances scolaires et changement d'heure du mois --- */
 .legend-box {
     padding: var(--sp-1) var(--sp-2); /* bande compacte */
-    background: var(--bg-band); /* bande pleine largeur, comme la ligne des jours : les deux encadrent la grille */
+    background: var(--bg-grid); /* même fond que la ligne des jours et la grille : un seul bloc bleu-gris */
     margin-top: auto;
     min-height: 24px; /* hauteur d'une ligne de légende, même vide : même grille chaque mois */
     display: flex;
