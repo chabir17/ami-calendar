@@ -59,9 +59,9 @@
 
     /* Vert pastel (vendredis et colonnes de date du tableau des horaires) */
     --bg-friday: var(--bg-green-faint); /* vendredis de la feuille Ramadan */
-    --bg-cover-top: #2f5283; /* couverture : haut du dégradé marine de la colonne d'identité (même départ que le « 27 ») */
-    --bg-cover-mid: #1a3b66; /* couverture : dégradé aux deux tiers de la hauteur */
-    --bg-cover-bottom: #001a36; /* couverture : bas du dégradé */
+    --bg-cover-top: #8aa6cc; /* couverture : haut du dégradé de la colonne d'identité (bleu franc derrière le logo, éclairci vite pour économiser l'encre) */
+    --bg-cover-mid: #b4c7e0; /* couverture : dégradé aux deux tiers de la hauteur */
+    --bg-cover-bottom: #d9e4f1; /* couverture : bas du dégradé */
     --bg-friday-light: #e7f2e8; /* vendredis du tableau annuel et encart du verset de la couverture : même vert que --bg-green-head (ΔE ≈ 8,5 au blanc, visible sur le copieur laser ; l'ancien #f1f8f2 était à 5) */
 
     /* Gris pastel : cases hors du mois */
