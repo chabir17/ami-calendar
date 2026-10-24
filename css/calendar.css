@@ -112,25 +112,25 @@
     flex-direction: column;
     border-radius: var(--radius-card);
     overflow: hidden;
-    background-color: white;
+    background-color: var(--bg-grid); /* fond commun de la ligne des jours, de la grille et de la légende */
 }
 
-/* En-tête des jours de la semaine : mêmes marges et mêmes espaces que la grille, pour que chaque nom soit centré sur sa colonne
-   de cases ; noms français en bleu du bandeau, arabe et tamoul en bleu ardoise ; vendredi en vert et dimanche en orange,
-   comme les numéros des cases */
+/* En-tête des jours de la semaine : un bloc arrondi par jour, aligné sur sa colonne de cases (mêmes marges, mêmes espaces
+   et même rayon que la grille) ; les 7 en bleu clair, textes en bleu du bandeau du mois */
 .weekdays-header {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     gap: var(--grid-gap);
-    background: var(--bg-grid); /* même bleu-gris que la grille et la légende, sous le bandeau plein du mois */
-    color: var(--col-text-light);
+    background: var(--bg-grid);
     text-align: center;
-    padding: 0 var(--grid-gap);
+    padding: var(--grid-gap) var(--grid-gap) 0;
     font-size: var(--fs-sm);
 }
 
 .weekday-cell {
-    padding: var(--sp-2) 0 var(--sp-1);
+    background: var(--bg-block);
+    border-radius: var(--radius-cell);
+    padding: var(--sp-2) 0;
 }
 
 .weekday-fr {
@@ -138,20 +138,12 @@
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--bg-head-blue); /* nom français accentué, de la teinte du bandeau du mois */
-}
-
-.weekday-cell:nth-child(5) .weekday-fr {
-    color: var(--col-friday);
-}
-
-.weekday-cell:nth-child(7) .weekday-fr {
-    color: var(--col-sunday);
+    color: var(--bg-head-blue);
 }
 
 .weekday-sub {
     font-size: var(--fs-sm);
-    color: var(--col-title-blue); /* arabe et tamoul en bleu ardoise */
+    color: var(--bg-head-blue); /* arabe et tamoul : même bleu, en graisse normale (6:1 sur --bg-block) */
 }
 
 /* Grille des jours (5 rangées pour couvrir le mois) */
@@ -309,9 +301,10 @@
 
 /* --- LÉGENDE (BAS) : vacances scolaires et changement d'heure du mois --- */
 .legend-box {
-    padding: var(--sp-1) var(--sp-2); /* barre compacte : la marge sous la dernière rangée reste proche de l'espace de la grille */
-    background: var(--bg-grid); /* même fond que la grille : ferme le bas du calendrier */
-    margin-top: auto;
+    padding: var(--sp-1) var(--sp-2); /* bloc compact */
+    background: var(--bg-block); /* bloc arrondi sur toute la largeur de la grille, comme les jours de la semaine */
+    border-radius: var(--radius-cell);
+    margin: auto var(--grid-gap) var(--grid-gap);
     min-height: 24px; /* hauteur d'une ligne de légende, même vide : même grille chaque mois */
     display: flex;
     align-items: center;
