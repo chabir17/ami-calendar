@@ -68,9 +68,9 @@ Tous opaques ; ce sont des aplats, jamais des dégradés.
 | `--bg-holiday`         | `#fbf6e7` | Vacances scolaires                                                                                                                                                                           |
 | `--bg-dst`             | `#f8edc6` | Ligne du changement d'heure dans le tableau : plus soutenu que les vacances (ΔE ≈ 21 au blanc)                                                                                               |
 | `--bg-eid`             | `#cfe7d2` | Pastille de l'Aïd sur les mini-mois de la couverture                                                                                                                                         |
-| `--bg-cover-top`       | `#b3c8e1` | Haut du dégradé de la colonne d'identité de la couverture                                                                                                                                    |
-| `--bg-cover-mid`       | `#d3e0ef` | Milieu du dégradé (aux deux tiers)                                                                                                                                                           |
-| `--bg-cover-bottom`    | `#e5edf6` | Bas du dégradé                                                                                                                                                                               |
+| `--bg-cover-top`       | `#2f5283` | Haut du dégradé marine de la colonne d'identité de la couverture (même départ que le « 27 »)                                                                                                 |
+| `--bg-cover-mid`       | `#1a3b66` | Milieu du dégradé (aux deux tiers)                                                                                                                                                           |
+| `--bg-cover-bottom`    | `#001a36` | Bas du dégradé (même bleu nuit que le bas du « 27 »)                                                                                                                                         |
 | `--bg-terracotta-soft` | `#fbebe4` | Cellules du jeûne (feuille du Ramadan uniquement)                                                                                                                                            |
 
 ### 2.4 Filets et bordures

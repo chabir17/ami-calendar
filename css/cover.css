@@ -49,7 +49,7 @@
     position: relative;
 }
 
-/* Dégradé : soutenu en haut, bleu moyen aux deux tiers, pâle en bas ; motif en bleu ardoise */
+/* Dégradé bleu marine du « 27 » (bleu moyen en haut, bleu nuit en bas) ; motif girih blanc */
 .cover-bg-top {
     stop-color: var(--bg-cover-top);
 }
@@ -63,7 +63,7 @@
 }
 
 .cover-girih-tile {
-    fill: var(--col-title-blue);
+    fill: #fff;
 }
 
 /* Affiche : le logo seul, en haut de la colonne */
