@@ -63,7 +63,7 @@ Sans Node : `python3 -m http.server 3000` depuis la racine du projet.
     - numéro hégirien en petit, en haut à droite ; **en gras** les jours islamiques particuliers ;
     - croissant vert : premier jour du mois hégirien ;
     - numéro **vert** : Aïd ; **terracotta** : jour férié (libellé écrit dans la case) ;
-    - libellés verts : début du Ramadan, jour de ʿArafa, jours de Tashrīq, ʿĀshūrāʾ ;
+    - libellés verts : début du Ramadan, jour de ʿArafa, ʿĀshūrāʾ ;
     - fond doré pâle : vacances scolaires (zone C) ; fond gris : jours hors du mois ;
     - horloge beige doré : passage à l'heure d'été ou d'hiver.
 - **Légende** (bas de page) : nom des vacances scolaires du mois et passage à l'heure d'été / d'hiver.

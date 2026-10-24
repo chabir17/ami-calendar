@@ -8,11 +8,11 @@ const HIJRI_CACHE = new Map();
 
 /**
  * Jours vertueux d'un jour précis (mois hégirien → jour → libellé), écrits dans la case comme l'Aïd :
- * début du Ramadan, ʿArafa (Muslim 1162), jours de Tashrīq (Muslim 1141), ʿĀshūrāʾ (Muslim 1162).
+ * début du Ramadan, ʿArafa (Muslim 1162), ʿĀshūrāʾ (Muslim 1162).
  */
 const VIRTUOUS_DAYS = {
     Ramaḍān: { 1: 'Début du Ramadan' },
-    'Dhū al-Ḥijjah': { 9: 'Jour de ʿArafa', 11: 'Tashrīq', 12: 'Tashrīq', 13: 'Tashrīq' },
+    'Dhū al-Ḥijjah': { 9: 'Jour de ʿArafa' },
     Muḥarram: { 10: 'ʿĀshūrāʾ' }
 };
 // Aïds (mois hégirien → jour → libellé)

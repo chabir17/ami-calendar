@@ -82,7 +82,7 @@ class CalendarGrid extends MonthElement {
             if (dayInfo.isEid) root.classList.add('is-eid');
             if (dayInfo.isHoliday) root.classList.add('is-holiday');
             if (dayInfo.isPublicHoliday) root.classList.add('is-public-holiday');
-            // Jour islamique particulier (Aïd, début du Ramadan, ʿArafa, Tashrīq, ʿĀshūrāʾ) : date hégirienne mise en évidence
+            // Jour islamique particulier (Aïd, début du Ramadan, ʿArafa, ʿĀshūrāʾ) : date hégirienne mise en évidence
             if (dayInfo.labels.some((l) => l.type === 'eid' || l.type === 'virtuous')) root.classList.add('is-islamic-event');
 
             // Contenu Textuel

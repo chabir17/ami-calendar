@@ -215,14 +215,14 @@ Première page du PDF, avec une mise en page propre (ni header à torsades, ni g
 
 ### 4.3 Jours particuliers (`getDayInfo`)
 
-| Information           | Règle                                                                                            | Rendu                                              |
-| --------------------- | ------------------------------------------------------------------------------------------------ | -------------------------------------------------- |
-| Vacances scolaires    | période de `CONFIG.schoolHolidays` contenant le jour                                             | fond doré pâle, nom dans la légende                |
-| Jour férié            | `CONFIG.publicHolidays['AAAA-MM-JJ']`, libellé raccourci par `HOLIDAY_NAMES`                     | numéro terracotta, libellé                         |
-| Changement d'heure    | `DATE_UTILS.dstChange` : derniers dimanches de mars (`summer`) et d'octobre (`winter`)           | icône et libellé ambre doré (`--col-dst`), légende |
-| Nouveau mois hégirien | jour hégirien = 1                                                                                | croissant                                          |
-| Aïd                   | `EID_NAMES` : 1er Shawwāl (Eid-ul-Fitr), 10 Dhū al-Ḥijjah (Eid-ul-Adha)                          | numéro vert, libellé en premier                    |
-| Jours vertueux        | `VIRTUOUS_DAYS` : 1er Ramaḍān, 9 Dhū al-Ḥijjah (ʿArafa), 11-13 (Tashrīq), 10 Muḥarram (ʿĀshūrāʾ) | libellé vert, date hégirienne en gras              |
+| Information           | Règle                                                                                  | Rendu                                              |
+| --------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------- |
+| Vacances scolaires    | période de `CONFIG.schoolHolidays` contenant le jour                                   | fond doré pâle, nom dans la légende                |
+| Jour férié            | `CONFIG.publicHolidays['AAAA-MM-JJ']`, libellé raccourci par `HOLIDAY_NAMES`           | numéro terracotta, libellé                         |
+| Changement d'heure    | `DATE_UTILS.dstChange` : derniers dimanches de mars (`summer`) et d'octobre (`winter`) | icône et libellé ambre doré (`--col-dst`), légende |
+| Nouveau mois hégirien | jour hégirien = 1                                                                      | croissant                                          |
+| Aïd                   | `EID_NAMES` : 1er Shawwāl (Eid-ul-Fitr), 10 Dhū al-Ḥijjah (Eid-ul-Adha)                | numéro vert, libellé en premier                    |
+| Jours vertueux        | `VIRTUOUS_DAYS` : 1er Ramaḍān, 9 Dhū al-Ḥijjah (ʿArafa), 10 Muḥarram (ʿĀshūrāʾ)        | libellé vert, date hégirienne en gras              |
 
 Retour : `{ isHoliday, holidayName, isPublicHoliday, isDST, dstType, isNewMoon, isEid, eidName, labels: [{ text, type }] }`.
 
