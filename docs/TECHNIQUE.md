@@ -133,7 +133,7 @@ Le tableau occupe toute la hauteur : les mois de 28 à 31 jours tiennent sur la 
     - ligne 2 : coordonnées de contact (téléphone fixe, WhatsApp, e-mail, site) ;
     - ligne 3 : IBAN • BIC.
 
-    Plusieurs coordonnées sur une ligne sont des `.info-item` (icône + texte). Les noms et les deux lignes de coordonnées tiennent dans la hauteur du logo (22,4 mm).
+    Plusieurs coordonnées sur une ligne sont des `.info-item` (icône + texte). Les noms partent du haut du logo et les coordonnées s'arrêtent à son bas (`align-self: end`), le filet est centré entre les deux ; noms sur la même ligne de base (`align-items: baseline`). Tout tient dans la hauteur du logo (22,4 mm).
 
 Le contenu statique du header dans `index.html` reprend exactement la structure générée par `contactsHTML` : toute modification de l'une doit être reportée dans l'autre.
 

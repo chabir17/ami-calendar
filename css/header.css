@@ -76,7 +76,7 @@
 .org-names {
     grid-area: names;
     display: flex;
-    align-items: center;
+    align-items: baseline; /* tamoul et français posés sur la même ligne de base */
     white-space: nowrap;
 }
 
@@ -107,11 +107,11 @@
 .header-contacts {
     position: relative;
     grid-area: contacts;
-    padding-top: 1mm;
+    align-self: end; /* la dernière ligne s'arrête au bas du logo, comme les noms partent du haut : le filet est centré entre les deux */
+    padding-top: 2.6mm;
     display: grid;
     grid-template-columns: auto auto;
     justify-content: space-between;
-    align-content: center;
     row-gap: 0.8mm;
     white-space: nowrap;
     font-size: var(--fs-contact);
