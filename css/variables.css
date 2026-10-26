@@ -103,8 +103,8 @@
     --fs-month: 24px; /* noms des mois du bandeau (titres de la page) */
     --fs-cover-year: 140px; /* année grégorienne de la couverture, au-dessus des mois */
     --fs-cover-hijri: 49px; /* années hégiriennes de la couverture, l'une sous l'autre à droite de l'année grégorienne */
-    --fs-brand: 26px; /* nom tamoul de l'association (header du calendrier annuel) : le corps des lettres tamoules (≈ 0,56 em) a la hauteur des majuscules du nom français (≈ 0,71 em × 20 px) */
-    --fs-brand-fr: 20px; /* nom français : majuscules, de même hauteur visuelle que le corps du nom tamoul */
+    --fs-brand: 28px; /* nom tamoul de l'association (header du calendrier annuel) */
+    --fs-brand-fr: 28px; /* nom français : même corps que le nom tamoul (header du calendrier annuel) */
     --fs-figure: 15px; /* chiffres : horaires de prière, invocation et noms de l'association (feuille Ramadan) */
     --fs-title: 30px; /* années de la page Ramadan */
     --fs-display: 36px; /* numéros des jours du calendrier */

@@ -72,8 +72,11 @@ export function contactsHTML(c, layout = 'columns', links = false) {
     if (layout === 'rows') {
         return [group([line(addr2), line(addr1)]), group([phone, whatsapp, email, website].map((x) => line(x))), group([line(bank)])].join('');
     }
-    // 3 lignes : les deux adresses, puis les coordonnées de contact, puis IBAN • BIC
-    return [line(addr1, addr2), line(phone, whatsapp, email, website), line(bank)].filter(Boolean).join('');
+    // 3 colonnes de 2 lignes : adresse 1 puis téléphones | adresse 2 puis e-mail et site | IBAN puis BIC (aligné sous l'IBAN)
+    const col = (...lines) => (lines.some(Boolean) ? `<div class="contact-col">${lines.filter(Boolean).join('')}</div>` : '');
+    const iban = c.bank && item('bank', `IBAN\u00a0: ${c.bank.iban}`);
+    const bic = c.bank && c.bank.bic && `<div class="info-line info-line-cont"><span>BIC\u00a0: ${c.bank.bic}</span></div>`;
+    return [col(line(addr1), line(phone, whatsapp)), col(line(addr2), line(email, website)), col(line(iban), bic)].join('');
 }
 
 /**

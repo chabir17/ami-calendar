@@ -98,25 +98,29 @@
 
 .org-fr {
     color: var(--col-green);
-    font-size: var(--fs-brand-fr); /* majuscules de même hauteur visuelle que le corps du nom tamoul */
+    font-size: var(--fs-brand-fr);
     letter-spacing: 0.01em;
 }
 
-/* Coordonnées sur 2 lignes sous les noms : adresses des deux lieux, puis contact (téléphones, e-mail, site) et banque
-   côte à côte ; discrètes, plus claires que les noms (hiérarchie nette) */
+/* Coordonnées sous les noms : 3 colonnes de 2 lignes alignées (adresse 1 puis téléphones | adresse 2 puis e-mail et site |
+   IBAN puis BIC), la dernière calée à droite, sur le bord du tableau des horaires ; discrètes, plus claires que les noms */
 .header-contacts {
     position: relative;
     grid-area: contacts;
     align-self: end; /* la dernière ligne s'arrête au bas du logo, comme les noms partent du haut : le filet est centré entre les deux */
     padding-top: 2.6mm;
-    display: grid;
-    grid-template-columns: auto auto;
+    display: flex;
     justify-content: space-between;
-    row-gap: 0.8mm;
     white-space: nowrap;
     font-size: var(--fs-contact);
     line-height: 1.35;
     color: var(--col-text-soft);
+}
+
+.contact-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8mm;
 }
 
 /* Filet de 0,5 px (pseudo-élément : une border de 0,5 px deviendrait 1 px) entre les noms et les coordonnées */
@@ -130,8 +134,9 @@
     background: var(--border-blue);
 }
 
-.header-contacts > .info-line:first-child {
-    grid-column: 1 / -1;
+/* BIC : aligné sous le texte de l'IBAN (largeur de la pastille de l'icône + écart) */
+.info-line-cont {
+    padding-left: 1.25rem;
 }
 
 .info-line {
