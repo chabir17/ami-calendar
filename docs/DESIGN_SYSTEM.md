@@ -53,25 +53,26 @@ Tous opaques ; ce sont des aplats, jamais des dégradés.
 
 **Seuil de visibilité à l'impression** : un fond doit s'écarter du blanc d'au moins **ΔE ≈ 8** (CIE Lab) pour se voir sur le copieur laser de l'association (essai du 23/10/2026 : le vert `--bg-green-head`, à ΔE 8,5, se voit ; le beige à 6,7 et le bleu à 5,6 ne se voyaient pas). Les fonds sous ce seuil (`--bg-friday-light` à 5,0) sont des repères secondaires : à relever si l'impression les efface.
 
-| Jeton                  | Valeur    | Usage                                                                                                                                                                                    |
-| ---------------------- | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `--bg-blue-head`       | `#e5edf6` | Pastilles d'icônes, couverture (fonds pâles)                                                                                                                                             |
-| `--bg-grid`            | `#e5edf6` | Fond commun de la ligne des jours, de la grille des jours (visible dans les espaces de 4 px entre les cases) et de la légende : même intensité que `--bg-green-head` (ΔE ≈ 8,5 au blanc) |
-| `--bg-head-blue`       | `#364f6f` | Bandeau du mois et cadre du calendrier : bleu ardoise plein (L* ≈ 33, chroma ≈ 21, blanc dessus 8,4:1)                                                                                   |
-| `--bg-head-green`      | `#35553c` | En-tête et cadre du tableau : vert sapin plein, même assombrissement (L* ≈ 33, chroma ≈ 21, blanc dessus 8,4:1)                                                                          |
-| `--col-on-dark-soft`   | `#dbe6f3` | Traductions et année sur les en-têtes foncés                                                                                                                                             |
-| `--bg-blue-faint`      | `#eef3f9` | Feuille du Ramadan uniquement (indépendant du bandeau du mois)                                                                                                                           |
-| `--bg-green-head`      | `#e7f2e8` | Colonnes de date (grégorien et hégirien) du tableau                                                                                                                                      |
-| `--bg-green-faint`     | `#e7f2e8` | Traits verticaux du tableau, vendredis de la feuille du Ramadan                                                                                                                          |
-| `--bg-friday-light`    | `#e7f2e8` | Vendredis du tableau annuel (ligne entière), encart du verset de la couverture (relevé de #f1f8f2, ΔE 5 → 8,5)                                                                           |
-| `--bg-green-friday`    | `#d6e9d9` | Vendredis dans les colonnes de date : un cran au-dessus de `--bg-green-head`                                                                                                             |
-| `--bg-holiday`         | `#fbf6e7` | Vacances scolaires                                                                                                                                                                       |
-| `--bg-dst`             | `#f8edc6` | Ligne du changement d'heure dans le tableau : plus soutenu que les vacances (ΔE ≈ 21 au blanc)                                                                                           |
-| `--bg-eid`             | `#cfe7d2` | Pastille de l'Aïd sur les mini-mois de la couverture                                                                                                                                     |
-| `--bg-cover-top`       | `#7896c2` | Haut du dégradé de la colonne d'identité de la couverture (bleu franc derrière le logo)                                                                                                  |
-| `--bg-cover-mid`       | `#a6bcdb` | Milieu du dégradé (aux deux tiers)                                                                                                                                                       |
-| `--bg-cover-bottom`    | `#d0deef` | Bas du dégradé                                                                                                                                                                           |
-| `--bg-terracotta-soft` | `#fbebe4` | Cellules du jeûne (feuille du Ramadan uniquement)                                                                                                                                        |
+| Jeton                  | Valeur              | Usage                                                                                                                                                                                    |
+| ---------------------- | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `--bg-blue-head`       | `#e5edf6`           | Pastilles d'icônes, couverture (fonds pâles)                                                                                                                                             |
+| `--bg-grid`            | `#e5edf6`           | Fond commun de la ligne des jours, de la grille des jours (visible dans les espaces de 4 px entre les cases) et de la légende : même intensité que `--bg-green-head` (ΔE ≈ 8,5 au blanc) |
+| `--bg-head-blue`       | `#364f6f`           | Bandeau du mois et cadre du calendrier : bleu ardoise plein (L* ≈ 33, chroma ≈ 21, blanc dessus 8,4:1)                                                                                   |
+| `--bg-head-green`      | `#35553c`           | En-tête et cadre du tableau : vert sapin plein, même assombrissement (L* ≈ 33, chroma ≈ 21, blanc dessus 8,4:1)                                                                          |
+| `--col-on-dark-soft`   | `#dbe6f3`           | Traductions et année sur les en-têtes foncés                                                                                                                                             |
+| `--bg-blue-faint`      | `#eef3f9`           | Feuille du Ramadan uniquement (indépendant du bandeau du mois)                                                                                                                           |
+| `--bg-green-head`      | `#e7f2e8`           | Colonnes de date (grégorien et hégirien) du tableau                                                                                                                                      |
+| `--bg-green-faint`     | `#e7f2e8`           | Traits verticaux du tableau, vendredis de la feuille du Ramadan                                                                                                                          |
+| `--bg-friday-light`    | `#e7f2e8`           | Vendredis du tableau annuel (ligne entière), encart du verset de la couverture (relevé de #f1f8f2, ΔE 5 → 8,5)                                                                           |
+| `--bg-green-friday`    | `#d6e9d9`           | Vendredis dans les colonnes de date : un cran au-dessus de `--bg-green-head`                                                                                                             |
+| `--bg-holiday`         | `#fbf6e7`           | Vacances scolaires                                                                                                                                                                       |
+| `--bg-dst`             | `#f8edc6`           | Ligne du changement d'heure dans le tableau : plus soutenu que les vacances (ΔE ≈ 21 au blanc)                                                                                           |
+| `--bg-eid`             | `#cfe7d2`           | Pastille de l'Aïd sur les mini-mois de la couverture                                                                                                                                     |
+| `--bg-cover-top`       | `#7896c2`           | Haut du dégradé de la colonne d'identité de la couverture (bleu franc derrière le logo)                                                                                                  |
+| `--bg-cover-mid`       | `#a6bcdb`           | Dégradé à 30 % de la hauteur                                                                                                                                                             |
+| `--bg-cover-low`       | `#acd7db`           | Aux deux tiers : turquoise pâle, passage bleu → vert (interpolé en LCH, sans gris)                                                                                                       |
+| `--bg-cover-bottom`    | `--bg-green-friday` | Bas du dégradé : vert pâle de la palette (`#d6e9d9`)                                                                                                                                     |
+| `--bg-terracotta-soft` | `#fbebe4`           | Cellules du jeûne (feuille du Ramadan uniquement)                                                                                                                                        |
 
 ### 2.4 Filets et bordures
 
@@ -200,7 +201,7 @@ Fond blanc, motif girih gris très pâle entre deux frises à torsade (safran en
 
 ### 6.5 Couverture
 
-Colonne d'identité (dégradé bleu, girih à 50 %) avec le logo posé directement, puis une **carte blanche unique** d'informations pratiques séparées par des filets fins : Mawaqit (deux QR codes, adresses), sources, contacts, dons, mention légale (8 px). À droite : année grégorienne, années hégiriennes, 12 mini-mois, verset dans un encart `--bg-friday-light`. Détail dans TECHNIQUE §3.6.
+Colonne d'identité (dégradé bleu → vert pâle, girih à 50 % près du logo et 25 % au loin) avec le logo posé directement, puis une **carte blanche unique** d'informations pratiques séparées par des filets fins : Mawaqit (deux QR codes, adresses), sources, contacts, dons, mention légale (8 px). À droite : année grégorienne, années hégiriennes, 12 mini-mois, verset dans un encart `--bg-friday-light`. Détail dans TECHNIQUE §3.6.
 
 ## 7. Vérifier un changement
 

@@ -260,22 +260,23 @@
             <div class="page A4-landscape cover-page">
                 <div class="cover-body">
                     <aside class="cover-identity">
-                        <!-- Fond de la colonne, en SVG pour rester vectoriel dans le PDF : dégradé bleu (soutenu en haut, bleu des bandeaux des mois aux deux tiers, presque blanc en bas) et
-                             motif girih bleu, net derrière le logo, qui s'estompe vers le bas -->
+                        <!-- Fond de la colonne, en SVG pour rester vectoriel dans le PDF : dégradé bleu → vert pâle (soutenu en haut, turquoise pâle aux deux tiers, vert pâle en bas) et
+                             motif girih blanc, plus net autour du logo, qui s'estompe radialement en s'en éloignant -->
                         <svg class="cover-identity-bg" aria-hidden="true">
                             <defs>
                                 <linearGradient id="cover-bg-grad" x1="0" y1="0" x2="0" y2="1">
                                     <stop class="cover-bg-top" offset="0" />
-                                    <stop class="cover-bg-mid" offset="0.65" />
+                                    <stop class="cover-bg-mid" offset="0.3" />
+                                    <stop class="cover-bg-low" offset="0.65" />
                                     <stop class="cover-bg-bottom" offset="1" />
                                 </linearGradient>
-                                <linearGradient id="cover-girih-fade" x1="0" y1="0" x2="0" y2="1">
+                                <radialGradient id="cover-girih-fade" gradientUnits="userSpaceOnUse" cx="143.5" cy="121.5" r="300">
                                     <stop offset="0" stop-color="#fff" />
-                                    <stop offset="0.4" stop-color="#fff" />
-                                    <stop offset="0.62" stop-color="#a0a0a0" />
-                                </linearGradient>
-                                <mask id="cover-girih-fade-mask" maskContentUnits="objectBoundingBox">
-                                    <rect width="1" height="1" fill="url(#cover-girih-fade)" />
+                                    <stop offset="0.5" stop-color="#fff" />
+                                    <stop offset="1" stop-color="#808080" />
+                                </radialGradient>
+                                <mask id="cover-girih-fade-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="100%" height="100%">
+                                    <rect width="100%" height="100%" fill="url(#cover-girih-fade)" />
                                 </mask>
                                 <path
                                     id="cover-girih-path"
@@ -288,12 +289,19 @@
                                     <use href="#cover-girih-path" stroke="#fff" stroke-width="3" />
                                     <use href="#cover-girih-path" stroke="#000" stroke-width="2" />
                                 </mask>
+                                <mask id="cover-girih-line-bold" maskUnits="userSpaceOnUse" x="0" y="0" width="90" height="90">
+                                    <use href="#cover-girih-path" stroke="#fff" stroke-width="4.4" />
+                                    <use href="#cover-girih-path" stroke="#000" stroke-width="2" />
+                                </mask>
+                                <pattern id="cover-girih-bold" width="90" height="90" patternUnits="userSpaceOnUse">
+                                    <rect class="cover-girih-tile" width="90" height="90" mask="url(#cover-girih-line-bold)" />
+                                </pattern>
                                 <pattern id="cover-girih" width="90" height="90" patternUnits="userSpaceOnUse">
                                     <rect class="cover-girih-tile" width="90" height="90" mask="url(#cover-girih-line)" />
                                 </pattern>
                             </defs>
                             <rect width="100%" height="100%" fill="url(#cover-bg-grad)" />
-                            <rect width="100%" height="100%" fill="url(#cover-girih)" fill-opacity="0.5" mask="url(#cover-girih-fade-mask)" />
+                            <rect width="100%" height="100%" fill="url(#cover-girih-bold)" fill-opacity="0.5" mask="url(#cover-girih-fade-mask)" />
                         </svg>
                         <!-- Logo, posé directement sur le panneau -->
                         <div class="cover-title">

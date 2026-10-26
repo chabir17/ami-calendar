@@ -58,6 +58,10 @@
     stop-color: var(--bg-cover-mid);
 }
 
+.cover-bg-low {
+    stop-color: var(--bg-cover-low);
+}
+
 .cover-bg-bottom {
     stop-color: var(--bg-cover-bottom);
 }
@@ -68,9 +72,11 @@
 
 /* Affiche : le logo seul, en haut de la colonne */
 .cover-title {
+    flex: 1; /* occupe la hauteur libre au-dessus de la carte : le logo y est centré verticalement */
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 .cover-logo {
