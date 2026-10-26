@@ -115,7 +115,7 @@ Le tableau occupe toute la hauteur : les mois de 28 à 31 jours tiennent sur la 
 
 ```
 ━━━━━━━━━━ filet tricolore : safran → or → vert (2 px) ━━━━━━━━━━━━━━━━━━━━━━━━
-┌────┐  Nom tamoul (28 px)    NOM FRANÇAIS (28 px)
+┌────┐  Nom tamoul (28 px) ✦ NOM FRANÇAIS (28 px)
 │logo││2,2 │  🕌 adresse 1          🏢 adresse 2             🏦 IBAN
 │ cm │  📞 · WhatsApp         ✉ e-mail · 🌐 site              BIC
 └────┘  (girih gris en filigrane autour du logo)
@@ -126,7 +126,7 @@ Le tableau occupe toute la hauteur : les mois de 28 à 31 jours tiennent sur la 
     - Le fond est en **SVG vectoriel inline** : un `background-image` ou un `<pattern>` SVG externe est pixellisé par Chrome à l'export PDF.
 - **Alignements** : pas de marge latérale : le logo s'aligne sur le bord gauche du calendrier, les coordonnées (calées à droite) sur le bord droit du tableau des horaires.
 - **Logo** : carré à pleine hauteur utile (environ 2,2 cm).
-- **Noms** (`.org-names`) : sur une seule ligne, tamoul en `--fs-brand` (28 px, safran) puis français en `--fs-brand-fr` (28 px, vert, même corps), séparés par un simple espace (`--sp-6`) : le header n'a aucun séparateur, hormis le filet tricolore du haut.
+- **Noms** (`.org-names`) : sur une seule ligne, tamoul en `--fs-brand` (28 px, safran) puis français en `--fs-brand-fr` (28 px, vert, même corps), séparés par une étoile à 8 branches (`.org-sep`, 13 px, `--col-blue`, ornement sans sens propre) : les trois couleurs du logo se retrouvent dans la ligne. Le header n'a pas d'autre séparateur que le filet tricolore du haut.
 - **Coordonnées** (`.header-contacts`), juste sous les noms, sans filet (l'espace et le contraste de taille suffisent) : `contactsHTML(c, 'columns')` produit **3 colonnes** (`.contact-col`) de 2 lignes, réparties sur la largeur (`justify-content: space-between`) et dont la dernière est calée sur le bord du tableau des horaires :
     - colonne 1 : adresse de la mosquée, puis téléphone fixe et WhatsApp ;
     - colonne 2 : adresse de la salle de prière, puis e-mail et site ;

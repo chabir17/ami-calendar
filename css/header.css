@@ -80,9 +80,17 @@
     white-space: nowrap;
 }
 
-/* Simple espace entre le nom tamoul et le nom français */
-.org-fr {
-    margin-left: var(--sp-6);
+/* Séparateur entre le nom tamoul et le nom français : étoile à 8 branches (girih) en bleu marine du logo ; les trois
+   couleurs du logo (safran, bleu marine, vert) se retrouvent ainsi dans la ligne des noms */
+.org-sep {
+    display: inline-flex;
+    align-self: center;
+    margin: 0 var(--sp-4);
+    color: var(--col-blue);
+}
+
+.org-sep svg {
+    display: block;
 }
 
 .org-ta,
