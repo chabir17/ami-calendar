@@ -22,7 +22,6 @@
     --col-gold: #c8a85a;
     --col-year-dark-top: #2f5283; /* « 27 » de la couverture : haut du dégradé (bleu moyen) */
     --col-year-dark-bottom: #001a36; /* « 27 » de la couverture : bas du dégradé (bleu nuit) */
-    --col-year-light-top: #aec1dc; /* « 20 » de la couverture : haut du dégradé (bleu très clair) */
     --col-hijri-soft: #6c9e75; /* années hégiriennes de la couverture : vert pâle, 3.1:1 (grand texte) */
 
     /* Terracotta (horaires du jeûne : Imsak, iftār, Icha AMI) */
@@ -59,9 +58,9 @@
 
     /* Vert pastel (vendredis et colonnes de date du tableau des horaires) */
     --bg-friday: var(--bg-green-faint); /* vendredis de la feuille Ramadan */
-    --bg-cover-top: #8aa6cc; /* couverture : haut du dégradé de la colonne d'identité (bleu franc derrière le logo, éclairci vite pour économiser l'encre) */
-    --bg-cover-mid: #b4c7e0; /* couverture : dégradé aux deux tiers de la hauteur */
-    --bg-cover-bottom: #d9e4f1; /* couverture : bas du dégradé */
+    --bg-cover-top: #7896c2; /* couverture : haut du dégradé de la colonne d'identité (bleu franc derrière le logo, éclairci vite pour économiser l'encre) */
+    --bg-cover-mid: #a6bcdb; /* couverture : dégradé aux deux tiers de la hauteur */
+    --bg-cover-bottom: #d0deef; /* couverture : bas du dégradé */
     --bg-friday-light: #e7f2e8; /* vendredis du tableau annuel et encart du verset de la couverture : même vert que --bg-green-head (ΔE ≈ 8,5 au blanc, visible sur le copieur laser ; l'ancien #f1f8f2 était à 5) */
 
     /* Gris pastel : cases hors du mois */

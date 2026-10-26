@@ -68,9 +68,9 @@ Tous opaques ; ce sont des aplats, jamais des dégradés.
 | `--bg-holiday`         | `#fbf6e7` | Vacances scolaires                                                                                                                                                                       |
 | `--bg-dst`             | `#f8edc6` | Ligne du changement d'heure dans le tableau : plus soutenu que les vacances (ΔE ≈ 21 au blanc)                                                                                           |
 | `--bg-eid`             | `#cfe7d2` | Pastille de l'Aïd sur les mini-mois de la couverture                                                                                                                                     |
-| `--bg-cover-top`       | `#8aa6cc` | Haut du dégradé de la colonne d'identité de la couverture (bleu franc derrière le logo)                                                                                                  |
-| `--bg-cover-mid`       | `#b4c7e0` | Milieu du dégradé (aux deux tiers)                                                                                                                                                       |
-| `--bg-cover-bottom`    | `#d9e4f1` | Bas du dégradé                                                                                                                                                                           |
+| `--bg-cover-top`       | `#7896c2` | Haut du dégradé de la colonne d'identité de la couverture (bleu franc derrière le logo)                                                                                                  |
+| `--bg-cover-mid`       | `#a6bcdb` | Milieu du dégradé (aux deux tiers)                                                                                                                                                       |
+| `--bg-cover-bottom`    | `#d0deef` | Bas du dégradé                                                                                                                                                                           |
 | `--bg-terracotta-soft` | `#fbebe4` | Cellules du jeûne (feuille du Ramadan uniquement)                                                                                                                                        |
 
 ### 2.4 Filets et bordures
@@ -91,12 +91,12 @@ Pas de cadre autour des blocs : l'en-tête plein dessine le haut, la légende, s
 
 ### 2.6 Couverture
 
-| Jeton                    | Valeur    | Usage                                      |
-| ------------------------ | --------- | ------------------------------------------ |
-| `--col-year-light-top`   | `#aec1dc` | « 20 » : haut du dégradé (bleu très clair) |
-| `--col-title-blue`       | `#46628a` | « 20 » : bas du dégradé                    |
-| `--col-year-dark-top`    | `#2f5283` | « 27 » : haut du dégradé                   |
-| `--col-year-dark-bottom` | `#001a36` | « 27 » : bas du dégradé (bleu nuit)        |
+| Jeton                    | Valeur    | Usage                                   |
+| ------------------------ | --------- | --------------------------------------- |
+| `--col-year-dark-top`    | `#2f5283` | « 20 » : bas du dégradé ; « 27 » : haut |
+| `--col-year-dark-bottom` | `#001a36` | « 27 » : bas du dégradé (bleu nuit)     |
+
+Le « 20 » va de `--bg-cover-mid` (haut) à `--col-year-dark-top` (bas), puis le « 27 » continue jusqu'à `--col-year-dark-bottom` : un seul dégradé sur toute l'année.
 
 Le girih de l'année est blanc, à 45 % d'intensité maximale, fondu du haut (discret) vers le bas (net) par le masque `#cover-year-fade-mask`.
 
@@ -200,7 +200,7 @@ Fond blanc, motif girih gris très pâle entre deux frises à torsade (safran en
 
 ### 6.5 Couverture
 
-Colonne d'identité (dégradé bleu, girih à 16 %) avec le logo posé directement, puis une **carte blanche unique** d'informations pratiques séparées par des filets fins : Mawaqit (deux QR codes, adresses), sources, contacts, dons, mention légale (8 px). À droite : année grégorienne, années hégiriennes, 12 mini-mois, verset dans un encart `--bg-friday-light`. Détail dans TECHNIQUE §3.6.
+Colonne d'identité (dégradé bleu, girih à 50 %) avec le logo posé directement, puis une **carte blanche unique** d'informations pratiques séparées par des filets fins : Mawaqit (deux QR codes, adresses), sources, contacts, dons, mention légale (8 px). À droite : année grégorienne, années hégiriennes, 12 mini-mois, verset dans un encart `--bg-friday-light`. Détail dans TECHNIQUE §3.6.
 
 ## 7. Vérifier un changement
 

@@ -375,11 +375,11 @@
 }
 
 .cover-year-top {
-    stop-color: var(--col-year-light-top);
+    stop-color: var(--bg-cover-mid);
 }
 
 .cover-year-bottom {
-    stop-color: var(--col-title-blue);
+    stop-color: var(--col-year-dark-top);
 }
 
 .cover-year-dark-top {
