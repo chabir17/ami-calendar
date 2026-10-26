@@ -7,13 +7,13 @@
        la bordure du haut n'est pas perforée */
     margin-top: calc(var(--binding-zone) - var(--page-pad));
     height: var(--header-h); /* box-sizing: border-box */
-    --header-pad: 1.5mm; /* épaisseur du contour en dégradé */
-    padding: var(--header-pad);
+    --header-pad: 2.5mm; /* air sous le filet et au-dessus du calendrier ; logo ≈ 1,9 cm (24 mm − 2 × 2,5 mm) */
+    padding: var(--header-pad) 0; /* bords gauche/droit alignés sur le calendrier et le tableau */
     background-color: white;
-    border-radius: var(--radius-card); /* comme les blocs du calendrier et du tableau */
 }
 
-/* Contour : fond en SVG (dégradé, voir les définitions en tête de index.html) sur tout le panneau ; l'encart blanc le recouvre sauf sur le pourtour */
+/* Fond en SVG (voir les définitions en tête de index.html) : girih gris en filigrane autour du logo, et filet tricolore
+   (safran → vert, couleurs du logo) en haut. Texte sur fond blanc : contrastes pleins. */
 .header-bg {
     position: absolute;
     inset: 0;
@@ -22,24 +22,27 @@
     pointer-events: none;
 }
 
-.header-bg-start {
-    stop-color: var(--bg-header-start);
+.header-girih-tile {
+    fill: var(--col-text-soft);
 }
 
-.header-bg-mid {
-    stop-color: var(--bg-header-mid);
+.header-line-start {
+    stop-color: var(--header-line-start);
 }
 
-.header-bg-end {
-    stop-color: var(--bg-header-end);
+.header-line-mid {
+    stop-color: var(--header-line-mid);
+}
+
+.header-line-end {
+    stop-color: var(--header-line-end);
 }
 
 /* Disposition du header : une grille à deux colonnes et deux rangées. Le logo occupe toute la hauteur à gauche ; à droite,
-   les noms (une seule ligne) puis, juste en dessous, les coordonnées. Trois encarts blancs séparés par un espace de la
-   largeur du contour : le dégradé n'apparaît que sur le pourtour et dans ces espaces. */
+   les noms (une seule ligne) puis, séparées par un filet fin, les coordonnées sur deux lignes. */
 .header-content {
     --identity-gap: 1.5mm;
-    --logo-size: calc(var(--header-h) - 2 * var(--header-pad)); /* encart du logo : carré à pleine hauteur */
+    --logo-size: calc(var(--header-h) - 2 * var(--header-pad));
     position: relative; /* au-dessus du fond */
     height: 100%;
     display: grid;
@@ -48,27 +51,13 @@
     grid-template-areas:
         'logo names'
         'logo contacts';
-    gap: var(--header-pad);
+    column-gap: var(--sp-4);
+    row-gap: 0.8mm; /* air entre les noms et le filet des coordonnées */
 }
 
-.header-content > .logo-box,
-.header-content > .org-names,
-.header-content > .header-contacts {
-    padding: 1mm 2mm;
-    border-radius: 0.25rem; /* concentrique au contour (coins du panneau : --radius-card) */
-    background: white;
-}
-
-/* Les deux encarts empilés tiennent dans 21 mm : marges verticales réduites */
-.header-content > .org-names,
-.header-content > .header-contacts {
-    padding-block: 0.6mm;
-}
-
-/* Logo : encart carré à pleine hauteur du panneau (logo ≈ 1,9 cm) */
+/* Logo : carré à pleine hauteur (≈ 1,9 cm) */
 .header-content > .logo-box {
     grid-area: logo;
-    padding: 1mm;
 }
 
 .logo-box {
@@ -88,8 +77,14 @@
     grid-area: names;
     display: flex;
     align-items: center;
-    gap: var(--sp-4);
     white-space: nowrap;
+}
+
+/* Filet vertical fin entre le nom tamoul et le nom français */
+.org-fr {
+    margin-left: var(--sp-4);
+    padding-left: var(--sp-4);
+    border-left: 1px solid var(--border-blue);
 }
 
 .org-ta,
@@ -112,16 +107,29 @@
 /* Coordonnées sur 2 lignes sous les noms : adresses des deux lieux, puis contact (téléphones, e-mail, site) et banque
    côte à côte ; discrètes, plus claires que les noms (hiérarchie nette) */
 .header-contacts {
+    position: relative;
     grid-area: contacts;
+    padding-top: 1mm;
     display: grid;
     grid-template-columns: auto auto;
     justify-content: space-between;
     align-content: center;
-    row-gap: 0.5mm;
+    row-gap: 0.8mm;
     white-space: nowrap;
     font-size: var(--fs-contact);
     line-height: 1.35;
     color: var(--col-text-soft);
+}
+
+/* Filet de 0,5 px (pseudo-élément : une border de 0,5 px deviendrait 1 px) entre les noms et les coordonnées */
+.header-contacts::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--hairline);
+    background: var(--border-blue);
 }
 
 .header-contacts > .info-line:first-child {

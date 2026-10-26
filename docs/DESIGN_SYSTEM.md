@@ -115,7 +115,8 @@ Le girih de l'année est blanc, à 45 % d'intensité maximale, fondu du haut (di
 | -------------------------------------- | -------- | ------------------------------------------------------- |
 | `--fs-2xs`                             | 9        | Libellés dans les cases du calendrier                   |
 | `--fs-verse`                           | 11       | Verset de la couverture                                 |
-| `--fs-xs`, `--fs-contact`              | 10       | Notes, en-têtes du tableau, coordonnées compactes       |
+| `--fs-xs`                              | 10       | Notes, en-têtes du tableau                              |
+| `--fs-contact`                         | 11       | Coordonnées du header                                   |
 | `--fs-sm`                              | 12       | Traductions, légende, jour hégirien des cases           |
 | `--fs-md`                              | 14       | Courant : jours de la semaine, sous-titres de mois      |
 | `--fs-figure`                          | 15       | Horaires de prière, chiffres du tableau                 |
@@ -198,7 +199,7 @@ En-tête `--bg-head-green` (plein), titres en blanc, traductions en `--col-on-da
 
 ### 6.4 Header
 
-Panneau arrondi (`--radius-card`) dont seul le **contour** (1,5 mm) est coloré : dégradé horizontal corail → orange → jaune doré pâle (`--bg-header-start`, `--bg-header-mid`, `--bg-header-end`) avec un motif girih blanc calé sur le logo (une étoile au centre du disque, diamètre du logo = 2 pas du motif). Au-dessus, **trois encarts blancs** à coins arrondis, séparés par un espace de la même épaisseur (le dégradé y reste visible) : le logo à gauche, puis à droite, empilés, les noms sur une seule ligne (tamoul safran, français vert) et les coordonnées sur 2 lignes (adresses ; contact et banque côte à côte). Tous les textes sont sur fond blanc : leurs contrastes sont ceux du blanc. Détail dans TECHNIQUE §3.4.
+Fond blanc, comme un papier à en-tête, sous un **filet tricolore** de 3 px aux couleurs du logo : safran vif (`--header-line-start`), or des ornements (`--header-line-mid`, `--brand`), vert de la mosquée (`--header-line-end`). Le logo est à gauche ; à droite, les noms sur une seule ligne (tamoul safran, filet vertical fin, français vert), puis, sous un filet de 0,5 px `--border-blue`, les coordonnées sur 2 lignes (adresses ; contact et banque côte à côte). Un girih gris (`--col-text-soft`, 14 %) calé sur le logo (une étoile au centre du disque) est estompé radialement autour de lui. Tous les textes sont sur blanc : contrastes pleins, encre minimale. Détail dans TECHNIQUE §3.4.
 
 ### 6.5 Couverture
 

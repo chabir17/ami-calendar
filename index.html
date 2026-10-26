@@ -46,20 +46,28 @@
                     d="M0 16.8L-4.92 11.88M0 73.2L-4.92 78.12M-4.92 11.88L-11.88 11.88M-4.92 78.12L-11.88 78.12M-11.88 40.08L0 45M-11.88 49.92L0 45M0 16.8L-19.94 36.74M0 73.2L-19.94 53.26M16.8 0L11.88 -4.92M73.2 0L78.12 -4.92M11.88 -4.92L11.88 -11.88M78.12 -4.92L78.12 -11.88M40.08 -11.88L45 0M49.92 -11.88L45 0M16.8 0L36.74 -19.94M73.2 0L53.26 -19.94M16.8 0L11.88 4.92M16.8 90L11.88 85.08M73.2 0L78.12 4.92M73.2 90L78.12 85.08M11.88 4.92L11.88 11.88M11.88 85.08L11.88 78.12M78.12 4.92L78.12 11.88M78.12 85.08L78.12 78.12M11.88 11.88L40.08 11.88M11.88 78.12L40.08 78.12M78.12 11.88L49.92 11.88M78.12 78.12L49.92 78.12M40.08 11.88L45 0M40.08 78.12L45 90M49.92 11.88L45 0M49.92 78.12L45 90M16.8 0L36.74 19.94M16.8 90L36.74 70.06M73.2 0L53.26 19.94M73.2 90L53.26 70.06M36.74 19.94L31.82 31.82M36.74 70.06L31.82 58.18M53.26 19.94L58.18 31.82M53.26 70.06L58.18 58.18M31.82 31.82L45 26.36M31.82 58.18L45 63.64M58.18 31.82L45 26.36M58.18 58.18L45 63.64M0 16.8L4.92 11.88M0 73.2L4.92 78.12M90 16.8L85.08 11.88M90 73.2L85.08 78.12M4.92 11.88L11.88 11.88M4.92 78.12L11.88 78.12M85.08 11.88L78.12 11.88M85.08 78.12L78.12 78.12M11.88 11.88L11.88 40.08M11.88 78.12L11.88 49.92M78.12 11.88L78.12 40.08M78.12 78.12L78.12 49.92M11.88 40.08L0 45M11.88 49.92L0 45M78.12 40.08L90 45M78.12 49.92L90 45M0 16.8L19.94 36.74M0 73.2L19.94 53.26M90 16.8L70.06 36.74M90 73.2L70.06 53.26M19.94 36.74L31.82 31.82M19.94 53.26L31.82 58.18M70.06 36.74L58.18 31.82M70.06 53.26L58.18 58.18M31.82 31.82L26.36 45M31.82 58.18L26.36 45M58.18 31.82L63.64 45M58.18 58.18L63.64 45M16.8 90L11.88 94.92M73.2 90L78.12 94.92M11.88 94.92L11.88 101.88M78.12 94.92L78.12 101.88M40.08 101.88L45 90M49.92 101.88L45 90M16.8 90L36.74 109.94M73.2 90L53.26 109.94M90 16.8L94.92 11.88M90 73.2L94.92 78.12M94.92 11.88L101.88 11.88M94.92 78.12L101.88 78.12M101.88 40.08L90 45M101.88 49.92L90 45M90 16.8L109.94 36.74M90 73.2L109.94 53.26"
                 />
                 <!-- Contour du header (vectoriel dans le PDF) : dégradé horizontal corail (gauche) → orange → jaune doré pâle (droite) -->
-                <!-- Girih blanc sur le contour, calé sur le logo (une étoile au centre du disque, diamètre du logo = 2 pas du motif) :
-                     patternTransform en px, à recaler si le logo bouge ou change de taille -->
+                <!-- Header : filet tricolore (dégradé safran → vert, couleurs du logo) et girih gris en filigrane autour du logo, estompé
+                     radialement ; cx/cy/r et patternTransform en px : centre du logo dans le header (à recaler si le logo bouge
+                     ou change de taille), une étoile du motif au centre du disque -->
+                <linearGradient id="header-line-grad" x1="0" y1="0" x2="1" y2="0">
+                    <stop class="header-line-start" offset="0" />
+                    <stop class="header-line-mid" offset="0.5" />
+                    <stop class="header-line-end" offset="1" />
+                </linearGradient>
+                <radialGradient id="header-girih-fade" gradientUnits="userSpaceOnUse" cx="35.9" cy="45.35" r="230">
+                    <stop offset="0.15" stop-color="#fff" />
+                    <stop offset="1" stop-color="#000" />
+                </radialGradient>
+                <mask id="header-girih-fade-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="1400" height="100">
+                    <rect width="1400" height="100" fill="url(#header-girih-fade)" />
+                </mask>
                 <mask id="header-girih-line" maskUnits="userSpaceOnUse" x="0" y="0" width="90" height="90">
                     <use href="#cover-girih-path" stroke="#fff" stroke-width="4.6" />
                     <use href="#cover-girih-path" stroke="#000" stroke-width="2.2" />
                 </mask>
-                <pattern id="header-girih" width="90" height="90" patternUnits="userSpaceOnUse" patternTransform="translate(9.35 9.35) scale(0.8)">
-                    <rect class="cover-girih-tile" width="90" height="90" mask="url(#header-girih-line)" />
+                <pattern id="header-girih" width="90" height="90" patternUnits="userSpaceOnUse" patternTransform="translate(-0.1 9.35) scale(0.8)">
+                    <rect class="header-girih-tile" width="90" height="90" mask="url(#header-girih-line)" />
                 </pattern>
-                <linearGradient id="header-bg-grad" x1="0" y1="0" x2="1" y2="0">
-                    <stop class="header-bg-start" offset="0" />
-                    <stop class="header-bg-mid" offset="0.5" />
-                    <stop class="header-bg-end" offset="1" />
-                </linearGradient>
             </defs>
         </svg>
         <div id="app"></div>
@@ -70,8 +78,8 @@
                 <!-- EN-TÊTE : logo et noms empilés (tamoul, français) à gauche | coordonnées en 2 colonnes à droite -->
                 <header class="header-fixed">
                     <svg class="header-bg" aria-hidden="true">
-                        <rect width="100%" height="100%" fill="url(#header-bg-grad)" />
-                        <rect width="100%" height="100%" fill="url(#header-girih)" fill-opacity="0.8" />
+                        <rect width="100%" height="100%" fill="url(#header-girih)" fill-opacity="0.14" mask="url(#header-girih-fade-mask)" />
+                        <rect width="100%" height="3" rx="1.5" fill="url(#header-line-grad)" />
                     </svg>
                     <div class="header-content">
                         <div class="logo-box">
