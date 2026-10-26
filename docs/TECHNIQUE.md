@@ -107,9 +107,9 @@ Les deux composants héritent de `MonthElement`, qui observe `year` et `month` e
 **`<ami-prayer-table>`** : une ligne par jour depuis `#prayer-row-template` (jour abrégé sur 3 lettres, numéro, 6 horaires, jour hégirien). Classes :
 
 - `is-friday` : fond `--bg-friday-light` (même vert que l'en-tête, texte normal) ; le dimanche est repéré par le filet de fin de semaine ;
-- `week-end` : filet après chaque dimanche, sauf en fin de mois ;
+- `week-end` : filet de 1,5 px `--border-week` après chaque dimanche, sauf en fin de mois ;
 - `is-hijri-new` : 1er jour du mois hégirien, numéro en `--col-green-dark` dans la colonne hégirienne ;
-- `is-dst` : jour du changement d'heure, fond doré `--bg-dst` (plus soutenu que les vacances) et filet de fin de semaine en `--border-dst`, texte normal (les horaires sautent d'une heure).
+- `is-dst` : jour du changement d'heure, fond doré `--bg-dst` (plus soutenu que les vacances) (le filet de fin de semaine reste celui de `--border-week`), texte normal (les horaires sautent d'une heure).
 
 Le tableau occupe toute la hauteur : les mois de 28 à 31 jours tiennent sur la page.
 
@@ -317,7 +317,7 @@ Rendu PDF en ligne de commande (serveur local lancé) :
 ## 8. Pièges connus
 
 - **Noms de fichiers construits dynamiquement** : `icon-dst-${…}.svg` et `icon-${addr_icon}.svg`. Une recherche textuelle ne les trouve pas : ne pas les supprimer comme « inutilisés ».
-- **Filets de 0,5 px** : Chrome arrondit une `border` de 0,5 px à 1 px, même à l'impression. Les filets internes de la grille et du tableau sont donc tracés en `box-shadow: inset` avec `--hairline` (0,5 px réels dans le PDF).
+- **Filets de 0,5 px** : Chrome arrondit une `border` de 0,5 px à 1 px, même à l'impression. Le tableau des horaires utilise donc des `border` de 1 px (et 1,5 px après le dimanche) ; il est en `border-collapse: separate` pour que le filet du bas de la dernière ligne ne soit pas rogné par le conteneur arrondi (en `collapse`, il tombait à moitié hors du tableau). `--hairline` (0,5 px réels dans le PDF) reste utilisé pour les traits de la couverture.
 - **Images de fond SVG et PDF** : Chrome pixellise `background-image` et `<pattern>` SVG à l'export, ainsi que les dégradés CSS (`radial-gradient`, `repeating-linear-gradient`). Pour un motif net (frises), utiliser du SVG inline avec `<use>` ; pour une pastille, un pseudo-élément à `border-radius: 50%`.
 - **Dégradés et motifs en PDF** : un dégradé CSS est pixellisé, un `linearGradient` SVG inline reste vectoriel. Les motifs masqués (girih de la couverture) sortent en image à 300 ppp, qualité d'impression suffisante.
 - **Chiffres arabes et sens d'écriture** : sur une même ligne, « ١٤٤٨ – ١٤٤٩ » s'afficherait inversé (l'algorithme bidi traite le tiret entre deux nombres arabes comme du texte de droite à gauche). La couverture empile donc les deux années, une par élément (`updateCover`).

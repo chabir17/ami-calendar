@@ -77,8 +77,8 @@
     --bg-eid: #cfe7d2; /* couverture : pastille de l'Aïd, vert pastel (texte --col-friday : 4.8:1) */
     --bg-green-faint: #e7f2e8; /* vert très clair : traits verticaux du tableau, vendredis de la feuille Ramadan */
     --bg-green-friday: #d6e9d9; /* colonnes de date du tableau, le vendredi : un cran au-dessus de --bg-green-head */
-    --border-dst: #e3c978; /* filet de la ligne du changement d'heure dans le tableau : doré, assorti à --bg-dst */
     --border-blue: #c5d3e4; /* séparateurs de la couverture et du Ramadan : bleu doux */
+    --border-week: #6f9a79; /* filet de 1,5 px après chaque dimanche dans le tableau des horaires : vert moyen, entre le vert de l'en-tête et les filets des jours */
     --border-green: #c3dec6; /* bordures du tableau : vert doux */
     --accent-blue: #7f9cc0; /* filets et puces de la feuille Ramadan */
 

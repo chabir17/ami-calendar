@@ -17,16 +17,15 @@ ami-prayer-table {
 .prayer-table {
     width: 100%;
     height: 100%;
-    border-collapse: collapse;
-    border: hidden;
+    border-collapse: separate; /* les filets restent dans la cellule : le dernier est visible, rien n'est rogné par le conteneur arrondi */
+    border-spacing: 0;
 }
 
 /* En-tête vert forêt plein (pendant du bandeau bleu marine du mois), texte blanc : noms des prières en titre, traductions en blanc atténué ;
-   séparateurs blancs entre les colonnes */
+   sans séparateur entre les colonnes */
 .prayer-table thead th {
     background: var(--bg-head-green);
     border: none;
-    box-shadow: inset calc(-1 * var(--hairline)) 0 0 white; /* séparateurs 0,5 px entre les colonnes */
     padding: var(--sp-1) 0.0625rem; /* 1 px */
     font-size: var(--fs-xs);
     font-weight: 400;
@@ -78,10 +77,11 @@ ami-prayer-table {
 
 .prayer-table tbody td {
     border: none;
-    /* filets 0,5 px : horizontaux vert doux, verticaux très légers (le tableau respire) */
-    box-shadow:
-        inset 0 calc(-1 * var(--hairline)) 0 var(--border-green),
-        inset calc(-1 * var(--hairline)) 0 0 var(--bg-green-faint);
+    background: white;
+    background-clip: padding-box; /* le fond ne passe pas sous l'espace entre deux semaines */
+    /* filets de 1 px : horizontaux vert doux, verticaux très légers (le tableau respire) */
+    border-bottom: 1px solid var(--border-green);
+    border-right: 1px solid var(--bg-green-faint);
     text-align: center;
     font-weight: 600;
     font-size: var(--fs-figure);
@@ -91,7 +91,11 @@ ami-prayer-table {
     padding: 0; /* hauteur repartie par le tableau (height: 100%) : 28 a 31 lignes tiennent toujours */
 }
 
-.prayer-table tbody tr.is-friday {
+.prayer-table tbody td:last-child {
+    border-right: none;
+}
+
+.prayer-table tbody tr.is-friday td {
     background: var(--bg-friday-light);
 }
 
@@ -147,22 +151,15 @@ ami-prayer-table {
     line-height: 1;
 }
 
-.prayer-table tbody tr.is-dst {
-    background: var(--bg-dst);
-}
-
 /* Ligne du changement d'heure : beige sur toute la largeur, y compris les colonnes de date (qui recouvrent sinon le fond de la ligne) */
+.prayer-table tbody tr.is-dst td,
 .prayer-table tbody tr.is-dst td.col-date-greg,
 .prayer-table tbody tr.is-dst td.col-hijri {
     background: var(--bg-dst);
 }
 
-/* Fin de semaine : filet plus marqué après le dimanche (repérage par blocs de 7 jours) */
-.prayer-table tbody tr.week-end td {
-    border-bottom: 1.5px solid var(--border-green);
-}
-
-/* Dimanche du changement d'heure : filet doré, assorti au fond de la ligne */
+/* Fin de semaine : filet de 1,5 px après le dimanche, en vert moyen (repérage par blocs de 7 jours) */
+.prayer-table tbody tr.week-end td,
 .prayer-table tbody tr.is-dst.week-end td {
-    border-bottom-color: var(--border-dst);
+    border-bottom: 1.5px solid var(--border-week);
 }

@@ -8,7 +8,7 @@ Référence unique des couleurs, de la typographie, des espacements, des icônes
 
 1. **Une couleur = un sens** (voir §2.2). On n'ajoute pas une couleur pour décorer ; on en réutilise une qui a déjà le bon sens.
 2. **Flat design** : aplats, filets fins, aucune ombre à l'impression. Les seuls dégradés sont vectoriels (SVG) : fond de la colonne d'identité, « 20 » et « 27 » de l'année de la couverture, fondu du girih de l'année.
-3. **Épuré** : peu de bordures, couleurs douces (pastels), la lisibilité avant l'ornement. Les séparateurs sont des **filets fins continus** de 0,5 px.
+3. **Épuré** : peu de bordures, couleurs douces (pastels), la lisibilité avant l'ornement. Les séparateurs sont des **filets fins continus** (0,5 px sur la couverture, 1 px dans le tableau des horaires).
 4. **Une icône = un sens** (voir §5). Jamais la même icône pour deux choses différentes.
 5. **Lisible à l'impression laser de bureau** : fonds pastel **opaques** (pas de transparence), textes à 4,5:1 minimum (WCAG AA ; les ratios sont dans les commentaires des jetons), pas de texte sous 8 px.
 6. **Aucune couleur ni taille en dur** dans les feuilles de style ni dans les SVG : ajouter un jeton plutôt qu'une valeur. Exceptions : `white` (le papier) et les valeurs de luminance des masques SVG de la couverture.
@@ -78,11 +78,11 @@ Tous opaques ; ce sont des aplats, jamais des dégradés.
 
 Filets internes de **0,5 px** (`--hairline`), tracés en `box-shadow: inset` ou en pseudo-élément (une `border` de 0,5 px devient 1 px dans le PDF).
 
-| Jeton            | Valeur    | Usage                                                    |
-| ---------------- | --------- | -------------------------------------------------------- |
-| `--border-blue`  | `#c5d3e4` | Séparateurs de la couverture et de la feuille du Ramadan |
-| `--border-green` | `#c3dec6` | Grille du tableau, fin de semaine, cadre du tableau      |
-| `--border-dst`   | `#e3c978` | Filet sous la ligne du changement d'heure                |
+| Jeton            | Valeur    | Usage                                                         |
+| ---------------- | --------- | ------------------------------------------------------------- |
+| `--border-blue`  | `#c5d3e4` | Séparateurs de la couverture et de la feuille du Ramadan      |
+| `--border-green` | `#c3dec6` | Grille du tableau, fin de semaine, cadre du tableau           |
+| `--border-week`  | `#6f9a79` | Filet de 1,5 px après chaque dimanche du tableau des horaires |
 
 Pas de cadre autour des blocs : l'en-tête plein dessine le haut, la légende, sur le même fond `--bg-grid`, ferme le bas du calendrier. Dans le calendrier, les cases blanches (coins `--radius-cell`, 8 px) sont séparées par des espaces `--grid-gap` (0,25 rem, 4 px) sur fond `--bg-grid`, sans filets.
 
@@ -186,15 +186,15 @@ Fond `--bg-head-blue` (plein), texte blanc, hauteur `--band-h`. Mois grégorien 
 
 ### 6.3 Tableau des horaires
 
-En-tête `--bg-head-green` (plein), titres en blanc, traductions en `--col-on-dark-soft` 500. Corps : horaires en `--col-ink` 600, 15 px, traits verticaux très légers, filets horizontaux `--border-green`.
+En-tête `--bg-head-green` (plein), titres en blanc, traductions en `--col-on-dark-soft` 500. Corps : horaires en `--col-ink` 600, 15 px, traits verticaux très légers, filets horizontaux `--border-green` de 1 px ; filet de 1,5 px `--border-week` après chaque dimanche. Les filets sont des `border` (le tableau est en `border-collapse: separate`, le dernier filet n'est pas rogné).
 
 | Élément            | Rendu                                                                                                                   |
 | ------------------ | ----------------------------------------------------------------------------------------------------------------------- |
 | Colonnes de date   | Bandes `--bg-green-head` : jour de la semaine en 14 px / 500, numéro grégorien en 600                                   |
 | Jour hégirien      | Noir ; le « 01 » du début de mois en blanc dans une pastille `--bg-head-green` (15 px de haut, ne grandit pas la ligne) |
 | Vendredi           | Ligne `--bg-friday-light` ; dans les colonnes de date, `--bg-green-friday`                                              |
-| Fin de semaine     | Filet de 1,5 px `--border-green` après le dimanche                                                                      |
-| Changement d'heure | Ligne entière (colonnes de date comprises) en `--bg-dst`, filet `--border-dst`, texte normal                            |
+| Fin de semaine     | Filet de 1,5 px `--border-week` (vert moyen) après le dimanche                                                          |
+| Changement d'heure | Ligne entière (colonnes de date comprises) en `--bg-dst`, texte normal                                                  |
 
 ### 6.4 Header
 
