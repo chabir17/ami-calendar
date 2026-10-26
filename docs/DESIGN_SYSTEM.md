@@ -198,7 +198,7 @@ En-tête `--bg-head-green` (plein), titres en blanc, traductions en `--col-on-da
 
 ### 6.4 Header
 
-Panneau arrondi (`--radius-card`) dont seul le **contour** (1,5 mm) est coloré : dégradé horizontal corail → orange → jaune doré pâle (`--bg-header-start`, `--bg-header-mid`, `--bg-header-end`) avec un motif girih blanc calé sur le logo (une étoile au centre du disque, diamètre du logo = 2 pas du motif). Au-dessus, **trois encarts blancs** à coins arrondis, séparés par un espace de la même épaisseur (le dégradé y reste visible) : logo, noms (tamoul safran, français vert) et coordonnées en 3 lignes (adresses, contact, banque). Tous les textes sont sur fond blanc : leurs contrastes sont ceux du blanc. Détail dans TECHNIQUE §3.4.
+Panneau arrondi (`--radius-card`) dont seul le **contour** (1,5 mm) est coloré : dégradé horizontal corail → orange → jaune doré pâle (`--bg-header-start`, `--bg-header-mid`, `--bg-header-end`) avec un motif girih blanc calé sur le logo (une étoile au centre du disque, diamètre du logo = 2 pas du motif). Au-dessus, **trois encarts blancs** à coins arrondis, séparés par un espace de la même épaisseur (le dégradé y reste visible) : le logo à gauche, puis à droite, empilés, les noms sur une seule ligne (tamoul safran, français vert) et les coordonnées sur 2 lignes (adresses ; contact et banque côte à côte). Tous les textes sont sur fond blanc : leurs contrastes sont ceux du blanc. Détail dans TECHNIQUE §3.4.
 
 ### 6.5 Couverture
 

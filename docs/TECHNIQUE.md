@@ -115,26 +115,27 @@ Le tableau occupe toute la hauteur : les mois de 28 à 31 jours tiennent sur la 
 
 ```
 ┌ contour en dégradé (corail → jaune), motif girih ───────────────────────────┐
-│ ┌logo┐ ┌ noms ────────────────────────┐ ┌ coordonnées ───────────────────┐ │
-│ │    │ │ Nom tamoul (28 px)           │ │ 🕌 adresse 1   🏢 adresse 2    │ │
-│ │1,9 │ │ NOM FRANÇAIS (20 px)         │ │ 📞 tél. · WhatsApp · ✉ · 🌐    │ │
-│ │ cm │ └──────────────────────────────┘ │ 🏦 IBAN • BIC                  │ │
-│ └────┘                                  └────────────────────────────────┘ │
+│ ┌logo┐ ┌ noms (une ligne) ──────────────────────────────────────────────────┐ │
+│ │1,9 │ │ Nom tamoul (28 px)  NOM FRANÇAIS (20 px)                           │ │
+│ │ cm │ ├ coordonnées (2 lignes) ────────────────────────────────────────────┤ │
+│ │    │ │ 🕌 adresse 1   🏢 adresse 2                                        │ │
+│ └────┘ │ 📞 tél. · WhatsApp · ✉ · 🌐                       🏦 IBAN • BIC    │ │
+│        └────────────────────────────────────────────────────────────────────┘ │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
 
 - **Hauteur** : `--header-h` (24 mm), sous la zone de reliure. Panneau arrondi (`--radius-card`) dont le fond est un SVG `.header-bg` (vectoriel dans le PDF ; définitions en tête de `index.html`) : dégradé **horizontal** `--bg-header-start` → `--bg-header-mid` → `--bg-header-end`, et motif girih blanc (traits épais, masque `header-girih-line`, 80 %), calé sur le logo par `patternTransform` (une étoile au centre du disque, diamètre du logo = 2 pas du motif). Le centre du logo et l'échelle sont en px dans les définitions : à recaler si le logo bouge ou change de taille. Le chemin girih (`cover-girih-path`) est partagé avec la couverture.
-- **Contour et encarts** : `--header-pad` (1,5 mm) d'épaisseur ; trois encarts blancs (`.logo-box`, `.org-names`, `.header-contacts`, coins `0.25rem`, concentriques au panneau) séparés par un espace de même épaisseur. Le dégradé n'est visible que sur le pourtour et dans cet espace ; tous les textes sont sur blanc.
+- **Contour et encarts** : `--header-pad` (1,5 mm) d'épaisseur ; trois encarts blancs (`.logo-box`, puis `.org-names` et `.header-contacts` empilés dans la grille `.header-content`, coins `0.25rem`, concentriques au panneau) séparés par un espace de même épaisseur. Le dégradé n'est visible que sur le pourtour et dans cet espace ; tous les textes sont sur blanc.
     - Le fond est en **SVG vectoriel inline** : un `background-image` ou un `<pattern>` SVG externe est pixellisé par Chrome à l'export PDF.
 - **Alignements** : le panneau s'aligne sur le bord gauche du calendrier et le bord droit du tableau des horaires.
 - **Logo** : carré à pleine hauteur de l'encart (environ 1,9 cm).
-- **Noms** (`.org-names`) : tamoul en `--fs-brand` (28 px, safran), français en `--fs-brand-fr` (20 px, vert), de largeur équivalente. Centrés verticalement, écart `--identity-gap` (1,5 mm) : ils se lisent comme un seul bloc.
-- **Coordonnées** (`.header-contacts`) : 3 lignes produites par `contactsHTML(c, 'columns')` :
+- **Noms** (`.org-names`) : sur une seule ligne, tamoul en `--fs-brand` (28 px, safran) puis français en `--fs-brand-fr` (20 px, vert), dans un encart blanc.
+- **Coordonnées** (`.header-contacts`), encart blanc juste sous les noms ; `contactsHTML(c, 'columns')` produit 3 lignes, que la grille CSS (`grid-template-columns: auto auto`) replie sur 2 rangées : la ligne 1 sur toute la largeur, les lignes 2 et 3 côte à côte (la 3 à droite) :
     - ligne 1 : adresses des deux lieux (mosquée, salle de prière) ;
     - ligne 2 : coordonnées de contact (téléphone fixe, WhatsApp, e-mail, site) ;
     - ligne 3 : IBAN • BIC.
 
-    Plusieurs coordonnées sur une ligne sont des `.info-item` (icône + texte). Le bloc est centré verticalement avec le même interligne `--identity-gap` que les noms : les hauts et les bas des deux blocs sont alignés. Icônes en `--col-blue` dans une pastille ronde `--bg-blue-head`, comme sur la couverture ; texte en `--col-text-soft` (`--fs-contact`, 10 px).
+    Plusieurs coordonnées sur une ligne sont des `.info-item` (icône + texte). Les deux encarts empilés tiennent dans les 21 mm utiles du panneau (marges verticales de 0,6 mm).
 
 Le contenu statique du header dans `index.html` reprend exactement la structure générée par `contactsHTML` : toute modification de l'une doit être reportée dans l'autre.
 

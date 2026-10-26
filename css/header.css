@@ -34,14 +34,20 @@
     stop-color: var(--bg-header-end);
 }
 
-/* Trois encarts blancs, logo, noms et coordonnées, séparés par un espace de la largeur du contour :
-   le dégradé n'apparaît que sur le pourtour et dans cet espace */
+/* Disposition du header : une grille à deux colonnes et deux rangées. Le logo occupe toute la hauteur à gauche ; à droite,
+   les noms (une seule ligne) puis, juste en dessous, les coordonnées. Trois encarts blancs séparés par un espace de la
+   largeur du contour : le dégradé n'apparaît que sur le pourtour et dans ces espaces. */
 .header-content {
     --identity-gap: 1.5mm;
+    --logo-size: calc(var(--header-h) - 2 * var(--header-pad)); /* encart du logo : carré à pleine hauteur */
     position: relative; /* au-dessus du fond */
     height: 100%;
-    display: flex;
-    align-items: stretch;
+    display: grid;
+    grid-template-columns: var(--logo-size) minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+        'logo names'
+        'logo contacts';
     gap: var(--header-pad);
 }
 
@@ -53,15 +59,19 @@
     background: white;
 }
 
+/* Les deux encarts empilés tiennent dans 21 mm : marges verticales réduites */
+.header-content > .org-names,
+.header-content > .header-contacts {
+    padding-block: 0.6mm;
+}
+
 /* Logo : encart carré à pleine hauteur du panneau (logo ≈ 1,9 cm) */
 .header-content > .logo-box {
+    grid-area: logo;
     padding: 1mm;
 }
 
 .logo-box {
-    flex-shrink: 0;
-    height: 100%;
-    aspect-ratio: 1;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -73,18 +83,15 @@
     object-fit: contain;
 }
 
-/* Noms resserrés au centre de la hauteur du logo : lus comme un seul bloc d'identité ; l'encart prend la largeur libre */
+/* Noms sur une seule ligne, sur la même ligne de base : tamoul (safran) puis français (vert), couleurs du logo */
 .org-names {
-    flex: 1;
-    min-width: 0;
+    grid-area: names;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: var(--identity-gap);
+    align-items: center;
+    gap: var(--sp-4);
     white-space: nowrap;
 }
 
-/* Tamoul (safran) en haut, français (vert) en bas : couleurs du logo */
 .org-ta,
 .org-fr {
     font-weight: 600;
@@ -102,17 +109,23 @@
     letter-spacing: 0.01em;
 }
 
-/* Coordonnées en 3 lignes (adresses des deux lieux | contact : téléphones, e-mail, site | banque) :
-   discrètes, plus claires que les noms (hiérarchie nette) ; encart à droite, sur le bord du panneau */
+/* Coordonnées sur 2 lignes sous les noms : adresses des deux lieux, puis contact (téléphones, e-mail, site) et banque
+   côte à côte ; discrètes, plus claires que les noms (hiérarchie nette) */
 .header-contacts {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: var(--identity-gap);
+    grid-area: contacts;
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+    align-content: center;
+    row-gap: 0.5mm;
     white-space: nowrap;
     font-size: var(--fs-contact);
     line-height: 1.35;
     color: var(--col-text-soft);
+}
+
+.header-contacts > .info-line:first-child {
+    grid-column: 1 / -1;
 }
 
 .info-line {
