@@ -201,7 +201,7 @@ Fond blanc, motif girih gris très pâle entre deux frises à torsade (safran en
 
 ### 6.5 Couverture
 
-Colonne d'identité (dégradé bleu → vert pâle, girih à 50 % près du logo et 25 % au loin) avec le logo posé directement, puis une **carte blanche unique** d'informations pratiques séparées par des filets fins : Mawaqit (deux QR codes, adresses), sources, contacts, dons, mention légale (8 px). À droite : année grégorienne, années hégiriennes, 12 mini-mois, verset dans un encart `--bg-friday-light`. Détail dans TECHNIQUE §3.6.
+Colonne d'identité (dégradé bleu → vert pâle, girih à 25 % près du logo et 15 % au loin) avec le logo posé directement, puis une **carte blanche unique** d'informations pratiques séparées par des filets fins : Mawaqit (deux QR codes, adresses), sources, contacts, dons, mention légale (8 px). À droite : année grégorienne, années hégiriennes, 12 mini-mois, verset dans un encart `--bg-friday-light`. Détail dans TECHNIQUE §3.6.
 
 ## 7. Vérifier un changement
 
