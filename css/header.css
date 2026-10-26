@@ -7,8 +7,8 @@
        la bordure du haut n'est pas perforée */
     margin-top: calc(var(--binding-zone) - var(--page-pad));
     height: var(--header-h); /* box-sizing: border-box */
-    --header-pad: 2.5mm; /* air sous le filet et au-dessus du calendrier ; logo ≈ 1,9 cm (24 mm − 2 × 2,5 mm) */
-    padding: var(--header-pad) 0; /* bords gauche/droit alignés sur le calendrier et le tableau */
+    --header-pad-top: 1.6mm; /* air sous le filet tricolore ; en bas, l'espace avant le calendrier (--block-gap) suffit */
+    padding: var(--header-pad-top) 0 0; /* bords gauche/droit alignés sur le calendrier et le tableau */
     background-color: white;
 }
 
@@ -42,7 +42,7 @@
    les noms (une seule ligne) puis, séparées par un filet fin, les coordonnées sur deux lignes. */
 .header-content {
     --identity-gap: 1.5mm;
-    --logo-size: calc(var(--header-h) - 2 * var(--header-pad));
+    --logo-size: calc(var(--header-h) - var(--header-pad-top)); /* logo à la hauteur utile du header (≈ 2,2 cm) */
     position: relative; /* au-dessus du fond */
     height: 100%;
     display: grid;
@@ -80,11 +80,9 @@
     white-space: nowrap;
 }
 
-/* Filet vertical fin entre le nom tamoul et le nom français */
+/* Espace (et non filet) entre le nom tamoul et le nom français : un seul séparateur dans le header, sous les noms */
 .org-fr {
-    margin-left: var(--sp-4);
-    padding-left: var(--sp-4);
-    border-left: 1px solid var(--border-blue);
+    margin-left: var(--sp-6);
 }
 
 .org-ta,
