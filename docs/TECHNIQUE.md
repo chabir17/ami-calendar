@@ -41,7 +41,7 @@ data/
 clients/
   ami93120.json       Configuration de l'association (identité, coordonnées, position, thème)
 assets/
-  fonts/              Noto Sans, Amiri, Noto Naskh Arabic, Noto Serif Tamil (.ttf)
+  fonts/              Noto Sans (400, 500, 600, 700, italique 400), Amiri, Noto Naskh Arabic, Noto Serif Tamil (.ttf)
   icons/              Pictogrammes SVG (symbole #icon) : coordonnées, changement d'heure, croissant
   img/                Logo (AMI.png), QR codes Mawaqit (qr-mawaqit-*.svg), icône Mawaqit, fonds de la feuille du Ramadan
   patterns/           background-pattern-neutral.svg (girih gris pâle du header)
