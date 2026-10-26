@@ -199,7 +199,7 @@ En-tête `--bg-head-green` (plein), titres en blanc, traductions en `--col-on-da
 
 ### 6.4 Header
 
-Fond blanc, comme un papier à en-tête, sous un **filet tricolore** de 2 px aux couleurs du logo : safran vif (`--header-line-start`), or des ornements (`--header-line-mid`, `--brand`), vert de la mosquée (`--header-line-end`). Le logo (≈ 2,2 cm, toute la hauteur utile) est à gauche ; à droite, les noms sur une seule ligne (tamoul safran et français vert, tous deux à 28 px, séparés par un simple espace), puis, sous un filet de 0,5 px `--border-blue`, les coordonnées en 3 colonnes de 2 lignes alignées (adresse puis téléphones ; adresse puis e-mail et site ; IBAN puis BIC). Un girih gris (`--col-text-soft`, 9 %) calé sur le logo (une étoile au centre du disque, diamètre du logo = 1 pas du motif) est estompé radialement autour de lui. Tous les textes sont sur blanc : contrastes pleins, encre minimale. Détail dans TECHNIQUE §3.4.
+Fond blanc, comme un papier à en-tête, sous un **filet tricolore** de 2 px aux couleurs du logo : safran vif (`--header-line-start`), or des ornements (`--header-line-mid`, `--brand`), vert de la mosquée (`--header-line-end`). Le logo (≈ 2,2 cm, toute la hauteur utile) est à gauche ; à droite, les noms sur une seule ligne (tamoul safran et français vert, tous deux à 28 px, séparés par un simple espace), puis, sans filet, les coordonnées en 3 colonnes de 2 lignes alignées (adresse puis téléphones ; adresse puis e-mail et site ; IBAN puis BIC). Un girih gris (`--col-text-soft`, 9 %) calé sur le logo (une étoile au centre du disque, diamètre du logo = 1 pas du motif) est estompé radialement autour de lui. Tous les textes sont sur blanc : contrastes pleins, encre minimale. Détail dans TECHNIQUE §3.4.
 
 ### 6.5 Couverture
 

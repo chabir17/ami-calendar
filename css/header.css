@@ -39,7 +39,7 @@
 }
 
 /* Disposition du header : une grille à deux colonnes et deux rangées. Le logo occupe toute la hauteur à gauche ; à droite,
-   les noms (une seule ligne) puis, séparées par un filet fin, les coordonnées sur deux lignes. */
+   les noms (une seule ligne) puis les coordonnées, séparés par l'espace et le contraste de taille (pas de filet). */
 .header-content {
     --identity-gap: 1.5mm;
     --logo-size: calc(var(--header-h) - var(--header-pad-top)); /* logo à la hauteur utile du header (≈ 2,2 cm) */
@@ -80,7 +80,7 @@
     white-space: nowrap;
 }
 
-/* Espace (et non filet) entre le nom tamoul et le nom français : un seul séparateur dans le header, sous les noms */
+/* Simple espace entre le nom tamoul et le nom français */
 .org-fr {
     margin-left: var(--sp-6);
 }
@@ -107,8 +107,7 @@
 .header-contacts {
     position: relative;
     grid-area: contacts;
-    align-self: end; /* la dernière ligne s'arrête au bas du logo, comme les noms partent du haut : le filet est centré entre les deux */
-    padding-top: 2.6mm;
+    align-self: end; /* la dernière ligne s'arrête au bas du logo, comme les noms partent du haut */
     display: flex;
     justify-content: space-between;
     white-space: nowrap;
@@ -121,17 +120,6 @@
     display: flex;
     flex-direction: column;
     gap: 0.8mm;
-}
-
-/* Filet de 0,5 px (pseudo-élément : une border de 0,5 px deviendrait 1 px) entre les noms et les coordonnées */
-.header-contacts::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: var(--hairline);
-    background: var(--border-blue);
 }
 
 /* BIC : aligné sous le texte de l'IBAN (largeur de la pastille de l'icône + écart) */
