@@ -7,8 +7,9 @@
        la bordure du haut n'est pas perforée */
     margin-top: calc(var(--binding-zone) - var(--page-pad));
     height: var(--header-h); /* box-sizing: border-box */
-    --header-pad-top: 2.4mm; /* air sous le filet tricolore ; en bas, l'espace avant le calendrier (--block-gap) suffit */
-    padding: var(--header-pad-top) 0 0; /* bords gauche/droit alignés sur le calendrier et le tableau */
+    --header-pad-top: 2.4mm; /* frise (4,5 px ≈ 1,2 mm) + 1,2 mm d'air avant le logo et les textes */
+    --header-pad-bottom: var(--header-pad-top); /* symétrique : même air sous la frise du bas */
+    padding: var(--header-pad-top) 0 var(--header-pad-bottom); /* bords gauche/droit alignés sur le calendrier et le tableau */
     background-color: white;
 }
 
@@ -42,7 +43,7 @@
    les noms (une seule ligne) puis les coordonnées, séparés par l'espace et le contraste de taille (pas de filet). */
 .header-content {
     --identity-gap: 1.5mm;
-    --logo-size: calc(var(--header-h) - var(--header-pad-top)); /* logo à la hauteur utile du header (≈ 2,2 cm) */
+    --logo-size: calc(var(--header-h) - var(--header-pad-top) - var(--header-pad-bottom)); /* logo à la hauteur utile du header (≈ 2,2 cm) */
     position: relative; /* au-dessus du fond */
     height: 100%;
     display: grid;

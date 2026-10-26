@@ -114,19 +114,20 @@ Le tableau occupe toute la hauteur : les mois de 28 à 31 jours tiennent sur la 
 ### 3.4 Header de l'identité (`header.css`)
 
 ```
-━━━━━━━━━━ filet tricolore : safran → or → vert (2 px) ━━━━━━━━━━━━━━━━━━━━━━━━
+≈≈≈≈≈≈≈≈≈≈ torsade en dégradé : safran → or → vert (4,5 px) ≈≈≈≈≈≈≈≈≈≈
 ┌────┐  Nom tamoul (28 px) ✦ NOM FRANÇAIS (28 px)
 │logo││2,2 │  🕌 adresse 1          🏢 adresse 2             🏦 IBAN
 │ cm │  📞 · WhatsApp         ✉ e-mail · 🌐 site              BIC
 └────┘  (girih gris en filigrane autour du logo)
+≈≈≈≈≈≈≈≈≈≈ même torsade, même dégradé ≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈
 ```
 
-- **Hauteur** : `--header-h` (24 mm), sous la zone de reliure. Fond blanc ; air de `--header-pad-top` (2,4 mm) sous le filet, aucun en bas (l'espace `--block-gap` avant le calendrier suffit) : le logo prend toute la hauteur utile. Le fond SVG `.header-bg` (vectoriel dans le PDF ; définitions en tête de `index.html`) porte : le filet tricolore (`--header-line-start` → `--header-line-mid` → `--header-line-end`, 2 px, bouts arrondis) et un girih gris `--col-text-soft` (traits épais, masque `header-girih-line`, 9 %) calé sur le logo par `patternTransform` (une étoile au centre du disque) et estompé par un masque radial (`header-girih-fade`). Le centre du logo (`cx`/`cy`, `patternTransform`) est en px dans les définitions : à recaler si le logo bouge ou change de taille. Le chemin girih (`cover-girih-path`) est partagé avec la couverture.
+- **Hauteur** : `--header-h` (24 mm), sous la zone de reliure. Fond blanc ; air symétrique de 2,4 mm (`--header-pad-top` = `--header-pad-bottom`) : frise de 4,5 px (≈ 1,2 mm) + 1,2 mm avant le logo et les textes, en haut comme en bas ; le logo (≈ 1,9 cm) prend toute la hauteur restante. Le fond SVG `.header-bg` (vectoriel dans le PDF ; définitions en tête de `index.html`) porte : deux frises en torsade (haut et bas), faites d'un motif `header-torsade` de 8 × 4,5 px (deux brins de 0,8 px, interrompus au croisement pour que l'un passe sous l'autre) utilisé comme masque (`header-torsade-mask`) d'un rectangle rempli par le dégradé horizontal `header-line-grad` (`--header-line-start` → `--header-line-mid` → `--header-line-end`) ; la frise du bas est un `<svg>` imbriqué décalé de sa hauteur (le masque est défini dans le repère de la frise), et et un girih gris `--col-text-soft` (traits épais, masque `header-girih-line`, 9 %) calé sur le logo par `patternTransform` (une étoile au centre du disque) et estompé par un masque radial (`header-girih-fade`). Le centre du logo (`cx`/`cy`, `patternTransform`) est en px dans les définitions : à recaler si le logo bouge ou change de taille. Le chemin girih (`cover-girih-path`) est partagé avec la couverture.
 - **Grille** (`.header-content`) : deux colonnes (logo carré `--logo-size`, puis le reste) et deux rangées (noms, coordonnées), zones `logo` / `names` / `contacts`. Aucun encart : tout est sur blanc.
     - Le fond est en **SVG vectoriel inline** : un `background-image` ou un `<pattern>` SVG externe est pixellisé par Chrome à l'export PDF.
 - **Alignements** : pas de marge latérale : le logo s'aligne sur le bord gauche du calendrier, les coordonnées (calées à droite) sur le bord droit du tableau des horaires.
 - **Logo** : carré à pleine hauteur utile (environ 2,2 cm).
-- **Noms** (`.org-names`) : sur une seule ligne, tamoul en `--fs-brand` (28 px, safran) puis français en `--fs-brand-fr` (28 px, vert, même corps), séparés par une étoile à 8 branches (`.org-sep`, 13 px, `--col-blue`, ornement sans sens propre) : les trois couleurs du logo se retrouvent dans la ligne. Le header n'a pas d'autre séparateur que le filet tricolore du haut.
+- **Noms** (`.org-names`) : sur une seule ligne, tamoul en `--fs-brand` (28 px, safran) puis français en `--fs-brand-fr` (28 px, vert, même corps), séparés par une étoile à 8 branches (`.org-sep`, 13 px, `--col-blue`, ornement sans sens propre) : les trois couleurs du logo se retrouvent dans la ligne. Les deux frises sont les seuls filets du header.
 - **Coordonnées** (`.header-contacts`), juste sous les noms, sans filet (l'espace et le contraste de taille suffisent) : `contactsHTML(c, 'columns')` produit **3 colonnes** (`.contact-col`) de 2 lignes, réparties sur la largeur (`justify-content: space-between`) et dont la dernière est calée sur le bord du tableau des horaires :
     - colonne 1 : adresse de la mosquée, puis téléphone fixe et WhatsApp ;
     - colonne 2 : adresse de la salle de prière, puis e-mail et site ;
