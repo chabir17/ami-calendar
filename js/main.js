@@ -11,19 +11,6 @@ let pageTemplate = null;
 let clientConfig = null;
 
 /**
- * Frises du header : torsade (symbole SVG de index.html) répétée sur toute la largeur,
- * indépendamment de la configuration client.
- * @param {HTMLElement} container - page clonée
- */
-function drawFrises(container) {
-    const PAS = 8; // px : largeur d'une période de la torsade
-    const xs = Array.from({ length: Math.ceil(1500 / PAS) }, (_, i) => i * PAS);
-    container.querySelectorAll('.frise').forEach((svg) => {
-        svg.innerHTML = xs.map((x) => `<use href="#${svg.dataset.maillon}" x="${x}" />`).join('');
-    });
-}
-
-/**
  * Met à jour le contenu DOM d'une page spécifique (Header, Contacts)
  * à partir de la configuration client.
  * @param {HTMLElement} container - Le fragment ou l'élément de page cloné
@@ -115,7 +102,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         const clone = pageTemplate.cloneNode(true);
 
         // Appliquer les textes du client
-        drawFrises(clone);
         updatePageDOM(clone, clientConfig);
 
         // Appliquer la logique calendrier
@@ -139,7 +125,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Page de couverture : mise en page propre (template #cover-template)
     const createCoverNode = (y) => {
         const clone = document.getElementById('cover-template').content.cloneNode(true);
-        drawFrises(clone);
         updatePageDOM(clone, clientConfig);
         updateCover(y, clone);
         return clone;

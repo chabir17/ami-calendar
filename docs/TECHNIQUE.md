@@ -13,7 +13,7 @@ Référence pour faire évoluer le code des deux documents de l'AMI. Pour l'usag
 ## 2. Arborescence
 
 ```
-index.html            Calendrier annuel : templates (couverture, page, case, ligne du tableau) + symboles SVG des frises
+index.html            Calendrier annuel : templates (couverture, page, case, ligne du tableau) + définitions SVG partagées (fond du header, chemin girih)
 ramadan.html          Feuille du Ramadan : template unique
 css/
   variables.css       Jetons du design system (partagés)
@@ -44,7 +44,6 @@ assets/
   fonts/              Noto Sans (400, 500, 600, 700, italique 400), Amiri, Noto Naskh Arabic, Noto Serif Tamil (.ttf)
   icons/              Pictogrammes SVG (symbole #icon) : coordonnées, changement d'heure, croissant
   img/                Logo (AMI.png), QR codes Mawaqit (qr-mawaqit-*.svg), icône Mawaqit, fonds de la feuille du Ramadan
-  patterns/           background-pattern-neutral.svg (girih gris pâle du header)
 docs/
   TECHNIQUE.md        Ce document
 ```
@@ -74,7 +73,6 @@ Le bandeau du mois (bleu marine plein) et l'en-tête du tableau (vert forêt ple
 2. Si une configuration client existe : `applyTheme` (couleur `--brand`) et fusion de sa `location` dans `window.CONFIG`.
 3. Lecture de `?year` (défaut : année suivante) et `?month` (défaut : couverture + 12 mois ; `?month=cover` : couverture seule). L'ancien paramètre `?redirect=/AAAA/MM` (astuce 404 de GitHub Pages) est encore accepté.
 4. `renderApp()` ajoute la couverture (`createCoverNode`, voir 3.6), clone le template pour chaque mois, puis :
-    - `drawFrises` : torsades du header (voir 3.4), toujours, même sans configuration ;
     - `updatePageDOM` : noms, logo et coordonnées depuis la configuration client (sans configuration, le contenu statique du template reste affiché : il a la même structure) ;
     - `updateZoneTitles` : bandeau du mois (grégorien, hégirien sur un ou deux mois, traductions) ;
     - `updateLegend` : légende du bas (voir 3.5) ;
@@ -116,21 +114,20 @@ Le tableau occupe toute la hauteur : les mois de 28 à 31 jours tiennent sur la 
 ### 3.4 Header de l'identité (`header.css`)
 
 ```
-┌ frise safran (torsade) ─────────────────────────────────────────────────────┐
-│ [logo]  Nom tamoul (28 px)            🕌 adresse 1   📞 tél. · WhatsApp     │
-│  2 cm   NOM FRANÇAIS (20 px)          🏢 adresse 2   ✉ e-mail · 🌐 site     │
-│                                       🏦 IBAN • BIC (toute la largeur)      │
-└ frise verte (torsade) ──────────────────────────────────────────────────────┘
+┌ contour en dégradé (corail → jaune), motif girih ───────────────────────────┐
+│ ┌logo┐ ┌ noms ────────────────────────┐ ┌ coordonnées ───────────────────┐ │
+│ │    │ │ Nom tamoul (28 px)           │ │ 🕌 adresse 1   🏢 adresse 2    │ │
+│ │1,9 │ │ NOM FRANÇAIS (20 px)         │ │ 📞 tél. · WhatsApp · ✉ · 🌐    │ │
+│ │ cm │ └──────────────────────────────┘ │ 🏦 IBAN • BIC                  │ │
+│ └────┘                                  └────────────────────────────────┘ │
+└─────────────────────────────────────────────────────────────────────────────┘
 ```
 
-- **Hauteur** : `--header-h` (24 mm, frises comprises), sous la zone de reliure. Fond blanc, motif girih gris pâle (`background-pattern-neutral.svg`) entre les deux frises.
-- **Frises** : deux `<svg class="frise">` dont l'attribut `data-maillon` désigne un symbole défini en tête de `index.html` (`torsade-saffron`, `torsade-green`). `drawFrises` y répète le symbole tous les 8 px avec `<use>`.
-    - Le motif est en **SVG vectoriel inline** : un `background-image` ou un `<pattern>` SVG est pixellisé par Chrome à l'export PDF.
-    - Torsade à deux brins : à chaque croisement, un `clipPath` redessine le brin du dessus (sur un halo blanc), en alternant.
-    - Les traits sont en `currentColor` : leur couleur vient des jetons, via `color` sur `.frise-top` (`--col-saffron-text`) et `.frise-bottom` (`--col-green`).
-    - Hauteur `--band-motif-h` (4,5 px), plus 0,8 mm d'air avant le contenu.
-- **Alignements** : pas de marge latérale : le logo s'aligne sur le bord gauche du calendrier, les coordonnées (calées à droite) sur le bord droit du tableau des horaires.
-- **Logo** : carré à pleine hauteur du contenu (environ 2 cm).
+- **Hauteur** : `--header-h` (24 mm), sous la zone de reliure. Panneau arrondi (`--radius-card`) dont le fond est un SVG `.header-bg` (vectoriel dans le PDF ; définitions en tête de `index.html`) : dégradé **horizontal** `--bg-header-start` → `--bg-header-mid` → `--bg-header-end`, et motif girih blanc (traits épais, masque `header-girih-line`, 80 %), calé sur le logo par `patternTransform` (une étoile au centre du disque, diamètre du logo = 2 pas du motif). Le centre du logo et l'échelle sont en px dans les définitions : à recaler si le logo bouge ou change de taille. Le chemin girih (`cover-girih-path`) est partagé avec la couverture.
+- **Contour et encarts** : `--header-pad` (1,5 mm) d'épaisseur ; trois encarts blancs (`.logo-box`, `.org-names`, `.header-contacts`, coins `0.25rem`, concentriques au panneau) séparés par un espace de même épaisseur. Le dégradé n'est visible que sur le pourtour et dans cet espace ; tous les textes sont sur blanc.
+    - Le fond est en **SVG vectoriel inline** : un `background-image` ou un `<pattern>` SVG externe est pixellisé par Chrome à l'export PDF.
+- **Alignements** : le panneau s'aligne sur le bord gauche du calendrier et le bord droit du tableau des horaires.
+- **Logo** : carré à pleine hauteur de l'encart (environ 1,9 cm).
 - **Noms** (`.org-names`) : tamoul en `--fs-brand` (28 px, safran), français en `--fs-brand-fr` (20 px, vert), de largeur équivalente. Centrés verticalement, écart `--identity-gap` (1,5 mm) : ils se lisent comme un seul bloc.
 - **Coordonnées** (`.header-contacts`) : 3 lignes produites par `contactsHTML(c, 'columns')` :
     - ligne 1 : adresses des deux lieux (mosquée, salle de prière) ;
@@ -287,7 +284,7 @@ Couleurs et leur sens, typographie, espacements, icônes et composants sont déc
 - **Une couleur = un sens**, une icône = un sens ; textes à 4,5:1 minimum (ratios en commentaire des jetons).
 - **Flat design** : aplats et filets de 0,5 px ; seuls dégradés : SVG vectoriels (fond de la colonne d'identité, année et girih de la couverture).
 - **Aucune couleur ni taille de police en dur** dans les feuilles de style du calendrier ni dans ses SVG : ajouter un jeton (exceptions : `white`, les valeurs de luminance des masques SVG de la couverture).
-- Les petits ajustements de mise en page en millimètres (air sous les frises, écart des noms) restent locaux, commentés à côté de la règle.
+- Les petits ajustements de mise en page en millimètres (écart des noms) restent locaux, commentés à côté de la règle.
 - Fonds pastel **opaques** (pas de transparence) : rendu fiable sur le copieur laser.
 - Graisses : 400 à 600 pour le français et le tamoul, 400 à 500 pour l'arabe (Amiri) ; l'année de la couverture (700) est un élément d'affichage.
 - `ramadan.css` est autonome : il réutilise les jetons communs, mais garde ses propres rôles de couleur (voir 5).

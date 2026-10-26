@@ -6,51 +6,58 @@
     /* Le bandeau commence sous la zone de reliure du bord haut (trous de spirale) :
        la bordure du haut n'est pas perforée */
     margin-top: calc(var(--binding-zone) - var(--page-pad));
-    height: var(--header-h); /* frises comprises (box-sizing: border-box) */
-    --band-motif-h: 4.5px;
-    /* frise + 0,8 mm d'air avant les textes ; logo ≥ 2 cm (24 mm − 2 × (frise + air)) */
-    padding: calc(var(--band-motif-h) + 0.8mm) 0; /* bords gauche/droit alignés sur le calendrier et le tableau */
+    height: var(--header-h); /* box-sizing: border-box */
+    --header-pad: 1.5mm; /* épaisseur du contour en dégradé */
+    padding: var(--header-pad);
     background-color: white;
+    border-radius: var(--radius-card); /* comme les blocs du calendrier et du tableau */
 }
 
-/* Motif girih gris chaud très pâle sur toute la largeur (texture de papier à en-tête, sans couleur ajoutée) */
-.header-fixed::before {
-    content: '';
+/* Contour : fond en SVG (dégradé, voir les définitions en tête de index.html) sur tout le panneau ; l'encart blanc le recouvre sauf sur le pourtour */
+.header-bg {
     position: absolute;
-    inset: var(--band-motif-h) 0; /* entre les deux frises */
-    background-image: url('../assets/patterns/background-pattern-neutral.svg');
+    inset: 0;
+    width: 100%;
+    height: 100%;
     pointer-events: none;
 }
 
-/* Frises aux couleurs du logo (torsade fine à deux brins entrelacés : symbole SVG vectoriel, voir index.html) :
-   safran en haut (nom tamoul), vert en bas (nom français) */
-.frise {
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: var(--band-motif-h);
-    overflow: hidden;
+.header-bg-start {
+    stop-color: var(--bg-header-start);
 }
 
-.frise-top {
-    top: 0;
-    color: var(--col-saffron-text); /* trait des torsades (stroke="currentColor") */
+.header-bg-mid {
+    stop-color: var(--bg-header-mid);
 }
 
-.frise-bottom {
-    bottom: 0;
-    color: var(--col-green);
+.header-bg-end {
+    stop-color: var(--bg-header-end);
 }
 
+/* Trois encarts blancs, logo, noms et coordonnées, séparés par un espace de la largeur du contour :
+   le dégradé n'apparaît que sur le pourtour et dans cet espace */
 .header-content {
-    position: relative; /* au-dessus du motif */
+    --identity-gap: 1.5mm;
+    position: relative; /* au-dessus du fond */
     height: 100%;
     display: flex;
     align-items: stretch;
-    gap: var(--sp-4);
+    gap: var(--header-pad);
 }
 
-/* Logo carré à pleine hauteur, entre les deux frises (≈ 2 cm) */
+.header-content > .logo-box,
+.header-content > .org-names,
+.header-content > .header-contacts {
+    padding: 1mm 2mm;
+    border-radius: 0.25rem; /* concentrique au contour (coins du panneau : --radius-card) */
+    background: white;
+}
+
+/* Logo : encart carré à pleine hauteur du panneau (logo ≈ 1,9 cm) */
+.header-content > .logo-box {
+    padding: 1mm;
+}
+
 .logo-box {
     flex-shrink: 0;
     height: 100%;
@@ -66,18 +73,10 @@
     object-fit: contain;
 }
 
-/* Bloc principal : identité à gauche, coordonnées calées à droite (bords alignés sur le calendrier et le tableau).
-   Noms et coordonnées centrés verticalement avec le même interligne : hauts et bas alignés */
-.header-main {
-    --identity-gap: 1.5mm;
+/* Noms resserrés au centre de la hauteur du logo : lus comme un seul bloc d'identité ; l'encart prend la largeur libre */
+.org-names {
     flex: 1;
     min-width: 0;
-    display: flex;
-    gap: var(--sp-3);
-}
-
-/* Noms resserrés au centre de la hauteur du logo : lus comme un seul bloc d'identité */
-.org-names {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -85,7 +84,7 @@
     white-space: nowrap;
 }
 
-/* Tamoul (safran) en haut, près de la frise safran ; français (vert) en bas, près de la frise verte : couleurs du logo */
+/* Tamoul (safran) en haut, français (vert) en bas : couleurs du logo */
 .org-ta,
 .org-fr {
     font-weight: 600;
@@ -104,9 +103,8 @@
 }
 
 /* Coordonnées en 3 lignes (adresses des deux lieux | contact : téléphones, e-mail, site | banque) :
-   discrètes, plus claires que les noms (hiérarchie nette) ; calées à droite, sur le bord du tableau des horaires */
+   discrètes, plus claires que les noms (hiérarchie nette) ; encart à droite, sur le bord du panneau */
 .header-contacts {
-    margin-left: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;

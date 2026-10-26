@@ -21,9 +21,9 @@ Référence unique des couleurs, de la typographie, des espacements, des icônes
 | Jeton                   | Valeur                         | Origine dans le logo / usage                                                 |
 | ----------------------- | ------------------------------ | ---------------------------------------------------------------------------- |
 | `--col-blue`            | `#002e5d`                      | Bleu de la tour Eiffel : noms de mois (titre), pastille et icônes            |
-| `--col-green`           | `#2e7d32`                      | Vert de la mosquée : repères islamiques, frise du bas du header              |
+| `--col-green`           | `#2e7d32`                      | Vert de la mosquée : repères islamiques, nom français du header              |
 | `--col-green-dark`      | `#1b5e20`                      | Texte sur fond vert pâle (6,9:1)                                             |
-| `--col-saffron-text`    | `#b8520f`                      | Safran du minaret : nom tamoul, frise du haut du header (4,9:1)              |
+| `--col-saffron-text`    | `#b8520f`                      | Safran du minaret : nom tamoul du header (4,9:1)                             |
 | `--col-gold`, `--brand` | `#c8a85a`                      | Or des ornements ; `--brand` est surchargeable par client (`clients/*.json`) |
 | `--brand-text`          | 40 % plus sombre que `--brand` | Textes dorés du header (4,7:1)                                               |
 
@@ -198,7 +198,7 @@ En-tête `--bg-head-green` (plein), titres en blanc, traductions en `--col-on-da
 
 ### 6.4 Header
 
-Fond blanc, motif girih gris très pâle entre deux frises à torsade (safran en haut, vert en bas). Logo à pleine hauteur, noms (tamoul safran, français vert), coordonnées en 3 lignes : adresses, contact, banque. Détail dans TECHNIQUE §3.4.
+Panneau arrondi (`--radius-card`) dont seul le **contour** (1,5 mm) est coloré : dégradé horizontal corail → orange → jaune doré pâle (`--bg-header-start`, `--bg-header-mid`, `--bg-header-end`) avec un motif girih blanc calé sur le logo (une étoile au centre du disque, diamètre du logo = 2 pas du motif). Au-dessus, **trois encarts blancs** à coins arrondis, séparés par un espace de la même épaisseur (le dégradé y reste visible) : logo, noms (tamoul safran, français vert) et coordonnées en 3 lignes (adresses, contact, banque). Tous les textes sont sur fond blanc : leurs contrastes sont ceux du blanc. Détail dans TECHNIQUE §3.4.
 
 ### 6.5 Couverture
 

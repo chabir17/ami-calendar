@@ -16,7 +16,7 @@
     --col-green-dark: #1b5e20; /* texte sur fond vert pâle : 6.9:1 */
 
     /* Safran (minaret et nom tamoul du logo) */
-    --col-saffron-text: #b8520f; /* nom tamoul, frise du haut : 4.9:1 sur blanc */
+    --col-saffron-text: #b8520f; /* nom tamoul : 4.9:1 sur blanc */
 
     /* Or (ornements, filets, motif du header) */
     --col-gold: #c8a85a;
@@ -58,6 +58,9 @@
 
     /* Vert pastel (vendredis et colonnes de date du tableau des horaires) */
     --bg-friday: var(--bg-green-faint); /* vendredis de la feuille Ramadan */
+    --bg-header-start: #f2a58f; /* contour du header des mois : gauche du dégradé, corail */
+    --bg-header-mid: #f7c28f; /* contour du header : milieu, orange pâle (interpolé en LCH pour rester lumineux) */
+    --bg-header-end: #f4d98f; /* contour du header : droite du dégradé, jaune doré pâle */
     --bg-cover-top: #6886b2; /* couverture : haut du dégradé de la colonne d'identité (bleu franc derrière le logo, éclairci vite pour économiser l'encre) */
     --bg-cover-mid: #96acca; /* couverture : dégradé à 30 % de la hauteur */
     --bg-cover-low: #9cc6ca; /* couverture : passage bleu → vert (turquoise pâle), aux deux tiers de la hauteur ; interpolé en LCH pour éviter un gris */
@@ -85,7 +88,7 @@
     /* --- IMPRESSION (A4 paysage, reliure sur le bord haut) --- */
     --page-pad: 5mm; /* marge minimale : juste au-dela de la zone non imprimable du copieur (3-5 mm) */
     --block-gap: 2.5mm; /* espacement unique entre header, calendrier et tableau */
-    --header-h: 24mm; /* hauteur du header de l'identité (frises comprises) : priorité aux horaires */
+    --header-h: 24mm; /* hauteur du header de l'identité : priorité aux horaires */
     --band-h: 64px; /* hauteur commune des bandeaux foncés (mois | en-tête des horaires) : bas alignés */
     --binding-zone: 10mm; /* haut : trous de spirale metallique (<= 6.5 mm) + degagement, dans le bandeau */
 
