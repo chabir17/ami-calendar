@@ -298,25 +298,56 @@ function fitMiniHeads(root) {
 
 /**
  * Couverture : fond des vacances scolaires de chaque mini-mois en SVG vectoriel, derrière les chiffres
- * (cases jointives, sans liseré entre elles dans le PDF). Les Aïds sont des pastilles CSS par-dessus.
+ * (cases jointives, sans liseré entre elles dans le PDF). Les angles saillants de la période sont arrondis ;
+ * un angle reste droit s'il touche une case voisine (jour précédent, suivant, semaine du dessus ou du dessous).
+ * Les Aïds sont des pastilles CSS par-dessus.
  * @param {HTMLElement} root
  */
 function drawCoverBackdrop(root) {
     const NS = 'http://www.w3.org/2000/svg';
+    const RADIUS = 4; // px, comme l'arrondi des cases du calendrier des mois
     root.querySelectorAll('.mini-grid').forEach((grid) => {
         grid.querySelector('.mini-backdrop')?.remove();
-        const cells = grid.querySelectorAll('.is-holiday');
-        if (!cells.length) return;
+        const children = [...grid.children];
+        const isHoliday = (i) => children[i]?.classList.contains('is-holiday');
         const g = grid.getBoundingClientRect();
-        // Cases débordant de 0,5 px : pas de jointure visible entre deux cases
-        const rects = [...cells].map((c) => {
+        const paths = children.flatMap((c, i) => {
+            if (!isHoliday(i)) return [];
+            // Les 7 premiers enfants sont les initiales des jours : la grille des dates commence à l'indice 7
+            const col = (i - 7) % 7;
+            const left = col > 0 && isHoliday(i - 1);
+            const right = col < 6 && isHoliday(i + 1);
+            const up = isHoliday(i - 7);
+            const down = isHoliday(i + 7);
             const r = c.getBoundingClientRect();
-            return `<rect x="${r.left - g.left - 0.5}" y="${r.top - g.top - 0.5}" width="${r.width + 1}" height="${r.height + 1}" />`;
+            // Cases débordant de 0,5 px : pas de jointure visible entre deux cases
+            const x = r.left - g.left - 0.5;
+            const y = r.top - g.top - 0.5;
+            const w = r.width + 1;
+            const h = r.height + 1;
+            const tl = left || up ? 0 : RADIUS;
+            const tr = right || up ? 0 : RADIUS;
+            const br = right || down ? 0 : RADIUS;
+            const bl = left || down ? 0 : RADIUS;
+            const d = [
+                `M${x + tl} ${y}`,
+                `H${x + w - tr}`,
+                tr ? `A${tr} ${tr} 0 0 1 ${x + w} ${y + tr}` : '',
+                `V${y + h - br}`,
+                br ? `A${br} ${br} 0 0 1 ${x + w - br} ${y + h}` : '',
+                `H${x + bl}`,
+                bl ? `A${bl} ${bl} 0 0 1 ${x} ${y + h - bl}` : '',
+                `V${y + tl}`,
+                tl ? `A${tl} ${tl} 0 0 1 ${x + tl} ${y}` : '',
+                'Z'
+            ].join('');
+            return [`<path d="${d}" />`];
         });
+        if (!paths.length) return;
         const svg = document.createElementNS(NS, 'svg');
         svg.setAttribute('class', 'mini-backdrop');
         svg.setAttribute('aria-hidden', 'true');
-        svg.innerHTML = rects.join('');
+        svg.innerHTML = paths.join('');
         grid.append(svg); // en dernier : ne décale pas les :nth-child des vendredis et dimanches
     });
 }

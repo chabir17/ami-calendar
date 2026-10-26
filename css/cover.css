@@ -565,7 +565,7 @@
     pointer-events: none;
 }
 
-.mini-backdrop rect {
+.mini-backdrop path {
     fill: var(--bg-holiday);
 }
 
