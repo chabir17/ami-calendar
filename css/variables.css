@@ -22,7 +22,7 @@
     --col-gold: #c8a85a;
     --col-year-dark-top: #2f5283; /* « 27 » de la couverture : haut du dégradé (bleu moyen) */
     --col-year-dark-bottom: #001a36; /* « 27 » de la couverture : bas du dégradé (bleu nuit) */
-    --col-hijri-soft: #6c9e75; /* années hégiriennes de la couverture : vert pâle, 3.1:1 (grand texte) */
+    --col-hijri-soft: #5d946a; /* années hégiriennes de la couverture : vert pâle, 3.6:1 (grand texte) */
 
     /* Terracotta (horaires du jeûne : Imsak, iftār, Icha AMI) */
     --col-terracotta: #a8461f; /* jours fériés (civil), jeûne (feuille Ramadan) : 5.9:1 sur blanc, 5.5:1 sur --bg-holiday */
@@ -91,6 +91,7 @@
 
     /* --- ÉCHELLE TYPOGRAPHIQUE : 4 tailles de texte + 2 tailles de chiffres --- */
     --fs-2xs: 9px; /* libellés dans les cases du calendrier (noms complets sur une ligne, minuscules) */
+    --fs-verse: 11px; /* verset de la couverture */
     --fs-xs: 10px; /* notes : en-têtes de tableau, libellés des cases, coordonnées compactes */
     --fs-contact: 10px; /* coordonnées du header du calendrier annuel */
     --fs-sm: 12px; /* secondaire : traductions, coordonnées, légende */

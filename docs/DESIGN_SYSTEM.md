@@ -35,7 +35,7 @@ C'est la table à connaître. Chaque ligne dit **ce que la couleur signifie** ; 
 | ----------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
 | Calendrier grégorien, structure     | Bleu : `--col-blue`, `--col-title-blue` (`#46628a`, 5,6:1)                          | Arabe et tamoul de la ligne des jours, jours de la semaine, mini-mois, « 20 » et « 27 » de la couverture    |
 | Hégirien, islamique, prière         | Vert : `--col-green`, `--col-friday` (`#41694a`, 6,3:1)                             | Jour hégirien et croissant des cases, Aïd, ʿArafa, vendredis, « 01 » du tableau, verset, années hégiriennes |
-| Années hégiriennes de la couverture | Vert pâle : `--col-hijri-soft` (`#6c9e75`, 3,1:1, grand texte uniquement)           | Années hégiriennes en 49 px                                                                                 |
+| Années hégiriennes de la couverture | Vert pâle : `--col-hijri-soft` (`#5d946a`, 3,6:1, grand texte uniquement)           | Années hégiriennes en 49 px                                                                                 |
 | Jour férié (civil)                  | Terracotta : `--col-terracotta` (`#a8461f`, 5,9:1)                                  | Numéro et libellé du jour férié. **Réservé aux fériés** (et au jeûne sur la feuille du Ramadan)             |
 | Dimanche                            | Orange brûlé : `--col-sunday` (`#9d592a`, 5,4:1), distinct du terracotta des fériés | Numéro du dimanche (presque neutre, pour ne pas concurrencer les fériés)                                    |
 | Vacances scolaires                  | Beige doré pâle : `--bg-holiday` (`#fbf6e7`)                                        | Fond des cases de vacances (zone C), pastille de légende (contour `--col-gold`)                             |
@@ -114,6 +114,7 @@ Le girih de l'année est blanc, à 45 % d'intensité maximale, fondu du haut (di
 | Jeton                                  | px       | Usage                                                   |
 | -------------------------------------- | -------- | ------------------------------------------------------- |
 | `--fs-2xs`                             | 9        | Libellés dans les cases du calendrier                   |
+| `--fs-verse`                           | 11       | Verset de la couverture                                 |
 | `--fs-xs`, `--fs-contact`              | 10       | Notes, en-têtes du tableau, coordonnées compactes       |
 | `--fs-sm`                              | 12       | Traductions, légende, jour hégirien des cases           |
 | `--fs-md`                              | 14       | Courant : jours de la semaine, sous-titres de mois      |
@@ -201,7 +202,7 @@ Fond blanc, motif girih gris très pâle entre deux frises à torsade (safran en
 
 ### 6.5 Couverture
 
-Colonne d'identité (dégradé bleu → vert pâle, girih à 25 % près du logo et 15 % au loin) avec le logo posé directement, puis une **carte blanche unique** d'informations pratiques séparées par des filets fins : Mawaqit (deux QR codes, adresses), sources, contacts, dons, mention légale (8 px). À droite : année grégorienne, années hégiriennes, 12 mini-mois, verset dans un encart `--bg-friday-light`. Détail dans TECHNIQUE §3.6.
+Colonne d'identité (dégradé bleu → vert pâle, girih à 50 % au bord du logo, fondu radial jusqu'à environ 10 % à 200 px) avec le logo posé directement, puis une **carte blanche unique** d'informations pratiques séparées par des filets fins : Mawaqit (deux QR codes, adresses), sources, contacts, dons, mention légale (8 px). À droite : année grégorienne, années hégiriennes, 12 mini-mois, verset dans un encart `--bg-friday-light`. Détail dans TECHNIQUE §3.6.
 
 ## 7. Vérifier un changement
 

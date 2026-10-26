@@ -606,7 +606,7 @@
     padding: 1.2mm var(--sp-3);
     border-radius: var(--radius-card);
     background: var(--bg-friday-light);
-    font-size: var(--fs-xs);
+    font-size: var(--fs-verse);
     line-height: 1.45;
     white-space: nowrap;
 }
