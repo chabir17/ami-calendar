@@ -122,7 +122,7 @@ Le tableau occupe toute la hauteur : les mois de 28 à 31 jours tiennent sur la 
 └────┘  (girih gris en filigrane autour du logo)
 ```
 
-- **Hauteur** : `--header-h` (24 mm), sous la zone de reliure. Fond blanc ; air de `--header-pad-top` (1,6 mm) sous le filet, aucun en bas (l'espace `--block-gap` avant le calendrier suffit) : le logo prend toute la hauteur utile. Le fond SVG `.header-bg` (vectoriel dans le PDF ; définitions en tête de `index.html`) porte : le filet tricolore (`--header-line-start` → `--header-line-mid` → `--header-line-end`, 2 px, bouts arrondis) et un girih gris `--col-text-soft` (traits épais, masque `header-girih-line`, 9 %) calé sur le logo par `patternTransform` (une étoile au centre du disque) et estompé par un masque radial (`header-girih-fade`). Le centre du logo (`cx`/`cy`, `patternTransform`) est en px dans les définitions : à recaler si le logo bouge ou change de taille. Le chemin girih (`cover-girih-path`) est partagé avec la couverture.
+- **Hauteur** : `--header-h` (24 mm), sous la zone de reliure. Fond blanc ; air de `--header-pad-top` (2,4 mm) sous le filet, aucun en bas (l'espace `--block-gap` avant le calendrier suffit) : le logo prend toute la hauteur utile. Le fond SVG `.header-bg` (vectoriel dans le PDF ; définitions en tête de `index.html`) porte : le filet tricolore (`--header-line-start` → `--header-line-mid` → `--header-line-end`, 2 px, bouts arrondis) et un girih gris `--col-text-soft` (traits épais, masque `header-girih-line`, 9 %) calé sur le logo par `patternTransform` (une étoile au centre du disque) et estompé par un masque radial (`header-girih-fade`). Le centre du logo (`cx`/`cy`, `patternTransform`) est en px dans les définitions : à recaler si le logo bouge ou change de taille. Le chemin girih (`cover-girih-path`) est partagé avec la couverture.
 - **Grille** (`.header-content`) : deux colonnes (logo carré `--logo-size`, puis le reste) et deux rangées (noms, coordonnées), zones `logo` / `names` / `contacts`. Aucun encart : tout est sur blanc.
     - Le fond est en **SVG vectoriel inline** : un `background-image` ou un `<pattern>` SVG externe est pixellisé par Chrome à l'export PDF.
 - **Alignements** : pas de marge latérale : le logo s'aligne sur le bord gauche du calendrier, les coordonnées (calées à droite) sur le bord droit du tableau des horaires.
@@ -133,7 +133,7 @@ Le tableau occupe toute la hauteur : les mois de 28 à 31 jours tiennent sur la 
     - ligne 2 : coordonnées de contact (téléphone fixe, WhatsApp, e-mail, site) ;
     - ligne 3 : IBAN • BIC.
 
-    Plusieurs coordonnées sur une ligne sont des `.info-item` (icône + texte). Les noms partent du haut du logo et les coordonnées s'arrêtent à son bas (`align-self: end`), le filet est centré entre les deux ; noms sur la même ligne de base (`align-items: baseline`). Tout tient dans la hauteur du logo (22,4 mm).
+    Plusieurs coordonnées sur une ligne sont des `.info-item` (icône + texte). Les noms partent du haut du logo et les coordonnées s'arrêtent à son bas (`align-self: end`), le filet est centré entre les deux ; noms sur la même ligne de base (`align-items: baseline`). Tout tient dans la hauteur du logo (21,6 mm).
 
 Le contenu statique du header dans `index.html` reprend exactement la structure générée par `contactsHTML` : toute modification de l'une doit être reportée dans l'autre.
 

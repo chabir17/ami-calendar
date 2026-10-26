@@ -7,7 +7,7 @@
        la bordure du haut n'est pas perforée */
     margin-top: calc(var(--binding-zone) - var(--page-pad));
     height: var(--header-h); /* box-sizing: border-box */
-    --header-pad-top: 1.6mm; /* air sous le filet tricolore ; en bas, l'espace avant le calendrier (--block-gap) suffit */
+    --header-pad-top: 2.4mm; /* air sous le filet tricolore ; en bas, l'espace avant le calendrier (--block-gap) suffit */
     padding: var(--header-pad-top) 0 0; /* bords gauche/droit alignés sur le calendrier et le tableau */
     background-color: white;
 }
