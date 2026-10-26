@@ -120,7 +120,7 @@ Le girih de l'année est blanc, à 45 % d'intensité maximale, fondu du haut (di
 | `--fs-sm`                              | 12       | Traductions, légende, jour hégirien des cases           |
 | `--fs-md`                              | 14       | Courant : jours de la semaine, sous-titres de mois      |
 | `--fs-figure`                          | 15       | Horaires de prière, chiffres du tableau                 |
-| `--fs-brand-fr` / `--fs-brand`         | 20 / 28  | Nom français / nom tamoul de l'association              |
+| `--fs-brand-fr` / `--fs-brand`         | 20 / 26  | Nom français / nom tamoul de l'association              |
 | `--fs-xl` / `--fs-month`               | 22 / 24  | Mois hégirien en arabe / mois grégorien                 |
 | `--fs-display`                         | 36       | Numéros des jours du calendrier                         |
 | `--fs-cover-hijri` / `--fs-cover-year` | 49 / 140 | Années hégiriennes / année grégorienne de la couverture |

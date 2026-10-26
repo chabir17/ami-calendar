@@ -98,7 +98,7 @@
 
 .org-fr {
     color: var(--col-green);
-    font-size: var(--fs-brand-fr); /* même largeur que le nom tamoul : bloc d'identité aligné */
+    font-size: var(--fs-brand-fr); /* majuscules de même hauteur visuelle que le corps du nom tamoul */
     letter-spacing: 0.01em;
 }
 

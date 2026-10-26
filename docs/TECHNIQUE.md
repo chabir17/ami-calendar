@@ -115,7 +115,7 @@ Le tableau occupe toute la hauteur : les mois de 28 à 31 jours tiennent sur la 
 
 ```
 ━━━━━━━━━━ filet tricolore : safran → or → vert (2 px) ━━━━━━━━━━━━━━━━━━━━━━━━
-┌────┐  Nom tamoul (28 px)    NOM FRANÇAIS (20 px)
+┌────┐  Nom tamoul (26 px)    NOM FRANÇAIS (20 px)
 │logo│  ─────────────────────────────────────────────────────── (filet 0,5 px)
 │2,2 │  🕌 adresse 1   🏢 adresse 2
 │ cm │  📞 tél. · WhatsApp · ✉ · 🌐                        🏦 IBAN • BIC
@@ -127,7 +127,7 @@ Le tableau occupe toute la hauteur : les mois de 28 à 31 jours tiennent sur la 
     - Le fond est en **SVG vectoriel inline** : un `background-image` ou un `<pattern>` SVG externe est pixellisé par Chrome à l'export PDF.
 - **Alignements** : pas de marge latérale : le logo s'aligne sur le bord gauche du calendrier, les coordonnées (calées à droite) sur le bord droit du tableau des horaires.
 - **Logo** : carré à pleine hauteur utile (environ 2,2 cm).
-- **Noms** (`.org-names`) : sur une seule ligne, tamoul en `--fs-brand` (28 px, safran) puis français en `--fs-brand-fr` (20 px, vert), séparés par un simple espace (`--sp-6`) : le seul séparateur du header est le filet sous les noms.
+- **Noms** (`.org-names`) : sur une seule ligne, tamoul en `--fs-brand` (26 px, safran ; le corps des lettres tamoules a la hauteur des majuscules du français) puis français en `--fs-brand-fr` (20 px, vert), séparés par un simple espace (`--sp-6`) : le seul séparateur du header est le filet sous les noms.
 - **Coordonnées** (`.header-contacts`), juste sous les noms, séparées d'eux par un filet de 0,5 px (pseudo-élément `::before`) ; `contactsHTML(c, 'columns')` produit 3 lignes, que la grille CSS (`grid-template-columns: auto auto`) replie sur 2 rangées : la ligne 1 sur toute la largeur, les lignes 2 et 3 côte à côte (la 3 à droite) :
     - ligne 1 : adresses des deux lieux (mosquée, salle de prière) ;
     - ligne 2 : coordonnées de contact (téléphone fixe, WhatsApp, e-mail, site) ;
