@@ -37,13 +37,12 @@ const intlPhone = (num) => '33' + String(num).replace(/\D/g, '').replace(/^0/, '
 
 /**
  * HTML des coordonnées de l'association (lignes avec icône).
- * - 'columns' (calendrier annuel) : 3 lignes (adresses des deux lieux | téléphones, e-mail, site | IBAN • BIC).
- * - 'rows' (page Ramadan) : 3 lignes (adresses | téléphones, e-mail, site | IBAN • BIC), siège en premier.
+ * Feuille du Ramadan : 3 groupes (adresses | téléphones, e-mail, site | IBAN • BIC), siège en premier. Le header du
+ * calendrier annuel n'affiche plus de coordonnées (elles sont sur la couverture).
  * @param {Object} c - config.contact (addr1/addr2 + icônes facultatives, phone, whatsapp, email, website, bank)
- * @param {'columns'|'rows'} layout
  * @param {boolean} links - coordonnées cliquables (appel, WhatsApp, e-mail, plan, site) pour les PDF numériques
  */
-export function contactsHTML(c, layout = 'columns', links = false) {
+export function contactsHTML(c, links = false) {
     const item = (icon, text, href) => {
         if (!text) return '';
         const label = links && href ? `<a href="${href}">${text}</a>` : text;
@@ -57,26 +56,16 @@ export function contactsHTML(c, layout = 'columns', links = false) {
     };
     const group = (lines) => `<div class="contact-group">${lines.filter(Boolean).join('')}</div>`;
     const map = (addr) => addr && `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(addr)}`;
-    // Calendrier annuel : mêmes icônes que la couverture (téléphone fixe, tapis de prière pour la salle de prière) ;
-    // la feuille du Ramadan garde les siennes (designs distincts)
-    const annual = layout === 'columns';
-    const placeIcon = (icon) => (annual && icon === 'office' ? 'prayer-room' : icon || 'location');
+    const placeIcon = (icon) => icon || 'location';
     const addr1 = item(placeIcon(c.addr1_icon), c.addr1, map(c.addr1));
     const addr2 = item(placeIcon(c.addr2_icon), c.addr2, map(c.addr2));
-    const phone = item(annual ? 'landline' : 'phone', c.phone, c.phone && `tel:+${intlPhone(c.phone)}`);
+    const phone = item('phone', c.phone, c.phone && `tel:+${intlPhone(c.phone)}`);
     const whatsapp = item('whatsapp', c.whatsapp, c.whatsapp && `https://wa.me/${intlPhone(c.whatsapp)}`);
     const email = item('email', c.email, c.email && `mailto:${c.email}`);
     const website = item('website', c.website, c.website && `https://${c.website}`);
     const bank = c.bank && item('bank', `IBAN\u00a0: ${c.bank.iban} • BIC\u00a0: ${c.bank.bic}`);
 
-    if (layout === 'rows') {
-        return [group([line(addr2), line(addr1)]), group([phone, whatsapp, email, website].map((x) => line(x))), group([line(bank)])].join('');
-    }
-    // 3 colonnes de 2 lignes : adresse 1 puis téléphones | adresse 2 puis e-mail et site | IBAN puis BIC (aligné sous l'IBAN)
-    const col = (...lines) => (lines.some(Boolean) ? `<div class="contact-col">${lines.filter(Boolean).join('')}</div>` : '');
-    const iban = c.bank && item('bank', `IBAN\u00a0: ${c.bank.iban}`);
-    const bic = c.bank && c.bank.bic && `<div class="info-line info-line-cont"><span>BIC\u00a0: ${c.bank.bic}</span></div>`;
-    return [col(line(addr1), line(phone, whatsapp)), col(line(addr2), line(email, website)), col(line(iban), bic)].join('');
+    return [group([line(addr2), line(addr1)]), group([phone, whatsapp, email, website].map((x) => line(x))), group([line(bank)])].join('');
 }
 
 /**

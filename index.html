@@ -49,34 +49,7 @@
                 <!-- Header : filet tricolore (dégradé safran → vert, couleurs du logo) et girih gris en filigrane autour du logo, estompé
                      radialement ; cx/cy/r et patternTransform en px : centre du logo dans le header (à recaler si le logo bouge
                      ou change de taille), une étoile du motif au centre du disque -->
-                <linearGradient id="header-line-grad" x1="0" y1="0" x2="1" y2="0">
-                    <stop class="header-line-start" offset="0" />
-                    <stop class="header-line-mid" offset="0.5" />
-                    <stop class="header-line-end" offset="1" />
-                </linearGradient>
-                <!-- Frises du header : torsade à deux brins entrelacés (dessus/dessous alternés à chaque croisement), en masque
-                     (brins blancs, interruption noire au croisement) sous le dégradé du filet : une seule définition, deux frises -->
-                <clipPath id="torsade-croisement-milieu"><rect x="3" y="-1" width="2" height="7" /></clipPath>
-                <clipPath id="torsade-croisement-bords">
-                    <rect x="-1" y="-1" width="2" height="7" />
-                    <rect x="7" y="-1" width="2" height="7" />
-                </clipPath>
-                <pattern id="header-torsade" width="8" height="4.5" patternUnits="userSpaceOnUse">
-                    <path d="M0 2.25 C1.2 0.6 2.8 0.6 4 2.25 C5.2 3.9 6.8 3.9 8 2.25" fill="none" stroke="#fff" stroke-width="0.8" stroke-linecap="round" />
-                    <path d="M0 2.25 C1.2 3.9 2.8 3.9 4 2.25 C5.2 0.6 6.8 0.6 8 2.25" fill="none" stroke="#fff" stroke-width="0.8" stroke-linecap="round" />
-                    <g clip-path="url(#torsade-croisement-milieu)">
-                        <path d="M0 2.25 C1.2 0.6 2.8 0.6 4 2.25 C5.2 3.9 6.8 3.9 8 2.25" fill="none" stroke="#000" stroke-width="1.8" />
-                        <path d="M0 2.25 C1.2 0.6 2.8 0.6 4 2.25 C5.2 3.9 6.8 3.9 8 2.25" fill="none" stroke="#fff" stroke-width="0.8" stroke-linecap="round" />
-                    </g>
-                    <g clip-path="url(#torsade-croisement-bords)">
-                        <path d="M0 2.25 C1.2 3.9 2.8 3.9 4 2.25 C5.2 0.6 6.8 0.6 8 2.25" fill="none" stroke="#000" stroke-width="1.8" />
-                        <path d="M0 2.25 C1.2 3.9 2.8 3.9 4 2.25 C5.2 0.6 6.8 0.6 8 2.25" fill="none" stroke="#fff" stroke-width="0.8" stroke-linecap="round" />
-                    </g>
-                </pattern>
-                <mask id="header-torsade-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="1400" height="4.5">
-                    <rect width="1400" height="4.5" fill="url(#header-torsade)" />
-                </mask>
-                <radialGradient id="header-girih-fade" gradientUnits="userSpaceOnUse" cx="40.8" cy="45.4" r="230">
+                <radialGradient id="header-girih-fade" gradientUnits="userSpaceOnUse" cx="32.2" cy="37.8" r="185">
                     <stop offset="0.15" stop-color="#fff" />
                     <stop offset="1" stop-color="#000" />
                 </radialGradient>
@@ -84,10 +57,10 @@
                     <rect width="1400" height="100" fill="url(#header-girih-fade)" />
                 </mask>
                 <mask id="header-girih-line" maskUnits="userSpaceOnUse" x="0" y="0" width="90" height="90">
-                    <use href="#cover-girih-path" stroke="#fff" stroke-width="4.6" />
-                    <use href="#cover-girih-path" stroke="#000" stroke-width="2.2" />
+                    <use href="#cover-girih-path" stroke="#fff" stroke-width="5.8" />
+                    <use href="#cover-girih-path" stroke="#000" stroke-width="2.8" />
                 </mask>
-                <pattern id="header-girih" width="90" height="90" patternUnits="userSpaceOnUse" patternTransform="translate(0 4.53) scale(0.907)">
+                <pattern id="header-girih" width="90" height="90" patternUnits="userSpaceOnUse" patternTransform="translate(0 5.6) scale(0.714)">
                     <rect class="header-girih-tile" width="90" height="90" mask="url(#header-girih-line)" />
                 </pattern>
             </defs>
@@ -97,14 +70,10 @@
         <!-- Template de la page (cloné par JS) -->
         <template id="page-template">
             <div class="page A4-landscape">
-                <!-- EN-TÊTE : logo et noms empilés (tamoul, français) à gauche | coordonnées en 2 colonnes à droite -->
+                <!-- EN-TÊTE : logo et noms (tamoul, français) sur une ligne ; les coordonnées sont sur la couverture -->
                 <header class="header-fixed">
                     <svg class="header-bg" aria-hidden="true">
                         <rect width="100%" height="100%" fill="url(#header-girih)" fill-opacity="0.09" mask="url(#header-girih-fade-mask)" />
-                        <rect width="100%" height="4.5" fill="url(#header-line-grad)" mask="url(#header-torsade-mask)" />
-                        <svg y="100%" width="100%" height="4.5" style="transform: translateY(-4.5px)">
-                            <rect width="100%" height="4.5" fill="url(#header-line-grad)" mask="url(#header-torsade-mask)" />
-                        </svg>
                     </svg>
                     <div class="header-content">
                         <div class="logo-box">
@@ -120,40 +89,6 @@
                                     /></svg
                             ></span>
                             <h2 class="org-fr">ASSOCIATION MUSULMANE DE L'INDE</h2>
-                        </div>
-                        <div class="header-contacts">
-                            <div class="contact-col">
-                                <div class="info-line">
-                                    <svg class="icon"><use href="assets/icons/icon-mosque.svg#icon"></use></svg> <span>91-93 BOULEVARD PASTEUR, 93120 LA COURNEUVE</span>
-                                </div>
-                                <div class="info-line">
-                                    <span class="info-item"
-                                        ><svg class="icon"><use href="assets/icons/icon-landline.svg#icon"></use></svg> <span>01.48.36.48.66</span></span
-                                    >
-                                    <span class="info-item"
-                                        ><svg class="icon"><use href="assets/icons/icon-whatsapp.svg#icon"></use></svg> <span>07.86.14.66.55</span></span
-                                    >
-                                </div>
-                            </div>
-                            <div class="contact-col">
-                                <div class="info-line">
-                                    <svg class="icon"><use href="assets/icons/icon-prayer-room.svg#icon"></use></svg> <span>7-8 PLACE ALFRED DE MUSSET, 93120 LA COURNEUVE</span>
-                                </div>
-                                <div class="info-line">
-                                    <span class="info-item"
-                                        ><svg class="icon"><use href="assets/icons/icon-email.svg#icon"></use></svg> <span>ami93120@gmail.com</span></span
-                                    >
-                                    <span class="info-item"
-                                        ><svg class="icon"><use href="assets/icons/icon-website.svg#icon"></use></svg> <span>ami93.com</span></span
-                                    >
-                                </div>
-                            </div>
-                            <div class="contact-col">
-                                <div class="info-line">
-                                    <svg class="icon"><use href="assets/icons/icon-bank.svg#icon"></use></svg> <span>IBAN&nbsp;: FR07 2004 1000 0140 0610 1N02 017</span>
-                                </div>
-                                <div class="info-line info-line-cont"><span>BIC&nbsp;: PSSTFRPPPAR</span></div>
-                            </div>
                         </div>
                     </div>
                 </header>

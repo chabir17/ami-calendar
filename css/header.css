@@ -7,14 +7,14 @@
        la bordure du haut n'est pas perforée */
     margin-top: calc(var(--binding-zone) - var(--page-pad));
     height: var(--header-h); /* box-sizing: border-box */
-    --header-pad-top: 2.4mm; /* frise (4,5 px ≈ 1,2 mm) + 1,2 mm d'air avant le logo et les textes */
-    --header-pad-bottom: var(--header-pad-top); /* symétrique : même air sous la frise du bas */
+    --header-pad-top: 1.5mm; /* air autour du logo */
+    --header-pad-bottom: var(--header-pad-top); /* symétrique */
     padding: var(--header-pad-top) 0 var(--header-pad-bottom); /* bords gauche/droit alignés sur le calendrier et le tableau */
     background-color: white;
 }
 
-/* Fond en SVG (voir les définitions en tête de index.html) : girih gris en filigrane autour du logo, et filet tricolore
-   (safran → vert, couleurs du logo) en haut. Texte sur fond blanc : contrastes pleins. */
+/* Fond en SVG (voir les définitions en tête de index.html) : girih gris en filigrane autour du logo. Texte sur fond blanc :
+   contrastes pleins, encre minimale. */
 .header-bg {
     position: absolute;
     inset: 0;
@@ -27,38 +27,16 @@
     fill: var(--col-text-soft);
 }
 
-.header-line-start {
-    stop-color: var(--header-line-start);
-}
-
-.header-line-mid {
-    stop-color: var(--header-line-mid);
-}
-
-.header-line-end {
-    stop-color: var(--header-line-end);
-}
-
-/* Disposition du header : une grille à deux colonnes et deux rangées. Le logo occupe toute la hauteur à gauche ; à droite,
-   les noms (une seule ligne) puis les coordonnées, séparés par l'espace et le contraste de taille (pas de filet). */
+/* Disposition du header : le logo à pleine hauteur à gauche, les noms (une seule ligne) centrés verticalement à droite.
+   Pas de coordonnées : adresses, contacts et IBAN sont sur la couverture. */
 .header-content {
-    --identity-gap: 1.5mm;
-    --logo-size: calc(var(--header-h) - var(--header-pad-top) - var(--header-pad-bottom)); /* logo à la hauteur utile du header (≈ 2,2 cm) */
+    --logo-size: calc(var(--header-h) - var(--header-pad-top) - var(--header-pad-bottom)); /* logo à la hauteur utile du header (≈ 1,7 cm) */
     position: relative; /* au-dessus du fond */
     height: 100%;
     display: grid;
     grid-template-columns: var(--logo-size) minmax(0, 1fr);
-    grid-template-rows: auto 1fr;
-    grid-template-areas:
-        'logo names'
-        'logo contacts';
+    align-items: center;
     column-gap: var(--sp-4);
-    row-gap: 0.8mm; /* air entre les noms et le filet des coordonnées */
-}
-
-/* Logo : carré à pleine hauteur (≈ 1,9 cm) */
-.header-content > .logo-box {
-    grid-area: logo;
 }
 
 .logo-box {
@@ -75,7 +53,6 @@
 
 /* Noms sur une seule ligne, sur la même ligne de base : tamoul (safran) puis français (vert), couleurs du logo */
 .org-names {
-    grid-area: names;
     display: flex;
     align-items: baseline; /* tamoul et français posés sur la même ligne de base */
     white-space: nowrap;
@@ -109,58 +86,4 @@
     color: var(--col-green);
     font-size: var(--fs-brand-fr);
     letter-spacing: 0.01em;
-}
-
-/* Coordonnées sous les noms : 3 colonnes de 2 lignes alignées (adresse 1 puis téléphones | adresse 2 puis e-mail et site |
-   IBAN puis BIC), la dernière calée à droite, sur le bord du tableau des horaires ; discrètes, plus claires que les noms */
-.header-contacts {
-    position: relative;
-    grid-area: contacts;
-    align-self: end; /* la dernière ligne s'arrête au bas du logo, comme les noms partent du haut */
-    display: flex;
-    justify-content: space-between;
-    white-space: nowrap;
-    font-size: var(--fs-contact);
-    line-height: 1.35;
-    color: var(--col-text-soft);
-}
-
-.contact-col {
-    display: flex;
-    flex-direction: column;
-    gap: 0.8mm;
-}
-
-/* BIC : aligné sous le texte de l'IBAN (largeur de la pastille de l'icône + écart) */
-.info-line-cont {
-    padding-left: 1.25rem;
-}
-
-.info-line {
-    display: flex;
-    align-items: center;
-    gap: var(--sp-1);
-}
-
-/* Plusieurs coordonnées sur une même ligne (adresses ; téléphones, e-mail et site) */
-.info-line:has(.info-item) {
-    gap: var(--sp-4);
-}
-
-.info-item {
-    display: flex;
-    align-items: center;
-    gap: var(--sp-1);
-}
-
-/* Icônes des coordonnées : bleu marine du logo, dans une pastille bleu pâle */
-.header-contacts .icon {
-    box-sizing: content-box;
-    width: 0.62rem; /* icône un peu réduite dans sa pastille : même encombrement qu'avant */
-    height: 0.62rem;
-    padding: 0.15625rem; /* 2,5 px */
-    margin-right: 0;
-    border-radius: 50%;
-    background: var(--bg-blue-head); /* pastille bleu pâle, comme sur la couverture */
-    color: var(--col-blue);
 }

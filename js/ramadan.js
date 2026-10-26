@@ -24,7 +24,7 @@ function renderLayout(container, config, year, hijriYearAr) {
 
     // Coordonnées sur 3 lignes : adresses | téléphones, e-mail, site | IBAN • BIC ; cliquables dans le PDF partagé
     const contacts = container.querySelector('.identity-contacts');
-    if (contacts) contacts.innerHTML = contactsHTML(contact, 'rows', true);
+    if (contacts) contacts.innerHTML = contactsHTML(contact, true);
 }
 
 // --- Main Logic ---

@@ -58,9 +58,6 @@
 
     /* Vert pastel (vendredis et colonnes de date du tableau des horaires) */
     --bg-friday: var(--bg-green-faint); /* vendredis de la feuille Ramadan */
-    --header-line-start: #e8791d; /* filet du header des mois : safran vif du logo (gauche) */
-    --header-line-mid: var(--brand); /* filet du header : milieu, l'or des ornements (surchargeable par client) */
-    --header-line-end: var(--col-green); /* filet du header : vert de la mosquée (droite) */
     --bg-cover-top: #6886b2; /* couverture : haut du dégradé de la colonne d'identité (bleu franc derrière le logo, éclairci vite pour économiser l'encre) */
     --bg-cover-mid: #96acca; /* couverture : dégradé à 30 % de la hauteur */
     --bg-cover-low: #9cc6ca; /* couverture : passage bleu → vert (turquoise pâle), aux deux tiers de la hauteur ; interpolé en LCH pour éviter un gris */
@@ -88,7 +85,7 @@
     /* --- IMPRESSION (A4 paysage, reliure sur le bord haut) --- */
     --page-pad: 5mm; /* marge minimale : juste au-dela de la zone non imprimable du copieur (3-5 mm) */
     --block-gap: 2.5mm; /* espacement unique entre header, calendrier et tableau */
-    --header-h: 24mm; /* hauteur du header de l'identité : priorité aux horaires */
+    --header-h: 20mm; /* hauteur du header de l'identité : priorité aux horaires */
     --band-h: 64px; /* hauteur commune des bandeaux foncés (mois | en-tête des horaires) : bas alignés */
     --binding-zone: 10mm; /* haut : trous de spirale metallique (<= 6.5 mm) + degagement, dans le bandeau */
 
@@ -96,15 +93,14 @@
     --fs-2xs: 9px; /* libellés dans les cases du calendrier (noms complets sur une ligne, minuscules) */
     --fs-verse: 11px; /* verset de la couverture */
     --fs-xs: 10px; /* notes : en-têtes de tableau, libellés des cases, coordonnées compactes */
-    --fs-contact: 11px; /* coordonnées du header du calendrier annuel */
     --fs-sm: 12px; /* secondaire : traductions, coordonnées, légende */
     --fs-md: 14px; /* courant : jours de la semaine, texte des tableaux */
     --fs-xl: 22px; /* titres : mois, années */
     --fs-month: 24px; /* noms des mois du bandeau (titres de la page) */
     --fs-cover-year: 140px; /* année grégorienne de la couverture, au-dessus des mois */
     --fs-cover-hijri: 49px; /* années hégiriennes de la couverture, l'une sous l'autre à droite de l'année grégorienne */
-    --fs-brand: 28px; /* nom tamoul de l'association (header du calendrier annuel) */
-    --fs-brand-fr: 28px; /* nom français : même corps que le nom tamoul (header du calendrier annuel) */
+    --fs-brand: 29px; /* nom tamoul de l'association (header du calendrier annuel) */
+    --fs-brand-fr: 29px; /* nom français : même corps que le nom tamoul (header du calendrier annuel) */
     --fs-figure: 15px; /* chiffres : horaires de prière, invocation et noms de l'association (feuille Ramadan) */
     --fs-title: 30px; /* années de la page Ramadan */
     --fs-display: 36px; /* numéros des jours du calendrier */

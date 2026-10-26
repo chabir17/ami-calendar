@@ -54,7 +54,7 @@ docs/
 
 Chaque mois est un clone de `#page-template` : une page A4 paysage (`--page-pad` 5 mm de marge, `--binding-zone` 10 mm en haut pour la spirale) composée de trois blocs séparés par `--block-gap` :
 
-1. **Header de l'identité** (`.header-fixed`, pleine largeur, `--header-h` = 24 mm) ;
+1. **Header de l'identité** (`.header-fixed`, pleine largeur, `--header-h` = 20 mm) ;
 2. à gauche, **bandeau du mois** + **grille des jours** + **légende** ;
 3. à droite, **tableau des horaires**.
 
@@ -114,26 +114,18 @@ Le tableau occupe toute la hauteur : les mois de 28 à 31 jours tiennent sur la 
 ### 3.4 Header de l'identité (`header.css`)
 
 ```
-≈≈≈≈≈≈≈≈≈≈ torsade en dégradé : safran → or → vert (4,5 px) ≈≈≈≈≈≈≈≈≈≈
-┌────┐  Nom tamoul (28 px) ✦ NOM FRANÇAIS (28 px)
-│logo││2,2 │  🕌 adresse 1          🏢 adresse 2             🏦 IBAN
-│ cm │  📞 · WhatsApp         ✉ e-mail · 🌐 site              BIC
+┌────┐
+│logo│  Nom tamoul (29 px) ✦ NOM FRANÇAIS (29 px)   ← toute la largeur
 └────┘  (girih gris en filigrane autour du logo)
-≈≈≈≈≈≈≈≈≈≈ même torsade, même dégradé ≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈
 ```
 
-- **Hauteur** : `--header-h` (24 mm), sous la zone de reliure. Fond blanc ; air symétrique de 2,4 mm (`--header-pad-top` = `--header-pad-bottom`) : frise de 4,5 px (≈ 1,2 mm) + 1,2 mm avant le logo et les textes, en haut comme en bas ; le logo (≈ 1,9 cm) prend toute la hauteur restante. Le fond SVG `.header-bg` (vectoriel dans le PDF ; définitions en tête de `index.html`) porte : deux frises en torsade (haut et bas), faites d'un motif `header-torsade` de 8 × 4,5 px (deux brins de 0,8 px, interrompus au croisement pour que l'un passe sous l'autre) utilisé comme masque (`header-torsade-mask`) d'un rectangle rempli par le dégradé horizontal `header-line-grad` (`--header-line-start` → `--header-line-mid` → `--header-line-end`) ; la frise du bas est un `<svg>` imbriqué décalé de sa hauteur (le masque est défini dans le repère de la frise), et et un girih gris `--col-text-soft` (traits épais, masque `header-girih-line`, 9 %) calé sur le logo par `patternTransform` (une étoile au centre du disque) et estompé par un masque radial (`header-girih-fade`). Le centre du logo (`cx`/`cy`, `patternTransform`) est en px dans les définitions : à recaler si le logo bouge ou change de taille. Le chemin girih (`cover-girih-path`) est partagé avec la couverture.
-- **Grille** (`.header-content`) : deux colonnes (logo carré `--logo-size`, puis le reste) et deux rangées (noms, coordonnées), zones `logo` / `names` / `contacts`. Aucun encart : tout est sur blanc.
+- **Hauteur** : `--header-h` (20 mm), sous la zone de reliure. Fond blanc ; air de 1,5 mm autour du logo (`--header-pad-top` = `--header-pad-bottom`), qui prend toute la hauteur restante (≈ 1,7 cm). Aucun filet ni frise : le header n'a que le logo, les noms et le girih. Le fond SVG `.header-bg` (vectoriel dans le PDF ; définitions en tête de `index.html`) porte un girih gris `--col-text-soft` (traits épais, masque `header-girih-line`, 9 %) calé sur le logo par `patternTransform` (une étoile au centre du disque) et estompé par un masque radial (`header-girih-fade`). Le centre du logo (`cx`/`cy`, `patternTransform`) est en px dans les définitions : à recaler si le logo bouge ou change de taille. Le chemin girih (`cover-girih-path`) est partagé avec la couverture.
+- **Grille** (`.header-content`) : deux colonnes (logo carré `--logo-size`, puis les noms), centrés verticalement. Aucun encart : tout est sur blanc.
     - Le fond est en **SVG vectoriel inline** : un `background-image` ou un `<pattern>` SVG externe est pixellisé par Chrome à l'export PDF.
-- **Alignements** : pas de marge latérale : le logo s'aligne sur le bord gauche du calendrier, les coordonnées (calées à droite) sur le bord droit du tableau des horaires.
-- **Logo** : carré à pleine hauteur utile (environ 2,2 cm).
-- **Noms** (`.org-names`) : sur une seule ligne, tamoul en `--fs-brand` (28 px, safran) puis français en `--fs-brand-fr` (28 px, vert, même corps), séparés par une étoile à 8 branches (`.org-sep`, 13 px, `--col-blue`, ornement sans sens propre) : les trois couleurs du logo se retrouvent dans la ligne. Les deux frises sont les seuls filets du header.
-- **Coordonnées** (`.header-contacts`), juste sous les noms, sans filet (l'espace et le contraste de taille suffisent) : `contactsHTML(c, 'columns')` produit **3 colonnes** (`.contact-col`) de 2 lignes, réparties sur la largeur (`justify-content: space-between`) et dont la dernière est calée sur le bord du tableau des horaires :
-    - colonne 1 : adresse de la mosquée, puis téléphone fixe et WhatsApp ;
-    - colonne 2 : adresse de la salle de prière, puis e-mail et site ;
-    - colonne 3 : IBAN, puis BIC (`.info-line-cont`, aligné sous le texte de l'IBAN).
-
-    Plusieurs coordonnées sur une ligne sont des `.info-item` (icône + texte). Les noms partent du haut du logo et les coordonnées s'arrêtent à son bas (`align-self: end`) ; noms sur la même ligne de base (`align-items: baseline`). Tout tient dans la hauteur du logo (21,6 mm).
+- **Alignements** : pas de marge latérale : le logo s'aligne sur le bord gauche du calendrier, les noms s'étendent jusqu'au bord droit du tableau des horaires (29 px : le nom français finit à environ 3 mm de ce bord ; au-delà il serait rogné).
+- **Logo** : carré à pleine hauteur utile (environ 1,7 cm).
+- **Noms** (`.org-names`) : sur une seule ligne, tamoul en `--fs-brand` (29 px, safran) puis français en `--fs-brand-fr` (29 px, vert, même corps), séparés par une étoile à 8 branches (`.org-sep`, 13 px, `--col-blue`, ornement sans sens propre) : les trois couleurs du logo se retrouvent dans la ligne.
+- **Pas de coordonnées dans le header** : adresses (avec les QR codes Mawaqit), téléphones, e-mail, site et IBAN/BIC sont sur la couverture, que le header des mois ne répète pas ; `contactsHTML(c, links)` ne sert plus qu'à la feuille du Ramadan. Le header se limite à l'identité : logo et noms.
 
 Le contenu statique du header dans `index.html` reprend exactement la structure générée par `contactsHTML` : toute modification de l'une doit être reportée dans l'autre.
 
@@ -145,7 +137,7 @@ La bande garde la même hauteur même vide (`min-height`), pour que la grille ai
 
 ### 3.6 Page de couverture (`#cover-template`, `cover.css`, `updateCover`)
 
-Première page du PDF, avec une mise en page propre (ni header à torsades, ni grille des mois) : page blanche, marges de 5 mm sur les côtés et en bas comme les pages des mois, `--binding-zone` en haut. Un seul espacement, `--cover-gap` (2,5 mm), entre les blocs.
+Première page du PDF, avec une mise en page propre (ni header, ni grille des mois) : page blanche, marges de 5 mm sur les côtés et en bas comme les pages des mois, `--binding-zone` en haut. Un seul espacement, `--cover-gap` (2,5 mm), entre les blocs.
 
 ```
 ┌───────────────────────┬──────────────────────────────────────────────┐
@@ -287,7 +279,7 @@ Couleurs et leur sens, typographie, espacements, icônes et composants sont déc
 - Fonds pastel **opaques** (pas de transparence) : rendu fiable sur le copieur laser.
 - Graisses : 400 à 600 pour le français et le tamoul, 400 à 500 pour l'arabe (Amiri) ; l'année de la couverture (700) est un élément d'affichage.
 - `ramadan.css` est autonome : il réutilise les jetons communs, mais garde ses propres rôles de couleur (voir 5).
-- Jetons locaux (déclarés sur le composant qui les utilise) : `--band-motif-h` et `--identity-gap` (header), `--row-h`, `--rule`, `--surface`, `--surface-fast`, `--footer-h`, `--bg-veil` (feuille du Ramadan).
+- Jetons locaux (déclarés sur le composant qui les utilise) : `--band-motif-h` (header), `--row-h`, `--rule`, `--surface`, `--surface-fast`, `--footer-h`, `--bg-veil` (feuille du Ramadan).
 
 ## 7. Qualité et vérification
 
@@ -314,7 +306,7 @@ Rendu PDF en ligne de commande (serveur local lancé) :
 
 - **Noms de fichiers construits dynamiquement** : `icon-dst-${…}.svg` et `icon-${addr_icon}.svg`. Une recherche textuelle ne les trouve pas : ne pas les supprimer comme « inutilisés ».
 - **Filets de 0,5 px** : Chrome arrondit une `border` de 0,5 px à 1 px, même à l'impression. Le tableau des horaires utilise donc des `border` de 1 px (et 1,5 px après le dimanche) ; il est en `border-collapse: separate` pour que le filet du bas de la dernière ligne ne soit pas rogné par le conteneur arrondi (en `collapse`, il tombait à moitié hors du tableau). `--hairline` (0,5 px réels dans le PDF) reste utilisé pour les traits de la couverture.
-- **Images de fond SVG et PDF** : Chrome pixellise `background-image` et `<pattern>` SVG à l'export, ainsi que les dégradés CSS (`radial-gradient`, `repeating-linear-gradient`). Pour un motif net (frises), utiliser du SVG inline avec `<use>` ; pour une pastille, un pseudo-élément à `border-radius: 50%`.
+- **Images de fond SVG et PDF** : Chrome pixellise `background-image` et `<pattern>` SVG à l'export, ainsi que les dégradés CSS (`radial-gradient`, `repeating-linear-gradient`). Pour un motif net, utiliser du SVG inline avec `<use>` ; pour une pastille, un pseudo-élément à `border-radius: 50%`.
 - **Dégradés et motifs en PDF** : un dégradé CSS est pixellisé, un `linearGradient` SVG inline reste vectoriel. Les motifs masqués (girih de la couverture) sortent en image à 300 ppp, qualité d'impression suffisante.
 - **Chiffres arabes et sens d'écriture** : sur une même ligne, « ١٤٤٨ – ١٤٤٩ » s'afficherait inversé (l'algorithme bidi traite le tiret entre deux nombres arabes comme du texte de droite à gauche). La couverture empile donc les deux années, une par élément (`updateCover`).
 - **Filets en ombre portée** : un `box-shadow` qui dessine un filet le long d'un bloc isolé (sans voisins) laisse des traces fantômes sur ses bords dans le PDF. Sur la couverture, ces filets sont des pseudo-éléments (`::after` de 0,5 px).

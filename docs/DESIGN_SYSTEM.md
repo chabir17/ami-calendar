@@ -40,7 +40,7 @@ C'est la table à connaître. Chaque ligne dit **ce que la couleur signifie** ; 
 | Dimanche                            | Orange brûlé : `--col-sunday` (`#9d592a`, 5,4:1), distinct du terracotta des fériés | Numéro du dimanche (presque neutre, pour ne pas concurrencer les fériés)                                    |
 | Vacances scolaires                  | Beige doré pâle : `--bg-holiday` (`#fbf6e7`)                                        | Fond des cases de vacances (zone C), pastille de légende (contour `--col-gold`)                             |
 | Changement d'heure                  | Ambre doré : `--col-dst` (`#946700`, 5,0:1 sur blanc)                               | Horloge et libellé de la case, légende ; ligne du tableau en `--bg-dst`                                     |
-| Identité tamoule                    | Safran : `--col-saffron-text`                                                       | Nom tamoul, frise du haut                                                                                   |
+| Identité tamoule                    | Safran : `--col-saffron-text`                                                       | Nom tamoul                                                                                                  |
 | Neutre                              | Gris : `--col-text`, `--col-text-light`, `--col-text-soft`                          | Numéros du jour ordinaire, textes courants, cases hors du mois                                              |
 
 Priorité quand plusieurs sens tombent le même jour : **Aïd (vert) > jour férié (terracotta) > vendredi > dimanche > jour ordinaire**.
@@ -116,7 +116,6 @@ Le girih de l'année est blanc, à 45 % d'intensité maximale, fondu du haut (di
 | `--fs-2xs`                             | 9        | Libellés dans les cases du calendrier                   |
 | `--fs-verse`                           | 11       | Verset de la couverture                                 |
 | `--fs-xs`                              | 10       | Notes, en-têtes du tableau                              |
-| `--fs-contact`                         | 11       | Coordonnées du header                                   |
 | `--fs-sm`                              | 12       | Traductions, légende, jour hégirien des cases           |
 | `--fs-md`                              | 14       | Courant : jours de la semaine, sous-titres de mois      |
 | `--fs-figure`                          | 15       | Horaires de prière, chiffres du tableau                 |
@@ -144,24 +143,24 @@ Le girih de l'année est blanc, à 45 % d'intensité maximale, fondu du haut (di
 
 - **Grille de 4 px** : `--sp-1` 4 · `--sp-2` 8 · `--sp-3` 12 · `--sp-4` 16 · `--sp-6` 24.
 - **Rayon** : `--radius-card` 0,5 rem pour tous les blocs (calendrier, tableau, cartes de la couverture).
-- **Page A4 paysage**, dimensions fixes en mm : `--page-pad` 5 mm (marge au-delà de la zone non imprimable du copieur), `--binding-zone` 10 mm (reliure à spirale sur le bord haut), `--block-gap` 2,5 mm (espace entre header, calendrier et tableau), `--header-h` 24 mm, `--band-h` 64 px (hauteur commune du bandeau du mois et de l'en-tête du tableau).
+- **Page A4 paysage**, dimensions fixes en mm : `--page-pad` 5 mm (marge au-delà de la zone non imprimable du copieur), `--binding-zone` 10 mm (reliure à spirale sur le bord haut), `--block-gap` 2,5 mm (espace entre header, calendrier et tableau), `--header-h` 22 mm, `--band-h` 64 px (hauteur commune du bandeau du mois et de l'en-tête du tableau).
 - **Une seule grille de 35 cases** pour le calendrier (5 semaines) : un mois sur 6 semaines voit ses derniers jours revenir dans les cases vides du haut.
 
 ## 5. Icônes
 
 Pictogrammes SVG monochromes (`assets/icons`, symbole `#icon`), colorés par `currentColor`. À l'impression, ils sont posés dans une **pastille ronde bleu très pâle** (`--bg-blue-head`) quand ils précèdent une coordonnée ou un titre de section.
 
-| Icône                        | Sens                                          | Couleur       |
-| ---------------------------- | --------------------------------------------- | ------------- |
-| `icon-mosque`                | Adresse de la mosquée                         | `--col-blue`  |
-| `icon-prayer-room`           | Adresse de la salle de prière                 | `--col-blue`  |
-| `icon-landline`              | Téléphone fixe                                | `--col-blue`  |
-| `icon-whatsapp`              | WhatsApp                                      | `--col-blue`  |
-| `icon-email`, `icon-website` | E-mail, site web                              | `--col-blue`  |
-| `icon-bank`                  | Coordonnées bancaires (IBAN, BIC) du header   | `--col-blue`  |
-| `icon-donate`                | Titre « Soutenez votre mosquée » (couverture) | `--col-blue`  |
-| `icon-moon`                  | Début du mois hégirien ; dates hégiriennes    | `--col-green` |
-| `icon-dst-forward`, `-back`  | Passage à l'heure d'été / d'hiver             | `--col-dst`   |
+| Icône                        | Sens                                                       | Couleur       |
+| ---------------------------- | ---------------------------------------------------------- | ------------- |
+| `icon-mosque`                | Adresse de la mosquée                                      | `--col-blue`  |
+| `icon-prayer-room`           | Adresse de la salle de prière                              | `--col-blue`  |
+| `icon-landline`              | Téléphone fixe                                             | `--col-blue`  |
+| `icon-whatsapp`              | WhatsApp                                                   | `--col-blue`  |
+| `icon-email`, `icon-website` | E-mail, site web                                           | `--col-blue`  |
+| `icon-bank`                  | Coordonnées bancaires (IBAN, BIC) de la feuille du Ramadan | `--col-blue`  |
+| `icon-donate`                | Titre « Soutenez votre mosquée » (couverture)              | `--col-blue`  |
+| `icon-moon`                  | Début du mois hégirien ; dates hégiriennes                 | `--col-green` |
+| `icon-dst-forward`, `-back`  | Passage à l'heure d'été / d'hiver                          | `--col-dst`   |
 
 Logos tiers en version monochrome bleue (Mawaqit, La Banque Postale, Grande Mosquée de Paris), pour rester dans la palette. Les noms `icon-${…}.svg` sont construits dynamiquement : ne pas supprimer une icône « non utilisée » sans chercher aussi les noms composés.
 
@@ -199,7 +198,7 @@ En-tête `--bg-head-green` (plein), titres en blanc, traductions en `--col-on-da
 
 ### 6.4 Header
 
-Fond blanc, comme un papier à en-tête, entre **deux frises en torsade** (deux brins fins entrelacés, 4,5 px) en dégradé horizontal aux couleurs du logo : safran vif (`--header-line-start`), or des ornements (`--header-line-mid`, `--brand`), vert de la mosquée (`--header-line-end`). Le logo (≈ 1,9 cm, toute la hauteur utile) est à gauche ; à droite, les noms sur une seule ligne (tamoul safran et français vert, tous deux à 28 px, séparés par une petite étoile à 8 branches bleu marine), puis, sans filet, les coordonnées en 3 colonnes de 2 lignes alignées (adresse puis téléphones ; adresse puis e-mail et site ; IBAN puis BIC). Un girih gris (`--col-text-soft`, 9 %) calé sur le logo (une étoile au centre du disque, diamètre du logo = 1 pas du motif) est estompé radialement autour de lui. Tous les textes sont sur blanc : contrastes pleins, encre minimale. Détail dans TECHNIQUE §3.4.
+Fond blanc, comme un papier à en-tête, sans filet ni frise : le logo (≈ 1,7 cm, toute la hauteur utile) à gauche, puis les noms sur une seule ligne qui occupe toute la largeur (tamoul safran et français vert, tous deux à 29 px, séparés par une petite étoile à 8 branches bleu marine). Aucune coordonnée : adresses, contacts et IBAN sont sur la couverture, que le header ne répète pas. Un girih gris (`--col-text-soft`, 9 %) calé sur le logo (une étoile au centre du disque, diamètre du logo = 1 pas du motif) est estompé radialement autour de lui. Tous les textes sont sur blanc : contrastes pleins, encre minimale. Détail dans TECHNIQUE §3.4.
 
 ### 6.5 Couverture
 
