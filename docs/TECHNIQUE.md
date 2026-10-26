@@ -13,7 +13,7 @@ Référence pour faire évoluer le code des deux documents de l'AMI. Pour l'usag
 ## 2. Arborescence
 
 ```
-index.html            Calendrier annuel : templates (couverture, page, case, ligne du tableau) + définitions SVG partagées (fond du header, chemin girih)
+index.html            Calendrier annuel : templates (couverture, page, case, ligne du tableau) + définition SVG partagée (chemin girih de la couverture)
 ramadan.html          Feuille du Ramadan : template unique
 css/
   variables.css       Jetons du design system (partagés)
@@ -116,14 +116,13 @@ Le tableau occupe toute la hauteur : les mois de 28 à 31 jours tiennent sur la 
 ```
 ┌────┐
 │logo│  Nom tamoul (29 px) ✦ NOM FRANÇAIS (29 px)   ← toute la largeur
-└────┘  (girih gris en filigrane autour du logo)
+└────┘
 ```
 
-- **Hauteur** : `--header-h` (20 mm), sous la zone de reliure. Fond blanc ; air de 1,5 mm autour du logo (`--header-pad-top` = `--header-pad-bottom`), qui prend toute la hauteur restante (≈ 1,7 cm). Aucun filet ni frise : le header n'a que le logo, les noms et le girih. Le fond SVG `.header-bg` (vectoriel dans le PDF ; définitions en tête de `index.html`) porte un girih gris `--col-text-soft` (traits épais, masque `header-girih-line`, 9 %) calé sur le logo par `patternTransform` (une étoile au centre du disque) et estompé par un masque radial (`header-girih-fade`). Le centre du logo (`cx`/`cy`, `patternTransform`) est en px dans les définitions : à recaler si le logo bouge ou change de taille. Le chemin girih (`cover-girih-path`) est partagé avec la couverture.
+- **Hauteur** : `--header-h` (20 mm), sous la zone de reliure. Fond blanc uni ; en haut, un **filet tricolore** de 3 px (`.header-line`, SVG inline pour que le dégradé reste vectoriel dans le PDF ; dégradé horizontal `header-line-grad`, défini en tête de `index.html` : `--header-line-start` safran → `--header-line-mid` or → `--header-line-end` vert, bouts arrondis), puis 2,4 mm d'air (`--header-pad-top`) avant le logo et 1,5 mm en bas (`--header-pad-bottom`). Le logo prend toute la hauteur restante (≈ 1,6 cm). Aucune autre frise ni motif. (Essayés puis retirés : torsades en dégradé, girih gris en filigrane, coordonnées en 3 puis 2 colonnes.) Le chemin girih (`cover-girih-path`) ne sert plus qu'à la couverture.
 - **Grille** (`.header-content`) : deux colonnes (logo carré `--logo-size`, puis les noms), centrés verticalement. Aucun encart : tout est sur blanc.
-    - Le fond est en **SVG vectoriel inline** : un `background-image` ou un `<pattern>` SVG externe est pixellisé par Chrome à l'export PDF.
 - **Alignements** : pas de marge latérale : le logo s'aligne sur le bord gauche du calendrier, les noms s'étendent jusqu'au bord droit du tableau des horaires (29 px : le nom français finit à environ 3 mm de ce bord ; au-delà il serait rogné).
-- **Logo** : carré à pleine hauteur utile (environ 1,7 cm).
+- **Logo** : carré à pleine hauteur utile (environ 1,6 cm).
 - **Noms** (`.org-names`) : sur une seule ligne, tamoul en `--fs-brand` (29 px, safran) puis français en `--fs-brand-fr` (29 px, vert, même corps), séparés par une étoile à 8 branches (`.org-sep`, 13 px, `--col-blue`, ornement sans sens propre) : les trois couleurs du logo se retrouvent dans la ligne.
 - **Pas de coordonnées dans le header** : adresses (avec les QR codes Mawaqit), téléphones, e-mail, site et IBAN/BIC sont sur la couverture, que le header des mois ne répète pas ; `contactsHTML(c, links)` ne sert plus qu'à la feuille du Ramadan. Le header se limite à l'identité : logo et noms.
 

@@ -56,7 +56,7 @@ Sans Node : `python3 -m http.server 3000` depuis la racine du projet.
 
 - **Couverture** : logo, année grégorienne et années hégiriennes, aperçu des 12 mois (vacances, début du Ramadan, Aïds, jours fériés), QR codes Mawaqit de la mosquée et de la salle de prière, coordonnées et IBAN.
 
-- **Header** : fond blanc, sans filet ; logo à gauche, noms tamoul (safran) et français (vert) sur une ligne pleine largeur, sans coordonnées (elles sont sur la couverture) ; girih gris en filigrane autour du logo.
+- **Header** : fond blanc, filet tricolore de 3 px (safran, or, vert) en haut, sans autre motif ; logo à gauche, noms tamoul (safran) et français (vert) sur une ligne pleine largeur, sans coordonnées (elles sont sur la couverture).
 - **Bandeau du mois** (fond bleu clair) : mois grégorien à gauche, mois hégirien(s) à droite, en bleu ardoise, avec traductions.
 - **Jours de la semaine** : en-tête uniforme ; numéros des vendredis et dimanches en gris légèrement teinté (vert, terracotta).
 - **Cases des jours** :

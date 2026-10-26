@@ -7,24 +7,31 @@
        la bordure du haut n'est pas perforée */
     margin-top: calc(var(--binding-zone) - var(--page-pad));
     height: var(--header-h); /* box-sizing: border-box */
-    --header-pad-top: 1.5mm; /* air autour du logo */
-    --header-pad-bottom: var(--header-pad-top); /* symétrique */
+    --header-pad-top: 2.4mm; /* filet de 3 px (≈ 0,8 mm) + air avant le logo */
+    --header-pad-bottom: 1.5mm;
     padding: var(--header-pad-top) 0 var(--header-pad-bottom); /* bords gauche/droit alignés sur le calendrier et le tableau */
     background-color: white;
 }
 
-/* Fond en SVG (voir les définitions en tête de index.html) : girih gris en filigrane autour du logo. Texte sur fond blanc :
-   contrastes pleins, encre minimale. */
-.header-bg {
+/* Filet tricolore tout en haut, juste sous la zone de reliure (SVG : le dégradé reste vectoriel dans le PDF) */
+.header-line {
     position: absolute;
-    inset: 0;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 100%;
-    pointer-events: none;
+    height: 3px;
 }
 
-.header-girih-tile {
-    fill: var(--col-text-soft);
+.header-line-start {
+    stop-color: var(--header-line-start);
+}
+
+.header-line-mid {
+    stop-color: var(--header-line-mid);
+}
+
+.header-line-end {
+    stop-color: var(--header-line-end);
 }
 
 /* Disposition du header : le logo à pleine hauteur à gauche, les noms (une seule ligne) centrés verticalement à droite.

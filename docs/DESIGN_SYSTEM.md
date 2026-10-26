@@ -198,7 +198,7 @@ En-tête `--bg-head-green` (plein), titres en blanc, traductions en `--col-on-da
 
 ### 6.4 Header
 
-Fond blanc, comme un papier à en-tête, sans filet ni frise : le logo (≈ 1,7 cm, toute la hauteur utile) à gauche, puis les noms sur une seule ligne qui occupe toute la largeur (tamoul safran et français vert, tous deux à 29 px, séparés par une petite étoile à 8 branches bleu marine). Aucune coordonnée : adresses, contacts et IBAN sont sur la couverture, que le header ne répète pas. Un girih gris (`--col-text-soft`, 9 %) calé sur le logo (une étoile au centre du disque, diamètre du logo = 1 pas du motif) est estompé radialement autour de lui. Tous les textes sont sur blanc : contrastes pleins, encre minimale. Détail dans TECHNIQUE §3.4.
+Fond blanc, comme un papier à en-tête, sous un **filet tricolore** de 3 px aux couleurs du logo (safran vif `--header-line-start`, or des ornements `--header-line-mid` = `--brand`, vert de la mosquée `--header-line-end`), sans autre frise ni motif : le logo (≈ 1,6 cm, toute la hauteur utile) à gauche, puis les noms sur une seule ligne qui occupe toute la largeur (tamoul safran et français vert, tous deux à 29 px, séparés par une petite étoile à 8 branches bleu marine). Aucune coordonnée : adresses, contacts et IBAN sont sur la couverture, que le header ne répète pas. Tous les textes sont sur blanc : contrastes pleins, encre minimale. Détail dans TECHNIQUE §3.4.
 
 ### 6.5 Couverture
 
