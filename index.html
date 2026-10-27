@@ -389,8 +389,8 @@
                     <section class="cover-months-zone">
                         <!-- En-tête : année grégorienne centrée sur les mois, avec un motif girih clair de chaque côté (symétrique), séparée des mois par un simple espace -->
                         <header class="cover-years">
-                            <!-- Ailes : une seule rosace (lotus à huit pétales en jaune sable, ocre et bistre : une touche chaude face au bleu et au vert) à chaque extrémité de l'année, reflétée de l'autre côté (symétrique) ; formes plates sans bordure, petites pour rester en retrait devant l'année et les années hégiriennes -->
-                            <svg class="cover-wings" aria-hidden="true">
+                            <!-- Ailes : une seule rosace (lotus à huit pétales en jaune sable, ocre et bistre : une touche chaude face au bleu et au vert) à chaque extrémité de la ligne de l'année (le même dessin des deux côtés : il est symétrique) ; formes plates sans bordure, petites pour rester en retrait devant l'année et les années hégiriennes -->
+                            <svg class="cover-wings" aria-hidden="true" width="0" height="0">
                                 <defs>
                                     <g id="cover-wing-art">
                                         <path
@@ -411,13 +411,10 @@
                                         />
                                     </g>
                                 </defs>
-                                <svg x="0" width="29%" height="100%" viewBox="0 0 228 100" preserveAspectRatio="xMinYMid meet"><use href="#cover-wing-art" /></svg>
-                                <svg x="71%" width="29%" height="100%" viewBox="0 0 228 100" preserveAspectRatio="xMaxYMid meet">
-                                    <use href="#cover-wing-art" transform="translate(228 0) scale(-1 1)" />
-                                </svg>
                             </svg>
                             <!-- Année en SVG (vectorielle dans le PDF) : « 20 » en bleu clair et « 27 » en bleu foncé (dégradés), motif girih en filigrane dans les
                                  chiffres ; le texte et la largeur sont posés par updateCover et fitCoverYear -->
+                            <svg class="cover-rosette cover-rosette-start" viewBox="30 24 52 52" aria-hidden="true"><use href="#cover-wing-art" /></svg>
                             <span class="cover-hijri cover-hijri-start arabic"></span>
                             <svg class="cover-year" aria-label="" role="img">
                                 <defs>
@@ -446,6 +443,7 @@
                                 <text class="cover-year-text cover-year-motif" fill="url(#cover-year-girih)" mask="url(#cover-year-fade-mask)"></text>
                             </svg>
                             <span class="cover-hijri cover-hijri-end arabic"></span>
+                            <svg class="cover-rosette cover-rosette-end" viewBox="30 24 52 52" aria-hidden="true"><use href="#cover-wing-art" /></svg>
                         </header>
                         <div class="cover-months"></div>
                         <!-- Verset sur la prière à son heure (An-Nisāʾ, 4:103), sous les mois (deux lignes : français et tamoul, puis le numéro dans le symbole de fin de verset, entre deux grandes parenthèses ornées ; à droite, la référence en français et en tamoul), en traduction seulement : le texte

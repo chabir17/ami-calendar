@@ -363,7 +363,7 @@
     align-items: flex-start; /* années en haut de la zone : l'espace libre reste en dessous, avant les mois */
     justify-content: center; /* centré sur les mois, comme le verset en bas de page */
     position: relative;
-    gap: 3mm; /* entre l'année grégorienne et les années hégiriennes */
+    gap: 6mm; /* identique entre la rosace, l'année hégirienne et l'année grégorienne */
     flex: 1; /* occupe la hauteur libre : grand espace blanc avant les mois */
     padding: 0 2mm;
     white-space: nowrap;
@@ -656,16 +656,21 @@
     font-style: normal;
 }
 
-/* Ailes : une seule rosace de lotus à chaque extrémité, en formes plates sans bordure (jaune sable chaud, en contraste avec le bleu et le vert de la page), reflétée de
-   chaque côté de l'année (symétrique) à la hauteur des chiffres ; ancrée aux bords de la zone des mois pour ne pas toucher les
-   chiffres. Les classes de remplissage sont des sélecteurs simples : le dessin est instancié par <use> */
+/* Rosaces : une à chaque extrémité de la ligne de l'année, en formes plates sans bordure (jaune sable chaud, en contraste avec le
+   bleu et le vert de la page), dans le flux : l'espace est le même entre la rosace et l'année hégirienne, et entre celle-ci et
+   l'année grégorienne. Proportions (hauteur des chiffres de l'année = 1) : rosace ½, année hégirienne ⅓. Le dessin d'origine est
+   défini une fois dans le conteneur (sans taille) et instancié par <use> ; les classes de remplissage sont des sélecteurs simples,
+   sans ancêtre (Chrome n'applique pas les règles qui dépendent de l'arbre d'origine dans une instance) */
 .cover-wings {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: calc(var(--fs-cover-year) * 0.72);
     pointer-events: none;
+}
+
+.cover-rosette {
+    flex: none;
+    width: calc(var(--fs-cover-year) * 0.72 * 0.56); /* le dessin occupe 89 % de son cadre : la rosace visible fait la moitié des chiffres */
+    height: calc(var(--fs-cover-year) * 0.72 * 0.56);
+    margin-top: calc(var(--fs-cover-year) * 0.72 * 0.22); /* centrée sur la hauteur des chiffres */
     fill: none;
     stroke: none;
 }
@@ -693,9 +698,26 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 34mm;
     height: calc(var(--fs-cover-year) * 0.72);
     font-size: var(--fs-cover-hijri);
     line-height: 1;
     color: var(--col-hijri-soft);
+}
+
+/* Correction optique : les chiffres arabes et le « 7 » ont des marges internes différentes de chaque côté, donc le même gap ne
+   donne pas le même espace visible ; ces marges négatives rétablissent 6 mm d'encre à encre partout (mesuré dans le PDF) */
+.cover-rosette-start {
+    margin-right: -3.4mm;
+}
+
+.cover-hijri-start {
+    margin-right: -2.5mm;
+}
+
+.cover-hijri-end {
+    margin-left: -5.6mm;
+}
+
+.cover-rosette-end {
+    margin-left: -2.2mm;
 }
