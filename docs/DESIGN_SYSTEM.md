@@ -18,15 +18,16 @@ Référence unique des couleurs, de la typographie, des espacements, des icônes
 
 ### 2.1 Palette de marque (logo AMI)
 
-| Jeton                   | Valeur                         | Origine dans le logo / usage                                                                                          |
-| ----------------------- | ------------------------------ | --------------------------------------------------------------------------------------------------------------------- |
-| `--col-blue`            | `#002e5d`                      | Bleu de la tour Eiffel : noms de mois (titre), pastille et icônes                                                     |
-| `--col-ornament`        | `#8fa3bf`                      | Gris-bleu du trait des ornements (tige de fleur des ailes de l'année), rempli de `--bg-cover-mid` et `--border-green` |
-| `--col-green`           | `#2e7d32`                      | Vert de la mosquée : repères islamiques, nom français du header                                                       |
-| `--col-green-dark`      | `#1b5e20`                      | Texte sur fond vert pâle (6,9:1)                                                                                      |
-| `--col-saffron-text`    | `#b8520f`                      | Safran du minaret : nom tamoul du header (4,9:1)                                                                      |
-| `--col-gold`, `--brand` | `#c8a85a`                      | Or des ornements ; `--brand` est surchargeable par client (`clients/*.json`)                                          |
-| `--brand-text`          | 40 % plus sombre que `--brand` | Textes dorés du header (4,7:1)                                                                                        |
+| Jeton                   | Valeur                         | Origine dans le logo / usage                                                 |
+| ----------------------- | ------------------------------ | ---------------------------------------------------------------------------- |
+| `--col-blue`            | `#002e5d`                      | Bleu de la tour Eiffel : noms de mois (titre), pastille et icônes            |
+| `--col-ornament`        | `#9fb1c9`                      | Tige de la guirlande des ailes de l'année (couverture)                       |
+| `--col-ornament-leaf`   | `#b4d3ba`                      | Feuilles de la guirlande : vert d'eau, sans bordure                          |
+| `--col-green`           | `#2e7d32`                      | Vert de la mosquée : repères islamiques, nom français du header              |
+| `--col-green-dark`      | `#1b5e20`                      | Texte sur fond vert pâle (6,9:1)                                             |
+| `--col-saffron-text`    | `#b8520f`                      | Safran du minaret : nom tamoul du header (4,9:1)                             |
+| `--col-gold`, `--brand` | `#c8a85a`                      | Or des ornements ; `--brand` est surchargeable par client (`clients/*.json`) |
+| `--brand-text`          | 40 % plus sombre que `--brand` | Textes dorés du header (4,7:1)                                               |
 
 ### 2.2 Couleurs de sens
 
