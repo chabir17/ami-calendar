@@ -10,19 +10,20 @@
     background-color: white;
 }
 
-/* Disposition du header : le logo à pleine hauteur à gauche ; à droite, les noms alignés sur le haut du logo et la ligne
-   d'infos sur son bas (le vide entre les deux sépare l'identité des coordonnées). Le reste des coordonnées et l'IBAN sont
-   sur la couverture. */
+/* Disposition du header : le logo à pleine hauteur à gauche ; à droite, les noms puis la ligne d'infos juste dessous, le tout
+   centré sur la hauteur du logo. Le reste des coordonnées et l'IBAN sont sur la couverture. */
 .header-content {
     --logo-size: var(--header-h); /* le logo prend toute la hauteur du header (≈ 2 cm) */
     position: relative; /* au-dessus du fond */
     height: 100%;
     display: grid;
     grid-template-columns: var(--logo-size) minmax(0, 1fr);
-    grid-template-rows: auto 1fr;
+    grid-template-rows: 1fr auto auto 1fr; /* noms et infos serrés l'un sous l'autre, centrés sur la hauteur du logo */
     grid-template-areas:
+        'logo .'
         'logo names'
-        'logo contacts';
+        'logo contacts'
+        'logo .';
     column-gap: var(--sp-4);
 }
 
@@ -42,7 +43,6 @@
 /* Noms sur une seule ligne, sur la même ligne de base : tamoul (safran) puis français (vert), couleurs du logo */
 .org-names {
     grid-area: names;
-    align-self: start;
     display: flex;
     align-items: baseline; /* tamoul et français posés sur la même ligne de base */
     white-space: nowrap;
@@ -81,7 +81,7 @@
 /* Infos essentielles sous les noms : une seule ligne, discrète (petit corps, gris doux), alignée à gauche sous le nom tamoul */
 .header-contacts {
     grid-area: contacts;
-    align-self: end;
+    margin-top: 1.2mm; /* air entre les noms (jambages du tamoul compris) et les infos */
     white-space: nowrap;
     font-size: var(--fs-contact);
     line-height: 1.35;
