@@ -366,10 +366,10 @@ function updateZoneTitles(year, month, container) {
     DOM.setText('.greg-month-fr', window.TEXTS.fr.months[jsMonth], container);
     DOM.setText('.greg-month-ta', window.TEXTS.ta.months[jsMonth], container);
     DOM.setText('.year-display', year, container);
-    // En-tête de la première colonne du tableau des horaires : mois en trois langues
+    // En-tête de la première colonne du tableau des horaires : mois (français et tamoul) et année
     DOM.setText('.th-month-fr', window.TEXTS.fr.months[jsMonth], container);
-    DOM.setText('.th-month-ar', window.TEXTS.ar.months[jsMonth], container);
     DOM.setText('.th-month-ta', window.TEXTS.ta.months[jsMonth], container);
+    DOM.setText('.th-year', year, container);
 
     const hijriStart = getHijriDateSafe(new Date(year, jsMonth, 1));
     const hijriEnd = getHijriDateSafe(new Date(year, jsMonth, daysInMonth));
