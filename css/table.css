@@ -35,7 +35,6 @@ ami-prayer-table {
 }
 
 .prayer-table thead .th-ar,
-.prayer-table thead .th-year,
 .prayer-table thead .th-ta {
     color: var(--col-on-dark-soft); /* traductions en blanc atténué, sous le nom français */
     font-weight: 500; /* texte clair sur fond foncé : un cran de plus pour la lisibilité */
@@ -55,10 +54,9 @@ ami-prayer-table {
     color: white;
 }
 
-.th-ar,
-.th-year {
+.th-ar {
     display: block;
-    font-size: var(--fs-sm); /* l'année prend la ligne de l'arabe des autres colonnes (pas de nom de mois arabe : il varie selon les pays) */
+    font-size: var(--fs-sm);
 }
 
 .th-ta {
