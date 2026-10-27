@@ -670,28 +670,33 @@
 }
 
 .w-stem {
-    stroke: var(--col-ornament);
+    stroke: var(--col-orn-stem);
     stroke-width: 1.3;
     stroke-linecap: round;
     fill: none;
 }
 
 .w-petal {
-    fill: var(--bg-cover-mid);
-    fill-opacity: 0.62;
+    fill: var(--col-orn-petal);
+}
+
+.w-petal-mid {
+    fill: var(--col-orn-petal-mid);
 }
 
 .w-petal-in {
-    fill: white;
-    fill-opacity: 0.9;
+    fill: var(--col-orn-petal-in);
 }
 
 .w-leaf {
-    fill: var(--col-ornament-leaf);
-    fill-opacity: 0.9;
+    fill: var(--col-orn-leaf);
+}
+
+.w-leaf-hi {
+    fill: var(--col-orn-leaf-hi);
 }
 
 .w-core,
 .w-bud {
-    fill: var(--col-year-dark-top);
+    fill: var(--col-orn-core);
 }
