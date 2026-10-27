@@ -655,8 +655,8 @@
     font-style: normal;
 }
 
-/* Ailes de girih : de chaque côté de l'année, à la hauteur des chiffres, bleu clair (comme le début du dégradé de l'année),
-   symétriques par rapport à l'axe de l'année et estompées vers elle (voir #cover-wings-fade) */
+/* Ailes : un dessin géométrique (khatam et pétales de lotus) en gris clair au trait fin, reflété de chaque côté de l'année (symétrique), à la hauteur des
+   chiffres ; ancré aux bords de la zone des mois pour ne pas toucher les chiffres */
 .cover-wings {
     position: absolute;
     top: 0;
@@ -664,9 +664,9 @@
     width: 100%;
     height: calc(var(--fs-cover-year) * 0.72);
     pointer-events: none;
-}
-
-.cover-wings-tile {
-    fill: var(--bg-cover-mid);
-    fill-opacity: 0.55;
+    fill: none;
+    stroke: var(--col-ornament);
+    stroke-width: 0.9;
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }

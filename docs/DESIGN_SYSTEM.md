@@ -21,6 +21,7 @@ Référence unique des couleurs, de la typographie, des espacements, des icônes
 | Jeton                   | Valeur                         | Origine dans le logo / usage                                                 |
 | ----------------------- | ------------------------------ | ---------------------------------------------------------------------------- |
 | `--col-blue`            | `#002e5d`                      | Bleu de la tour Eiffel : noms de mois (titre), pastille et icônes            |
+| `--col-ornament`        | `#c4c4c4`                      | Gris clair des ornements au trait fin : ailes de l'année sur la couverture   |
 | `--col-green`           | `#2e7d32`                      | Vert de la mosquée : repères islamiques, nom français du header              |
 | `--col-green-dark`      | `#1b5e20`                      | Texte sur fond vert pâle (6,9:1)                                             |
 | `--col-saffron-text`    | `#b8520f`                      | Safran du minaret : nom tamoul du header (4,9:1)                             |
