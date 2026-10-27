@@ -668,6 +668,7 @@
     pointer-events: none;
     fill: none;
     stroke: none;
+    opacity: 0.8; /* l'ornement reste en retrait devant l'année et les années hégiriennes */
 }
 
 .w-stem {
@@ -714,8 +715,4 @@
     font-size: var(--fs-cover-hijri);
     line-height: 1;
     color: var(--col-hijri-soft);
-}
-
-.w-teal {
-    fill: var(--col-orn-teal);
 }
