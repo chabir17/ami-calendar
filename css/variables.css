@@ -6,10 +6,10 @@
     --bg-holiday: #fbf6e7; /* fond des vacances scolaires et de la ligne du changement d'heure : doré pâle (écart de teinte au blanc ≈ celui du vert pâle, visible sur le copieur laser) */
     /* Noms de l'association : même famille dorée, deux tons contrastés (WCAG AA sur le bandeau) */
     --col-hijri-soft: #66917c; /* années hégiriennes de la couverture : vert de gris, 3,4:1 (grand texte uniquement), dans la famille des feuilles de la guirlande */
-    --col-orn-petal: #ddd6ca; /* rosace des ailes de l'année (couverture) : pétales extérieurs, grège chaud pâle (écart de 17 avec le blanc, 12,6 avec le fond des vacances) */
-    --col-orn-petal-mid: #b5a994; /* pétales du milieu : grège plus soutenu */
-    --col-orn-petal-in: #f8f5ef; /* pétales intérieurs : presque blancs */
-    --col-orn-core: #b08a3c; /* cœur de la rosace : un point d'or (2 mm), trop petit pour se confondre avec le fond doré des vacances */
+    --col-orn-petal: #e8d8b6; /* rosace des ailes de l'année (couverture) : pétales extérieurs, beige chaud (écart de 23 avec le blanc, 15 avec le fond des vacances) */
+    --col-orn-petal-mid: #cbb07a; /* pétales du milieu : sable plus soutenu */
+    --col-orn-petal-in: #fbf6ea; /* pétales intérieurs : presque blancs, légèrement crème */
+    --col-orn-core: #a8791c; /* cœur de la rosace : un point d'or (2 mm), trop petit pour se confondre avec le fond doré des vacances */
     --brand-text: color-mix(in srgb, var(--brand), black 40%); /* nom tamoul : 4.7:1 */
 
     /* Bleu foncé (Référence Tour Eiffel) */
