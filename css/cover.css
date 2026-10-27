@@ -655,7 +655,7 @@
     font-style: normal;
 }
 
-/* Ailes : une tige de fleur moghole (fleur à 6 pétales, feuilles) en gris-bleu clair au trait fin, reflété de chaque côté de l'année (symétrique), à la hauteur des
+/* Ailes : une tige de fleur moghole en aplats légers cernés d'un trait fin, reflété de chaque côté de l'année (symétrique), à la hauteur des
    chiffres ; ancré aux bords de la zone des mois pour ne pas toucher les chiffres */
 .cover-wings {
     position: absolute;
@@ -669,4 +669,26 @@
     stroke-width: 1;
     stroke-linecap: round;
     stroke-linejoin: round;
+}
+
+/* Aplats légers du dessin : pétales en bleu de l'année, cœur plus clair, feuilles en vert d'eau */
+.w-petal {
+    fill: var(--bg-cover-mid);
+    fill-opacity: 0.5;
+}
+
+.w-petal-in {
+    fill: white;
+    fill-opacity: 0.85;
+}
+
+.w-leaf {
+    fill: var(--border-green);
+    fill-opacity: 0.85;
+}
+
+.w-core,
+.w-bud {
+    fill: var(--bg-cover-mid);
+    stroke: none;
 }
