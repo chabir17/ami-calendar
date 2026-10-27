@@ -80,12 +80,25 @@
 
 /* Infos essentielles sous les noms : une seule ligne, discrète (petit corps, gris doux), alignée à gauche sous le nom tamoul */
 .header-contacts {
+    position: relative;
     grid-area: contacts;
-    margin-top: 1.2mm; /* air entre les noms (jambages du tamoul compris) et les infos */
+    margin-top: 1.9mm; /* le filet (::before) est à égale distance (≈ 1,8 mm) du bas des noms (jambages du tamoul compris) et du haut des infos */
+    padding-top: 1.6mm;
     white-space: nowrap;
     font-size: var(--fs-contact);
     line-height: 1.35;
     color: var(--col-text-soft);
+}
+
+/* Filet fin entre les noms et les infos (pseudo-élément : un trait de 1 px net dans le PDF), vert très pâle comme les lignes du tableau */
+.header-contacts::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--border-green);
 }
 
 .info-line {
