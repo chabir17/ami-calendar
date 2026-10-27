@@ -54,7 +54,7 @@ docs/
 
 Chaque mois est un clone de `#page-template` : une page A4 paysage (`--page-pad` 5 mm de marge, `--binding-zone` 10 mm en haut pour la spirale) composée de trois blocs séparés par `--block-gap` :
 
-1. **Header de l'identité** (`.header-fixed`, pleine largeur, `--header-h` = 25 mm) ;
+1. **Header de l'identité** (`.header-fixed`, pleine largeur, `--header-h` = 22,5 mm) ;
 2. à gauche, **bandeau du mois** + **grille des jours** + **légende** ;
 3. à droite, **tableau des horaires**.
 
@@ -114,19 +114,18 @@ Le tableau occupe toute la hauteur : les mois de 28 à 31 jours tiennent sur la 
 ### 3.4 Header de l'identité (`header.css`)
 
 ```
-┌────┐  Nom tamoul (29 px) ✦ NOM FRANÇAIS (29 px)
-│logo│  🕌 adresse · 🏢 adresse · 📞 téléphone · ✉ e-mail · 🌐 site   (11 px, une ligne)
-└────┘
+┌────┐  Nom tamoul (29 px) ✦ NOM FRANÇAIS (29 px)          ← haut aligné sur le haut du logo
+│logo│
+└────┘  🕌 adresse · 🏢 adresse · 📞 téléphone · ✉ e-mail · 🌐 site   ← bas aligné sur le bas du logo (11 px, une ligne)
 ```
 
-- **Hauteur** : `--header-h` (25 mm), sous la zone de reliure. Fond blanc uni ; en haut, un **filet tricolore** de 2 px (`.header-line`, SVG inline pour que le dégradé reste vectoriel dans le PDF ; dégradé horizontal `header-line-grad`, défini en tête de `index.html` : `--header-line-start` safran → `--header-line-mid` or → `--header-line-end` vert, bouts arrondis), puis 2 mm d'air (`--header-pad-top` = `--block-gap`, filet compris) avant le logo, et aucun en bas (`--header-pad-bottom` = 0 : l'espace `--block-gap` avant le calendrier fait le même air qu'en haut). Le logo prend toute la hauteur restante (≈ 2,25 cm) ; noms et infos sont centrés dans cette hauteur (air mesuré dans le PDF : 2 mm au-dessus du logo, 2,5 mm au-dessous ; au-delà de 27 mm de header, soit un logo de 2,45 cm, les 31 lignes du tableau deviennent serrées). Aucune autre frise ni motif. (Essayés puis retirés : torsades en dégradé, girih gris en filigrane, coordonnées en 3 puis 2 colonnes, header réduit au logo et aux noms — jugé trop nu pour le bureau.) Le chemin girih (`cover-girih-path`) ne sert plus qu'à la couverture.
-- **Grille** (`.header-content`) : deux colonnes (logo carré `--logo-size`, puis les noms), centrés verticalement. Aucun encart : tout est sur blanc.
-- **Alignements** : pas de marge latérale : le logo s'aligne sur le bord gauche du calendrier, les noms s'étendent jusqu'au bord droit du tableau des horaires (29 px : le nom français finit à environ 3 mm de ce bord ; au-delà il serait rogné).
-- **Logo** : carré à pleine hauteur utile (environ 2,25 cm).
+- **Hauteur** : `--header-h` (22,5 mm), sous la zone de reliure. Fond blanc uni, sans filet, frise ni motif : le logo commence en haut du header et occupe toute sa hauteur (≈ 2,25 cm, `--logo-size`). L'espace avant le calendrier et le tableau est `--block-gap` (2,5 mm), le même qu'entre le calendrier et le tableau (mesuré dans le PDF : 2,7 mm sous le logo, tracé compris, et 2,5 mm entre les deux blocs). (Essayés puis retirés : filet tricolore en haut, torsades en dégradé, girih gris en filigrane, fond dégradé beige ou halo grège, pastilles d'icônes bleu pâle, coordonnées en 3 puis 2 colonnes, header réduit au logo et aux noms — jugé trop nu pour le bureau.) Au-delà d'un logo de 2,4 cm (header à 27 mm), les 31 lignes du tableau deviennent serrées. Le chemin girih (`cover-girih-path`) ne sert plus qu'à la couverture.
+- **Grille** (`.header-content`) : deux colonnes (logo carré `--logo-size`, puis le reste) et deux rangées (noms en haut, infos en bas), zones `logo` / `names` / `contacts`. Aucun encart : tout est sur blanc.
+- **Alignements** : pas de marge latérale : le logo s'aligne sur le bord gauche du calendrier, les noms s'étendent jusqu'au bord droit du tableau des horaires (29 px : le nom français finit à environ 11 mm de ce bord ; au-delà il serait rogné). Les noms démarrent en haut du logo (décalage `top: -1.2mm` en `position: relative`, qui compense l'interligne sans toucher à la grille : une marge négative décalait la ligne d'infos dans le PDF et la rognait), les infos finissent au bas du logo.
 - **Noms** (`.org-names`) : sur une seule ligne, tamoul en `--fs-brand` (29 px, graisse 500, safran) puis français en `--fs-brand-fr` (29 px, vert, même corps), séparés par une étoile à 8 branches (`.org-sep`, 13 px, `--col-blue`, ornement sans sens propre) : les trois couleurs du logo se retrouvent dans la ligne.
-- **Infos essentielles** (`.header-contacts`), une seule ligne sous les noms, en `--fs-contact` (11 px) gris doux, alignée à gauche sous le nom tamoul : adresses de la mosquée et de la salle de prière, téléphone fixe, e-mail, site (`headerContactsHTML(c)` dans `js/utils.js`, qui doit rester identique au HTML statique de `index.html`). Pastilles d'icônes bleu pâle comme sur la couverture. Les autres coordonnées (WhatsApp), les QR codes Mawaqit et l'IBAN/BIC ne sont que sur la couverture ; `contactsHTML(c, links)` sert à la feuille du Ramadan.
+- **Infos essentielles** (`.header-contacts`), une seule ligne en `--fs-contact` (11 px) gris doux `--col-text-soft` (5,3:1 sur blanc), alignée à gauche sous le nom tamoul : adresses de la mosquée et de la salle de prière, téléphone fixe, e-mail, site (`headerContactsHTML(c)` dans `js/utils.js`). Les icônes sont en bleu marine `--col-blue`, sans pastille. Les autres coordonnées (WhatsApp), les QR codes Mawaqit et l'IBAN/BIC ne sont que sur la couverture ; `contactsHTML(c, links)` sert à la feuille du Ramadan.
 
-Le contenu statique du header dans `index.html` reprend exactement la structure générée par `contactsHTML` : toute modification de l'une doit être reportée dans l'autre.
+Le contenu statique du header dans `index.html` reprend exactement la structure générée par `headerContactsHTML` : toute modification de l'une doit être reportée dans l'autre.
 
 ### 3.5 Légende (`updateLegend`)
 

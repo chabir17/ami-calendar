@@ -144,7 +144,7 @@ Le girih de l'année est blanc, à 45 % d'intensité maximale, fondu du haut (di
 
 - **Grille de 4 px** : `--sp-1` 4 · `--sp-2` 8 · `--sp-3` 12 · `--sp-4` 16 · `--sp-6` 24.
 - **Rayon** : `--radius-card` 0,5 rem pour tous les blocs (calendrier, tableau, cartes de la couverture).
-- **Page A4 paysage**, dimensions fixes en mm : `--page-pad` 5 mm (marge au-delà de la zone non imprimable du copieur), `--binding-zone` 10 mm (reliure à spirale sur le bord haut), `--block-gap` 2,5 mm (espace entre header, calendrier et tableau), `--header-h` 25 mm, `--band-h` 64 px (hauteur commune du bandeau du mois et de l'en-tête du tableau).
+- **Page A4 paysage**, dimensions fixes en mm : `--page-pad` 5 mm (marge au-delà de la zone non imprimable du copieur), `--binding-zone` 10 mm (reliure à spirale sur le bord haut), `--block-gap` 2,5 mm (espace entre header, calendrier et tableau), `--header-h` 22,5 mm, `--band-h` 64 px (hauteur commune du bandeau du mois et de l'en-tête du tableau).
 - **Une seule grille de 35 cases** pour le calendrier (5 semaines) : un mois sur 6 semaines voit ses derniers jours revenir dans les cases vides du haut.
 
 ## 5. Icônes
@@ -199,7 +199,7 @@ En-tête `--bg-head-green` (plein), titres en blanc, traductions en `--col-on-da
 
 ### 6.4 Header
 
-Fond blanc, comme un papier à en-tête, sous un **filet tricolore** de 2 px aux couleurs du logo (safran vif `--header-line-start`, or des ornements `--header-line-mid` = `--brand`, vert de la mosquée `--header-line-end`), sans autre frise ni motif : le logo (≈ 2,25 cm, toute la hauteur utile) à gauche, puis les noms sur une seule ligne qui occupe toute la largeur (tamoul safran et français vert, tous deux à 29 px, séparés par une petite étoile à 8 branches bleu marine). Dessous, une seule ligne d'infos essentielles en 11 px gris doux (adresses de la mosquée et de la salle de prière, téléphone, e-mail, site, avec les pastilles d'icônes de la couverture) ; les autres coordonnées et l'IBAN sont sur la couverture, que le header ne répète pas. Tous les textes sont sur blanc : contrastes pleins, encre minimale. Détail dans TECHNIQUE §3.4.
+Fond blanc uni, comme un papier à en-tête, sans filet, frise ni motif : le logo (≈ 2,25 cm) à gauche, toute la hauteur du header (22,5 mm) ; à droite, les noms sur une seule ligne alignée sur le haut du logo (tamoul safran et français vert, tous deux à 29 px graisse 500, séparés par une petite étoile à 8 branches bleu marine), puis, alignée sur le bas du logo, une ligne d'infos essentielles en 11 px gris doux (adresses de la mosquée et de la salle de prière, téléphone, e-mail, site ; icônes bleu marine sans pastille). Les autres coordonnées et l'IBAN sont sur la couverture, que le header ne répète pas. Tous les textes sont sur blanc : contrastes pleins, encre minimale. Détail dans TECHNIQUE §3.4.
 
 ### 6.5 Couverture
 

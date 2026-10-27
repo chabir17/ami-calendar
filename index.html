@@ -34,7 +34,7 @@
 
     <body>
         <!-- Conteneur principal de l'application -->
-        <!-- Définitions SVG partagées (chemin girih de la couverture, dégradé du filet du header) -->
+        <!-- Définitions SVG partagées (chemin girih de la couverture) -->
         <svg width="0" height="0" style="position: absolute" aria-hidden="true">
             <defs>
                 <!-- Chemin girih partagé (couverture) -->
@@ -45,12 +45,6 @@
                     stroke-linejoin="round"
                     d="M0 16.8L-4.92 11.88M0 73.2L-4.92 78.12M-4.92 11.88L-11.88 11.88M-4.92 78.12L-11.88 78.12M-11.88 40.08L0 45M-11.88 49.92L0 45M0 16.8L-19.94 36.74M0 73.2L-19.94 53.26M16.8 0L11.88 -4.92M73.2 0L78.12 -4.92M11.88 -4.92L11.88 -11.88M78.12 -4.92L78.12 -11.88M40.08 -11.88L45 0M49.92 -11.88L45 0M16.8 0L36.74 -19.94M73.2 0L53.26 -19.94M16.8 0L11.88 4.92M16.8 90L11.88 85.08M73.2 0L78.12 4.92M73.2 90L78.12 85.08M11.88 4.92L11.88 11.88M11.88 85.08L11.88 78.12M78.12 4.92L78.12 11.88M78.12 85.08L78.12 78.12M11.88 11.88L40.08 11.88M11.88 78.12L40.08 78.12M78.12 11.88L49.92 11.88M78.12 78.12L49.92 78.12M40.08 11.88L45 0M40.08 78.12L45 90M49.92 11.88L45 0M49.92 78.12L45 90M16.8 0L36.74 19.94M16.8 90L36.74 70.06M73.2 0L53.26 19.94M73.2 90L53.26 70.06M36.74 19.94L31.82 31.82M36.74 70.06L31.82 58.18M53.26 19.94L58.18 31.82M53.26 70.06L58.18 58.18M31.82 31.82L45 26.36M31.82 58.18L45 63.64M58.18 31.82L45 26.36M58.18 58.18L45 63.64M0 16.8L4.92 11.88M0 73.2L4.92 78.12M90 16.8L85.08 11.88M90 73.2L85.08 78.12M4.92 11.88L11.88 11.88M4.92 78.12L11.88 78.12M85.08 11.88L78.12 11.88M85.08 78.12L78.12 78.12M11.88 11.88L11.88 40.08M11.88 78.12L11.88 49.92M78.12 11.88L78.12 40.08M78.12 78.12L78.12 49.92M11.88 40.08L0 45M11.88 49.92L0 45M78.12 40.08L90 45M78.12 49.92L90 45M0 16.8L19.94 36.74M0 73.2L19.94 53.26M90 16.8L70.06 36.74M90 73.2L70.06 53.26M19.94 36.74L31.82 31.82M19.94 53.26L31.82 58.18M70.06 36.74L58.18 31.82M70.06 53.26L58.18 58.18M31.82 31.82L26.36 45M31.82 58.18L26.36 45M58.18 31.82L63.64 45M58.18 58.18L63.64 45M16.8 90L11.88 94.92M73.2 90L78.12 94.92M11.88 94.92L11.88 101.88M78.12 94.92L78.12 101.88M40.08 101.88L45 90M49.92 101.88L45 90M16.8 90L36.74 109.94M73.2 90L53.26 109.94M90 16.8L94.92 11.88M90 73.2L94.92 78.12M94.92 11.88L101.88 11.88M94.92 78.12L101.88 78.12M101.88 40.08L90 45M101.88 49.92L90 45M90 16.8L109.94 36.74M90 73.2L109.94 53.26"
                 />
-                <!-- Filet du header (vectoriel dans le PDF) : dégradé horizontal safran → or → vert, couleurs du logo -->
-                <linearGradient id="header-line-grad" x1="0" y1="0" x2="1" y2="0">
-                    <stop class="header-line-start" offset="0" />
-                    <stop class="header-line-mid" offset="0.5" />
-                    <stop class="header-line-end" offset="1" />
-                </linearGradient>
             </defs>
         </svg>
         <div id="app"></div>
@@ -60,7 +54,6 @@
             <div class="page A4-landscape">
                 <!-- EN-TÊTE : logo et noms (tamoul, français) sur une ligne ; les coordonnées sont sur la couverture -->
                 <header class="header-fixed">
-                    <svg class="header-line" aria-hidden="true"><rect width="100%" height="2" rx="1" fill="url(#header-line-grad)" /></svg>
                     <div class="header-content">
                         <div class="logo-box">
                             <img src="assets/img/AMI.png" alt="Logo de l'Association Musulmane de l'Inde" class="logo-img" />

@@ -5,9 +5,6 @@
     --brand: #c8a85a; /* surchargeable par client (clients/*.json) ; par défaut, l'or des ornements */
     --bg-holiday: #fbf6e7; /* fond des vacances scolaires et de la ligne du changement d'heure : doré pâle (écart de teinte au blanc ≈ celui du vert pâle, visible sur le copieur laser) */
     /* Noms de l'association : même famille dorée, deux tons contrastés (WCAG AA sur le bandeau) */
-    --header-line-start: #e8791d; /* filet du header des mois : safran vif du logo (gauche) */
-    --header-line-mid: var(--brand); /* filet du header : milieu, l'or des ornements (surchargeable par client) */
-    --header-line-end: var(--col-green); /* filet du header : vert de la mosquée (droite) */
     --brand-text: color-mix(in srgb, var(--brand), black 40%); /* nom tamoul : 4.7:1 */
 
     /* Bleu foncé (Référence Tour Eiffel) */
@@ -88,7 +85,7 @@
     /* --- IMPRESSION (A4 paysage, reliure sur le bord haut) --- */
     --page-pad: 5mm; /* marge minimale : juste au-dela de la zone non imprimable du copieur (3-5 mm) */
     --block-gap: 2.5mm; /* espacement unique entre header, calendrier et tableau */
-    --header-h: 25mm; /* hauteur du header de l'identité : priorité aux horaires */
+    --header-h: 22.5mm; /* hauteur du header de l'identité : priorité aux horaires */
     --band-h: 64px; /* hauteur commune des bandeaux foncés (mois | en-tête des horaires) : bas alignés */
     --binding-zone: 10mm; /* haut : trous de spirale metallique (<= 6.5 mm) + degagement, dans le bandeau */
 
