@@ -48,8 +48,9 @@
     white-space: nowrap;
 }
 
-/* Séparateur entre le nom tamoul et le nom français : étoile à 8 branches (girih) en bleu marine du logo ; les trois
-   couleurs du logo (safran, bleu marine, vert) se retrouvent ainsi dans la ligne des noms */
+/* Séparateur entre le nom tamoul et le nom français : rosace à 8 pétales pointus (lotus moghol, huit axes comme le girih de la
+   couverture) en bleu marine du logo ; les trois couleurs du logo (safran, bleu marine, vert) se retrouvent ainsi dans la
+   ligne des noms */
 .org-sep {
     display: inline-flex;
     align-self: center;
@@ -90,7 +91,7 @@
     color: var(--col-text-soft);
 }
 
-/* Filet fin entre les noms et les infos (pseudo-élément : un trait de 1 px net dans le PDF), vert très pâle comme les lignes du tableau */
+/* Filet fin entre les noms et les infos (pseudo-élément : un trait de 1 px net dans le PDF), bleu doux (`--border-blue`, le séparateur du projet : même teinte que les icônes et l'ornement) */
 .header-contacts::before {
     content: '';
     position: absolute;
@@ -98,7 +99,7 @@
     left: 0;
     right: 0;
     height: 1px;
-    background: var(--border-green);
+    background: var(--border-blue);
 }
 
 .info-line {

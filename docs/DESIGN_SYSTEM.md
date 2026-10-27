@@ -199,7 +199,7 @@ En-tête `--bg-head-green` (plein), titres en blanc, traductions en `--col-on-da
 
 ### 6.4 Header
 
-Fond blanc uni, comme un papier à en-tête, sans frise ni motif : le logo (≈ 2 cm) à gauche, toute la hauteur du header (20 mm) ; à droite, les noms sur une seule ligne (tamoul safran et français vert, tous deux à 29 px graisse 500, séparés par une petite étoile à 8 branches bleu marine), puis, sous un filet fin vert très pâle (`--border-green`, 1 px), une ligne d'infos essentielles (le bloc est centré sur la hauteur du logo) en 11 px gris doux (adresses de la mosquée et de la salle de prière, téléphone, e-mail, site ; icônes bleu marine sans pastille). Les autres coordonnées et l'IBAN sont sur la couverture, que le header ne répète pas. Tous les textes sont sur blanc : contrastes pleins, encre minimale. Détail dans TECHNIQUE §3.4.
+Fond blanc uni, comme un papier à en-tête, sans frise ni motif : le logo (≈ 2 cm) à gauche, toute la hauteur du header (20 mm) ; à droite, les noms sur une seule ligne (tamoul safran et français vert, tous deux à 29 px graisse 500, séparés par une petite rosace à 8 pétales pointus bleu marine (16 px)), puis, sous un filet fin bleu doux (`--border-blue`, 1 px), une ligne d'infos essentielles (le bloc est centré sur la hauteur du logo) en 11 px gris doux (adresses de la mosquée et de la salle de prière, téléphone, e-mail, site ; icônes bleu marine sans pastille). Les autres coordonnées et l'IBAN sont sur la couverture, que le header ne répète pas. Tous les textes sont sur blanc : contrastes pleins, encre minimale. Détail dans TECHNIQUE §3.4.
 
 ### 6.5 Couverture
 
