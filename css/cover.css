@@ -656,9 +656,9 @@
     font-style: normal;
 }
 
-/* Ailes : une seule rosace à chaque extrémité, en formes plates sans bordure (tons seulement), reflétée de chaque côté de l'année
-   (symétrique) à la hauteur des chiffres ; ancrée aux bords de la zone des mois pour ne pas toucher les chiffres. Les classes de
-   remplissage sont des sélecteurs simples : le dessin est instancié par <use> */
+/* Ailes : une seule rosace de lotus à chaque extrémité, en formes plates sans bordure (tons de grège, cœur doré), reflétée de
+   chaque côté de l'année (symétrique) à la hauteur des chiffres ; ancrée aux bords de la zone des mois pour ne pas toucher les
+   chiffres. Les classes de remplissage sont des sélecteurs simples : le dessin est instancié par <use> */
 .cover-wings {
     position: absolute;
     top: 0;
@@ -687,7 +687,7 @@
 }
 
 /* Années hégiriennes de chaque côté de l'année grégorienne : plus petites, vert de gris, centrées dans l'espace laissé entre
-   l'année et le boteh, entre les deux rinceaux du dessin */
+   l'année et la rosace d'extrémité */
 .cover-hijri {
     position: relative;
     display: flex;

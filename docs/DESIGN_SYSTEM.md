@@ -22,8 +22,8 @@ Référence unique des couleurs, de la typographie, des espacements, des icônes
 | ---------------------------------- | --------------------------------- | ---------------------------------------------------------------------------- |
 | `--col-blue`                       | `#002e5d`                         | Bleu de la tour Eiffel : noms de mois (titre), pastille et icônes            |
 | `--col-hijri-soft`                 | `#66917c`                         | Années hégiriennes de la couverture (44 px, grand texte uniquement)          |
-| `--col-orn-petal` / `-mid` / `-in` | `#bccbe2` / `#7f9cc4` / `#f3f6fb` | Trois tons de pétales de la rosace des ailes de l'année (couverture)         |
-| `--col-orn-core`                   | `#1e3f6e`                         | Cœur de la rosace : bleu nuit                                                |
+| `--col-orn-petal` / `-mid` / `-in` | `#ddd6ca` / `#b5a994` / `#f8f5ef` | Trois tons de grège de la rosace des ailes de l'année (couverture)           |
+| `--col-orn-core`                   | `#b08a3c`                         | Cœur de la rosace : un point d'or de 2 mm                                    |
 | `--col-green`                      | `#2e7d32`                         | Vert de la mosquée : repères islamiques, nom français du header              |
 | `--col-green-dark`                 | `#1b5e20`                         | Texte sur fond vert pâle (6,9:1)                                             |
 | `--col-saffron-text`               | `#b8520f`                         | Safran du minaret : nom tamoul du header (4,9:1)                             |
