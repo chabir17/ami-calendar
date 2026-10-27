@@ -114,17 +114,17 @@ Le tableau occupe toute la hauteur : les mois de 28 à 31 jours tiennent sur la 
 ### 3.4 Header de l'identité (`header.css`)
 
 ```
-┌────┐
-│logo│  Nom tamoul (29 px) ✦ NOM FRANÇAIS (29 px)   ← toute la largeur
+┌────┐  Nom tamoul (29 px) ✦ NOM FRANÇAIS (29 px)
+│logo│  🕌 adresse · 📞 téléphone · ✉ e-mail · 🌐 site   (11 px, une ligne)
 └────┘
 ```
 
-- **Hauteur** : `--header-h` (20 mm), sous la zone de reliure. Fond blanc uni ; en haut, un **filet tricolore** de 2 px (`.header-line`, SVG inline pour que le dégradé reste vectoriel dans le PDF ; dégradé horizontal `header-line-grad`, défini en tête de `index.html` : `--header-line-start` safran → `--header-line-mid` or → `--header-line-end` vert, bouts arrondis), puis 2,4 mm d'air (`--header-pad-top`) avant le logo et 1,5 mm en bas (`--header-pad-bottom`). Le logo prend toute la hauteur restante (≈ 1,6 cm). Aucune autre frise ni motif. (Essayés puis retirés : torsades en dégradé, girih gris en filigrane, coordonnées en 3 puis 2 colonnes.) Le chemin girih (`cover-girih-path`) ne sert plus qu'à la couverture.
+- **Hauteur** : `--header-h` (20 mm), sous la zone de reliure. Fond blanc uni ; en haut, un **filet tricolore** de 2 px (`.header-line`, SVG inline pour que le dégradé reste vectoriel dans le PDF ; dégradé horizontal `header-line-grad`, défini en tête de `index.html` : `--header-line-start` safran → `--header-line-mid` or → `--header-line-end` vert, bouts arrondis), puis 2,4 mm d'air (`--header-pad-top`) avant le logo et 1,5 mm en bas (`--header-pad-bottom`). Le logo prend toute la hauteur restante (≈ 1,6 cm). Aucune autre frise ni motif. (Essayés puis retirés : torsades en dégradé, girih gris en filigrane, coordonnées en 3 puis 2 colonnes, header réduit au logo et aux noms — jugé trop nu pour le bureau.) Le chemin girih (`cover-girih-path`) ne sert plus qu'à la couverture.
 - **Grille** (`.header-content`) : deux colonnes (logo carré `--logo-size`, puis les noms), centrés verticalement. Aucun encart : tout est sur blanc.
 - **Alignements** : pas de marge latérale : le logo s'aligne sur le bord gauche du calendrier, les noms s'étendent jusqu'au bord droit du tableau des horaires (29 px : le nom français finit à environ 3 mm de ce bord ; au-delà il serait rogné).
 - **Logo** : carré à pleine hauteur utile (environ 1,6 cm).
 - **Noms** (`.org-names`) : sur une seule ligne, tamoul en `--fs-brand` (29 px, graisse 500, safran) puis français en `--fs-brand-fr` (29 px, vert, même corps), séparés par une étoile à 8 branches (`.org-sep`, 13 px, `--col-blue`, ornement sans sens propre) : les trois couleurs du logo se retrouvent dans la ligne.
-- **Pas de coordonnées dans le header** : adresses (avec les QR codes Mawaqit), téléphones, e-mail, site et IBAN/BIC sont sur la couverture, que le header des mois ne répète pas ; `contactsHTML(c, links)` ne sert plus qu'à la feuille du Ramadan. Le header se limite à l'identité : logo et noms.
+- **Infos essentielles** (`.header-contacts`), une seule ligne sous les noms, en `--fs-contact` (11 px) gris doux, alignée à gauche sous le nom tamoul : adresse de la mosquée, téléphone fixe, e-mail, site (`headerContactsHTML(c)` dans `js/utils.js`, qui doit rester identique au HTML statique de `index.html`). Pastilles d'icônes bleu pâle comme sur la couverture. Les autres coordonnées (salle de prière, WhatsApp), les QR codes Mawaqit et l'IBAN/BIC ne sont que sur la couverture ; `contactsHTML(c, links)` sert à la feuille du Ramadan.
 
 Le contenu statique du header dans `index.html` reprend exactement la structure générée par `contactsHTML` : toute modification de l'une doit être reportée dans l'autre.
 

@@ -35,19 +35,40 @@ const lastSunday = (year, month) => {
 /** Numéro français « 01.48.36.48.66 » -> format international « 33148364866 » */
 const intlPhone = (num) => '33' + String(num).replace(/\D/g, '').replace(/^0/, '');
 
+/** Coordonnée avec son icône ; cliquable (href) pour les PDF numériques */
+const iconItem = (icon, text, href, links = false) => {
+    if (!text) return '';
+    const label = links && href ? `<a href="${href}">${text}</a>` : text;
+    return `<svg class="icon"><use href="assets/icons/icon-${icon}.svg#icon"></use></svg> <span>${label}</span>`;
+};
+
+/**
+ * Ligne d'infos essentielles du header du calendrier annuel : adresse de la mosquée, téléphone fixe, e-mail, site
+ * (les autres coordonnées, les QR codes et l'IBAN sont sur la couverture). Mêmes icônes que la couverture.
+ * @param {Object} c - config.contact
+ */
+export function headerContactsHTML(c) {
+    const items = [
+        iconItem(c.addr1_icon === 'office' ? 'prayer-room' : c.addr1_icon || 'mosque', c.addr1),
+        iconItem('landline', c.phone),
+        iconItem('email', c.email),
+        iconItem('website', c.website)
+    ];
+    return `<div class="info-line">${items
+        .filter(Boolean)
+        .map((x) => `<span class="info-item">${x}</span>`)
+        .join('')}</div>`;
+}
+
 /**
  * HTML des coordonnées de l'association (lignes avec icône).
- * Feuille du Ramadan : 3 groupes (adresses | téléphones, e-mail, site | IBAN • BIC), siège en premier. Le header du
- * calendrier annuel n'affiche plus de coordonnées (elles sont sur la couverture).
+ * Feuille du Ramadan : 3 groupes (adresses | téléphones, e-mail, site | IBAN • BIC), siège en premier (le header du
+ * calendrier annuel a sa propre ligne : headerContactsHTML).
  * @param {Object} c - config.contact (addr1/addr2 + icônes facultatives, phone, whatsapp, email, website, bank)
  * @param {boolean} links - coordonnées cliquables (appel, WhatsApp, e-mail, plan, site) pour les PDF numériques
  */
 export function contactsHTML(c, links = false) {
-    const item = (icon, text, href) => {
-        if (!text) return '';
-        const label = links && href ? `<a href="${href}">${text}</a>` : text;
-        return `<svg class="icon"><use href="assets/icons/icon-${icon}.svg#icon"></use></svg> <span>${label}</span>`;
-    };
+    const item = (icon, text, href) => iconItem(icon, text, href, links);
     // Une ligne réunit une ou plusieurs coordonnées (chacune avec son icône)
     const line = (...items) => {
         const xs = items.filter(Boolean);

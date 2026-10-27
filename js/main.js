@@ -1,5 +1,5 @@
 import { initAdhan, fetchExternalData, getHijriDateSafe, getDayInfo, fetchClientConfig, applyTheme, loadPrayerTimes } from './services.js';
-import { DOM, dstIconHTML } from './utils.js';
+import { DOM, headerContactsHTML, dstIconHTML } from './utils.js';
 import './components.js';
 
 // ==========================================
@@ -22,6 +22,10 @@ function updatePageDOM(container, config) {
     DOM.setText('.org-fr', config.identity.name_fr, container);
     DOM.setText('.org-ta', config.identity.name_ta, container);
     DOM.setSrc('.logo-img', config.identity.logo_url, container);
+
+    // Infos essentielles sous les noms
+    const contacts = container.querySelector('.header-contacts');
+    if (contacts) contacts.innerHTML = headerContactsHTML(config.contact);
 }
 
 /**

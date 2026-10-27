@@ -34,19 +34,26 @@
     stop-color: var(--header-line-end);
 }
 
-/* Disposition du header : le logo à pleine hauteur à gauche, les noms (une seule ligne) centrés verticalement à droite.
-   Pas de coordonnées : adresses, contacts et IBAN sont sur la couverture. */
+/* Disposition du header : le logo à pleine hauteur à gauche ; à droite, les noms (une seule ligne) puis une ligne d'infos
+   essentielles, le tout centré verticalement. Le reste des coordonnées et l'IBAN sont sur la couverture. */
 .header-content {
     --logo-size: calc(var(--header-h) - var(--header-pad-top) - var(--header-pad-bottom)); /* logo à la hauteur utile du header (≈ 1,7 cm) */
     position: relative; /* au-dessus du fond */
     height: 100%;
     display: grid;
     grid-template-columns: var(--logo-size) minmax(0, 1fr);
+    grid-template-rows: 1fr auto auto 1fr; /* noms et infos centrés ; le logo couvre les quatre rangées (pleine hauteur) */
+    grid-template-areas:
+        'logo .'
+        'logo names'
+        'logo contacts'
+        'logo .';
     align-items: center;
     column-gap: var(--sp-4);
 }
 
 .logo-box {
+    grid-area: logo;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -60,6 +67,7 @@
 
 /* Noms sur une seule ligne, sur la même ligne de base : tamoul (safran) puis français (vert), couleurs du logo */
 .org-names {
+    grid-area: names;
     display: flex;
     align-items: baseline; /* tamoul et français posés sur la même ligne de base */
     white-space: nowrap;
@@ -93,4 +101,38 @@
     color: var(--col-green);
     font-size: var(--fs-brand-fr);
     letter-spacing: 0.01em;
+}
+
+/* Infos essentielles sous les noms : une seule ligne, discrète (petit corps, gris doux), alignée à gauche sous le nom tamoul */
+.header-contacts {
+    grid-area: contacts;
+    margin-top: 0.8mm; /* air entre les noms et les infos */
+    white-space: nowrap;
+    font-size: var(--fs-contact);
+    line-height: 1.35;
+    color: var(--col-text-soft);
+}
+
+.info-line {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-4);
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-1);
+}
+
+/* Icônes : bleu marine du logo, dans une pastille bleu pâle (comme sur la couverture) */
+.header-contacts .icon {
+    box-sizing: content-box;
+    width: 0.62rem;
+    height: 0.62rem;
+    padding: 0.15625rem; /* 2,5 px */
+    margin-right: 0;
+    border-radius: 50%;
+    background: var(--bg-blue-head);
+    color: var(--col-blue);
 }
