@@ -7,7 +7,7 @@
        la bordure du haut n'est pas perforée */
     margin-top: calc(var(--binding-zone) - var(--page-pad));
     height: var(--header-h); /* box-sizing: border-box */
-    --header-pad-top: calc(var(--block-gap) + 2px); /* filet de 2 px + 2,5 mm d'air avant le logo : le même espacement que partout ailleurs */
+    --header-pad-top: var(--block-gap); /* 2,5 mm depuis le haut : filet de 2 px + 2 mm d'air avant le logo (remonté d'un demi-millimètre) */
     --header-pad-bottom: 0mm; /* sous le logo, l'espace avant le calendrier (--block-gap) fait le même air qu'en haut */
     padding: var(--header-pad-top) 0 var(--header-pad-bottom); /* bords gauche/droit alignés sur le calendrier et le tableau */
     background-color: white;
@@ -37,7 +37,7 @@
 /* Disposition du header : le logo à pleine hauteur à gauche ; à droite, les noms (une seule ligne) puis une ligne d'infos
    essentielles, le tout centré verticalement. Le reste des coordonnées et l'IBAN sont sur la couverture. */
 .header-content {
-    --logo-size: calc(var(--header-h) - var(--header-pad-top) - var(--header-pad-bottom)); /* logo à la hauteur utile du header (≈ 1,9 cm) */
+    --logo-size: calc(var(--header-h) - var(--header-pad-top) - var(--header-pad-bottom)); /* logo à la hauteur utile du header (≈ 2,25 cm) */
     position: relative; /* au-dessus du fond */
     height: 100%;
     display: grid;
