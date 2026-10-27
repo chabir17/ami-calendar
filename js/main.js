@@ -291,7 +291,7 @@ function drawCoverBackdrop(root) {
     const NS = 'http://www.w3.org/2000/svg';
     const RADIUS = 4; // px, comme l'arrondi des cases du calendrier des mois
     const INSET_X = 1; // px, retrait horizontal aux extrémités de la pastille
-    const INSET_Y = 1; // px, retrait en haut et en bas : espace entre deux semaines
+    const INSET_Y = 2; // px, retrait en haut et en bas : l’espace entre deux semaines est le double (à 1 px, il ne se voyait pas)
     root.querySelectorAll('.mini-grid').forEach((grid) => {
         grid.querySelector('.mini-backdrop')?.remove();
         const children = [...grid.children];
