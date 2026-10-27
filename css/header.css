@@ -7,7 +7,7 @@
        la bordure du haut n'est pas perforée */
     margin-top: calc(var(--binding-zone) - var(--page-pad));
     height: var(--header-h); /* box-sizing: border-box */
-    --header-pad-top: 2.4mm; /* filet de 3 px (≈ 0,8 mm) + air avant le logo */
+    --header-pad-top: 2.4mm; /* filet de 2 px + air avant le logo */
     --header-pad-bottom: 1.5mm;
     padding: var(--header-pad-top) 0 var(--header-pad-bottom); /* bords gauche/droit alignés sur le calendrier et le tableau */
     background-color: white;
@@ -19,7 +19,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 3px;
+    height: 2px;
 }
 
 .header-line-start {
@@ -80,7 +80,7 @@
 
 .org-ta,
 .org-fr {
-    font-weight: 600;
+    font-weight: 500;
     line-height: 1.1;
 }
 
