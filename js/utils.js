@@ -43,13 +43,15 @@ const iconItem = (icon, text, href, links = false) => {
 };
 
 /**
- * Ligne d'infos essentielles du header du calendrier annuel : adresse de la mosquée, téléphone fixe, e-mail, site
+ * Ligne d'infos essentielles du header du calendrier annuel : adresses de la mosquée et de la salle de prière, téléphone fixe, e-mail, site
  * (les autres coordonnées, les QR codes et l'IBAN sont sur la couverture). Mêmes icônes que la couverture.
  * @param {Object} c - config.contact
  */
 export function headerContactsHTML(c) {
+    const place = (icon) => (icon === 'office' ? 'prayer-room' : icon || 'location');
     const items = [
-        iconItem(c.addr1_icon === 'office' ? 'prayer-room' : c.addr1_icon || 'mosque', c.addr1),
+        iconItem(place(c.addr1_icon), c.addr1),
+        iconItem(place(c.addr2_icon), c.addr2),
         iconItem('landline', c.phone),
         iconItem('email', c.email),
         iconItem('website', c.website)

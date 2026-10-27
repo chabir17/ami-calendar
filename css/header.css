@@ -7,8 +7,8 @@
        la bordure du haut n'est pas perforée */
     margin-top: calc(var(--binding-zone) - var(--page-pad));
     height: var(--header-h); /* box-sizing: border-box */
-    --header-pad-top: 2.4mm; /* filet de 2 px + air avant le logo */
-    --header-pad-bottom: 1.5mm;
+    --header-pad-top: calc(var(--block-gap) + 2px); /* filet de 2 px + 2,5 mm d'air avant le logo : le même espacement que partout ailleurs */
+    --header-pad-bottom: 0mm; /* sous le logo, l'espace avant le calendrier (--block-gap) fait le même air qu'en haut */
     padding: var(--header-pad-top) 0 var(--header-pad-bottom); /* bords gauche/droit alignés sur le calendrier et le tableau */
     background-color: white;
 }
@@ -106,7 +106,7 @@
 /* Infos essentielles sous les noms : une seule ligne, discrète (petit corps, gris doux), alignée à gauche sous le nom tamoul */
 .header-contacts {
     grid-area: contacts;
-    margin-top: 0.8mm; /* air entre les noms et les infos */
+    margin-top: 1.2mm; /* air entre les noms (jambages du tamoul compris) et les infos */
     white-space: nowrap;
     font-size: var(--fs-contact);
     line-height: 1.35;
