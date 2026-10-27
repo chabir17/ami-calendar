@@ -389,50 +389,88 @@
                     <section class="cover-months-zone">
                         <!-- En-tête : année grégorienne centrée sur les mois, avec un motif girih clair de chaque côté (symétrique), séparée des mois par un simple espace -->
                         <header class="cover-years">
-                            <!-- Ailes : de chaque côté, une tige fine à quatre feuilles et un bourgeon au-dessus de l'année hégirienne, son reflet au-dessous, et un petit lotus à l'extrémité ; formes plates pâles, sans bordure ; reflété de l'autre côté (symétrique) ; volontairement léger, pour rester en retrait devant l'année -->
+                            <!-- Ailes : de chaque côté, un rinceau d'arabesque à volutes (tige fine, feuilles pâles, petits bourgeons de lotus) au-dessus de l'année hégirienne, son reflet au-dessous, et un petit lotus à l'extrémité ; formes plates pâles, sans bordure ; reflété de l'autre côté (symétrique) ; volontairement léger, pour rester en retrait devant l'année -->
                             <svg class="cover-wings" aria-hidden="true">
                                 <defs>
                                     <g id="cover-wing-art">
                                         <g transform="translate(34 7) scale(0.85)">
-                                            <path class="w-stem" d="M226 30C200 30 176 22 150 20C126 18 104 20 84 14" />
-                                            <g transform="translate(190 27) rotate(-10)">
-                                                <path class="w-leaf" d="M0 0C4.0 -8.5 14.4 -6.5 20 0C14.0 2.5 5.0 3.5 0 0Z" />
-                                                <path class="w-leaf-hi" d="M2.0 0C6.0 -4.5 13.0 -4.0 18.0 0C12.4 -1.5 6.0 -1.0 2.0 0Z" />
+                                            <path class="w-stem" d="M226 30C208 30 196 20 178 21C160 22 154 32 138 28C128 25 128 15 137 14C143 14 145 20 140 21" />
+                                            <path class="w-stem" d="M178 21C171 13 160 9 148 10" />
+                                            <path class="w-stem" d="M138 28C124 32 108 29 94 21C88 18 80 16 70 18C64 19 63 25 68 25" />
+                                            <g transform="translate(204 29) rotate(-12)">
+                                                <path class="w-leaf" d="M0 0C3.6 -8.5 13.0 -6.5 18 0C12.6 2.5 4.5 3.5 0 0Z" />
+                                                <path class="w-leaf-hi" d="M1.8 0C5.4 -4.5 11.7 -4.0 16.2 0C11.2 -1.5 5.4 -1.0 1.8 0Z" />
                                             </g>
-                                            <g transform="translate(160 21) rotate(-170)">
-                                                <path class="w-leaf" d="M0 0C4.0 -8.5 14.4 -6.5 20 0C14.0 2.5 5.0 3.5 0 0Z" />
-                                                <path class="w-leaf-hi" d="M2.0 0C6.0 -4.5 13.0 -4.0 18.0 0C12.4 -1.5 6.0 -1.0 2.0 0Z" />
+                                            <g transform="translate(166 22) rotate(-166)">
+                                                <path class="w-leaf" d="M0 0C3.4 -8.2 12.2 -6.2 17 0C11.9 2.4 4.2 3.4 0 0Z" />
+                                                <path class="w-leaf-hi" d="M1.7 0C5.1 -4.3 11.1 -3.8 15.3 0C10.5 -1.4 5.1 -1.0 1.7 0Z" />
                                             </g>
-                                            <g transform="translate(134 19) rotate(-8)">
-                                                <path class="w-leaf" d="M0 0C4.0 -8.5 14.4 -6.5 20 0C14.0 2.5 5.0 3.5 0 0Z" />
-                                                <path class="w-leaf-hi" d="M2.0 0C6.0 -4.5 13.0 -4.0 18.0 0C12.4 -1.5 6.0 -1.0 2.0 0Z" />
+                                            <g transform="translate(120 30) rotate(-6)">
+                                                <path class="w-leaf" d="M0 0C3.6 -8.5 13.0 -6.5 18 0C12.6 2.5 4.5 3.5 0 0Z" />
+                                                <path class="w-leaf-hi" d="M1.8 0C5.4 -4.5 11.7 -4.0 16.2 0C11.2 -1.5 5.4 -1.0 1.8 0Z" />
                                             </g>
-                                            <g transform="translate(108 19) rotate(-170)">
-                                                <path class="w-leaf" d="M0 0C3.6 -7.6 13.0 -5.9 18 0C12.6 2.2 4.5 3.1 0 0Z" />
-                                                <path class="w-leaf-hi" d="M1.8 0C5.4 -4.0 11.7 -3.6 16.2 0C11.2 -1.3 5.4 -0.9 1.8 0Z" />
+                                            <g transform="translate(102 24) rotate(-168)">
+                                                <path class="w-leaf" d="M0 0C3.2 -7.6 11.5 -5.9 16 0C11.2 2.2 4.0 3.1 0 0Z" />
+                                                <path class="w-leaf-hi" d="M1.6 0C4.8 -4.0 10.4 -3.6 14.4 0C9.9 -1.3 4.8 -0.9 1.6 0Z" />
                                             </g>
-                                            <path class="w-petal" d="M84.0 14.0C79.7 16.7 74.2 14.0 71.6 7.4C78.5 5.8 83.8 8.9 84.0 14.0Z" />
+                                            <path
+                                                class="w-leaf"
+                                                d="M148.0 10.0C148.0 13.3 144.5 15.5 139.9 14.6C141.5 10.3 145.1 8.4 148.0 10.0ZM148.0 10.0C144.8 10.8 141.8 7.9 141.5 3.3C146.1 3.8 148.9 6.8 148.0 10.0Z"
+                                            />
+                                            <path class="w-teal" d="M148.0 10.0C145.5 12.9 140.3 12.3 136.3 8.4C141.2 5.6 146.3 6.5 148.0 10.0Z" />
+                                            <path class="w-petal-in" d="M146.2 9.7C144.8 10.6 141.8 10.2 139.4 8.8C142.1 8.1 145.1 8.6 146.2 9.7Z" />
+                                            <path
+                                                class="w-leaf"
+                                                d="M70.0 18.0C70.2 21.2 67.0 23.5 62.5 23.0C63.8 18.7 67.1 16.6 70.0 18.0ZM70.0 18.0C66.9 19.0 63.9 16.4 63.3 12.0C67.8 12.1 70.6 14.9 70.0 18.0Z"
+                                            />
+                                            <path class="w-teal" d="M70.0 18.0C67.7 21.0 62.7 20.8 58.6 17.2C63.2 14.2 68.2 14.7 70.0 18.0Z" />
+                                            <path class="w-petal-in" d="M68.2 17.9C67.0 18.7 64.1 18.6 61.6 17.4C64.2 16.6 67.1 16.8 68.2 17.9Z" />
+                                            <path
+                                                class="w-leaf"
+                                                d="M192.0 24.0C189.5 24.9 186.9 22.9 186.3 19.2C190.0 19.2 192.4 21.4 192.0 24.0ZM192.0 24.0C190.5 21.8 191.9 18.8 195.3 17.3C196.2 20.9 194.7 23.8 192.0 24.0Z"
+                                            />
+                                            <path class="w-teal" d="M192.0 24.0C189.1 22.9 188.1 18.8 190.0 14.7C193.4 17.7 194.2 21.8 192.0 24.0Z" />
+                                            <path class="w-petal-in" d="M191.7 22.5C190.7 21.7 190.2 19.4 190.5 17.2C191.8 19.0 192.3 21.4 191.7 22.5Z" />
                                         </g>
                                         <g transform="translate(0 100) scale(1 -1)">
                                             <g transform="translate(34 7) scale(0.85)">
-                                                <path class="w-stem" d="M226 30C200 30 176 22 150 20C126 18 104 20 84 14" />
-                                                <g transform="translate(190 27) rotate(-10)">
-                                                    <path class="w-leaf" d="M0 0C4.0 -8.5 14.4 -6.5 20 0C14.0 2.5 5.0 3.5 0 0Z" />
-                                                    <path class="w-leaf-hi" d="M2.0 0C6.0 -4.5 13.0 -4.0 18.0 0C12.4 -1.5 6.0 -1.0 2.0 0Z" />
+                                                <path class="w-stem" d="M226 30C208 30 196 20 178 21C160 22 154 32 138 28C128 25 128 15 137 14C143 14 145 20 140 21" />
+                                                <path class="w-stem" d="M178 21C171 13 160 9 148 10" />
+                                                <path class="w-stem" d="M138 28C124 32 108 29 94 21C88 18 80 16 70 18C64 19 63 25 68 25" />
+                                                <g transform="translate(204 29) rotate(-12)">
+                                                    <path class="w-leaf" d="M0 0C3.6 -8.5 13.0 -6.5 18 0C12.6 2.5 4.5 3.5 0 0Z" />
+                                                    <path class="w-leaf-hi" d="M1.8 0C5.4 -4.5 11.7 -4.0 16.2 0C11.2 -1.5 5.4 -1.0 1.8 0Z" />
                                                 </g>
-                                                <g transform="translate(160 21) rotate(-170)">
-                                                    <path class="w-leaf" d="M0 0C4.0 -8.5 14.4 -6.5 20 0C14.0 2.5 5.0 3.5 0 0Z" />
-                                                    <path class="w-leaf-hi" d="M2.0 0C6.0 -4.5 13.0 -4.0 18.0 0C12.4 -1.5 6.0 -1.0 2.0 0Z" />
+                                                <g transform="translate(166 22) rotate(-166)">
+                                                    <path class="w-leaf" d="M0 0C3.4 -8.2 12.2 -6.2 17 0C11.9 2.4 4.2 3.4 0 0Z" />
+                                                    <path class="w-leaf-hi" d="M1.7 0C5.1 -4.3 11.1 -3.8 15.3 0C10.5 -1.4 5.1 -1.0 1.7 0Z" />
                                                 </g>
-                                                <g transform="translate(134 19) rotate(-8)">
-                                                    <path class="w-leaf" d="M0 0C4.0 -8.5 14.4 -6.5 20 0C14.0 2.5 5.0 3.5 0 0Z" />
-                                                    <path class="w-leaf-hi" d="M2.0 0C6.0 -4.5 13.0 -4.0 18.0 0C12.4 -1.5 6.0 -1.0 2.0 0Z" />
+                                                <g transform="translate(120 30) rotate(-6)">
+                                                    <path class="w-leaf" d="M0 0C3.6 -8.5 13.0 -6.5 18 0C12.6 2.5 4.5 3.5 0 0Z" />
+                                                    <path class="w-leaf-hi" d="M1.8 0C5.4 -4.5 11.7 -4.0 16.2 0C11.2 -1.5 5.4 -1.0 1.8 0Z" />
                                                 </g>
-                                                <g transform="translate(108 19) rotate(-170)">
-                                                    <path class="w-leaf" d="M0 0C3.6 -7.6 13.0 -5.9 18 0C12.6 2.2 4.5 3.1 0 0Z" />
-                                                    <path class="w-leaf-hi" d="M1.8 0C5.4 -4.0 11.7 -3.6 16.2 0C11.2 -1.3 5.4 -0.9 1.8 0Z" />
+                                                <g transform="translate(102 24) rotate(-168)">
+                                                    <path class="w-leaf" d="M0 0C3.2 -7.6 11.5 -5.9 16 0C11.2 2.2 4.0 3.1 0 0Z" />
+                                                    <path class="w-leaf-hi" d="M1.6 0C4.8 -4.0 10.4 -3.6 14.4 0C9.9 -1.3 4.8 -0.9 1.6 0Z" />
                                                 </g>
-                                                <path class="w-petal" d="M84.0 14.0C79.7 16.7 74.2 14.0 71.6 7.4C78.5 5.8 83.8 8.9 84.0 14.0Z" />
+                                                <path
+                                                    class="w-leaf"
+                                                    d="M148.0 10.0C148.0 13.3 144.5 15.5 139.9 14.6C141.5 10.3 145.1 8.4 148.0 10.0ZM148.0 10.0C144.8 10.8 141.8 7.9 141.5 3.3C146.1 3.8 148.9 6.8 148.0 10.0Z"
+                                                />
+                                                <path class="w-teal" d="M148.0 10.0C145.5 12.9 140.3 12.3 136.3 8.4C141.2 5.6 146.3 6.5 148.0 10.0Z" />
+                                                <path class="w-petal-in" d="M146.2 9.7C144.8 10.6 141.8 10.2 139.4 8.8C142.1 8.1 145.1 8.6 146.2 9.7Z" />
+                                                <path
+                                                    class="w-leaf"
+                                                    d="M70.0 18.0C70.2 21.2 67.0 23.5 62.5 23.0C63.8 18.7 67.1 16.6 70.0 18.0ZM70.0 18.0C66.9 19.0 63.9 16.4 63.3 12.0C67.8 12.1 70.6 14.9 70.0 18.0Z"
+                                                />
+                                                <path class="w-teal" d="M70.0 18.0C67.7 21.0 62.7 20.8 58.6 17.2C63.2 14.2 68.2 14.7 70.0 18.0Z" />
+                                                <path class="w-petal-in" d="M68.2 17.9C67.0 18.7 64.1 18.6 61.6 17.4C64.2 16.6 67.1 16.8 68.2 17.9Z" />
+                                                <path
+                                                    class="w-leaf"
+                                                    d="M192.0 24.0C189.5 24.9 186.9 22.9 186.3 19.2C190.0 19.2 192.4 21.4 192.0 24.0ZM192.0 24.0C190.5 21.8 191.9 18.8 195.3 17.3C196.2 20.9 194.7 23.8 192.0 24.0Z"
+                                                />
+                                                <path class="w-teal" d="M192.0 24.0C189.1 22.9 188.1 18.8 190.0 14.7C193.4 17.7 194.2 21.8 192.0 24.0Z" />
+                                                <path class="w-petal-in" d="M191.7 22.5C190.7 21.7 190.2 19.4 190.5 17.2C191.8 19.0 192.3 21.4 191.7 22.5Z" />
                                             </g>
                                         </g>
                                         <path
