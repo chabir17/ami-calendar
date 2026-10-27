@@ -656,7 +656,7 @@
     font-style: normal;
 }
 
-/* Ailes : une seule rosace de lotus à chaque extrémité, en formes plates sans bordure (la touche indienne : beige, jaune de Pondichéry et terracotta), reflétée de
+/* Ailes : une seule rosace de lotus à chaque extrémité, en formes plates sans bordure (la touche indienne : beige, jaune de Pondichéry et safran), reflétée de
    chaque côté de l'année (symétrique) à la hauteur des chiffres ; ancrée aux bords de la zone des mois pour ne pas toucher les
    chiffres. Les classes de remplissage sont des sélecteurs simples : le dessin est instancié par <use> */
 .cover-wings {
@@ -683,7 +683,7 @@
 }
 
 .w-core {
-    fill: var(--col-terracotta);
+    fill: var(--col-saffron-text);
 }
 
 /* Années hégiriennes de chaque côté de l'année grégorienne : plus petites, vert de gris, centrées dans l'espace laissé entre
