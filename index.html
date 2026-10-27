@@ -435,12 +435,13 @@
                                     <mask id="cover-year-fade-mask" maskUnits="userSpaceOnUse" x="-2000" y="-2000" width="4000" height="4000">
                                         <rect x="-2000" y="-2000" width="4000" height="4000" fill="url(#cover-year-fade)" />
                                     </mask>
-                                    <pattern id="cover-year-girih" width="90" height="90" patternUnits="userSpaceOnUse" patternTransform="scale(0.6)">
-                                        <rect class="cover-year-girih-tile" width="90" height="90" mask="url(#cover-girih-line)" />
+                                    <!-- Treillis de fer à la Tour Eiffel : travées plus hautes que larges, montant, traverse et croix de Saint-André -->
+                                    <pattern id="cover-year-lattice" width="38" height="44" patternUnits="userSpaceOnUse" patternTransform="scale(0.6)">
+                                        <path class="cover-year-lattice-line" d="M0 0V44M0 0H38M0 0L38 44M38 0L0 44" />
                                     </pattern>
                                 </defs>
                                 <text class="cover-year-text"></text>
-                                <text class="cover-year-text cover-year-motif" fill="url(#cover-year-girih)" mask="url(#cover-year-fade-mask)"></text>
+                                <text class="cover-year-text cover-year-motif" fill="url(#cover-year-lattice)" mask="url(#cover-year-fade-mask)"></text>
                             </svg>
                             <span class="cover-hijri cover-hijri-end arabic"></span>
                             <svg class="cover-rosette cover-rosette-end" viewBox="30 24 52 52" aria-hidden="true"><use href="#cover-wing-art" /></svg>

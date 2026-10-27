@@ -370,7 +370,7 @@
 }
 
 /* Année : chiffres gras en dégradés verticaux marqués, « 20 » clair (bleu très clair → ardoise), « 27 » foncé
-   (bleu moyen → bleu nuit), motif girih blanc en filigrane dans tous les chiffres */
+   (bleu moyen → bleu nuit), treillis blanc en filigrane (travées de la Tour Eiffel) dans tous les chiffres */
 .cover-year {
     overflow: visible;
 }
@@ -406,11 +406,13 @@
 }
 
 .cover-year-motif tspan {
-    fill: url(#cover-year-girih);
+    fill: url(#cover-year-lattice);
 }
 
-.cover-year-girih-tile {
-    fill: white;
+.cover-year-lattice-line {
+    fill: none;
+    stroke: white;
+    stroke-width: 1;
 }
 
 .cover-year-motif {
