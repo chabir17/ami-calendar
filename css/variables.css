@@ -19,6 +19,9 @@
     /* Safran (minaret et nom tamoul du logo) */
     --col-saffron-text: #b8520f; /* nom tamoul : 4.9:1 sur blanc */
 
+    /* Jaune Pondichéry (rosace de la couverture uniquement : la façade jaune moutarde de la ville d'origine des membres) */
+    --col-orn-mustard: #e5a93c;
+
     /* Or (ornements, filets, motif du header) */
     --col-gold: #c8a85a;
     --col-year-dark-top: #2f5283; /* « 27 » de la couverture : haut du dégradé (bleu moyen) */
