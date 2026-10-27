@@ -370,7 +370,7 @@
 }
 
 /* Année : chiffres gras en dégradés verticaux marqués, « 20 » clair (bleu très clair → ardoise), « 27 » foncé
-   (bleu moyen → bleu nuit), motif girih blanc en filigrane dans tous les chiffres */
+   (bleu moyen → bleu nuit), motif girih blanc en filigrane dans le « 27 » seulement */
 .cover-year {
     overflow: visible;
 }
@@ -407,6 +407,11 @@
 
 .cover-year-motif tspan {
     fill: url(#cover-year-girih);
+}
+
+/* Le « 20 » reste lisse : le motif est presque invisible sur la partie claire, il ne garde que le « 27 » foncé */
+.cover-year-motif .cover-year-century {
+    fill: none;
 }
 
 .cover-year-girih-tile {
