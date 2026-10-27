@@ -22,10 +22,8 @@ Référence unique des couleurs, de la typographie, des espacements, des icônes
 | ---------------------------------- | --------------------------------- | ---------------------------------------------------------------------------- |
 | `--col-blue`                       | `#002e5d`                         | Bleu de la tour Eiffel : noms de mois (titre), pastille et icônes            |
 | `--col-hijri-soft`                 | `#66917c`                         | Années hégiriennes de la couverture (44 px, grand texte uniquement)          |
-| `--col-orn-petal` / `-mid` / `-in` | `#bccbe2` / `#7f9cc4` / `#f3f6fb` | Trois rangs de pétales de la guirlande des ailes de l'année (couverture)     |
-| `--col-orn-core`                   | `#1e3f6e`                         | Cœurs et boutons de la guirlande : bleu nuit                                 |
-| `--col-orn-leaf` / `-hi`           | `#8fb8a4` / `#c2dccd`             | Feuilles de la guirlande : vert de gris et reflet clair                      |
-| `--col-orn-stem`                   | `#8fa6a0`                         | Tige de la guirlande (seul trait du dessin)                                  |
+| `--col-orn-petal` / `-mid` / `-in` | `#bccbe2` / `#7f9cc4` / `#f3f6fb` | Trois tons de pétales de la rosace des ailes de l'année (couverture)         |
+| `--col-orn-core`                   | `#1e3f6e`                         | Cœur de la rosace : bleu nuit                                                |
 | `--col-green`                      | `#2e7d32`                         | Vert de la mosquée : repères islamiques, nom français du header              |
 | `--col-green-dark`                 | `#1b5e20`                         | Texte sur fond vert pâle (6,9:1)                                             |
 | `--col-saffron-text`               | `#b8520f`                         | Safran du minaret : nom tamoul du header (4,9:1)                             |

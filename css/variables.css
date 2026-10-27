@@ -10,9 +10,6 @@
     --col-orn-petal-mid: #7f9cc4; /* pétales du milieu, bleu moyen (dans la famille du dégradé de l'année) */
     --col-orn-petal-in: #f3f6fb; /* pétales intérieurs, presque blancs */
     --col-orn-core: #1e3f6e; /* cœurs et boutons : bleu nuit, comme le bas du « 27 » */
-    --col-orn-leaf: #8fb8a4; /* feuilles : vert de gris, plus doux que les verts de l'Aïd et des vendredis */
-    --col-orn-leaf-hi: #c2dccd; /* reflet clair des feuilles */
-    --col-orn-stem: #8fa6a0; /* tige : gris-vert, trait de 1,3 px (seul trait du dessin) */
     --brand-text: color-mix(in srgb, var(--brand), black 40%); /* nom tamoul : 4.7:1 */
 
     /* Bleu foncé (Référence Tour Eiffel) */

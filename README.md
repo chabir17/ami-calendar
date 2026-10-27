@@ -54,7 +54,7 @@ Sans Node : `python3 -m http.server 3000` depuis la racine du projet.
 
 ## Ce que montre le calendrier annuel
 
-- **Couverture** : logo, année grégorienne centrée, flanquée des deux années hégiriennes et de rinceaux et lotus indo-musulmans très légers, aperçu des 12 mois (vacances, début du Ramadan, Aïds, jours fériés), QR codes Mawaqit de la mosquée et de la salle de prière, coordonnées et IBAN.
+- **Couverture** : logo, année grégorienne centrée, flanquée des deux années hégiriennes, chacune avec une rosace de lotus discrète à son extrémité, aperçu des 12 mois (vacances, début du Ramadan, Aïds, jours fériés), QR codes Mawaqit de la mosquée et de la salle de prière, coordonnées et IBAN.
 
 - **Header** : fond blanc uni, sans motif ; logo à gauche, noms tamoul (safran) et français (vert) centrés sur la hauteur du logo, séparés par un filet fin d'une ligne d'infos essentielles (adresses, téléphone, e-mail, site) ; le reste est sur la couverture.
 - **Bandeau du mois** (fond bleu clair) : mois grégorien à gauche, mois hégirien(s) à droite, en bleu ardoise, avec traductions.
