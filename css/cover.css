@@ -656,7 +656,7 @@
     font-style: normal;
 }
 
-/* Ailes : une seule rosace de lotus à chaque extrémité, en formes plates sans bordure (tons de beige, cœur doré), reflétée de
+/* Ailes : une seule rosace de lotus à chaque extrémité, en formes plates sans bordure (les teintes dorées de la palette : vacances, changement d'heure, or des ornements), reflétée de
    chaque côté de l'année (symétrique) à la hauteur des chiffres ; ancrée aux bords de la zone des mois pour ne pas toucher les
    chiffres. Les classes de remplissage sont des sélecteurs simples : le dessin est instancié par <use> */
 .cover-wings {
@@ -671,19 +671,19 @@
 }
 
 .w-petal {
-    fill: var(--col-orn-petal);
+    fill: var(--bg-dst);
 }
 
 .w-petal-mid {
-    fill: var(--col-orn-petal-mid);
+    fill: var(--col-gold);
 }
 
 .w-petal-in {
-    fill: var(--col-orn-petal-in);
+    fill: var(--bg-holiday);
 }
 
 .w-core {
-    fill: var(--col-orn-core);
+    fill: var(--brand-text);
 }
 
 /* Années hégiriennes de chaque côté de l'année grégorienne : plus petites, vert de gris, centrées dans l'espace laissé entre
