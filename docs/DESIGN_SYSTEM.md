@@ -144,7 +144,7 @@ Le girih de l'année est blanc, à 45 % d'intensité maximale, fondu du haut (di
 
 - **Grille de 4 px** : `--sp-1` 4 · `--sp-2` 8 · `--sp-3` 12 · `--sp-4` 16 · `--sp-6` 24.
 - **Rayon** : `--radius-card` 0,5 rem pour tous les blocs (calendrier, tableau, cartes de la couverture).
-- **Page A4 paysage**, dimensions fixes en mm : `--page-pad` 5 mm (marge au-delà de la zone non imprimable du copieur), `--binding-zone` 10 mm (reliure à spirale sur le bord haut), `--block-gap` 2,5 mm (espace entre header, calendrier et tableau), `--header-h` 20 mm, `--band-h` 64 px (hauteur commune du bandeau du mois et de l'en-tête du tableau).
+- **Page A4 paysage**, dimensions fixes en mm : `--page-pad` 5 mm (marge au-delà de la zone non imprimable du copieur), `--binding-zone` 10 mm (reliure à spirale sur le bord haut), `--block-gap` 3 mm (espace entre header, calendrier et tableau), `--header-h` 20 mm, `--band-h` 64 px (hauteur commune du bandeau du mois et de l'en-tête du tableau).
 - **Une seule grille de 35 cases** pour le calendrier (5 semaines) : un mois sur 6 semaines voit ses derniers jours revenir dans les cases vides du haut.
 
 ## 5. Icônes
