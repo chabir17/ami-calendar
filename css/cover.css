@@ -668,6 +668,7 @@
     pointer-events: none;
     fill: none;
     stroke: none;
+    opacity: 0.65; /* teintes ternies : la rosace reste en retrait devant l'année et les années hégiriennes (à 50 %, les pétales extérieurs tomberaient à un écart de 10 avec le blanc, trop près du seuil d'impression de 8) */
 }
 
 .w-petal {
