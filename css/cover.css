@@ -356,13 +356,13 @@
     flex-direction: column;
 }
 
-/* En-tête des années, épuré et centré sur les mois : l'année grégorienne et les années hégiriennes l'une sous l'autre
-   (les couleurs suffisent à distinguer les deux calendriers), séparés des mois par un simple espace blanc */
+/* En-tête de l'année, épuré et centré sur les mois : l'année grégorienne au milieu, un girih clair de chaque côté, séparés
+   des mois par un simple espace blanc */
 .cover-years {
     display: flex;
     align-items: flex-start; /* années en haut de la zone : l'espace libre reste en dessous, avant les mois */
     justify-content: center; /* centré sur les mois, comme le verset en bas de page */
-    gap: 8mm;
+    position: relative;
     flex: 1; /* occupe la hauteur libre : grand espace blanc avant les mois */
     padding: 0 2mm;
     white-space: nowrap;
@@ -429,15 +429,6 @@
 .cover-year-fade-bottom {
     stop-color: white;
     stop-opacity: 1;
-}
-
-.cover-hijri {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    font-size: var(--fs-cover-hijri);
-    line-height: 1.05;
-    color: var(--col-hijri-soft); /* plus doux que l'année : traduction, en retrait */
 }
 
 /* 12 mois sur trois lignes de quatre */
@@ -662,4 +653,20 @@
 
 .cover-verse cite {
     font-style: normal;
+}
+
+/* Ailes de girih : de chaque côté de l'année, à la hauteur des chiffres, bleu clair (comme le début du dégradé de l'année),
+   symétriques par rapport à l'axe de l'année et estompées vers elle (voir #cover-wings-fade) */
+.cover-wings {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(var(--fs-cover-year) * 0.72);
+    pointer-events: none;
+}
+
+.cover-wings-tile {
+    fill: var(--bg-cover-mid);
+    fill-opacity: 0.55;
 }

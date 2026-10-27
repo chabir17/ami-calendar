@@ -22,7 +22,6 @@
     --col-gold: #c8a85a;
     --col-year-dark-top: #2f5283; /* « 27 » de la couverture : haut du dégradé (bleu moyen) */
     --col-year-dark-bottom: #001a36; /* « 27 » de la couverture : bas du dégradé (bleu nuit) */
-    --col-hijri-soft: #5d946a; /* années hégiriennes de la couverture : vert pâle, 3.6:1 (grand texte) */
 
     /* Terracotta (horaires du jeûne : Imsak, iftār, Icha AMI) */
     --col-terracotta: #a8461f; /* jours fériés (civil), jeûne (feuille Ramadan) : 5.9:1 sur blanc, 5.5:1 sur --bg-holiday */
@@ -98,7 +97,6 @@
     --fs-xl: 22px; /* titres : mois, années */
     --fs-month: 24px; /* noms des mois du bandeau (titres de la page) */
     --fs-cover-year: 140px; /* année grégorienne de la couverture, au-dessus des mois */
-    --fs-cover-hijri: 49px; /* années hégiriennes de la couverture, l'une sous l'autre à droite de l'année grégorienne */
     --fs-contact: 11px; /* infos essentielles sous les noms (header du calendrier annuel) */
     --fs-brand: 29px; /* nom tamoul de l'association (header du calendrier annuel) */
     --fs-brand-fr: 29px; /* nom français : même corps que le nom tamoul (header du calendrier annuel) */

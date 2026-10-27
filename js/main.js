@@ -180,10 +180,10 @@ function fitMonthTitles(root) {
 }
 
 /**
- * Mois hégiriens d'un mini-mois, un par ligne. L'année hégirienne figure déjà dans l'en-tête de la couverture :
- * elle n'est rappelée qu'au mois où elle change (Muharram), une seule fois dans l'année.
+ * Mois hégiriens d'un mini-mois, un par ligne. L'année hégirienne (plus d'en-tête dédié sur la couverture) est indiquée
+ * au premier mois, puis seulement aux mois où elle change (Muharram).
  * @param {Map<string, string>} months - nom arabe → année hégirienne (chiffres arabes)
- * @param {{year: string}} state - dernière année hégirienne affichée, partagée entre les mini-mois
+ * @param {{year: string|null}} state - dernière année hégirienne affichée, partagée entre les mini-mois
  */
 const hijriLines = (months, state) =>
     [...months]
@@ -199,19 +199,13 @@ const hijriLines = (months, state) =>
  * calculés comme dans les pages des mois (getHijriDateSafe, getDayInfo).
  */
 function updateCover(year, container) {
-    const hStart = getHijriDateSafe(new Date(year, 0, 1));
-    const hEnd = getHijriDateSafe(new Date(year, 11, 31));
     // Année en deux parties : le siècle (« 20 ») en bleu clair, l'année du siècle (« 27 ») en bleu foncé
     const yearParts = `<tspan class="cover-year-century">${String(year).slice(0, 2)}</tspan><tspan class="cover-year-short">${String(year).slice(2)}</tspan>`;
     container.querySelectorAll('.cover-year-text').forEach((t) => (t.innerHTML = yearParts));
     container.querySelector('.cover-year')?.setAttribute('aria-label', year);
-    // Années hégiriennes à droite de l'année grégorienne, l'une sous l'autre dans l'ordre chronologique
-    const hijriBox = container.querySelector('.cover-hijri');
-    // Années hégiriennes l'une sous l'autre, dans l'ordre chronologique (une seule si l'année grégorienne tient dans une année hégirienne)
-    if (hijriBox) hijriBox.innerHTML = [...new Set([hStart.yearAr, hEnd.yearAr])].map((y) => `<span>${y}</span>`).join('');
 
     const months = [];
-    const hijriState = { year: hStart.yearAr }; // l'année de départ est dans l'en-tête
+    const hijriState = { year: null }; // l'année hégirienne est rappelée dès le premier mois, puis à chaque changement
     for (let m = 0; m < 12; m++) {
         const first = new Date(year, m, 1);
         const days = new Date(year, m + 1, 0).getDate();

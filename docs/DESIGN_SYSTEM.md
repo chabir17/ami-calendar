@@ -31,17 +31,16 @@ Référence unique des couleurs, de la typographie, des espacements, des icônes
 
 C'est la table à connaître. Chaque ligne dit **ce que la couleur signifie** ; ne pas l'employer pour autre chose.
 
-| Sens                                | Couleur (jeton)                                                                     | Où                                                                                                          |
-| ----------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| Calendrier grégorien, structure     | Bleu : `--col-blue`, `--col-title-blue` (`#46628a`, 5,6:1)                          | Arabe et tamoul de la ligne des jours, jours de la semaine, mini-mois, « 20 » et « 27 » de la couverture    |
-| Hégirien, islamique, prière         | Vert : `--col-green`, `--col-friday` (`#41694a`, 6,3:1)                             | Jour hégirien et croissant des cases, Aïd, ʿArafa, vendredis, « 01 » du tableau, verset, années hégiriennes |
-| Années hégiriennes de la couverture | Vert pâle : `--col-hijri-soft` (`#5d946a`, 3,6:1, grand texte uniquement)           | Années hégiriennes en 49 px                                                                                 |
-| Jour férié (civil)                  | Terracotta : `--col-terracotta` (`#a8461f`, 5,9:1)                                  | Numéro et libellé du jour férié. **Réservé aux fériés** (et au jeûne sur la feuille du Ramadan)             |
-| Dimanche                            | Orange brûlé : `--col-sunday` (`#9d592a`, 5,4:1), distinct du terracotta des fériés | Numéro du dimanche (presque neutre, pour ne pas concurrencer les fériés)                                    |
-| Vacances scolaires                  | Beige doré pâle : `--bg-holiday` (`#fbf6e7`)                                        | Fond des cases de vacances (zone C), pastille de légende (contour `--col-gold`)                             |
-| Changement d'heure                  | Ambre doré : `--col-dst` (`#946700`, 5,0:1 sur blanc)                               | Horloge et libellé de la case, légende ; ligne du tableau en `--bg-dst`                                     |
-| Identité tamoule                    | Safran : `--col-saffron-text`                                                       | Nom tamoul                                                                                                  |
-| Neutre                              | Gris : `--col-text`, `--col-text-light`, `--col-text-soft`                          | Numéros du jour ordinaire, textes courants, cases hors du mois                                              |
+| Sens                            | Couleur (jeton)                                                                     | Où                                                                                                          |
+| ------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| Calendrier grégorien, structure | Bleu : `--col-blue`, `--col-title-blue` (`#46628a`, 5,6:1)                          | Arabe et tamoul de la ligne des jours, jours de la semaine, mini-mois, « 20 » et « 27 » de la couverture    |
+| Hégirien, islamique, prière     | Vert : `--col-green`, `--col-friday` (`#41694a`, 6,3:1)                             | Jour hégirien et croissant des cases, Aïd, ʿArafa, vendredis, « 01 » du tableau, verset, années hégiriennes |
+| Jour férié (civil)              | Terracotta : `--col-terracotta` (`#a8461f`, 5,9:1)                                  | Numéro et libellé du jour férié. **Réservé aux fériés** (et au jeûne sur la feuille du Ramadan)             |
+| Dimanche                        | Orange brûlé : `--col-sunday` (`#9d592a`, 5,4:1), distinct du terracotta des fériés | Numéro du dimanche (presque neutre, pour ne pas concurrencer les fériés)                                    |
+| Vacances scolaires              | Beige doré pâle : `--bg-holiday` (`#fbf6e7`)                                        | Fond des cases de vacances (zone C), pastille de légende (contour `--col-gold`)                             |
+| Changement d'heure              | Ambre doré : `--col-dst` (`#946700`, 5,0:1 sur blanc)                               | Horloge et libellé de la case, légende ; ligne du tableau en `--bg-dst`                                     |
+| Identité tamoule                | Safran : `--col-saffron-text`                                                       | Nom tamoul                                                                                                  |
+| Neutre                          | Gris : `--col-text`, `--col-text-light`, `--col-text-soft`                          | Numéros du jour ordinaire, textes courants, cases hors du mois                                              |
 
 Priorité quand plusieurs sens tombent le même jour : **Aïd (vert) > jour férié (terracotta) > vendredi > dimanche > jour ordinaire**.
 
@@ -111,19 +110,19 @@ Le girih de l'année est blanc, à 45 % d'intensité maximale, fondu du haut (di
 
 ### 3.1 Échelle de tailles
 
-| Jeton                                  | px       | Usage                                                   |
-| -------------------------------------- | -------- | ------------------------------------------------------- |
-| `--fs-2xs`                             | 9        | Libellés dans les cases du calendrier                   |
-| `--fs-verse`                           | 11       | Verset de la couverture                                 |
-| `--fs-xs`                              | 10       | Notes, en-têtes du tableau                              |
-| `--fs-sm`                              | 12       | Traductions, légende, jour hégirien des cases           |
-| `--fs-md`                              | 14       | Courant : jours de la semaine, sous-titres de mois      |
-| `--fs-figure`                          | 15       | Horaires de prière, chiffres du tableau                 |
-| `--fs-contact`                         | 11       | Infos essentielles du header                            |
-| `--fs-brand-fr` / `--fs-brand`         | 28 / 28  | Nom français / nom tamoul de l'association              |
-| `--fs-xl` / `--fs-month`               | 22 / 24  | Mois hégirien en arabe / mois grégorien                 |
-| `--fs-display`                         | 36       | Numéros des jours du calendrier                         |
-| `--fs-cover-hijri` / `--fs-cover-year` | 49 / 140 | Années hégiriennes / année grégorienne de la couverture |
+| Jeton                          | px      | Usage                                              |
+| ------------------------------ | ------- | -------------------------------------------------- |
+| `--fs-2xs`                     | 9       | Libellés dans les cases du calendrier              |
+| `--fs-verse`                   | 11      | Verset de la couverture                            |
+| `--fs-xs`                      | 10      | Notes, en-têtes du tableau                         |
+| `--fs-sm`                      | 12      | Traductions, légende, jour hégirien des cases      |
+| `--fs-md`                      | 14      | Courant : jours de la semaine, sous-titres de mois |
+| `--fs-figure`                  | 15      | Horaires de prière, chiffres du tableau            |
+| `--fs-contact`                 | 11      | Infos essentielles du header                       |
+| `--fs-brand-fr` / `--fs-brand` | 28 / 28 | Nom français / nom tamoul de l'association         |
+| `--fs-xl` / `--fs-month`       | 22 / 24 | Mois hégirien en arabe / mois grégorien            |
+| `--fs-display`                 | 36      | Numéros des jours du calendrier                    |
+| `--fs-cover-year`              | 140     | Année grégorienne de la couverture                 |
 
 À la couverture, l'année hégirienne (49 px) a la même hauteur de chiffres que l'année grégorienne (140 px).
 

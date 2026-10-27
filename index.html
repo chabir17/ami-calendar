@@ -387,8 +387,28 @@
                         </div>
                     </aside>
                     <section class="cover-months-zone">
-                        <!-- En-tête : année grégorienne et années hégiriennes l'une sous l'autre, séparés des mois par un simple espace -->
+                        <!-- En-tête : année grégorienne centrée sur les mois, avec un motif girih clair de chaque côté (symétrique), séparée des mois par un simple espace -->
                         <header class="cover-years">
+                            <!-- Ailes : girih clair de chaque côté de l'année, symétrique (motif centré sur l'axe de la page, fondu vers l'année) -->
+                            <svg class="cover-wings" aria-hidden="true">
+                                <defs>
+                                    <linearGradient id="cover-wings-fade" x1="0" y1="0" x2="1" y2="0">
+                                        <stop offset="0" stop-color="#fff" />
+                                        <stop offset="0.3" stop-color="#fff" stop-opacity="0.5" />
+                                        <stop offset="0.38" stop-color="#000" />
+                                        <stop offset="0.62" stop-color="#000" />
+                                        <stop offset="0.7" stop-color="#fff" stop-opacity="0.5" />
+                                        <stop offset="1" stop-color="#fff" />
+                                    </linearGradient>
+                                    <mask id="cover-wings-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="100%" height="100%">
+                                        <rect width="100%" height="100%" fill="url(#cover-wings-fade)" />
+                                    </mask>
+                                    <pattern id="cover-wings-girih" x="50%" y="0" width="90" height="90" patternUnits="userSpaceOnUse" patternTransform="scale(0.8)">
+                                        <rect class="cover-wings-tile" width="90" height="90" mask="url(#cover-girih-line-bold)" />
+                                    </pattern>
+                                </defs>
+                                <rect width="100%" height="100%" fill="url(#cover-wings-girih)" mask="url(#cover-wings-mask)" />
+                            </svg>
                             <!-- Année en SVG (vectorielle dans le PDF) : « 20 » en bleu clair et « 27 » en bleu foncé (dégradés), motif girih en filigrane dans les
                                  chiffres ; le texte et la largeur sont posés par updateCover et fitCoverYear -->
                             <svg class="cover-year" aria-label="" role="img">
@@ -417,7 +437,6 @@
                                 <text class="cover-year-text"></text>
                                 <text class="cover-year-text cover-year-motif" fill="url(#cover-year-girih)" mask="url(#cover-year-fade-mask)"></text>
                             </svg>
-                            <div class="cover-hijri arabic"></div>
                         </header>
                         <div class="cover-months"></div>
                         <!-- Verset sur la prière à son heure (An-Nisāʾ, 4:103), sous les mois (deux lignes : français et tamoul, puis le numéro dans le symbole de fin de verset, entre deux grandes parenthèses ornées ; à droite, la référence en français et en tamoul), en traduction seulement : le texte
