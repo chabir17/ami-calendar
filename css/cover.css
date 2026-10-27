@@ -363,6 +363,7 @@
     align-items: flex-start; /* années en haut de la zone : l'espace libre reste en dessous, avant les mois */
     justify-content: center; /* centré sur les mois, comme le verset en bas de page */
     position: relative;
+    gap: 3mm; /* entre l'année grégorienne et les années hégiriennes */
     flex: 1; /* occupe la hauteur libre : grand espace blanc avant les mois */
     padding: 0 2mm;
     white-space: nowrap;
@@ -699,4 +700,18 @@
 .w-core,
 .w-bud {
     fill: var(--col-orn-core);
+}
+
+/* Années hégiriennes de chaque côté de l'année grégorienne : plus petites, vert de gris, centrées dans l'espace laissé entre
+   l'année et le boteh, entre les deux rinceaux du dessin */
+.cover-hijri {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34mm;
+    height: calc(var(--fs-cover-year) * 0.72);
+    font-size: var(--fs-cover-hijri);
+    line-height: 1;
+    color: var(--col-hijri-soft);
 }

@@ -5,6 +5,7 @@
     --brand: #c8a85a; /* surchargeable par client (clients/*.json) ; par défaut, l'or des ornements */
     --bg-holiday: #fbf6e7; /* fond des vacances scolaires et de la ligne du changement d'heure : doré pâle (écart de teinte au blanc ≈ celui du vert pâle, visible sur le copieur laser) */
     /* Noms de l'association : même famille dorée, deux tons contrastés (WCAG AA sur le bandeau) */
+    --col-hijri-soft: #66917c; /* années hégiriennes de la couverture : vert de gris, 3,4:1 (grand texte uniquement), dans la famille des feuilles de la guirlande */
     --col-orn-petal: #bccbe2; /* guirlande des ailes de l'année (couverture) : pétales extérieurs, bleu très pâle */
     --col-orn-petal-mid: #7f9cc4; /* pétales du milieu, bleu moyen (dans la famille du dégradé de l'année) */
     --col-orn-petal-in: #f3f6fb; /* pétales intérieurs, presque blancs */
@@ -105,6 +106,7 @@
     --fs-month: 24px; /* noms des mois du bandeau (titres de la page) */
     --fs-cover-year: 140px; /* année grégorienne de la couverture, au-dessus des mois */
     --fs-contact: 11px; /* infos essentielles sous les noms (header du calendrier annuel) */
+    --fs-cover-hijri: 44px; /* années hégiriennes de la couverture, de chaque côté de l'année grégorienne */
     --fs-brand: 29px; /* nom tamoul de l'association (header du calendrier annuel) */
     --fs-brand-fr: 29px; /* nom français : même corps que le nom tamoul (header du calendrier annuel) */
     --fs-figure: 15px; /* chiffres : horaires de prière, invocation et noms de l'association (feuille Ramadan) */

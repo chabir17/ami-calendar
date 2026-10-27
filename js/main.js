@@ -199,13 +199,18 @@ const hijriLines = (months, state) =>
  * calculés comme dans les pages des mois (getHijriDateSafe, getDayInfo).
  */
 function updateCover(year, container) {
+    const hStart = getHijriDateSafe(new Date(year, 0, 1));
+    const hEnd = getHijriDateSafe(new Date(year, 11, 31));
     // Année en deux parties : le siècle (« 20 ») en bleu clair, l'année du siècle (« 27 ») en bleu foncé
     const yearParts = `<tspan class="cover-year-century">${String(year).slice(0, 2)}</tspan><tspan class="cover-year-short">${String(year).slice(2)}</tspan>`;
     container.querySelectorAll('.cover-year-text').forEach((t) => (t.innerHTML = yearParts));
     container.querySelector('.cover-year')?.setAttribute('aria-label', year);
+    // Années hégiriennes de chaque côté de l'année grégorienne, dans l'ordre chronologique (la même des deux côtés si l'année tient dans une seule)
+    container.querySelector('.cover-hijri-start').textContent = hStart.yearAr;
+    container.querySelector('.cover-hijri-end').textContent = hEnd.yearAr;
 
     const months = [];
-    const hijriState = { year: null }; // l'année hégirienne est rappelée dès le premier mois, puis à chaque changement
+    const hijriState = { year: hStart.yearAr }; // l'année de départ est dans l'en-tête
     for (let m = 0; m < 12; m++) {
         const first = new Date(year, m, 1);
         const days = new Date(year, m + 1, 0).getDate();

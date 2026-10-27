@@ -32,7 +32,7 @@ Calendrier imprimable trilingue (FR / AR / TA) de l'association AMI (La Courneuv
 - Filets de 0,5 px : pseudo-élément ou `box-shadow` avec `--hairline` (une `border` de 0,5 px devient 1 px).
 - `serve` redirige `/index.html` vers `/` et perd la requête : utiliser `/?year=2027&month=cover`.
 - Chrome : profil `--user-data-dir` neuf à chaque rendu, et arrêter l'instance CDP avant `--print-to-pdf` (sinon PDF blanc).
-- Chiffres arabes : ne pas écrire « ١٤٤٨ – ١٤٤٩ » sur une ligne (le tiret entre deux nombres arabes inverse l’ordre) ; l’année hégirienne figure dans les mini-mois de la couverture.
+- Chiffres arabes : ne pas écrire « ١٤٤٨ – ١٤٤٩ » sur une même ligne (le tiret entre deux nombres arabes inverse l'ordre) ; sur la couverture, chaque année hégirienne est dans son propre élément, de chaque côté de l'année grégorienne.
 
 ## Flux de travail
 
