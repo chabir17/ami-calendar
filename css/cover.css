@@ -655,7 +655,7 @@
     font-style: normal;
 }
 
-/* Ailes : un dessin géométrique (rosace à 12 pétales et pétales de lotus) en gris-bleu clair au trait fin, reflété de chaque côté de l'année (symétrique), à la hauteur des
+/* Ailes : une tige de fleur moghole (fleur à 6 pétales, feuilles) en gris-bleu clair au trait fin, reflété de chaque côté de l'année (symétrique), à la hauteur des
    chiffres ; ancré aux bords de la zone des mois pour ne pas toucher les chiffres */
 .cover-wings {
     position: absolute;
