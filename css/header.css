@@ -14,7 +14,7 @@
    d'infos sur son bas (le vide entre les deux sépare l'identité des coordonnées). Le reste des coordonnées et l'IBAN sont
    sur la couverture. */
 .header-content {
-    --logo-size: var(--header-h); /* le logo prend toute la hauteur du header (≈ 2,25 cm) */
+    --logo-size: var(--header-h); /* le logo prend toute la hauteur du header (≈ 2 cm) */
     position: relative; /* au-dessus du fond */
     height: 100%;
     display: grid;
@@ -43,8 +43,6 @@
 .org-names {
     grid-area: names;
     align-self: start;
-    position: relative;
-    top: -1.2mm; /* compense l'interligne : le haut des lettres du tamoul s'aligne sur le haut du cercle du logo (sans toucher à la grille) */
     display: flex;
     align-items: baseline; /* tamoul et français posés sur la même ligne de base */
     white-space: nowrap;
