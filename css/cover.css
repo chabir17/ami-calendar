@@ -655,7 +655,7 @@
     font-style: normal;
 }
 
-/* Ailes : un dessin géométrique (khatam et pétales de lotus) en gris clair au trait fin, reflété de chaque côté de l'année (symétrique), à la hauteur des
+/* Ailes : un dessin géométrique (quadrilobe en demi-cercles et pétales de lotus) en gris clair au trait fin, reflété de chaque côté de l'année (symétrique), à la hauteur des
    chiffres ; ancré aux bords de la zone des mois pour ne pas toucher les chiffres */
 .cover-wings {
     position: absolute;
@@ -666,7 +666,7 @@
     pointer-events: none;
     fill: none;
     stroke: var(--col-ornament);
-    stroke-width: 0.9;
+    stroke-width: 1;
     stroke-linecap: round;
     stroke-linejoin: round;
 }

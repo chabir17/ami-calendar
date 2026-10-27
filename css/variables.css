@@ -5,7 +5,7 @@
     --brand: #c8a85a; /* surchargeable par client (clients/*.json) ; par défaut, l'or des ornements */
     --bg-holiday: #fbf6e7; /* fond des vacances scolaires et de la ligne du changement d'heure : doré pâle (écart de teinte au blanc ≈ celui du vert pâle, visible sur le copieur laser) */
     /* Noms de l'association : même famille dorée, deux tons contrastés (WCAG AA sur le bandeau) */
-    --col-ornament: #c4c4c4; /* gris clair des ornements au trait fin (ailes de l'année sur la couverture) */
+    --col-ornament: #bdbdbd; /* gris clair des ornements au trait fin (ailes de l'année sur la couverture) */
     --brand-text: color-mix(in srgb, var(--brand), black 40%); /* nom tamoul : 4.7:1 */
 
     /* Bleu foncé (Référence Tour Eiffel) */
