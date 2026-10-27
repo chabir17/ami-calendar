@@ -37,7 +37,7 @@
 /* Disposition du header : le logo à pleine hauteur à gauche ; à droite, les noms (une seule ligne) puis une ligne d'infos
    essentielles, le tout centré verticalement. Le reste des coordonnées et l'IBAN sont sur la couverture. */
 .header-content {
-    --logo-size: calc(var(--header-h) - var(--header-pad-top) - var(--header-pad-bottom)); /* logo à la hauteur utile du header (≈ 1,7 cm) */
+    --logo-size: calc(var(--header-h) - var(--header-pad-top) - var(--header-pad-bottom)); /* logo à la hauteur utile du header (≈ 1,9 cm) */
     position: relative; /* au-dessus du fond */
     height: 100%;
     display: grid;
