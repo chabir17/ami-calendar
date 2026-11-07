@@ -29,7 +29,7 @@ Calendrier imprimable trilingue (FR / AR / TA) de l'association AMI (La Courneuv
 ## Pièges du rendu PDF (détail en §8 de la doc)
 
 - Dégradés et motifs : en SVG inline, jamais en dégradé CSS (pixellisé à l'export).
-- Filets de 0,5 px : pseudo-élément ou `box-shadow` avec `--hairline` (une `border` de 0,5 px devient 1 px).
+- Filets de 0,5 px : pseudo-élément avec `--hairline` (une `border` de 0,5 px devient 1 px).
 - `serve` redirige `/index.html` vers `/` et perd la requête : utiliser `/?year=2027&month=cover`.
 - Chrome : profil `--user-data-dir` neuf à chaque rendu, et arrêter l'instance CDP avant `--print-to-pdf` (sinon PDF blanc).
 - Chiffres arabes : ne pas écrire « ١٤٤٨ – ١٤٤٩ » sur une même ligne (le tiret entre deux nombres arabes inverse l'ordre) ; sur la couverture, chaque année hégirienne est dans son propre élément, de chaque côté de l'année grégorienne.
