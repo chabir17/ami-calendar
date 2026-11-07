@@ -234,7 +234,7 @@ Chargée par `?mosque=<id>` (`fetchClientConfig` ; la feuille du Ramadan utilise
     "contact": {
         "addr1_icon": "mosque",
         "addr1": "…",
-        "addr2_icon": "office",
+        "addr2_icon": "prayer-room",
         "addr2": "…",
         "phone": "…",
         "whatsapp": "…",

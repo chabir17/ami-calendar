@@ -2,7 +2,7 @@
 // Usage : npm run check [-- 2026 2027 …]   (années par défaut : 2025 à 2030)
 // Prérequis : Chrome (macOS), pdfinfo (poppler), accès internet (fériés et vacances).
 import { spawn, execFileSync } from 'node:child_process';
-import { mkdtempSync, writeFileSync, readFileSync, readdirSync, rmSync } from 'node:fs';
+import { mkdtempSync, writeFileSync, readFileSync, readdirSync, rmSync, existsSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
@@ -99,7 +99,34 @@ function inkCoverage(pdf) {
         });
 }
 
+/** Contrôles statiques : jetons CSS jamais utilisés, fichiers référencés qui n'existent pas (assets, icônes des clients). */
+function checkStatic() {
+    const read = (f) => readFileSync(f, 'utf8');
+    const stripComments = (t) => t.replace(/\/\*[\s\S]*?\*\//g, '');
+    const sources = [
+        ...readdirSync('css').map((f) => `css/${f}`),
+        ...readdirSync('js')
+            .filter((f) => f.endsWith('.js'))
+            .map((f) => `js/${f}`),
+        'index.html',
+        'ramadan.html'
+    ].map((f) => stripComments(read(f)));
+    const tokens = [...stripComments(read('css/variables.css')).matchAll(/^\s*(--[a-z0-9-]+)\s*:/gm)].map((m) => m[1]);
+    const unused = tokens.filter((t) => !sources.some((s) => new RegExp(`var\\(\\s*${t}(?![a-z0-9-])`).test(s)));
+    report(!unused.length, 'Jetons CSS', unused.length ? `inutilisés : ${unused.join(', ')}` : `${tokens.length} utilisés`);
+
+    const missing = new Set();
+    for (const s of sources)
+        for (const [, p] of s.matchAll(/(?:href|src)="(assets\/[^"#]+)|url\('\.\.\/(assets\/[^')]+)'\)/g)) if (p && !p.includes('${') && !existsSync(p)) missing.add(p);
+    for (const f of readdirSync('clients').filter((f) => f.endsWith('.json'))) {
+        for (const [, icon] of read(`clients/${f}`).matchAll(/"[a-z0-9]+_icon":\s*"([a-z-]+)"/g))
+            if (!existsSync(`assets/icons/icon-${icon}.svg`)) missing.add(`assets/icons/icon-${icon}.svg (clients/${f})`);
+    }
+    report(!missing.size, 'Fichiers référencés', missing.size ? `introuvables : ${[...missing].join(', ')}` : 'tous présents');
+}
+
 try {
+    checkStatic();
     await waitFor(BASE + '/index.html');
     await waitFor(`http://127.0.0.1:${CDP_PORT}/json/version`);
 

@@ -48,7 +48,7 @@ const iconItem = (icon, text, href, links = false) => {
  * @param {Object} c - config.contact
  */
 export function headerContactsHTML(c) {
-    const place = (icon) => (icon === 'office' ? 'prayer-room' : icon || 'location');
+    const place = (icon) => icon || 'location';
     const items = [
         iconItem(place(c.addr1_icon), c.addr1),
         iconItem(place(c.addr2_icon), c.addr2),
