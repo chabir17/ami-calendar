@@ -61,12 +61,12 @@ Sans Node : `python3 -m http.server 3000` depuis la racine du projet.
 - **Jours de la semaine** : en-tête uniforme ; numéros des vendredis et dimanches en gris légèrement teinté (vert, terracotta).
 - **Cases des jours** :
     - numéro hégirien en petit, en haut à droite ; **en gras** les jours islamiques particuliers ;
-    - croissant vert : premier jour du mois hégirien ;
-    - numéro **vert** : Aïd ; **terracotta** : jour férié (libellé écrit dans la case) ;
-    - libellés verts : début du Ramadan, jour de ʿArafa, ʿĀshūrāʾ ;
+    - croissant vert et nom du mois : premier jour du mois hégirien ;
+    - **fond vert clair** et numéro vert foncé : Aïd ; numéro **terracotta** : jour férié (libellé écrit dans la case) ;
+    - libellés verts : jour de ʿArafa, ʿĀshūrāʾ ;
     - fond doré pâle : vacances scolaires (zone C) ; fond gris : jours hors du mois ;
-    - horloge beige doré : passage à l'heure d'été ou d'hiver.
-- **Légende** (bas de page) : nom des vacances scolaires du mois et passage à l'heure d'été / d'hiver.
+    - horloge beige doré : passage à l'heure d'été ou d'hiver (sous le croissant s'il y en a un).
+- **Légende** (bas de page) : nom des vacances scolaires du mois à gauche, passage à l'heure d'été / d'hiver à droite (près du dimanche).
 - **Tableau des horaires** (en-tête vert forêt) : Fajr, Shuruq, Dhohr, Asr, Maghrib, Icha et jour hégirien ; colonnes de date en bandes vert pâle comme l'en-tête, vendredis surlignés (un cran plus soutenu dans ces colonnes), filet à chaque fin de semaine, « 01 » blanc dans une pastille vert sapin au 1er jour du mois hégirien, ligne sur fond beige doré le jour du changement d'heure.
 
 ## Développement

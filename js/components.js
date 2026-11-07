@@ -83,20 +83,26 @@ class CalendarGrid extends MonthElement {
             if (dayInfo.isHoliday) root.classList.add('is-holiday');
             if (dayInfo.isPublicHoliday) root.classList.add('is-public-holiday');
             // Jour islamique particulier (Aïd, début du Ramadan, ʿArafa, ʿĀshūrāʾ) : date hégirienne mise en évidence
-            if (dayInfo.labels.some((l) => l.type === 'eid' || l.type === 'virtuous')) root.classList.add('is-islamic-event');
+            if (dayInfo.isRamadanStart || dayInfo.labels.some((l) => l.type === 'eid' || l.type === 'virtuous')) root.classList.add('is-islamic-event');
 
             // Contenu Textuel
             root.querySelector('.vis-greg').textContent = day;
             root.querySelector('.vis-hij').textContent = hijri.day || '';
 
             // Icônes & Labels (gestion via attribut hidden)
-            if (dayInfo.isNewMoon) root.querySelector('.new-moon-icon').hidden = false;
+            // Nouveau mois hégirien : croissant et nom du mois en haut à gauche (l'horloge du changement d'heure passe dessous)
+            if (dayInfo.isNewMoon) {
+                root.classList.add('has-new-moon');
+                root.querySelector('.new-moon-icon').hidden = false;
+                const monthName = root.querySelector('.new-moon-name');
+                monthName.hidden = false;
+                monthName.textContent = hijri.monthNameShort.replace('Dhū al-', 'Dhū l-'); // « Dhū l-Qaʿdah » : plus court, tient à côté du jour hégirien
+            }
 
             if (dayInfo.isDST) {
                 const dstIcon = root.querySelector('.dst-icon');
                 dstIcon.hidden = false;
                 dstIcon.innerHTML = dstIconHTML(dayInfo.dstType);
-                if (dayInfo.isNewMoon) dstIcon.style.left = '18px';
             }
 
             // Aïd + jour férié le même jour : l'Aïd en haut, le jour férié en bas

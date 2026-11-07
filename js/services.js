@@ -8,10 +8,10 @@ const HIJRI_CACHE = new Map();
 
 /**
  * Jours vertueux d'un jour précis (mois hégirien → jour → libellé), écrits dans la case comme l'Aïd :
- * début du Ramadan, ʿArafa (Muslim 1162), ʿĀshūrāʾ (Muslim 1162).
+ * ʿArafa (Muslim 1162), ʿĀshūrāʾ (Muslim 1162). Le début du Ramadan n'a pas de libellé : le nom du mois est déjà
+ * écrit à côté du croissant (voir isRamadanStart).
  */
 const VIRTUOUS_DAYS = {
-    Ramaḍān: { 1: 'Début du Ramadan' },
     'Dhū al-Ḥijjah': { 9: 'Jour de ʿArafa' },
     Muḥarram: { 10: 'ʿĀshūrāʾ' }
 };
@@ -175,6 +175,7 @@ export function getDayInfo(date, hijri) {
         labels: [], // [{ text, type: 'eid' | 'virtuous' | 'public' | 'dst' }], tous affichés dans la case
         isNewMoon: false,
         isEid: false,
+        isRamadanStart: false,
         isDST: false
     };
     if (typeof CONFIG === 'undefined' || !CONFIG) return info;
@@ -218,7 +219,10 @@ export function getDayInfo(date, hijri) {
 
     // 4. Nouveau mois hégirien et Aïds
     const hDay = parseInt(hijri.day, 10);
-    if (hDay === 1) info.isNewMoon = true;
+    if (hDay === 1) {
+        info.isNewMoon = true;
+        if (hijri.monthNameFR === 'Ramaḍān') info.isRamadanStart = true;
+    }
     const eidName = EID_NAMES[hijri.monthNameFR]?.[hDay];
     if (eidName) {
         info.isEid = true;

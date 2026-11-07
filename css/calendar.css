@@ -176,6 +176,11 @@
     background-color: var(--bg-holiday);
 }
 
+/* Aïd : fond vert clair, prioritaire sur le fond des vacances (déclaré après) ; les textes passent en vert foncé pour rester lisibles */
+.day-cell-visual.is-eid {
+    background-color: var(--bg-green-friday);
+}
+
 /* Numéro du jour (Grégorien) */
 .vis-greg {
     font-size: var(--fs-display);
@@ -197,8 +202,12 @@
     color: var(--col-terracotta);
 }
 
+.day-cell-visual.is-eid .vis-hij {
+    color: var(--col-green-dark); /* jour hégirien sur le fond vert clair : 6,4:1 */
+}
+
 .day-cell-visual.is-eid .vis-greg {
-    color: var(--col-green);
+    color: var(--col-green-dark);
 }
 
 /* Numéro du jour (Hégirien) */
@@ -240,6 +249,37 @@
 
 .dst-icon .icon {
     color: var(--col-dst);
+}
+
+/* Croissant et nom du mois sur la ligne du jour hégirien (en haut à droite) : le chiffre est plus bas que l'icône de 2,1 px
+   (mesuré dans le PDF, encre à encre), donc l'icône et le nom descendent d'autant : le croissant est centré sur le chiffre, et le nom
+   est entre les deux */
+.day-cell-visual.has-new-moon {
+    --moon-row-shift: 0.13rem;
+}
+
+.day-cell-visual.has-new-moon .new-moon-icon {
+    top: calc(var(--sp-1) + var(--moon-row-shift));
+}
+
+/* Nom du nouveau mois hégirien, à droite du croissant (vert hégirien) ; sur la ligne de l'icône */
+.new-moon-name {
+    position: absolute;
+    top: calc(
+        var(--sp-1) + var(--moon-row-shift, 0rem) + 0.06rem
+    ); /* + 1 px : majuscules centrées sur le croissant et le chiffre (à la ligne de base exacte, le nom paraît trop bas : essayé à 0, 1 et 1,9 px) */
+    left: calc(var(--sp-1) + 0.8rem + 0.1875rem);
+    font-size: var(--fs-2xs);
+    font-weight: 600;
+    line-height: 0.8rem;
+    color: var(--col-friday); /* vert foncé : lisible en petit corps */
+    white-space: nowrap;
+    letter-spacing: -0.02em;
+}
+
+/* Changement d'heure le jour d'un nouveau mois : l'horloge passe sous le croissant, pour laisser la place au nom du mois */
+.day-cell-visual.has-new-moon .dst-icon {
+    top: calc(var(--sp-1) + var(--moon-row-shift) + 0.8rem + 0.125rem);
 }
 
 .event-label {
@@ -289,7 +329,7 @@
 }
 
 .event-line.eid-label {
-    color: var(--col-green);
+    color: var(--col-green-dark); /* 9 px sur le fond vert clair de la case : 6,4:1 */
 }
 
 /* Changement d'heure : beige doré foncé (le terracotta reste réservé aux jours fériés) */
@@ -317,6 +357,11 @@
     color: var(--col-text);
     font-weight: 600;
     white-space: nowrap;
+}
+
+/* Le changement d'heure tombe un dimanche : son élément est poussé à droite, sous la colonne du dimanche */
+.legend-item.legend-dst {
+    margin-left: auto;
 }
 
 .legend-icon {

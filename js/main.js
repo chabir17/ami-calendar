@@ -331,10 +331,10 @@ function updateLegend(year, month, container) {
     if (!box) return;
     const items = []; // { day, html }, sans date : les jours sont repérables dans la grille
     const seen = new Set();
-    const add = (key, day, html) => {
+    const add = (key, day, html, cls = '') => {
         if (seen.has(key)) return;
         seen.add(key);
-        items.push({ day, html });
+        items.push({ day, html, cls });
     };
     const daysInMonth = new Date(year, month, 0).getDate();
 
@@ -346,12 +346,12 @@ function updateLegend(year, month, container) {
         }
         if (info.isDST) {
             const label = info.dstType === 'summer' ? "Passage à l'heure d'été" : "Passage à l'heure d'hiver";
-            add('dst', d, `<span class="legend-icon">${dstIconHTML(info.dstType)}</span><span>${label}</span>`);
+            add('dst', d, `<span class="legend-icon">${dstIconHTML(info.dstType)}</span><span>${label}</span>`, 'legend-dst');
         }
     }
 
     items.sort((x, y) => x.day - y.day);
-    box.innerHTML = items.map((i) => `<div class="legend-item">${i.html}</div>`).join('');
+    box.innerHTML = items.map((i) => `<div class="legend-item ${i.cls}">${i.html}</div>`).join('');
 }
 
 /**
