@@ -62,7 +62,7 @@ Sans Node : `python3 -m http.server 3000` depuis la racine du projet.
 - **Cases des jours** :
     - numéro hégirien en petit, en haut à droite ; **en gras** les jours islamiques particuliers ;
     - croissant vert et nom du mois : premier jour du mois hégirien ;
-    - **fond vert clair** et numéro vert foncé : Aïd ; numéro **terracotta** : jour férié (libellé écrit dans la case) ;
+    - **contour fin vert de gris** et numéro vert : Aïd ; numéro **terracotta** : jour férié (libellé écrit dans la case) ;
     - libellés verts : jour de ʿArafa, ʿĀshūrāʾ ;
     - fond doré pâle : vacances scolaires (zone C) ; fond gris : jours hors du mois ;
     - horloge beige doré : passage à l'heure d'été ou d'hiver (sous le croissant s'il y en a un).

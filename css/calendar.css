@@ -176,9 +176,14 @@
     background-color: var(--bg-holiday);
 }
 
-/* Aïd : fond vert clair, prioritaire sur le fond des vacances (déclaré après) ; les textes passent en vert foncé pour rester lisibles */
-.day-cell-visual.is-eid {
-    background-color: var(--bg-green-friday);
+/* Aïd : contour fin vert de gris (pseudo-élément : une border de 0,5 px deviendrait 1 px dans le PDF ; ici 1 px franc), à la place d'un fond */
+.day-cell-visual.is-eid::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 1px solid var(--border-eid);
+    border-radius: inherit;
+    pointer-events: none;
 }
 
 /* Numéro du jour (Grégorien) */
@@ -202,12 +207,8 @@
     color: var(--col-terracotta);
 }
 
-.day-cell-visual.is-eid .vis-hij {
-    color: var(--col-green-dark); /* jour hégirien sur le fond vert clair : 6,4:1 */
-}
-
 .day-cell-visual.is-eid .vis-greg {
-    color: var(--col-green-dark);
+    color: var(--col-green);
 }
 
 /* Numéro du jour (Hégirien) */
@@ -268,11 +269,14 @@
     top: calc(
         var(--sp-1) + var(--moon-row-shift, 0rem) + 0.06rem
     ); /* + 1 px : majuscules centrées sur le croissant et le chiffre (à la ligne de base exacte, le nom paraît trop bas : essayé à 0, 1 et 1,9 px) */
-    left: calc(var(--sp-1) + 0.8rem + 0.1875rem);
+    /* centré entre le croissant (à gauche) et le « 1 » du jour hégirien (à droite) */
+    left: calc(var(--sp-1) + 0.8rem);
+    right: calc(var(--sp-1) + var(--moon-name-right, 0.46rem));
+    text-align: center;
     font-size: var(--fs-2xs);
     font-weight: 600;
     line-height: 0.8rem;
-    color: var(--col-friday); /* vert foncé : lisible en petit corps */
+    color: var(--col-green); /* vert hégirien, comme le jour et le croissant */
     white-space: nowrap;
     letter-spacing: -0.02em;
 }
@@ -329,7 +333,7 @@
 }
 
 .event-line.eid-label {
-    color: var(--col-green-dark); /* 9 px sur le fond vert clair de la case : 6,4:1 */
+    color: var(--col-green);
 }
 
 /* Changement d'heure : beige doré foncé (le terracotta reste réservé aux jours fériés) */

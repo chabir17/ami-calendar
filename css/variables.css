@@ -5,6 +5,7 @@
     --brand: #c8a85a; /* surchargeable par client (clients/*.json) ; par défaut, l'or des ornements */
     --bg-holiday: #fbf6e7; /* fond des vacances scolaires et de la ligne du changement d'heure : doré pâle (écart de teinte au blanc ≈ celui du vert pâle, visible sur le copieur laser) */
     /* Noms de l'association : même famille dorée, deux tons contrastés (WCAG AA sur le bandeau) */
+    --border-eid: var(--col-hijri-soft); /* contour fin des cases de l'Aïd dans le calendrier des mois (vert de gris, 1 px) */
     --col-hijri-soft: #66917c; /* années hégiriennes de la couverture : vert de gris, 3,4:1 (grand texte uniquement), dans la famille des feuilles de la guirlande */
     --brand-text: color-mix(in srgb, var(--brand), black 40%); /* nom tamoul : 4.7:1 */
 

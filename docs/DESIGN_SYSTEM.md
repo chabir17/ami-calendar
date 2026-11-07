@@ -176,17 +176,17 @@ Fond `--bg-head-blue` (plein), texte blanc, hauteur `--band-h`. Mois grégorien 
 
 ### 6.2 Cases du calendrier
 
-| État                          | Rendu                                                                                                                                                                                     |
-| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Jour ordinaire                | Numéro en `--col-text-light` 600, 42 px ; jour hégirien vert en haut à droite, 12 px                                                                                                      |
-| Vendredi / dimanche           | Numéro en `--col-friday` / `--col-sunday` (gris teintés)                                                                                                                                  |
-| Jour férié                    | Numéro et libellé terracotta                                                                                                                                                              |
-| Aïd                           | Fond vert clair `--bg-green-friday` (prioritaire sur les vacances) ; numéro, jour hégirien et libellé en `--col-green-dark` (6,4:1) ; prioritaire sur le férié (libellé de l'Aïd en haut) |
-| Jour islamique particulier    | Date hégirienne en gras ; libellé vert pour ʿArafa et ʿĀshūrāʾ ; pour le début du Ramadan, gras seulement (le nom du mois est à côté du croissant)                                        |
-| Premier jour du mois hégirien | Croissant vert et nom du mois (`--col-friday`, 9 px) en haut à gauche ; l'horloge du changement d'heure passe sous le croissant                                                           |
-| Changement d'heure            | Horloge et libellé ambre doré (`--col-dst`)                                                                                                                                               |
-| Vacances scolaires            | Fond `--bg-holiday` ; légende avec pastille bordée de `--col-gold`                                                                                                                        |
-| Hors du mois                  | Case transparente (fond de la grille), sans numéro                                                                                                                                        |
+| État                          | Rendu                                                                                                                                                                     |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Jour ordinaire                | Numéro en `--col-text-light` 600, 42 px ; jour hégirien vert en haut à droite, 12 px                                                                                      |
+| Vendredi / dimanche           | Numéro en `--col-friday` / `--col-sunday` (gris teintés)                                                                                                                  |
+| Jour férié                    | Numéro et libellé terracotta                                                                                                                                              |
+| Aïd                           | Contour fin `--border-eid` (vert de gris, 1 px, coins arrondis), sans fond ; numéro, jour hégirien et libellé verts ; prioritaire sur le férié (libellé de l'Aïd en haut) |
+| Jour islamique particulier    | Date hégirienne en gras ; libellé vert pour ʿArafa et ʿĀshūrāʾ ; pour le début du Ramadan, gras seulement (le nom du mois est à côté du croissant)                        |
+| Premier jour du mois hégirien | Croissant vert et nom du mois (`--col-green`, 9 px, centré entre le croissant et le « 1 ») en haut à gauche ; l'horloge du changement d'heure passe sous le croissant     |
+| Changement d'heure            | Horloge et libellé ambre doré (`--col-dst`)                                                                                                                               |
+| Vacances scolaires            | Fond `--bg-holiday` ; légende avec pastille bordée de `--col-gold`                                                                                                        |
+| Hors du mois                  | Case transparente (fond de la grille), sans numéro                                                                                                                        |
 
 ### 6.3 Tableau des horaires
 
