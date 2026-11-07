@@ -107,7 +107,7 @@ Les deux composants héritent de `MonthElement`, qui observe `year` et `month` e
 - `is-friday` : fond `--bg-friday-light` (même vert que l'en-tête, texte normal) ; le dimanche est repéré par le filet de fin de semaine ;
 - `week-end` : filet de 1,5 px `--border-week` après chaque dimanche, sauf en fin de mois ;
 - `is-hijri-new` : 1er jour du mois hégirien, numéro en `--col-green-dark` dans la colonne hégirienne ;
-- `is-dst` : jour du changement d'heure, fond doré `--bg-dst` (plus soutenu que les vacances) (le filet de fin de semaine reste celui de `--border-week`), texte normal (les horaires sautent d'une heure).
+- `is-dst` : jour du changement d'heure, fond doré `--bg-dst` (plus soutenu que les vacances) (le filet de fin de semaine reste celui de `--border-week`), texte normal (les horaires sautent d'une heure) ; un filet ambre `--col-dst` de 1,5 px est tracé entre le samedi et le dimanche (`tr:has(+ tr.is-dst) td`, le changement a lieu dans la nuit).
 
 Le tableau occupe toute la hauteur : les mois de 28 à 31 jours tiennent sur la page.
 

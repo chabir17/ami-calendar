@@ -160,6 +160,11 @@ ami-prayer-table {
     background: var(--bg-dst);
 }
 
+/* Changement d'heure : filet ambre de 1,5 px entre le samedi et le dimanche (le changement a lieu dans la nuit) ; tracé sous la ligne du samedi, qui précède la ligne is-dst */
+.prayer-table tbody tr:has(+ tr.is-dst) td {
+    border-bottom: 1.5px solid var(--col-dst);
+}
+
 /* Fin de semaine : filet de 1,5 px après le dimanche, en vert moyen (repérage par blocs de 7 jours) */
 .prayer-table tbody tr.week-end td,
 .prayer-table tbody tr.is-dst.week-end td {
