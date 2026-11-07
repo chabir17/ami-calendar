@@ -122,6 +122,7 @@
     grid-template-columns: repeat(7, 1fr);
     gap: var(--grid-gap);
     background: var(--bg-grid);
+    box-shadow: inset 0 -1.5px 0 white; /* filet blanc de 1,5 px (comme le séparateur de semaine du tableau), sous les noms des jours */
     text-align: center;
     padding: 0 var(--grid-gap);
     font-size: var(--fs-sm);
@@ -345,6 +346,7 @@
 .legend-box {
     padding: var(--sp-1) var(--sp-2); /* bande compacte */
     background: var(--bg-grid); /* même fond que la ligne des jours et la grille : un seul bloc bleu-gris */
+    box-shadow: inset 0 1.5px 0 white; /* même filet blanc au-dessus de la légende */
     margin-top: auto;
     min-height: 24px; /* hauteur d'une ligne de légende, même vide : même grille chaque mois */
     display: flex;
