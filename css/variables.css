@@ -3,7 +3,7 @@
 
     /* Couleur thématique de l'année (Doré) */
     --brand: #c8a85a; /* surchargeable par client (clients/*.json) ; par défaut, l'or des ornements */
-    --bg-holiday: #fbf6e7; /* fond des vacances scolaires et de la ligne du changement d'heure : doré pâle (écart de teinte au blanc ≈ celui du vert pâle, visible sur le copieur laser) */
+    --bg-holiday: #f9f1da; /* fond des vacances scolaires : doré pâle, assombri après un test laser (ΔE ≈ 13 au blanc, 8,4 avant) */
     /* Noms de l'association : même famille dorée, deux tons contrastés (WCAG AA sur le bandeau) */
     --border-eid: var(--col-hijri-soft); /* contour fin des cases de l'Aïd dans le calendrier des mois (vert de gris, 1 px) */
     --col-hijri-soft: #66917c; /* années hégiriennes de la couverture : vert de gris, 3,4:1 (grand texte uniquement), dans la famille des feuilles de la guirlande */
@@ -23,6 +23,7 @@
     /* Rosace de la couverture (ornement uniquement) : jaune sable chaud, l'équivalent en jaune du vert sauge et du bleu ardoise, pour contraster avec le froid du bleu et du vert */
     --col-orn-sand: #f1e6c9; /* pétales extérieurs */
     --col-orn-ocre: #c4ad64; /* pétales du milieu : jaune terni, comme le vert sauge des années hégiriennes */
+    --col-orn-cream: #fbf6e7; /* petits pétales intérieurs : crème, distinct du sable (indépendant du fond des vacances) */
     --col-orn-bistre: #7a6633; /* étoile du cœur : jaune brun, comme l'ardoise est un bleu profond */
 
     /* Or (ornements, filets, motif du header) */
@@ -31,7 +32,7 @@
     --col-year-dark-bottom: #001a36; /* « 27 » de la couverture : bas du dégradé (bleu nuit) */
 
     /* Terracotta (horaires du jeûne : Imsak, iftār, Icha AMI) */
-    --col-terracotta: #a8461f; /* jours fériés (civil), jeûne (feuille Ramadan) : 5.9:1 sur blanc, 5.5:1 sur --bg-holiday */
+    --col-terracotta: #a8461f; /* jours fériés (civil), jeûne (feuille Ramadan) : 5.9:1 sur blanc, 5.2:1 sur --bg-holiday */
     --bg-terracotta-soft: #fbebe4; /* fond très clair des cellules du jeûne (feuille Ramadan) */
 
     /* Encre des chiffres et des textes sur fond foncé */
@@ -39,7 +40,7 @@
 
     /* Titres adoucis des en-têtes (page calme : la couleur pleine est réservée aux exceptions) */
     --col-title-blue: #46628a; /* arabe et tamoul de la ligne des jours, couverture */
-    --col-dst: #946700; /* changement d'heure : horloge, libellé et légende, ambre doré (5.0:1 sur blanc) */
+    --col-dst: #8c6200; /* changement d'heure : horloge, libellé, légende et filet du tableau, ambre doré (5.4:1 sur blanc, 4.8:1 sur --bg-holiday) */
     --bg-dst: #f8edc6; /* ligne du changement d'heure dans le tableau : doré plus soutenu que --bg-holiday, pour ne pas se confondre avec les vacances (ΔE ≈ 21 au blanc) */
 
     /* Vendredi et dimanche : numéros en gris teinté (vert sauge / terracotta), presque neutres :
@@ -73,7 +74,7 @@
     /* Gris pastel : cases hors du mois */
 
     /* Pastels opaques (rendu fiable sur laser de bureau, papier blanc) */
-    --bg-grid: #e5edf6; /* fond de la grille des jours et barre de légende : même intensité que --bg-green-head (ΔE ≈ 8,5 au blanc), suffisant pour des espaces de 4 px */
+    --bg-grid: #dde7f3; /* fond de la grille des jours, de la ligne des jours et de la légende : un cran plus soutenu que --bg-green-head, assombri après un test laser (ΔE ≈ 11 au blanc, 8,5 avant) ; texte --bg-head-blue : 6,7:1 */
     --bg-blue-head: #e5edf6; /* bandeau du mois, cadre du calendrier et pastilles d'icônes : bleu pâle (écart au blanc ≈ celui du vert pâle, visible sur le copieur laser) */
     --bg-blue-faint: #eef3f9; /* fonds neutres bleus de la feuille Ramadan (seul usage : indépendant du bandeau du mois du calendrier annuel) */
     --col-on-dark-soft: #dbe6f3; /* texte secondaire sur les en-têtes foncés (traductions) */
