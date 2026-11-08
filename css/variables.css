@@ -3,7 +3,7 @@
 
     /* Couleur thématique de l'année (Doré) */
     --brand: #c8a85a; /* surchargeable par client (clients/*.json) ; par défaut, l'or des ornements */
-    --bg-holiday: #f9f1da; /* fond des vacances scolaires : doré pâle, assombri après un test laser (ΔE ≈ 13 au blanc, 8,4 avant) */
+    --bg-holiday: #faf2dd; /* fond des vacances scolaires : doré pâle, assombri après un test laser (ΔE ≈ 12 au blanc, 8,4 avant) */
     /* Noms de l'association : même famille dorée, deux tons contrastés (WCAG AA sur le bandeau) */
     --border-eid: var(--col-hijri-soft); /* contour fin des cases de l'Aïd dans le calendrier des mois (vert de gris, 1 px) */
     --col-hijri-soft: #66917c; /* années hégiriennes de la couverture : vert de gris, 3,4:1 (grand texte uniquement), dans la famille des feuilles de la guirlande */
@@ -69,21 +69,21 @@
     --bg-cover-mid: #96acca; /* couverture : dégradé à 30 % de la hauteur */
     --bg-cover-low: #9cc6ca; /* couverture : passage bleu → vert (turquoise pâle), aux deux tiers de la hauteur ; interpolé en LCH pour éviter un gris */
     --bg-cover-bottom: var(--bg-green-friday); /* couverture : bas */
-    --bg-friday-light: #e7f2e8; /* vendredis du tableau annuel et encart du verset de la couverture : même vert que --bg-green-head (ΔE ≈ 8,5 au blanc, visible sur le copieur laser ; l'ancien #f1f8f2 était à 5) */
+    --bg-friday-light: #e9f3e9; /* vendredis du tableau annuel et encart du verset de la couverture : même vert que --bg-green-head (ΔE ≈ 8 au blanc, visible sur le copieur laser ; l'ancien #f1f8f2 était à 5) */
 
     /* Gris pastel : cases hors du mois */
 
     /* Pastels opaques (rendu fiable sur laser de bureau, papier blanc) */
-    --bg-grid: #dde7f3; /* fond de la grille des jours, de la ligne des jours et de la légende : un cran plus soutenu que --bg-green-head, assombri après un test laser (ΔE ≈ 11 au blanc, 8,5 avant) ; texte --bg-head-blue : 6,7:1 */
+    --bg-grid: #e1eaf4; /* fond de la grille des jours, de la ligne des jours et de la légende : un cran plus soutenu que --bg-green-head, assombri après un test laser (ΔE ≈ 10 au blanc, 8,5 avant) ; texte --bg-head-blue : 6,9:1 */
     --bg-blue-head: #e5edf6; /* bandeau du mois, cadre du calendrier et pastilles d'icônes : bleu pâle (écart au blanc ≈ celui du vert pâle, visible sur le copieur laser) */
     --bg-blue-faint: #eef3f9; /* fonds neutres bleus de la feuille Ramadan (seul usage : indépendant du bandeau du mois du calendrier annuel) */
     --col-on-dark-soft: #dbe6f3; /* texte secondaire sur les en-têtes foncés (traductions) */
     --bg-head-blue: #364f6f; /* bandeau du mois et cadre du calendrier : bleu ardoise plein (L* ≈ 33), texte blanc */
     --bg-head-green: #35553c; /* en-tête et cadre du tableau des horaires : vert sapin plein, même assombrissement que le bleu ardoise (L* ≈ 33), texte blanc */
-    --bg-green-head: #e7f2e8; /* en-tête et cadre du tableau des horaires : vert très pâle (teinte d'origine, comme les vendredis) */
+    --bg-green-head: #e9f3e9; /* en-tête et cadre du tableau des horaires : vert très pâle (teinte d'origine, comme les vendredis) */
     --bg-eid: #cfe7d2; /* couverture : pastille de l'Aïd, vert pastel (texte --col-friday : 4.8:1) */
     --bg-green-faint: #e7f2e8; /* vert très clair : traits verticaux du tableau, vendredis de la feuille Ramadan */
-    --bg-green-friday: #d6e9d9; /* colonnes de date du tableau, le vendredi : un cran au-dessus de --bg-green-head */
+    --bg-green-friday: #ddeddf; /* colonnes de date du tableau, le vendredi : un cran au-dessus de --bg-green-head */
     --border-blue: #c5d3e4; /* séparateurs de la couverture et du Ramadan : bleu doux */
     --border-week: #6f9a79; /* filet de 1,5 px après chaque dimanche dans le tableau des horaires : vert moyen, entre le vert de l'en-tête et les filets des jours */
     --border-green: #c3dec6; /* bordures du tableau : vert doux */
