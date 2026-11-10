@@ -67,7 +67,6 @@ Sans Node : `python3 -m http.server 3000` depuis la racine du projet.
     - fond doré pâle : vacances scolaires (zone C) ; fond gris : jours hors du mois ;
     - horloge beige doré : passage à l'heure d'été ou d'hiver (sous le croissant s'il y en a un).
 - **Légende** (bas de page) : nom des vacances scolaires du mois à gauche, passage à l'heure d'été / d'hiver à droite (près du dimanche).
-- **Citation du mois** (sous la légende) : un hadith des deux Sahih à appliquer (rappel d'une obligation ou d'une Sunna), en français ; la colonne du tableau de la prière concernée est soulignée. Choix par page dans `js/quotes.js`.
 - **Tableau des horaires** (en-tête vert forêt) : Fajr, Shuruq, Dhohr, Asr, Maghrib, Icha et jour hégirien ; colonnes de date en bandes vert pâle comme l'en-tête, vendredis surlignés (un cran plus soutenu dans ces colonnes), filet à chaque fin de semaine, « 01 » blanc dans une pastille vert sapin au 1er jour du mois hégirien, ligne sur fond beige doré le jour du changement d'heure.
 
 ## Développement

@@ -26,8 +26,7 @@ css/
   print.css           Règles @media print du calendrier annuel
   ramadan.css         Feuille du Ramadan (autonome : A4 portrait, version unique pour l'impression)
 js/
-  main.js             Calendrier annuel : orchestration des pages, couverture, header, bandeau du mois, légende, citation du mois
-  quotes.js           Citations du mois (hadiths) et règle de choix par page
+  main.js             Calendrier annuel : orchestration des pages, couverture, header, bandeau du mois, légende
   components.js       Web Components <ami-calendar-grid> et <ami-prayer-table>
   services.js         Logique métier : horaires, dates hégiriennes, jours particuliers, API, config client
   utils.js            Helpers DOM, coordonnées, dates (Paris, heure d'été), noms des mois hégiriens
@@ -77,7 +76,6 @@ Le bandeau du mois (bleu marine plein) et l'en-tête du tableau (vert forêt ple
     - `updatePageDOM` : noms, logo et coordonnées depuis la configuration client (sans configuration, le contenu statique du template reste affiché : il a la même structure) ;
     - `updateZoneTitles` : bandeau du mois (grégorien, hégirien sur un ou deux mois, traductions) ;
     - `updateLegend` : légende du bas (voir 3.5) ;
-    - `updateQuote` : citation du mois sous la légende (voir 3.5 bis) ;
     - attributs `year` / `month` des deux Web Components, qui se dessinent eux-mêmes.
 5. Après le chargement des polices : `fitMonthTitles` (bandeaux), `fitMiniHeads` et `drawCoverBackdrop` (couverture).
 6. `fetchExternalData(renderApp)` applique le cache local des jours fériés et vacances, interroge les API et **relance le rendu** si les données ont changé. Ensuite, `warnMissingData` affiche à l'écran (jamais à l'impression, `.data-warning`) un avertissement si les fériés ou les vacances de l'année manquent (hors connexion), ou si les vacances ne sont publiées que jusqu'à une date de l'année.
@@ -135,19 +133,11 @@ Le contenu statique du header dans `index.html` reprend exactement la structure 
 
 Pour chaque jour du mois : nom de la période de vacances (une fois par période, pastille `--bg-holiday` à contour doré) et passage à l'heure d'été / d'hiver (icône), triés par date, **sans date affichée** (les jours se repèrent dans la grille). Libellés en minuscules, `--fs-xs`, couleur `--col-text`. Les jours islamiques et les fériés n'y figurent pas : ils sont écrits dans les cases.
 
-La bande garde la même hauteur même vide (`min-height`), pour que la grille ait la même taille chaque mois.
+Chaque élément est une **pastille blanche** (coins `--radius-cell`, 3 px × 8 px de marge intérieure), comme une case de la grille : la bande a les mêmes 4 px (`--grid-gap`) à gauche, à droite et en bas, donc la pastille des vacances s'aligne sur le bord de la première colonne et celle du changement d'heure, poussée à droite, sur le bord de la colonne du dimanche. La bande garde la même hauteur même vide (`min-height`), pour que la grille ait la même taille chaque mois. Essayé avant : texte nu sur le fond de la bande, avec 8 px de marge latérale (pas aligné sur les cases).
 
-### 3.5 bis Citation du mois (`quotes.js`, `updateQuote`)
+### 3.5 bis Citation du mois (retirée)
 
-Un hadith par page, dans un encart blanc aux coins arrondis sous la légende (`.month-quote`, `--radius-cell`, même espace de 4 px que les cases), sur une ligne : texte français en italique, source en 9 px gris. Il sert de **rappel à appliquer** (obligation, pilier ou Sunna), pas de décoration.
-
-- **Sources** : Coran, al-Bukhārī et Muslim uniquement (hadiths authentiques). Aucun Tirmidhi, Abu Dawud ni Nasa'i. Les références ont été relues dans une base ouverte des deux Sahih (`hadith-api`, numérotation usuelle de Muslim), sunnah.com refusant l'accès automatisé. **Les traductions françaises restent à faire valider par les imams** (et le tamoul par un tamoulophone avant tout ajout).
-- **Règle de choix** (`pickQuote`, par ordre de priorité) : temps fort du mois hégirien sur la page (1er Ramaḍān, Aïd al-Fiṭr, 9 ou 10 Dhū al-Ḥijjah, 10 Muḥarram), puis mois hégirien dédié au 15 du mois grégorien (Dhū al-Qaʿdah : pèlerinage ; Shaʿbān : jeûne), puis rappel par mois grégorien (`DEFAULT_QUOTES` : janvier Fajr et Asr, juillet Jumuʿa, août jeûnes surérogatoires et Ḍuḥā, septembre prière à l'heure, octobre Icha en groupe, novembre rawātib du Fajr, décembre Asr…). En 2027 : janvier Shaʿbān, février Ramaḍān, mars Shawwāl, avril pèlerinage, mai dix jours, juin ʿĀshūrāʾ.
-- **Prière concernée** : le champ `prayers` souligne le nom de la colonne du tableau (`th[data-prayer]`, classe `.is-focus`, trait de 1,5 px). Pas de couleur : le soulignement évite d'attribuer un sens de plus à une teinte.
-- **Orthographe** : celle du reste de la page (Ramaḍān, Shawwāl, ʿĀshūrāʾ, Dhū l-Ḥijjah, Fajr, Asr, Icha comme les en-têtes du tableau).
-- **Langues** : français (italique) puis tamoul (gris) sur deux lignes centrées, source en petit à la fin de la ligne française. Le tamoul (`ta`) est facultatif et **à faire valider par un membre tamoulophone** ; l'encart fait environ 40 px de haut avec les deux lignes, repris sur les cinq rangées de cases (cellules de 90 × 84 px environ). **Pas d'arabe** : le texte arabe d'un hadith n'est pas imprimé, le calendrier pouvant être jeté (décision de l'utilisateur). Essayé : trois langues, arabe copié des recueils avec voyelles, en bleu ardoise.
-- **Contrôle** : `npm run check` vérifie 12 citations par année et qu'aucune ne déborde de son encart (il nomme celles qui débordent) ; il affiche la liste des sources par page. Les lignes ne passent pas à la ligne (`nowrap`) : raccourcir le tamoul plutôt que de réduire le corps.
-- **Essayé puis écarté** : encart sorti du bloc du calendrier, en bandeau sous les deux colonnes (le tableau perdrait 8 % de hauteur de ligne, alors qu'il est prioritaire) ; mise en page en trois colonnes avec la source symétrique à droite (réduisait trop la largeur du texte) ; citation dans la bande de la légende elle-même (se disputait la place avec les vacances et le changement d'heure) ; fond coloré ou ornements (encart blanc plus sobre) ; citation du mois hégirien au 15 seulement (la page de mars contient le Ramaḍān et l'Aïd, le 15 tombe en Shawwāl) ; un hadith spécifique par mois hégirien (n'existe pas pour Rabīʿ, Jumādā et Rajab) ; textes de Tirmidhi, Nasa'i et Abu Dawud.
+Un hadith par page sous la légende a été développé puis **retiré de la page le 08/11/2026** (à remettre si nécessaire). La liste complète (français, tamoul, sources), la règle de choix, les décisions de contenu et le commit à restaurer (`5748405`) sont archivés dans `docs/CITATIONS.md`.
 
 ### 3.6 Page de couverture (`#cover-template`, `cover.css`, `updateCover`)
 
