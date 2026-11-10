@@ -37,7 +37,7 @@ async function waitFor(url) {
 }
 
 // Ouvre la page en média « print », laisse le temps aux API, imprime en PDF et mesure la couverture.
-async function inspect(path, { cover = false } = {}) {
+async function inspect(path, { cover = false, quotes = false } = {}) {
     const tab = await (await fetch(`http://127.0.0.1:${CDP_PORT}/json/new?about:blank`, { method: 'PUT' })).json();
     const ws = new WebSocket(tab.webSocketDebuggerUrl);
     await new Promise((r) => (ws.onopen = r));
@@ -69,12 +69,19 @@ async function inspect(path, { cover = false } = {}) {
         measure = JSON.parse((await send('Runtime.evaluate', { expression, returnByValue: true })).result.result.value);
     }
 
+    // Citations du mois : une par page, sur une seule ligne (aucune ne déborde de son encart)
+    let quoteInfo = null;
+    if (quotes) {
+        const expression = `JSON.stringify([...document.querySelectorAll('.month-quote')].map(q => ({ source: q.querySelector('.month-quote-source')?.textContent, overflow: q.scrollWidth > q.clientWidth + 1 })))`;
+        quoteInfo = JSON.parse((await send('Runtime.evaluate', { expression, returnByValue: true })).result.result.value);
+    }
+
     const { result } = await send('Page.printToPDF', { preferCSSPageSize: true, printBackground: true });
     const pdf = join(tmp, `p${Date.now()}.pdf`);
     writeFileSync(pdf, Buffer.from(result.data, 'base64'));
     ws.close();
     const pages = Number(/Pages:\s+(\d+)/.exec(execFileSync('pdfinfo', [pdf]).toString())[1]);
-    return { pages, measure, pdf };
+    return { pages, measure, quoteInfo, pdf };
 }
 
 // Couverture d'encre approchée (CMJN naïf depuis le RGB, moyenne de la page, en %) : sert à comparer des versions entre elles,
@@ -131,8 +138,11 @@ try {
     await waitFor(`http://127.0.0.1:${CDP_PORT}/json/version`);
 
     for (const y of years) {
-        const { pages, pdf } = await inspect(`/?year=${y}&mosque=ami93120`);
+        const { pages, pdf, quoteInfo } = await inspect(`/?year=${y}&mosque=ami93120`, { quotes: true });
         report(pages === 13, `${y} : calendrier annuel`, `${pages} page(s), 13 attendues`);
+        const overflowing = quoteInfo.filter((q) => q.overflow || !q.source);
+        report(quoteInfo.length === 12 && !overflowing.length, `${y} : citations du mois`, `${quoteInfo.length} sur 12 pages, ${overflowing.length} qui débordent`);
+        console.log(`     ${quoteInfo.map((q) => q.source).join(' | ')}`);
         const ink = inkCoverage(pdf);
         console.log(
             `     encre (approx., CMJN cumulés) : moyenne ${(ink.reduce((a, b) => a + b, 0) / ink.length).toFixed(1)} %, page la plus chargée ${Math.max(...ink).toFixed(1)} %`

@@ -170,3 +170,10 @@ ami-prayer-table {
 .prayer-table tbody tr.is-dst.week-end td {
     border-bottom: 1.5px solid var(--border-week);
 }
+
+/* Prière concernée par la citation du mois : nom souligné dans l'en-tête de sa colonne */
+.th-fr.is-focus {
+    text-decoration: underline;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+}

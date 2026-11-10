@@ -1,5 +1,6 @@
 import { initAdhan, fetchExternalData, getHijriDateSafe, getDayInfo, fetchClientConfig, applyTheme, loadPrayerTimes } from './services.js';
 import { DOM, headerContactsHTML, dstIconHTML } from './utils.js';
+import { pickQuote } from './quotes.js';
 import './components.js';
 
 // ==========================================
@@ -107,6 +108,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Appliquer la logique calendrier
         updateZoneTitles(y, m, clone);
         updateLegend(y, m, clone);
+        updateQuote(y, m, clone);
 
         // Configurer les Web Components
         const calendar = clone.querySelector('ami-calendar-grid');
@@ -405,4 +407,19 @@ function updateZoneTitles(year, month, container) {
         hijriAr.replaceChildren(months, ' ', yearEl);
     }
     DOM.setText('.hijri-month-ta', hijriTaStr, container);
+}
+
+/**
+ * Citation du mois sous la légende : un hadith à appliquer (js/quotes.js) ; la colonne du tableau
+ * de la prière concernée est soulignée. Les lignes arabe et tamoul n'apparaissent que si le texte est fourni.
+ */
+function updateQuote(year, month, container) {
+    const box = container.querySelector('.month-quote');
+    const quote = pickQuote(year, month);
+    if (!box || !quote) return;
+    const line = (cls, text, lang) => (text ? `<p class="${cls}"${lang ? ` lang="${lang}"` : ''}>${text}</p>` : '');
+    box.innerHTML =
+        `<blockquote>${line('month-quote-fr', `« ${quote.fr} »`)}${line('month-quote-ar arabic', quote.ar, 'ar')}${line('month-quote-ta tamil', quote.ta, 'ta')}</blockquote>` +
+        `<figcaption class="month-quote-source">${quote.source}</figcaption>`;
+    for (const prayer of quote.prayers ?? []) container.querySelector(`th[data-prayer="${prayer}"] .th-fr`)?.classList.add('is-focus');
 }

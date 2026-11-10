@@ -189,17 +189,22 @@ Fond `--bg-head-blue` (plein), texte blanc, hauteur `--band-h`. Mois grégorien 
 | Vacances scolaires            | Fond `--bg-holiday` ; légende avec pastille bordée de `--col-gold`                                                                                                        |
 | Hors du mois                  | Case transparente (fond de la grille), sans numéro                                                                                                                        |
 
+### 6.2 bis Citation du mois
+
+Encart blanc sous la légende, coins `--radius-cell` et marge `--grid-gap` comme une case de plus : hadith en français italique `--fs-xs` (`--col-text`), source en `--fs-2xs` 600 `--col-text-soft`, sur une ligne. La colonne du tableau de la prière concernée a son nom souligné (1,5 px) ; aucune couleur n'est ajoutée. Détail et règle de choix : `docs/TECHNIQUE.md` §3.5 bis.
+
 ### 6.3 Tableau des horaires
 
 En-tête `--bg-head-green` (plein), titres en blanc, traductions en `--col-on-dark-soft` 500. Corps : horaires en `--col-ink` 600, 15 px, traits verticaux très légers, filets horizontaux `--border-green` de 1 px ; filet de 1,5 px `--border-week` après chaque dimanche. Les filets sont des `border` (le tableau est en `border-collapse: separate`, le dernier filet n'est pas rogné).
 
-| Élément            | Rendu                                                                                                                   |
-| ------------------ | ----------------------------------------------------------------------------------------------------------------------- |
-| Colonnes de date   | Bandes `--bg-green-head` : jour de la semaine en 14 px / 500, numéro grégorien en 600                                   |
-| Jour hégirien      | Noir ; le « 01 » du début de mois en blanc dans une pastille `--bg-head-green` (15 px de haut, ne grandit pas la ligne) |
-| Vendredi           | Ligne `--bg-friday-light` ; dans les colonnes de date, `--bg-green-friday`                                              |
-| Fin de semaine     | Filet de 1,5 px `--border-week` (vert moyen) après le dimanche                                                          |
-| Changement d'heure | Ligne entière (colonnes de date comprises) en `--bg-dst`, texte normal                                                  |
+| Élément               | Rendu                                                                                                                   |
+| --------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| Colonnes de date      | Bandes `--bg-green-head` : jour de la semaine en 14 px / 500, numéro grégorien en 600                                   |
+| Jour hégirien         | Noir ; le « 01 » du début de mois en blanc dans une pastille `--bg-head-green` (15 px de haut, ne grandit pas la ligne) |
+| Vendredi              | Ligne `--bg-friday-light` ; dans les colonnes de date, `--bg-green-friday`                                              |
+| Prière de la citation | Nom de la colonne souligné (1,5 px) dans l'en-tête                                                                      |
+| Fin de semaine        | Filet de 1,5 px `--border-week` (vert moyen) après le dimanche                                                          |
+| Changement d'heure    | Ligne entière (colonnes de date comprises) en `--bg-dst`, texte normal                                                  |
 
 ### 6.4 Header
 
