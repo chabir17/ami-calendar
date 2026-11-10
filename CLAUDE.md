@@ -20,7 +20,7 @@ Calendrier imprimable trilingue (FR / AR / TA) de l'association AMI (La Courneuv
 
 ## Règles de contenu (décidées par l'utilisateur)
 
-- Aucun texte coranique en arabe sur la page (le calendrier peut être jeté) ; traductions et ponctuation acceptées.
+- Aucun texte coranique ni hadith en arabe sur la page (le calendrier peut être jeté) ; traductions et ponctuation acceptées. Seul le nom de la sourate (« سورة النساء », sans voyelles) figure sur la couverture, comme référence du verset.
 - Une icône = un seul sens, ne jamais la réutiliser pour autre chose.
 - Style épuré : peu de bordures, couleurs douces, lisibilité avant tout ; filets fins continus.
 - Dates hégiriennes : référence Umm al-Qura, **sans nommer « Umm al-Qura » sur la page** (« Dates hégiriennes indicatives »). Corrections d'un jour : `HIJRI_OFFSETS` (`js/services.js`). Dates validées chaque année par les imams.

@@ -141,7 +141,11 @@ try {
         const { pages, pdf, quoteInfo } = await inspect(`/?year=${y}&mosque=ami93120`, { quotes: true });
         report(pages === 13, `${y} : calendrier annuel`, `${pages} page(s), 13 attendues`);
         const overflowing = quoteInfo.filter((q) => q.overflow || !q.source);
-        report(quoteInfo.length === 12 && !overflowing.length, `${y} : citations du mois`, `${quoteInfo.length} sur 12 pages, ${overflowing.length} qui débordent`);
+        report(
+            quoteInfo.length === 12 && !overflowing.length,
+            `${y} : citations du mois`,
+            `${quoteInfo.length} sur 12 pages, ${overflowing.length} qui débordent${overflowing.length ? ` (${overflowing.map((q) => q.source).join(' ; ')})` : ''}`
+        );
         console.log(`     ${quoteInfo.map((q) => q.source).join(' | ')}`);
         const ink = inkCoverage(pdf);
         console.log(

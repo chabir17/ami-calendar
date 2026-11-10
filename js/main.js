@@ -411,15 +411,13 @@ function updateZoneTitles(year, month, container) {
 
 /**
  * Citation du mois sous la légende : un hadith à appliquer (js/quotes.js) ; la colonne du tableau
- * de la prière concernée est soulignée. Les lignes arabe et tamoul n'apparaissent que si le texte est fourni.
+ * de la prière concernée est soulignée. La ligne tamoule n'apparaît que si le texte est fourni.
  */
 function updateQuote(year, month, container) {
     const box = container.querySelector('.month-quote');
     const quote = pickQuote(year, month);
     if (!box || !quote) return;
     const line = (cls, text, lang) => (text ? `<p class="${cls}"${lang ? ` lang="${lang}"` : ''}>${text}</p>` : '');
-    box.innerHTML =
-        `<blockquote>${line('month-quote-fr', `« ${quote.fr} »`)}${line('month-quote-ar arabic', quote.ar, 'ar')}${line('month-quote-ta tamil', quote.ta, 'ta')}</blockquote>` +
-        `<figcaption class="month-quote-source">${quote.source}</figcaption>`;
+    box.innerHTML = `<blockquote>${line('month-quote-fr', `« ${quote.fr} » <cite class="month-quote-source">${quote.source}</cite>`)}${line('month-quote-ta tamil', quote.ta, 'ta')}</blockquote>`;
     for (const prayer of quote.prayers ?? []) container.querySelector(`th[data-prayer="${prayer}"] .th-fr`)?.classList.add('is-focus');
 }

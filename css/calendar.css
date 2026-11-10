@@ -391,42 +391,46 @@
     border-color: var(--col-gold); /* fond très pâle : contour doré pour rester visible */
 }
 
-/* --- CITATION DU MOIS (sous la légende) : encart blanc aux coins arrondis, comme une case de plus, sur le fond de la grille --- */
+/* --- CITATION DU MOIS (sous la légende) : encart blanc aux coins arrondis, comme une case de plus sur le fond de la grille ---
+   Français en italique (texte principal) suivi de la source en petit, tamoul en gris dessous ; deux lignes centrées (pas d'arabe : voir docs/TECHNIQUE.md §3.5 bis). */
 .month-quote {
     margin: 0 var(--grid-gap) var(--grid-gap);
-    padding: var(--sp-1) var(--sp-2);
+    padding: var(--sp-2) var(--sp-3);
     border-radius: var(--radius-cell);
     background: white;
-    display: flex;
-    align-items: baseline;
-    justify-content: center;
-    gap: var(--sp-2);
-    text-align: center;
-    font-size: var(--fs-xs);
-    line-height: 1.3;
-    color: var(--col-text);
 }
 
 .month-quote blockquote {
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.125rem;
+    text-align: center;
+}
+
+.month-quote blockquote p {
+    margin: 0;
+    white-space: nowrap;
 }
 
 .month-quote-fr {
-    margin: 0;
+    font-size: var(--fs-xs);
+    line-height: 1.3;
     font-style: italic;
-    white-space: nowrap;
+    color: var(--col-text);
 }
 
-/* Lignes facultatives (hadith en arabe, traduction tamoule) : même corps, sans italique */
-.month-quote-ar,
 .month-quote-ta {
-    margin: 0;
-    white-space: nowrap;
+    font-size: var(--fs-xs);
+    line-height: 1.4;
+    color: var(--col-text-soft);
 }
 
 .month-quote-source {
-    color: var(--col-text-soft);
+    margin-left: var(--sp-1);
     font-size: var(--fs-2xs);
+    font-style: normal;
     font-weight: 600;
-    white-space: nowrap;
+    color: var(--col-text-soft);
 }

@@ -191,7 +191,7 @@ Fond `--bg-head-blue` (plein), texte blanc, hauteur `--band-h`. Mois grégorien 
 
 ### 6.2 bis Citation du mois
 
-Encart blanc sous la légende, coins `--radius-cell` et marge `--grid-gap` comme une case de plus : hadith en français italique `--fs-xs` (`--col-text`), source en `--fs-2xs` 600 `--col-text-soft`, sur une ligne. La colonne du tableau de la prière concernée a son nom souligné (1,5 px) ; aucune couleur n'est ajoutée. Détail et règle de choix : `docs/TECHNIQUE.md` §3.5 bis.
+Encart blanc sous la légende, coins `--radius-cell` et marge `--grid-gap` comme une case de plus : hadith en français italique `--fs-xs` (`--col-text`) suivi de la source en `--fs-2xs` 600 `--col-text-soft`, puis la traduction tamoule `--fs-xs` `--col-text-soft` dessous, centrées. Pas de texte arabe. La colonne du tableau de la prière concernée a son nom souligné (1,5 px) ; aucune couleur n'est ajoutée. Détail et règle de choix : `docs/TECHNIQUE.md` §3.5 bis.
 
 ### 6.3 Tableau des horaires
 
