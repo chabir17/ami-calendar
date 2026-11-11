@@ -492,10 +492,6 @@
     margin: 0;
 }
 
-.lg-moon {
-    color: var(--col-green); /* comme le croissant dans la case */
-}
-
 .lg-dst {
     color: var(--col-dst); /* comme l'horloge dans la case */
 }
