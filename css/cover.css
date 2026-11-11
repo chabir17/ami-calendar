@@ -658,7 +658,7 @@
 .mini-grid .dst-ring {
     position: absolute;
     z-index: -1;
-    width: 24px; /* plus grand que la pastille de l'Aïd : la flèche dépasse du numéro */
+    width: 24px; /* anneau fin (≈ 1 px) de 21 px de diamètre : ne touche pas les chiffres */
     height: 24px;
     color: var(--col-dst);
 }
