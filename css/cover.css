@@ -468,14 +468,6 @@
     border-radius: 50%;
 }
 
-.lg-friday {
-    background: var(--col-friday);
-}
-
-.lg-sunday {
-    background: var(--col-sunday);
-}
-
 .lg-public {
     background: var(--col-terracotta);
 }
@@ -492,7 +484,6 @@
     height: 0.6875rem;
     border-radius: 0.1875rem;
     background: var(--bg-holiday);
-    border: 1px solid var(--col-gold); /* fond très pâle : contour doré pour rester visible */
 }
 
 .cover-legend .icon {
