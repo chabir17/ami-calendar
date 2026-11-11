@@ -1,5 +1,5 @@
 import { initAdhan, fetchExternalData, getHijriDateSafe, getDayInfo, fetchClientConfig, applyTheme, loadPrayerTimes } from './services.js';
-import { DOM, headerContactsHTML } from './utils.js';
+import { DATE_UTILS, DOM, headerContactsHTML } from './utils.js';
 import './components.js';
 
 // ==========================================
@@ -226,6 +226,7 @@ function updateCover(year, container) {
             if (info.isHoliday) cls.push('is-holiday');
             if (info.isEid) cls.push('is-eid');
             if (info.isPublicHoliday) cls.push('is-public');
+            if (DATE_UTILS.dstChange(date)) cls.push('is-dst');
             cells[(offset + d - 1) % 35] = `<span class="${cls.join(' ')}">${d}</span>`;
         }
         months.push(`<div class="mini-month">

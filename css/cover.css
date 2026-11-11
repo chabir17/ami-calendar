@@ -647,6 +647,25 @@
     background: var(--bg-eid);
 }
 
+/* Changement d'heure (dimanches de mars et d'octobre) : chiffre ambre en gras dans un anneau fin, comme l'horloge de la légende */
+.mini-grid span.is-dst {
+    position: relative;
+    isolation: isolate;
+    font-weight: 600;
+    color: var(--col-dst);
+}
+
+.mini-grid .is-dst::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    width: 19px;
+    height: 19px;
+    border: 1px solid var(--col-dst);
+    border-radius: 50%;
+    box-sizing: border-box;
+}
+
 /* --- VERSET (traductions seulement), en deux lignes : encart vert très pâle sous les 12 mois, présenté comme dans un
    Coran imprimé. Centré dans l'encart, entre deux grandes parenthèses ornées ﴾ ﴿ : le français (gris foncé italique)
    au-dessus du tamoul (gris moyen), puis le numéro dans le symbole de fin de verset ۝. Calée à droite, la référence en
