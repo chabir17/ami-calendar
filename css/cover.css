@@ -438,7 +438,7 @@
 .cover-months {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr)); /* largeurs égales, quel que soit l'en-tête */
-    gap: 4mm; /* même écart entre les mois, horizontalement et verticalement */
+    gap: 3mm; /* même écart entre les mois, horizontalement et verticalement */
 }
 
 /* Légende discrète sous les mois : une seule ligne en gris doux, répartie sur la largeur des grilles (même marge intérieure de 2 mm) ;
@@ -579,6 +579,7 @@
     isolation: isolate; /* fond des vacances (z-index -1) derrière les chiffres, sans passer sous la page */
     display: grid;
     grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: 22px; /* rangée des initiales un peu plus haute, lettres en haut : léger écart avant la première semaine */
     grid-auto-rows: 20px; /* sans interligne : fonds des vacances continus */
     padding: 1px 0 3px;
     font-size: var(--fs-sm);
@@ -594,6 +595,7 @@
 
 /* Initiales des jours, puis vendredis et dimanches en gris teinté, comme dans les pages des mois */
 .mini-grid b {
+    align-items: flex-start;
     font-size: var(--fs-xs);
     font-weight: 600;
     color: var(--col-title-blue);
