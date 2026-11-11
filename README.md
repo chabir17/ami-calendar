@@ -66,7 +66,7 @@ Sans Node : `python3 -m http.server 3000` depuis la racine du projet.
     - libellés verts : jour de ʿArafa, ʿĀshūrāʾ ;
     - fond doré pâle : vacances scolaires (zone C) ; fond gris : jours hors du mois ;
     - horloge beige doré : passage à l'heure d'été ou d'hiver (sous le croissant s'il y en a un).
-- **Légende** (couverture) : une ligne discrète sous les mois qui explique les marques (jour férié, Aïd, vacances scolaires, début du mois hégirien, heure d'été, heure d'hiver) ; les pages des mois n'en ont plus.
+- **Légende** (couverture) : une ligne discrète sous les mois qui explique les marques (jour férié, Aïd, vacances scolaires (zone C), début du mois hégirien, passage à l'heure d'été et à l'heure d'hiver) ; les pages des mois n'en ont plus.
 - **Tableau des horaires** (en-tête vert forêt) : Fajr, Shuruq, Dhohr, Asr, Maghrib, Icha et jour hégirien ; colonnes de date en bandes vert pâle comme l'en-tête, vendredis surlignés (un cran plus soutenu dans ces colonnes), filet à chaque fin de semaine, « 01 » blanc dans une pastille vert sapin au 1er jour du mois hégirien, ligne sur fond beige doré le jour du changement d'heure.
 
 ## Développement
