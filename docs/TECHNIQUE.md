@@ -20,13 +20,13 @@ css/
   fonts.css           @font-face des polices locales
   base.css            Reset, page A4 paysage, grille principale, .icon
   header.css          Header de l'identité (calendrier annuel)
-  calendar.css        Bandeau du mois, grille des jours, légende
+  calendar.css        Bandeau du mois, grille des jours
   cover.css           Page de couverture (calendrier annuel)
   table.css           Tableau des horaires (calendrier annuel)
   print.css           Règles @media print du calendrier annuel
   ramadan.css         Feuille du Ramadan (autonome : A4 portrait, version unique pour l'impression)
 js/
-  main.js             Calendrier annuel : orchestration des pages, couverture, header, bandeau du mois, légende
+  main.js             Calendrier annuel : orchestration des pages, couverture, header, bandeau du mois
   components.js       Web Components <ami-calendar-grid> et <ami-prayer-table>
   services.js         Logique métier : horaires, dates hégiriennes, jours particuliers, API, config client
   utils.js            Helpers DOM, coordonnées, dates (Paris, heure d'été), noms des mois hégiriens
@@ -55,16 +55,16 @@ docs/
 Chaque mois est un clone de `#page-template` : une page A4 paysage (`--page-pad` 5 mm de marge, `--binding-zone` 10 mm en haut pour la spirale) composée de trois blocs séparés par `--block-gap` :
 
 1. **Header de l'identité** (`.header-fixed`, pleine largeur, `--header-h` = 20 mm) ;
-2. à gauche, **bandeau du mois** + **grille des jours** + **légende** ;
+2. à gauche, **bandeau du mois** + **grille des jours** (la légende est sur la couverture) ;
 3. à droite, **tableau des horaires**.
 
 Le bandeau du mois (bleu marine plein) et l'en-tête du tableau (vert forêt plein, même luminosité) ont la même hauteur `--band-h` : leurs bas sont alignés.
 
 - **Bandeau du mois** : les deux noms de mois sont les titres de la page, aux deux extrémités (blancs sur le bandeau plein `--bg-head-blue` ; grégorien en `--fs-month` 24 px, arabe en `--fs-xl` 22 px, l'écriture arabe étant plus haute à taille égale) ; années de même taille, en graisse normale ; traductions (tamoul, translittération) en `--col-on-dark-soft`.
-- **En-tête des jours, grille et légende** : un seul fond `--bg-grid` (`#e1eaf4`, un cran plus soutenu que `--bg-green-head`, assombri après un test laser) pour les trois, sous le bandeau plein du mois ; la ligne des jours a les mêmes marges et espaces (`--grid-gap`) que la grille pour que chaque nom soit centré sur sa colonne de cases ; textes en `--bg-head-blue` (français en capitales espacées, arabe et tamoul en graisse normale) ; les 7 jours dans les mêmes couleurs (le vendredi et le dimanche sont signalés par les numéros des cases) ; ni séparateurs ni filets. Essayés puis écartés : filets blancs, bleus ou de 0,5 / 1 / 1,5 px entre les barres et la grille, barres bleu soutenu (`#d3dfee`) ou blanc bleuté (`#f5f8fc`, écart trop faible au laser), fonds de barres et de grille inversés, légende ardoise à texte blanc (trop présente), blocs arrondis par jour, blocs ou bande marine (+5 points d'encre), bande plus soutenue (`#cddbed`), bandeau du mois blanc (rompt la symétrie avec le tableau), pastilles de contexte dans les cases (moins de contraste).
+- **En-tête des jours et grille** : un seul fond `--bg-grid` (`#e1eaf4`, un cran plus soutenu que `--bg-green-head`, assombri après un test laser) pour les deux, sous le bandeau plein du mois ; la ligne des jours a les mêmes marges et espaces (`--grid-gap`) que la grille pour que chaque nom soit centré sur sa colonne de cases ; textes en `--bg-head-blue` (français en capitales espacées, arabe et tamoul en graisse normale) ; les 7 jours dans les mêmes couleurs (le vendredi et le dimanche sont signalés par les numéros des cases) ; ni séparateurs ni filets. Essayés puis écartés : filets blancs, bleus ou de 0,5 / 1 / 1,5 px entre les barres et la grille, barres bleu soutenu (`#d3dfee`) ou blanc bleuté (`#f5f8fc`, écart trop faible au laser), fonds de barres et de grille inversés, légende ardoise à texte blanc (trop présente), blocs arrondis par jour, blocs ou bande marine (+5 points d'encre), bande plus soutenue (`#cddbed`), bandeau du mois blanc (rompt la symétrie avec le tableau), pastilles de contexte dans les cases (moins de contraste).
 - **Numéros des jours** : gris neutre des textes courants `--col-text-light`, identique du lundi au samedi ; vendredis et dimanches en gris légèrement teinté (vert sauge `--col-friday`, terracotta `--col-sunday`) : seuls les jours fériés et l'Aïd sont en couleur pleine.
 - **En-tête du tableau** : fond vert forêt plein `--bg-head-green`, texte blanc : noms des prières en titre (`--fs-xs` pour garder des colonnes de même largeur), arabe et tamoul en blanc atténué `--col-on-dark-soft`, séparateurs blancs. **Première colonne** : elle rappelle le mois et l'année au lieu de « Date » (`.th-month-fr`, `.th-year`, `.th-month-ta`, remplis par `updateZoneTitles` comme le bandeau voisin) : mois en français (titre), année (sur la ligne de l'arabe des autres colonnes, en blanc atténué, **dans la police arabe** : avec la police latine, l'interligne plus court de la ligne du milieu décalait le mois de 0,8 mm vers le bas et le tamoul vers le haut par rapport aux autres colonnes ; mesuré dans le PDF, les lignes sont maintenant au même niveau), mois en tamoul. Pas de nom de mois en arabe : il varie selon les pays (« يناير », « كانون الثاني », « جانفي »). Essayés : « Date / التاريخ / தேதி » (avant), icône de calendrier (jamais retenue : l'utilisateur n'aimait pas l'icône), « MARS 27 », « 03 / 2027 ». La colonne hégirienne garde le croissant seul : elle ne contient que deux chiffres.
-- **Grille des jours** : fond `--bg-grid` visible dans des espaces `--grid-gap` (0,25 rem, 4 px) entre des cases blanches aux coins arrondis `--radius-cell` (8 px), sans filets ; les cases hors du mois sont transparentes. Aucun contour autour des deux blocs : l'en-tête plein dessine le haut, la légende, sur le même fond, ferme le bas.
+- **Grille des jours** : fond `--bg-grid` visible dans des espaces `--grid-gap` (0,25 rem, 4 px) entre des cases blanches aux coins arrondis `--radius-cell` (8 px), sans filets ; les cases hors du mois sont transparentes. Aucun contour autour des deux blocs : l'en-tête plein dessine le haut, la grille, sur le même fond, ferme le bas.
 - **Bandeau trop long** (deux mois hégiriens aux noms longs) : quand deux mois se partagent le bandeau, les mois jumeaux sont abrégés en tamoul et en translittération (`Rabīʿ I / Rabīʿ II`, `Jumādā I / Jumādā II`, champs `short` et `taShort` de `HIJRI_MONTHS`), ce qui garde la même taille de texte chaque mois (vérifié de 2025 à 2030). En dernier recours, `fitMonthTitles` ajoute `is-compact`, puis `is-compact-2` à `is-compact-4` (traductions en 12 px puis 10 px, année grégorienne, arabe), qui réduit le côté hégirien au lieu de le couper.
 
 ### 3.2 Cycle de rendu (`main.js`)
@@ -75,7 +75,6 @@ Le bandeau du mois (bleu marine plein) et l'en-tête du tableau (vert forêt ple
 4. `renderApp()` ajoute la couverture (`createCoverNode`, voir 3.6), clone le template pour chaque mois, puis :
     - `updatePageDOM` : noms, logo et coordonnées depuis la configuration client (sans configuration, le contenu statique du template reste affiché : il a la même structure) ;
     - `updateZoneTitles` : bandeau du mois (grégorien, hégirien sur un ou deux mois, traductions) ;
-    - `updateLegend` : légende du bas (voir 3.5) ;
     - attributs `year` / `month` des deux Web Components, qui se dessinent eux-mêmes.
 5. Après le chargement des polices : `fitMonthTitles` (bandeaux), `fitMiniHeads` et `drawCoverBackdrop` (couverture).
 6. `fetchExternalData(renderApp)` applique le cache local des jours fériés et vacances, interroge les API et **relance le rendu** si les données ont changé. Ensuite, `warnMissingData` affiche à l'écran (jamais à l'impression, `.data-warning`) un avertissement si les fériés ou les vacances de l'année manquent (hors connexion), ou si les vacances ne sont publiées que jusqu'à une date de l'année.
@@ -129,11 +128,11 @@ Le tableau occupe toute la hauteur : les mois de 28 à 31 jours tiennent sur la 
 
 Le contenu statique du header dans `index.html` reprend exactement la structure générée par `headerContactsHTML` : toute modification de l'une doit être reportée dans l'autre.
 
-### 3.5 Légende (`updateLegend`)
+### 3.5 Légende (sur la couverture)
 
-Pour chaque jour du mois : nom de la période de vacances (une fois par période, pastille `--bg-holiday` à contour doré) et passage à l'heure d'été / d'hiver (icône), triés par date, **sans date affichée** (les jours se repèrent dans la grille). Libellés en minuscules, `--fs-xs`, couleur `--col-text`. Les jours islamiques et les fériés n'y figurent pas : ils sont écrits dans les cases.
+Les pages des mois n'ont **plus de légende** (retirée le 11/11/2026) : la grille occupe toute la hauteur, les cases gagnent environ 7 px, et les marques se lisent d'elles-mêmes dans les cases (libellé « Heure d'hiver −1 h », jour férié, Aïd, croissant avec le nom du mois). **Le nom des périodes de vacances n'est donc plus écrit** sur les pages des mois (le fond beige signale seulement la période).
 
-Chaque élément est une **pastille blanche** (coins `--radius-cell`, 3 px × 8 px de marge intérieure), comme une case de la grille : la bande a les mêmes 4 px (`--grid-gap`) à gauche, à droite et en bas, donc la pastille des vacances s'aligne sur le bord de la première colonne et celle du changement d'heure, poussée à droite, sur le bord de la colonne du dimanche. La bande garde la même hauteur même vide (`min-height`), pour que la grille ait la même taille chaque mois. Essayé avant : texte nu sur le fond de la bande, avec 8 px de marge latérale (pas aligné sur les cases).
+Une **légende discrète** est sur la couverture, sur une ligne en gris doux sous les mois, avant le verset (`.cover-legend`, `--fs-xs`, répartie sur la largeur des grilles avec la même marge intérieure de 2 mm) : vendredi, dimanche, jour férié (points aux couleurs des numéros), Aïd (disque `--bg-eid`), vacances scolaires (pastille `--bg-holiday` à contour doré), début du mois hégirien (croissant vert) et changement d'heure (les deux horloges, ambre). Les symboles sont ceux des cases. Texte en français seul : un ajout en tamoul devrait être validé par un tamoulophone. Essayé avant : bande ardoise pleine largeur (+2,4 points d'encre, trop présente), pastilles blanches, teintées du sens, bleu plus soutenu, texte nu sur la bande bleue.
 
 ### 3.5 bis Citation du mois (retirée)
 
@@ -174,7 +173,7 @@ Première page du PDF, avec une mise en page propre (ni header, ni grille des mo
     - Vendredis et dimanches en gris teinté (`--col-friday`, `--col-sunday`), fériés en terracotta gras.
     - **Vacances** : fond `--bg-holiday` dessiné en SVG derrière les chiffres par `drawCoverBackdrop` : une pastille (`<rect>`, rayon 4 px) par suite de jours consécutifs d'une même semaine, avec un retrait de 1 px sur les côtés et de 2 px en haut et en bas (donc 4 px entre deux semaines : à 2 px, l’espace vertical ne se voyait pas) pour que les quatre angles arrondis restent visibles, même sur plusieurs semaines. Avant : cases jointives et angles droits à l'intérieur de la période, jugés moins lisibles (demande de l'utilisateur, qui acceptait d'y renoncer si le rendu ne convenait pas).
     - **Aïd** : pastille ronde de 19 px (`--bg-eid`) en pseudo-élément, chiffre en gras `--col-friday` ; prioritaire sur un jour férié.
-    - Pas de légende : les marques se comprennent d'elles-mêmes (à revoir après les retours de l'impression).
+    - Légende discrète sur une ligne sous les mois (voir 3.5).
     - `fitMiniHeads` réduit l'arabe puis resserre le nom français si un en-tête est trop large (aucun cas de 2025 à 2030).
 - **Verts de la couverture**, réduits à trois : `--col-friday` pour tous les textes et ornements verts (vendredis, chiffres de l'Aïd, ﴾ ﴿, ۝, références du verset), `--bg-eid` (pastille de l'Aïd) et `--bg-friday-light` (encart du verset) pour les fonds.
 - **Verset** (An-Nisāʾ, 4:103), en deux lignes, présenté comme dans un Coran imprimé : encart vert très pâle (`--bg-friday-light`) sous les mois, aligné sur leurs grilles, son bas sur celui de la colonne. Centré dans l'encart (grille `1fr auto 1fr`), entre deux grandes parenthèses ornées ﴾ ﴿ : le français en gris foncé italique au-dessus du tamoul en gris moyen, puis le numéro dans le symbole de fin de verset ۝ (U+06DD, chiffres ١٠٣ inscrits dans le cercle par Amiri). Calée à droite, la référence sourate:verset, chacune en face de sa langue : « Coran 4:103 » et « குர்ஆன் 4:103 », en vert discret. Calé à gauche, dans la colonne libre, le **nom de la sourate en arabe** (« سورة النساء », sans voyelles, `.cover-verse-sura`, Amiri 16,5 px, vert `--col-friday`) : c'est un titre qui donne la référence, pas du texte du verset. **Traductions seulement** : le texte arabe du Coran n'est pas imprimé sur un support destiné à être jeté.
@@ -209,7 +208,7 @@ Première page du PDF, avec une mise en page propre (ni header, ni grille des mo
 
 | Information           | Règle                                                                                  | Rendu                                                                                                                                                                               |
 | --------------------- | -------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Vacances scolaires    | période de `CONFIG.schoolHolidays` contenant le jour                                   | fond doré pâle, nom dans la légende                                                                                                                                                 |
+| Vacances scolaires    | période de `CONFIG.schoolHolidays` contenant le jour                                   | fond doré pâle (période seulement, le nom n'est plus écrit)                                                                                                                         |
 | Jour férié            | `CONFIG.publicHolidays['AAAA-MM-JJ']`, libellé raccourci par `HOLIDAY_NAMES`           | numéro terracotta, libellé                                                                                                                                                          |
 | Changement d'heure    | `DATE_UTILS.dstChange` : derniers dimanches de mars (`summer`) et d'octobre (`winter`) | icône et libellé ambre doré (`--col-dst`), légende                                                                                                                                  |
 | Nouveau mois hégirien | jour hégirien = 1                                                                      | croissant et nom du mois                                                                                                                                                            |

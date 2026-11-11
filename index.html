@@ -170,8 +170,6 @@
                             </div>
                         </div>
                         <ami-calendar-grid></ami-calendar-grid>
-                        <!-- Bande du bas : légende des événements du mois (jours vertueux, vacances, changement d'heure), remplie par js/main.js -->
-                        <div class="legend-box"></div>
                     </section>
 
                     <!-- SECTION DROITE : Tableau des Horaires -->
@@ -447,6 +445,21 @@
                             <svg class="cover-rosette cover-rosette-end" viewBox="30 24 52 52" aria-hidden="true"><use href="#cover-wing-art" /></svg>
                         </header>
                         <div class="cover-months"></div>
+                        <!-- Légende discrète des marques du calendrier, sous les mois (jours colorés, Aïd, vacances) et des pages des mois (croissant, changement d'heure) : mêmes symboles que dans les cases -->
+                        <ul class="cover-legend" aria-label="Légende">
+                            <li><span class="lg-dot lg-friday"></span>Vendredi</li>
+                            <li><span class="lg-dot lg-sunday"></span>Dimanche</li>
+                            <li><span class="lg-dot lg-public"></span>Jour férié</li>
+                            <li><span class="lg-eid"></span>Aïd</li>
+                            <li><span class="lg-holiday"></span>Vacances scolaires</li>
+                            <li>
+                                <svg class="icon lg-moon"><use href="assets/icons/icon-moon.svg#icon"></use></svg>Début du mois hégirien
+                            </li>
+                            <li>
+                                <svg class="icon lg-dst"><use href="assets/icons/icon-dst-forward.svg#icon"></use></svg
+                                ><svg class="icon lg-dst"><use href="assets/icons/icon-dst-back.svg#icon"></use></svg>Changement d'heure
+                            </li>
+                        </ul>
                         <!-- Verset sur la prière à son heure (An-Nisāʾ, 4:103), sous les mois (deux lignes : français et tamoul, puis le numéro dans le symbole de fin de verset, entre deux grandes parenthèses ornées ; à gauche, le nom de la sourate en arabe (titre, pas texte du verset) ; à droite, la référence en français et en tamoul), en traduction seulement : le texte
                              arabe du Coran n'est pas imprimé sur un support destiné à être jeté -->
                         <figure class="cover-verse">

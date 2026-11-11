@@ -1,5 +1,5 @@
 import { initAdhan, fetchExternalData, getHijriDateSafe, getDayInfo, fetchClientConfig, applyTheme, loadPrayerTimes } from './services.js';
-import { DOM, headerContactsHTML, dstIconHTML } from './utils.js';
+import { DOM, headerContactsHTML } from './utils.js';
 import './components.js';
 
 // ==========================================
@@ -106,7 +106,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         // Appliquer la logique calendrier
         updateZoneTitles(y, m, clone);
-        updateLegend(y, m, clone);
 
         // Configurer les Web Components
         const calendar = clone.querySelector('ami-calendar-grid');
@@ -320,38 +319,6 @@ function drawCoverBackdrop(root) {
         svg.innerHTML = rects.join('');
         grid.append(svg); // en dernier : ne décale pas les :nth-child des vendredis et dimanches
     });
-}
-
-/**
- * Légende du bas, propre à chaque mois : vacances scolaires et changement d'heure,
- * dans l'ordre chronologique. La bande reste affichée (même vide) : même composition chaque mois.
- */
-function updateLegend(year, month, container) {
-    const box = container.querySelector('.legend-box');
-    if (!box) return;
-    const items = []; // { day, html }, sans date : les jours sont repérables dans la grille
-    const seen = new Set();
-    const add = (key, day, html, cls = '') => {
-        if (seen.has(key)) return;
-        seen.add(key);
-        items.push({ day, html, cls });
-    };
-    const daysInMonth = new Date(year, month, 0).getDate();
-
-    for (let d = 1; d <= daysInMonth; d++) {
-        const date = new Date(year, month - 1, d);
-        const info = getDayInfo(date, getHijriDateSafe(date));
-        if (info.isHoliday && info.holidayName) {
-            add(info.holidayName, d, `<span class="legend-color box-holiday"></span><span>${info.holidayName}</span>`);
-        }
-        if (info.isDST) {
-            const label = info.dstType === 'summer' ? "Passage à l'heure d'été" : "Passage à l'heure d'hiver";
-            add('dst', d, `<span class="legend-icon">${dstIconHTML(info.dstType)}</span><span>${label}</span>`, 'legend-dst');
-        }
-    }
-
-    items.sort((x, y) => x.day - y.day);
-    box.innerHTML = items.map((i) => `<div class="legend-item ${i.cls}">${i.html}</div>`).join('');
 }
 
 /**

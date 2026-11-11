@@ -1,6 +1,6 @@
 # Citations du mois (archive, retirées de la page le 08/11/2026)
 
-Un hadith par page de mois, dans un encart sous la légende du calendrier, avec la colonne de la prière concernée soulignée dans le tableau. **Retiré de la page pour l'instant**, à remettre si nécessaire : le code complet est dans le commit `5748405` (`js/quotes.js`, `updateQuote` dans `js/main.js`, `.month-quote` dans `css/calendar.css`, `th[data-prayer]` et `.is-focus`), restaurable avec `git show 5748405 -- js css index.html scripts`.
+Un hadith par page de mois, dans un encart sous la grille du calendrier (alors sous la légende, retirée depuis), avec la colonne de la prière concernée soulignée dans le tableau. **Retiré de la page pour l'instant**, à remettre si nécessaire : le code complet est dans le commit `5748405` (`js/quotes.js`, `updateQuote` dans `js/main.js`, `.month-quote` dans `css/calendar.css`, `th[data-prayer]` et `.is-focus`), restaurable avec `git show 5748405 -- js css index.html scripts`.
 
 ## Règles de contenu (décidées par l'utilisateur)
 
