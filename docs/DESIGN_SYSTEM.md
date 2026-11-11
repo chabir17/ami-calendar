@@ -129,7 +129,7 @@ Le girih de l'année est blanc, à 45 % d'intensité maximale, fondu du haut (di
 | `--fs-display`                 | 36      | Numéros des jours du calendrier                    |
 | `--fs-cover-year`              | 120     | Année grégorienne de la couverture                 |
 
-À la couverture, l'année hégirienne (38 px) a la même hauteur de chiffres que l'année grégorienne (120 px).
+À la couverture, l'année hégirienne (42 px) a la même hauteur de chiffres que l'année grégorienne (120 px).
 
 ### 3.2 Graisses
 
