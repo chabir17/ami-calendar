@@ -226,8 +226,11 @@ function updateCover(year, container) {
             if (info.isHoliday) cls.push('is-holiday');
             if (info.isEid) cls.push('is-eid');
             if (info.isPublicHoliday) cls.push('is-public');
-            if (DATE_UTILS.dstChange(date)) cls.push('is-dst');
-            cells[(offset + d - 1) % 35] = `<span class="${cls.join(' ')}">${d}</span>`;
+            // Changement d'heure : anneau à flèche (avant en mars, arrière en octobre) autour du numéro
+            const dst = DATE_UTILS.dstChange(date);
+            if (dst) cls.push('is-dst');
+            const ring = dst ? `<svg class="dst-ring"><use href="assets/icons/icon-dst-ring-${dst === 'summer' ? 'forward' : 'back'}.svg#icon"></use></svg>` : '';
+            cells[(offset + d - 1) % 35] = `<span class="${cls.join(' ')}">${ring}${d}</span>`;
         }
         months.push(`<div class="mini-month">
             <div class="mini-head"><span class="mini-names"><span class="mini-name">${window.TEXTS?.fr.months[m] ?? ''}</span><span class="mini-name-ta tamil">${window.TEXTS?.ta.months[m] ?? ''}</span></span><span class="mini-hijri arabic">${hijriLines(hijriMonths, hijriState)}</span></div>

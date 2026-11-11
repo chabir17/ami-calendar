@@ -647,7 +647,7 @@
     background: var(--bg-eid);
 }
 
-/* Changement d'heure (dimanches de mars et d'octobre) : chiffre ambre en gras dans un anneau fin, comme l'horloge de la légende */
+/* Changement d'heure (dimanches de mars et d'octobre) : chiffre ambre en gras dans un anneau à flèche (sens du changement), comme l'horloge de la légende */
 .mini-grid span.is-dst {
     position: relative;
     isolation: isolate;
@@ -655,15 +655,12 @@
     color: var(--col-dst);
 }
 
-.mini-grid .is-dst::before {
-    content: '';
+.mini-grid .dst-ring {
     position: absolute;
     z-index: -1;
-    width: 19px;
-    height: 19px;
-    border: 1px solid var(--col-dst);
-    border-radius: 50%;
-    box-sizing: border-box;
+    width: 24px; /* plus grand que la pastille de l'Aïd : la flèche dépasse du numéro */
+    height: 24px;
+    color: var(--col-dst);
 }
 
 /* --- VERSET (traductions seulement), en deux lignes : encart vert très pâle sous les 12 mois, présenté comme dans un
