@@ -148,14 +148,13 @@
 .days-grid-visual {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: repeat(5, 1fr);
-    flex-grow: 1;
     gap: var(--grid-gap); /* l'espace laisse voir le fond : quadrillage sans filets de 0,5 px */
     padding: var(--grid-gap);
     background: var(--bg-grid);
 }
 
 .day-cell-visual {
+    aspect-ratio: 1; /* cases carrées : le reste de la hauteur revient à l'encart de notes */
     border-radius: var(--radius-cell); /* cases détachées sur le fond de la grille */
     background-color: white;
     overflow: hidden;
@@ -339,4 +338,21 @@
 /* Changement d'heure : beige doré foncé (le terracotta reste réservé aux jours fériés) */
 .event-line.dst-label {
     color: var(--col-dst);
+}
+
+/* Encart pour les notes, sous la grille : prend la hauteur laissée par les cases carrées */
+.notes-box {
+    flex: 1;
+    min-height: 0;
+    margin: 0 var(--grid-gap) var(--grid-gap);
+    padding: var(--sp-1) var(--sp-2);
+    border-radius: var(--radius-cell);
+    background: white;
+    font-size: var(--fs-sm);
+    color: var(--bg-head-blue);
+}
+
+.notes-label + .notes-label {
+    margin-left: var(--sp-2);
+    opacity: 0.8;
 }
