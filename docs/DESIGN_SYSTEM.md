@@ -127,9 +127,9 @@ Le girih de l'année est blanc, à 45 % d'intensité maximale, fondu du haut (di
 | `--fs-brand-fr` / `--fs-brand` | 28 / 28 | Nom français / nom tamoul de l'association         |
 | `--fs-xl` / `--fs-month`       | 22 / 24 | Mois hégirien en arabe / mois grégorien            |
 | `--fs-display`                 | 36      | Numéros des jours du calendrier                    |
-| `--fs-cover-year`              | 140     | Année grégorienne de la couverture                 |
+| `--fs-cover-year`              | 120     | Année grégorienne de la couverture                 |
 
-À la couverture, l'année hégirienne (49 px) a la même hauteur de chiffres que l'année grégorienne (140 px).
+À la couverture, l'année hégirienne (38 px) a la même hauteur de chiffres que l'année grégorienne (120 px).
 
 ### 3.2 Graisses
 
