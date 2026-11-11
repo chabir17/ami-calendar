@@ -345,14 +345,6 @@
     flex: 1;
     min-height: 0;
     margin: 0 var(--grid-gap) var(--grid-gap);
-    padding: var(--sp-1) var(--sp-2);
     border-radius: var(--radius-cell);
-    background: white;
-    font-size: var(--fs-sm);
-    color: var(--bg-head-blue);
-}
-
-.notes-label + .notes-label {
-    margin-left: var(--sp-2);
-    opacity: 0.8;
+    background: var(--bg-notes);
 }

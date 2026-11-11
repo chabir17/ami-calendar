@@ -55,7 +55,7 @@ docs/
 Chaque mois est un clone de `#page-template` : une page A4 paysage (`--page-pad` 5 mm de marge, `--binding-zone` 10 mm en haut pour la spirale) composée de trois blocs séparés par `--block-gap` :
 
 1. **Header de l'identité** (`.header-fixed`, pleine largeur, `--header-h` = 20 mm) ;
-2. à gauche, **bandeau du mois** + **grille des jours** à cases **carrées** (`aspect-ratio: 1`, environ 90 × 90 px) puis, dans la hauteur restante (≈ 35 px), un **encart « Notes / குறிப்புகள் »** blanc (`.notes-box`) ; la légende est sur la couverture ;
+2. à gauche, **bandeau du mois** + **grille des jours** à cases **carrées** (`aspect-ratio: 1`, environ 90 × 90 px) puis, dans la hauteur restante (≈ 35 px), un **encart pour les notes**, sans texte, en `--bg-notes` (`.notes-box`) ; la légende est sur la couverture ;
 3. à droite, **tableau des horaires**.
 
 Le bandeau du mois (bleu marine plein) et l'en-tête du tableau (vert forêt plein, même luminosité) ont la même hauteur `--band-h` : leurs bas sont alignés.

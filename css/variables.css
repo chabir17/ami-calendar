@@ -73,6 +73,7 @@
     /* Gris pastel : cases hors du mois */
 
     /* Pastels opaques (rendu fiable sur laser de bureau, papier blanc) */
+    --bg-notes: #f2f6fb; /* encart de notes : ardoise très clair, plus pâle que --bg-grid, pour écrire au stylo (beige écarté : c'est la couleur des vacances) */
     --bg-grid: #e1eaf4; /* fond de la grille des jours, de la ligne des jours et de la légende : un cran plus soutenu que --bg-green-head, assombri après un test laser (ΔE ≈ 10 au blanc, 8,5 avant) ; texte --bg-head-blue : 6,9:1 */
     --bg-blue-head: #e5edf6; /* bandeau du mois, cadre du calendrier et pastilles d'icônes : bleu pâle (écart au blanc ≈ celui du vert pâle, visible sur le copieur laser) */
     --bg-blue-faint: #eef3f9; /* fonds neutres bleus de la feuille Ramadan (seul usage : indépendant du bandeau du mois du calendrier annuel) */
