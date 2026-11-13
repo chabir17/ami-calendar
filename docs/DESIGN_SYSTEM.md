@@ -49,7 +49,7 @@ Priorité quand plusieurs sens tombent le même jour : **Aïd (vert) > jour fér
 
 Tous opaques ; ce sont des aplats, jamais des dégradés.
 
-**Principe des en-têtes pleins** : le niveau d'assombrissement le plus bas qui fait encore ressortir le texte blanc (économie d'encre, moins de risque de traces au laser). Les deux en-têtes ont la même luminosité (L* ≈ 33).
+**Principe des en-têtes pleins** : le niveau d'assombrissement le plus bas qui fait encore ressortir le texte blanc (économie d'encre, moins de risque de traces au laser). Les deux en-têtes ont la même luminosité (L* ≈ 37).
 
 **Seuil de visibilité à l'impression** : un fond doit s'écarter du blanc d'au moins **ΔE ≈ 8** (CIE Lab) pour se voir sur le copieur laser de l'association (essai du 23/10/2026 : le vert `--bg-green-head`, à ΔE 8,5, se voit ; le beige à 6,7 et le bleu à 5,6 ne se voyaient pas). Réglage du 08/11/2026 après un second essai : `--bg-green-head` ≈ 8, `--bg-grid` ≈ 10, `--bg-holiday` ≈ 12 et `--bg-green-friday` ≈ 12. Les fonds sous ce seuil (`--bg-friday-light` à 5,0) sont des repères secondaires : à relever si l'impression les efface.
 
@@ -58,8 +58,8 @@ Tous opaques ; ce sont des aplats, jamais des dégradés.
 | `--bg-blue-head`       | `#e5edf6`           | Pastilles d'icônes, couverture (fonds pâles)                                                                                                                                                                                 |
 | `--bg-grid`            | `#e1eaf4`           | Fond commun de la ligne des jours, de la grille des jours (visible dans les espaces de 4 px entre les cases) et du bas du bloc : un cran plus soutenu que `--bg-green-head` (ΔE ≈ 10 au blanc, assombri après un test laser) |
 | `--bg-notes`           | `#f2f6fb`           | Encart de notes (pages des mois), ardoise très clair                                                                                                                                                                         |
-| `--bg-head-blue`       | `#364f6f`           | Bandeau du mois et cadre du calendrier : bleu ardoise plein (L* ≈ 33, chroma ≈ 21, blanc dessus 8,4:1)                                                                                                                       |
-| `--bg-head-green`      | `#35553c`           | En-tête et cadre du tableau : vert sapin plein, même assombrissement (L* ≈ 33, chroma ≈ 21, blanc dessus 8,4:1)                                                                                                              |
+| `--bg-head-blue`       | `#405979`           | Bandeau du mois et cadre du calendrier : bleu ardoise plein (L* ≈ 37, chroma ≈ 21, blanc dessus 7,2:1)                                                                                                                       |
+| `--bg-head-green`      | `#3e5e45`           | En-tête et cadre du tableau : vert sapin plein, même assombrissement (L* ≈ 37, chroma ≈ 21, blanc dessus 7,2:1)                                                                                                              |
 | `--col-on-dark-soft`   | `#dbe6f3`           | Traductions et année sur les en-têtes foncés                                                                                                                                                                                 |
 | `--bg-blue-faint`      | `#eef3f9`           | Feuille du Ramadan uniquement (indépendant du bandeau du mois)                                                                                                                                                               |
 | `--bg-green-head`      | `#e9f3e9`           | Colonnes de date (grégorien et hégirien) du tableau                                                                                                                                                                          |

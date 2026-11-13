@@ -141,7 +141,7 @@
 
 .weekday-sub {
     font-size: var(--fs-sm);
-    color: var(--bg-head-blue); /* arabe et tamoul : même bleu que le français (7:1 sur --bg-grid), en graisse normale */
+    color: var(--bg-head-blue); /* arabe et tamoul : même bleu que le français (5,9:1 sur --bg-grid), en graisse normale */
 }
 
 /* Grille des jours (5 rangées pour couvrir le mois) */
