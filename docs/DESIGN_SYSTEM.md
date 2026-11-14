@@ -134,7 +134,7 @@ Le girih de l'année est blanc, à 45 % d'intensité maximale, fondu du haut (di
 
 ### 3.2 Graisses
 
-- **Français et tamoul : 400 à 600 maximum.** 500 pour les jours de la semaine abrégés du tableau, 600 pour les numéros du jour, les titres et les horaires.
+- **Français et tamoul : 400 à 600 maximum.** 500 pour tout le contenu du tableau (jours abrégés, numéros du jour, horaires), 600 pour les numéros de la grille et les titres.
 - **Arabe (Amiri) : 400 à 500.**
 - **Exception : l'année de la couverture est en 700**, c'est un élément d'affichage et non du texte courant.
 
@@ -192,7 +192,7 @@ Fond `--bg-head-blue` (plein), texte blanc, hauteur `--band-h`. Mois grégorien 
 
 ### 6.3 Tableau des horaires
 
-En-tête `--bg-head-green` (plein), titres en blanc, traductions en `--col-on-dark-soft` 500. Corps : horaires en `--col-ink` 600, 15 px, traits verticaux très légers, filets horizontaux `--border-green` de 1 px ; filet de 1,5 px `--border-week` après chaque dimanche. Les filets sont des `border` (le tableau est en `border-collapse: separate`, le dernier filet n'est pas rogné).
+En-tête `--bg-head-green` (plein), titres en blanc, traductions en `--col-on-dark-soft` 500. Corps : horaires en `--col-ink` 500, 15 px, traits verticaux très légers, filets horizontaux `--border-green` de 1 px ; filet de 1,5 px `--border-week` après chaque dimanche. Les filets sont des `border` (le tableau est en `border-collapse: separate`, le dernier filet n'est pas rogné).
 
 | Élément            | Rendu                                                                                                                   |
 | ------------------ | ----------------------------------------------------------------------------------------------------------------------- |

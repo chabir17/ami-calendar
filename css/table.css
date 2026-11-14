@@ -101,18 +101,13 @@ ami-prayer-table {
     background: var(--bg-friday-light);
 }
 
-/* --- COLONNES SPÉCIALES (DATES) : numéros restés en 600 --- */
+/* --- COLONNES SPÉCIALES (DATES) --- */
 .col-date-greg {
     width: 18%;
 }
 
 .col-hijri {
     width: 7%;
-}
-
-.prayer-table tbody td.col-date-greg,
-.prayer-table tbody td.col-hijri {
-    font-weight: 600;
 }
 
 .date-cell {
