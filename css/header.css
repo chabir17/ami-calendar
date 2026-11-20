@@ -1,7 +1,6 @@
 /* --- HEADER & IDENTITÉ --- */
 .header-fixed {
     position: relative;
-    overflow: hidden;
     color: var(--col-text);
     /* Le bandeau commence sous la zone de reliure du bord haut (trous de spirale) :
        la bordure du haut n'est pas perforée */
@@ -10,20 +9,32 @@
     background-color: white;
 }
 
-/* Disposition du header : le logo à pleine hauteur à gauche ; à droite, les noms puis la ligne d'infos juste dessous, le tout
-   centré sur la hauteur du logo. Le reste des coordonnées et l'IBAN sont sur la couverture. */
+/* Ligne séparatrice pleine largeur entre le header et les blocs, à --header-line-gap sous le header ; l'espace sous la ligne (--block-gap) est le même qu'entre le calendrier et le tableau
+   (pseudo-élément : trait de 1 px net dans le PDF) */
+.header-fixed::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: calc(var(--header-line-gap) * -1);
+    height: 1px;
+    background: var(--col-gold-deep);
+}
+
+/* Disposition du header : le logo à pleine hauteur à gauche ; les textes (nom tamoul, AMI93, coordonnées) sont centrés sur la page :
+   la colonne de droite, de la largeur du logo, équilibre la colonne de gauche. Le reste des coordonnées et l'IBAN sont sur la couverture. */
 .header-content {
     --logo-size: var(--header-h); /* le logo prend toute la hauteur du header (≈ 2 cm) */
     position: relative; /* au-dessus du fond */
     height: 100%;
     display: grid;
-    grid-template-columns: var(--logo-size) minmax(0, 1fr);
+    grid-template-columns: var(--logo-size) minmax(0, 1fr) var(--logo-size);
     grid-template-rows: 1fr auto auto 1fr; /* noms et infos serrés l'un sous l'autre, centrés sur la hauteur du logo */
     grid-template-areas:
-        'logo .'
-        'logo names'
-        'logo contacts'
-        'logo .';
+        'logo . .'
+        'logo names .'
+        'logo contacts .'
+        'logo . .';
     column-gap: var(--sp-4);
 }
 
@@ -40,72 +51,117 @@
     object-fit: contain;
 }
 
-/* Noms sur une seule ligne, sur la même ligne de base : tamoul (safran) puis français (vert), couleurs du logo */
+/* Noms centrés, l'un sous l'autre : nom tamoul (safran) puis AMI93 (vert, lettres espacées) */
 .org-names {
     grid-area: names;
     display: flex;
-    align-items: baseline; /* tamoul et français posés sur la même ligne de base */
+    flex-direction: column;
+    align-items: center;
     white-space: nowrap;
-}
-
-/* Séparateur entre le nom tamoul et le nom français : rosace à 8 pétales pointus (lotus moghol, huit axes comme le girih de la
-   couverture) en bleu marine du logo ; les trois couleurs du logo (safran, bleu marine, vert) se retrouvent ainsi dans la
-   ligne des noms */
-.org-sep {
-    display: inline-flex;
-    align-self: center;
-    margin: 0 var(--sp-4);
-    color: var(--col-blue);
-}
-
-.org-sep svg {
-    display: block;
-}
-
-.org-ta,
-.org-fr {
-    font-weight: 600;
-    line-height: 1.1;
 }
 
 .org-ta {
-    color: var(--col-saffron-text);
+    font-weight: 600;
+    line-height: 1.1;
+    color: var(--col-saffron-text); /* nom tamoul en orange safran, couleur du nom dans le logo */
     font-size: var(--fs-brand);
 }
 
-.org-fr {
-    color: var(--col-green);
-    font-size: var(--fs-brand-fr);
-    letter-spacing: 0.01em;
+.org-short {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    align-self: stretch; /* les filets dorés s'étendent sur la largeur du nom tamoul */
+    margin-top: 0.8mm;
+    font-size: var(--fs-md);
+    font-weight: 700;
+    line-height: 1.2;
 }
 
-/* Infos essentielles sous les noms : une seule ligne, discrète (petit corps, gris doux), alignée à gauche sous le nom tamoul */
+/* Sigle sur le cartouche vert sapin : AMI en blanc, 93 en or clair */
+.org-c-a,
+.org-c-m,
+.org-c-i {
+    color: white;
+}
+
+.org-c-n {
+    color: var(--col-gold-light);
+}
+
+.org-short-text {
+    letter-spacing: 0.4em;
+    margin-right: -0.4em; /* compense l'espace ajouté après la dernière lettre : texte centré dans le cartouche */
+}
+
+/* Cartouche d'AMI93 : pastille vert sapin à contour or soutenu, aux extrémités en ogive ;
+   de part et d'autre, une étoile à 8 branches puis un filet doré qui s'estompe vers l'extérieur (pseudo-éléments : traits de 1 px nets dans le PDF) */
+.org-pill {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    height: 1.5rem;
+    margin: 0 0.8125rem; /* place des extrémités en ogive */
+    padding: 0 var(--sp-4);
+    border-block: 1.2px solid var(--col-gold-deep);
+    background: var(--bg-cartouche);
+    color: var(--col-gold-deep);
+}
+
+/* Extrémités en ogive du contour (arche islamique) : SVG vectoriel, de la hauteur du cartouche */
+.org-cap {
+    position: absolute;
+    top: -1.2px;
+    left: -0.8125rem;
+    width: 0.875rem;
+    height: calc(100% + 2.4px);
+    color: var(--col-gold-deep);
+}
+
+.org-cap-r {
+    left: auto;
+    right: -0.8125rem;
+    transform: scaleX(-1);
+}
+
+.org-star {
+    flex: none;
+    width: 0.5625rem;
+    height: 0.5625rem;
+    color: var(--col-gold-deep);
+}
+
+.org-short::before,
+.org-short::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+}
+
+.org-short::before {
+    background: linear-gradient(90deg, transparent, var(--col-gold));
+}
+
+.org-short::after {
+    background: linear-gradient(270deg, transparent, var(--col-gold));
+}
+
+/* Infos essentielles sous les noms : une seule ligne, discrète (petit corps, gris doux), centrée sous les noms */
 .header-contacts {
     position: relative;
     grid-area: contacts;
-    margin-top: 1.9mm; /* le filet (::before) est à égale distance (≈ 1,8 mm) du bas des noms (jambages du tamoul compris) et du haut des infos */
-    padding-top: 1.6mm;
+    margin-top: 0.6mm;
     white-space: nowrap;
     font-size: var(--fs-contact);
     line-height: 1.35;
-    color: var(--col-text-soft);
-}
-
-/* Filet fin entre les noms et les infos (pseudo-élément : un trait de 1 px net dans le PDF), bleu doux (`--border-blue`, le séparateur du projet : même teinte que les icônes et l'ornement) */
-.header-contacts::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: var(--border-blue);
+    color: var(--col-text-light); /* gris moyen : un cran sous le nom (hiérarchie) */
 }
 
 .info-line {
     display: flex;
+    justify-content: center;
     align-items: center;
-    gap: var(--sp-4);
+    gap: 0.625rem;
 }
 
 .info-item {
@@ -114,10 +170,20 @@
     gap: var(--sp-1);
 }
 
+/* Petit losange doré entre deux coordonnées */
+.info-item + .info-item::before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    margin-right: 0.625rem;
+    background: var(--col-gold-deep);
+    transform: rotate(45deg);
+}
+
 /* Icônes : bleu marine du logo, sans pastille (fond blanc uni) */
 .header-contacts .icon {
     width: 0.8rem;
     height: 0.8rem;
     margin-right: 0;
-    color: var(--col-blue);
+    color: var(--col-blue); /* icônes en bleu marine du logo */
 }

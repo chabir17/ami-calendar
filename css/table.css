@@ -1,6 +1,7 @@
 /* --- TABLEAU DES HORAIRES DE PRIÈRES (DROITE) --- */
 .right-prayer-table-container {
     overflow: hidden;
+    border: 1.5px solid var(--bg-head-green); /* contour vert sapin de 1,5 px, comme l'en-tête */
     border-radius: var(--radius-card);
     display: flex;
     flex-direction: column;
@@ -81,9 +82,9 @@ ami-prayer-table {
     border: none;
     background: white;
     background-clip: padding-box; /* le fond ne passe pas sous l'espace entre deux semaines */
-    /* filets de 1 px : horizontaux vert doux, verticaux très légers (le tableau respire) */
+    /* filets de 1 px : horizontaux vert doux, verticaux vert sauge clair */
     border-bottom: 1px solid var(--border-green);
-    border-right: 1px solid var(--bg-green-faint);
+    border-right: 1px solid var(--border-sage); /* filets verticaux fins vert sauge clair (le contour du conteneur ferme la dernière colonne) */
     text-align: center;
     font-weight: 500;
     font-size: var(--fs-figure);
@@ -98,7 +99,17 @@ ami-prayer-table {
 }
 
 .prayer-table tbody tr.is-friday td {
-    background: var(--bg-friday-light);
+    background: var(--bg-green-head);
+}
+
+/* Filets verticaux entre les colonnes de l'en-tête, dans le prolongement de ceux du corps du tableau */
+.prayer-table thead th:not(:last-child) {
+    border-right: 1px solid var(--border-on-green);
+}
+
+/* Dernière colonne : le contour du conteneur ferme le tableau */
+.prayer-table tbody td:last-child {
+    border-right: none;
 }
 
 /* --- COLONNES SPÉCIALES (DATES) --- */
@@ -145,7 +156,7 @@ ami-prayer-table {
     justify-content: center;
     height: 15px; /* tient dans la ligne : n'agrandit pas la rangée */
     padding: 0 0.1875rem; /* 3 px */
-    border-radius: var(--radius-cell);
+    border-radius: 0.5rem;
     background: var(--bg-head-green); /* même vert que l'en-tête du tableau */
     color: white;
     font-size: 12px;
@@ -168,5 +179,5 @@ ami-prayer-table {
 /* Fin de semaine : filet de 1,5 px après le dimanche, en vert moyen (repérage par blocs de 7 jours) */
 .prayer-table tbody tr.week-end td,
 .prayer-table tbody tr.is-dst.week-end td {
-    border-bottom: 1.5px solid var(--border-week);
+    border-bottom: 1.5px solid var(--bg-head-green);
 }

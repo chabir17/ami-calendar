@@ -6,9 +6,9 @@
     justify-content: space-between;
     align-items: flex-end;
     gap: var(--sp-3);
-    padding: var(--sp-2) var(--sp-2) var(--sp-1);
-    background-color: var(--bg-head-blue);
-    color: white;
+    padding: var(--sp-2) var(--sp-1) var(--sp-1);
+    background-color: white;
+    color: var(--bg-head-blue);
     height: var(--band-h);
 }
 
@@ -27,23 +27,23 @@
     letter-spacing: 0.04em;
     text-transform: uppercase;
     line-height: 1.2;
-    color: white;
 }
 
 .greg-month-fr {
     font-weight: 600;
+    color: var(--bg-head-blue); /* mois grégorien : bleu ardoise */
 }
 
 .year-display {
-    font-weight: 400; /* hiérarchie par la graisse, même blanc */
-    color: var(--col-on-dark-soft);
+    font-weight: 400; /* hiérarchie par la graisse et la teinte : année plus claire que le mois */
+    color: var(--col-title-blue-soft);
 }
 
 /* Hégirien : nom(s) du mois en arabe en titre, comme le mois grégorien (extrémité droite) */
 .hijri-month-ar {
     font-size: var(--fs-xl); /* 22 px : l'écriture arabe, plus haute à taille égale, s'équilibre avec le grégorien en 24 px */
     line-height: 1.45; /* queues des lettres arabes (ع, ي…) : ne touchent pas la ligne 2 */
-    color: white;
+    color: var(--bg-head-green); /* mois hégirien : vert sapin */
 }
 
 .hijri-months {
@@ -52,6 +52,11 @@
 
 .hijri-year {
     font-weight: 400;
+    color: var(--col-green-year); /* année hégirienne : vert plus clair que le mois */
+}
+
+.hijri-year-fr {
+    color: var(--col-green-year);
 }
 
 /* Ligne 2 : traductions séparées par une puce */
@@ -61,7 +66,7 @@
     gap: var(--sp-2);
     font-size: var(--fs-md);
     line-height: 1.5;
-    color: var(--col-on-dark-soft); /* traductions en blanc atténué */
+    color: var(--col-title-blue); /* traductions en bleu doux */
     white-space: nowrap;
 }
 
@@ -89,6 +94,12 @@
     font-size: var(--fs-md);
 }
 
+/* Mois en tamoul (grégorien à gauche, hégiriens à droite) : orange safran, comme le nom de l'association */
+.greg-month-ta,
+.hijri-month-ta {
+    color: var(--col-saffron-text);
+}
+
 /* Puce entre deux traductions */
 .title-sub > * + *::before {
     content: '•';
@@ -101,6 +112,7 @@
 }
 
 .hijri-month-fr {
+    color: var(--bg-head-green);
     letter-spacing: 0;
     text-transform: uppercase;
 }
@@ -110,9 +122,18 @@
     min-height: 0;
     display: flex;
     flex-direction: column;
+}
+
+/* Carte du calendrier (jours de la semaine, grille, notes) : fond commun --bg-grid ; le titre du mois est au-dessus, hors de la carte */
+.calendar-card {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    border: 1.5px solid var(--bg-grid); /* contour bleu marine de 1,5 px */
     border-radius: var(--radius-card);
     overflow: hidden;
-    background-color: var(--bg-grid); /* fond commun de la ligne des jours, de la grille et de la légende */
+    background-color: white;
 }
 
 /* En-tête des jours de la semaine : même fond que la grille et la légende, sous le bandeau du mois ; mêmes marges et mêmes espaces que la grille pour que chaque nom soit centré sur sa colonne de cases ;
@@ -120,15 +141,18 @@
 .weekdays-header {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: var(--grid-gap);
     background: var(--bg-grid);
     text-align: center;
-    padding: 0 var(--grid-gap);
     font-size: var(--fs-sm);
 }
 
 .weekday-cell {
-    padding: var(--sp-2) 0 var(--sp-1);
+    padding: var(--sp-1) 0;
+}
+
+/* Filets verticaux entre les jours, alignés sur ceux des cases (bord droit de chaque colonne) */
+.weekday-cell:not(:last-child) {
+    border-right: 1px solid var(--col-title-blue);
 }
 
 .weekday-fr {
@@ -136,26 +160,27 @@
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--bg-head-blue); /* nom français, de la teinte du bandeau du mois */
+    color: white; /* nom français, blanc sur la ligne bleue */
 }
 
 .weekday-sub {
     font-size: var(--fs-sm);
-    color: var(--bg-head-blue); /* arabe et tamoul : même bleu que le français (5,9:1 sur --bg-grid), en graisse normale */
+    color: var(--col-on-dark-soft); /* arabe et tamoul : blanc atténué, en graisse normale */
 }
 
 /* Grille des jours (5 rangées pour couvrir le mois) */
 .days-grid-visual {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: var(--grid-gap); /* l'espace laisse voir le fond : quadrillage sans filets de 0,5 px */
-    padding: var(--grid-gap);
-    background: var(--bg-grid);
+    grid-template-rows: repeat(5, 1fr);
+    flex: 1; /* la grille remplit la carte */
+    min-height: 0;
+    background: white; /* quadrillage par les bordures des cases : ni espace ni marge */
 }
 
 .day-cell-visual {
-    aspect-ratio: 1; /* cases carrées : le reste de la hauteur revient à l'encart de notes */
-    border-radius: var(--radius-cell); /* cases détachées sur le fond de la grille */
+    border-right: 1px solid var(--border-grid); /* filets fins bleu ardoise clair : bords droit et bas de chaque case (le contour de la carte ferme la grille) */
+    border-bottom: 1px solid var(--border-grid);
     background-color: white;
     overflow: hidden;
     position: relative;
@@ -164,25 +189,27 @@
     align-items: center;
 }
 
-/* Cases hors du mois : transparentes, elles se fondent dans le fond de la grille */
+.day-cell-visual:nth-child(7n) {
+    border-right: none; /* le contour de la carte ferme la grille */
+}
+
+.day-cell-visual:nth-last-child(-n + 7) {
+    border-bottom: none; /* idem pour la dernière rangée */
+}
+
+/* Cases hors du mois : même fond que l'encart de notes ; seule la bordure entre deux cases vides disparaît */
 .day-cell-visual.empty {
-    background-color: transparent;
+    background-color: var(--bg-blue-faint);
+}
+
+.day-cell-visual.empty:has(+ .empty) {
+    border-right: none;
 }
 
 /* --- ÉTATS DES CELLULES (FONDS COLORÉS) --- */
 /* Vacances scolaires : seul état marqué par un fond (doré très clair) */
 .day-cell-visual.is-holiday {
     background-color: var(--bg-holiday);
-}
-
-/* Aïd : contour fin vert de gris (pseudo-élément : une border de 0,5 px deviendrait 1 px dans le PDF ; ici 1 px franc), à la place d'un fond */
-.day-cell-visual.is-eid::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border: 1px solid var(--border-eid);
-    border-radius: inherit;
-    pointer-events: none;
 }
 
 /* Numéro du jour (Grégorien) */
@@ -217,6 +244,25 @@
     position: absolute;
     top: var(--sp-1);
     right: var(--sp-1);
+}
+
+/* Premier jour du mois hégirien : chiffre blanc dans un disque du vert du nom du mois, comme le « 01 » du tableau des horaires */
+.day-cell-visual.has-new-moon {
+    --moon-name-right: 1.2rem; /* le nom du mois s'arrête avant le disque */
+}
+
+.day-cell-visual.has-new-moon .vis-hij {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1rem;
+    height: 1rem;
+    padding: 0 0.1875rem;
+    border-radius: 999px;
+    background: var(--col-green); /* même vert que le nom du mois et le croissant */
+    color: white;
+    font-weight: 600;
+    line-height: 1;
 }
 
 /* Jours islamiques particuliers : date hégirienne en gras (repérable sans ornement) */
@@ -280,71 +326,72 @@
     letter-spacing: -0.02em;
 }
 
+/* Noms longs (Dhū l-Qaʿdah, Dhū l-Ḥijjah) : un cran plus petit pour tenir entre le croissant et le disque */
+.new-moon-name.is-long {
+    font-size: calc(var(--fs-2xs) - 0.75px);
+    letter-spacing: -0.03em;
+}
+
 /* Changement d'heure le jour d'un nouveau mois : l'horloge passe sous le croissant, pour laisser la place au nom du mois */
 .day-cell-visual.has-new-moon .dst-icon {
     top: calc(var(--sp-1) + var(--moon-row-shift) + 0.8rem + 0.125rem);
 }
 
 .event-label {
-    display: block;
-    font-size: var(--fs-2xs);
-    margin-top: var(--sp-1);
-    font-weight: 600;
-    color: var(--col-terracotta); /* jours fériés et changement d'heure : événements civils */
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.125rem; /* 2 px entre deux badges */
     width: 100%;
     padding: 0 0.1875rem; /* 3 px */
     position: absolute;
-    bottom: 0.125rem; /* 2 px */
-    line-height: 1.15;
-    white-space: nowrap; /* une seule ligne : libellés courts, lettres légèrement resserrées */
-    letter-spacing: -0.02em;
+    bottom: 0.25rem; /* 4 px */
 }
 
-/* Plusieurs événements : le numéro remonte pour ne pas toucher les libellés */
+/* Événements en badges : pastille arrondie sur fond clair, texte foncé de la même teinte */
+.event-line,
+.event-label-top {
+    display: block;
+    padding: 0.0625rem 0.4375rem; /* 1 px 7 px */
+    border-radius: 999px;
+    font-size: var(--fs-2xs);
+    font-weight: 600;
+    line-height: 1.3;
+    white-space: nowrap; /* une seule ligne : libellés courts */
+    color: var(--col-terracotta);
+    background: var(--bg-terracotta-soft); /* jours fériés : terracotta clair */
+}
+
+/* Plusieurs événements : le numéro remonte pour ne pas toucher les badges */
 .day-cell-visual.multi-events .vis-greg {
     transform: translateY(-11px);
 }
 
-/* Aïd + jour férié le même jour : libellé de l'Aïd en haut, jour férié en bas */
+/* Aïd + jour férié le même jour : badge de l'Aïd en haut, jour férié en bas */
 .event-label-top {
     position: absolute;
     top: var(--sp-1);
-    left: var(--sp-1);
-    right: var(--sp-6); /* laisse la place au jour hégirien (en haut à droite) */
-    white-space: nowrap;
-    font-size: var(--fs-2xs);
-    font-weight: 600;
-    line-height: 1.15;
-    text-align: center;
-    color: var(--col-green);
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: calc(100% - var(--sp-6) * 2); /* laisse la place au jour hégirien (en haut à droite) */
+    color: var(--col-green-dark);
+    background: var(--bg-eid);
 }
 
-/* Une ligne par événement (ex. Aïd + jour férié le même jour) */
-.event-line {
-    display: block;
-}
-
-/* Aïd (vert) */
-/* Jours vertueux (ʿArafa, ʿĀshūrāʾ…) : vert hégirien, numéro inchangé */
-.event-line.virtuous-label {
-    color: var(--col-green);
-}
-
+/* Aïd et jours vertueux (ʿArafa, ʿĀshūrāʾ…) : vert pastel */
+.event-line.virtuous-label,
 .event-line.eid-label {
-    color: var(--col-green);
+    color: var(--col-green-dark);
+    background: var(--bg-eid);
 }
 
-/* Changement d'heure : beige doré foncé (le terracotta reste réservé aux jours fériés) */
+/* Changement d'heure : doré pâle (le terracotta reste réservé aux jours fériés) */
 .event-line.dst-label {
-    color: var(--col-dst);
+    color: var(--col-badge-dst);
+    background: var(--bg-badge-dst);
 }
 
-/* Encart pour les notes, sous la grille : prend la hauteur laissée par les cases carrées */
-.notes-box {
-    flex: 1;
-    min-height: 0;
-    margin: 0 var(--grid-gap) var(--grid-gap);
-    border-radius: var(--radius-cell);
-    background: var(--bg-notes);
+/* Pages des mois : le français en empattements (Noto Serif) ; l'arabe et le tamoul gardent leurs polices (classes .arabic et .tamil) */
+.month-page {
+    font-family: var(--font-fr-serif);
 }

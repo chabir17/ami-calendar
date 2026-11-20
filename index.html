@@ -37,6 +37,20 @@
         <!-- Définitions SVG partagées (chemin girih de la couverture) -->
         <svg width="0" height="0" style="position: absolute" aria-hidden="true">
             <defs>
+                <!-- Extrémité gauche du cartouche d'AMI93 : ogive (la droite en est le symétrique), contour doré, fond crème -->
+                <symbol id="org-cap" viewBox="0 0 14 24">
+                    <path
+                        d="M14 0.6C8 0.6 3 5 0.8 12C3 19 8 23.4 14 23.4"
+                        style="fill: var(--bg-cartouche); stroke: currentColor"
+                        stroke-width="1.2"
+                        stroke-linejoin="miter"
+                        stroke-linecap="butt"
+                    />
+                </symbol>
+                <!-- Étoile à 8 branches (bouts des filets d'AMI93) -->
+                <symbol id="org-star" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M10 0L12.4 7.6L20 10L12.4 12.4L10 20L7.6 12.4L0 10L7.6 7.6Z" />
+                </symbol>
                 <!-- Chemin girih partagé (couverture) -->
                 <path
                     id="cover-girih-path"
@@ -51,7 +65,7 @@
 
         <!-- Template de la page (cloné par JS) -->
         <template id="page-template">
-            <div class="page A4-landscape">
+            <div class="page A4-landscape month-page">
                 <!-- EN-TÊTE : logo et noms (tamoul, français) sur une ligne ; les coordonnées sont sur la couverture -->
                 <header class="header-fixed">
                     <div class="header-content">
@@ -60,34 +74,17 @@
                         </div>
                         <div class="org-names">
                             <h1 class="org-ta tamil">இந்திய முஸ்லிம் சங்கம்</h1>
-                            <span class="org-sep" aria-hidden="true"
-                                ><svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
-                                    <path transform="rotate(0 10 10)" d="M10 10C5.4 5.68 7.7 1.8399999999999999 10 0.40000000000000036C12.3 1.8399999999999999 14.6 5.68 10 10Z" />
-                                    <path transform="rotate(45 10 10)" d="M10 10C5.4 5.68 7.7 1.8399999999999999 10 0.40000000000000036C12.3 1.8399999999999999 14.6 5.68 10 10Z" />
-                                    <path transform="rotate(90 10 10)" d="M10 10C5.4 5.68 7.7 1.8399999999999999 10 0.40000000000000036C12.3 1.8399999999999999 14.6 5.68 10 10Z" />
-                                    <path
-                                        transform="rotate(135 10 10)"
-                                        d="M10 10C5.4 5.68 7.7 1.8399999999999999 10 0.40000000000000036C12.3 1.8399999999999999 14.6 5.68 10 10Z"
-                                    />
-                                    <path
-                                        transform="rotate(180 10 10)"
-                                        d="M10 10C5.4 5.68 7.7 1.8399999999999999 10 0.40000000000000036C12.3 1.8399999999999999 14.6 5.68 10 10Z"
-                                    />
-                                    <path
-                                        transform="rotate(225 10 10)"
-                                        d="M10 10C5.4 5.68 7.7 1.8399999999999999 10 0.40000000000000036C12.3 1.8399999999999999 14.6 5.68 10 10Z"
-                                    />
-                                    <path
-                                        transform="rotate(270 10 10)"
-                                        d="M10 10C5.4 5.68 7.7 1.8399999999999999 10 0.40000000000000036C12.3 1.8399999999999999 14.6 5.68 10 10Z"
-                                    />
-                                    <path
-                                        transform="rotate(315 10 10)"
-                                        d="M10 10C5.4 5.68 7.7 1.8399999999999999 10 0.40000000000000036C12.3 1.8399999999999999 14.6 5.68 10 10Z"
-                                    />
-                                    <circle cx="10" cy="10" r="1.7" fill="#fff" /></svg
-                            ></span>
-                            <h2 class="org-fr">ASSOCIATION MUSULMANE DE L'INDE</h2>
+                            <h2 class="org-short">
+                                <svg class="org-star" aria-hidden="true"><use href="#org-star"></use></svg>
+                                <span class="org-pill">
+                                    <svg class="org-cap" aria-hidden="true"><use href="#org-cap"></use></svg>
+                                    <span class="org-short-text"
+                                        ><span class="org-c-a">A</span><span class="org-c-m">M</span><span class="org-c-i">I</span><span class="org-c-n">93</span></span
+                                    >
+                                    <svg class="org-cap org-cap-r" aria-hidden="true"><use href="#org-cap"></use></svg>
+                                </span>
+                                <svg class="org-star" aria-hidden="true"><use href="#org-star"></use></svg>
+                            </h2>
                         </div>
                         <div class="header-contacts">
                             <div class="info-line">
@@ -103,9 +100,6 @@
                                 >
                                 <span class="info-item"
                                     ><svg class="icon"><use href="assets/icons/icon-email.svg#icon"></use></svg> <span>ami93120@gmail.com</span></span
-                                >
-                                <span class="info-item"
-                                    ><svg class="icon"><use href="assets/icons/icon-website.svg#icon"></use></svg> <span>ami93.com</span></span
                                 >
                             </div>
                         </div>
@@ -132,46 +126,47 @@
                                 </div>
                             </div>
                         </section>
-                        <div class="weekdays-header" id="weekdays-header">
-                            <div class="weekday-cell">
-                                <div class="weekday-fr">Lundi</div>
-                                <div class="arabic weekday-sub">الإثنين</div>
-                                <div class="tamil weekday-sub">திங்கள்</div>
+                        <!-- Carte du calendrier : jours de la semaine, grille et notes ; le titre du mois reste en dehors, sur la page blanche -->
+                        <div class="calendar-card">
+                            <div class="weekdays-header" id="weekdays-header">
+                                <div class="weekday-cell">
+                                    <div class="weekday-fr">Lundi</div>
+                                    <div class="arabic weekday-sub">الإثنين</div>
+                                    <div class="tamil weekday-sub">திங்கள்</div>
+                                </div>
+                                <div class="weekday-cell">
+                                    <div class="weekday-fr">Mardi</div>
+                                    <div class="arabic weekday-sub">الثلاثاء</div>
+                                    <div class="tamil weekday-sub">செவ்வாய்</div>
+                                </div>
+                                <div class="weekday-cell">
+                                    <div class="weekday-fr">Mercredi</div>
+                                    <div class="arabic weekday-sub">الأربعاء</div>
+                                    <div class="tamil weekday-sub">புதன்</div>
+                                </div>
+                                <div class="weekday-cell">
+                                    <div class="weekday-fr">Jeudi</div>
+                                    <div class="arabic weekday-sub">الخميس</div>
+                                    <div class="tamil weekday-sub">வியாழன்</div>
+                                </div>
+                                <div class="weekday-cell">
+                                    <div class="weekday-fr">Vendredi</div>
+                                    <div class="arabic weekday-sub">الجمعة</div>
+                                    <div class="tamil weekday-sub">வெள்ளி</div>
+                                </div>
+                                <div class="weekday-cell">
+                                    <div class="weekday-fr">Samedi</div>
+                                    <div class="arabic weekday-sub">السبت</div>
+                                    <div class="tamil weekday-sub">சனி</div>
+                                </div>
+                                <div class="weekday-cell">
+                                    <div class="weekday-fr">Dimanche</div>
+                                    <div class="arabic weekday-sub">الأحد</div>
+                                    <div class="tamil weekday-sub">ஞாயிறு</div>
+                                </div>
                             </div>
-                            <div class="weekday-cell">
-                                <div class="weekday-fr">Mardi</div>
-                                <div class="arabic weekday-sub">الثلاثاء</div>
-                                <div class="tamil weekday-sub">செவ்வாய்</div>
-                            </div>
-                            <div class="weekday-cell">
-                                <div class="weekday-fr">Mercredi</div>
-                                <div class="arabic weekday-sub">الأربعاء</div>
-                                <div class="tamil weekday-sub">புதன்</div>
-                            </div>
-                            <div class="weekday-cell">
-                                <div class="weekday-fr">Jeudi</div>
-                                <div class="arabic weekday-sub">الخميس</div>
-                                <div class="tamil weekday-sub">வியாழன்</div>
-                            </div>
-                            <div class="weekday-cell">
-                                <div class="weekday-fr">Vendredi</div>
-                                <div class="arabic weekday-sub">الجمعة</div>
-                                <div class="tamil weekday-sub">வெள்ளி</div>
-                            </div>
-                            <div class="weekday-cell">
-                                <div class="weekday-fr">Samedi</div>
-                                <div class="arabic weekday-sub">السبت</div>
-                                <div class="tamil weekday-sub">சனி</div>
-                            </div>
-                            <div class="weekday-cell">
-                                <div class="weekday-fr">Dimanche</div>
-                                <div class="arabic weekday-sub">الأحد</div>
-                                <div class="tamil weekday-sub">ஞாயிறு</div>
-                            </div>
+                            <ami-calendar-grid></ami-calendar-grid>
                         </div>
-                        <ami-calendar-grid></ami-calendar-grid>
-                        <!-- Encart pour les notes (espace laissé par les cases carrées) -->
-                        <div class="notes-box" aria-label="Notes"></div>
                     </section>
 
                     <!-- SECTION DROITE : Tableau des Horaires -->

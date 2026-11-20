@@ -5,7 +5,6 @@
     --brand: #c8a85a; /* surchargeable par client (clients/*.json) ; par défaut, l'or des ornements */
     --bg-holiday: #faf2dd; /* fond des vacances scolaires : doré pâle, assombri après un test laser (ΔE ≈ 12 au blanc, 8,4 avant) */
     /* Noms de l'association : même famille dorée, deux tons contrastés (WCAG AA sur le bandeau) */
-    --border-eid: var(--col-hijri-soft); /* contour fin des cases de l'Aïd dans le calendrier des mois (vert de gris, 1 px) */
     --col-hijri-soft: #66917c; /* années hégiriennes de la couverture : vert de gris, 3,4:1 (grand texte uniquement), dans la famille des feuilles de la guirlande */
     --brand-text: color-mix(in srgb, var(--brand), black 40%); /* nom tamoul : 4.7:1 */
 
@@ -27,7 +26,11 @@
     --col-orn-bistre: #7a6633; /* étoile du cœur : jaune brun, comme l'ardoise est un bleu profond */
 
     /* Or (ornements, filets, motif du header) */
+    --col-title-blue-soft: #7089ad; /* année grégorienne du titre du mois : bleu plus clair que le nom du mois (3,4:1, grand texte uniquement) */
+    --col-green-year: #4f7f5c; /* année hégirienne du titre du mois : vert plus clair que --bg-head-green (4,6:1) */
     --col-gold: #c8a85a;
+    --col-gold-deep: #b08a2e; /* header : contour du cartouche d'AMI93, étoiles, losanges et ligne séparatrice, un cran plus soutenu que --col-gold pour rester net à l'impression (3,2:1, décor seulement) */
+    --col-gold-light: #ecd9a0; /* header : « 93 » sur le cartouche vert sapin (5,2:1) */
     --col-year-dark-top: #2f5283; /* « 27 » de la couverture : haut du dégradé (bleu moyen) */
     --col-year-dark-bottom: #001a36; /* « 27 » de la couverture : bas du dégradé (bleu nuit) */
 
@@ -41,6 +44,8 @@
     /* Titres adoucis des en-têtes (page calme : la couleur pleine est réservée aux exceptions) */
     --col-title-blue: #46628a; /* arabe et tamoul de la ligne des jours, couverture */
     --col-dst: #8c6200; /* changement d'heure : horloge, libellé, légende et filet du tableau, ambre doré (5.4:1 sur blanc, 4.8:1 sur --bg-holiday) */
+    --bg-badge-dst: #f5e6b0; /* badge du changement d'heure dans les cases : doré un peu plus soutenu que --bg-holiday, pour rester visible sur les vacances */
+    --col-badge-dst: #774f00; /* texte du badge du changement d'heure : 5,5:1 sur --bg-badge-dst */
     --bg-dst: #f8edc6; /* ligne du changement d'heure dans le tableau : doré plus soutenu que --bg-holiday, pour ne pas se confondre avec les vacances (ΔE ≈ 21 au blanc) */
 
     /* Vendredi et dimanche : numéros en gris teinté (vert sauge / terracotta), presque neutres :
@@ -63,18 +68,17 @@
     /* --- FONDS "ÉCO-ENCRE" (PASTELS TRÈS CLAIRS POUR L'IMPRESSION) --- */
 
     /* Vert pastel (vendredis et colonnes de date du tableau des horaires) */
-    --bg-friday: var(--bg-green-faint); /* vendredis de la feuille Ramadan */
+    --bg-friday: var(--bg-green-head); /* vendredis de la feuille Ramadan */
     --bg-cover-top: #6886b2; /* couverture : haut du dégradé de la colonne d'identité (bleu franc derrière le logo, éclairci vite pour économiser l'encre) */
     --bg-cover-mid: #96acca; /* couverture : dégradé à 30 % de la hauteur */
     --bg-cover-low: #9cc6ca; /* couverture : passage bleu → vert (turquoise pâle), aux deux tiers de la hauteur ; interpolé en LCH pour éviter un gris */
     --bg-cover-bottom: var(--bg-green-friday); /* couverture : bas */
-    --bg-friday-light: #e9f3e9; /* vendredis du tableau annuel et encart du verset de la couverture : même vert que --bg-green-head (ΔE ≈ 8 au blanc, visible sur le copieur laser ; l'ancien #f1f8f2 était à 5) */
 
     /* Gris pastel : cases hors du mois */
 
     /* Pastels opaques (rendu fiable sur laser de bureau, papier blanc) */
-    --bg-notes: #f2f6fb; /* encart de notes : ardoise très clair, plus pâle que --bg-grid, pour écrire au stylo (beige écarté : c'est la couleur des vacances) */
-    --bg-grid: #e1eaf4; /* fond de la grille des jours, de la ligne des jours et de la légende : un cran plus soutenu que --bg-green-head, assombri après un test laser (ΔE ≈ 10 au blanc, 8,5 avant) ; texte --bg-head-blue : 5,9:1 */
+    --bg-cartouche: var(--bg-head-green); /* fond du cartouche d'AMI93 (header) : vert sapin, comme l'en-tête du tableau */
+    --bg-grid: #1c3a63; /* ligne des jours de la semaine et contour de la carte du calendrier : bleu marine foncé, blanc dessus 11:1 */
     --bg-blue-head: #e5edf6; /* bandeau du mois, cadre du calendrier et pastilles d'icônes : bleu pâle (écart au blanc ≈ celui du vert pâle, visible sur le copieur laser) */
     --bg-blue-faint: #eef3f9; /* fonds neutres bleus de la feuille Ramadan (seul usage : indépendant du bandeau du mois du calendrier annuel) */
     --col-on-dark-soft: #dbe6f3; /* texte secondaire sur les en-têtes foncés (traductions) */
@@ -82,18 +86,20 @@
     --bg-head-green: #3e5e45; /* en-tête et cadre du tableau des horaires : vert sapin plein, même assombrissement que le bleu ardoise (L* ≈ 37), texte blanc */
     --bg-green-head: #e9f3e9; /* en-tête et cadre du tableau des horaires : vert très pâle (teinte d'origine, comme les vendredis) */
     --bg-eid: #cfe7d2; /* couverture : pastille de l'Aïd, vert pastel (texte --col-friday : 4.8:1) */
-    --bg-green-faint: #e7f2e8; /* vert très clair : traits verticaux du tableau, vendredis de la feuille Ramadan */
     --bg-green-friday: #ddeddf; /* colonnes de date du tableau, le vendredi : un cran au-dessus de --bg-green-head */
+    --border-grid: #b3c4db; /* filets entre les cases de la grille des jours : bleu ardoise clair */
+    --border-sage: #aac6b0; /* filets verticaux entre les colonnes du tableau des horaires : vert sauge clair */
+    --border-on-green: #6b8a72; /* filets entre les colonnes de l'en-tête du tableau, sur le vert sapin */
     --border-blue: #c5d3e4; /* séparateurs de la couverture et du Ramadan : bleu doux */
-    --border-week: #6f9a79; /* filet de 1,5 px après chaque dimanche dans le tableau des horaires : vert moyen, entre le vert de l'en-tête et les filets des jours */
     --border-green: #c3dec6; /* bordures du tableau : vert doux */
     --accent-blue: #7f9cc0; /* filets et puces de la feuille Ramadan */
 
     /* --- IMPRESSION (A4 paysage, reliure sur le bord haut) --- */
     --page-pad: 5mm; /* marge minimale : juste au-dela de la zone non imprimable du copieur (3-5 mm) */
     --block-gap: 3mm; /* espacement unique entre header, calendrier et tableau */
+    --header-line-gap: 1.5mm; /* header : espace entre le contenu et la ligne dorée ; sous la ligne, --block-gap jusqu'aux blocs */
     --header-h: 20mm; /* hauteur du header de l'identité : priorité aux horaires */
-    --band-h: 64px; /* hauteur commune des bandeaux foncés (mois | en-tête des horaires) : bas alignés */
+    --band-h: 70px; /* hauteur commune des bandeaux foncés (mois | en-tête des horaires) : bas alignés */
     --binding-zone: 10mm; /* haut : trous de spirale metallique (<= 6.5 mm) + degagement, dans le bandeau */
 
     /* --- ÉCHELLE TYPOGRAPHIQUE : 4 tailles de texte + 2 tailles de chiffres --- */
@@ -107,11 +113,10 @@
     --fs-cover-year: 120px; /* année grégorienne de la couverture, au-dessus des mois */
     --fs-contact: 11px; /* infos essentielles sous les noms (header du calendrier annuel) */
     --fs-cover-hijri: 42px; /* années hégiriennes de la couverture, de chaque côté de l'année grégorienne */
-    --fs-brand: 29px; /* nom tamoul de l'association (header du calendrier annuel) */
-    --fs-brand-fr: 29px; /* nom français : même corps que le nom tamoul (header du calendrier annuel) */
+    --fs-brand: 24px; /* nom tamoul de l'association (header du calendrier annuel) */
     --fs-figure: 15px; /* chiffres : horaires de prière, invocation et noms de l'association (feuille Ramadan) */
     --fs-title: 30px; /* années de la page Ramadan */
-    --fs-display: 36px; /* numéros des jours du calendrier */
+    --fs-display: 42px; /* numéros des jours du calendrier */
 
     /* --- GRILLE D'ESPACEMENT : multiples de 4 px --- */
     --sp-1: 0.25rem; /* 4 px */
@@ -121,12 +126,11 @@
     --sp-6: 1.5rem; /* 24 px */
 
     /* --- RAYONS --- */
-    --grid-gap: 0.25rem; /* 4 px : espace entre les cases du calendrier et marge de la grille */
-    --radius-cell: 0.5rem; /* 8 px : cases des jours */
     --radius-card: 0.5rem; /* blocs du calendrier et du tableau */
 
     /* --- TYPOGRAPHIE --- */
     --font-fr: 'Noto Sans', sans-serif;
+    --font-fr-serif: 'Noto Serif', serif; /* français des pages des mois (titres, jours, horaires, événements) */
     --font-ar: 'Amiri', 'Noto Naskh Arabic', serif;
     --font-ta: 'Noto Serif Tamil', serif;
 }

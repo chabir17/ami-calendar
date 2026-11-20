@@ -1,5 +1,5 @@
 import { initAdhan, fetchExternalData, getHijriDateSafe, getDayInfo, fetchClientConfig, applyTheme, loadPrayerTimes } from './services.js';
-import { DATE_UTILS, DOM, headerContactsHTML } from './utils.js';
+import { DATE_UTILS, DOM, headerContactsHTML, shortNameHTML } from './utils.js';
 import './components.js';
 
 // ==========================================
@@ -19,7 +19,8 @@ let clientConfig = null;
 function updatePageDOM(container, config) {
     if (!config) return;
 
-    DOM.setText('.org-fr', config.identity.name_fr, container);
+    const shortName = container.querySelector('.org-short-text');
+    if (config.identity.short_name && shortName) shortName.innerHTML = shortNameHTML(config.identity.short_name);
     DOM.setText('.org-ta', config.identity.name_ta, container);
     DOM.setSrc('.logo-img', config.identity.logo_url, container);
 
@@ -345,25 +346,35 @@ function updateZoneTitles(year, month, container) {
     const hijriStart = getHijriDateSafe(new Date(year, jsMonth, 1));
     const hijriEnd = getHijriDateSafe(new Date(year, jsMonth, daysInMonth));
 
-    let hijriFrStr = '',
+    let hijriFrMonths = '',
+        hijriFrYear = '',
         hijriArMonths = '',
         hijriArYear = '',
         hijriTaStr = '';
     if (hijriStart.monthNameFR && hijriEnd.monthNameFR) {
         if (hijriStart.monthNameFR === hijriEnd.monthNameFR) {
-            hijriFrStr = `${hijriStart.monthNameFR} ${hijriStart.year}`;
+            hijriFrMonths = hijriStart.monthNameFR;
+            hijriFrYear = hijriStart.year;
             hijriArMonths = hijriStart.monthNameAR;
             hijriArYear = hijriStart.yearAr;
             hijriTaStr = hijriStart.monthNameTA;
         } else {
             // Deux mois : formes abrégées des mois jumeaux (Rabīʿ I, Jumādā II…), même taille de texte que les autres mois
-            hijriFrStr = `${hijriStart.monthNameShort} / ${hijriEnd.monthNameShort} ${hijriEnd.year}`;
+            hijriFrMonths = `${hijriStart.monthNameShort} / ${hijriEnd.monthNameShort}`;
+            hijriFrYear = hijriEnd.year;
             hijriArMonths = `${hijriStart.monthNameAR} / ${hijriEnd.monthNameAR}`;
             hijriArYear = hijriEnd.yearAr;
             hijriTaStr = `${hijriStart.monthNameTAShort} / ${hijriEnd.monthNameTAShort}`;
         }
     }
-    DOM.setText('.hijri-month-fr', hijriFrStr, container);
+    // Année hégirienne dans un <span> à part (vert plus clair que le mois)
+    const hijriFr = container.querySelector('.hijri-month-fr');
+    if (hijriFr) {
+        const yearFr = document.createElement('span');
+        yearFr.className = 'hijri-year-fr';
+        yearFr.textContent = hijriFrYear;
+        hijriFr.replaceChildren(hijriFrMonths, ' ', yearFr);
+    }
     // Mois en gras, année plus légère (comme « MAI 2027 »)
     const hijriAr = container.querySelector('.hijri-month-ar');
     if (hijriAr) {

@@ -672,7 +672,7 @@
     margin: var(--cover-gap) 2mm 0; /* rentré comme le contenu des mini-mois (marge intérieure de 2 mm) : aligné sur les grilles */
     padding: 1.2mm var(--sp-3);
     border-radius: var(--radius-card);
-    background: var(--bg-friday-light);
+    background: var(--bg-green-head);
     font-size: var(--fs-verse);
     line-height: 1.45;
     white-space: nowrap;

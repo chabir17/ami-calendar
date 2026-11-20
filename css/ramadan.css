@@ -471,7 +471,7 @@ sup.ordinal {
 }
 
 .ramadan-table tr.is-eid .event-separator {
-    color: var(--bg-green-faint);
+    color: var(--bg-green-head);
 }
 
 /* --- PIED DE PAGE : invocation d'acceptation, puis identité sur la bande blanche --- */

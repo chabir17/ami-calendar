@@ -97,6 +97,7 @@ class CalendarGrid extends MonthElement {
                 const monthName = root.querySelector('.new-moon-name');
                 monthName.hidden = false;
                 monthName.textContent = hijri.monthNameShort.replace('Dhū al-', 'Dhū l-'); // « Dhū l-Qaʿdah » : plus court, tient à côté du jour hégirien
+                monthName.classList.toggle('is-long', monthName.textContent.length > 10); // noms longs : un cran plus petit
             }
 
             if (dayInfo.isDST) {
