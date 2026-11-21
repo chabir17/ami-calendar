@@ -3,7 +3,7 @@
        Chaque teinte foncée est saisie une seule fois ; ses versions claires en sont dérivées (même teinte), pour qu'elles restent accordées. */
 
     /* Safran : tamoul, dimanches */
-    --col-saffron: #d14600; /* safran du drapeau indien (#ff671f) assombri pour le texte sur blanc (4,9:1) */
+    --col-saffron: #e04b00; /* safran du drapeau indien (#ff671f) assombri pour le texte sur blanc (4,1:1) */
     --col-saffron-light: oklch(from var(--col-saffron) 0.9 0.09 h); /* tamoul sur les en-têtes foncés */
 
     /* Bleu marine français : ligne des jours, contour du calendrier, nom du mois, icônes */
@@ -33,7 +33,7 @@
     --bg-red-light: oklch(from var(--col-red) 0.935 0.045 h); /* badges des jours fériés, cellules du jeûne */
 
     /* Ocre : changement d'heure, ornements dorés */
-    --col-ocre: #8c6100; /* texte et filet du changement d'heure (4,9:1) */
+    --col-ocre: #8c6100; /* texte et filet du changement d'heure (4,1:1) */
     --bg-ocre-light: oklch(from var(--col-ocre) 0.96 0.06 h); /* badge et ligne du changement d'heure */
     --col-gold: oklch(from var(--col-ocre) 0.74 0.13 h); /* doré : cadre, losanges et filets du header et du titre du mois, bordures de la feuille Ramadan */
 
