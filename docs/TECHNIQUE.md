@@ -124,7 +124,7 @@ Le tableau occupe toute la hauteur : les mois de 28 à 31 jours tiennent sur la 
 └──────────────────────────────────────────────────────────────┘
 ```
 
-- **Cadre** : `.header-fixed`, `--header-h` (27 mm), sous la zone de reliure, bordure de 1 px `--col-ocre`, coins `--radius-card`. Un logo à chaque extrémité (`.logo-box`, `.logo-box-r`) ; au centre, grille `names` / `contacts` centrée sur la hauteur.
+- **Cadre** : `.header-fixed`, `--header-h` (27 mm), sous la zone de reliure, bordure de 1,5 px `--col-gold`, coins `--radius-card`. Un logo à chaque extrémité (`.logo-box`, `.logo-box-r`) ; au centre, grille `names` / `contacts` centrée sur la hauteur.
 - **Noms** : tamoul `.org-ta` (`--fs-brand`, 600, `--col-saffron`), puis nom français `.org-fr` (`--fs-name`, 700, lettres espacées, `--col-green`, rempli depuis `identity.name_fr`).
 - **Coordonnées** (`.header-contacts`) : deux lignes (adresses ; téléphone, WhatsApp, e-mail ; pas de site web), `--fs-contact` 11 px, gris `--col-text-light`, icônes `--col-blue`, losanges `--col-ocre`.
 - **Retirés** : cartouche AMI93 (`short_name`, symboles `#org-cap` / `#org-star`), ligne dorée séparatrice (`--header-line-gap`), jetons `--bg-cartouche`, `--col-gold-light`.

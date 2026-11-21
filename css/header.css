@@ -7,7 +7,7 @@
     margin-top: calc(var(--binding-zone) - var(--page-pad));
     height: var(--header-h); /* box-sizing: border-box */
     background-color: white;
-    border: 1px solid var(--col-gold-soft); /* cadre doré arrondi autour du header */
+    border: 1.5px solid var(--col-gold); /* cadre doré arrondi autour du header, de la même épaisseur que le calendrier et le tableau */
     border-radius: var(--radius-card);
 }
 
@@ -15,7 +15,7 @@
    puis les coordonnées sur deux lignes, centrés sur la page. Le reste des coordonnées et l'IBAN sont sur la couverture. */
 .header-content {
     --header-pad: var(--sp-2); /* même marge intérieure (8 px) en haut, en bas, à gauche et à droite du cadre */
-    --logo-size: calc(var(--header-h) - 2px - 2 * var(--header-pad)); /* le logo prend la hauteur utile du cadre (moins la bordure et les marges) */
+    --logo-size: calc(var(--header-h) - 3px - 2 * var(--header-pad)); /* le logo prend la hauteur utile du cadre (moins la bordure et les marges) */
     position: relative; /* au-dessus du fond */
     height: 100%;
     display: grid;
@@ -103,7 +103,7 @@
     width: 4px;
     height: 4px;
     margin-right: 0.625rem;
-    background: var(--col-gold-soft);
+    background: var(--col-gold);
     transform: rotate(45deg);
 }
 

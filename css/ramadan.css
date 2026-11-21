@@ -330,7 +330,7 @@ body {
 }
 
 .ramadan-table tr.is-friday {
-    background-color: var(--bg-friday);
+    background-color: var(--bg-green-light);
 }
 
 /* Colonnes de dates */

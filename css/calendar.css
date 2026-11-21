@@ -31,7 +31,7 @@
 .hijri-bar i {
     flex: 1;
     width: 1px;
-    background: var(--col-gold-soft);
+    background: var(--col-gold);
 }
 
 .hijri-bar b {
@@ -39,7 +39,7 @@
     flex: none;
     width: 0.4375rem; /* 7 px */
     height: 0.4375rem;
-    border: 1px solid var(--col-gold-soft);
+    border: 1px solid var(--col-gold);
     transform: rotate(45deg);
 }
 
@@ -47,7 +47,7 @@
     content: '';
     position: absolute;
     inset: 1px;
-    background: var(--col-gold-soft);
+    background: var(--col-gold);
 }
 
 .hijri-rows {
@@ -71,7 +71,7 @@
     font-family: var(--font-fr-serif);
     font-size: var(--fs-md);
     font-style: normal;
-    color: var(--col-gold-soft); /* puce dorée entre les trois langues */
+    color: var(--col-gold); /* puce dorée entre les trois langues */
 }
 
 .hijri-fr {
@@ -250,7 +250,7 @@
 
 /* Cases hors du mois : même fond que l'encart de notes ; seule la bordure entre deux cases vides disparaît */
 .day-cell-visual.empty {
-    background-color: var(--bg-blue-faint);
+    background-color: var(--bg-empty);
 }
 
 .day-cell-visual.empty:has(+ .empty) {
@@ -288,9 +288,18 @@
     color: var(--col-green);
 }
 
-/* Numéro du jour (Hégirien) */
+/* Numéro du jour (Hégirien) : chiffre vert dans un disque vert clair ; le 1er du mois passe en disque vert plein (voir plus bas) */
 .vis-hij {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1rem;
+    height: 1rem;
+    padding: 0 0.1875rem;
+    border-radius: 999px;
+    background: var(--bg-green-light);
     font-size: var(--fs-sm);
+    line-height: 1;
     color: var(--col-green);
     position: absolute;
     top: var(--sp-1);
@@ -303,17 +312,9 @@
 }
 
 .day-cell-visual.has-new-moon .vis-hij {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 1rem;
-    height: 1rem;
-    padding: 0 0.1875rem;
-    border-radius: 999px;
-    background: var(--col-green); /* même vert que le nom du mois et le croissant */
+    background: var(--col-green); /* 1er du mois hégirien : disque vert plein, chiffre blanc (comme le « 01 » du tableau) */
     color: white;
     font-weight: 600;
-    line-height: 1;
 }
 
 /* Jours islamiques particuliers : date hégirienne en gras (repérable sans ornement) */

@@ -1,90 +1,70 @@
 :root {
-    /* --- PALETTE DE COULEURS (BASÉE SUR LE LOGO AMI) --- */
+    /* === PALETTE : cinq teintes (couleurs du logo AMI et des drapeaux indien et français, assez vives pour ressortir à l'impression laser) ===
+       Chaque teinte foncée est saisie une seule fois ; ses versions claires en sont dérivées (même teinte), pour qu'elles restent accordées. */
 
-    /* --- PALETTE DU CALENDRIER ANNUEL : cinq teintes, chacune avec sa version claire (couleurs du logo et du drapeau indien, assez vives pour ressortir à l'impression laser) --- */
-    --col-saffron: #c84f0a; /* safran du drapeau indien (#ff671f) assombri pour le texte sur fond blanc : tamoul, dimanches (4,9:1) */
-    --col-saffron-light: oklch(from var(--col-saffron) 0.84 0.1 h); /* safran clair, dérivé du safran (même teinte) : tamoul sur les en-têtes foncés */
-    --col-blue: #002654; /* bleu marine français : ligne des jours, contour du calendrier, nom du mois, icônes (blanc dessus 15:1) */
-    --bg-holiday: oklch(from var(--col-blue) 0.92 0.03 h); /* bleu clair dérivé du bleu (même teinte) : vacances scolaires, pastilles de la couverture */
-    --col-green: #046a38; /* vert du drapeau indien : en-tête du tableau, nom français, mois et jours hégiriens, vendredis, badges islamiques (blanc dessus 6,7:1) */
-    --bg-green-light: oklch(from var(--col-green) 0.95 0.04 h); /* vert clair dérivé du vert (même teinte) : vendredis du tableau, Aïd et jours vertueux, verset de la couverture */
-    --col-red: #ce1126; /* rouge Marianne : jours fériés (civil), jeûne (feuille Ramadan) : 5,9:1 sur blanc */
-    --bg-red-light: oklch(from var(--col-red) 0.92 0.04 h); /* rouge clair dérivé du rouge : badges des jours fériés, cellules du jeûne (feuille Ramadan) */
-    --col-ocre: #9a6a00; /* ocre foncé (texte) : changement d'heure (horloge, badge, filet du tableau) ; 4,9:1 sur blanc */
-    --col-gold-soft: oklch(from var(--col-ocre) 0.74 0.13 h); /* doré, dérivé de l'ocre (même teinte, plus clair et vif) : cadre, losanges et filet du header et du titre du mois */
-    --bg-ocre-light: oklch(from var(--col-ocre) 0.93 0.07 h); /* ocre clair dérivé de l'ocre : badge et ligne du changement d'heure */
+    /* Safran : tamoul, dimanches */
+    --col-saffron: #c84f0a; /* safran du drapeau indien (#ff671f) assombri pour le texte sur blanc (4,9:1) */
+    --col-saffron-light: oklch(from var(--col-saffron) 0.84 0.1 h); /* tamoul sur les en-têtes foncés */
 
-    /* Nuances dérivées des cinq teintes : même teinte, plus claire (filets, textes secondaires) */
+    /* Bleu marine français : ligne des jours, contour du calendrier, nom du mois, icônes */
+    --col-blue: #002654; /* blanc dessus 15:1 */
+    --bg-holiday: oklch(from var(--col-blue) 0.93 0.022 h); /* vacances scolaires, pastilles de la couverture */
+    --bg-blue-faint: oklch(from var(--col-blue) 0.96 0.015 h); /* fonds neutres de la feuille Ramadan */
     --col-title-blue: color-mix(in srgb, var(--col-blue), white 30%); /* traductions du titre du mois, couverture */
     --col-title-blue-soft: color-mix(in srgb, var(--col-blue), white 48%); /* année du titre du mois : plus claire que le nom */
     --col-weekday-ar: color-mix(in srgb, var(--col-blue), white 78%); /* arabe de la ligne des jours, sur bleu marine */
+    --col-on-blue: color-mix(in srgb, var(--col-blue), white 80%); /* texte secondaire sur bleu marine (feuille Ramadan) */
     --border-grid: color-mix(in srgb, var(--col-blue), white 72%); /* filets entre les cases de la grille */
+    --border-blue: color-mix(in srgb, var(--col-blue), white 83%); /* séparateurs de la couverture et du Ramadan */
+    --col-year-dark-top: oklch(from var(--col-blue) 0.45 0.12 h); /* « 27 » de la couverture : haut du dégradé */
+    --col-year-dark-bottom: oklch(from var(--col-blue) 0.22 0.07 h); /* « 27 » de la couverture : bas du dégradé */
+
+    /* Vert du drapeau indien : en-tête du tableau, nom français, repères hégiriens, vendredis, badges islamiques */
+    --col-green: #046a38; /* blanc dessus 6,7:1 */
+    --bg-green-light: oklch(from var(--col-green) 0.955 0.03 h); /* vendredis du tableau, Aïd et jours vertueux, verset de la couverture */
     --col-on-green-soft: color-mix(in srgb, var(--col-green), white 82%); /* arabe de l'en-tête du tableau, sur vert */
     --border-on-green: color-mix(in srgb, var(--col-green), white 45%); /* filets entre les colonnes de l'en-tête du tableau */
     --border-sage: color-mix(in srgb, var(--col-green), white 68%); /* filets verticaux du tableau */
     --border-green: color-mix(in srgb, var(--col-green), white 78%); /* filets horizontaux du tableau */
+    --col-hijri-soft: oklch(from var(--col-green) 0.62 0.09 h); /* années hégiriennes de la couverture (grand texte : 3,3:1) */
 
-    /* Couleur thématique de l'année (Doré) */
-    --brand: #c8a85a; /* surchargeable par client (clients/*.json) ; par défaut, l'or des ornements */
-    /* Noms de l'association : même famille dorée, deux tons contrastés (WCAG AA sur le bandeau) */
-    --col-hijri-soft: #4f9c76; /* années hégiriennes de la couverture : vert du drapeau éclairci (même teinte que --col-green), 3,3:1 (grand texte uniquement), dans la famille des feuilles de la guirlande */
-    --brand-text: color-mix(in srgb, var(--brand), black 40%); /* nom tamoul : 4.7:1 */
+    /* Rouge Marianne : jours fériés, jeûne (feuille Ramadan) */
+    --col-red: #ce1126; /* 5,9:1 sur blanc */
+    --bg-red-light: oklch(from var(--col-red) 0.935 0.03 h); /* badges des jours fériés, cellules du jeûne */
 
-    /* Bleu foncé (Référence Tour Eiffel) */
-    --col-on-blue: #cedef3; /* texte secondaire sur bleu marine (feuille Ramadan) : 8.6:1 */
+    /* Ocre : changement d'heure, ornements dorés */
+    --col-ocre: #9a6a00; /* texte et filet du changement d'heure (4,9:1) */
+    --bg-ocre-light: oklch(from var(--col-ocre) 0.94 0.05 h); /* badge et ligne du changement d'heure */
+    --col-gold: oklch(from var(--col-ocre) 0.74 0.13 h); /* doré : cadre, losanges et filets du header et du titre du mois, bordures de la feuille Ramadan */
 
-    /* Vert (Référence Mosquée) */
+    /* Couleur thématique du client (surchargeable : clients/*.json) */
+    --brand: #c8a85a; /* par défaut, l'or des ornements */
+    --brand-text: color-mix(in srgb, var(--brand), black 40%); /* icônes et coordonnées : 4,7:1 */
 
-    /* Safran (minaret et nom tamoul du logo) */
-
-    /* Rosace de la couverture (ornement uniquement) : jaune sable chaud, l'équivalent en jaune du vert sauge et du bleu ardoise, pour contraster avec le froid du bleu et du vert */
+    /* Rosace de la couverture (ornement uniquement) : jaune sable chaud */
     --col-orn-sand: #f1e6c9; /* pétales extérieurs */
-    --col-orn-ocre: #c4ad64; /* pétales du milieu : jaune terni, comme le vert sauge des années hégiriennes */
-    --col-orn-cream: #fbf6e7; /* petits pétales intérieurs : crème, distinct du sable (indépendant du fond des vacances) */
-    --col-orn-bistre: #7a6633; /* étoile du cœur : jaune brun, comme l'ardoise est un bleu profond */
+    --col-orn-ocre: #c4ad64; /* pétales du milieu */
+    --col-orn-cream: #fbf6e7; /* petits pétales intérieurs */
+    --col-orn-bistre: #7a6633; /* étoile du cœur */
 
-    /* Or (ornements, filets, motif du header) */
-    --col-gold: #c8a85a;
-    --col-year-dark-top: #2b5088; /* « 27 » de la couverture : haut du dégradé (bleu moyen) */
-    --col-year-dark-bottom: #001a3d; /* « 27 » de la couverture : bas du dégradé (bleu nuit) */
+    /* Dégradé de la colonne d'identité de la couverture */
+    --bg-cover-top: #6886b2; /* haut (bleu franc derrière le logo, éclairci vite pour économiser l'encre) */
+    --bg-cover-mid: #96acca; /* à 30 % de la hauteur */
+    --bg-cover-low: #9cc6ca; /* aux deux tiers : passage bleu → vert (turquoise pâle) */
+    --bg-cover-bottom: var(--bg-green-light); /* bas */
 
-    /* Terracotta (horaires du jeûne : Imsak, iftār, Icha AMI) */
-
-    /* Encre des chiffres et des textes sur fond foncé */
+    /* Neutres */
     --col-ink: #1f1f1f; /* horaires */
-
-    /* Titres adoucis des en-têtes (page calme : la couleur pleine est réservée aux exceptions) */
-
-    /* Vendredi et dimanche : numéros en gris teinté (vert sauge / terracotta), presque neutres :
-       la couleur pleine reste réservée aux jours fériés et à l'Aïd */
-
-    /* Couleurs neutres */
     --col-text: #333333;
     --col-text-light: #555555;
-    --col-text-soft: #6b6b6b; /* texte discret : 5.3:1 sur blanc */
-
-    /* Fonds globaux */
+    --col-text-soft: #6b6b6b; /* texte discret : 5,3:1 sur blanc */
+    --bg-empty: #f6f6f7; /* gris clair léger : cases hors du mois */
     --bg-body: #eeeeee;
     --shadow-page: 0 0 15px rgba(0, 0, 0, 0.1); /* ombre de la page à l'écran */
+    --border-on-dark: rgba(255, 255, 255, 0.2); /* séparateurs sur fond foncé (feuille Ramadan) */
+    --accent-blue: #7f9cc0; /* filets et puces de la feuille Ramadan */
     /* Filets de 0,5 px : tracés en pseudo-élément (Chrome arrondit une border de 0,5 px à 1 px, même dans le PDF) */
     --hairline: 0.5px;
-    --border-on-dark: rgba(255, 255, 255, 0.2); /* séparateurs sur fond foncé (feuille Ramadan) */
-
-    /* --- FONDS "ÉCO-ENCRE" (PASTELS TRÈS CLAIRS POUR L'IMPRESSION) --- */
-
-    /* Vert pastel (vendredis et colonnes de date du tableau des horaires) */
-    --bg-friday: var(--bg-green-light); /* vendredis de la feuille Ramadan */
-    --bg-cover-top: #6886b2; /* couverture : haut du dégradé de la colonne d'identité (bleu franc derrière le logo, éclairci vite pour économiser l'encre) */
-    --bg-cover-mid: #96acca; /* couverture : dégradé à 30 % de la hauteur */
-    --bg-cover-low: #9cc6ca; /* couverture : passage bleu → vert (turquoise pâle), aux deux tiers de la hauteur ; interpolé en LCH pour éviter un gris */
-    --bg-cover-bottom: var(--bg-green-light); /* couverture : bas */
-
-    /* Gris pastel : cases hors du mois */
-
-    /* Pastels opaques (rendu fiable sur laser de bureau, papier blanc) */
-    --bg-blue-faint: oklch(from var(--col-blue) 0.96 0.015 h); /* bleu très clair dérivé du bleu : cases hors du mois, fonds neutres de la feuille Ramadan */
-    --border-blue: #d2dce9; /* séparateurs de la couverture et du Ramadan : bleu doux */
-    --accent-blue: #7f9cc0; /* filets et puces de la feuille Ramadan */
 
     /* --- IMPRESSION (A4 paysage, reliure sur le bord haut) --- */
     --page-pad: 5mm; /* marge minimale : juste au-dela de la zone non imprimable du copieur (3-5 mm) */

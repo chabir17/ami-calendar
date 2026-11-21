@@ -24,7 +24,7 @@ Couleurs du logo AMI et du drapeau indien, adaptées à l'impression laser (asse
 | ------ | --------------------------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------- |
 | Safran | `--col-saffron` / `--col-saffron-light` | `#e65c12` / `#ffbd92` | Tamoul (clair sur les en-têtes foncés), dimanches, nom tamoul du header                                       |
 | Bleu   | `--col-blue` / `--bg-holiday`           | `#002654` / `#d7e4f4` | Ligne des jours, contour, nom du mois, icônes / vacances scolaires, pastilles de la couverture                |
-| Vert   | `--col-green` / `--bg-green-light`      | `#046a38` / `#e0f2e8` | En-tête du tableau, nom français, repères hégiriens, vendredis, badges islamiques / vendredis du tableau, Aïd |
+| Vert   | `--col-green` / `--bg-green-light`      | `#046a38` / `#e2f3ea` | En-tête du tableau, nom français, repères hégiriens, vendredis, badges islamiques / vendredis du tableau, Aïd |
 | Rouge  | `--col-red` / `--bg-red-light`          | `#ce1126` / `#fde0e2` | Jours fériés (chiffre / badge)                                                                                |
 | Ocre   | `--col-ocre` / `--bg-ocre-light`        | `#956700` / `#f9eac0` | Changement d'heure (horloge, badge, ligne du tableau) ; ornements du header (cadre, losanges)                 |
 
