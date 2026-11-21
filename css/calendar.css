@@ -288,8 +288,21 @@
     color: var(--col-green);
 }
 
-/* Numéro du jour (Hégirien) : chiffre vert dans un disque vert clair ; le 1er du mois passe en disque vert plein (voir plus bas) */
+/* Numéro du jour (Hégirien) : petit chiffre vert, en haut à droite */
 .vis-hij {
+    font-size: var(--fs-sm);
+    color: var(--col-green);
+    position: absolute;
+    top: var(--sp-1);
+    right: var(--sp-1);
+}
+
+/* Premier jour du mois hégirien : chiffre blanc dans un disque vert plein, comme le « 01 » du tableau des horaires */
+.day-cell-visual.has-new-moon {
+    --moon-name-right: 1.2rem; /* le nom du mois s'arrête avant le disque */
+}
+
+.day-cell-visual.has-new-moon .vis-hij {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -297,24 +310,10 @@
     height: 1rem;
     padding: 0 0.1875rem;
     border-radius: 999px;
-    background: var(--bg-green-light);
-    font-size: var(--fs-sm);
-    line-height: 1;
-    color: var(--col-green);
-    position: absolute;
-    top: var(--sp-1);
-    right: var(--sp-1);
-}
-
-/* Premier jour du mois hégirien : chiffre blanc dans un disque du vert du nom du mois, comme le « 01 » du tableau des horaires */
-.day-cell-visual.has-new-moon {
-    --moon-name-right: 1.2rem; /* le nom du mois s'arrête avant le disque */
-}
-
-.day-cell-visual.has-new-moon .vis-hij {
-    background: var(--col-green); /* 1er du mois hégirien : disque vert plein, chiffre blanc (comme le « 01 » du tableau) */
+    background: var(--col-green);
     color: white;
     font-weight: 600;
+    line-height: 1;
 }
 
 /* Jours islamiques particuliers : date hégirienne en gras (repérable sans ornement) */
