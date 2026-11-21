@@ -59,7 +59,7 @@
     --col-text: #333333;
     --col-text-light: #3d3d3d;
     --col-text-soft: #6b6b6b; /* texte discret : 5,3:1 sur blanc */
-    --bg-empty: #ebebec; /* gris clair : cases hors du mois ; à l'impression ΔE ≈ 7 au blanc (plus clair, il disparaît sur laser) */
+    --bg-empty: #e6e6e6; /* gris clair : cases hors du mois ; le plus clair qui reste visible à l'impression (ΔE ≈ 8 au blanc imprimé) */
     --bg-body: #eeeeee;
     --shadow-page: 0 0 15px rgba(0, 0, 0, 0.1); /* ombre de la page à l'écran */
     --border-on-dark: rgba(255, 255, 255, 0.2); /* séparateurs sur fond foncé (feuille Ramadan) */
