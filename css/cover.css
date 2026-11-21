@@ -553,7 +553,7 @@
     align-items: flex-end;
     font-size: var(--fs-xs);
     line-height: 1.55; /* deux mois hégiriens : arabe aéré */
-    color: var(--col-title-blue);
+    color: var(--col-green); /* mois hégiriens en vert */
 }
 
 /* Année hégirienne : plus légère que le nom du mois */
