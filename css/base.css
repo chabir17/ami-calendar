@@ -89,7 +89,7 @@ strong {
     font-family: var(--font-fr-serif);
 }
 
-/* Tamoul du calendrier annuel : orange safran par défaut (version claire --col-saffron-light sur les fonds foncés) ; les règles propres à un élément passent avant */
+/* Tamoul du calendrier annuel : orange safran par défaut (version claire --col-tamil-light sur les fonds foncés) ; les règles propres à un élément passent avant */
 :where(.month-page, .cover-page) .tamil {
     color: var(--col-saffron);
 }

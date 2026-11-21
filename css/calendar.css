@@ -222,7 +222,8 @@
 }
 
 .weekday-sub.tamil {
-    color: var(--col-saffron-light); /* tamoul : safran clair sur le bleu marine */
+    color: var(--col-tamil-light); /* tamoul : ocre clair sur le bleu marine */
+    font-weight: 600; /* tamoul des en-têtes : semi-bold, traits fins plus robustes à l'impression */
 }
 
 /* Grille des jours (5 rangées pour couvrir le mois) */

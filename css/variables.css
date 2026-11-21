@@ -5,7 +5,6 @@
     /* Safran : tamoul, dimanches */
     --col-saffron: #be5128; /* safran : 4,8:1 sur blanc ; imprimé #c05530 (perte CMJN minimale, teinte plus chaude que le drapeau) */
     --col-saffron-display: oklch(from var(--col-saffron) 0.63 0.17 h); /* safran plus vif, pour les grands textes seulement (≥ 24 px ou 18,7 px gras : AA 3:1) */
-    --col-saffron-light: oklch(from var(--col-saffron) 0.9 0.09 h); /* tamoul sur les en-têtes foncés */
 
     /* Bleu marine français : ligne des jours, contour du calendrier, nom du mois, icônes */
     --col-blue: #083262; /* bleu marine, légèrement plus bleu que #002654 pour mieux tenir à l'impression : blanc dessus 12,8:1, imprimé #19355f */
@@ -34,6 +33,9 @@
     --bg-red-light: oklch(from var(--col-red) 0.935 0.045 h); /* badges des jours fériés, cellules du jeûne */
 
     /* Ocre : changement d'heure, ornements dorés */
+    --col-tamil-light: oklch(
+        from var(--col-ocre) 0.89 0.075 h
+    ); /* tamoul sur les en-têtes foncés (bleu marine, vert sapin) : ocre clair, dérivé de l'ocre ; 8,9:1 sur le bleu, 4,8:1 sur le vert (AA) ; plus lisible que le safran clair et moins rosé à l'impression */
     --col-ocre: #946c25; /* ocre : 4,7:1 sur blanc ; imprimé #956f2e */
     --bg-ocre-light: oklch(from var(--col-ocre) 0.96 0.06 h); /* badge et ligne du changement d'heure */
     --col-gold: oklch(from var(--col-ocre) 0.74 0.13 h); /* doré : cadre, losanges et filets du header et du titre du mois, bordures de la feuille Ramadan */
