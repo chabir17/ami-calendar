@@ -3,7 +3,7 @@
        Chaque teinte foncée est saisie une seule fois ; ses versions claires en sont dérivées (même teinte), pour qu'elles restent accordées. */
 
     /* Safran : tamoul, dimanches */
-    --col-saffron: #c84f0a; /* safran du drapeau indien (#ff671f) assombri pour le texte sur blanc (4,9:1) */
+    --col-saffron: #d14600; /* safran du drapeau indien (#ff671f) assombri pour le texte sur blanc (4,9:1) */
     --col-saffron-light: oklch(from var(--col-saffron) 0.9 0.09 h); /* tamoul sur les en-têtes foncés */
 
     /* Bleu marine français : ligne des jours, contour du calendrier, nom du mois, icônes */
