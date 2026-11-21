@@ -54,7 +54,7 @@ docs/
 
 Chaque mois est un clone de `#page-template` (`.page.month-page`) : une page A4 paysage (`--page-pad` 5 mm de marge, `--binding-zone` 10 mm en haut pour la spirale) composée de trois blocs. Entre eux, un même espace `--block-gap` (3 mm) : sous la ligne dorée du header (placée à `--header-line-gap`, 1,5 mm, sous le contenu du header) et entre le calendrier et le tableau.
 
-1. **Header de l'identité** (`.header-fixed`, pleine largeur, `--header-h` = 30,5 mm), voir 3.4 ;
+1. **Header de l'identité** (`.header-fixed`, pleine largeur, `--header-h` = 28 mm), voir 3.4 ;
 2. à gauche, **titre du mois** (sur la page blanche, hors de la carte) puis **carte du calendrier** (`.calendar-card`) : ligne des jours de la semaine et grille de 35 cases ; la légende est sur la couverture ;
 3. à droite, **tableau des horaires**.
 
@@ -124,7 +124,7 @@ Le tableau occupe toute la hauteur : les mois de 28 à 31 jours tiennent sur la 
 └──────────────────────────────────────────────────────────────┘
 ```
 
-- **Cadre** : `.header-fixed`, `--header-h` (30,5 mm, logos de 25,4 mm = 1 pouce), sous la zone de reliure, bordure de 1,5 px `--col-gold`, coins `--radius-card`. Un logo à chaque extrémité (`.logo-box`, `.logo-box-r`) ; au centre, grille `names` / `contacts` centrée sur la hauteur.
+- **Cadre** : `.header-fixed`, `--header-h` (28 mm, logos ≈ 23 mm), sous la zone de reliure, bordure de 1,5 px `--col-gold`, coins `--radius-card`. Un logo à chaque extrémité (`.logo-box`, `.logo-box-r`) ; au centre, grille `names` / `contacts` centrée sur la hauteur.
 - **Noms** : tamoul `.org-ta` (`--fs-brand`, 600, `--col-saffron`), puis nom français `.org-fr` (`--fs-name`, 700, lettres espacées, `--col-green`, rempli depuis `identity.name_fr`).
 - **Coordonnées** (`.header-contacts`) : deux lignes (adresses ; téléphone, WhatsApp, e-mail ; pas de site web), `--fs-contact` 11 px, gris `--col-text-light`, icônes `--col-blue`, losanges `--col-ocre`.
 - **Retirés** : cartouche AMI93 (`short_name`, symboles `#org-cap` / `#org-star`), ligne dorée séparatrice (`--header-line-gap`), jetons `--bg-cartouche`, `--col-gold-light`.
