@@ -8,7 +8,7 @@
 
     /* Bleu marine français : ligne des jours, contour du calendrier, nom du mois, icônes */
     --col-blue: #002654; /* blanc dessus 15:1 */
-    --bg-holiday: oklch(from var(--col-blue) 0.93 0.022 h); /* vacances scolaires, pastilles de la couverture */
+    --bg-holiday: oklch(from var(--col-blue) 0.955 0.02 h); /* vacances scolaires, pastilles de la couverture */
     --bg-blue-faint: oklch(from var(--col-blue) 0.96 0.015 h); /* fonds neutres de la feuille Ramadan */
     --col-title-blue: color-mix(in srgb, var(--col-blue), white 30%); /* traductions du titre du mois, couverture */
     --col-title-blue-soft: color-mix(in srgb, var(--col-blue), white 48%); /* année du titre du mois : plus claire que le nom */
