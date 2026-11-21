@@ -90,22 +90,22 @@ export function contactsHTML(c, links = false) {
 
 /**
  * Mois hégiriens, dans l'ordre (index 0 = Muḥarram) : translittération standard, arabe, tamoul.
- * short / taShort : formes abrégées (I, II) des mois jumeaux, pour le bandeau quand deux mois se partagent la ligne.
+ * short : forme abrégée (I, II) des mois jumeaux en français ; le tamoul reste complet (comme sur le calendrier de l'ATMV) quand deux mois se partagent la ligne.
  * Indexés par numéro de mois : aucune dépendance aux noms renvoyés par le navigateur (variables selon l'OS).
  */
 const HIJRI_MONTHS = [
     { std: 'Muḥarram', ar: 'محرم', ta: 'முஹர்ரம்' },
     { std: 'Ṣafar', ar: 'صفر', ta: 'ஸஃபர்' },
-    { std: 'Rabīʿ al-awwal', short: 'Rabīʿ I', ar: 'ربيع الأول', ta: 'ரபீஉல் அவ்வல்', taShort: 'ரபீஉ I' },
-    { std: 'Rabīʿ ath-thānī', short: 'Rabīʿ II', ar: 'ربيع الآخر', ta: 'ரபீஉல் ஆகிர்', taShort: 'ரபீஉ II' },
-    { std: 'Jumādā al-ūlā', short: 'Jumādā I', ar: 'جمادى الأولى', ta: 'ஜுமாதல் ஊலா', taShort: 'ஜுமாதா I' },
-    { std: 'Jumādā ath-thāniya', short: 'Jumādā II', ar: 'جمادى الآخرة', ta: 'ஜுமாதல் ஆகிரா', taShort: 'ஜுமாதா II' },
+    { std: 'Rabīʿ al-awwal', short: 'Rabīʿ I', ar: 'ربيع الأول', ta: 'ரபீஉல் அவ்வல்' },
+    { std: 'Rabīʿ ath-thānī', short: 'Rabīʿ II', ar: 'ربيع الآخر', ta: 'ரபீஉல் ஆகிர்' },
+    { std: 'Jumādā al-ūlā', short: 'Jumādā I', ar: 'جمادى الأولى', ta: 'ஜுமாதல் ஊலா' },
+    { std: 'Jumādā ath-thāniya', short: 'Jumādā II', ar: 'جمادى الآخرة', ta: 'ஜுமாதல் ஆகிரா' },
     { std: 'Rajab', ar: 'رجب', ta: 'ரஜப்' },
     { std: 'Shaʿbān', ar: 'شعبان', ta: 'ஷஃபான்' },
-    { std: 'Ramaḍān', ar: 'رمضان', ta: 'ரமளான்' },
+    { std: 'Ramaḍān', ar: 'رمضان', ta: 'ரமலான்' },
     { std: 'Shawwāl', ar: 'شوال', ta: 'ஷவ்வால்' },
-    { std: 'Dhū al-Qaʿdah', ar: 'ذو القعدة', ta: 'துல் கஃதா' },
-    { std: 'Dhū al-Ḥijjah', ar: 'ذو الحجة', ta: 'துல் ஹஜ்' }
+    { std: 'Dhū al-Qaʿdah', ar: 'ذو القعدة', ta: 'துல்கஅதா' },
+    { std: 'Dhū al-Ḥijjah', ar: 'ذو الحجة', ta: 'துல்ஹஜ்' }
 ];
 
 /** Jour julien du 1er jour d'un mois du calendrier hégirien civil (tabulaire, époque du 16 juillet 622) */
@@ -113,13 +113,14 @@ const HIJRI_MONTHS = [
  * Calendrier Umm al-Qura (référence de l'AMI) : date grégorienne du 1er de chaque mois hégirien, de Muḥarram à Dhū al-Ḥijja
  * (« MM-JJ », l'année grégorienne se déduit de l'ordre). Table figée, générée avec Intl « islamic-umalqura » (ICU) :
  * même résultat sur tous les navigateurs. À prolonger pour les années suivantes (voir docs/TECHNIQUE.md, 4.2).
+ * Écarts à Umm al-Qura, alignés sur le calendrier de l'ATMV (Mosquée Al-Ihsan) pour 2027 : 1er Shawwāl 1448 = 10 mars (Ramaḍān à 30 jours, Aïd al-Fitr le 10 mars) et 1er Rabīʿ al-awwal 1449 = 4 août (Ṣafar à 30 jours).
  */
 const UMM_AL_QURA_STARTS = {
     1445: '07-19 08-17 09-16 10-16 11-15 12-14 01-13 02-11 03-11 04-10 05-09 06-07',
     1446: '07-07 08-05 09-04 10-04 11-03 12-02 01-01 01-31 03-01 03-30 04-29 05-28',
     1447: '06-26 07-26 08-24 09-23 10-23 11-22 12-21 01-20 02-18 03-20 04-18 05-18',
-    1448: '06-16 07-15 08-14 09-12 10-12 11-11 12-10 01-09 02-08 03-09 04-08 05-07',
-    1449: '06-06 07-05 08-03 09-02 10-01 10-31 11-29 12-29 01-28 02-26 03-27 04-26',
+    1448: '06-16 07-15 08-14 09-12 10-12 11-11 12-10 01-09 02-08 03-10 04-08 05-07',
+    1449: '06-06 07-05 08-04 09-02 10-01 10-31 11-29 12-29 01-28 02-26 03-27 04-26',
     1450: '05-25 06-24 07-23 08-22 09-20 10-19 11-18 12-17 01-16 02-14 03-16 04-15',
     1451: '05-14 06-13 07-13 08-12 09-10 10-09 11-08 12-07 01-05 02-04 03-06 04-04',
     1452: '05-04 06-03 07-02 08-01 08-31 09-29 10-28 11-27 12-26 01-24 02-23 03-24',
