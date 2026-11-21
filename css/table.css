@@ -50,7 +50,7 @@ ami-prayer-table {
 /* Largeurs de colonnes fixes pour les prières */
 .prayer-table th:nth-child(n + 2):nth-child(-n + 7),
 .prayer-table td:nth-child(n + 2):nth-child(-n + 7) {
-    width: 12.5%;
+    width: 13.2%;
 }
 
 .th-fr {
@@ -69,7 +69,8 @@ ami-prayer-table {
 
 .th-ta {
     display: block;
-    font-size: var(--fs-xs);
+    font-size: var(--fs-sm); /* 12 px : traits fins du tamoul plus lisibles */
+    white-space: nowrap;
 }
 
 .th-header-symbol {
@@ -123,11 +124,11 @@ ami-prayer-table {
 
 /* --- COLONNES SPÉCIALES (DATES) --- */
 .col-date-greg {
-    width: 18%;
+    width: 15%;
 }
 
 .col-hijri {
-    width: 7%;
+    width: 5.8%;
 }
 
 .date-cell {
