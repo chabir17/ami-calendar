@@ -72,7 +72,7 @@
     /* --- IMPRESSION (A4 paysage, reliure sur le bord haut) --- */
     --page-pad: 5mm; /* marge minimale : juste au-dela de la zone non imprimable du copieur (3-5 mm) */
     --block-gap: 3mm; /* espacement unique entre header, calendrier et tableau */
-    --header-h: 27mm; /* hauteur du header de l'identité : priorité aux horaires */
+    --header-h: 30.5mm; /* hauteur du header de l'identité : priorité aux horaires */
     --band-h: 70px; /* hauteur commune des bandeaux foncés (mois | en-tête des horaires) : bas alignés */
     --binding-zone: 10mm; /* haut : trous de spirale metallique (<= 6.5 mm) + degagement, dans le bandeau */
 
@@ -85,7 +85,7 @@
     --fs-xl: 22px; /* titres : mois, années */
     --fs-month: 24px; /* noms des mois du bandeau (titres de la page) */
     --fs-cover-year: 120px; /* année grégorienne de la couverture, au-dessus des mois */
-    --fs-contact: 11px; /* infos essentielles sous les noms (header du calendrier annuel) */
+    --fs-contact: 12px; /* infos essentielles sous les noms (header du calendrier annuel) */
     --fs-cover-hijri: 42px; /* années hégiriennes de la couverture, de chaque côté de l'année grégorienne */
     --fs-name: 18px; /* nom français de l'association (header du calendrier annuel) */
     --fs-brand: 24px; /* nom tamoul de l'association (header du calendrier annuel) */

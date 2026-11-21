@@ -15,7 +15,7 @@
    puis les coordonnées sur deux lignes, centrés sur la page. Le reste des coordonnées et l'IBAN sont sur la couverture. */
 .header-content {
     --header-pad: var(--sp-2); /* même marge intérieure (8 px) en haut, en bas, à gauche et à droite du cadre */
-    --logo-size: calc(var(--header-h) - 3px - 2 * var(--header-pad)); /* le logo prend la hauteur utile du cadre (moins la bordure et les marges) */
+    --logo-size: 25.4mm; /* logos de 1 pouce de côté */
     position: relative; /* au-dessus du fond */
     height: 100%;
     display: grid;
