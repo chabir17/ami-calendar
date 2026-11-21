@@ -626,13 +626,13 @@
     color: var(--col-red);
 }
 
-/* Aïd : pastille vert pastel (pseudo-élément : un dégradé serait pixellisé dans le PDF) ; chiffre vert sauge en gras,
+/* Aïd : pastille ocre clair, comme la case de l'Aïd des pages des mois (pseudo-élément : un dégradé serait pixellisé dans le PDF) ; chiffre vert sauge en gras,
    prioritaire sur la couleur des dimanches et jours fériés */
 .mini-grid span.is-eid {
     position: relative;
     isolation: isolate;
     font-weight: 600;
-    color: var(--col-green); /* même vert que les vendredis et le verset (4,8:1 sur la pastille) */
+    color: var(--col-green); /* même vert que les vendredis et le verset (sur la pastille ocre clair) */
 }
 
 .mini-grid .is-eid::before {
@@ -642,7 +642,7 @@
     width: 19px; /* tient dans la hauteur d'une ligne */
     height: 19px;
     border-radius: 50%;
-    background: var(--bg-green-light);
+    background: var(--bg-ocre-light);
 }
 
 /* Changement d'heure (dimanches de mars et d'octobre) : chiffre ambre en gras dans un anneau à flèche (sens du changement), comme l'horloge de la légende */

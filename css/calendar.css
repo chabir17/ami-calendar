@@ -405,7 +405,7 @@
     bottom: 0.25rem; /* 4 px */
 }
 
-/* Événements en badges : pastille arrondie sur fond clair, texte foncé de la même teinte */
+/* Événements en badges pleins : pastille arrondie de la couleur de l'événement, texte blanc (lisible de loin et à l'impression) */
 .event-line,
 .event-label-top {
     display: block;
@@ -415,8 +415,8 @@
     font-weight: 600;
     line-height: 1.3;
     white-space: nowrap; /* une seule ligne : libellés courts */
-    color: var(--col-red);
-    background: var(--bg-red-light); /* jours fériés : terracotta clair */
+    color: white;
+    background: var(--col-red); /* jours fériés : rouge */
 }
 
 /* Plusieurs événements : le numéro remonte pour ne pas toucher les badges */
@@ -431,19 +431,21 @@
     left: 50%;
     transform: translateX(-50%);
     max-width: calc(100% - var(--sp-6) * 2); /* laisse la place au jour hégirien (en haut à droite) */
-    color: var(--col-green);
-    background: var(--bg-green-light);
+    background: var(--col-green);
 }
 
-/* Aïd et jours vertueux (ʿArafa, ʿĀshūrāʾ…) : vert pastel */
+/* Aïd et jours vertueux (ʿArafa, ʿĀshūrāʾ…) : vert */
 .event-line.virtuous-label,
 .event-line.eid-label {
-    color: var(--col-green);
-    background: var(--bg-green-light);
+    background: var(--col-green);
 }
 
-/* Changement d'heure : doré pâle (le terracotta reste réservé aux jours fériés) */
+/* Changement d'heure : ocre (le rouge reste réservé aux jours fériés) */
 .event-line.dst-label {
-    color: var(--col-ocre);
-    background: var(--bg-ocre-light);
+    background: var(--col-ocre);
+}
+
+/* Les deux jours de l'Aïd : case sur fond chaud (ocre clair) */
+.day-cell-visual.is-eid {
+    background-color: var(--bg-ocre-light);
 }
