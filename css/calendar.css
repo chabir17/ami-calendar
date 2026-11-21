@@ -71,8 +71,7 @@
     font-family: var(--font-fr-serif);
     font-size: var(--fs-md);
     font-style: normal;
-    color: var(--col-title-blue);
-    opacity: 0.7;
+    color: var(--col-gold-soft); /* puce dorée entre les trois langues */
 }
 
 .hijri-fr {
