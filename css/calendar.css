@@ -273,7 +273,7 @@
 .vis-greg {
     font-size: var(--fs-display);
     font-weight: 600;
-    color: var(--col-text-light); /* gris neutre des textes courants, identique du lundi au samedi */
+    color: var(--col-ink); /* numéros du lundi au samedi : presque noir */
 }
 
 /* Vendredi et dimanche : numéro en gris teinté (les jours fériés et l'Aïd, déclarés après, restent prioritaires) */
@@ -282,7 +282,7 @@
 }
 
 .day-cell-visual:nth-child(7n) .vis-greg {
-    color: var(--col-saffron);
+    color: var(--col-saffron-display);
 }
 
 /* Jours fériés en terracotta, Aïd en vert (prioritaire si les deux tombent le même jour) */
@@ -296,7 +296,7 @@
 
 /* Numéro du jour (Hégirien) : petit chiffre vert, en haut à droite */
 .vis-hij {
-    font-size: var(--fs-sm);
+    font-size: 13px;
     color: var(--col-green);
     position: absolute;
     top: var(--sp-1);

@@ -146,15 +146,8 @@ ami-prayer-table {
     letter-spacing: 0.06em;
 }
 
-/* Colonnes de date en bandes vert pâle, comme l'en-tête du tableau ; le vendredi y garde un cran plus soutenu,
-   car le fond de colonne recouvre celui de la ligne */
-.prayer-table tbody td.col-date-greg,
+/* Colonne hégirienne (dernière) en bande vert clair ; la colonne des dates grégoriennes (1re) reste sans fond : blanc, ou vert clair le vendredi comme le reste de la ligne */
 .prayer-table tbody td.col-hijri {
-    background: var(--bg-green-light);
-}
-
-.prayer-table tbody tr.is-friday td.col-date-greg,
-.prayer-table tbody tr.is-friday td.col-hijri {
     background: var(--bg-green-light);
 }
 

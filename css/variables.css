@@ -3,7 +3,8 @@
        Chaque teinte foncée est saisie une seule fois ; ses versions claires en sont dérivées (même teinte), pour qu'elles restent accordées. */
 
     /* Safran : tamoul, dimanches */
-    --col-saffron: #d14600; /* safran du drapeau indien (#ff671f) assombri pour le texte sur blanc (4,6:1) */
+    --col-saffron: #c9500f; /* safran du drapeau indien (#ff671f) assombri pour le texte sur blanc (4,6:1) */
+    --col-saffron-display: #e4581a; /* safran au plus près du drapeau (#ff671f), pour les grands textes seulement (≥ 24 px ou 18,7 px gras : seuil WCAG AA 3:1, ici 3,6:1) : numéros des dimanches, nom tamoul du header */
     --col-saffron-light: oklch(from var(--col-saffron) 0.9 0.09 h); /* tamoul sur les en-têtes foncés */
 
     /* Bleu marine français : ligne des jours, contour du calendrier, nom du mois, icônes */
@@ -58,7 +59,7 @@
     --col-text: #333333;
     --col-text-light: #3d3d3d;
     --col-text-soft: #6b6b6b; /* texte discret : 5,3:1 sur blanc */
-    --bg-empty: #f6f6f7; /* gris clair léger : cases hors du mois */
+    --bg-empty: #ebebec; /* gris clair : cases hors du mois ; à l'impression ΔE ≈ 7 au blanc (plus clair, il disparaît sur laser) */
     --bg-body: #eeeeee;
     --shadow-page: 0 0 15px rgba(0, 0, 0, 0.1); /* ombre de la page à l'écran */
     --border-on-dark: rgba(255, 255, 255, 0.2); /* séparateurs sur fond foncé (feuille Ramadan) */

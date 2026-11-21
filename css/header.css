@@ -59,7 +59,7 @@
 .org-ta {
     font-weight: 600;
     line-height: 1.1;
-    color: var(--col-saffron); /* nom tamoul en orange safran, couleur du nom dans le logo */
+    color: var(--col-saffron-display); /* nom tamoul en orange safran, couleur du nom dans le logo */
     font-size: var(--fs-brand);
 }
 
