@@ -63,17 +63,17 @@ Tous opaques ; ce sont des aplats, jamais des dégradés.
 
 **Seuil de visibilité à l'impression** : un fond doit s'écarter du blanc d'au moins **ΔE ≈ 8** (CIE Lab) pour se voir sur le copieur laser de l'association (essai du 23/10/2026 : le vert `--bg-green-light`, à ΔE 8,5, se voit ; le beige à 6,7 et le bleu à 5,6 ne se voyaient pas). Réglage du 08/11/2026 après un second essai : `--bg-green-light` ≈ 8, `--col-blue` ≈ 10, `--bg-holiday` ≈ 12 et `--bg-green-light` ≈ 12. Les fonds sous ce seuil (`--bg-green-light` à 5,0) sont des repères secondaires : à relever si l'impression les efface.
 
-| Jeton               | Valeur             | Usage                                                                                                                   |
-| ------------------- | ------------------ | ----------------------------------------------------------------------------------------------------------------------- |
-| `--bg-blue-faint`   | `#eef3f9`          | Cases vides (hors du mois) des pages des mois ; feuille du Ramadan                                                      |
-| `--col-orn-sand`    | `#f1e6c9`          | Pétales extérieurs de la rosace de la couverture (ornement uniquement, pas un code de vacances)                         |
-| `--col-orn-cream`   | `#fbf6e7`          | Petits pétales intérieurs de la rosace de la couverture : crème, indépendant du fond des vacances (ornement uniquement) |
-| `--col-orn-ocre`    | `#c4ad64`          | Pétales du milieu de la rosace : jaune terni, équivalent du vert sauge                                                  |
-| `--col-orn-bistre`  | `#7a6633`          | Étoile du cœur de la rosace : jaune brun, équivalent de l'ardoise                                                       |
-| `--bg-cover-top`    | `#6886b2`          | Haut du dégradé de la colonne d'identité de la couverture (bleu franc derrière le logo)                                 |
-| `--bg-cover-mid`    | `#96acca`          | Dégradé à 30 % de la hauteur                                                                                            |
-| `--bg-cover-low`    | `#9cc6ca`          | Aux deux tiers : turquoise pâle, passage bleu → vert (interpolé en LCH, sans gris)                                      |
-| `--bg-cover-bottom` | `--bg-green-light` | Bas du dégradé : vert pâle de la palette (`#ddeddf`)                                                                    |
+| Jeton               | Valeur                 | Usage                                                                                                                   |
+| ------------------- | ---------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `--bg-blue-faint`   | `#eef3f9`              | Cases vides (hors du mois) des pages des mois ; feuille du Ramadan                                                      |
+| `--col-orn-sand`    | `#f1e6c9`              | Pétales extérieurs de la rosace de la couverture (ornement uniquement, pas un code de vacances)                         |
+| `--col-orn-cream`   | `#fbf6e7`              | Petits pétales intérieurs de la rosace de la couverture : crème, indépendant du fond des vacances (ornement uniquement) |
+| `--col-orn-ocre`    | `#c4ad64`              | Pétales du milieu de la rosace : jaune terni, équivalent du vert sauge                                                  |
+| `--col-orn-bistre`  | `#7a6633`              | Étoile du cœur de la rosace : jaune brun, équivalent de l'ardoise                                                       |
+| `--bg-cover-top`    | dérivé de `--col-blue` | Haut du dégradé de la colonne d'identité de la couverture (bleu franc derrière le logo)                                 |
+| `--bg-cover-mid`    | dérivé de `--col-blue` | Dégradé à 30 % de la hauteur                                                                                            |
+| `--bg-cover-low`    | `oklch(0.8 0.05 205)`  | Aux deux tiers : turquoise pâle, passage bleu → vert (interpolé en LCH, sans gris)                                      |
+| `--bg-cover-bottom` | `--bg-green-light`     | Bas du dégradé : vert pâle de la palette (`#ddeddf`)                                                                    |
 
 ### 2.4 Filets et bordures
 

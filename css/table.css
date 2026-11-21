@@ -56,7 +56,7 @@ ami-prayer-table {
 .th-fr {
     display: block;
     font-size: var(--fs-xs); /* 10 px : colonnes des horaires de même largeur */
-    font-weight: 600;
+    font-weight: 500; /* texte clair sur fond coloré : 500 au maximum */
     text-transform: uppercase;
     color: white;
 }

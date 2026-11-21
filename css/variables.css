@@ -4,11 +4,11 @@
 
     /* Safran : tamoul, dimanches */
     --col-saffron: #c84f0a; /* safran du drapeau indien (#ff671f) assombri pour le texte sur blanc (4,9:1) */
-    --col-saffron-light: oklch(from var(--col-saffron) 0.84 0.1 h); /* tamoul sur les en-têtes foncés */
+    --col-saffron-light: oklch(from var(--col-saffron) 0.9 0.09 h); /* tamoul sur les en-têtes foncés */
 
     /* Bleu marine français : ligne des jours, contour du calendrier, nom du mois, icônes */
     --col-blue: #002654; /* blanc dessus 15:1 */
-    --bg-holiday: oklch(from var(--col-blue) 0.955 0.02 h); /* vacances scolaires, pastilles de la couverture */
+    --bg-holiday: oklch(from var(--col-blue) 0.955 0.03 h); /* vacances scolaires, pastilles de la couverture */
     --bg-blue-faint: oklch(from var(--col-blue) 0.96 0.015 h); /* fonds neutres de la feuille Ramadan */
     --col-title-blue: color-mix(in srgb, var(--col-blue), white 30%); /* traductions du titre du mois, couverture */
     --col-title-blue-soft: color-mix(in srgb, var(--col-blue), white 48%); /* année du titre du mois : plus claire que le nom */
@@ -21,7 +21,7 @@
 
     /* Vert du drapeau indien : en-tête du tableau, nom français, repères hégiriens, vendredis, badges islamiques */
     --col-green: #046a38; /* blanc dessus 6,7:1 */
-    --bg-green-light: oklch(from var(--col-green) 0.955 0.03 h); /* vendredis du tableau, Aïd et jours vertueux, verset de la couverture */
+    --bg-green-light: oklch(from var(--col-green) 0.955 0.036 h); /* vendredis du tableau, Aïd et jours vertueux, verset de la couverture */
     --col-on-green-soft: color-mix(in srgb, var(--col-green), white 82%); /* arabe de l'en-tête du tableau, sur vert */
     --border-on-green: color-mix(in srgb, var(--col-green), white 45%); /* filets entre les colonnes de l'en-tête du tableau */
     --border-sage: color-mix(in srgb, var(--col-green), white 68%); /* filets verticaux du tableau */
@@ -30,11 +30,11 @@
 
     /* Rouge Marianne : jours fériés, jeûne (feuille Ramadan) */
     --col-red: #ce1126; /* 5,9:1 sur blanc */
-    --bg-red-light: oklch(from var(--col-red) 0.935 0.03 h); /* badges des jours fériés, cellules du jeûne */
+    --bg-red-light: oklch(from var(--col-red) 0.935 0.045 h); /* badges des jours fériés, cellules du jeûne */
 
     /* Ocre : changement d'heure, ornements dorés */
-    --col-ocre: #9a6a00; /* texte et filet du changement d'heure (4,9:1) */
-    --bg-ocre-light: oklch(from var(--col-ocre) 0.94 0.05 h); /* badge et ligne du changement d'heure */
+    --col-ocre: #8c6100; /* texte et filet du changement d'heure (4,9:1) */
+    --bg-ocre-light: oklch(from var(--col-ocre) 0.96 0.06 h); /* badge et ligne du changement d'heure */
     --col-gold: oklch(from var(--col-ocre) 0.74 0.13 h); /* doré : cadre, losanges et filets du header et du titre du mois, bordures de la feuille Ramadan */
 
     /* Couleur thématique du client (surchargeable : clients/*.json) */
@@ -48,9 +48,9 @@
     --col-orn-bistre: #7a6633; /* étoile du cœur */
 
     /* Dégradé de la colonne d'identité de la couverture */
-    --bg-cover-top: #6886b2; /* haut (bleu franc derrière le logo, éclairci vite pour économiser l'encre) */
-    --bg-cover-mid: #96acca; /* à 30 % de la hauteur */
-    --bg-cover-low: #9cc6ca; /* aux deux tiers : passage bleu → vert (turquoise pâle) */
+    --bg-cover-top: oklch(from var(--col-blue) 0.62 0.085 h); /* haut (bleu franc derrière le logo, éclairci vite pour économiser l'encre) */
+    --bg-cover-mid: oklch(from var(--col-blue) 0.75 0.05 h); /* à 30 % de la hauteur */
+    --bg-cover-low: oklch(0.8 0.05 205); /* aux deux tiers : passage bleu → vert (turquoise pâle) */
     --bg-cover-bottom: var(--bg-green-light); /* bas */
 
     /* Neutres */

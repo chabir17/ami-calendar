@@ -207,7 +207,7 @@
 
 .weekday-fr {
     font-size: var(--fs-md);
-    font-weight: 600;
+    font-weight: 500; /* texte clair sur fond coloré : 500 au maximum */
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: white; /* nom français, blanc sur la ligne bleue */
