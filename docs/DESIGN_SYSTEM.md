@@ -87,7 +87,7 @@ Le calendrier et le tableau ont un **contour de 1,5 px** (bleu marine `--col-blu
 
 ### 2.5 Neutres
 
-`--col-ink` `#1f1f1f` (horaires et chiffres), `--col-text` `#333`, `--col-text-light` `#555` (numéros du jour), `--col-text-soft` `#6b6b6b` (5,3:1, texte discret), `--bg-body` (fond autour des pages, écran seulement).
+`--col-ink` `#1f1f1f` (horaires et chiffres), `--col-text` `#333`, `--col-text-light` `#3d3d3d` (numéros du jour), `--col-text-soft` `#6b6b6b` (5,3:1, texte discret), `--bg-body` (fond autour des pages, écran seulement).
 
 ### 2.6 Couverture
 
