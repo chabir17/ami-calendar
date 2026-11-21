@@ -44,7 +44,7 @@ ami-prayer-table {
 /* Tamoul de l'en-tête : safran clair sur le vert sapin */
 .prayer-table thead .th-ta {
     color: var(--col-tamil-light);
-    font-weight: 600; /* semi-bold : traits fins du tamoul plus robustes à l'impression */
+    font-weight: 500;
 }
 
 /* Largeurs de colonnes fixes pour les prières */
@@ -55,7 +55,7 @@ ami-prayer-table {
 
 .th-fr {
     display: block;
-    font-size: var(--fs-xs); /* 10 px : colonnes des horaires de même largeur */
+    font-size: var(--fs-sm); /* 12 px */
     font-weight: 500; /* texte clair sur fond coloré : 500 au maximum */
     text-transform: uppercase;
     color: white;
