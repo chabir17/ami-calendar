@@ -184,3 +184,9 @@ ami-prayer-table {
 .prayer-table tbody tr.is-dst.week-end td {
     border-bottom: 1.5px solid var(--col-green);
 }
+
+/* Colonne des dates : étroite, le nom du mois (français et tamoul) reste en 10 px pour ne pas être rogné (SEPTEMBRE, செப்டம்பர்) */
+.prayer-table thead th:first-child .th-fr,
+.prayer-table thead th:first-child .th-ta {
+    font-size: var(--fs-xs);
+}
