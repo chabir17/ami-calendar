@@ -14,8 +14,7 @@ export const DOM = {
 
     /** Définit la source d'une image s'il existe */
     setSrc: (selector, src, root = document) => {
-        const el = root.querySelector(selector);
-        if (el) el.src = src;
+        root.querySelectorAll(selector).forEach((el) => (el.src = src));
     }
 };
 
@@ -43,17 +42,21 @@ const iconItem = (icon, text, href, links = false) => {
 };
 
 /**
- * Ligne d'infos essentielles du header du calendrier annuel : adresses de la mosquée et de la salle de prière, téléphone fixe, e-mail (le site web, inactif, n'y figure plus)
+ * Ligne d'infos essentielles du header du calendrier annuel : deux lignes : adresses de la mosquée et de la salle de prière ; téléphone fixe, WhatsApp, e-mail (le site web, inactif, n'y figure plus)
  * (les autres coordonnées, les QR codes et l'IBAN sont sur la couverture). Mêmes icônes que la couverture.
  * @param {Object} c - config.contact
  */
 export function headerContactsHTML(c) {
     const place = (icon) => icon || 'location';
-    const items = [iconItem(place(c.addr1_icon), c.addr1), iconItem(place(c.addr2_icon), c.addr2), iconItem('landline', c.phone), iconItem('email', c.email)];
-    return `<div class="info-line">${items
-        .filter(Boolean)
-        .map((x) => `<span class="info-item">${x}</span>`)
-        .join('')}</div>`;
+    const line = (...items) =>
+        `<div class="info-line">${items
+            .filter(Boolean)
+            .map((x) => `<span class="info-item">${x}</span>`)
+            .join('')}</div>`;
+    return (
+        line(iconItem(place(c.addr1_icon), c.addr1), iconItem(place(c.addr2_icon), c.addr2)) +
+        line(iconItem('landline', c.phone), iconItem('whatsapp', c.whatsapp), iconItem('email', c.email))
+    );
 }
 
 /**
@@ -217,13 +220,3 @@ export const DATE_UTILS = {
     /** Noms du mois hégirien (1 = Muḥarram … 12 = Dhū al-Ḥijjah) : standard, arabe, tamoul */
     getHijriNames: (month) => HIJRI_MONTHS[month - 1]
 };
-
-/**
- * Sigle de l'association pour le header (« AMI93 ») : « AMI » aux trois couleurs du logo (bleu, vert, safran), le reste en anthracite.
- * Même rendu que le contenu statique de index.html.
- * @param {string} name
- */
-export function shortNameHTML(name) {
-    const [a = '', m = '', i = '', ...rest] = [...name];
-    return `<span class="org-c-a">${a}</span><span class="org-c-m">${m}</span><span class="org-c-i">${i}</span><span class="org-c-n">${rest.join('')}</span>`;
-}

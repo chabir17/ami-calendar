@@ -33,7 +33,7 @@
     padding: var(--cover-gap);
     overflow: hidden; /* le fond SVG suit les coins arrondis */
     border-radius: var(--radius-card);
-    background: var(--bg-blue-head); /* repli sous le fond SVG */
+    background: var(--bg-holiday); /* repli sous le fond SVG */
     text-align: center;
 }
 
@@ -159,7 +159,7 @@
     height: 7mm;
     padding: 0.8mm;
     border-radius: 50%;
-    background: var(--bg-blue-head);
+    background: var(--bg-holiday);
 }
 
 .cover-section-title .tamil {
@@ -277,7 +277,7 @@
     width: 5mm; /* pastilles des éléments (contacts, lieux) ; 7 mm pour les en-têtes de rubrique */
     height: 5mm;
     border-radius: 50%;
-    background: var(--bg-blue-head);
+    background: var(--bg-holiday);
 }
 
 .cover-badge .icon {
@@ -305,7 +305,7 @@
     height: 5mm;
     padding: 0.7mm;
     border-radius: 50%;
-    background: var(--bg-blue-head);
+    background: var(--bg-holiday);
 }
 
 /* Mentions légales : dernière ligne de la carte, discrète, sans trait (le trait des rubriques suffit) */
@@ -469,14 +469,14 @@
 }
 
 .lg-public {
-    background: var(--col-terracotta);
+    background: var(--col-red);
 }
 
 .lg-eid {
     width: 0.75rem;
     height: 0.75rem;
     border-radius: 50%;
-    background: var(--bg-eid);
+    background: var(--bg-green-light);
 }
 
 .lg-holiday {
@@ -493,7 +493,7 @@
 }
 
 .lg-dst {
-    color: var(--col-dst); /* comme l'horloge dans la case */
+    color: var(--col-ocre); /* comme l'horloge dans la case */
 }
 
 /* Chaque mois : en-tête souligné d'un filet, sans fond ni cadre pour rester léger */
@@ -543,7 +543,7 @@
 .mini-name-ta {
     font-size: var(--fs-xs);
     line-height: 1.4;
-    color: var(--col-title-blue);
+    color: var(--col-saffron);
 }
 
 /* Mois hégiriens l'un sous l'autre, calés à droite */
@@ -598,11 +598,11 @@
 }
 
 .mini-grid span:nth-child(7n + 5) {
-    color: var(--col-friday);
+    color: var(--col-green);
 }
 
 .mini-grid span:nth-child(7n) {
-    color: var(--col-sunday);
+    color: var(--col-saffron);
 }
 
 /* Vacances scolaires : fond doré pâle en SVG vectoriel derrière les chiffres (voir drawCoverBackdrop) */
@@ -623,7 +623,7 @@
 /* Jour férié : terracotta, prioritaire sur la couleur des vendredis et dimanches */
 .mini-grid span.is-public {
     font-weight: 600;
-    color: var(--col-terracotta);
+    color: var(--col-red);
 }
 
 /* Aïd : pastille vert pastel (pseudo-élément : un dégradé serait pixellisé dans le PDF) ; chiffre vert sauge en gras,
@@ -632,7 +632,7 @@
     position: relative;
     isolation: isolate;
     font-weight: 600;
-    color: var(--col-friday); /* même vert que les vendredis et le verset (4,8:1 sur la pastille) */
+    color: var(--col-green); /* même vert que les vendredis et le verset (4,8:1 sur la pastille) */
 }
 
 .mini-grid .is-eid::before {
@@ -642,7 +642,7 @@
     width: 19px; /* tient dans la hauteur d'une ligne */
     height: 19px;
     border-radius: 50%;
-    background: var(--bg-eid);
+    background: var(--bg-green-light);
 }
 
 /* Changement d'heure (dimanches de mars et d'octobre) : chiffre ambre en gras dans un anneau à flèche (sens du changement), comme l'horloge de la légende */
@@ -650,7 +650,7 @@
     position: relative;
     isolation: isolate;
     font-weight: 600;
-    color: var(--col-dst);
+    color: var(--col-ocre);
 }
 
 .mini-grid .dst-ring {
@@ -658,7 +658,7 @@
     z-index: -1;
     width: 24px; /* anneau fin (≈ 1 px) de 21 px de diamètre : ne touche pas les chiffres */
     height: 24px;
-    color: var(--col-dst);
+    color: var(--col-ocre);
 }
 
 /* --- VERSET (traductions seulement), en deux lignes : encart vert très pâle sous les 12 mois, présenté comme dans un
@@ -672,7 +672,7 @@
     margin: var(--cover-gap) 2mm 0; /* rentré comme le contenu des mini-mois (marge intérieure de 2 mm) : aligné sur les grilles */
     padding: 1.2mm var(--sp-3);
     border-radius: var(--radius-card);
-    background: var(--bg-green-head);
+    background: var(--bg-green-light);
     font-size: var(--fs-verse);
     line-height: 1.45;
     white-space: nowrap;
@@ -698,7 +698,7 @@
 }
 
 .cover-verse-ta {
-    color: var(--col-text-light); /* gris moyen : traduction, 6,9:1 */
+    color: var(--col-saffron); /* tamoul en safran */
 }
 
 /* Grandes parenthèses ornées ﴾ ﴿ et symbole de fin de verset ۝ (U+06DD, numéro ١٠٣ inscrit dans le cercle par Amiri) :
@@ -706,7 +706,7 @@
 .cover-verse-mark,
 .cover-verse-ayah {
     font-size: 2em; /* 20 px : à la hauteur des deux lignes, sans dépasser de l'encart */
-    color: var(--col-friday); /* vert unique de la couverture (texte et ornements verts) */
+    color: var(--col-green); /* vert unique de la couverture (texte et ornements verts) */
 }
 
 .cover-verse-ayah {
@@ -720,7 +720,7 @@
     justify-self: start;
     font-size: 1.5em; /* 16,5 px : Amiri, comme les ornements du verset */
     line-height: 1;
-    color: var(--col-friday);
+    color: var(--col-green);
 }
 
 /* Référence (sourate:verset), calée à droite, chacune en face de sa langue : « Coran 4:103 » puis « குர்ஆன் 4:103 » ;
@@ -734,7 +734,7 @@
     font-size: var(--fs-2xs);
     font-weight: 600;
     line-height: calc(var(--fs-xs) * 1.45); /* même interligne que le verset : chaque ligne en face de la sienne */
-    color: var(--col-friday); /* 5,8:1 sur le fond de l'encart */
+    color: var(--col-green); /* 5,8:1 sur le fond de l'encart */
 }
 
 .cover-verse cite {

@@ -1,5 +1,5 @@
 import { initAdhan, fetchExternalData, getHijriDateSafe, getDayInfo, fetchClientConfig, applyTheme, loadPrayerTimes } from './services.js';
-import { DATE_UTILS, DOM, headerContactsHTML, shortNameHTML } from './utils.js';
+import { DATE_UTILS, DOM, headerContactsHTML } from './utils.js';
 import './components.js';
 
 // ==========================================
@@ -19,8 +19,7 @@ let clientConfig = null;
 function updatePageDOM(container, config) {
     if (!config) return;
 
-    const shortName = container.querySelector('.org-short-text');
-    if (config.identity.short_name && shortName) shortName.innerHTML = shortNameHTML(config.identity.short_name);
+    DOM.setText('.org-fr', config.identity.name_fr, container);
     DOM.setText('.org-ta', config.identity.name_ta, container);
     DOM.setSrc('.logo-img', config.identity.logo_url, container);
 
@@ -164,13 +163,13 @@ function warnMissingData(year) {
 
 /**
  * Bandeau du mois : si les deux mois hégiriens ne tiennent pas sur la largeur (ex. Jumādā al-ūlā / Jumādā ath-thāniya),
- * le côté hégirien passe en taille réduite (quatre crans au plus : arabe, traductions, année grégorienne, arabe encore) plutôt que d'être coupé.
+ * le côté hégirien passe en taille réduite (deux crans au plus) plutôt que d'être coupé.
  * @param {HTMLElement} root
  */
 function fitMonthTitles(root) {
-    const overflows = (zone) => [zone, ...zone.querySelectorAll('.titles-hijri, .title-main, .title-sub')].some((e) => e.scrollWidth > e.clientWidth);
+    const overflows = (zone) => [zone, ...zone.querySelectorAll('.titles-hijri, .title-main, .title-sub, .hijri-row')].some((e) => e.scrollWidth > e.clientWidth);
     root.querySelectorAll('.month-titles-zone').forEach((zone) => {
-        const levels = ['is-compact', 'is-compact-2', 'is-compact-3', 'is-compact-4'];
+        const levels = ['is-compact', 'is-compact-2'];
         zone.classList.remove(...levels);
         for (const level of levels) {
             if (!overflows(zone)) break;
@@ -346,45 +345,20 @@ function updateZoneTitles(year, month, container) {
     const hijriStart = getHijriDateSafe(new Date(year, jsMonth, 1));
     const hijriEnd = getHijriDateSafe(new Date(year, jsMonth, daysInMonth));
 
-    let hijriFrMonths = '',
-        hijriFrYear = '',
-        hijriArMonths = '',
-        hijriArYear = '',
-        hijriTaStr = '';
-    if (hijriStart.monthNameFR && hijriEnd.monthNameFR) {
-        if (hijriStart.monthNameFR === hijriEnd.monthNameFR) {
-            hijriFrMonths = hijriStart.monthNameFR;
-            hijriFrYear = hijriStart.year;
-            hijriArMonths = hijriStart.monthNameAR;
-            hijriArYear = hijriStart.yearAr;
-            hijriTaStr = hijriStart.monthNameTA;
-        } else {
-            // Deux mois : formes abrégées des mois jumeaux (Rabīʿ I, Jumādā II…), même taille de texte que les autres mois
-            hijriFrMonths = `${hijriStart.monthNameShort} / ${hijriEnd.monthNameShort}`;
-            hijriFrYear = hijriEnd.year;
-            hijriArMonths = `${hijriStart.monthNameAR} / ${hijriEnd.monthNameAR}`;
-            hijriArYear = hijriEnd.yearAr;
-            hijriTaStr = `${hijriStart.monthNameTAShort} / ${hijriEnd.monthNameTAShort}`;
-        }
+    // Une ligne par mois hégirien : nom (formes abrégées des mois jumeaux : Rabīʿ I, Jumādā II…) • tamoul • année et nom en arabe
+    const rows = container.querySelector('.hijri-rows');
+    if (rows && hijriStart.monthNameFR && hijriEnd.monthNameFR) {
+        const months = hijriStart.monthNameFR === hijriEnd.monthNameFR ? [hijriStart] : [hijriStart, hijriEnd];
+        rows.replaceChildren(
+            ...months.map((h) => {
+                const row = document.createElement('div');
+                row.className = 'hijri-row';
+                const fr = Object.assign(document.createElement('span'), { className: 'hijri-fr', textContent: h.monthNameShort });
+                const ta = Object.assign(document.createElement('span'), { className: 'hijri-ta tamil', textContent: h.monthNameTAShort });
+                const ar = Object.assign(document.createElement('span'), { className: 'hijri-ar arabic dir-rtl', textContent: `${h.monthNameAR} ${h.yearAr}` });
+                row.append(fr, ta, ar);
+                return row;
+            })
+        );
     }
-    // Année hégirienne dans un <span> à part (vert plus clair que le mois)
-    const hijriFr = container.querySelector('.hijri-month-fr');
-    if (hijriFr) {
-        const yearFr = document.createElement('span');
-        yearFr.className = 'hijri-year-fr';
-        yearFr.textContent = hijriFrYear;
-        hijriFr.replaceChildren(hijriFrMonths, ' ', yearFr);
-    }
-    // Mois en gras, année plus légère (comme « MAI 2027 »)
-    const hijriAr = container.querySelector('.hijri-month-ar');
-    if (hijriAr) {
-        const months = document.createElement('span');
-        months.className = 'hijri-months';
-        months.textContent = hijriArMonths;
-        const yearEl = document.createElement('span');
-        yearEl.className = 'hijri-year';
-        yearEl.textContent = hijriArYear;
-        hijriAr.replaceChildren(months, ' ', yearEl);
-    }
-    DOM.setText('.hijri-month-ta', hijriTaStr, container);
 }

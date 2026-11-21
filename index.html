@@ -37,20 +37,6 @@
         <!-- Définitions SVG partagées (chemin girih de la couverture) -->
         <svg width="0" height="0" style="position: absolute" aria-hidden="true">
             <defs>
-                <!-- Extrémité gauche du cartouche d'AMI93 : ogive (la droite en est le symétrique), contour doré, fond crème -->
-                <symbol id="org-cap" viewBox="0 0 14 24">
-                    <path
-                        d="M14 0.6C8 0.6 3 5 0.8 12C3 19 8 23.4 14 23.4"
-                        style="fill: var(--bg-cartouche); stroke: currentColor"
-                        stroke-width="1.2"
-                        stroke-linejoin="miter"
-                        stroke-linecap="butt"
-                    />
-                </symbol>
-                <!-- Étoile à 8 branches (bouts des filets d'AMI93) -->
-                <symbol id="org-star" viewBox="0 0 20 20" fill="currentColor">
-                    <path d="M10 0L12.4 7.6L20 10L12.4 12.4L10 20L7.6 12.4L0 10L7.6 7.6Z" />
-                </symbol>
                 <!-- Chemin girih partagé (couverture) -->
                 <path
                     id="cover-girih-path"
@@ -66,7 +52,7 @@
         <!-- Template de la page (cloné par JS) -->
         <template id="page-template">
             <div class="page A4-landscape month-page">
-                <!-- EN-TÊTE : logo et noms (tamoul, français) sur une ligne ; les coordonnées sont sur la couverture -->
+                <!-- EN-TÊTE : logo à chaque extrémité, noms (tamoul, français) et coordonnées au centre ; le reste des coordonnées est sur la couverture -->
                 <header class="header-fixed">
                     <div class="header-content">
                         <div class="logo-box">
@@ -74,17 +60,7 @@
                         </div>
                         <div class="org-names">
                             <h1 class="org-ta tamil">இந்திய முஸ்லிம் சங்கம்</h1>
-                            <h2 class="org-short">
-                                <svg class="org-star" aria-hidden="true"><use href="#org-star"></use></svg>
-                                <span class="org-pill">
-                                    <svg class="org-cap" aria-hidden="true"><use href="#org-cap"></use></svg>
-                                    <span class="org-short-text"
-                                        ><span class="org-c-a">A</span><span class="org-c-m">M</span><span class="org-c-i">I</span><span class="org-c-n">93</span></span
-                                    >
-                                    <svg class="org-cap org-cap-r" aria-hidden="true"><use href="#org-cap"></use></svg>
-                                </span>
-                                <svg class="org-star" aria-hidden="true"><use href="#org-star"></use></svg>
-                            </h2>
+                            <h2 class="org-fr">Association Musulmane de l'Inde</h2>
                         </div>
                         <div class="header-contacts">
                             <div class="info-line">
@@ -95,13 +71,21 @@
                                     ><svg class="icon"><use href="assets/icons/icon-prayer-room.svg#icon"></use></svg>
                                     <span>7-8 PLACE ALFRED DE MUSSET, 93120 LA COURNEUVE</span></span
                                 >
+                            </div>
+                            <div class="info-line">
                                 <span class="info-item"
                                     ><svg class="icon"><use href="assets/icons/icon-landline.svg#icon"></use></svg> <span>01.48.36.48.66</span></span
+                                >
+                                <span class="info-item"
+                                    ><svg class="icon"><use href="assets/icons/icon-whatsapp.svg#icon"></use></svg> <span>07.86.14.66.55</span></span
                                 >
                                 <span class="info-item"
                                     ><svg class="icon"><use href="assets/icons/icon-email.svg#icon"></use></svg> <span>ami93120@gmail.com</span></span
                                 >
                             </div>
+                        </div>
+                        <div class="logo-box logo-box-r">
+                            <img src="assets/img/AMI.png" alt="" class="logo-img" />
                         </div>
                     </div>
                 </header>
@@ -119,11 +103,8 @@
                                 </div>
                             </div>
                             <div class="titles-hijri">
-                                <div class="title-main hijri-month-ar arabic dir-rtl"></div>
-                                <div class="title-sub">
-                                    <span class="hijri-month-ta tamil"></span>
-                                    <span class="hijri-month-fr"></span>
-                                </div>
+                                <span class="hijri-bar" aria-hidden="true"><i></i><b></b><i></i></span>
+                                <div class="hijri-rows"></div>
                             </div>
                         </section>
                         <!-- Carte du calendrier : jours de la semaine, grille et notes ; le titre du mois reste en dehors, sur la page blanche -->

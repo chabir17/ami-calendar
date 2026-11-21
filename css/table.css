@@ -1,7 +1,7 @@
 /* --- TABLEAU DES HORAIRES DE PRIÈRES (DROITE) --- */
 .right-prayer-table-container {
     overflow: hidden;
-    border: 1.5px solid var(--bg-head-green); /* contour vert sapin de 1,5 px, comme l'en-tête */
+    border: 1.5px solid var(--col-green); /* contour vert sapin de 1,5 px, comme l'en-tête */
     border-radius: var(--radius-card);
     display: flex;
     flex-direction: column;
@@ -25,7 +25,7 @@ ami-prayer-table {
 /* En-tête vert forêt plein (pendant du bandeau bleu marine du mois), texte blanc : noms des prières en titre, traductions en blanc atténué ;
    sans séparateur entre les colonnes */
 .prayer-table thead th {
-    background: var(--bg-head-green);
+    background: var(--col-green);
     border: none;
     padding: var(--sp-1) 0.0625rem; /* 1 px */
     font-size: var(--fs-xs);
@@ -36,10 +36,15 @@ ami-prayer-table {
 }
 
 .prayer-table thead .th-ar,
-.prayer-table thead .th-year,
-.prayer-table thead .th-ta {
-    color: var(--col-on-dark-soft); /* traductions en blanc atténué, sous le nom français */
+.prayer-table thead .th-year {
+    color: var(--col-on-green-soft); /* arabe (et année) en vert clair, sous le nom français */
     font-weight: 500; /* texte clair sur fond foncé : un cran de plus pour la lisibilité */
+}
+
+/* Tamoul de l'en-tête : safran clair sur le vert sapin */
+.prayer-table thead .th-ta {
+    color: var(--col-saffron-light);
+    font-weight: 500;
 }
 
 /* Largeurs de colonnes fixes pour les prières */
@@ -86,7 +91,7 @@ ami-prayer-table {
     border-bottom: 1px solid var(--border-green);
     border-right: 1px solid var(--border-sage); /* filets verticaux fins vert sauge clair (le contour du conteneur ferme la dernière colonne) */
     text-align: center;
-    font-weight: 500;
+    font-weight: 400;
     font-size: var(--fs-figure);
     line-height: 1;
     font-variant-numeric: tabular-nums; /* colonnes d'heures parfaitement alignées */
@@ -98,8 +103,12 @@ ami-prayer-table {
     border-right: none;
 }
 
+.prayer-table tbody tr.is-sunday td {
+    color: var(--col-saffron); /* dimanche : ligne en safran, comme les numéros du calendrier */
+}
+
 .prayer-table tbody tr.is-friday td {
-    background: var(--bg-green-head);
+    background: var(--bg-green-light);
 }
 
 /* Filets verticaux entre les colonnes de l'en-tête, dans le prolongement de ceux du corps du tableau */
@@ -141,12 +150,12 @@ ami-prayer-table {
    car le fond de colonne recouvre celui de la ligne */
 .prayer-table tbody td.col-date-greg,
 .prayer-table tbody td.col-hijri {
-    background: var(--bg-green-head);
+    background: var(--bg-green-light);
 }
 
 .prayer-table tbody tr.is-friday td.col-date-greg,
 .prayer-table tbody tr.is-friday td.col-hijri {
-    background: var(--bg-green-friday);
+    background: var(--bg-green-light);
 }
 
 /* Repères dans le tableau : 1er jour du mois hégirien (« 01 » blanc dans une pastille vert sapin), changement d'heure (fond beige doré, texte normal) */
@@ -157,7 +166,7 @@ ami-prayer-table {
     height: 15px; /* tient dans la ligne : n'agrandit pas la rangée */
     padding: 0 0.1875rem; /* 3 px */
     border-radius: 0.5rem;
-    background: var(--bg-head-green); /* même vert que l'en-tête du tableau */
+    background: var(--col-green); /* même vert que l'en-tête du tableau */
     color: white;
     font-size: 12px;
     font-weight: 600;
@@ -168,16 +177,16 @@ ami-prayer-table {
 .prayer-table tbody tr.is-dst td,
 .prayer-table tbody tr.is-dst td.col-date-greg,
 .prayer-table tbody tr.is-dst td.col-hijri {
-    background: var(--bg-dst);
+    background: var(--bg-ocre-light);
 }
 
 /* Changement d'heure : filet ambre de 1,5 px entre le samedi et le dimanche (le changement a lieu dans la nuit) ; tracé sous la ligne du samedi, qui précède la ligne is-dst */
 .prayer-table tbody tr:has(+ tr.is-dst) td {
-    border-bottom: 1.5px solid var(--col-dst);
+    border-bottom: 1.5px solid var(--col-ocre);
 }
 
 /* Fin de semaine : filet de 1,5 px après le dimanche, en vert moyen (repérage par blocs de 7 jours) */
 .prayer-table tbody tr.week-end td,
 .prayer-table tbody tr.is-dst.week-end td {
-    border-bottom: 1.5px solid var(--bg-head-green);
+    border-bottom: 1.5px solid var(--col-green);
 }

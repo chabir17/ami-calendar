@@ -167,6 +167,7 @@ class PrayerTable extends MonthElement {
             const tr = clone.querySelector('tr');
 
             if (weekday === 5) tr.classList.add('is-friday');
+            if (weekday === 0) tr.classList.add('is-sunday'); // ligne en safran
             if (weekday === 0 && day < daysInMonth) tr.classList.add('week-end'); // filet après chaque dimanche
 
             // Remplissage des données via sélecteurs
