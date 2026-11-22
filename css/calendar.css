@@ -135,12 +135,6 @@
     font-size: var(--fs-sm);
 }
 
-.month-titles-zone.is-compact-2 .hijri-fr,
-.month-titles-zone.is-compact-2 .hijri-ta,
-.month-titles-zone.is-compact-2 .hijri-row > :not(:last-child)::after {
-    font-size: var(--fs-xs);
-}
-
 /* Mois grégorien en tamoul : orange safran, comme le nom de l'association */
 .greg-month-ta {
     color: var(--col-saffron);

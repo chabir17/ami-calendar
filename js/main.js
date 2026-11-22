@@ -173,13 +173,13 @@ function warnMissingData(year) {
 
 /**
  * Bandeau du mois : si les deux mois hégiriens ne tiennent pas sur la largeur (ex. Jumādā al-ūlā / Jumādā ath-thāniya),
- * le côté hégirien passe en taille réduite (deux crans au plus) plutôt que d'être coupé.
+ * le côté hégirien passe en 12 px (un seul cran : jamais sous 12 px) plutôt que d'être coupé.
  * @param {HTMLElement} root
  */
 function fitMonthTitles(root) {
     const overflows = (zone) => [zone, ...zone.querySelectorAll('.titles-hijri, .title-main, .title-sub, .hijri-row')].some((e) => e.scrollWidth > e.clientWidth);
     root.querySelectorAll('.month-titles-zone').forEach((zone) => {
-        const levels = ['is-compact', 'is-compact-2'];
+        const levels = ['is-compact'];
         zone.classList.remove(...levels);
         for (const level of levels) {
             if (!overflows(zone)) break;
@@ -283,7 +283,7 @@ function fitCoverYear(root) {
  * @param {HTMLElement} root
  */
 function fitMiniHeads(root) {
-    const levels = ['is-compact', 'is-compact-2'];
+    const levels = ['is-compact'];
     root.querySelectorAll('.mini-head').forEach((head) => {
         head.classList.remove(...levels);
         for (const level of levels) {
