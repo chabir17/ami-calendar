@@ -211,6 +211,7 @@
 }
 
 .weekday-sub.arabic {
+    font-size: var(--fs-md); /* arabe des jours de la semaine : 14 px */
     color: var(--col-weekday-ar); /* arabe : bleu clair, un cran plus lumineux */
 }
 
