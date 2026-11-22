@@ -65,7 +65,8 @@ Tous opaques ; ce sont des aplats, jamais des dégradés.
 
 | Jeton               | Valeur                 | Usage                                                                                                                   |
 | ------------------- | ---------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| `--bg-blue-faint`   | `#eef3f9`              | Cases vides (hors du mois) des pages des mois ; feuille du Ramadan                                                      |
+| `--bg-empty`        | `#eeedeb`              | Cases vides (hors du mois) des pages des mois : gris-blanc chaud, sans bleu (distinct des vacances scolaires)           |
+| `--bg-blue-faint`   | `#eef3f9`              | Fonds neutres de la feuille du Ramadan                                                                                  |
 | `--col-orn-sand`    | `#f1e6c9`              | Pétales extérieurs de la rosace de la couverture (ornement uniquement, pas un code de vacances)                         |
 | `--col-orn-cream`   | `#fbf6e7`              | Petits pétales intérieurs de la rosace de la couverture : crème, indépendant du fond des vacances (ornement uniquement) |
 | `--col-orn-ocre`    | `#c4ad64`              | Pétales du milieu de la rosace : jaune terni, équivalent du vert sauge                                                  |
