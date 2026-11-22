@@ -26,20 +26,28 @@
     column-gap: var(--sp-2); /* 8 px : les cordes s'arrêtent tout près des logos, sans les toucher */
 }
 
-/* Corde torsadée : deux brins entrelacés (motif SVG répété), safran en haut, vert sapin en bas */
+/* Corde torsadée : deux brins entrelacés (tracé vectoriel, un brin passe dessus puis dessous), safran en haut, vert sapin en bas */
 .rope {
     width: 100%;
     height: 5px; /* = hauteur du viewBox (800 × 5) : les brins ne sont pas déformés verticalement */
     fill: none;
-    stroke-width: 1.2;
+    stroke-width: 1.3;
     stroke-linecap: round;
+}
+
+/* Coupure blanche au croisement : le brin « dessus » passe réellement devant l'autre */
+.rope .rope-halo {
+    stroke: white;
+    stroke-width: 2.8;
+    stroke-linecap: butt;
 }
 
 .rope-top {
     grid-area: rope-t;
 }
 
-.rope-top path {
+.rope-top .rope-under,
+.rope-top .rope-over {
     stroke: var(--col-logo-saffron); /* safran de l'arc supérieur du logo */
 }
 
@@ -47,7 +55,8 @@
     grid-area: rope-b;
 }
 
-.rope-bottom path {
+.rope-bottom .rope-under,
+.rope-bottom .rope-over {
     stroke: var(--col-logo-green); /* vert de l'arc inférieur du logo */
 }
 

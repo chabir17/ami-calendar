@@ -124,7 +124,7 @@ Le tableau occupe toute la hauteur : les mois de 28 à 31 jours tiennent sur la 
 └──────────────────────────────────────────────────────────────┘
 ```
 
-- **Header sans cadre** : `.header-fixed`, `--header-h` (30 mm), sous la zone de reliure. Un logo de 30 mm à chaque extrémité, hors cadre (`.logo-box`, `.logo-box-r`) ; au centre, une corde torsadée (`.rope-top` safran, `.rope-bottom` vert sapin ; deux brins entrelacés) encadre les noms et les coordonnées. La corde est un tracé SVG vectoriel généré par `drawRopes` (`js/main.js`) : un `<pattern>` SVG répété serait pixellisé à l'export PDF.
+- **Header sans cadre** : `.header-fixed`, `--header-h` (30 mm), sous la zone de reliure. Un logo de 30 mm à chaque extrémité, hors cadre (`.logo-box`, `.logo-box-r`) ; au centre, une corde torsadée (`.rope-top` safran, `.rope-bottom` vert sapin ; deux brins entrelacés) encadre les noms et les coordonnées. La corde est un tracé SVG vectoriel généré par `drawRopes` (`js/main.js`) : un `<pattern>` SVG répété serait pixellisé à l'export PDF. Deux brins entrelacés avec un vrai dessus/dessous : brins dessous, coupure blanche (halo) au croisement, brins dessus.
 - **Noms** : tamoul `.org-ta` (`--fs-brand`, 600, `--col-saffron`), puis nom français `.org-fr` (`--fs-name`, 700, lettres espacées, `--col-green`, rempli depuis `identity.name_fr`).
 - **Coordonnées** (`.header-contacts`) : deux lignes (adresses ; téléphone, WhatsApp, e-mail ; pas de site web), `--fs-contact` 11 px, gris `--col-text-light`, icônes `--col-blue`, losanges `--col-ocre`.
 - **Retirés** : cartouche AMI93 (`short_name`, symboles `#org-cap` / `#org-star`), ligne dorée séparatrice (`--header-line-gap`), jetons `--bg-cartouche`, `--col-gold-light`.

@@ -11,20 +11,32 @@ let pageTemplate = null;
 let clientConfig = null;
 
 /**
+ * Corde torsadée du header : deux brins entrelacés en S, tracés en vectoriel (un motif SVG répété serait pixellisé à l'export PDF),
+ * 100 périodes de 8 unités. Un brin passe alternativement dessus et dessous : les brins « dessous » (B, du bas vers le haut) sont tracés d'abord,
+ * puis un petit trait blanc coupe le brin dessous au croisement (halo), puis les brins « dessus » (A, du haut vers le bas) sont tracés par-dessus.
+ */
+function drawRopes(root) {
+    let under = '';
+    let halo = '';
+    let over = '';
+    for (let x = 0; x < 800; x += 8) {
+        under += `M${x} 4.5C${x + 4} 4.5 ${x + 4} .5 ${x + 8} .5`;
+        halo += `M${x + 3} 1.5L${x + 5} 3.5`;
+        over += `M${x} .5C${x + 4} .5 ${x + 4} 4.5 ${x + 8} 4.5`;
+    }
+    root.querySelectorAll('.rope').forEach((rope) => {
+        rope.querySelector('.rope-under').setAttribute('d', under);
+        rope.querySelector('.rope-halo').setAttribute('d', halo);
+        rope.querySelector('.rope-over').setAttribute('d', over);
+    });
+}
+
+/**
  * Met à jour le contenu DOM d'une page spécifique (Header, Contacts)
  * à partir de la configuration client.
  * @param {HTMLElement} container - Le fragment ou l'élément de page cloné
  * @param {Object} config - Les données du client
  */
-/** Corde torsadée du header : deux brins entrelacés tracés en vectoriel (un motif SVG répété serait pixellisé à l'export PDF) ; 100 périodes de 8 unités */
-function drawRopes(root) {
-    let d = '';
-    for (let x = 0; x < 800; x += 8) {
-        d += `M${x} .5C${x + 4} .5 ${x + 4} 4.5 ${x + 8} 4.5M${x} 4.5C${x + 4} 4.5 ${x + 4} .5 ${x + 8} .5`;
-    }
-    root.querySelectorAll('.rope path').forEach((path) => path.setAttribute('d', d));
-}
-
 function updatePageDOM(container, config) {
     drawRopes(container);
     if (!config) return;
