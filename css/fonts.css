@@ -1,6 +1,6 @@
 /* --- POLICES LOCALES --- */
 
-/* Noto Serif (Français, pages des mois) : sous-ensemble latin */
+/* Noto Serif (Français, pages des mois) : sous-ensemble latin étendu (U+0020–024F, modificatives U+02B0–02FF, accents combinants, latin étendu additionnel U+1E00–1EFF : ā ī ū ḥ ṣ ḍ ṭ ʿ ʾ de la translittération). Sans ces lettres, Chrome les prend dans une police du système (Helvetica sur Mac) : rendu différent d'une machine à l'autre. Contrôle : pdffonts ne doit lister aucune police hors Noto Serif / Amiri. */
 @font-face {
     font-family: 'Noto Serif';
     src: url('../assets/fonts/NotoSerif-Regular.ttf') format('truetype');
