@@ -65,7 +65,7 @@
     --col-text: #333333;
     --col-text-light: #3d3d3d;
     --col-text-soft: #6b6b6b; /* texte discret : 5,3:1 sur blanc */
-    --bg-empty: #e4e1dc; /* gris chaud (grège clair), neutre : cases hors du mois ; teinte sans bleu pour ne pas se confondre avec les vacances scolaires (bleu pâle) ; visible à l'impression laser (Toshiba e-STUDIO 2000AC du bureau) */
+    --bg-empty: #f3f3f3; /* gris très clair neutre : cases hors du mois ; teinte sans bleu pour ne pas se confondre avec les vacances scolaires (bleu pâle) ; visible à l'impression laser (Toshiba e-STUDIO 2000AC du bureau) */
     --bg-body: #eeeeee;
     --shadow-page: 0 0 15px rgba(0, 0, 0, 0.1); /* ombre de la page à l'écran */
     --border-on-dark: rgba(255, 255, 255, 0.2); /* séparateurs sur fond foncé (feuille Ramadan) */
