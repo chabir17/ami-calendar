@@ -345,7 +345,7 @@ function updateZoneTitles(year, month, container) {
     const hijriStart = getHijriDateSafe(new Date(year, jsMonth, 1));
     const hijriEnd = getHijriDateSafe(new Date(year, jsMonth, daysInMonth));
 
-    // Une ligne par mois hégirien : nom (formes abrégées des mois jumeaux : Rabīʿ I, Jumādā II…) • tamoul • année et nom en arabe
+    // Une ligne par mois hégirien : nom (avec liaison : Rabīʿul-Awwal, Jumādal-Ākhira… ; tamoul abrégé I / II pour les mois jumeaux) • tamoul • année et nom en arabe
     const rows = container.querySelector('.hijri-rows');
     if (rows && hijriStart.monthNameFR && hijriEnd.monthNameFR) {
         const months = hijriStart.monthNameFR === hijriEnd.monthNameFR ? [hijriStart] : [hijriStart, hijriEnd];

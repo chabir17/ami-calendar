@@ -90,22 +90,22 @@ export function contactsHTML(c, links = false) {
 
 /**
  * Mois hégiriens, dans l'ordre (index 0 = Muḥarram) : translittération standard, arabe, tamoul.
- * short / taShort : formes abrégées (I, II) des mois jumeaux, pour le bandeau quand deux mois se partagent la ligne.
+ * taShort : forme tamoule abrégée (I, II) des mois jumeaux, pour le bandeau quand deux mois se partagent la ligne. Noms français avec liaison (Dhūl-Qaʿdah, Rabīʿul-Awwal).
  * Indexés par numéro de mois : aucune dépendance aux noms renvoyés par le navigateur (variables selon l'OS).
  */
 const HIJRI_MONTHS = [
     { std: 'Muḥarram', ar: 'محرم', ta: 'முஹர்ரம்' },
     { std: 'Ṣafar', ar: 'صفر', ta: 'ஸஃபர்' },
-    { std: 'Rabīʿ al-awwal', short: 'Rabīʿ I', ar: 'ربيع الأول', ta: 'ரபீஉல் அவ்வல்', taShort: 'ரபீஉ I' },
-    { std: 'Rabīʿ ath-thānī', short: 'Rabīʿ II', ar: 'ربيع الآخر', ta: 'ரபீஉல் ஆகிர்', taShort: 'ரபீஉ II' },
-    { std: 'Jumādā al-ūlā', short: 'Jumādā I', ar: 'جمادى الأولى', ta: 'ஜுமாதல் ஊலா', taShort: 'ஜுமாதா I' },
-    { std: 'Jumādā ath-thāniya', short: 'Jumādā II', ar: 'جمادى الآخرة', ta: 'ஜுமாதல் ஆகிரா', taShort: 'ஜுமாதா II' },
+    { std: 'Rabīʿul-Awwal', ar: 'ربيع الأول', ta: 'ரபீஉல் அவ்வல்', taShort: 'ரபீஉ I' },
+    { std: 'Rabīʿul-Ākhir', ar: 'ربيع الآخر', ta: 'ரபீஉல் ஆகிர்', taShort: 'ரபீஉ II' },
+    { std: 'Jumādal-Ūlā', ar: 'جمادى الأولى', ta: 'ஜுமாதல் ஊலா', taShort: 'ஜுமாதா I' },
+    { std: 'Jumādal-Ākhira', ar: 'جمادى الآخرة', ta: 'ஜுமாதல் ஆகிரா', taShort: 'ஜுமாதா II' },
     { std: 'Rajab', ar: 'رجب', ta: 'ரஜப்' },
     { std: 'Shaʿbān', ar: 'شعبان', ta: 'ஷஃபான்' },
     { std: 'Ramaḍān', ar: 'رمضان', ta: 'ரமலான்' },
     { std: 'Shawwāl', ar: 'شوال', ta: 'ஷவ்வால்' },
-    { std: 'Dhū al-Qaʿdah', ar: 'ذو القعدة', ta: 'துல்கஅதா' },
-    { std: 'Dhū al-Ḥijjah', ar: 'ذو الحجة', ta: 'துல்ஹஜ்' }
+    { std: 'Dhūl-Qaʿdah', ar: 'ذو القعدة', ta: 'துல்கஅதா' },
+    { std: 'Dhūl-Ḥijjah', ar: 'ذو الحجة', ta: 'துல்ஹஜ்' }
 ];
 
 /** Jour julien du 1er jour d'un mois du calendrier hégirien civil (tabulaire, époque du 16 juillet 622) */
@@ -218,6 +218,6 @@ export const DATE_UTILS = {
     /** Convertit les chiffres latins en chiffres arabes */
     toArabicDigits: (str) => str.replace(/\d/g, (d) => DATE_UTILS.ARABIC_DIGITS[d]),
 
-    /** Noms du mois hégirien (1 = Muḥarram … 12 = Dhū al-Ḥijjah) : standard, arabe, tamoul */
+    /** Noms du mois hégirien (1 = Muḥarram … 12 = Dhūl-Ḥijjah) : standard, arabe, tamoul */
     getHijriNames: (month) => HIJRI_MONTHS[month - 1]
 };

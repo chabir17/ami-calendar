@@ -12,11 +12,11 @@ const HIJRI_CACHE = new Map();
  * écrit à côté du croissant (voir isRamadanStart).
  */
 const VIRTUOUS_DAYS = {
-    'Dhū al-Ḥijjah': { 9: 'Jour de ʿArafa' },
+    'Dhūl-Ḥijjah': { 9: 'Jour de ʿArafa' },
     Muḥarram: { 10: 'ʿĀshūrāʾ' }
 };
 // Aïds (mois hégirien → jour → libellé)
-const EID_NAMES = { Shawwāl: { 1: 'Eid-ul-Fitr' }, 'Dhū al-Ḥijjah': { 10: 'Eid-ul-Adha' } };
+const EID_NAMES = { Shawwāl: { 1: 'Eid-ul-Fitr' }, 'Dhūl-Ḥijjah': { 10: 'Eid-ul-Adha' } };
 
 const CACHE_KEY = 'ami_calendar_cache_v2'; // v2 : vacances normalisées (doublons, ponts)
 // Décalages hégiriens par période (YYYY-MM-DD), à ajuster selon les dates annoncées par les imams
