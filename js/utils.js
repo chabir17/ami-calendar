@@ -90,16 +90,16 @@ export function contactsHTML(c, links = false) {
 
 /**
  * Mois hégiriens, dans l'ordre (index 0 = Muḥarram) : translittération standard, arabe, tamoul.
- * taShort : forme tamoule abrégée (I, II) des mois jumeaux, pour le bandeau quand deux mois se partagent la ligne. Noms français avec liaison (Dhūl-Qaʿdah, Rabīʿul-Awwal).
+ * Noms français avec liaison (Dhūl-Qaʿdah, Rabīʿul-Awwal) ; tous les noms sont écrits en entier dans les trois langues.
  * Indexés par numéro de mois : aucune dépendance aux noms renvoyés par le navigateur (variables selon l'OS).
  */
 const HIJRI_MONTHS = [
     { std: 'Muḥarram', ar: 'محرم', ta: 'முஹர்ரம்' },
     { std: 'Ṣafar', ar: 'صفر', ta: 'ஸஃபர்' },
-    { std: 'Rabīʿul-Awwal', ar: 'ربيع الأول', ta: 'ரபீஉல் அவ்வல்', taShort: 'ரபீஉ I' },
-    { std: 'Rabīʿul-Ākhir', ar: 'ربيع الآخر', ta: 'ரபீஉல் ஆகிர்', taShort: 'ரபீஉ II' },
-    { std: 'Jumādal-Ūlā', ar: 'جمادى الأولى', ta: 'ஜுமாதல் ஊலா', taShort: 'ஜுமாதா I' },
-    { std: 'Jumādal-Ākhira', ar: 'جمادى الآخرة', ta: 'ஜுமாதல் ஆகிரா', taShort: 'ஜுமாதா II' },
+    { std: 'Rabīʿul-Awwal', ar: 'ربيع الأول', ta: 'ரபிஉல் அவ்வல்' },
+    { std: 'Rabīʿul-Ākhir', ar: 'ربيع الآخر', ta: 'ரபிஉல் ஆகிர்' },
+    { std: 'Jumādal-Ūlā', ar: 'جمادى الأولى', ta: 'ஜுமாதல் ஊலா' },
+    { std: 'Jumādal-Ākhira', ar: 'جمادى الآخرة', ta: 'ஜுமாதல் ஆகிரா' },
     { std: 'Rajab', ar: 'رجب', ta: 'ரஜப்' },
     { std: 'Shaʿbān', ar: 'شعبان', ta: 'ஷஃபான்' },
     { std: 'Ramaḍān', ar: 'رمضان', ta: 'ரமலான்' },

@@ -87,7 +87,7 @@
 }
 
 .hijri-ar {
-    font-size: var(--fs-month);
+    font-size: var(--fs-hijri-ar); /* 20 px : laisse la place au français et au tamoul */
     line-height: 1.3; /* queues des lettres arabes (ع, ي…) */
     font-weight: 500; /* arabe : 500 maximum */
     color: var(--col-green); /* année et mois hégiriens : vert sapin */
@@ -139,10 +139,6 @@
 .month-titles-zone.is-compact-2 .hijri-ta,
 .month-titles-zone.is-compact-2 .hijri-row > :not(:last-child)::after {
     font-size: var(--fs-xs);
-}
-
-.month-titles-zone.is-compact-2 .hijri-ar {
-    font-size: var(--fs-xl);
 }
 
 /* Mois grégorien en tamoul : orange safran, comme le nom de l'association */
@@ -388,6 +384,12 @@
 .new-moon-name.is-long {
     font-size: calc(var(--fs-2xs) - 0.75px);
     letter-spacing: -0.03em;
+}
+
+/* Noms très longs (Jumādal-Ākhira, Rabīʿul-Awwal) : encore un cran plus petit */
+.new-moon-name.is-longer {
+    font-size: calc(var(--fs-2xs) - 1.5px);
+    letter-spacing: -0.04em;
 }
 
 /* Changement d'heure le jour d'un nouveau mois : l'horloge passe sous le croissant, pour laisser la place au nom du mois */

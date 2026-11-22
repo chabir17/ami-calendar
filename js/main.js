@@ -16,7 +16,17 @@ let clientConfig = null;
  * @param {HTMLElement} container - Le fragment ou l'élément de page cloné
  * @param {Object} config - Les données du client
  */
+/** Corde torsadée du header : deux brins entrelacés tracés en vectoriel (un motif SVG répété serait pixellisé à l'export PDF) ; 100 périodes de 8 unités */
+function drawRopes(root) {
+    let d = '';
+    for (let x = 0; x < 800; x += 8) {
+        d += `M${x} .5C${x + 4} .5 ${x + 4} 5.5 ${x + 8} 5.5M${x} 5.5C${x + 4} 5.5 ${x + 4} .5 ${x + 8} .5`;
+    }
+    root.querySelectorAll('.rope path').forEach((path) => path.setAttribute('d', d));
+}
+
 function updatePageDOM(container, config) {
+    drawRopes(container);
     if (!config) return;
 
     DOM.setText('.org-fr', config.identity.name_fr, container);
@@ -354,7 +364,7 @@ function updateZoneTitles(year, month, container) {
                 const row = document.createElement('div');
                 row.className = 'hijri-row';
                 const fr = Object.assign(document.createElement('span'), { className: 'hijri-fr', textContent: h.monthNameShort });
-                const ta = Object.assign(document.createElement('span'), { className: 'hijri-ta tamil', textContent: h.monthNameTAShort });
+                const ta = Object.assign(document.createElement('span'), { className: 'hijri-ta tamil', textContent: h.monthNameTA });
                 const ar = Object.assign(document.createElement('span'), { className: 'hijri-ar arabic dir-rtl', textContent: `${h.monthNameAR} ${h.yearAr}` });
                 row.append(fr, ta, ar);
                 return row;

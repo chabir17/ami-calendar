@@ -98,6 +98,7 @@ class CalendarGrid extends MonthElement {
                 monthName.hidden = false;
                 monthName.textContent = hijri.monthNameShort;
                 monthName.classList.toggle('is-long', monthName.textContent.length > 10); // noms longs : un cran plus petit
+                monthName.classList.toggle('is-longer', monthName.textContent.length > 12); // très longs (Jumādal-Ākhira) : deux crans
             }
 
             if (dayInfo.isDST) {

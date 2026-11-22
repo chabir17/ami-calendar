@@ -2,34 +2,53 @@
 .header-fixed {
     position: relative;
     color: var(--col-text);
-    /* Le bandeau commence sous la zone de reliure du bord haut (trous de spirale) :
-       la bordure du haut n'est pas perforée */
+    /* Le bandeau commence sous la zone de reliure du bord haut (trous de spirale) */
     margin-top: calc(var(--binding-zone) - var(--page-pad));
     height: var(--header-h); /* box-sizing: border-box */
-    background-color: white;
-    border: 1.5px solid var(--col-gold); /* cadre doré arrondi autour du header, de la même épaisseur que le calendrier et le tableau */
-    border-radius: var(--radius-card);
 }
 
-/* Disposition du header : un logo à chaque extrémité, à pleine hauteur ; au centre, les noms (tamoul, français)
-   puis les coordonnées sur deux lignes, centrés sur la page. Le reste des coordonnées et l'IBAN sont sur la couverture. */
+/* Disposition du header : un logo de 30 mm à chaque extrémité, hors cadre, à pleine hauteur ; entre eux, une corde torsadée safran en haut
+   et verte en bas encadre les noms (tamoul, français) et les coordonnées sur deux lignes, centrés sur la page. */
 .header-content {
-    --header-pad: var(--sp-2); /* même marge intérieure (8 px) en haut, en bas, à gauche et à droite du cadre */
-    --logo-size: calc(
-        var(--header-h) - 3px - 2 * var(--header-pad)
-    ); /* le logo prend la hauteur utile du cadre (≈ 23 mm) : le texte (noms + 2 lignes de coordonnées en 12 px) fixe la hauteur du header */
-    position: relative; /* au-dessus du fond */
+    --logo-size: var(--header-h); /* logos de 30 mm : la hauteur du header */
+    position: relative;
     height: 100%;
     display: grid;
     grid-template-columns: var(--logo-size) minmax(0, 1fr) var(--logo-size);
-    grid-template-rows: 1fr auto auto 1fr; /* noms et infos serrés l'un sous l'autre, centrés sur la hauteur du logo */
+    grid-template-rows: auto 1fr auto auto 1fr auto;
     grid-template-areas:
+        'logo rope-t logo2'
         'logo . logo2'
         'logo names logo2'
         'logo contacts logo2'
-        'logo . logo2';
+        'logo . logo2'
+        'logo rope-b logo2';
     column-gap: var(--sp-4);
-    padding: var(--header-pad);
+}
+
+/* Corde torsadée : deux brins entrelacés (motif SVG répété), safran en haut, vert sapin en bas */
+.rope {
+    width: 100%;
+    height: 6px;
+    fill: none;
+    stroke-width: 1.2;
+    stroke-linecap: round;
+}
+
+.rope-top {
+    grid-area: rope-t;
+}
+
+.rope-top path {
+    stroke: var(--col-logo-saffron); /* safran de l'arc supérieur du logo */
+}
+
+.rope-bottom {
+    grid-area: rope-b;
+}
+
+.rope-bottom path {
+    stroke: var(--col-logo-green); /* vert de l'arc inférieur du logo */
 }
 
 .logo-box {
