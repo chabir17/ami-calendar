@@ -39,9 +39,9 @@
     grid-area: rope-t;
 }
 
-/* Les cordes débordent dans la boîte des logos : elles s'arrêtent à 5 mm de l'axe vertical du logo (pointes haute et basse du cercle) */
+/* Les cordes débordent dans la boîte des logos : elles s'arrêtent à 10 mm de l'axe vertical du logo (pointes haute et basse du cercle) */
 .rope {
-    --rope-reach: calc(var(--logo-size) / 2 + var(--sp-2) - 5mm); /* demi-logo + écart de colonne − 5 mm */
+    --rope-reach: calc(var(--logo-size) / 2 + var(--sp-2) - 10mm); /* demi-logo + écart de colonne − 10 mm */
     width: calc(100% + 2 * var(--rope-reach));
     margin-inline: calc(-1 * var(--rope-reach));
 }
