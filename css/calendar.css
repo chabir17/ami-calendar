@@ -216,6 +216,7 @@
 }
 
 .weekday-sub.tamil {
+    font-size: var(--fs-md); /* tamoul des jours de la semaine : 14 px */
     color: var(--col-tamil-light); /* tamoul : ocre clair sur le bleu marine */
     font-weight: 500; /* tamoul des jours de la semaine : 500 au maximum */
 }
