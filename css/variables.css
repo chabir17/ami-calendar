@@ -87,7 +87,7 @@
     --fs-sm: 12px; /* secondaire : traductions, coordonnées, légende */
     --fs-md: 14px; /* courant : jours de la semaine, texte des tableaux */
     --fs-xl: 22px; /* titres : mois, années */
-    --fs-hijri-ar: 20px; /* mois hégiriens en arabe (titre du mois) */
+    --fs-hijri-ar: 16px; /* mois hégiriens en arabe (titre du mois) */
     --fs-month: 24px; /* noms des mois du bandeau (titres de la page) */
     --fs-cover-year: 120px; /* année grégorienne de la couverture, au-dessus des mois */
     --fs-contact: 12px; /* infos essentielles sous les noms (header du calendrier annuel) */

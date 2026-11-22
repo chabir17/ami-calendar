@@ -87,7 +87,7 @@
 }
 
 .hijri-ar {
-    font-size: var(--fs-hijri-ar); /* 20 px : laisse la place au français et au tamoul */
+    font-size: var(--fs-hijri-ar); /* 16 px : laisse la place au français et au tamoul */
     line-height: 1.3; /* queues des lettres arabes (ع, ي…) */
     font-weight: 500; /* arabe : 500 maximum */
     color: var(--col-green); /* année et mois hégiriens : vert sapin */
