@@ -69,20 +69,20 @@
     content: '•';
     margin-left: var(--sp-2);
     font-family: var(--font-fr-serif);
-    font-size: var(--fs-md);
+    font-size: var(--fs-label);
     font-style: normal;
     color: var(--col-gold); /* puce dorée entre les trois langues */
 }
 
 .hijri-fr {
-    font-size: var(--fs-md);
+    font-size: var(--fs-label);
     letter-spacing: 0.02em;
     text-transform: uppercase;
     color: var(--col-blue); /* nom du mois : bleu ardoise, comme le mois grégorien */
 }
 
 .hijri-ta {
-    font-size: var(--fs-md);
+    font-size: var(--fs-label);
     color: var(--col-saffron); /* tamoul : orange safran */
 }
 
@@ -196,7 +196,7 @@
 }
 
 .weekday-fr {
-    font-size: var(--fs-md);
+    font-size: var(--fs-label);
     font-weight: 500; /* texte clair sur fond coloré : 500 au maximum */
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -204,7 +204,7 @@
 }
 
 .weekday-sub {
-    font-size: var(--fs-sm);
+    font-size: var(--fs-label);
 }
 
 .weekday-sub.arabic {
@@ -287,7 +287,7 @@
 
 /* Numéro du jour (Hégirien) : petit chiffre vert, en haut à droite */
 .vis-hij {
-    font-size: 13px;
+    font-size: var(--fs-label);
     color: var(--col-green);
     position: absolute;
     top: var(--sp-1);

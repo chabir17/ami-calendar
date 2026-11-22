@@ -85,6 +85,7 @@
     --fs-verse: 11px; /* verset de la couverture */
     --fs-xs: 10px; /* notes : en-têtes de tableau, libellés des cases, coordonnées compactes */
     --fs-sm: 12px; /* secondaire : traductions, coordonnées, légende */
+    --fs-label: 13px; /* libellés des titres : mois hégiriens (français, tamoul), jours de la semaine, jour hégirien des cases */
     --fs-md: 14px; /* courant : jours de la semaine, texte des tableaux */
     --fs-xl: 22px; /* titres : mois, années */
     --fs-hijri-ar: 16px; /* mois hégiriens en arabe (titre du mois) */
