@@ -51,7 +51,7 @@ ami-prayer-table {
 /* Largeurs de colonnes fixes pour les prières */
 .prayer-table th:nth-child(n + 2):nth-child(-n + 7),
 .prayer-table td:nth-child(n + 2):nth-child(-n + 7) {
-    width: 13%;
+    width: 12.7%;
 }
 
 .th-fr {
@@ -124,21 +124,13 @@ ami-prayer-table {
 }
 
 /* --- COLONNES SPÉCIALES (DATES) --- */
-/* Largeurs de l'en-tête (la mise en page fixe se règle sur la 1re ligne) : dates 15 % + 6 prières × 13 % + colonne hégirienne 7 % = 100 % */
+/* Largeurs de l'en-tête (la mise en page fixe se règle sur la 1re ligne) : dates 17,5 % + 6 prières × 12,7 % + colonne hégirienne 6,3 % = 100 % */
 .prayer-table thead th:first-child {
-    width: 15%;
+    width: 17.5%;
 }
 
 .prayer-table thead th:last-child {
-    width: 7%;
-}
-
-.col-date-greg {
-    width: 15%;
-}
-
-.col-hijri {
-    width: 7%;
+    width: 6.3%;
 }
 
 .date-cell {
