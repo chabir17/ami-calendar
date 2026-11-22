@@ -71,6 +71,7 @@
 /* Noms centrés, l'un sous l'autre : nom tamoul (safran) puis nom français (vert, lettres espacées) */
 .org-names {
     grid-area: names;
+    margin-top: 0.6mm; /* centrage optique entre les deux cordes : mesuré encre à encre, écarts haut et bas égaux à 0,1 mm près */
     display: flex;
     flex-direction: column;
     align-items: center;
