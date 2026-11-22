@@ -29,7 +29,7 @@
 /* Corde torsadée : deux brins entrelacés (motif SVG répété), safran en haut, vert sapin en bas */
 .rope {
     width: 100%;
-    height: 6px;
+    height: 4.5px;
     fill: none;
     stroke-width: 1.2;
     stroke-linecap: round;
