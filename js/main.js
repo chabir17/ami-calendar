@@ -16,14 +16,17 @@ let clientConfig = null;
  * puis un petit trait blanc coupe le brin dessous au croisement (halo), puis les brins « dessus » (A, du haut vers le bas) sont tracés par-dessus.
  */
 function drawRopes(root) {
-    let under = '';
+    // Extrémités sur un croisement (pointes arrondies, brins jamais coupés) : demi-période au début (x = 4) et à la fin (x = 796)
+    let under = 'M4 2.5C5 1.5 6 .5 8 .5';
     let halo = '';
-    let over = '';
-    for (let x = 0; x < 800; x += 8) {
+    let over = 'M4 2.5C5 3.5 6 4.5 8 4.5';
+    for (let x = 8; x < 792; x += 8) {
         under += `M${x} 4.5C${x + 4} 4.5 ${x + 4} .5 ${x + 8} .5`;
         halo += `M${x + 3} 1.5L${x + 5} 3.5`;
         over += `M${x} .5C${x + 4} .5 ${x + 4} 4.5 ${x + 8} 4.5`;
     }
+    under += 'M792 4.5C794 4.5 795 3.5 796 2.5';
+    over += 'M792 .5C794 .5 795 1.5 796 2.5';
     root.querySelectorAll('.rope').forEach((rope) => {
         rope.querySelector('.rope-under').setAttribute('d', under);
         rope.querySelector('.rope-halo').setAttribute('d', halo);

@@ -29,7 +29,7 @@
 /* Corde torsadée : deux brins entrelacés (tracé vectoriel, un brin passe dessus puis dessous), safran en haut, vert sapin en bas */
 .rope {
     width: 100%;
-    height: 5px; /* = hauteur du viewBox (800 × 5) : les brins ne sont pas déformés verticalement */
+    height: 7px; /* = hauteur du viewBox (794 × 7) : les brins (5 px de haut) ont 1 px de marge au-dessus et en dessous, jamais tronqués */
     fill: none;
     stroke-width: 1.3;
     stroke-linecap: round;
