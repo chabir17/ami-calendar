@@ -22,7 +22,7 @@ Couleurs du logo AMI et du drapeau indien, adaptées à l'impression laser (asse
 
 | Teinte | Jeton(s)                           | Valeur                | Usage                                                                                                                   |
 | ------ | ---------------------------------- | --------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| Safran | `--col-saffron`                    | `#be5128`             | Tamoul sur fond blanc, dimanches, nom tamoul du header (sur les en-têtes foncés : `--col-tamil-light`, ocre clair, 600) |
+| Safran | `--col-saffron`                    | `#be5128`             | Tamoul sur fond blanc, dimanches, nom tamoul du header (sur les en-têtes foncés : `--col-tamil-light`, ocre clair, 500) |
 | Bleu   | `--col-blue` / `--bg-holiday`      | `#002654` / `#d7e4f4` | Ligne des jours, contour, nom du mois, icônes / vacances scolaires, pastilles de la couverture                          |
 | Vert   | `--col-green` / `--bg-green-light` | `#046a38` / `#e2f3ea` | En-tête du tableau, nom français, repères hégiriens, vendredis, badges islamiques / vendredis du tableau, Aïd           |
 | Rouge  | `--col-red` / `--bg-red-light`     | `#ce1126` / `#fde0e2` | Jours fériés (chiffre / badge)                                                                                          |
@@ -129,7 +129,7 @@ Le girih de l'année est blanc, à 45 % d'intensité maximale, fondu du haut (di
 
 ### 3.2 Graisses
 
-- **Français et tamoul : 400 à 600 maximum.** 500 pour tout le contenu du tableau (jours abrégés, numéros du jour, horaires), 600 pour les numéros de la grille et les titres.
+- **Français et tamoul : 400 à 600 maximum.** 500 pour tout le contenu du tableau (jours abrégés, numéros du jour, horaires), 600 pour les numéros de la grille et les titres. Tamoul des en-têtes foncés (jours de la semaine, prières) : 500 ; mois grégorien en tamoul : 600.
 - **Arabe (Amiri) : 400 à 500.**
 - **Exception : l'année de la couverture est en 700**, c'est un élément d'affichage et non du texte courant.
 

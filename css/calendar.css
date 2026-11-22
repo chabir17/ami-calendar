@@ -138,6 +138,7 @@
 /* Mois grégorien en tamoul : orange safran, comme le nom de l'association */
 .greg-month-ta {
     color: var(--col-saffron);
+    font-weight: 600; /* mois grégorien en tamoul : semi-bold */
 }
 
 /* Mois grégorien en tamoul, sous le titre : 20 px */
@@ -213,7 +214,7 @@
 
 .weekday-sub.tamil {
     color: var(--col-tamil-light); /* tamoul : ocre clair sur le bleu marine */
-    font-weight: 600; /* tamoul des en-têtes : semi-bold, traits fins plus robustes à l'impression */
+    font-weight: 500; /* tamoul des jours de la semaine : 500 au maximum */
 }
 
 /* Grille des jours (5 rangées pour couvrir le mois) */
