@@ -55,7 +55,7 @@ ami-prayer-table {
 
 .th-fr {
     display: block;
-    font-size: var(--fs-sm); /* 12 px */
+    font-size: var(--fs-th); /* 11 px */
     font-weight: 500; /* texte clair sur fond coloré : 500 au maximum */
     text-transform: uppercase;
     color: white;
@@ -69,7 +69,7 @@ ami-prayer-table {
 
 .th-ta {
     display: block;
-    font-size: var(--fs-sm); /* 12 px : traits fins du tamoul plus lisibles */
+    font-size: var(--fs-th); /* 11 px */
     white-space: nowrap;
 }
 

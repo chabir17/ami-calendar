@@ -129,7 +129,7 @@ Le girih de l'année est blanc, à 45 % d'intensité maximale, fondu du haut (di
 
 ### 3.2 Graisses
 
-- **Français et tamoul : 400 à 600 maximum.** 500 pour tout le contenu du tableau (jours abrégés, numéros du jour, horaires), 600 pour les numéros de la grille et les titres. Tamoul des en-têtes foncés (jours de la semaine, prières) : 500 ; mois grégorien en tamoul : 600.
+- **Français et tamoul : 400 à 600 maximum.** 500 pour tout le contenu du tableau (jours abrégés, numéros du jour, horaires), 600 pour les numéros de la grille et les titres. Tamoul des en-têtes foncés (jours de la semaine, prières) : 500 ; mois grégorien en tamoul : 600 ; mois hégiriens (3 langues) : 500 ; noms des prières (français, tamoul) en `--fs-th` 11 px.
 - **Arabe (Amiri) : 400 à 500.**
 - **Exception : l'année de la couverture est en 700**, c'est un élément d'affichage et non du texte courant.
 
