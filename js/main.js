@@ -20,7 +20,7 @@ let clientConfig = null;
 function drawRopes(root) {
     let d = '';
     for (let x = 0; x < 800; x += 8) {
-        d += `M${x} .5C${x + 4} .5 ${x + 4} 5.5 ${x + 8} 5.5M${x} 5.5C${x + 4} 5.5 ${x + 4} .5 ${x + 8} .5`;
+        d += `M${x} .5C${x + 4} .5 ${x + 4} 4.5 ${x + 8} 4.5M${x} 4.5C${x + 4} 4.5 ${x + 4} .5 ${x + 8} .5`;
     }
     root.querySelectorAll('.rope path').forEach((path) => path.setAttribute('d', d));
 }
