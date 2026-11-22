@@ -23,7 +23,7 @@
         'logo contacts logo2'
         'logo . logo2'
         'logo rope-b logo2';
-    column-gap: var(--sp-4);
+    column-gap: var(--sp-2); /* 8 px : les cordes s'arrêtent tout près des logos, sans les toucher */
 }
 
 /* Corde torsadée : deux brins entrelacés (motif SVG répété), safran en haut, vert sapin en bas */
