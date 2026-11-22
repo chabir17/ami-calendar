@@ -18,6 +18,7 @@ ami-prayer-table {
 .prayer-table {
     width: 100%;
     height: 100%;
+    table-layout: fixed; /* colonnes de largeur fixe : les six horaires gardent exactement la même largeur, quel que soit le mois */
     border-collapse: separate; /* les filets restent dans la cellule : le dernier est visible, rien n'est rogné par le conteneur arrondi */
     border-spacing: 0;
 }
@@ -123,6 +124,15 @@ ami-prayer-table {
 }
 
 /* --- COLONNES SPÉCIALES (DATES) --- */
+/* Largeurs de l'en-tête (la mise en page fixe se règle sur la 1re ligne) : dates 15 % + 6 prières × 13 % + colonne hégirienne 7 % = 100 % */
+.prayer-table thead th:first-child {
+    width: 15%;
+}
+
+.prayer-table thead th:last-child {
+    width: 7%;
+}
+
 .col-date-greg {
     width: 15%;
 }
