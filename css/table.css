@@ -93,7 +93,7 @@ ami-prayer-table {
     border-bottom: 1px solid var(--border-green);
     border-right: 1px solid var(--border-sage); /* filets verticaux fins vert sauge clair (le contour du conteneur ferme la dernière colonne) */
     text-align: center;
-    font-weight: 400;
+    font-weight: 500;
     font-size: var(--fs-figure);
     line-height: 1;
     font-variant-numeric: tabular-nums; /* colonnes d'heures parfaitement alignées */
